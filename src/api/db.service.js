@@ -1,4 +1,4 @@
-import { Client, Databases, ID, Query } from "appwrite"
+import { Client, Databases, ID } from "appwrite"
 import env from "../../env"
 
 class DB{
@@ -13,11 +13,11 @@ class DB{
         this.databases = new Databases(this.client)
     }
 
-    async insert({title, content, status=true, featuredImage, userId}){
+    async insert({collectionId, title, content, status=true, featuredImage, userId}){
         try {
             const res = await this.databases.createDocument(
                 env.dbId,
-                env.collectionId,
+                collectionId,
                 ID.unique(),
                 {title, content, status, featuredImage, userId}
             )
@@ -27,12 +27,12 @@ class DB{
         }
     }
 
-    async fetchAll(){
+    async fetchOne({userId}){
         try {
-            const res = this.databases.listDocuments(
+            const res = await this.databases.getDocument(
                 env.dbId,
-                env.collectionId,
-                // [Query.equal("status","active")]
+                env.scoreId,
+                userId
             )
             return res
         } catch (error) {
@@ -40,11 +40,23 @@ class DB{
         }
     }
 
-    async update({documentId, changes={}}){
+    async fetchAll({collectionId}){
+        try {
+            const res = this.databases.listDocuments(
+                env.dbId,
+                collectionId
+            )
+            return res
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async update({collectionId, documentId, changes={}}){
         try {
             const res = this.databases.updateDocument(
                 env.dbId,
-                env.collectionId,
+                collectionId,
                 documentId,
                 changes
             )
@@ -54,11 +66,11 @@ class DB{
         }
     }
 
-    async delete({documentId}){
+    async delete({collectionId, documentId}){
         try {
             const res = this.databases.deleteDocument(
                 env.dbId,
-                env.collectionId,
+                collectionId,
                 documentId
             )
             return res
