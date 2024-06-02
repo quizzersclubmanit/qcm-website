@@ -8,7 +8,6 @@ const UserContext = createContext({
         ...{}*/
     },
     setUserData: (data={})=>{},
-    updateScore: (userId="", newScore)=>{},
     loggedIn: false,
     login: ()=>{},
     logout: ()=>{}

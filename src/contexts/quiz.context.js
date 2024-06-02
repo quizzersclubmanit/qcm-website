@@ -17,3 +17,11 @@ const QuizContext = createContext({
     editQuiz: (quizId="", changes={})=>{},
     deleteQuiz: (quizId="")=>{}
 })
+
+const QuizProvider = QuizContext.Provider
+
+const userQuizContext = ()=>{
+    return useContext(QuizContext)
+}
+
+export {QuizProvider, userQuizContext}

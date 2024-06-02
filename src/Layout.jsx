@@ -1,13 +1,50 @@
 import { Outlet } from "react-router-dom"
 import {Container, Header, Footer} from "./components/components"
+import { UserProvider } from "./contexts/user.context"
+import { QuizProvider } from "./contexts/quiz.context"
+import { useState, useCallback } from "react"
 
 const Layout = () => {
+  const [userData, setUserData] = useState({})
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [quizes, setQuizes] = useState([])
+  
+  function login() {
+    setLoggedIn(true)
+  }
+  function logout() {
+    setLoggedIn(false)
+  }
+  function addQuiz(quiz={}) {
+    setQuizes(prev => [...prev, quiz])
+  }
+
+  const editQuiz = useCallback((quizId="", changes={})=>{
+    setQuizes(prev => (
+      prev.map(quiz => {
+        if (quiz._id == quizId)
+          return {...quiz, ...changes}
+        return quiz
+      })
+    ))
+  },[])
+
+  const deleteQuiz = useCallback((quizId="")=>{
+    setQuizes(prev => (
+      prev.filter(quiz => quiz._id != quizId)
+    ))
+  },[])
+  
   return (
-    <Container>
-      <Header/>
-      <Outlet/>
-      <Footer/>
-    </Container>
+    <UserProvider value={{userData, setUserData, loggedIn, login, logout}}>
+      <QuizProvider value={{quizes, setQuizes, addQuiz, editQuiz, deleteQuiz}}>
+        <Container>
+          <Header/>
+          <Outlet/>
+          <Footer/>
+        </Container>
+      </QuizProvider>
+    </UserProvider>
   )
 }
 
