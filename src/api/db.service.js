@@ -1,4 +1,4 @@
-import { Client, Databases, ID } from "appwrite"
+import { Client, Databases, ID, Query } from "appwrite"
 import env from "../../env"
 
 class DB{
@@ -27,24 +27,15 @@ class DB{
         }
     }
 
-    async fetchOne({userId}){
-        try {
-            const res = await this.databases.getDocument(
-                env.dbId,
-                env.scoreId,
-                userId
-            )
-            return res
-        } catch (error) {
-            throw error
-        }
-    }
-
-    async fetchAll({collectionId}){
+    async fetchAll({collectionId, userId=""}){
+        let query = []
+        if (collectionId == env.scoreId)
+            query.push(Query.equal("userId", userId))
         try {
             const res = this.databases.listDocuments(
                 env.dbId,
-                collectionId
+                collectionId,
+                query
             )
             return res
         } catch (error) {
