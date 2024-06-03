@@ -7,6 +7,7 @@
 
 *{
   overflow-x: hidden;
+  font-display: block;
 }
 
 .alatsi-regular {
@@ -44,6 +45,9 @@
 }
 .transparent-white{
   @apply bg-[#ffffffc4]
+}
+.theme-blue{
+  @apply bg-[#00519c]
 }
 
 ::-webkit-scrollbar {

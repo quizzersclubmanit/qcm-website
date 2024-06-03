@@ -8,7 +8,7 @@ const Header = () => {
   const [showModal, setShowModal] = useState(false)
 
   return (
-    <Container className="fixed">
+    <Container className="fixed z-10">
       <div className="flex py-1 justify-around items-center alatsi-regular text-white transparent-black rounded-lg">
         <Logo/>
         <Nav hidden={true}/>

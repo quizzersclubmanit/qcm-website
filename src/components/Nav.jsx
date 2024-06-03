@@ -32,7 +32,7 @@ const Nav = ({hidden=false}) => {
             </div>
             <Button
                 label="Signup"
-                className="py-2 px-3 tracking-widest shadow-lg"
+                className="py-2 px-3 tracking-widest shadow-lg text-black bg-white hover:bg-gray-200"
                 onClick={() => {
                     console.log("Signup Clicked")
                 }}

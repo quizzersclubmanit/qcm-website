@@ -9,5 +9,7 @@ import Button from "./Button"
 import Nav from "./Nav"
 import Modal from "./Modal"
 import Logo from "./Logo"
+import SectionHead from "./SectionHead"
+import EventCard from "./EventCard"
 
-export {Header, Footer, Container, Hero, About, Events, Gallery, Button, Nav, Modal, Logo}
+export {Header, Footer, Container, Hero, About, Events, Gallery, Button, Nav, Modal, Logo, SectionHead, EventCard}

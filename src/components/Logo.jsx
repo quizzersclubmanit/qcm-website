@@ -1,8 +1,11 @@
 import {qcmLogo} from "../assets/assets"
+import { Link } from "react-router-dom"
 
-const Logo = () => {
+const Logo = ({className=""}) => {
   return (
-    <img src={qcmLogo} alt="QCM Logo" className="w-[5vmax] sm:w-[4vmax]" />
+    <Link to="/">
+      <img src={qcmLogo} alt="QCM Logo" className={`w-[5vmax] sm:w-[4vmax] ${className}`} />
+    </Link>
   )
 }
 

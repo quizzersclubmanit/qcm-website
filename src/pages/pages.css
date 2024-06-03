@@ -4,3 +4,23 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#about{
+    background: url("./wavy-bg.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#events{
+    background: url("./blue-bg.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (max-width: 570px){
+    #about{
+        background: url("./white-bg.svg");
+    }
+}
