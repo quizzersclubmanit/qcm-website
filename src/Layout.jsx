@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom"
-import {Container, Header, Footer} from "./components/components"
 import { UserProvider } from "./contexts/user.context"
 import { QuizProvider } from "./contexts/quiz.context"
 import { useState, useCallback } from "react"
@@ -38,11 +37,7 @@ const Layout = () => {
   return (
     <UserProvider value={{userData, setUserData, loggedIn, login, logout}}>
       <QuizProvider value={{quizes, setQuizes, addQuiz, editQuiz, deleteQuiz}}>
-        <Container>
-          <Header/>
-          <Outlet/>
-          <Footer/>
-        </Container>
+        <Outlet/>
       </QuizProvider>
     </UserProvider>
   )

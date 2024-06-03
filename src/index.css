@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  overflow-x: hidden;
+}
+
 .alatsi-regular {
   font-family: "Alatsi", sans-serif;
   font-weight: 400;
@@ -33,4 +37,30 @@
   font-family: "Londrina Solid", sans-serif;
   font-weight: 900;
   font-style: normal;
+}
+
+.transparent-black{
+  @apply bg-[#00000088]
+}
+.transparent-white{
+  @apply bg-[#ffffffc4]
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height of the scrollbar (for horizontal scrollbar) */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color of the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00aded; /* Color of the scrollbar handle */
+  border-radius: 10px; /* Rounded corners for the handle */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1; /* Darker color on hover for the scrollbar handle */
 }

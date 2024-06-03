@@ -1,6 +1,6 @@
-const Container = ({children, className=""}) => {
+const Container = ({children, className="", ...props}) => {
   return (
-    <div className={`w-screen min-h-screen p-24 ${className}`}>
+    <div className={`w-screen p-[3vmax] ${className}`} {...props}>
       {children}
     </div>
   )
