@@ -7,7 +7,7 @@ const Home = () => {
     <main>
       <Header/>
 
-      <div id="home-hero" className="h-screen flex flex-col sm:flex-row items-center justify-evenly londrina-solid-regular">
+      <div id="hero" className="h-screen flex flex-col sm:flex-row items-center justify-evenly londrina-solid-regular">
         <div className="left sm:w-2/3 flex flex-col items-center justify-center text-white gap-3">
           <h1 className="sm:text-[9vmax] text-[7vmax]" style={{WebkitTextStrokeWidth: "3px", WebkitTextStrokeColor: "#00aded"}}>Quizzers' Club</h1>
           <h4 className="text-[5vmax]" style={{WebkitTextStrokeWidth: "2px", WebkitTextStrokeColor: "black"}}>NIT Bhopal</h4>
@@ -20,9 +20,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div id="home-about"></div>
-      <div id="home-events"></div>
-      <div id="home-gallery"></div>
+      <div id="about"></div>
+      <div id="events"></div>
+      <div id="gallery"></div>
       <Footer/>
     </main>
   )

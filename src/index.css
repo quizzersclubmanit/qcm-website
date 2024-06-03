@@ -40,7 +40,7 @@
 }
 
 .transparent-black{
-  @apply bg-[#00000088]
+  @apply bg-[#000000a6]
 }
 .transparent-white{
   @apply bg-[#ffffffc4]

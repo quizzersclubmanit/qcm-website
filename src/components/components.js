@@ -8,5 +8,6 @@ import Gallery from "./Gallery"
 import Button from "./Button"
 import Nav from "./Nav"
 import Modal from "./Modal"
+import Logo from "./Logo"
 
-export {Header, Footer, Container, Hero, About, Events, Gallery, Button, Nav, Modal}
+export {Header, Footer, Container, Hero, About, Events, Gallery, Button, Nav, Modal, Logo}
