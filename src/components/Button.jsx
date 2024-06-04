@@ -1,10 +1,12 @@
-const Button = ({label="", className="", onClick=()=>{}, children, ...props}) => {
+import { forwardRef } from "react"
+
+const Button = forwardRef(({label="", className="", onClick=()=>{}, children, ...props}, ref) => {
   return (
-    <button className={`londrina-solid-black z-10 transition-all ${className}`} onClick={onClick} {...props}>
+    <button ref={ref} className={`londrina-solid-black transition-all ${className}`} onClick={onClick} {...props}>
       {children}
       {label}
     </button>
   )
-}
+})
 
 export default Button

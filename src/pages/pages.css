@@ -19,6 +19,13 @@
     background-size: cover;
 }
 
+#auth{
+    background: url("./blue-bg.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 @media (max-width: 570px){
     #about{
         background: url("./white-bg.svg");

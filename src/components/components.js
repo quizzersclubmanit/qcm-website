@@ -11,5 +11,6 @@ import Modal from "./Modal"
 import Logo from "./Logo"
 import SectionHead from "./SectionHead"
 import EventCard from "./EventCard"
+import Input from "./Input"
 
-export {Header, Footer, Container, Hero, About, Events, Gallery, Button, Nav, Modal, Logo, SectionHead, EventCard}
+export {Header, Footer, Container, Hero, About, Events, Gallery, Button, Nav, Modal, Logo, SectionHead, EventCard, Input}

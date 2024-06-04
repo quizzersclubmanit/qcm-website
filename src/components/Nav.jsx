@@ -1,5 +1,9 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import {Button} from "./components"
+import { useUserContext } from "../contexts/user.context"
+import authService from "../api/auth.service"
+import { useEffect, useState } from "react"
+import { FaCircleUser } from "react-icons/fa6"
 
 const Nav = ({hidden=false}) => {
     const tabs = [
@@ -20,6 +24,19 @@ const Nav = ({hidden=false}) => {
             to: "/#gallery"
         }
     ]
+    const navigate = useNavigate()
+    const {loggedIn, logout, userData, setUserData, login} = useUserContext()
+
+    useEffect(()=>{
+        authService.getCurrentUser()
+        .then(user => {
+          setUserData(user)
+          login()
+        })
+        .catch(err => {
+          console.error(err)
+        })
+      },[])
 
     return (
         <nav className={`items-center gap-2 md:justify-between justify-around w-3/4 md:w-1/2 ${hidden ? "hidden": ""} sm:flex`}>
@@ -30,13 +47,32 @@ const Nav = ({hidden=false}) => {
                     </NavLink>
                 ))}
             </div>
-            <Button
-                label="Signup"
-                className="py-2 px-3 tracking-widest shadow-lg text-black bg-white hover:bg-gray-200"
-                onClick={() => {
-                    console.log("Signup Clicked")
-                }}
-            />
+            {
+                loggedIn?
+                <div className="flex flex-col items-center cursor-pointer" onClick={()=>{
+                    const proceedToLogout = confirm("Proceed to Logout?")
+                    if (!proceedToLogout) return
+                    authService.logout()
+                    .then(()=>{
+                        logout()
+                    })
+                    .catch(err => {
+                        alert(err.message)  // Hot Toast
+                        console.error(err)
+                    })
+                }}>
+                    <FaCircleUser style={{fontSize: "2.5vmax"}} />
+                    <span>{userData.name.split(" ")[0]}</span>
+                </div>
+                :
+                <Button
+                    label="Signup"
+                    className="py-2 px-3 text-lg tracking-widest shadow-lg bg-white text-black rounded-lg hover:bg-gray-100"
+                    onClick={() => {
+                        navigate("signup")
+                    }}
+                />
+            }
         </nav>
     )
 }

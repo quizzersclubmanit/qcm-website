@@ -1,31 +1,23 @@
 import { Client, Account, ID, OAuthProvider } from "appwrite"
 import env from "../../env"
 
+const client = new Client().setEndpoint(env.apiEndpoint).setProject(env.projectId)
+const account = new Account(client)
+
 class Auth{
-    client = new Client()
-    account
-
-    constructor(){
-        this.client
-        .setEndpoint(env.apiEndpoint)
-        .setProject(env.projectId)
-        
-        this.account = new Account(this.client)
-    }
-
     async signup({email="", password="", name=""}){
         try {
-            const res = await this.account.create(ID.unique(), email, password, name)
-            if (res) this.login({email, password})
+            const res = await account.create(ID.unique(), email, password, name)
+            if (res) await account.createEmailPasswordSession(email, password)
             return res
         } catch (error) {
             throw error
         }
     }
 
-    signupWithGoogle({home}){
+    createSessionWithGoogle({home}){
         const successURL = `${home}`, failureURL = `${home}/signup`
-        this.account.createOAuth2Session(
+        account.createOAuth2Session(
             OAuthProvider.Google,
             successURL,
             failureURL
@@ -34,7 +26,7 @@ class Auth{
 
     async login({email="", password=""}){
         try {
-            const res = await this.account.createEmailPasswordSession(email, password)
+            const res = await account.createEmailPasswordSession(email, password)
             return res
         } catch (error) {
             throw error
@@ -43,7 +35,7 @@ class Auth{
 
     async getCurrentUser(){
         try {
-            const res = await this.account.get()
+            const res = await account.get()
             return res
         } catch (error) {
             throw error
@@ -52,7 +44,7 @@ class Auth{
 
     async logout(){
         try {
-            const res = await this.account.deleteSessions()
+            const res = await account.deleteSessions()
             return res
         } catch (error) {
             throw error

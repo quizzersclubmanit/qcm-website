@@ -1,11 +1,9 @@
-import { useNavigate } from "react-router-dom"
 import {Container, Nav, Modal, Logo} from "./components"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { useState } from "react"
 
 const Header = () => {
-  const navigate = useNavigate()
-  const [showModal, setShowModal] = useState(false)
+  const [showTabModal, setShowTabModal] = useState(false)
 
   return (
     <Container className="fixed z-10">
@@ -13,11 +11,11 @@ const Header = () => {
         <Logo/>
         <Nav hidden={true}/>
         <RxHamburgerMenu className="block sm:hidden text-2xl" onClick={()=>{
-          setShowModal(true)
+          setShowTabModal(true)
         }} />
         {
-          showModal&&
-          <Modal setShowModal={setShowModal}>
+          showTabModal&&
+          <Modal setShowModal={setShowTabModal}>
             <Nav/>
           </Modal>
         }
