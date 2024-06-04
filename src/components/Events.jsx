@@ -10,48 +10,54 @@ const Events = () => {
       desc: "Random stuff, kuch toh likhna hi tha",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
-      image: "https://picsum.photos/270/300"
+      image: "https://picsum.photos/270/300",
+      insta: "https://www.instagram.com"
     },
     {
       title: "Something-2",
       desc: "Random stuff, kuch toh likhna hi tha",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
-      image: "https://picsum.photos/270/300"
+      image: "https://picsum.photos/270/300",
+      insta: "https://www.instagram.com"
     },
     {
       title: "Something-3",
       desc: "Random stuff, kuch toh likhna hi tha",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
-      image: "https://picsum.photos/270/300"
+      image: "https://picsum.photos/270/300",
+      insta: "https://www.instagram.com"
     },
     {
       title: "Something-4",
       desc: "Random stuff, kuch toh likhna hi tha",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
-      image: "https://picsum.photos/270/300"
+      image: "https://picsum.photos/270/300",
+      insta: "https://www.instagram.com"
     },
     {
       title: "Something-5",
       desc: "Random stuff, kuch toh likhna hi tha",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
-      image: "https://picsum.photos/270/300"
+      image: "https://picsum.photos/270/300",
+      insta: "https://www.instagram.com"
     },
     {
       title: "Something-6",
       desc: "Random stuff, kuch toh likhna hi tha",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
-      image: "https://picsum.photos/270/300"
+      image: "https://picsum.photos/270/300",
+      insta: "https://www.instagram.com"
     }
   ]
+  
   const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
+    infinite: true,
+    speed: 800,
     slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
@@ -60,15 +66,13 @@ const Events = () => {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 0
+          slidesToScroll: 1
         }
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 0
+          slidesToShow: 1
         }
       }
     ]

@@ -68,3 +68,12 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1; /* Darker color on hover for the scrollbar handle */
 }
+
+.slick-prev {
+  left: 0 !important;
+  z-index: 5;
+}
+.slick-next {
+  right: 0 !important;
+  z-index: 5;
+}
