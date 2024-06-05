@@ -83,13 +83,13 @@ const Auth = ({label="signup"}) => {
               }
             }} />
 
-            <Button label={label=="signup" ? "Create Account":"Login"} className="p-2 rounded-lg tracking-wider text-lg text-white bg-[#020062] hover:bg-[#2b2b67]" onClick={handleSubmit(formData => {
+            <Button label={label=="signup" ? "Create Account":"Login"} className="p-2 rounded-l text-lg text-white bg-[#020062] hover:bg-[#2b2b67]" onClick={handleSubmit(formData => {
               if (label == "signup")
                 authenticate(authService.signup, formData)
               else authenticate(authService.login, formData)
             })} />
 
-            <Button label="Continue with Google" className="flex items-center justify-center gap-3 bg-gray-50 hover:bg-gray-100 transition-all p-2 rounded-lg text-lg tracking-wide text-black" onClick={e => {
+            <Button label="Continue with Google" className="flex items-center justify-center gap-3 bg-gray-50 hover:bg-gray-100 transition-all p-2 rounded-lg text-lg text-black" onClick={e => {
               e.preventDefault()
               authService.createSessionWithGoogle({
                 home: env.HOME
@@ -99,7 +99,7 @@ const Auth = ({label="signup"}) => {
             </Button>
           </form>
 
-          <Link className="text-blue-500 tracking-wider w-fit" to={label == "signup" ? "/login":"/signup"}>{label == "signup" ? "Already have an account?":"Not having an account?"}</Link>
+          <Link className="w-fit text-blue-500" to={label == "signup" ? "/login":"/signup"}>{label == "signup" ? "Already have an account?":"Not having an account?"}</Link>
         </div>
       </Container>
     </div>

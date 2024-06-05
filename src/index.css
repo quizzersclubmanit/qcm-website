@@ -20,24 +20,28 @@
   font-family: "Londrina Solid", sans-serif;
   font-weight: 100;
   font-style: normal;
+  letter-spacing: 0.05em;
 }
 
 .londrina-solid-light {
   font-family: "Londrina Solid", sans-serif;
   font-weight: 300;
   font-style: normal;
+  letter-spacing: 0.05em;
 }
 
 .londrina-solid-regular {
   font-family: "Londrina Solid", sans-serif;
   font-weight: 400;
   font-style: normal;
+  letter-spacing: 0.05em;
 }
 
 .londrina-solid-black {
   font-family: "Londrina Solid", sans-serif;
   font-weight: 900;
   font-style: normal;
+  letter-spacing: 0.05em;
 }
 
 .transparent-black{
@@ -70,10 +74,10 @@
 }
 
 .slick-prev {
-  left: 0 !important;
+  left: -1px !important;
   z-index: 5;
 }
 .slick-next {
-  right: 0 !important;
+  right: -1px !important;
   z-index: 5;
 }

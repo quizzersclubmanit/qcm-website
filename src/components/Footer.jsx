@@ -12,13 +12,13 @@ const Footer = () => {
       <Logo className="w-[7vmax] sm:w-[5vmax]" />
       <h2 className="font-bold text-2xl">{org}</h2>
       <div className="flex gap-20 my-2" style={{fontSize: "2.5vmax"}}>
-        <FaLinkedin className="text-[7vmax] sm:text-[3.5vmax] cursor-pointer" onClick={()=>{
+        <FaLinkedin className="text-[6vmax] sm:text-[3.5vmax] cursor-pointer" onClick={()=>{
           navigateTo(linkedin)
         }} />
-        <FaFacebook className="text-[7vmax] sm:text-[3.5vmax] cursor-pointer" onClick={()=>{
+        <FaFacebook className="text-[6vmax] sm:text-[3.5vmax] cursor-pointer" onClick={()=>{
           navigateTo(facebook)
         }} />
-        <FaSquareInstagram className="text-[7vmax] sm:text-[3.5vmax] cursor-pointer" onClick={()=>{
+        <FaSquareInstagram className="text-[6vmax] sm:text-[3.5vmax] cursor-pointer" onClick={()=>{
           navigateTo(instagram)
         }} />
       </div>

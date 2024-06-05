@@ -42,9 +42,10 @@ const Admin = () => {
       <h1 className="text-[3vmax] font-bold">Loading...</h1>
     </Container>
   )
-  if (!loggedIn || userData.name != "admin") return <Navigate to="/" />
+  if (!loggedIn) return <Navigate to="/signup" />
+  if (userData.name != "admin") return <Navigate to="/" />
   return (
-    <div id="admin" className="londrina-solid-regular tracking-wider">
+    <div id="admin" className="londrina-solid-regular">
       <Container className="min-h-screen flex justify-center items-center">
         <form noValidate className="md:w-[40vw] flex flex-col gap-4">
           <Input rules={{
