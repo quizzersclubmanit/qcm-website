@@ -2,8 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Layout from './Layout.jsx'
 import './index.css'
-import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
-import {Home, Auth, Admin, Quiz} from './pages/pages.js'
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, Outlet } from 'react-router-dom'
+import {Home, Auth, Quiz} from './pages/pages.js'
+import { AddQuiz, ManageQuiz } from './dashboards/dashboards.js'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -12,7 +13,10 @@ const router = createBrowserRouter(
             <Route path='signup' element={<Auth/>} />
             <Route path='login' element={<Auth label='login'/>} />
             <Route path='quiz' element={<Quiz/>} />
-            <Route path='admin' element={<Admin/>} />
+            <Route path='admin/' element={<Outlet/>}>
+                <Route path='add' element={<AddQuiz/>} />
+                <Route path='manage' element={<ManageQuiz/>} />
+            </Route>
         </Route>
     )
 )
