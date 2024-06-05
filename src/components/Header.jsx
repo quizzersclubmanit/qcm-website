@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <Container className="fixed z-10">
       <div className="flex py-1 justify-around items-center alatsi-regular text-white transparent-black rounded-lg">
-        <Logo/>
+        <Logo className="w-[7vmax] sm:w-[5vmax]" />
         <Nav hidden={true}/>
         <RxHamburgerMenu className="block sm:hidden text-2xl" onClick={()=>{
           setShowTabModal(true)

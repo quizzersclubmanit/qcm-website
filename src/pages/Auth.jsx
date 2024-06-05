@@ -44,12 +44,12 @@ const Auth = ({label="signup"}) => {
 
   return (
     <div id="auth" className="londrina-solid-regular">
-      <Container className="min-h-screen flex items-center">
-        <div className="left w-1/2 items-center hidden sm:flex">
-          <img src={authIllustration} alt="Auth Illustration" className="h-3/4" />
+      <Container className="min-h-screen flex justify-center items-center">
+        <div className="left w-1/2 items-center hidden md:flex">
+          <img src={authIllustration} alt="Auth Illustration" />
         </div>
 
-        <div className="right sm:w-1/2 w-full min-h-[50vh] sm:h-full bg-white p-8 rounded-2xl flex flex-col gap-8">
+        <div className="right md:w-1/2 sm:w-[70vw] w-full min-h-[50vh] sm:h-full bg-white p-8 rounded-2xl flex flex-col gap-8">
           <SectionHead label={label=="signup" ? "Sign Up":"Login"} />
           <form noValidate className="flex flex-col gap-4">
             {label=="signup" &&

@@ -3,32 +3,24 @@ import { FaFacebook, FaLinkedin } from "react-icons/fa"
 import { FaSquareInstagram, FaLocationDot } from "react-icons/fa6"
 import { MdWifiCalling3 } from "react-icons/md"
 import { IoMdMail } from "react-icons/io"
-import contacts from "../assets/contacts"
-import { Link } from "react-router-dom"
+import {contacts, email, address, facebook, instagram, linkedin, org} from "../assets/qcmData.json"
+import { navigateTo } from "../utils/utils"
 
 const Footer = () => {
-  const mail = "quizzersclubmanit@gmail.com"
-  const address = {
-    org: "Quizzers' Club MANIT",
-    college: "Maulana Azad National Institute of Technology",
-    city: "Bhopal",
-    pin: "462003"
-  }
-
   return (
     <footer className="londrina-solid-regular tracking-wider flex py-10 flex-col gap-5 items-center bg-black text-white">
-      <Logo/>
-      <h2 className="font-bold text-2xl">Quizzers' Club</h2>
+      <Logo className="w-[7vmax] sm:w-[5vmax]" />
+      <h2 className="font-bold text-2xl">{org}</h2>
       <div className="flex gap-20 my-2" style={{fontSize: "2.5vmax"}}>
-        <Link to="/">
-          <FaLinkedin />
-        </Link>
-        <Link to="/">
-        <FaFacebook />
-        </Link>
-        <Link to="/">
-        <FaSquareInstagram />
-        </Link>
+        <FaLinkedin className="text-[7vmax] sm:text-[3.5vmax] cursor-pointer" onClick={()=>{
+          navigateTo(linkedin)
+        }} />
+        <FaFacebook className="text-[7vmax] sm:text-[3.5vmax] cursor-pointer" onClick={()=>{
+          navigateTo(facebook)
+        }} />
+        <FaSquareInstagram className="text-[7vmax] sm:text-[3.5vmax] cursor-pointer" onClick={()=>{
+          navigateTo(instagram)
+        }} />
       </div>
       <div className="flex flex-col sm:flex-row w-full gap-5">
         <div className="left flex flex-col px-[15vw] gap-5 sm:w-1/2">
@@ -45,7 +37,7 @@ const Footer = () => {
           </div>
           <div className="flex gap-5 items-center">
             <IoMdMail />
-            <p>{mail}</p>
+            <p>{email}</p>
           </div>
         </div>
         <div className="right flex flex-col sm:w-1/2 px-[15vw] gap-5 sm:border-l border-gray-300">
@@ -65,10 +57,3 @@ const Footer = () => {
 }
 
 export default Footer
-
-// <FaFacebook />
-// <FaSquareInstagram />
-// <FaLinkedin />
-// <MdWifiCalling3 />
-// <IoMdMail />
-// <FaLocationDot />

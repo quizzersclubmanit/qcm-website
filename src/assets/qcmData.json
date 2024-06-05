@@ -1,0 +1,45 @@
+{
+  "org": "Quizzers' Club",
+  "contacts": [
+    {
+      "name": "Lorem Singh",
+      "no": "1234567890"
+    },
+    {
+      "name": "Lorem Devi",
+      "no": "9876543210"
+    }
+  ],
+  "email": "quizzersclubmanit@gmail.com",
+  "address": {
+    "org": "Quizzers' Club MANIT",
+    "college": "Maulana Azad National Institute of Technology",
+    "city": "Bhopal",
+    "pin": "462003"
+  },
+  "facebook": "https://www.facebook.com/quizzersclub",
+  "instagram": "https://www.instagram.com/quizzersclub/",
+  "linkedin": "https://www.linkedin.com/company/quizzersclub/",
+  "eventDetails": [
+    {
+      "title": "Intercity Quizzing Challenge",
+      "desc": "Madhya Pradesh's largest school quizzing event",
+      "image": "https://picsum.photos/270/300",
+      "insta": "https://www.instagram.com/p/CzWWLFlv1zP/?img_index=1"
+    },
+    {
+      "title": "Anveshan",
+      "desc": "Random stuff, kuch toh likhna hi tha",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
+      "image": "https://picsum.photos/270/300",
+      "insta": "https://www.instagram.com"
+    },
+    {
+      "title": "Vihaan",
+      "desc": "Random stuff, kuch toh likhna hi tha",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
+      "image": "https://picsum.photos/270/300",
+      "insta": "https://www.instagram.com"
+    }
+  ]
+}

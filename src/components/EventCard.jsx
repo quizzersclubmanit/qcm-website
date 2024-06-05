@@ -1,16 +1,15 @@
 import {Button} from "./components"
+import { navigateTo } from "../utils/utils"
 
 const EventCard = ({dets={}}) => {
-  function navigateTo(url) {
-    window.location.href = url
-  }
-
   return (
     <div className="flex justify-center">
-    <div className="flex flex-col bg-white items-start p-8 gap-2 rounded-lg">
-        <img src={dets.image} className="rounded-lg" alt="Event" />
+    <div className="flex flex-col items-start bg-white p-8 gap-2 rounded-lg">
+        <div className="flex justify-center w-full">
+          <img src={dets.image} alt="Event" />
+        </div>
         <h4 className="text-xl uppercase">{dets.title}</h4>
-        <p>{dets.desc}</p>
+        <p className="overflow-x-hidden whitespace-nowrap overflow-ellipsis w-[90%]">{dets.desc}</p>
         <Button label="Read More" onClick={()=>{
           navigateTo(dets.insta)
         }} className="theme-blue text-yellow-400 p-2 rounded hover:bg-blue-900 text-lg" style={{WebkitTextStrokeWidth: "0.5px", WebkitTextStrokeColor: "black"}} />
