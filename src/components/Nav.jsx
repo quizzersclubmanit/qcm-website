@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import {Button} from "./components"
 import { useUserContext } from "../contexts/user.context"
 import authService from "../api/auth.service"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { FaCircleUser } from "react-icons/fa6"
 
 const Nav = ({hidden=false}) => {
@@ -36,7 +36,7 @@ const Nav = ({hidden=false}) => {
         .catch(err => {
           console.error(err)
         })
-      },[])
+    },[])
 
     return (
         <nav className={`items-center gap-2 md:justify-between justify-around w-3/4 md:w-1/2 ${hidden ? "hidden": ""} sm:flex`}>
@@ -62,7 +62,7 @@ const Nav = ({hidden=false}) => {
                     })
                 }}>
                     <FaCircleUser style={{fontSize: "2.5vmax"}} />
-                    <span>{userData.name.split(" ")[0]}</span>
+                    <span>{userData.name?.split(" ")[0] || "User"}</span>
                 </div>
                 :
                 <Button

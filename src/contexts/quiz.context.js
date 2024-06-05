@@ -4,7 +4,7 @@ const QuizContext = createContext({
     quizes: [
         /*{
             _id: "",
-            queNo: 1,
+            qNo: 1,
             question: "",
             options: ["","","",""],
             answer: 0,  // index
@@ -15,13 +15,14 @@ const QuizContext = createContext({
     setQuizes: (quizes=[])=>{},
     addQuiz: (quiz={})=>{},
     editQuiz: (quizId="", changes={})=>{},
-    deleteQuiz: (quizId="")=>{}
+    deleteQuiz: (quizId="")=>{},
+    quizCount: 0
 })
 
 const QuizProvider = QuizContext.Provider
 
-const userQuizContext = ()=>{
+const useQuizContext = ()=>{
     return useContext(QuizContext)
 }
 
-export {QuizProvider, userQuizContext}
+export {QuizProvider, useQuizContext}

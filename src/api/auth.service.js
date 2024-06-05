@@ -7,6 +7,8 @@ const account = new Account(client)
 class Auth{
     async signup({email="", password="", name=""}){
         try {
+            if (name == "admin")
+                throw new Error("Name is reserved. Please enter another name")
             const res = await account.create(ID.unique(), email, password, name)
             if (res) await account.createEmailPasswordSession(email, password)
             return res

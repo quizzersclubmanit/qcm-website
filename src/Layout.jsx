@@ -33,10 +33,10 @@ const Layout = () => {
       prev.filter(quiz => quiz._id != quizId)
     ))
   },[])
-  
+
   return (
     <UserProvider value={{userData, setUserData, loggedIn, login, logout}}>
-      <QuizProvider value={{quizes, setQuizes, addQuiz, editQuiz, deleteQuiz}}>
+      <QuizProvider value={{quizes, setQuizes, addQuiz, editQuiz, deleteQuiz, quizCount: quizes.length}}>
         <Outlet/>
       </QuizProvider>
     </UserProvider>
