@@ -3,8 +3,7 @@ import { createContext, useContext } from "react"
 const QuizContext = createContext({
     quizes: [
         /*{
-            _id: "",
-            qNo: 1,
+            $id: ""
             question: "",
             options: ["","","",""],
             answer: 0,  // index
@@ -15,8 +14,7 @@ const QuizContext = createContext({
     setQuizes: (quizes=[])=>{},
     addQuiz: (quiz={})=>{},
     editQuiz: (quizId="", changes={})=>{},
-    deleteQuiz: (quizId="")=>{},
-    quizCount: 0
+    deleteQuiz: (quizId="")=>{}
 })
 
 const QuizProvider = QuizContext.Provider

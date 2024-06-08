@@ -21,7 +21,7 @@ const Layout = () => {
   const editQuiz = useCallback((quizId="", changes={})=>{
     setQuizes(prev => (
       prev.map(quiz => {
-        if (quiz._id == quizId)
+        if (quiz.$id == quizId)
           return {...quiz, ...changes}
         return quiz
       })
@@ -30,13 +30,13 @@ const Layout = () => {
 
   const deleteQuiz = useCallback((quizId="")=>{
     setQuizes(prev => (
-      prev.filter(quiz => quiz._id != quizId)
+      prev.filter(quiz => quiz.$id != quizId)
     ))
   },[])
 
   return (
     <UserProvider value={{userData, setUserData, loggedIn, login, logout}}>
-      <QuizProvider value={{quizes, setQuizes, addQuiz, editQuiz, deleteQuiz, quizCount: quizes.length}}>
+      <QuizProvider value={{quizes, setQuizes, addQuiz, editQuiz, deleteQuiz}}>
         <Outlet/>
       </QuizProvider>
     </UserProvider>

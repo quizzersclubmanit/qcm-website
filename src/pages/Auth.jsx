@@ -1,3 +1,4 @@
+import "./pages.css"
 import { useForm } from "react-hook-form"
 import {useUserContext} from "../contexts/user.context"
 import {Container, Input, SectionHead, Button} from "../components/components"

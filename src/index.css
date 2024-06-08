@@ -81,3 +81,7 @@
   right: -1px !important;
   z-index: 5;
 }
+
+.continue-text{
+  @apply overflow-x-hidden whitespace-nowrap overflow-ellipsis
+}

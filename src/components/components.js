@@ -12,5 +12,8 @@ import Logo from "./Logo"
 import SectionHead from "./SectionHead"
 import EventCard from "./EventCard"
 import Input from "./Input"
+import QuizRibbon from "./QuizRibbon"
+import SearchBar from "./SearchBar"
+import Quiz from "./Quiz"
 
-export {Header, Footer, Container, Hero, About, Events, Gallery, Button, Nav, Modal, Logo, SectionHead, EventCard, Input}
+export {Header, Footer, Container, Hero, About, Events, Gallery, Button, Nav, Modal, Logo, SectionHead, EventCard, Input, QuizRibbon, SearchBar, Quiz}

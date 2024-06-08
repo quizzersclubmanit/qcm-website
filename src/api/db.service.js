@@ -13,13 +13,13 @@ class DB{
         this.databases = new Databases(this.client)
     }
 
-    async insert({collectionId, question="", options=[], answer=0, reward=0, timeLimit=60}){
+    async insert({collectionId, data={}}){
         try {
             const res = await this.databases.createDocument(
                 env.dbId,
                 collectionId,
                 ID.unique(),
-                {question, options, answer, reward, timeLimit}
+                data
             )
             return res
         } catch (error) {

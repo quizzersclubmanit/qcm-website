@@ -1,33 +1,26 @@
 #hero{
-    background: url("./bnw-bg.png");
+    background: url("/bnw-bg.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #about{
-    background: url("./wavy-bg.svg");
+    background: url("/wavy-bg.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #events{
-    background: url("./blue-bg.svg");
+    background: url("/blue-bg.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #auth{
-    background: url("./blue-bg.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#admin{
-    background: url("./blue-bg.svg");
+    background: url("/blue-bg.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

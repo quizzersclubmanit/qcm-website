@@ -2,7 +2,7 @@ import { createContext, useContext } from "react"
 
 const UserContext = createContext({
     userData: {
-        /*_id: "",
+        /*$id: "",
         name: "",
         score: 0,
         ...{}*/

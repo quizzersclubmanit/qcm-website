@@ -1,5 +1,5 @@
 import Home from "./Home"
 import Auth from "./Auth"
-import Quiz from "./Quiz"
+import PlayQuiz from "./PlayQuiz"
 
-export {Home, Auth, Quiz}
+export {Home, Auth, PlayQuiz}
