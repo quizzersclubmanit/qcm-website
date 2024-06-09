@@ -2,7 +2,7 @@ import { Container, SectionHead, EventCard } from "../components/components"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick"
-import {eventDetails} from "../assets/qcmData.json"
+import { eventDetails } from "../assets/qcmData.json"
 
 const Events = () => {
   const settings = {
@@ -14,11 +14,11 @@ const Events = () => {
     responsive: [
       {
         breakpoint: 1300,
-        settings: {slidesToShow: 2}
+        settings: { slidesToShow: 2 }
       },
       {
         breakpoint: 815,
-        settings: {slidesToShow: 1}
+        settings: { slidesToShow: 1 }
       }
     ]
   }

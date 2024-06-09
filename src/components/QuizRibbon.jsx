@@ -1,14 +1,15 @@
 import { RiPencilFill } from "react-icons/ri"
 import { MdDelete } from "react-icons/md"
 import dbService from "../api/db.service"
-import { useQuizContext } from "../contexts/quiz.context"
 import env from "../../env"
 import { Modal, Quiz } from "./components"
 import { useState } from "react"
+import { deleteQuiz } from "../redux/quiz.slice"
+import { useDispatch } from "react-redux"
 
 const QuizRibbon = ({ quiz = {} }) => {
-  const { deleteQuiz } = useQuizContext()
   const [showQuizModal, setShowQuizModal] = useState(false)
+  const dispatch = useDispatch()
 
   return (
     <div
@@ -35,7 +36,7 @@ const QuizRibbon = ({ quiz = {} }) => {
                 documentId: quiz.$id
               })
               .then(() => {
-                deleteQuiz(quiz.$id)
+                dispatch(deleteQuiz(quiz.$id))
               })
           }}
         />

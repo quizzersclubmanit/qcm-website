@@ -1,9 +1,9 @@
 import env from "../../env"
 import dbService from "../api/db.service"
 import { Input, Button } from "./components"
-import { useQuizContext } from "../contexts/quiz.context"
 import { useForm } from "react-hook-form"
-import { useState } from "react"
+import { addQuiz, editQuiz } from "../redux/quiz.slice"
+import { useDispatch } from "react-redux"
 
 const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
   const { setValue, handleSubmit, control, formState, register } = useForm({
@@ -16,8 +16,8 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
     }
   })
   const { errors } = formState
-  const { addQuiz, editQuiz } = useQuizContext()
   const editTab = Boolean(quiz.$id)
+  const dispatch = useDispatch()
 
   return (
     <form noValidate className="md:w-[40vw] flex flex-col gap-4">
@@ -136,7 +136,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
       </div>
       <Button
         className="text-xl bg-yellow-300 hover:bg-yellow-400 w-full p-3 rounded-lg"
-        label={editTab ? "Save":"+ Add Question"}
+        label={editTab ? "Save" : "+ Add Question"}
         onClick={handleSubmit((formData) => {
           if (editTab) {
             dbService
@@ -151,7 +151,12 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
                 }
               })
               .then((doc) => {
-                editQuiz(quiz.$id, doc)
+                dispatch(
+                  editQuiz({
+                    $id: quiz.$id,
+                    changes: doc
+                  })
+                )
               })
               .catch((err) => {
                 alert(err.message)
@@ -172,7 +177,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
                 }
               })
               .then((doc) => {
-                addQuiz(doc)
+                dispatch(addQuiz(doc))
               })
               .catch((err) => {
                 alert(err.message)
