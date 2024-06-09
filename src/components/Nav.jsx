@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { Button } from "./components"
 import authService from "../api/auth.service"
 import { useEffect, useState } from "react"
@@ -11,19 +11,19 @@ const Nav = ({ hidden = false }) => {
   const tabs = [
     {
       name: "Home",
-      to: "/#hero"
+      to: "#hero"
     },
     {
       name: "About",
-      to: "/#about"
+      to: "#about"
     },
     {
       name: "Events",
-      to: "/#events"
+      to: "#events"
     },
     {
       name: "Team",
-      to: "/#gallery"
+      to: "#gallery"
     }
   ]
   const navigate = useNavigate()
@@ -52,13 +52,13 @@ const Nav = ({ hidden = false }) => {
     >
       <div className="flex flex-col gap-[4vw] my-3 sm:flex-row sm:my-0">
         {tabs.map((tab, index) => (
-          <NavLink
+          <a
             key={index}
-            to={tab.to}
-            className="hover:bg-white hover:text-gray-500 sm:hover:text-gray-300 trwi transition-all p-2 rounded-lg sm:hover:bg-inherit text-lg"
+            href={tab.to}
+            className="hover:bg-white hover:text-gray-500 sm:hover:text-gray-300 trwi transition-all p-2 rounded-lg sm:hover:bg-inherit text-lg no-underline"
           >
             {tab.name}
-          </NavLink>
+          </a>
         ))}
       </div>
       {loggedIn ? (
