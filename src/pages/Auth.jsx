@@ -129,6 +129,7 @@ const Auth = ({ label = "signup" }) => {
               onClick={(e) => {
                 e.preventDefault()
                 authService.createSessionWithGoogle({
+                  // App in testing phase right now - to be published later
                   home: env.HOME
                 })
               }}
