@@ -1,12 +1,15 @@
 import dbService from "../api/db.service"
-import authService from "../api/auth.service"
 import { useEffect, useState } from "react"
 import env from "../../env"
-import { Container, QuizRibbon, SearchBar } from "../components/components"
+import {
+  Container,
+  QuizRibbon,
+  SearchBar,
+  Logo
+} from "../components/components"
 import { Navigate, Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes } from "../redux/quiz.slice"
-import { login, setData } from "../redux/user.slice"
 
 const ManageQuiz = () => {
   const quizes = useSelector((state) => state.quizes)
@@ -14,21 +17,6 @@ const ManageQuiz = () => {
   const [loading, setLoading] = useState(true)
   const [searchContent, setSearchContent] = useState("")
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    authService
-      .getCurrentUser()
-      .then((user) => {
-        dispatch(setData(user))
-        dispatch(login())
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
-  }, [])
 
   useEffect(() => {
     dbService
@@ -39,18 +27,22 @@ const ManageQuiz = () => {
       .catch((err) => {
         console.error(err)
       })
+      .finally(() => {
+        setLoading(false)
+      })
   }, [])
 
+  if (!loggedIn) return <Navigate to="/signup" />
+  if (data.name != "admin") return <Navigate to="/" />
   if (loading)
     return (
       <Container className="h-screen flex justify-center items-center">
         <h1 className="text-[3vmax] font-bold">Loading...</h1>
       </Container>
     )
-  if (!loggedIn) return <Navigate to="/signup" />
-  if (data.name != "admin") return <Navigate to="/" />
   return (
     <div id="manage-quiz" className="londrina-solid-regular">
+      <Logo className="w-[9vmax] sm:w-[5vmax]" />
       <Container className="min-h-screen flex flex-col items-center gap-10">
         <SearchBar content={searchContent} setContent={setSearchContent} />
         <div className="w-full flex flex-col items-center gap-3">
