@@ -1,9 +1,13 @@
-const Container = ({children, className="", ...props}) => {
-  return (
-    <div className={`w-screen sm:p-[3.5vmax] p-[2vmax] ${className}`} {...props}>
-      {children}
-    </div>
-  )
+import { createElement } from "react"
+
+const Container = ({ element = "div", children, className = "", ...props }) => {
+  const container = createElement(element, {
+    children: children,
+    className: className,
+    ...props
+  })
+
+  return container
 }
 
 export default Container

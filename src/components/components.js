@@ -4,7 +4,6 @@ import Footer from "./Footer"
 import Hero from "./Hero"
 import About from "./About"
 import Events from "./Events"
-import Gallery from "./Gallery"
 import Button from "./Button"
 import Nav from "./Nav"
 import Modal from "./Modal"
@@ -16,4 +15,21 @@ import QuizRibbon from "./QuizRibbon"
 import SearchBar from "./SearchBar"
 import Quiz from "./Quiz"
 
-export {Header, Footer, Container, Hero, About, Events, Gallery, Button, Nav, Modal, Logo, SectionHead, EventCard, Input, QuizRibbon, SearchBar, Quiz}
+export {
+  Header,
+  Footer,
+  Container,
+  Hero,
+  About,
+  Events,
+  Button,
+  Nav,
+  Modal,
+  Logo,
+  SectionHead,
+  EventCard,
+  Input,
+  QuizRibbon,
+  SearchBar,
+  Quiz
+}

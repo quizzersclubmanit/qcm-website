@@ -2,8 +2,8 @@ import { Container, SectionHead } from "./components"
 
 const About = () => {
   return (
-    <div id="about">
-      <Container className="sm:min-h-[70vh] min-h-1/2 flex flex-col gap-5 londrina-solid-regular justify-center sm:justify-start items-center sm:items-start">
+    <div id="about" className="londrina-solid-regular">
+      <Container className="w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-[70vh] min-h-1/2 flex flex-col gap-5 justify-center sm:justify-start items-center sm:items-start">
         <SectionHead label="About" />
         <p className="w-2/3 md:text-lg">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores

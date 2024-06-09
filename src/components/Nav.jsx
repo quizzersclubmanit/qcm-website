@@ -24,6 +24,10 @@ const Nav = ({ hidden = false }) => {
     {
       name: "Team",
       to: "#gallery"
+    },
+    {
+      name: "Sponsors",
+      to: "#sponsors"
     }
   ]
   const navigate = useNavigate()

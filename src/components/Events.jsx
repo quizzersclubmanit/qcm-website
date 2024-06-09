@@ -24,8 +24,8 @@ const Events = () => {
   }
 
   return (
-    <div id="events">
-      <Container className="sm:min-h-screen min-h-[70vh] flex flex-col londrina-solid-regular sm:justify-between justify-center gap-5 items-center sm:items-start">
+    <div id="events" className="londrina-solid-regular">
+      <Container className="w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-5 items-center sm:items-start">
         <SectionHead label="Events" className="text-white" />
         <div className="w-full">
           <Slider {...settings}>

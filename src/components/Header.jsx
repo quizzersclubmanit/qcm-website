@@ -6,7 +6,10 @@ const Header = () => {
   const [showTabModal, setShowTabModal] = useState(false)
 
   return (
-    <Container className="fixed z-10">
+    <Container
+      element="header"
+      className="w-screen sm:p-[3.5vmax] p-[2vmax] fixed z-10"
+    >
       <div className="flex py-1 justify-around items-center alatsi-regular text-white transparent-black rounded-lg">
         <Logo className="w-[7vmax] sm:w-[5vmax]" />
         <Nav hidden={true} />
