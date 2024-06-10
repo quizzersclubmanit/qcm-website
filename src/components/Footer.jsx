@@ -12,7 +12,6 @@ import {
   linkedin,
   org
 } from "../assets/qcmData.json"
-import { navigateTo } from "../utils/utils"
 
 const Footer = () => {
   return (
@@ -20,24 +19,15 @@ const Footer = () => {
       <Logo className="w-[7vmax] sm:w-[5vmax]" />
       <h2 className="font-bold text-2xl">{org}</h2>
       <div className="flex gap-20 my-2" style={{ fontSize: "2.5vmax" }}>
-        <FaLinkedin
-          className="text-[6vmax] sm:text-[3.5vmax] cursor-pointer"
-          onClick={() => {
-            navigateTo(linkedin)
-          }}
-        />
-        <FaFacebook
-          className="text-[6vmax] sm:text-[3.5vmax] cursor-pointer"
-          onClick={() => {
-            navigateTo(facebook)
-          }}
-        />
-        <FaSquareInstagram
-          className="text-[6vmax] sm:text-[3.5vmax] cursor-pointer"
-          onClick={() => {
-            navigateTo(instagram)
-          }}
-        />
+        <a href={linkedin} target="_blank">
+          <FaLinkedin className="text-[6vmax] sm:text-[3.5vmax] cursor-pointer" />
+        </a>
+        <a href={facebook} target="_blank">
+          <FaFacebook className="text-[6vmax] sm:text-[3.5vmax] cursor-pointer" />
+        </a>
+        <a href={instagram} target="_blank">
+          <FaSquareInstagram className="text-[6vmax] sm:text-[3.5vmax] cursor-pointer" />
+        </a>
       </div>
       <div className="flex flex-col sm:flex-row w-full gap-5">
         <div className="left flex flex-col px-[15vw] gap-5 sm:w-1/2">

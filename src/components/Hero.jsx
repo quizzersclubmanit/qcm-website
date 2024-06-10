@@ -1,5 +1,5 @@
 import { bulb } from "../assets/assets"
-import { org } from "../assets/qcmData.json"
+import { organization } from "../assets/qcmData.json"
 import { Container } from "./components"
 
 const Hero = () => {
@@ -14,7 +14,7 @@ const Hero = () => {
               WebkitTextStrokeColor: "#00aded"
             }}
           >
-            {org}
+            {organization}
           </h1>
           <h4
             className="text-[5vmax]"

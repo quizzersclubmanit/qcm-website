@@ -8,7 +8,7 @@ import {
   Route,
   Outlet
 } from "react-router-dom"
-import { Home, Auth, PlayQuiz } from "./pages/pages.js"
+import { Home, Auth, PlayQuiz, Event } from "./pages/pages.js"
 import { AddQuiz, ManageQuiz } from "./dashboards/dashboards.js"
 import { Provider } from "react-redux"
 import store from "./redux/store.js"
@@ -19,6 +19,7 @@ const router = createBrowserRouter(
       <Route path="" element={<Home />} />
       <Route path="signup" element={<Auth />} />
       <Route path="login" element={<Auth label="login" />} />
+      <Route path="events/:eventId" element={<Event />} />
       <Route path="admin/" element={<Outlet />}>
         <Route path="add" element={<AddQuiz />} />
         <Route path="manage" element={<ManageQuiz />} />
