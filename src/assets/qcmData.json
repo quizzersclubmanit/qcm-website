@@ -3,11 +3,11 @@
   "contacts": [
     {
       "name": "Lorem Singh",
-      "no": "1234567890"
+      "no": "123456xxxx"
     },
     {
       "name": "Lorem Devi",
-      "no": "9876543210"
+      "no": "987654xxxx"
     }
   ],
   "email": "quizzersclubmanit@gmail.com",
@@ -25,30 +25,121 @@
       "id": "iqc",
       "title": "Intercity Quizzing Challenge",
       "desc": "Madhya Pradesh's largest school quizzing event",
-      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
+      "content": [
+        {
+          "head": "IQC Grand Finale: A Celebration of Brilliance and Discovery",
+          "body": "The long-awaited Grand Finale of the Inter-School Quiz Championship (IQC), hosted by the Quizzers' Club NIT Bhopal, has concluded in spectacular fashion. The anticipation was palpable, and the event lived up to every expectation, delivering an intellectual showdown that was nothing short of extraordinary. The brightest young minds from schools across the region converged on this prestigious stage, demonstrating their remarkable prowess and quick thinking."
+        },
+        {
+          "head": "The Journey to the Grand Finale",
+          "body": "Students from Bhopal, Gwalior, Indore, Ujjain, and Jabalpur showcased their exceptional knowledge and determination, earning their place in this grand event. Each participant navigated through a series of challenging preliminary rounds, culminating in their appearance at the esteemed Ravindra Bhawan on October 31st for the ultimate battle of wits."
+        },
+        {
+          "head": "A Night of Celebration",
+          "body": "Ravindra Bhawan came alive with the enthusiasm and energy of students, teachers, and quiz enthusiasts alike. The atmosphere was electric, filled with thunderous applause and cheers as the participants engaged in this final intellectual contest. The event transcended a mere competition, evolving into a celebration of curiosity, learning, and the unyielding spirit of discovery that drives these young quizzers."
+        },
+        {
+          "head": "Collaboration and Support",
+          "body": "The success of the IQC Grand Finale was a testament to the strong collaboration between the Quizzers' Club NIT Bhopal and our esteemed sponsors. Their unwavering support was instrumental in making this event the grandest edition yet. Together, we created a platform that not only challenged the participants but also inspired them to push the boundaries of their knowledge."
+        },
+        {
+          "head": "Celebrating the Champions",
+          "body": "As the final moments unfolded, the excitement reached its peak. The champions emerged, claiming the coveted title of IQC Grand Champions with their exceptional performance and depth of knowledge. The evening was filled with challenging questions, insightful answers, and the thrill of competition, leaving an indelible mark on all who attended.\nThe IQC Grand Finale was an unforgettable event, a true celebration of the brightest minds in action. We extend our heartfelt congratulations to all the participants and winners. Thank you for being part of this extraordinary journey and honoring the quest for knowledge. The intellectual fireworks have left us in awe, and we eagerly anticipate the next chapter in this remarkable tradition."
+        }
+      ],
       "cover": "/events/iqc/main.JPG",
       "images": [
-        "/events/iqc/1.JPG",
-        "/events/iqc/2.JPG",
-        "/events/iqc/3.JPG",
-        "/events/iqc/4.JPG"
+        "/events/iqc/finale/1.JPG",
+        "/events/iqc/finale/2.JPG",
+        "/events/iqc/finale/3.JPG",
+        "/events/iqc/finale/4.JPG",
+        "/events/iqc/ujjain/1.JPG",
+        "/events/iqc/ujjain/2.JPG",
+        "/events/iqc/ujjain/3.JPG",
+        "/events/iqc/ujjain/4.JPG",
+        "/events/iqc/ujjain/5.JPG",
+        "/events/iqc/ujjain/6.JPG",
+        "/events/iqc/jabalpur/1.JPG",
+        "/events/iqc/jabalpur/2.JPG",
+        "/events/iqc/jabalpur/3.JPG",
+        "/events/iqc/jabalpur/4.JPG",
+        "/events/iqc/jabalpur/5.JPG",
+        "/events/iqc/jabalpur/6.JPG",
+        "/events/iqc/jabalpur/7.JPG",
+        "/events/iqc/gwalior/1.JPG"
       ],
       "insta": "https://www.instagram.com/p/CzWWLFlv1zP/?img_index=1"
     },
     {
       "id": "flashback-fiesta",
       "title": "Flashback Fiesta",
-      "desc": "Random stuff, kuch toh likhna hi tha",
-      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
+      "desc": "A Nostalgic Success at NIT-Bhopal",
+      "content": [
+        {
+          "head": "Flashback Fiesta: A Nostalgic Success at NIT-Bhopal",
+          "body": "The Quizzers Club NIT-Bhopal is proud to announce the resounding success of the Flashback Fiesta, held on the 4th and 5th of November at the LRC Building. This event, a cornerstone of our annual TechnoSearch fest, turned out to be an exhilarating journey through the lanes of nostalgia, filled with excitement, inspiration, and unforgettable moments."
+        },
+        {
+          "head": "Highlights of the event included",
+          "body": "Diverse and challenging quiz rounds that tested participants' knowledge on a wide array of topics, transporting everyone back to cherished memories and historical milestones\nSpecial sessions where guest speakers shared their insights and experiences, leaving the audience inspired and motivated.\nExciting prizes and surprises that added to the thrill of the competition, making every moment memorable."
+        }
+      ],
       "cover": "/events/techno/main.JPG",
       "images": ["/events/techno/1.JPG", "/events/techno/2.JPG"],
       "insta": "https://www.instagram.com/p/CzguIFAo2IF/"
     },
     {
+      "id": "anveshan",
+      "title": "Anveshan",
+      "desc": "Where Intellect Meets Adventure",
+      "content": [
+        {
+          "head": "Anveshan'24: A Journey of Intellect and Adventure",
+          "body": "Anveshan'24, proudly presented by Quizzers' Club MANIT, was an exhilarating journey through a labyrinth of challenges and triumphs. This event immersed participants in an electrifying fusion of intellect and adventure, leaving an indelible mark on all who took part."
+        },
+        {
+          "head": "The Adventure Unfolds",
+          "body": "Participants embarked on a thrilling quest, navigating through clues, puzzles, and riddles scattered across the vast expanse of MANIT. Their wit and ingenuity guided them towards the ultimate treasure trove. Along the way, they encountered various obstacles designed to test their problem-solving skills, teamwork, and resilience. The competition was fierce, as treasure hunters from all corners vied for the coveted title."
+        },
+        {
+          "head": "The Challenge",
+          "body": "The stakes grew higher with every step and every decision. Participants faced intense competition, each determined to outsmart their rivals and emerge victorious. The atmosphere was charged with excitement, camaraderie, and the drive to succeed."
+        },
+        {
+          "head": "Celebrating Triumph",
+          "body": "In the end, only the sharpest minds and the most resilient teams claimed the sweet taste of victory. Anveshan'24 was not just a competition; it was a testament to the power of determination and collaboration. The champions etched their names in the annals of success, their moment of glory well-earned through sheer brilliance and perseverance."
+        },
+        {
+          "head": "Your Chance to Shine",
+          "body": "For those who participated, Anveshan'24 was an unforgettable journey filled with excitement and camaraderie. The event proved that every decision counts, and every move matters. It celebrated the spirit of adventure and the relentless pursuit of knowledge.\nThough Anveshan'24 has concluded, the memories and achievements of this incredible event will live on. The hunt may have ended, but the legacy of intellect and adventure continues. Congratulations to all participants and winners for making history at Anveshan'24!"
+        }
+      ],
+      "cover": "",
+      "images": [],
+      "insta": ""
+    },
+    {
       "id": "vihaan",
       "title": "Vihaan",
-      "desc": "Random stuff, kuch toh likhna hi tha",
-      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro sequi cumque molestiae? Voluptatem ipsam at, cum beatae nam magni, voluptas saepe reiciendis, veniam deleniti alias quia nihil. Maxime, ratione sint.",
+      "desc": "The Ultimate Inter-Section Quiz War",
+      "content": [
+        {
+          "head": "The Event Unfolds",
+          "body": "Participants felt the adrenaline rush as intellect and passion collided in this high-stakes showdown. Each round was a testament to their knowledge, quick thinking, and love for the game. With every question, the excitement grew, and the competition intensified."
+        },
+        {
+          "head": "A Battle for Glory",
+          "body": "VIHAAN was not just a quiz; it was a quest for glory where champions were made and legends were born. The sections competed fiercely, each determined to outsmart the other and claim the coveted title. The atmosphere was electric, filled with the cheers and energy of passionate participants and supporters."
+        },
+        {
+          "head": "Crowning the Champions",
+          "body": "In the end, one section emerged supreme, crowned as the kings and queens of quizzing among the first-years. The victory was a testament to their teamwork, strategy, and unwavering determination. VIHAAN celebrated the brilliance of these young minds and their remarkable journey to the top."
+        },
+        {
+          "head": "A Memorable Experience",
+          "body": "VIHAAN was an unforgettable event, leaving a lasting impression on all who participated. It showcased the perfect blend of sportsmanship and intellectual prowess, making it a highlight of the year. The legacy of VIHAAN continues to inspire and set the stage for future quizzing battles."
+        }
+      ],
       "cover": "/events/vihaan/main.jpg",
       "images": [
         "/events/vihaan/1.JPG",
