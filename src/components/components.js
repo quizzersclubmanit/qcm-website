@@ -15,6 +15,7 @@ import QuizRibbon from "./QuizRibbon"
 import SearchBar from "./SearchBar"
 import Quiz from "./Quiz"
 import Sponsors from "./Sponsors"
+import ProgressBar from "./ProgressBar"
 
 export {
   Header,
@@ -33,5 +34,6 @@ export {
   QuizRibbon,
   SearchBar,
   Quiz,
-  Sponsors
+  Sponsors,
+  ProgressBar
 }

@@ -20,7 +20,7 @@ const ManageQuiz = () => {
 
   useEffect(() => {
     dbService
-      .fetchAll({ collectionId: env.quizId })
+      .fetchDocs({ collectionId: env.quizId })
       .then((res) => {
         dispatch(setQuizes(res.documents))
       })

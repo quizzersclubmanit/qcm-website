@@ -10,7 +10,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
     defaultValues: {
       question: quiz.question || "",
       options: quiz.options || ["", "", "", ""],
-      answer: quiz.answer || 0,
+      answer: quiz.answer || null,
       reward: quiz.reward || 0,
       timeLimit: quiz.timeLeft || 60
     }
@@ -32,7 +32,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
         name="question"
         errors={errors}
         placeholder="Question here..."
-        className="p-4 rounded-lg text-lg focus:outline-0"
+        className="p-4 rounded-lg text-xl focus:outline-0"
       />
       <div>
         <Input
@@ -186,7 +186,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
               .finally(() => {
                 setValue("question", "")
                 setValue("options", ["", "", "", ""])
-                setValue("answer", 0)
+                setValue("answer", null)
                 setValue("reward", 0)
                 setValue("timeLimit", 60)
               })

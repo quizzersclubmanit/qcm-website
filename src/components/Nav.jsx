@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { Button } from "./components"
+import { Button, Container } from "./components"
 import authService from "../api/auth.service"
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
@@ -51,7 +51,8 @@ const Nav = ({ hidden = false }) => {
   }, [])
 
   return (
-    <nav
+    <Container
+      element="nav"
       className={`items-center gap-2 md:justify-between justify-around w-3/4 md:w-1/2 ${hidden ? "hidden" : ""} sm:flex`}
     >
       <div className="flex flex-col gap-[4vw] my-3 sm:flex-row sm:my-0">
@@ -99,6 +100,14 @@ const Nav = ({ hidden = false }) => {
               }}
             />
 
+            <Button
+              label="Play Quiz"
+              className="py-2 px-3 text-lg shadow-lg bg-white text-black rounded-lg hover:bg-gray-100"
+              onClick={() => {
+                navigate("/quiz/play")
+              }}
+            />
+
             {name == "admin" && (
               <>
                 <Button
@@ -128,7 +137,7 @@ const Nav = ({ hidden = false }) => {
           }}
         />
       )}
-    </nav>
+    </Container>
   )
 }
 

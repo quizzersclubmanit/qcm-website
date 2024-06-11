@@ -3,14 +3,15 @@ import { createSlice } from "@reduxjs/toolkit"
 const QuizSlice = createSlice({
   name: "quizes",
   initialState: [
-    {
+    /*{
       $id: "",
       question: "",
       options: ["", "", "", ""],
-      answer: 0,
-      reward: 2,
-      timeLimit: 60
-    }
+      answer: null,
+      reward: 0,
+      timeLimit: 60,
+      markedAnswer: null
+    }*/
   ],
   reducers: {
     setQuizes: (state, action) => action.payload,
@@ -26,11 +27,23 @@ const QuizSlice = createSlice({
       })
     },
     deleteQuiz: (state, action) =>
-      state.filter((item) => item.$id != action.payload)
+      state.filter((item) => item.$id != action.payload),
+    addMarkedAnswerField: (state, action) =>
+      state.map((item) => {
+        if (item.$id == action.payload.$id)
+          return { ...item, markedAnswer: action.payload.markedAnswer }
+        return item
+      })
   }
 })
 
-export const { setQuizes, addQuiz, editQuiz, deleteQuiz } = QuizSlice.actions
+export const {
+  setQuizes,
+  addQuiz,
+  editQuiz,
+  deleteQuiz,
+  addMarkedAnswerField
+} = QuizSlice.actions
 
 const quizReducer = QuizSlice.reducer
 export default quizReducer
