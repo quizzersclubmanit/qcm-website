@@ -1,33 +1,33 @@
-#hero{
-    background: url("/bnw-bg.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+#hero {
+  background: url("/bnw-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-#about{
-    background: url("/wavy-bg.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+#about {
+  background: url("/wavy-bg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-#events{
-    background: url("/blue-bg.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+#events {
+  background: url("/blue-bg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-#auth{
-    background: url("/blue-bg.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+#auth {
+  background: url("/blue-bg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-@media (max-width: 640px){
-    #about{
-        background: url("./white-bg.svg");
-    }
+@media (max-width: 640px) {
+  #about {
+    background: url("./white-bg.svg");
+  }
 }

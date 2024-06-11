@@ -5,8 +5,8 @@ import {
   Hero,
   About,
   Events,
-  Container,
-  SectionHead
+  Sponsors,
+  Container
 } from "../components/components"
 
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
       <About />
       <Events />
       <div id="gallery" className="londrina-solid-regular"></div>
-      <div id="sponsors" className="londrina-solid-regular"></div>
+      <Sponsors />
       <Footer />
     </main>
   )

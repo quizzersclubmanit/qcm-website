@@ -10,14 +10,14 @@ import {
   facebook,
   instagram,
   linkedin,
-  org
+  organization
 } from "../assets/qcmData.json"
 
 const Footer = () => {
   return (
     <footer className="londrina-solid-regular tracking-wider flex py-10 flex-col gap-5 items-center bg-black text-white">
       <Logo className="w-[7vmax] sm:w-[5vmax]" />
-      <h2 className="font-bold text-2xl">{org}</h2>
+      <h2 className="font-bold text-2xl">{organization}</h2>
       <div className="flex gap-20 my-2" style={{ fontSize: "2.5vmax" }}>
         <a href={linkedin} target="_blank">
           <FaLinkedin className="text-[6vmax] sm:text-[3.5vmax] cursor-pointer" />

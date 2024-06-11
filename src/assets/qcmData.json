@@ -114,7 +114,7 @@
           "body": "For those who participated, Anveshan'24 was an unforgettable journey filled with excitement and camaraderie. The event proved that every decision counts, and every move matters. It celebrated the spirit of adventure and the relentless pursuit of knowledge.\nThough Anveshan'24 has concluded, the memories and achievements of this incredible event will live on. The hunt may have ended, but the legacy of intellect and adventure continues. Congratulations to all participants and winners for making history at Anveshan'24!"
         }
       ],
-      "cover": "",
+      "cover": "events/anveshan/main.JPG",
       "images": [],
       "insta": ""
     },
@@ -150,6 +150,78 @@
         "/events/vihaan/6.JPG"
       ],
       "insta": "https://www.instagram.com/p/C5naDnLvcN5/"
+    }
+  ],
+  "sponsors": [
+    {
+      "brand": "Abhi Bus",
+      "logo": "/sponsors/abhibus.png",
+      "website": "https://www.abhibus.com/"
+    },
+    {
+      "brand": "Bharat Petroleum Corporation",
+      "logo": "/sponsors/bpcl.jpeg",
+      "website": "https://www.bharatpetroleum.in/"
+    },
+    {
+      "brand": "Canva",
+      "logo": "/sponsors/canva.png",
+      "website": "https://www.canva.com/en_in/"
+    },
+    {
+      "brand": "Easy My Trip",
+      "logo": "/sponsors/ease-my-trip.png",
+      "website": "https://www.canva.com/en_in/"
+    },
+    {
+      "brand": "Kabira",
+      "logo": "/sponsors/kabira.png",
+      "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+    },
+    {
+      "brand": "Khaadi",
+      "logo": "/sponsors/khaadi.jpg",
+      "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+    },
+    {
+      "brand": "Mrig Naini",
+      "logo": "/sponsors/mrig-naini.jpg",
+      "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+    },
+    {
+      "brand": "Vidhya Valley",
+      "logo": "/sponsors/vindhya-valley.jpg",
+      "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+    },
+    {
+      "brand": "Life Insurance Corporation",
+      "logo": "/sponsors/lic.png",
+      "website": "https://licindia.in/"
+    },
+    {
+      "brand": "National Thermal Power Corporation",
+      "logo": "/sponsors/ntpc.png",
+      "website": "https://ntpc.co.in/"
+    },
+    {
+      "brand": "Quill Bot",
+      "logo": "/sponsors/quillbot.png",
+      "website": "https://quillbot.com/"
+    },
+    {
+      "brand": "The Hindu",
+      "logo": "/sponsors/the-hindu.png",
+      "website": "https://www.thehindu.com/"
+    },
+    {
+      "brand": "Unibic",
+      "logo": "/sponsors/unibic.png",
+      "website": "https://www.unibicfoods.com/"
+    },
+    {
+      "brand": "Unstop",
+      "logo": "/sponsors/unstop.jpg",
+      "website": "https://unstop.com/"
     }
   ]
 }

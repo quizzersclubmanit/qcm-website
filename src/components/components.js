@@ -14,6 +14,7 @@ import Input from "./Input"
 import QuizRibbon from "./QuizRibbon"
 import SearchBar from "./SearchBar"
 import Quiz from "./Quiz"
+import Sponsors from "./Sponsors"
 
 export {
   Header,
@@ -31,5 +32,6 @@ export {
   Input,
   QuizRibbon,
   SearchBar,
-  Quiz
+  Quiz,
+  Sponsors
 }
