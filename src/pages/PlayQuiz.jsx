@@ -18,6 +18,7 @@ const PlayQuiz = () => {
   const [score, setScore] = useState(0)
   const navigate = useNavigate()
   const [showSubmitBtn, setShowSubmitBtn] = useState(false)
+  let userIDs = []
 
   useEffect(() => {
     if (quizes.length == 0) {
@@ -33,6 +34,26 @@ const PlayQuiz = () => {
           setLoading(false)
         })
     } else setLoading(false)
+  }, [])
+
+  useEffect(() => {
+    dbService
+      .fetchDocs({
+        collectionId: env.scoreId
+      })
+      .then((res) => {
+        userIDs = res.documents
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+      .finally(() => {
+        if (data.$id && userIDs.some((obj) => obj.userId == data.$id)) {
+          // Already attempted the test
+          alert("You already attempted the test")
+          navigate("/")
+        }
+      })
   }, [])
 
   useEffect(() => {

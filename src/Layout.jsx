@@ -23,7 +23,7 @@ const Layout = () => {
       <Outlet />
       <div
         ref={cursorRef}
-        className="cursor-follower fixed top-0 left-0 w-8 h-8 bg-[#00ed8a94]"
+        className="cursor-follower fixed top-0 left-0 w-8 h-8 bg-[#00ed8a94] hidden sm:block"
         style={{ borderRadius: "50%" }}
       ></div>
     </>

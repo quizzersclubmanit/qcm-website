@@ -27,7 +27,8 @@ class DB {
 
   async fetchDocs({ collectionId, userId = "" }) {
     let query = []
-    if (collectionId == env.scoreId) query.push(Query.equal("userId", userId))
+    if (collectionId == env.scoreId && userId)
+      query.push(Query.equal("userId", userId))
     try {
       const res = this.databases.listDocuments(env.dbId, collectionId, query)
       return res

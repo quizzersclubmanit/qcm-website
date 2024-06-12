@@ -89,23 +89,22 @@ const Nav = ({ hidden = false }) => {
       gsap.to(dropDownRef.current, {
         opacity: 0,
         transform: "translateY(-100%)",
-        ease: "expo.out"
+        ease: "expo.out",
+        duration: 1
       })
     }
   }, [showDropDown])
 
   useEffect(() => {
-    if (Object.keys(data).length == 0) {
-      authService
-        .getCurrentUser()
-        .then((user) => {
-          dispatch(setData(user))
-          dispatch(login())
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-    }
+    authService
+      .getCurrentUser()
+      .then((user) => {
+        dispatch(setData(user))
+        dispatch(login())
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }, [])
 
   return (
@@ -125,8 +124,8 @@ const Nav = ({ hidden = false }) => {
         ))}
       </div>
       {loggedIn ? (
-        <div className="flex border border-black sm:border-none py-1 px-3 rounded sm:flex-col flex-row gap-1 justify-between items-center">
-          <div className="flex items-center gap-2 borde p-2">
+        <div className="flex sm:border-none py-1 px-3 rounded sm:flex-col flex-row gap-1 justify-between items-center">
+          <div className="flex w-full items-center justify-between gap-2 border sm:border-white rounded border-black p-2">
             <span className="uppercase text-sm">{name}</span>
             <IoIosArrowDropdownCircle
               className="text-xl cursor-pointer"
@@ -138,7 +137,7 @@ const Nav = ({ hidden = false }) => {
 
           <div
             ref={dropDownRef}
-            className={`drop-down-menu fixed sm:w-[20vw] sm:min-h-[20vh] w-[50vw] sm:top-1/4 top-full sm:right-10 right-7 text-black sm:bg-white transparent-white shadow-lg rounded-lg flex flex-col items-center justify-evenly gap-3 p-4 ${!showDropDown && "opacity-0 pointer-events-none"}`}
+            className={`drop-down-menu fixed sm:w-[20vw] sm:min-h-[20vh] w-[50vw] sm:top-1/4 top-full sm:right-10 right-7 text-black bg-[#fff7] transparent-white shadow-lg rounded-lg flex flex-col items-center justify-evenly gap-3 p-6 backdrop-blur ${!showDropDown && "opacity-0 pointer-events-none"}`}
             style={{
               transform: "translateY(-100%)"
             }}
@@ -148,7 +147,7 @@ const Nav = ({ hidden = false }) => {
                 key={index}
                 label={btn.label}
                 onClick={btn.f}
-                className={`${!btn.visible && "hidden"} text-lg border border-blue-800 w-full py-2 rounded-lg hover:bg-gray-50`}
+                className={`${!btn.visible && "hidden"} text-lg border border-blue-800 w-full py-2 rounded-lg hover:bg-[#ffffff8e]`}
               />
             ))}
           </div>

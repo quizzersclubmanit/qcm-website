@@ -47,9 +47,17 @@ const Footer = () => {
             <MdWifiCalling3 className="text-2xl" />
             <div className="flex flex-col">
               {contacts.map((contact, index) => (
-                <p key={index}>
-                  {contact.name} - {contact.no}
-                </p>
+                <div key={index}>
+                  <span>{contact.name} - </span>
+                  <span
+                    onClick={(e) => {
+                      navigator.clipboard.writeText(contact.no)
+                    }}
+                    className="cursor-copy"
+                  >
+                    {contact.no}
+                  </span>
+                </div>
               ))}
             </div>
           </div>

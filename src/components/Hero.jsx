@@ -5,8 +5,8 @@ import { Container } from "./components"
 const Hero = () => {
   return (
     <div id="hero" className="londrina-solid-regular">
-      <Container className="sm:h-screen h-[75vh] flex flex-col sm:flex-row items-center justify-evenly">
-        <div className="left w-full h-full my-[10vh] sm:my-0 sm:w-2/3 flex flex-col items-center justify-center text-white gap-3">
+      <Container className="h-screen flex flex-col sm:flex-row items-center justify-evenly">
+        <div className="left w-full h-full my-[10vh] sm:my-0 sm:w-2/3 flex flex-col justify-center items-center text-white gap-5">
           <h1
             className="sm:text-[9vmax] text-[8vmax]"
             style={{
@@ -24,7 +24,7 @@ const Hero = () => {
             </span>
           </p>
         </div>
-        <div className="right sm:w-1/3 w-full flex justify-center sm:items-center self-end">
+        <div className="right sm:w-1/3 h-full w-full flex justify-center sm:items-center self-end">
           <img src={bulb} alt="Bulb" />
         </div>
       </Container>
