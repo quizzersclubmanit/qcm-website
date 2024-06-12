@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Alatsi&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alatsi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   overflow-x: hidden;
   font-display: block;
 }
@@ -44,14 +44,14 @@
   letter-spacing: 0.05em;
 }
 
-.transparent-black{
-  @apply bg-[#000000a6]
+.transparent-black {
+  @apply bg-[#000000a6];
 }
-.transparent-white{
-  @apply bg-[#ffffffc4]
+.transparent-white {
+  @apply bg-[#ffffffc4];
 }
-.theme-blue{
-  @apply bg-[#00509c]
+.theme-blue {
+  @apply bg-[#00509c];
 }
 
 ::-webkit-scrollbar {
@@ -82,6 +82,16 @@
   z-index: 5;
 }
 
-.continue-text{
-  @apply overflow-x-hidden whitespace-nowrap overflow-ellipsis
+.text-outline {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+
+.text-outline-thin {
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+}
+
+.continue-text {
+  @apply overflow-x-hidden whitespace-nowrap overflow-ellipsis;
 }

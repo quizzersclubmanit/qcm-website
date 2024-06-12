@@ -12,6 +12,7 @@ const Events = () => {
     slidesToScroll: 1,
     initialSlide: 0,
     className: "w-full",
+    autoplay: true,
     responsive: [
       {
         breakpoint: 1300,

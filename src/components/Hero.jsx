@@ -16,22 +16,8 @@ const Hero = () => {
           >
             {organization}
           </h1>
-          <h4
-            className="text-[5vmax]"
-            style={{
-              WebkitTextStrokeWidth: "2px",
-              WebkitTextStrokeColor: "black"
-            }}
-          >
-            NIT Bhopal
-          </h4>
-          <p
-            className="text-[2.5vmax]"
-            style={{
-              WebkitTextStrokeWidth: "1px",
-              WebkitTextStrokeColor: "black"
-            }}
-          >
+          <h4 className="text-[5vmax] text-outline">NIT Bhopal</h4>
+          <p className="text-[2.5vmax] text-outline-thin">
             Central India's{" "}
             <span className="text-yellow-400 text-[3vmax]">
               Largest Quizzing Club
