@@ -5,6 +5,9 @@ import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { login, logout, setData } from "../redux/user.slice"
 import { IoIosArrowDropdownCircle } from "react-icons/io"
+import { useRef } from "react"
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
 
 const Nav = ({ hidden = false }) => {
   const tabs = [
@@ -74,6 +77,22 @@ const Nav = ({ hidden = false }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [showDropDown, setShowDropDown] = useState(false)
+  const dropDownRef = useRef(null)
+
+  useGSAP(() => {
+    if (showDropDown) {
+      gsap.to(dropDownRef.current, {
+        opacity: 1,
+        transform: "translateY(0)"
+      })
+    } else {
+      gsap.to(dropDownRef.current, {
+        opacity: 0,
+        transform: "translateY(-100%)",
+        ease: "expo.out"
+      })
+    }
+  }, [showDropDown])
 
   useEffect(() => {
     if (Object.keys(data).length == 0) {
@@ -118,7 +137,11 @@ const Nav = ({ hidden = false }) => {
           </div>
 
           <div
-            className={`drop-down-menu fixed sm:w-[20vw] sm:min-h-[20vh] w-[50vw] sm:top-1/4 top-full sm:right-10 right-7 text-black sm:bg-white transparent-white shadow-lg rounded-lg flex flex-col items-center justify-evenly gap-3 p-4 ${!showDropDown && "hidden"}`}
+            ref={dropDownRef}
+            className={`drop-down-menu fixed sm:w-[20vw] sm:min-h-[20vh] w-[50vw] sm:top-1/4 top-full sm:right-10 right-7 text-black sm:bg-white transparent-white shadow-lg rounded-lg flex flex-col items-center justify-evenly gap-3 p-4 ${!showDropDown && "opacity-0 pointer-events-none"}`}
+            style={{
+              transform: "translateY(-100%)"
+            }}
           >
             {buttons.map((btn, index) => (
               <Button

@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import "./index.css"
+import Layout from "./Layout.jsx"
 import {
   RouterProvider,
   createBrowserRouter,
@@ -15,7 +16,7 @@ import store from "./redux/store.js"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Outlet />}>
+    <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
       <Route path="signup" element={<Auth />} />
       <Route path="login" element={<Auth label="login" />} />
