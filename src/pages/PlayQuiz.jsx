@@ -6,7 +6,6 @@ import { setQuizes, addMarkedAnswerField } from "../redux/quiz.slice"
 import env from "../../env"
 import { Navigate } from "react-router-dom"
 import { Button, Container, ProgressBar } from "../components/components"
-import { GrCaretPrevious, GrCaretNext } from "react-icons/gr"
 import { useNavigate } from "react-router-dom"
 
 const PlayQuiz = () => {
@@ -56,7 +55,7 @@ const PlayQuiz = () => {
     )
   return (
     <div id="play-quiz" className="londrina-solid-regular">
-      <Container className="w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-start justify-center gap-8 items-center sm:items-center">
+      <Container className="w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-start justify-center gap-5 items-center sm:items-center">
         <ProgressBar progress={(currentQue / quizes.length) * 100} />
         <span className="text-white text-2xl">
           Question: {currentQue}/{quizes.length}
@@ -79,16 +78,17 @@ const PlayQuiz = () => {
         </div>
         <div className="flex justify-between w-1/2">
           <Button
-            className="bg-white rounded-2xl flex"
+            label="Prev"
+            className="bg-white py-2 px-4 rounded hover:bg-gray-100 text-xl"
             onClick={() => {
               setCurrentQue((prev) => (prev == 1 ? prev : prev - 1))
               setSelectedOption(null)
+              setShowSubmitBtn(false)
             }}
-          >
-            <GrCaretPrevious className="text-[2vmax] p-1" />
-          </Button>
+          />
           <Button
-            className="bg-green-400 rounded-2xl flex"
+            label="Next"
+            className="bg-blue-400 py-2 px-4 rounded hover:bg-blue-500 text-xl"
             onClick={() => {
               if (currentQue < quizes.length) {
                 setCurrentQue((prev) => prev + 1)
@@ -101,9 +101,7 @@ const PlayQuiz = () => {
                 setShowSubmitBtn(true)
               }
             }}
-          >
-            <GrCaretNext className="text-[2vmax] p-1" />
-          </Button>
+          />
         </div>
         {showSubmitBtn && (
           <Button

@@ -19,6 +19,13 @@
   background-size: cover;
 }
 
+#event {
+  background: url("/blue-bg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 #auth {
   background: url("/blue-bg.svg");
   background-position: center;

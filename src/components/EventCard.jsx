@@ -7,8 +7,8 @@ const EventCard = ({ dets = {} }) => {
   return (
     <div className="flex justify-center">
       <div className="flex flex-col items-start bg-white p-8 gap-2 rounded-lg w-[80vw] md:w-[40vw] xl:w-[25vw]">
-        <div className="flex justify-center w-full h-[32vh]">
-          <img src={dets.cover} alt="Event" />
+        <div className="flex justify-center w-full">
+          <img src={dets.cover} alt="Event" className="aspect-square" />
         </div>
         <h4 className="text-xl uppercase overflow-x-hidden whitespace-nowrap overflow-ellipsis w-full">
           {dets.title}

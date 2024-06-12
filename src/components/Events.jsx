@@ -11,6 +11,7 @@ const Events = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
+    className: "w-full",
     responsive: [
       {
         breakpoint: 1300,
@@ -27,13 +28,11 @@ const Events = () => {
     <div id="events" className="londrina-solid-regular">
       <Container className="w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-5 items-center sm:items-start">
         <SectionHead label="Events" className="text-white" />
-        <div className="w-full">
-          <Slider {...settings}>
-            {eventDetails.map((dets, index) => (
-              <EventCard dets={dets} key={index} />
-            ))}
-          </Slider>
-        </div>
+        <Slider {...settings}>
+          {eventDetails.map((dets, index) => (
+            <EventCard dets={dets} key={index} />
+          ))}
+        </Slider>
       </Container>
     </div>
   )

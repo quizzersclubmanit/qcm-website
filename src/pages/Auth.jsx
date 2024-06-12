@@ -46,7 +46,7 @@ const Auth = ({ label = "signup" }) => {
 
   return (
     <div id="auth" className="londrina-solid-regular">
-      <Container className="min-h-screen flex justify-center items-center">
+      <Container className="sm:p-[3.5vmax] p-[2vmax] min-h-screen flex justify-center items-center">
         <div className="left w-1/2 items-center hidden md:flex">
           <img src={authIllustration} alt="Auth Illustration" />
         </div>
