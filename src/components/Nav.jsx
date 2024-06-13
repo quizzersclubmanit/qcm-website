@@ -8,6 +8,7 @@ import { IoIosArrowDropdownCircle } from "react-icons/io"
 import { useRef } from "react"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
+import toast from "react-hot-toast"
 
 const Nav = ({ hidden = false }) => {
   const tabs = [
@@ -45,9 +46,9 @@ const Nav = ({ hidden = false }) => {
           .then(() => {
             dispatch(logout())
           })
-          .catch((err) => {
-            alert(err.message) // Hot Toast
-            console.error(err)
+          .catch((error) => {
+            toast.error(error.message)
+            console.error(error)
           })
       },
       visible: true

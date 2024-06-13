@@ -6,6 +6,7 @@ import { Modal, Quiz, Container } from "./components"
 import { useState } from "react"
 import { deleteQuiz } from "../redux/quiz.slice"
 import { useDispatch } from "react-redux"
+import toast from "react-hot-toast"
 
 const QuizRibbon = ({ quiz = {} }) => {
   const [showQuizModal, setShowQuizModal] = useState(false)
@@ -37,6 +38,11 @@ const QuizRibbon = ({ quiz = {} }) => {
               })
               .then(() => {
                 dispatch(deleteQuiz(quiz.$id))
+                toast.success("Quiz Deleted Successfully")
+              })
+              .catch((error) => {
+                console.error(error)
+                toast.error(error.message)
               })
           }}
         />

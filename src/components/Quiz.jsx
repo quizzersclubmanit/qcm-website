@@ -4,6 +4,7 @@ import { Input, Button } from "./components"
 import { useForm } from "react-hook-form"
 import { addQuiz, editQuiz } from "../redux/quiz.slice"
 import { useDispatch } from "react-redux"
+import toast from "react-hot-toast"
 
 const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
   const { setValue, handleSubmit, control, formState, register } = useForm({
@@ -157,10 +158,11 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
                     changes: doc
                   })
                 )
+                toast.success("Quiz Updated Successfully")
               })
-              .catch((err) => {
-                alert(err.message)
+              .catch((error) => {
                 console.error(err)
+                toast.error(error.message)
               })
               .finally(() => {
                 setShowModal(false)
@@ -178,9 +180,10 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
               })
               .then((doc) => {
                 dispatch(addQuiz(doc))
+                toast.success("Quiz Added Successfully")
               })
-              .catch((err) => {
-                alert(err.message)
+              .catch((error) => {
+                toast.error(error.message)
                 console.error(err)
               })
               .finally(() => {

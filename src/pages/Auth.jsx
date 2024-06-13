@@ -10,6 +10,7 @@ import { useCallback, useState } from "react"
 import env from "../../env"
 import { useDispatch } from "react-redux"
 import { login, setData } from "../redux/user.slice"
+import toast from "react-hot-toast"
 
 const Auth = ({ label = "signup" }) => {
   const { handleSubmit, setValue, control, formState } = useForm({
@@ -54,10 +55,11 @@ const Auth = ({ label = "signup" }) => {
         dispatch(setData(user))
         dispatch(login())
         navigate("/")
+        toast.success("Logged In Successfully")
       })
-      .catch((err) => {
-        alert(err.message) // Hot Toast
-        console.error(err)
+      .catch((error) => {
+        console.error(error)
+        toast.error(error.message)
       })
       .finally(() => {
         setValue("Name", "")

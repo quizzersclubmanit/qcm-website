@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "react-router-dom"
 import dbService from "../api/db.service"
 import { Query } from "appwrite"
+import toast from "react-hot-toast"
 
 const PlayQuiz = () => {
   const quizes = useSelector((state) => state.quizes)
@@ -45,7 +46,10 @@ const PlayQuiz = () => {
         queries: [Query.equal("userId", data.$id)]
       })
       .then((docs) => {
-        if (docs.length == 1) navigate("/")
+        if (docs.length != 0) {
+          navigate("/")
+          toast("You've already attempted the quiz")
+        }
       })
       .catch((error) => {
         console.error(error)
@@ -137,9 +141,10 @@ const PlayQuiz = () => {
               })
               .then(() => {
                 navigate(`/quiz/result/${score}`)
+                toast.success("Quiz Submitted Succesfully")
               })
               .catch((error) => {
-                alert(error.message)
+                toast.error(error.message)
                 console.error(error)
               })
           }}

@@ -2,6 +2,7 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { Outlet } from "react-router-dom"
 import { useRef } from "react"
+import { Toaster } from "react-hot-toast"
 
 const Layout = () => {
   const cursorRef = useRef(null)
@@ -28,6 +29,7 @@ const Layout = () => {
         className="cursor-follower fixed top-0 left-0 w-8 h-8 bg-[#00ed8a94] hidden sm:block pointer-events-none"
         style={{ borderRadius: "50%" }}
       ></div>
+      <Toaster position="top-center" toastOptions={{ duration: 4000 }} />
     </>
   )
 }

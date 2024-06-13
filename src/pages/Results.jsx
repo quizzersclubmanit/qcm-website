@@ -4,6 +4,7 @@ import dbService from "../api/db.service"
 import { Query } from "appwrite"
 import fetchResults from "../utils/fetchResults"
 import { Container, SectionHead, Loader } from "../components/components"
+import toast from "react-hot-toast"
 
 const Results = () => {
   const [leaderBoard, setLeaderBoard] = useState([])
@@ -24,6 +25,7 @@ const Results = () => {
       })
       .catch((error) => {
         console.error(error)
+        toast.error(error.message)
       })
       .finally(() => {
         setLoading(false)
