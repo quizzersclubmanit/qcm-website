@@ -1,94 +1,52 @@
-import { SectionHead, Container } from "./components"
-import { FaFacebook, FaLinkedin } from "react-icons/fa"
-import { FaSquareInstagram, FaLocationDot } from "react-icons/fa6"
-import { MdWifiCalling3 } from "react-icons/md"
-import { IoMdMail } from "react-icons/io"
-import {
-  contacts,
-  email,
-  address,
-  facebook,
-  instagram,
-  linkedin,
-  organization
-} from "../assets/qcmData.json"
+import { Container, Banner, Social, Contact } from "./components"
+import { useRef } from "react"
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
 
 const Footer = () => {
-  const social = [
-    {
-      href: linkedin,
-      image: FaLinkedin
-    },
-    {
-      href: facebook,
-      image: FaFacebook
-    },
-    {
-      href: instagram,
-      image: FaSquareInstagram
+  const bannerRef = useRef(null)
+  const { contextSafe } = useGSAP()
+
+  const animateBanner = contextSafe((scroll) => {
+    const divs = bannerRef.current?.querySelectorAll("div")
+    const imgs = bannerRef.current?.querySelectorAll("div img")
+    if (scroll > 0) {
+      gsap.to(divs, {
+        transform: "translateX(0%)",
+        ease: "none",
+        duration: 4,
+        repeat: -1
+      })
+
+      gsap.to(imgs, {
+        rotate: 0
+      })
+    } else {
+      gsap.to(divs, {
+        transform: "translateX(-200%)",
+        ease: "none",
+        duration: 4,
+        repeat: -1
+      })
+
+      gsap.to(imgs, {
+        rotate: 180
+      })
     }
-  ]
+  })
+
+  window.addEventListener("wheel", (e) => {
+    animateBanner(e.deltaY)
+  })
 
   return (
     <Container
       element="footer"
-      className="londrina-solid-regular sm:p-[3.5vmax] p-[2vmax] flex py-10 flex-col gap-5 items-center bg-black text-white"
+      className="londrina-solid-regular sm:px-[3.5vmax] px-[2vmax] sm:pb-[3.5vmax] pb-[2vmax] sm:h-screen h-[75vh] flex flex-col gap-5 items-center justify-between bg-black text-white"
     >
-      <SectionHead label={organization} outline={false} />
-      <div className="flex gap-20 my-2" style={{ fontSize: "2.5vmax" }}>
-        {social.map((item, index) => (
-          <a key={index} href={item.href} target="_blank">
-            <item.image className="text-[6vmax] sm:text-[3vmax] cursor-pointer" />
-          </a>
-        ))}
-      </div>
-      <div className="flex flex-col sm:flex-row w-full gap-5">
-        <div className="left flex flex-col px-[15vw] gap-5 sm:w-1/2">
-          <h3 className="font-bold text-2xl">Contact us</h3>
-          <div className="flex gap-4">
-            <MdWifiCalling3 className="text-2xl" />
-            <div className="flex flex-col">
-              {contacts.map((contact, index) => (
-                <div key={index}>
-                  <span>{contact.name} - </span>
-                  <span
-                    onClick={() => {
-                      navigator.clipboard.writeText(contact.no)
-                    }}
-                    className="cursor-copy"
-                  >
-                    {contact.no}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="flex gap-5 items-center">
-            <IoMdMail />
-            <a
-              href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}`}
-              target="_blank"
-            >
-              {email}
-            </a>
-          </div>
-        </div>
-        <div className="right flex flex-col sm:w-1/2 px-[15vw] gap-5 sm:border-l border-gray-300">
-          <h3 className="font-bold text-2xl">Locate us</h3>
-          <div className="flex gap-2">
-            <a href={address.gmap} target="_blank" className="w-1/5 h-fit">
-              <FaLocationDot className="text-2xl" />
-            </a>
-            <div>
-              <p>{address.org}</p>
-              <p>{address.college}</p>
-              <p>
-                {address.city}, PIN: {address.pin}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Banner ref={bannerRef} />
+      <Contact />
+      <Social />
     </Container>
   )
 }

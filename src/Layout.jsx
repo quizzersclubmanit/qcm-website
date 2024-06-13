@@ -26,7 +26,7 @@ const Layout = () => {
       <Outlet />
       <div
         ref={cursorRef}
-        className="cursor-follower fixed top-0 left-0 w-8 h-8 bg-[#00ed8a94] hidden sm:block pointer-events-none"
+        className="cursor-follower fixed top-0 left-0 w-12 h-12 bg-[#00ed8a94] hidden sm:block pointer-events-none blur-xl"
         style={{ borderRadius: "50%" }}
       ></div>
       <Toaster position="top-center" toastOptions={{ duration: 4000 }} />

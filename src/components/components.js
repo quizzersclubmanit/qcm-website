@@ -18,6 +18,9 @@ import Sponsors from "./Sponsors"
 import ProgressBar from "./ProgressBar"
 import Admin from "./Admin"
 import Loader from "./Loader"
+import Banner from "./Banner"
+import Social from "./Social"
+import Contact from "./Contact"
 
 export {
   Header,
@@ -39,5 +42,8 @@ export {
   Sponsors,
   ProgressBar,
   Admin,
-  Loader
+  Loader,
+  Banner,
+  Social,
+  Contact
 }
