@@ -1,8 +1,9 @@
 import { IoSearchSharp } from "react-icons/io5"
+import { Container } from "./components"
 
 const SearchBar = ({ content, setContent = () => {} }) => {
   return (
-    <div className="flex w-full justify-center items-center gap-3">
+    <Container className="flex w-full justify-center items-center gap-3 mb-10">
       <input
         value={content}
         onChange={(e) => {
@@ -10,10 +11,10 @@ const SearchBar = ({ content, setContent = () => {} }) => {
         }}
         type="text"
         placeholder="Search"
-        className="w-1/2 p-2 bg-white rounded-lg focus:outline-0"
+        className="p-2 bg-white rounded-lg focus:outline-0 w-full sm:w-1/2"
       />
-      <IoSearchSharp className="text-[1.8vmax]" />
-    </div>
+      <IoSearchSharp className="sm:text-[1.8vmax] text-[2.8vmax]" />
+    </Container>
   )
 }
 

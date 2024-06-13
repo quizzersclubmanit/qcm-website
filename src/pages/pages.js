@@ -3,5 +3,6 @@ import Auth from "./Auth"
 import PlayQuiz from "./PlayQuiz"
 import Event from "./Event"
 import Result from "./Result"
+import Results from "./Results"
 
-export { Home, Auth, PlayQuiz, Event, Result }
+export { Home, Auth, PlayQuiz, Event, Result, Results }

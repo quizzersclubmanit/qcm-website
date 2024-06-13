@@ -72,15 +72,23 @@ const Nav = ({ hidden = false }) => {
         navigate("/admin/manage")
       },
       visible: name == "admin"
+    },
+    {
+      label: "Show Leaderboard",
+      f: () => {
+        navigate("/admin/results")
+      },
+      visible: name == "admin"
     }
   ]
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [showDropDown, setShowDropDown] = useState(false)
   const dropDownRef = useRef(null)
+  const { contextSafe } = useGSAP()
 
-  useGSAP(() => {
-    if (showDropDown) {
+  const animateDropDown = contextSafe((cond) => {
+    if (cond) {
       gsap.to(dropDownRef.current, {
         opacity: 1,
         transform: "translateY(0)"
@@ -93,7 +101,7 @@ const Nav = ({ hidden = false }) => {
         duration: 1
       })
     }
-  }, [showDropDown])
+  })
 
   useEffect(() => {
     authService
@@ -131,6 +139,7 @@ const Nav = ({ hidden = false }) => {
               className="text-xl cursor-pointer"
               onClick={() => {
                 setShowDropDown((prev) => !prev)
+                animateDropDown(!showDropDown)
               }}
             />
           </div>

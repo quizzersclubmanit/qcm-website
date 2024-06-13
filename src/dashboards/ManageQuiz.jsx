@@ -7,22 +7,21 @@ import {
   SearchBar,
   Logo
 } from "../components/components"
-import { Navigate, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes } from "../redux/quiz.slice"
 
 const ManageQuiz = () => {
   const quizes = useSelector((state) => state.quizes)
-  const { loggedIn, data } = useSelector((state) => state.user)
   const [loading, setLoading] = useState(true)
   const [searchContent, setSearchContent] = useState("")
   const dispatch = useDispatch()
 
   useEffect(() => {
     dbService
-      .fetchDocs({ collectionId: env.quizId })
+      .select({ collectionId: env.quizId })
       .then((res) => {
-        dispatch(setQuizes(res.documents))
+        dispatch(setQuizes(res))
       })
       .catch((err) => {
         console.error(err)
@@ -32,8 +31,6 @@ const ManageQuiz = () => {
       })
   }, [])
 
-  if (!loggedIn) return <Navigate to="/signup" />
-  if (data.name != "admin") return <Navigate to="/" />
   if (loading)
     return (
       <Container className="h-screen flex justify-center items-center">
@@ -41,30 +38,29 @@ const ManageQuiz = () => {
       </Container>
     )
   return (
-    <div id="manage-quiz" className="londrina-solid-regular">
-      <Logo className="w-[9vmax] sm:w-[5vmax]" />
-      <Container className="min-h-screen flex flex-col items-center gap-10">
-        <SearchBar content={searchContent} setContent={setSearchContent} />
-        <div className="w-full flex flex-col items-center gap-3">
-          {quizes.length > 0 ? (
-            quizes
-              .filter((quiz) =>
-                quiz.question
-                  .toLowerCase()
-                  .includes(searchContent.toLowerCase())
-              )
-              .map((quiz, index) => <QuizRibbon key={index} quiz={quiz} />)
-          ) : (
-            <>
-              <h1 className="text-[3vmax] font-bold">No questions added yet</h1>
-              <Link to="/admin/add" className="text-white">
-                Add Questions
-              </Link>
-            </>
-          )}
-        </div>
-      </Container>
-    </div>
+    <Container
+      id="manage-quiz"
+      className="londrina-solid-regular sm:p-[3vmax] p-[2vmax] min-h-screen flex flex-col  items-center sm:gap-0 gap-4"
+    >
+      <Logo className="w-[8vmax] sm:w-[5vmax]" />
+      <SearchBar content={searchContent} setContent={setSearchContent} />
+      <div className="flex flex-col items-center gap-3 w-full">
+        {quizes.length > 0 ? (
+          quizes
+            .filter((quiz) =>
+              quiz.question.toLowerCase().includes(searchContent.toLowerCase())
+            )
+            .map((quiz, index) => <QuizRibbon key={index} quiz={quiz} />)
+        ) : (
+          <>
+            <h1 className="text-[3vmax] font-bold">No questions added yet</h1>
+            <Link to="/admin/add" className="text-white">
+              Add Questions
+            </Link>
+          </>
+        )}
+      </div>
+    </Container>
   )
 }
 

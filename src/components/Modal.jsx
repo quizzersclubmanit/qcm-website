@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom"
 import { useEffect } from "react"
+import { Container } from "./components"
 
 const Modal = ({ setShowModal = () => {}, children }) => {
   useEffect(() => {
@@ -15,7 +16,7 @@ const Modal = ({ setShowModal = () => {}, children }) => {
   }, [])
 
   return createPortal(
-    <>
+    <Container>
       <div
         className="h-screen w-screen transparent-black fixed top-0 left-0"
         style={{
@@ -33,7 +34,7 @@ const Modal = ({ setShowModal = () => {}, children }) => {
       >
         {children}
       </div>
-    </>,
+    </Container>,
     document.querySelector("#modal")
   )
 }

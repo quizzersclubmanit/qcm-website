@@ -26,16 +26,17 @@ const Events = () => {
   }
 
   return (
-    <div id="events" className="londrina-solid-regular">
-      <Container className="w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-5 items-center sm:items-start">
-        <SectionHead label="Events" className="text-white" />
-        <Slider {...settings}>
-          {eventDetails.map((dets, index) => (
-            <EventCard dets={dets} key={index} />
-          ))}
-        </Slider>
-      </Container>
-    </div>
+    <Container
+      id="events"
+      className="londrina-solid-regular w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-5 items-center sm:items-start"
+    >
+      <SectionHead label="Events" className="text-white" />
+      <Slider {...settings}>
+        {eventDetails.map((dets, index) => (
+          <EventCard dets={dets} key={index} />
+        ))}
+      </Slider>
+    </Container>
   )
 }
 

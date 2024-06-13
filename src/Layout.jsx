@@ -7,15 +7,17 @@ const Layout = () => {
   const cursorRef = useRef(null)
   const { contextSafe } = useGSAP()
 
-  document.querySelector("body").addEventListener("mousemove", (e) => {
-    contextSafe(() => {
-      gsap.to(cursorRef.current, {
-        x: e.x,
-        y: e.y,
-        duration: 1,
-        ease: "back.out(3)"
-      })()
-    })()
+  const animateCursor = contextSafe((X, Y) => {
+    gsap.to(cursorRef.current, {
+      x: X,
+      y: Y,
+      duration: 1,
+      ease: "back.out(1)"
+    })
+  })
+
+  window.addEventListener("mousemove", (e) => {
+    animateCursor(e.x, e.y)
   })
 
   return (
@@ -23,7 +25,7 @@ const Layout = () => {
       <Outlet />
       <div
         ref={cursorRef}
-        className="cursor-follower fixed top-0 left-0 w-8 h-8 bg-[#00ed8a94] hidden sm:block"
+        className="cursor-follower fixed top-0 left-0 w-8 h-8 bg-[#00ed8a94] hidden sm:block pointer-events-none"
         style={{ borderRadius: "50%" }}
       ></div>
     </>

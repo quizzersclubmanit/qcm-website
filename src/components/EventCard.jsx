@@ -1,11 +1,11 @@
-import { Button } from "./components"
+import { Button, Container } from "./components"
 import { useNavigate } from "react-router-dom"
 
 const EventCard = ({ dets = {} }) => {
   const navigate = useNavigate()
 
   return (
-    <div className="flex justify-center">
+    <Container className="flex justify-center">
       <div className="flex flex-col items-start bg-white p-8 gap-2 rounded-lg w-[80vw] md:w-[40vw] xl:w-[25vw]">
         <div className="flex justify-center w-full">
           <img src={dets.cover} alt="Event" className="aspect-square" />
@@ -26,7 +26,7 @@ const EventCard = ({ dets = {} }) => {
           }}
         />
       </div>
-    </div>
+    </Container>
   )
 }
 

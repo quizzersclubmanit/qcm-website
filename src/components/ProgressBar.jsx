@@ -1,13 +1,15 @@
+import { Container } from "./components"
+
 const ProgressBar = ({ progress = 0 }) => {
   return (
-    <div className="flex w-full h-4 bg-white rounded-r-lg">
+    <Container className="flex w-full h-4 bg-white rounded-r-lg">
       <div
         className="rounded-r-lg bg-blue-900"
         style={{
           width: `${progress}%`
         }}
       ></div>
-    </div>
+    </Container>
   )
 }
 

@@ -19,12 +19,12 @@ const Event = () => {
   }
 
   return (
-    <div
+    <Container
       id="event"
       className="londrina-solid-regular min-h-screen flex flex-col px-5 pb-5 justify-evenly items-center"
     >
-      <SectionHead label="Event" className="text-white" />
-      <Container className="sm:w-[60%] w-full flex flex-col p-[1vmax] bg-white rounded-lg gap-5">
+      <SectionHead label="Event" className="text-white self-start" />
+      <div className="sm:w-[60%] w-full flex flex-col p-[1vmax] bg-white rounded-lg gap-5">
         <Slider {...settings}>
           {event.images.map((src, index) => (
             <div key={index}>
@@ -40,8 +40,8 @@ const Event = () => {
           <h3 className="font-bold text-[3vmax]">{event.title}</h3>
           <p>{event.content}</p>
         </div>
-      </Container>
-    </div>
+      </div>
+    </Container>
   )
 }
 

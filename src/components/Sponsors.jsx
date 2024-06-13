@@ -3,27 +3,28 @@ import { Container } from "./components"
 
 const Sponsors = () => {
   return (
-    <div id="sponsors" className="londrina-solid-regular">
-      <Container className="w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-8 items-center sm:items-center">
-        <h3 className="text-[5vmax]">Our Sponsors</h3>
-        <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
-          {sponsors.map((sponsor, index) => (
-            <a
-              key={index}
-              href={sponsor.website}
-              target="_blank"
-              className="sm:h-[20vh] h-[15vh] flex justify-center items-center"
-            >
-              <img
-                src={sponsor.logo}
-                alt={`${sponsor.brand} logo`}
-                className="max-h-full"
-              />
-            </a>
-          ))}
-        </div>
-      </Container>
-    </div>
+    <Container
+      id="sponsors"
+      className="londrina-solid-regular w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-8 items-center sm:items-center"
+    >
+      <h3 className="text-[5vmax]">Our Sponsors</h3>
+      <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
+        {sponsors.map((sponsor, index) => (
+          <a
+            key={index}
+            href={sponsor.website}
+            target="_blank"
+            className="sm:h-[20vh] h-[15vh] flex justify-center items-center"
+          >
+            <img
+              src={sponsor.logo}
+              alt={`${sponsor.brand} logo`}
+              className="max-h-full"
+            />
+          </a>
+        ))}
+      </div>
+    </Container>
   )
 }
 

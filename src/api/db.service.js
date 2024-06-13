@@ -1,4 +1,4 @@
-import { Client, Databases, ID, Query } from "appwrite"
+import { Client, Databases, ID } from "appwrite"
 import env from "../../env"
 
 class DB {
@@ -7,7 +7,6 @@ class DB {
 
   constructor() {
     this.client.setEndpoint(env.apiEndpoint).setProject(env.projectId)
-
     this.databases = new Databases(this.client)
   }
 
@@ -25,13 +24,14 @@ class DB {
     }
   }
 
-  async fetchDocs({ collectionId, userId = "" }) {
-    let query = []
-    if (collectionId == env.scoreId && userId)
-      query.push(Query.equal("userId", userId))
+  async select({ collectionId, queries = [] }) {
     try {
-      const res = this.databases.listDocuments(env.dbId, collectionId, query)
-      return res
+      const res = await this.databases.listDocuments(
+        env.dbId,
+        collectionId,
+        queries
+      )
+      return res.documents
     } catch (error) {
       throw error
     }
@@ -39,7 +39,7 @@ class DB {
 
   async update({ collectionId, documentId, changes = {} }) {
     try {
-      const res = this.databases.updateDocument(
+      const res = await this.databases.updateDocument(
         env.dbId,
         collectionId,
         documentId,
@@ -53,7 +53,7 @@ class DB {
 
   async delete({ collectionId, documentId }) {
     try {
-      const res = this.databases.deleteDocument(
+      const res = await this.databases.deleteDocument(
         env.dbId,
         collectionId,
         documentId

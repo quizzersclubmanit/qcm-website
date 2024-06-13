@@ -1,4 +1,4 @@
-import { Logo } from "./components"
+import { Logo, Container } from "./components"
 import { FaFacebook, FaLinkedin } from "react-icons/fa"
 import { FaSquareInstagram, FaLocationDot } from "react-icons/fa6"
 import { MdWifiCalling3 } from "react-icons/md"
@@ -30,7 +30,10 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="londrina-solid-regular tracking-wider flex py-10 flex-col gap-5 items-center bg-black text-white">
+    <Container
+      element="footer"
+      className="londrina-solid-regular tracking-wider flex py-10 flex-col gap-5 items-center bg-black text-white"
+    >
       <Logo className="w-[7vmax] sm:w-[5vmax]" />
       <h2 className="font-bold text-2xl">{organization}</h2>
       <div className="flex gap-20 my-2" style={{ fontSize: "2.5vmax" }}>
@@ -87,7 +90,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </Container>
   )
 }
 
