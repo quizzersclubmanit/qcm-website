@@ -17,6 +17,7 @@ import Quiz from "./Quiz"
 import Sponsors from "./Sponsors"
 import ProgressBar from "./ProgressBar"
 import Admin from "./Admin"
+import Loader from "./Loader"
 
 export {
   Header,
@@ -37,5 +38,6 @@ export {
   Quiz,
   Sponsors,
   ProgressBar,
-  Admin
+  Admin,
+  Loader
 }

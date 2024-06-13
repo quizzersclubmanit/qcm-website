@@ -9,6 +9,8 @@ const Input = ({
   control,
   rules = {},
   errors = {},
+  children,
+  className = "",
   ...props
 }) => {
   const id = useId()
@@ -27,13 +29,18 @@ const Input = ({
             <label className="text-lg" htmlFor={id}>
               {label}
             </label>
-            <input
-              id={id}
-              value={value}
-              type={type}
-              onChange={onChange}
-              {...props}
-            />
+
+            <div className="w-full flex items-center">
+              <input
+                id={id}
+                value={value}
+                type={type}
+                onChange={onChange}
+                className={`w-full ${className}`}
+                {...props}
+              />
+              {children}
+            </div>
           </div>
           <p className="text-red-500">{errors[name]?.message}</p>
         </div>

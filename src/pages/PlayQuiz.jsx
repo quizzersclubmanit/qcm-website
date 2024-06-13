@@ -4,7 +4,12 @@ import { useSelector, useDispatch } from "react-redux"
 import { setQuizes, addMarkedAnswerField } from "../redux/quiz.slice"
 import env from "../../env"
 import { Navigate } from "react-router-dom"
-import { Button, Container, ProgressBar } from "../components/components"
+import {
+  Button,
+  Container,
+  ProgressBar,
+  Loader
+} from "../components/components"
 import { useNavigate } from "react-router-dom"
 import dbService from "../api/db.service"
 import { Query } from "appwrite"
@@ -62,12 +67,7 @@ const PlayQuiz = () => {
   }, [selectedOption])
 
   if (!loggedIn) return <Navigate to="/signup" />
-  if (loading)
-    return (
-      <Container className="h-screen flex justify-center items-center">
-        <h1 className="text-[3vmax] font-bold">Loading...</h1>
-      </Container>
-    )
+  if (loading) return <Loader />
   return (
     <Container
       id="play-quiz"
@@ -79,11 +79,11 @@ const PlayQuiz = () => {
           Question: {currentQue}/{quizes.length}
         </span>
         <span className="text-yellow-400 text-2xl">
-          Reward: {quizes[currentQue - 1].reward}
+          Reward: {quizes[currentQue - 1]?.reward}
         </span>
       </div>
       <p className="p-4 rounded-lg text-xl focus:outline-0 bg-white w-1/2 cursor-default">
-        Q. {quizes[currentQue - 1].question} ?
+        Q. {quizes[currentQue - 1]?.question} ?
       </p>
       <div className="flex flex-col gap-1 w-1/2">
         {quizes[currentQue - 1].options.map((option, index) => (

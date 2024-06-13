@@ -1,4 +1,4 @@
-import { Logo, Container } from "./components"
+import { SectionHead, Container } from "./components"
 import { FaFacebook, FaLinkedin } from "react-icons/fa"
 import { FaSquareInstagram, FaLocationDot } from "react-icons/fa6"
 import { MdWifiCalling3 } from "react-icons/md"
@@ -32,10 +32,9 @@ const Footer = () => {
   return (
     <Container
       element="footer"
-      className="londrina-solid-regular tracking-wider flex py-10 flex-col gap-5 items-center bg-black text-white"
+      className="londrina-solid-regular sm:p-[3.5vmax] p-[2vmax] flex py-10 flex-col gap-5 items-center bg-black text-white"
     >
-      <Logo className="w-[7vmax] sm:w-[5vmax]" />
-      <h2 className="font-bold text-2xl">{organization}</h2>
+      <SectionHead label={organization} outline={false} />
       <div className="flex gap-20 my-2" style={{ fontSize: "2.5vmax" }}>
         {social.map((item, index) => (
           <a key={index} href={item.href} target="_blank">
@@ -53,7 +52,7 @@ const Footer = () => {
                 <div key={index}>
                   <span>{contact.name} - </span>
                   <span
-                    onClick={(e) => {
+                    onClick={() => {
                       navigator.clipboard.writeText(contact.no)
                     }}
                     className="cursor-copy"
@@ -76,8 +75,8 @@ const Footer = () => {
         </div>
         <div className="right flex flex-col sm:w-1/2 px-[15vw] gap-5 sm:border-l border-gray-300">
           <h3 className="font-bold text-2xl">Locate us</h3>
-          <div className="flex gap-4">
-            <a href={address.gmap} target="_blank">
+          <div className="flex gap-2">
+            <a href={address.gmap} target="_blank" className="w-1/5 h-fit">
               <FaLocationDot className="text-2xl" />
             </a>
             <div>

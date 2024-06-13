@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form"
 import { Container, Input, SectionHead, Button } from "../components/components"
 import { authIllustration } from "../assets/assets"
 import { FcGoogle } from "react-icons/fc"
+import { IoEye, IoEyeOff } from "react-icons/io5"
 import { Link, useNavigate } from "react-router-dom"
 import authService from "../api/auth.service"
-import { useCallback } from "react"
+import { useCallback, useState } from "react"
 import env from "../../env"
 import { useDispatch } from "react-redux"
 import { login, setData } from "../redux/user.slice"
@@ -21,6 +22,27 @@ const Auth = ({ label = "signup" }) => {
   const { errors } = formState
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [showPassword, setShowPassword] = useState(false)
+
+  const Eye = useCallback(() => {
+    if (!showPassword)
+      return (
+        <IoEye
+          className="text-xl cursor-pointer"
+          onClick={() => {
+            setShowPassword(true)
+          }}
+        />
+      )
+    return (
+      <IoEyeOff
+        className="text-xl cursor-pointer"
+        onClick={() => {
+          setShowPassword(false)
+        }}
+      />
+    )
+  }, [showPassword])
 
   const authenticate = useCallback((f = async () => {}, formData = {}) => {
     f({
@@ -101,7 +123,7 @@ const Auth = ({ label = "signup" }) => {
             style={{ borderBottom: "2px solid blue" }}
             errors={errors}
             name="Password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             control={control}
             placeholder="Password"
             rules={{
@@ -116,7 +138,9 @@ const Auth = ({ label = "signup" }) => {
                   "Password should contain at least 1 lowercase, uppercase, special character and should at least be 8 characters long"
               }
             }}
-          />
+          >
+            <Eye />
+          </Input>
 
           <Button
             label={label == "signup" ? "Create Account" : "Login"}

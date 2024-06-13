@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const Logo = ({ className = "" }) => {
   return (
-    <Link to="/" className="self-start">
+    <Link to="/" className="self-center">
       <img src={qcmLogo} alt="QCM Logo" className={`${className}`} />
     </Link>
   )

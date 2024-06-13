@@ -5,7 +5,8 @@ import {
   Container,
   QuizRibbon,
   SearchBar,
-  Logo
+  Logo,
+  Loader
 } from "../components/components"
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
@@ -31,12 +32,7 @@ const ManageQuiz = () => {
       })
   }, [])
 
-  if (loading)
-    return (
-      <Container className="h-screen flex justify-center items-center">
-        <h1 className="text-[3vmax] font-bold">Loading...</h1>
-      </Container>
-    )
+  if (loading) return <Loader />
   return (
     <Container
       id="manage-quiz"

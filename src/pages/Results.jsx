@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import dbService from "../api/db.service"
 import { Query } from "appwrite"
 import fetchResults from "../utils/fetchResults"
-import { Container, SectionHead } from "../components/components"
+import { Container, SectionHead, Loader } from "../components/components"
 
 const Results = () => {
   const [leaderBoard, setLeaderBoard] = useState([])
@@ -30,12 +30,7 @@ const Results = () => {
       })
   }, [])
 
-  if (loading)
-    return (
-      <Container className="h-screen flex justify-center items-center">
-        <h1 className="text-[3vmax] font-bold">Loading...</h1>
-      </Container>
-    )
+  if (loading) return <Loader />
   return (
     <Container
       id="results"
