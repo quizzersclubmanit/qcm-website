@@ -8,7 +8,7 @@ const Banner = forwardRef(({}, ref) => {
   return (
     <div
       ref={ref}
-      className="flex gap-4 overflow-x-hidden whitespace-nowrap bg-[#00509c] py-6"
+      className="flex gap-4 overflow-x-hidden whitespace-nowrap bg-blue-950 py-6"
     >
       {loopArr.map((_, index) => (
         <div

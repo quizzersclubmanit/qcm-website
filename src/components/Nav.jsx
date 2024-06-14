@@ -68,6 +68,10 @@ const Nav = forwardRef(({ className }, ref) => {
     {
       name: "Sponsors",
       to: "#sponsors"
+    },
+    {
+      name: "Contact Us",
+      to: "#contacts"
     }
   ]
   const { data, loggedIn } = useSelector((state) => state.user)
@@ -93,7 +97,7 @@ const Nav = forwardRef(({ className }, ref) => {
     <>
       <nav
         ref={ref}
-        className={`sm:items-center gap-3 md:justify-between justify-around w-3/4 flex sm:flex-row flex-col sm:overflow-y-hidden sm:pl-20 sm:h-[12vh] ${className}`}
+        className={`sm:items-center gap-3 md:justify-between justify-around w-3/4 flex sm:flex-row flex-col sm:overflow-y-hidden sm:pl-10 sm:h-[12vh] ${className}`}
       >
         <div className="tabs-bar flex flex-col gap-[4vw] sm:flex-row h-full sm:items-center sm:bg-[#000000a6] px-2 rounded-lg">
           {tabs.map((tab, index) => (

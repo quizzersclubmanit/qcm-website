@@ -6,7 +6,7 @@ import {
   About,
   Events,
   Sponsors,
-  Container
+  Gallery
 } from "../components/components"
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
       <Hero />
       <About />
       <Events />
-      <div id="gallery" className="londrina-solid-regular"></div>
+      <Gallery />
       <Sponsors />
       <Footer />
     </main>

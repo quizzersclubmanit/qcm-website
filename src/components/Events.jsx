@@ -20,7 +20,7 @@ const Events = () => {
       },
       {
         breakpoint: 815,
-        settings: { slidesToShow: 1 }
+        settings: { arrows: false, slidesToShow: 1 }
       }
     ]
   }
@@ -28,7 +28,7 @@ const Events = () => {
   return (
     <Container
       id="events"
-      className="londrina-solid-regular w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-5 items-center sm:items-start"
+      className="londrina-solid-regular w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-5 items-center sm:items-start bg-blue-950"
     >
       <SectionHead label="Events" className="text-white" />
       <Slider {...settings}>

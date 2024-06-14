@@ -22,6 +22,7 @@ import Banner from "./Banner"
 import Social from "./Social"
 import Contact from "./Contact"
 import DropDown from "./DropDown"
+import Gallery from "./Gallery"
 
 export {
   Header,
@@ -47,5 +48,6 @@ export {
   Banner,
   Social,
   Contact,
-  DropDown
+  DropDown,
+  Gallery
 }

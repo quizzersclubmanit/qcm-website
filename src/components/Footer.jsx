@@ -35,12 +35,15 @@ const Footer = () => {
     }
   })
 
+  let prev = -1
   window.addEventListener("wheel", (e) => {
-    animateBanner(e.deltaY)
+    if (e.deltaY * prev < 0) animateBanner(e.deltaY)
+    prev = e.deltaY
   })
 
   return (
     <Container
+      id="contacts"
       element="footer"
       className="londrina-solid-regular sm:px-[3.5vmax] px-[2vmax] sm:pb-[3.5vmax] pb-[2vmax] sm:h-screen h-[75vh] flex flex-col gap-5 items-center justify-between bg-black text-white"
     >

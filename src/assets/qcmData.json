@@ -158,5 +158,57 @@
       "logo": "/sponsors/unstop.jpg",
       "website": "https://unstop.com/"
     }
+  ],
+  "team": [
+    {
+      "member": "John Smith",
+      "role": "CEO",
+      "picture": "https://images.pexels.com/photos/7752812/pexels-photo-7752812.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "member": "Jane Doe",
+      "role": "CFO",
+      "picture": "https://images.pexels.com/photos/26100579/pexels-photo-26100579/free-photo-of-modern-elegance-with-sleek-glasses.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "member": "Michael Johnson",
+      "role": "CTO",
+      "picture": "https://images.pexels.com/photos/2341350/pexels-photo-2341350.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "member": "Emily Davis",
+      "role": "CMO",
+      "picture": "https://images.pexels.com/photos/20602103/pexels-photo-20602103/free-photo-of-portrait-of-woman-in-black-and-white.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "member": "Daniel Brown",
+      "role": "COO",
+      "picture": "https://images.pexels.com/photos/12961917/pexels-photo-12961917.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "member": "Sarah Wilson",
+      "role": "HR Manager",
+      "picture": "https://images.pexels.com/photos/22601974/pexels-photo-22601974/free-photo-of-smiling-woman-in-black-and-white.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "member": "James Taylor",
+      "role": "IT Manager",
+      "picture": "https://images.pexels.com/photos/19966326/pexels-photo-19966326/free-photo-of-portrait-of-man-in-ivy-cap-and-with-microphone.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "member": "Laura White",
+      "role": "Marketing Manager",
+      "picture": "https://images.pexels.com/photos/20272895/pexels-photo-20272895/free-photo-of-portrait-of-woman-in-pink-blouse.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "member": "David Martinez",
+      "role": "Sales Manager",
+      "picture": "https://images.pexels.com/photos/19964078/pexels-photo-19964078/free-photo-of-man-in-eyeglasses-sitting-and-reading-book.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "member": "Olivia Thompson",
+      "role": "Customer Service Manager",
+      "picture": "https://images.pexels.com/photos/15681635/pexels-photo-15681635/free-photo-of-beautiful-woman-in-straw-hat.jpeg?auto=compress&cs=tinysrgb&w=600"
+    }
   ]
 }
