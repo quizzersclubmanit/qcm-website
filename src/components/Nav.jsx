@@ -120,7 +120,7 @@ const Nav = forwardRef(({ className }, ref) => {
         ) : (
           <Button
             label="Signup"
-            className="py-2 px-3 text-lg shadow-lg bg-gray-50 text-black rounded-lg hover:bg-gray-100"
+            className="py-2 px-3 text-lg shadow-lg bg-gray-50 text-black rounded-lg hover:bg-gray-100 overflow-y-hidden"
             onClick={() => {
               navigate("signup")
             }}

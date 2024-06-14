@@ -33,17 +33,17 @@ const Gallery = () => {
   return (
     <Container
       id="gallery"
-      className="h-screen flex flex-col justify-between text-white bg-black"
+      className="h-screen flex flex-col justify-between text-white sm:bg-black bg-blue-950"
     >
       <SectionHead
         label="Team"
-        className="londrina-solid-regular ml-[3vmax] h-[30%]"
+        className="londrina-solid-regular sm:ml-[3vmax] sm:h-1/3 h-[20%] self-center sm:self-start"
       />
-      <div ref={galleryRef} className="flex gap-1 h-[70%] shrink-0">
+      <div ref={galleryRef} className="flex gap-1 sm:h-2/3 h-[80%] shrink-0">
         {team.map((obj, index) => (
           <div
             key={index}
-            className="frame relative flex flex-col justify-end shrink-0 w-[33vw]"
+            className="frame relative flex flex-col justify-end shrink-0 sm:w-[33vmax] w-[80vmax]"
           >
             <div className="absolute top-0 left-0 w-full h-full flex items-end">
               <img
