@@ -1,20 +1,66 @@
 import { Container, Nav, Modal, Logo } from "./components"
 import { RxHamburgerMenu } from "react-icons/rx"
-import { useState } from "react"
+import { useState, useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useGSAP } from "@gsap/react"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Header = () => {
   const [showTabModal, setShowTabModal] = useState(false)
+  const headRef = useRef(null)
+  const logoRef = useRef(null)
+  const navRef = useRef(null)
+
+  useGSAP(() => {
+    gsap
+      .timeline()
+      .from(logoRef.current, {
+        x: "-100%",
+        ease: "power1.in",
+        duration: 0.7,
+        opacity: 0
+      })
+      .from(navRef.current, {
+        opacity: 0,
+        y: "-100%",
+        duration: 1,
+        ease: "back.out"
+      })
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          start: "top 0",
+          scroller: "body",
+          trigger: headRef.current,
+          scrub: 1
+        }
+      })
+      .to(navRef.current.querySelectorAll(".tabs-bar"), {
+        backgroundColor: "transparent",
+        ease: "power2"
+      })
+      .to(headRef.current, {
+        backgroundColor: "#000000a6",
+        ease: "power2"
+      })
+  }, [])
 
   return (
     <Container
       element="header"
       className="w-screen sm:p-[3.5vmax] p-[2vmax] fixed z-10"
     >
-      <div className="flex py-1 justify-around items-center alatsi-regular text-white transparent-black rounded-lg">
-        <Logo className="w-[7vmax] sm:w-[5vmax]" />
-        <Nav hidden={true} />
+      <div
+        ref={headRef}
+        className="flex py-1 justify-around items-center alatsi-regular rounded-lg overflow-y-hidden"
+      >
+        <Logo ref={logoRef} className="w-[7vmax] sm:w-[5vmax]" />
+        <Nav ref={navRef} className="hidden sm:flex" />
         <RxHamburgerMenu
-          className="block sm:hidden text-2xl"
+          className="block sm:hidden text-2xl text-white"
           onClick={() => {
             setShowTabModal(true)
           }}
