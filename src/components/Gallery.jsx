@@ -14,7 +14,6 @@ const Gallery = () => {
     const frames = galleryRef.current.querySelectorAll(".frame")
     const totalScrollWidth =
       galleryRef.current.scrollWidth - galleryRef.current.clientWidth
-    console.log(totalScrollWidth)
     gsap.to(frames, {
       transform: `translateX(${-totalScrollWidth}px)`,
       ease: "none",

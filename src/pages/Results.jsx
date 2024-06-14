@@ -3,25 +3,35 @@ import { useEffect, useState } from "react"
 import dbService from "../api/db.service"
 import { Query } from "appwrite"
 import fetchResults from "../utils/fetchResults"
-import { Container, SectionHead, Loader } from "../components/components"
+import {
+  Container,
+  SectionHead,
+  Loader,
+  NotAvailable
+} from "../components/components"
 import toast from "react-hot-toast"
 
 const Results = () => {
   const [leaderBoard, setLeaderBoard] = useState([])
   const [loading, setLoading] = useState(true)
+  let scores = []
 
   useEffect(() => {
     dbService
       .select({
         collectionId: env.scoreId,
-        queries: [Query.orderDesc("score"), Query.select("userId")]
+        queries: [Query.orderDesc("score")]
       })
       .then((res) => {
+        scores = res.map((obj) => obj.score)
         const userIds = res.map((obj) => obj.userId)
         return fetchResults(userIds)
       })
-      .then((users) => {
-        setLeaderBoard(users)
+      .then((usernames) => {
+        let i = 0
+        setLeaderBoard(
+          usernames.map((username) => ({ name: username, score: scores[i++] }))
+        )
       })
       .catch((error) => {
         console.error(error)
@@ -33,6 +43,14 @@ const Results = () => {
   }, [])
 
   if (loading) return <Loader />
+  if (leaderBoard.length == 0)
+    return (
+      <NotAvailable
+        message="None of the Contestants played yet"
+        command="Back to Home Page"
+        redirectURL="/"
+      />
+    )
   return (
     <Container
       id="results"
@@ -48,7 +66,9 @@ const Results = () => {
             <span className="sm:text-xl text-[3vmax] text-purple-800 font-bold">
               {index + 1}.{" "}
             </span>
-            <span className="sm:text-base text-xl">{user}</span>
+            <p className="sm:text-base text-2xl uppercase">
+              {user.name} : {user.score}
+            </p>
           </div>
         ))}
       </div>

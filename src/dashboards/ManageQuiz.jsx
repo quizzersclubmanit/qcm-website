@@ -6,9 +6,9 @@ import {
   QuizRibbon,
   SearchBar,
   Logo,
-  Loader
+  Loader,
+  NotAvailable
 } from "../components/components"
-import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes } from "../redux/quiz.slice"
 
@@ -33,6 +33,9 @@ const ManageQuiz = () => {
   }, [])
 
   if (loading) return <Loader />
+  if (quizes.length == 0)
+    return <NotAvailable command="Click to add quiz" redirectURL="/admin/add" />
+
   return (
     <Container
       id="manage-quiz"
@@ -41,20 +44,13 @@ const ManageQuiz = () => {
       <Logo className="w-[8vmax] sm:w-[5vmax]" />
       <SearchBar content={searchContent} setContent={setSearchContent} />
       <div className="flex flex-col items-center gap-3 w-full">
-        {quizes.length > 0 ? (
-          quizes
-            .filter((quiz) =>
-              quiz.question.toLowerCase().includes(searchContent.toLowerCase())
-            )
-            .map((quiz, index) => <QuizRibbon key={index} quiz={quiz} />)
-        ) : (
-          <>
-            <h1 className="text-[3vmax] font-bold">No questions added yet</h1>
-            <Link to="/admin/add" className="text-white">
-              Add Questions
-            </Link>
-          </>
-        )}
+        {quizes
+          .filter((quiz) =>
+            quiz.question.toLowerCase().includes(searchContent.toLowerCase())
+          )
+          .map((quiz, index) => (
+            <QuizRibbon key={index} quiz={quiz} />
+          ))}
       </div>
     </Container>
   )

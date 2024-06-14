@@ -127,7 +127,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
             <Input
               className="p-2 rounded-lg focus:outline-0 focus:bg-pink-200 transition-all bg-pink-300"
               oneline
-              label="Time Limit"
+              label="Time Limit (s)"
               control={control}
               name="timeLimit"
               errors={errors}

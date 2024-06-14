@@ -23,6 +23,7 @@ import Social from "./Social"
 import Contact from "./Contact"
 import DropDown from "./DropDown"
 import Gallery from "./Gallery"
+import NotAvailable from "./NotAvailable"
 
 export {
   Header,
@@ -49,5 +50,6 @@ export {
   Social,
   Contact,
   DropDown,
-  Gallery
+  Gallery,
+  NotAvailable
 }

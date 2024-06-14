@@ -10,6 +10,7 @@ const QuizSlice = createSlice({
       answer: null,
       reward: 0,
       timeLimit: 60,
+      inActive: false
       markedAnswer: null
     }*/
   ],
@@ -19,21 +20,17 @@ const QuizSlice = createSlice({
       state.push(action.payload)
     },
     editQuiz: (state, action) => {
-      state.forEach((item) => {
-        if (item.$id == action.payload.$id) {
-          const changes = action.payload.changes
-          item = { ...item, ...changes }
+      const { $id, changes } = action.payload
+      const todoIndex = state.findIndex((todo) => todo.$id === $id)
+      if (todoIndex >= 0) {
+        state[todoIndex] = {
+          ...state[todoIndex],
+          ...changes
         }
-      })
+      }
     },
     deleteQuiz: (state, action) =>
-      state.filter((item) => item.$id != action.payload),
-    addMarkedAnswerField: (state, action) =>
-      state.map((item) => {
-        if (item.$id == action.payload.$id)
-          return { ...item, markedAnswer: action.payload.markedAnswer }
-        return item
-      })
+      state.filter((item) => item.$id != action.payload)
   }
 })
 
