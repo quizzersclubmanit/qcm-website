@@ -34,7 +34,7 @@ const UserBtn = forwardRef(({ name, showDropDown, setShowDropDown }, ref) => {
   }, [])
 
   return (
-    <div className="flex items-center justify-between sm:gap-2 sm:bg-white rounded sm:p-2 pr-10 pl-1 py-1 overflow-y-hidden">
+    <div className="flex items-center justify-between md:gap-2 md:bg-white rounded md:p-2 pr-10 pl-1 py-1 overflow-y-hidden">
       <span className="uppercase text-black">{name}</span>
       <IoIosArrowDropdownCircle
         className="text-xl cursor-pointer"
@@ -97,14 +97,14 @@ const Nav = forwardRef(({ className }, ref) => {
     <>
       <nav
         ref={ref}
-        className={`sm:items-center gap-3 md:justify-between justify-around w-3/4 flex sm:flex-row flex-col sm:overflow-y-hidden sm:pl-10 sm:h-[12vh] ${className}`}
+        className={`md:items-center gap-3 md:justify-between justify-around w-3/4 flex md:flex-row flex-col md:overflow-y-hidden md:pl-10 md:h-[12vh] ${className}`}
       >
-        <div className="tabs-bar flex flex-col gap-[4vw] sm:flex-row h-full sm:items-center sm:bg-[#000000a6] px-2 rounded-lg">
+        <div className="tabs-bar flex flex-col gap-[4vw] md:flex-row h-full md:items-center md:bg-[#000000a6] px-2 rounded-2xl">
           {tabs.map((tab, index) => (
             <a
               key={index}
               href={tab.to}
-              className="hover:text-yellow-400 trwi transition-all p-2 rounded-lg text-lg no-underline hover:scale-125 sm:text-white text-black"
+              className="hover:text-yellow-400 trwi transition-all p-2 rounded-lg text-lg no-underline hover:scale-125 md:text-white text-black"
             >
               {tab.name}
             </a>

@@ -51,16 +51,16 @@ const Header = () => {
   return (
     <Container
       element="header"
-      className="w-screen sm:p-[3.5vmax] p-[2vmax] fixed z-10"
+      className="w-screen md:p-[3.5vmax] p-[2vmax] fixed z-10"
     >
       <div
         ref={headRef}
-        className="flex py-1 justify-around items-center alatsi-regular rounded-lg overflow-y-hidden"
+        className="flex py-1 justify-around items-center alatsi-regular rounded-2xl overflow-y-hidden"
       >
-        <Logo ref={logoRef} className="w-[7vmax] sm:w-[5vmax]" />
-        <Nav ref={navRef} className="hidden sm:flex" />
+        <Logo ref={logoRef} className="w-[7vmax] md:w-[5vmax]" />
+        <Nav ref={navRef} className="hidden md:flex" />
         <RxHamburgerMenu
-          className="block sm:hidden text-2xl text-white"
+          className="block md:hidden text-2xl text-white"
           onClick={() => {
             setShowTabModal(true)
           }}
