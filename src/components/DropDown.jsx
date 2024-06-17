@@ -1,4 +1,4 @@
-import { forwardRef, useEffect } from "react"
+import { forwardRef } from "react"
 import toast from "react-hot-toast"
 import { Button } from "./components"
 import { logout } from "../redux/user.slice"

@@ -1,53 +1,11 @@
 import { useNavigate } from "react-router-dom"
-import { Button, DropDown } from "./components"
+import { Button, DropDown, UserBtn } from "./components"
 import authService from "../api/auth.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { login, setData } from "../redux/user.slice"
-import { IoIosArrowDropdownCircle } from "react-icons/io"
-import gsap from "gsap"
-import { useGSAP } from "@gsap/react"
 
-const UserBtn = forwardRef(({ name, showDropDown, setShowDropDown }, ref) => {
-  const { contextSafe } = useGSAP()
-
-  const animateDropDown = contextSafe((cond) => {
-    if (cond) {
-      gsap.to(ref.current, {
-        opacity: 1,
-        transform: "translateY(0)",
-        ease: "back.out"
-      })
-    } else {
-      gsap.to(ref.current, {
-        opacity: 0,
-        transform: "translateY(-100%)",
-        ease: "back.in"
-      })
-    }
-  })
-
-  useEffect(() => {
-    return () => {
-      setShowDropDown(false)
-    }
-  }, [])
-
-  return (
-    <div className="flex items-center justify-between md:gap-2 md:bg-white rounded md:p-2 pr-10 pl-1 py-1 overflow-y-hidden">
-      <span className="uppercase text-black">{name}</span>
-      <IoIosArrowDropdownCircle
-        className="text-xl cursor-pointer"
-        onClick={() => {
-          setShowDropDown((prev) => !prev)
-          animateDropDown(!showDropDown)
-        }}
-      />
-    </div>
-  )
-})
-
-const Nav = forwardRef(({ className }, ref) => {
+const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   const tabs = [
     {
       name: "Home",
@@ -104,7 +62,8 @@ const Nav = forwardRef(({ className }, ref) => {
             <a
               key={index}
               href={tab.to}
-              className="hover:text-yellow-400 trwi transition-all p-2 rounded-lg text-lg no-underline hover:scale-125 md:text-white text-black"
+              className="hover:text-yellow-400 md:hover:scale-125 transition-all p-2 rounded-lg text-lg no-underline md:text-white text-black"
+              onClick={offModal}
             >
               {tab.name}
             </a>

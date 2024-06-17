@@ -26,6 +26,7 @@ const PlayQuiz = () => {
   const [score, setScore] = useState(0)
   const navigate = useNavigate()
   const [showSubmitBtn, setShowSubmitBtn] = useState(false)
+  const [timeleft, setTimeleft] = useState(undefined)
 
   useEffect(() => {
     dbService
@@ -62,28 +63,26 @@ const PlayQuiz = () => {
   }, [])
 
   useEffect(() => {
-    if (selectedOption) {
-      dispatch(
-        editQuiz({
-          $id: quizes[currentQue - 1]?.$id || 0,
-          changes: { markedAnswer: selectedOption }
-        })
-      )
-    }
+    dispatch(
+      editQuiz({
+        $id: quizes[currentQue - 1]?.$id || 0,
+        changes: { markedAnswer: selectedOption }
+      })
+    )
   }, [selectedOption])
 
   const handleNext = (timeObj = {}) => {
     let len = quizes.length
-    console.log(len, currentQue)
     if (currentQue >= len) {
-      console.log("In if block")
+      // Handles calculation part
       quizes.forEach((quiz) => {
-        if (quiz.markedAnswer && quiz.markedAnswer == quiz.answer)
+        console.log(quiz)
+        if (quiz.markedAnswer && quiz.markedAnswer == quiz.answer) {
           setScore((prev) => prev + quiz.reward)
+        }
       })
       setShowSubmitBtn(true)
     } else {
-      console.log("In else block")
       setCurrentQue((prev) => prev + 1)
       setSelectedOption(null)
     }
@@ -108,20 +107,25 @@ const PlayQuiz = () => {
 
   useEffect(() => {
     let timeObj = { seconds: 0 }
+    const submitTime = 15,
+      defaultTimerTime = 60
+    if (showSubmitBtn) setTimeleft(submitTime)
+    else setTimeleft(quizes[currentQue - 1]?.timeLimit || defaultTimerTime)
     const interval = setInterval(() => {
       timeObj.seconds++
-      console.log(timeObj.seconds)
-      if (showSubmitBtn && timeObj.seconds >= 15) handleSubmit()
-      if (
+      setTimeleft((prev) => prev - 1)
+      if (showSubmitBtn && timeObj.seconds >= submitTime) handleSubmit()
+      else if (
         !showSubmitBtn &&
-        timeObj.seconds >= (quizes[currentQue - 1]?.timeLimit || 60)
+        timeObj.seconds >=
+          (quizes[currentQue - 1]?.timeLimit || defaultTimerTime)
       )
         handleNext(timeObj)
     }, 1000)
     return () => {
       clearInterval(interval)
     }
-  }, [quizes, showSubmitBtn, currentQue])
+  }, [quizes.length, showSubmitBtn, currentQue])
 
   if (!loggedIn) return <Navigate to="/signup" />
   if (loading) return <Loader />
@@ -131,25 +135,30 @@ const PlayQuiz = () => {
   return (
     <Container
       id="play-quiz"
-      className="londrina-solid-regular w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-start justify-center gap-5 items-center sm:items-center"
+      className="londrina-solid-regular w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-start gap-10 items-center sm:items-center"
     >
       <ProgressBar progress={(currentQue / quizes.length) * 100} />
-      <div className="flex w-full justify-evenly">
+      <div className="flex w-full justify-evenly items-center border border-white rounded-lg">
         <span className="text-white text-2xl">
           Question: {currentQue}/{quizes.length}
         </span>
-        <span className="text-yellow-400 text-2xl">
-          Reward: {quizes[currentQue - 1]?.reward}
-        </span>
+        <div className="flex flex-col">
+          <span className="text-yellow-400 text-2xl">
+            Reward: {quizes[currentQue - 1]?.reward}
+          </span>
+          <span className="text-yellow-400 text-2xl">
+            {showSubmitBtn ? "Auto Submit in" : "Time Left"}: {timeleft} (s)
+          </span>
+        </div>
       </div>
-      <p className="p-4 rounded-lg text-xl focus:outline-0 bg-white w-1/2 cursor-default">
+      <p className="p-4 rounded-lg text-xl focus:outline-0 bg-white md:w-1/2 sm:w-4/5 cursor-default">
         Q. {quizes[currentQue - 1]?.question} ?
       </p>
-      <div className="flex flex-col gap-1 w-1/2">
+      <div className="flex flex-col gap-1 md:w-1/2 sm:w-4/5 w-full">
         {quizes[currentQue - 1]?.options.map((option, index) => (
           <p
             key={index}
-            className={`p-4 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOption == index ? "bg-yellow-400" : "bg-white hover:bg-gray-100"}`}
+            className={`p-4 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOption == index ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${showSubmitBtn && "pointer-events-none"}`}
             onClick={() => {
               setSelectedOption(index)
             }}

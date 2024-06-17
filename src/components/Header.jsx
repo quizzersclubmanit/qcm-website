@@ -60,14 +60,18 @@ const Header = () => {
         <Logo ref={logoRef} className="w-[7vmax] md:w-[5vmax]" />
         <Nav ref={navRef} className="hidden md:flex" />
         <RxHamburgerMenu
-          className="block md:hidden text-2xl text-white"
+          className="block md:hidden text-2xl text-white cursor-pointer"
           onClick={() => {
             setShowTabModal(true)
           }}
         />
         {showTabModal && (
           <Modal setShowModal={setShowTabModal}>
-            <Nav />
+            <Nav
+              offModal={() => {
+                setShowTabModal(false)
+              }}
+            />
           </Modal>
         )}
       </div>

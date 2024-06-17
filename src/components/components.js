@@ -24,6 +24,7 @@ import Contact from "./Contact"
 import DropDown from "./DropDown"
 import Gallery from "./Gallery"
 import NotAvailable from "./NotAvailable"
+import UserBtn from "./UserBtn"
 
 export {
   Header,
@@ -51,5 +52,6 @@ export {
   Contact,
   DropDown,
   Gallery,
-  NotAvailable
+  NotAvailable,
+  UserBtn
 }

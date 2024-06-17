@@ -21,7 +21,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
   const dispatch = useDispatch()
 
   return (
-    <form noValidate className="md:w-[40vw] flex flex-col gap-4">
+    <form noValidate className="sm:w-2/3 w-4/5 flex flex-col gap-4">
       <Input
         rules={{
           required: {

@@ -40,7 +40,7 @@ const QuizRibbon = ({ quiz = {} }) => {
 
   return (
     <Container
-      className="flex items-center sm:w-1/2 w-full justify-between pl-3 bg-white"
+      className="flex items-center md:w-1/2 sm:w-4/5 w-full justify-between pl-3 bg-white"
       style={{
         borderTopLeftRadius: "10px",
         borderBottomLeftRadius: "10px"
@@ -54,27 +54,27 @@ const QuizRibbon = ({ quiz = {} }) => {
       <div className="flex">
         {inActive ? (
           <IoIosRadioButtonOn
-            className="text-[3vmax] cursor-pointer sm:p-2"
+            className="text-[3vmax] cursor-pointer md:p-2"
             onClick={() => {
               setActiveStatus(false)
             }}
           />
         ) : (
           <IoIosRadioButtonOff
-            className="text-[3vmax] cursor-pointer sm:p-2"
+            className="text-[3vmax] cursor-pointer md:p-2"
             onClick={() => {
               setActiveStatus(true)
             }}
           />
         )}
         <RiPencilFill
-          className="text-[3vmax] cursor-pointer bg-yellow-400 sm:p-2"
+          className="text-[3vmax] cursor-pointer bg-yellow-400 md:p-2"
           onClick={() => {
             setShowQuizModal(true)
           }}
         />
         <MdDelete
-          className="text-[3vmax] cursor-pointer bg-red-500 sm:p-2"
+          className="text-[3vmax] cursor-pointer bg-red-500 md:p-2"
           onClick={() => {
             dbService
               .delete({

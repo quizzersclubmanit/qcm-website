@@ -37,7 +37,7 @@ const Footer = () => {
 
   let prev = -1
   window.addEventListener("wheel", (e) => {
-    if (e.deltaY * prev < 0) animateBanner(e.deltaY)
+    if (bannerRef.current && e.deltaY * prev < 0) animateBanner(e.deltaY)
     prev = e.deltaY
   })
 

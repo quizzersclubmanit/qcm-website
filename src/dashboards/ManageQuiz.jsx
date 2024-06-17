@@ -39,14 +39,14 @@ const ManageQuiz = () => {
   return (
     <Container
       id="manage-quiz"
-      className="londrina-solid-regular sm:p-[3vmax] p-[2vmax] min-h-screen flex flex-col  items-center sm:gap-0 gap-4"
+      className="londrina-solid-regular md:p-[3vmax] p-[2vmax] min-h-screen flex flex-col  items-center md:gap-0 gap-4"
     >
-      <Logo className="w-[8vmax] sm:w-[5vmax]" />
+      <Logo className="w-[8vmax] md:w-[5vmax]" />
       <SearchBar content={searchContent} setContent={setSearchContent} />
       <div className="flex flex-col items-center gap-3 w-full">
         {quizes
           .filter((quiz) =>
-            quiz.question.toLowerCase().includes(searchContent.toLowerCase())
+            quiz.question?.toLowerCase().includes(searchContent?.toLowerCase())
           )
           .map((quiz, index) => (
             <QuizRibbon key={index} quiz={quiz} />
