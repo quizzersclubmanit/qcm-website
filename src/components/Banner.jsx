@@ -2,13 +2,13 @@ import { forwardRef } from "react"
 import { arrowRight } from "../assets/assets"
 import { organization } from "../assets/qcmData.json"
 
-const Banner = forwardRef(({}, ref) => {
+const Banner = forwardRef(({ className = "" }, ref) => {
   const loopArr = new Array(16).fill(0)
 
   return (
     <div
       ref={ref}
-      className="gap-4 overflow-x-hidden whitespace-nowrap bg-blue-950 py-6 hidden sm:flex"
+      className={`overflow-x-hidden whitespace-nowrap bg-blue-950 py-6 ${className}`}
     >
       {loopArr.map((_, index) => (
         <div

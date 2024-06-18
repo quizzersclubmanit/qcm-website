@@ -21,7 +21,7 @@ const Social = () => {
   const date = new Date()
 
   return (
-    <Container className="flex justify-between w-full bg-[#a2a2a227] px-4 rounded-lg">
+    <Container className="flex justify-between w-full bg-[#a2a2a227] px-4 rounded-xl border border-white">
       <p className="text-[2.5vmax] sm:text-[1.5vmax] flex items-center gap-2">
         <span className="sm:text-[3vmax] text-[3.5vmax]">&copy;</span>{" "}
         {date.getFullYear()}: {acronym}

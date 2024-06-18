@@ -45,9 +45,9 @@ const Footer = () => {
     <Container
       id="contacts"
       element="footer"
-      className="londrina-solid-regular sm:px-[3.5vmax] px-[2vmax] sm:pb-[3.5vmax] pb-[2vmax] sm:h-screen h-[75vh] flex flex-col gap-5 items-center justify-between bg-black text-white"
+      className="londrina-solid-regular sm:px-[3.5vmax] px-[2vmax] sm:pb-[3.5vmax] pb-[2vmax] sm:h-screen h-[75vh] flex flex-col gap-5 items-center sm:justify-between justify-center bg-black text-white"
     >
-      <Banner ref={bannerRef} />
+      <Banner className="hidden sm:flex gap-4" ref={bannerRef} />
       <Contact />
       <Social />
     </Container>

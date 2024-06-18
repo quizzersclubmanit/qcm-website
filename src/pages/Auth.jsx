@@ -78,10 +78,7 @@ const Auth = ({ label = "signup" }) => {
       </div>
 
       <div className="right md:w-1/2 sm:w-[70vw] w-full min-h-[50vh] sm:h-full bg-white p-8 rounded-2xl flex flex-col gap-8">
-        <SectionHead
-          outline={false}
-          label={label == "signup" ? "Sign Up" : "Login"}
-        />
+        <SectionHead logo label={label == "signup" ? "Sign Up" : "Login"} />
         <form noValidate className="flex flex-col gap-4">
           {label == "signup" && (
             <Input
