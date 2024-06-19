@@ -1,5 +1,5 @@
 import { Client, Account, ID, OAuthProvider } from "appwrite"
-import env from "../../env"
+import env from "../../constants"
 
 const client = new Client()
   .setEndpoint(env.apiEndpoint)
@@ -17,12 +17,6 @@ class Auth {
     } catch (error) {
       throw error
     }
-  }
-
-  createSessionWithGoogle({ home }) {
-    const successURL = `${home}`,
-      failureURL = `${home}/signup`
-    account.createOAuth2Session(OAuthProvider.Google, successURL, failureURL)
   }
 
   async login({ email = "", password = "" }) {

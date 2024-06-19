@@ -17,7 +17,8 @@ const UserBtn = forwardRef(({ name, showDropDown, setShowDropDown }, ref) => {
       gsap.to(ref.current, {
         opacity: 0,
         transform: "translateY(-100%)",
-        ease: "back.in"
+        duration: 0.3,
+        ease: "power1.out"
       })
     }
   })

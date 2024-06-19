@@ -1,5 +1,5 @@
 import { Client, Databases, ID } from "appwrite"
-import env from "../../env"
+import env from "../../constants"
 
 class DB {
   client = new Client()

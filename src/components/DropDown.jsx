@@ -60,7 +60,7 @@ const DropDown = forwardRef(({ user, visible = false }, ref) => {
   return (
     <div
       ref={ref}
-      className={`sm:w-[20vw] sm:min-h-[20vh] w-[50vw] sm:top-[20%] top-[90%] sm:right-10 right-8 text-black bg-[#fff7] transparent-white shadow-lg rounded-lg flex flex-col items-center justify-evenly gap-3 p-6 backdrop-blur ${!visible && "opacity-0 pointer-events-none"}`}
+      className={`md:w-[20vw] sm:w-[35vw] w-[45vw] sm:min-h-[20vh] sm:top-[20%] top-[10%] sm:right-10 right-2 text-black bg-[#fff7] transparent-white shadow-lg rounded-lg flex flex-col items-center justify-evenly gap-3 p-6 backdrop-blur ${!visible && "opacity-0 pointer-events-none"}`}
       style={{
         transform: "translateY(-100%)",
         position: "fixed"

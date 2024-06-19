@@ -1,8 +1,8 @@
 import "./pages.css"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes, editQuiz } from "../redux/quiz.slice"
-import env from "../../env"
+import env, { timeLimits } from "../../constants"
 import { Navigate } from "react-router-dom"
 import {
   Button,
@@ -13,8 +13,10 @@ import {
 } from "../components/components"
 import { useNavigate } from "react-router-dom"
 import dbService from "../api/db.service"
+import storeService from "../api/store.service"
 import { Query } from "appwrite"
 import toast from "react-hot-toast"
+import { arraysEqual } from "../utils/utils"
 
 const PlayQuiz = () => {
   const quizes = useSelector((state) => state.quizes)
@@ -22,17 +24,19 @@ const PlayQuiz = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const [currentQue, setCurrentQue] = useState(1)
-  const [selectedOption, setSelectedOption] = useState(null)
+  const [selectedOptions, setSelectedOptions] = useState(
+    new Array(4).fill(false)
+  )
   const [score, setScore] = useState(0)
   const navigate = useNavigate()
   const [showSubmitBtn, setShowSubmitBtn] = useState(false)
-  const [timeleft, setTimeleft] = useState(undefined)
+  const [timer, setTimer] = useState(undefined)
 
   useEffect(() => {
     dbService
       .select({
         collectionId: env.quizId,
-        queries: [Query.equal("inActive", false)]
+        queries: [Query.equal("inActive", false), Query.orderAsc("section")]
       })
       .then((docs) => {
         dispatch(setQuizes(docs))
@@ -45,7 +49,7 @@ const PlayQuiz = () => {
   useEffect(() => {
     dbService
       .select({
-        collectionId: env.scoreId,
+        collectionId: env.leaderboardId,
         queries: [Query.equal("userId", data.$id)]
       })
       .then((docs) => {
@@ -66,33 +70,33 @@ const PlayQuiz = () => {
     dispatch(
       editQuiz({
         $id: quizes[currentQue - 1]?.$id || 0,
-        changes: { markedAnswer: selectedOption }
+        changes: { markedAnswers: selectedOptions }
       })
     )
-  }, [selectedOption])
+  }, [selectedOptions])
 
-  const handleNext = (timeObj = {}) => {
+  const handleNext = () => {
     let len = quizes.length
-    if (currentQue >= len) {
+    if (currentQue >= len || timeleft == false) {
       // Handles calculation part
       quizes.forEach((quiz) => {
-        console.log(quiz)
-        if (quiz.markedAnswer && quiz.markedAnswer == quiz.answer) {
-          setScore((prev) => prev + quiz.reward)
+        if (quiz.markedAnswers) {
+          if (arraysEqual(quiz.markedAnswers, quiz.answers))
+            setScore((prev) => prev + quiz.reward)
+          else setScore((prev) => prev - quiz.nagativeMarking)
         }
       })
       setShowSubmitBtn(true)
     } else {
       setCurrentQue((prev) => prev + 1)
-      setSelectedOption(null)
+      setSelectedOptions([])
     }
-    timeObj.seconds = 0
   }
 
   const handleSubmit = () => {
     dbService
       .insert({
-        collectionId: env.scoreId,
+        collectionId: env.leaderboardId,
         data: { userId: data.$id, score }
       })
       .then(() => {
@@ -106,26 +110,16 @@ const PlayQuiz = () => {
   }
 
   useEffect(() => {
-    let timeObj = { seconds: 0 }
-    const submitTime = 15,
-      defaultTimerTime = 60
-    if (showSubmitBtn) setTimeleft(submitTime)
-    else setTimeleft(quizes[currentQue - 1]?.timeLimit || defaultTimerTime)
+    let timeleft = timeLimits[quizes[currentQue - 1]?.section - 1] || 30
+    setTimer(timeleft)
     const interval = setInterval(() => {
-      timeObj.seconds++
-      setTimeleft((prev) => prev - 1)
-      if (showSubmitBtn && timeObj.seconds >= submitTime) handleSubmit()
-      else if (
-        !showSubmitBtn &&
-        timeObj.seconds >=
-          (quizes[currentQue - 1]?.timeLimit || defaultTimerTime)
-      )
-        handleNext(timeObj)
+      timeleft--
+      setTimer((prev) => (prev > 0 ? prev - 1 : prev))
     }, 1000)
     return () => {
       clearInterval(interval)
     }
-  }, [quizes.length, showSubmitBtn, currentQue])
+  }, [quizes.length])
 
   if (!loggedIn) return <Navigate to="/signup" />
   if (loading) return <Loader />
@@ -147,25 +141,54 @@ const PlayQuiz = () => {
             Reward: {quizes[currentQue - 1]?.reward}
           </span>
           <span className="text-yellow-400 text-2xl">
-            {showSubmitBtn ? "Auto Submit in" : "Time Left"}: {timeleft} (s)
+            Time Left: {timer} (m)
           </span>
         </div>
       </div>
       <p className="p-4 rounded-lg text-xl focus:outline-0 bg-white md:w-1/2 sm:w-4/5 cursor-default">
         Q. {quizes[currentQue - 1]?.question} ?
       </p>
-      <div className="flex flex-col gap-1 md:w-1/2 sm:w-4/5 w-full">
-        {quizes[currentQue - 1]?.options.map((option, index) => (
-          <p
-            key={index}
-            className={`p-4 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOption == index ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${showSubmitBtn && "pointer-events-none"}`}
-            onClick={() => {
-              setSelectedOption(index)
-            }}
-          >
-            {option}
-          </p>
-        ))}
+      {quizes[currentQue - 1]?.supportingPic && (
+        <img
+          src={storeService.fetchFilePreview({
+            fileId: quizes[currentQue - 1]?.supportingPic
+          })}
+          alt="Supporting Picture"
+          className="w-1/3 sm:w-1/4 md:w-[20%]"
+        />
+      )}
+      <div className="grid grid-cols-2 gap-1 md:w-1/2 sm:w-4/5 w-full">
+        {quizes[currentQue - 1]?.options.map((option, index) => {
+          if (quizes[currentQue - 1]?.optionsContainImg)
+            return (
+              <img
+                key={index}
+                src={storeService.fetchFilePreview({
+                  fileId: option
+                })}
+                className={`w-full aspect-video cursor-pointer ${selectedOptions[index] ? "border-4 border-yellow-400" : ""} ${!timer && "pointer-events-none"}`}
+                alt={`Option ${index}`}
+                onClick={() => {
+                  setSelectedOptions((prev) =>
+                    prev.map((bool, idx) => (idx == index ? !bool : bool))
+                  )
+                }}
+              />
+            )
+          return (
+            <p
+              key={index}
+              className={`p-4 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
+              onClick={() => {
+                setSelectedOptions((prev) =>
+                  prev.map((bool, idx) => (idx == index ? !bool : bool))
+                )
+              }}
+            >
+              {option}
+            </p>
+          )
+        })}
       </div>
       {showSubmitBtn ? (
         <Button
@@ -174,11 +197,21 @@ const PlayQuiz = () => {
           onClick={handleSubmit}
         />
       ) : (
-        <Button
-          label="Next"
-          className="bg-blue-400 py-2 px-4 rounded hover:bg-blue-500 text-xl"
-          onClick={handleNext}
-        />
+        <div className="flex justify-between md:w-1/2 sm:w-4/5">
+          <Button
+            label="Prev"
+            className="bg-gray-400 py-2 px-4 rounded hover:bg-gray-500 text-xl"
+            onClick={() => {
+              setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
+              setSelectedOptions([])
+            }}
+          />
+          <Button
+            label="Next"
+            className="bg-blue-400 py-2 px-4 rounded hover:bg-blue-500 text-xl"
+            onClick={handleNext}
+          />
+        </div>
       )}
     </Container>
   )

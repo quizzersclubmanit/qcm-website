@@ -7,11 +7,11 @@ const QuizSlice = createSlice({
       $id: "",
       question: "",
       options: ["", "", "", ""],
-      answer: null,
-      reward: 0,
-      timeLimit: 60,
-      inActive: false
-      markedAnswer: null
+      answers: [false, false, false, false],
+      reward: null,
+      inActive: false,
+      negativeMarking: 0,
+      markedAnswers: [false, false, false, false]
     }*/
   ],
   reducers: {

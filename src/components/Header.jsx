@@ -62,7 +62,7 @@ const Header = () => {
         <RxHamburgerMenu
           className="block md:hidden text-2xl text-white cursor-pointer"
           onClick={() => {
-            setShowTabModal(true)
+            setShowTabModal((prev) => !prev)
           }}
         />
         {showTabModal && (

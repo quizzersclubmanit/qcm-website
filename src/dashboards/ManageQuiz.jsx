@@ -1,6 +1,6 @@
 import dbService from "../api/db.service"
 import { useEffect, useState } from "react"
-import env from "../../env"
+import env from "../../constants"
 import {
   Container,
   QuizRibbon,
@@ -41,7 +41,7 @@ const ManageQuiz = () => {
       id="manage-quiz"
       className="londrina-solid-regular md:p-[3vmax] p-[2vmax] min-h-screen flex flex-col  items-center md:gap-0 gap-4"
     >
-      <Logo className="w-[8vmax] md:w-[5vmax]" />
+      <Logo className="w-[8vmax] md:w-[5vmax] sm:w-[7vmax]" />
       <SearchBar content={searchContent} setContent={setSearchContent} />
       <div className="flex flex-col items-center gap-3 w-full">
         {quizes
