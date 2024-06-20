@@ -9,7 +9,7 @@ import dbService from "../api/db.service"
 import { useCallback, useState } from "react"
 import env from "../../constants"
 import { useDispatch } from "react-redux"
-import { login, setData } from "../redux/user.slice"
+import { setData } from "../redux/user.slice"
 import toast from "react-hot-toast"
 
 const Auth = ({ label = "signup" }) => {
@@ -55,7 +55,33 @@ const Auth = ({ label = "signup" }) => {
       name: formData.name
     })
       .then((user) => {
-        if (user.name) {
+        if (formData.name) {
+          authService
+            .addPhoneNumber({
+              phone: formData.phone,
+              password: formData.password
+            })
+            .then(() => {
+              authService
+                .sendVerificationToken()
+                .then(() => {
+                  const dets = JSON.stringify({
+                    userId: user.$id,
+                    phone: formData.phone
+                  })
+                  navigate(`/account/verification/${dets}`)
+                })
+                .catch((error) => {
+                  console.error(error)
+                  toast.error(error.message)
+                })
+            })
+            .catch((error) => {
+              console.error(error)
+            })
+        }
+
+        if (formData.name) {
           dbService
             .insert({
               collectionId: env.userId,
@@ -73,11 +99,12 @@ const Auth = ({ label = "signup" }) => {
             .catch((error) => {
               console.error(error)
             })
+        } else {
+          dispatch(login())
+          navigate("/")
+          toast.success("Logged In Successfully")
         }
         dispatch(setData(user))
-        dispatch(login())
-        navigate("/")
-        toast.success("Logged In Successfully")
       })
       .catch((error) => {
         console.error(error)

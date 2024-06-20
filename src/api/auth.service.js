@@ -1,4 +1,4 @@
-import { Client, Account, ID, OAuthProvider } from "appwrite"
+import { Client, Account, ID } from "appwrite"
 import env from "../../constants"
 
 const client = new Client()
@@ -7,7 +7,7 @@ const client = new Client()
 const account = new Account(client)
 
 class Auth {
-  async signupAndLogin({ email = "", password = "", name = "" }) {
+  async signupAndLogin({ email, password, name }) {
     try {
       if (name == "admin")
         throw new Error("Name is reserved. Please enter another name")
@@ -41,6 +41,32 @@ class Auth {
     try {
       const res = await account.deleteSessions()
       return res
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async addPhoneNumber({ phone, password }) {
+    try {
+      const res = account.updatePhone(`+91${phone}`, password)
+      return res
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async sendVerificationToken() {
+    try {
+      const res = await account.createPhoneVerification()
+      return res
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async verifyToken({ userId, secret }) {
+    try {
+      const res = await account.updatePhoneVerification(userId, secret)
     } catch (error) {
       throw error
     }
