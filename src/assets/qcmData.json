@@ -66,8 +66,8 @@
       "title": "Anveshan",
       "desc": "Where Intellect Meets Adventure",
       "content": "Anveshan'24, organized by Quizzers' Club MANIT, was an exhilarating event combining intellect and adventure. Participants navigated a series of challenging clues, puzzles, and riddles across MANIT, testing their problem-solving skills, teamwork, and resilience. The competition was intense, with treasure hunters striving for victory. The event celebrated the triumph of the sharpest minds and most resilient teams, highlighting the power of determination and collaboration. Anveshan'24 left participants with unforgettable memories and a testament to the spirit of adventure and relentless pursuit of knowledge. Congratulations to all who took part and made history.",
-      "cover": "events/anveshan/main.JPG",
-      "images": [],
+      "cover": "/events/anveshan/main.JPG",
+      "images": ["/events/anveshan/1.JPG", "/events/anveshan/2.JPG"],
       "insta": ""
     },
     {

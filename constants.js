@@ -10,9 +10,9 @@ const env = {
 }
 
 export const timeLimits = [
-  60, // in mins
-  30,
-  20
+  10, // in mins
+  20,
+  10
 ]
 
 export default env

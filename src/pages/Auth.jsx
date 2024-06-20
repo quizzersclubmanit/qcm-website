@@ -102,7 +102,7 @@ const Auth = ({ label = "signup" }) => {
         <img src={authIllustration} alt="Auth Illustration" />
       </div>
 
-      <div className="right md:w-1/2 sm:w-[70vw] w-full min-h-[50vh] sm:h-full bg-white p-8 rounded-2xl flex flex-col gap-8">
+      <div className="right md:w-1/2 sm:w-[70vw] w-full sm:h-full bg-white p-8 rounded-2xl flex flex-col gap-8">
         <SectionHead logo label={label == "signup" ? "Register" : "Login"} />
         <form noValidate className="flex flex-col gap-4">
           {label == "signup" && (
@@ -208,7 +208,7 @@ const Auth = ({ label = "signup" }) => {
           </Input>
 
           <Button
-            label={label == "signup" ? "Create Account" : "Login"}
+            label={label == "signup" ? "Register" : "Login"}
             className="p-2 rounded-l text-lg text-white bg-[#020062] hover:bg-[#2b2b67]"
             onClick={handleSubmit((formData) => {
               if (label == "signup")

@@ -4,7 +4,7 @@ const ProgressBar = ({ progress = 0 }) => {
   return (
     <Container className="flex w-full h-4 bg-white rounded-r-lg">
       <div
-        className="rounded-r-lg bg-blue-900"
+        className="rounded-r-lg bg-blue-900 transition-all"
         style={{
           width: `${progress}%`
         }}

@@ -32,6 +32,40 @@ const PlayQuiz = () => {
   const [showSubmitBtn, setShowSubmitBtn] = useState(false)
   const [timer, setTimer] = useState(undefined)
 
+  const handleNext = useCallback(() => {
+    let len = quizes.length
+    if (currentQue >= len || timeleft == false) {
+      // Handles calculation part
+      quizes.forEach((quiz) => {
+        if (quiz.markedAnswers) {
+          if (arraysEqual(quiz.markedAnswers, quiz.answers))
+            setScore((prev) => prev + quiz.reward)
+          else setScore((prev) => prev - quiz.nagativeMarking)
+        }
+      })
+      setShowSubmitBtn(true)
+    } else {
+      setCurrentQue((prev) => prev + 1)
+      setSelectedOptions([])
+    }
+  }, [])
+
+  const handleSubmit = useCallback(() => {
+    dbService
+      .insert({
+        collectionId: env.leaderboardId,
+        data: { userId: data.$id, score }
+      })
+      .then(() => {
+        navigate(`/quiz/result/${score}`)
+        toast.success("Quiz Submitted Succesfully")
+      })
+      .catch((error) => {
+        toast.error(error.message)
+        console.error(error)
+      })
+  }, [])
+
   useEffect(() => {
     dbService
       .select({
@@ -75,47 +109,13 @@ const PlayQuiz = () => {
     )
   }, [selectedOptions])
 
-  const handleNext = () => {
-    let len = quizes.length
-    if (currentQue >= len || timeleft == false) {
-      // Handles calculation part
-      quizes.forEach((quiz) => {
-        if (quiz.markedAnswers) {
-          if (arraysEqual(quiz.markedAnswers, quiz.answers))
-            setScore((prev) => prev + quiz.reward)
-          else setScore((prev) => prev - quiz.nagativeMarking)
-        }
-      })
-      setShowSubmitBtn(true)
-    } else {
-      setCurrentQue((prev) => prev + 1)
-      setSelectedOptions([])
-    }
-  }
-
-  const handleSubmit = () => {
-    dbService
-      .insert({
-        collectionId: env.leaderboardId,
-        data: { userId: data.$id, score }
-      })
-      .then(() => {
-        navigate(`/quiz/result/${score}`)
-        toast.success("Quiz Submitted Succesfully")
-      })
-      .catch((error) => {
-        toast.error(error.message)
-        console.error(error)
-      })
-  }
-
   useEffect(() => {
     let timeleft = timeLimits[quizes[currentQue - 1]?.section - 1] || 30
     setTimer(timeleft)
     const interval = setInterval(() => {
       timeleft--
       setTimer((prev) => (prev > 0 ? prev - 1 : prev))
-    }, 1000)
+    }, 60000)
     return () => {
       clearInterval(interval)
     }
@@ -132,17 +132,19 @@ const PlayQuiz = () => {
       className="londrina-solid-regular w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-start gap-10 items-center sm:items-center"
     >
       <ProgressBar progress={(currentQue / quizes.length) * 100} />
-      <div className="flex w-full justify-evenly items-center border border-white rounded-lg">
-        <span className="text-white text-2xl">
-          Question: {currentQue}/{quizes.length}
-        </span>
-        <div className="flex flex-col">
-          <span className="text-yellow-400 text-2xl">
-            Reward: {quizes[currentQue - 1]?.reward}
+      <div className="flex w-full justify-evenly py-2 items-center border-4 border-white rounded-lg sm:text-2xl text-xl">
+        <div className="flex flex-col text-white">
+          <span>Section: {quizes[currentQue - 1]?.section}</span>
+          <span>
+            Question: {currentQue}/{quizes.length}
           </span>
-          <span className="text-yellow-400 text-2xl">
-            Time Left: {timer} (m)
+        </div>
+        <div className="flex flex-col text-yellow-400">
+          <span>
+            Marking Scheme: +{quizes[currentQue - 1]?.reward}, -
+            {quizes[currentQue - 1]?.nagativeMarking}
           </span>
+          <span>Time Left: {timer} (m)</span>
         </div>
       </div>
       <p className="p-4 rounded-lg text-xl focus:outline-0 bg-white md:w-1/2 sm:w-4/5 cursor-default">
@@ -157,7 +159,7 @@ const PlayQuiz = () => {
           className="w-1/3 sm:w-1/4 md:w-[20%]"
         />
       )}
-      <div className="grid grid-cols-2 gap-1 md:w-1/2 sm:w-4/5 w-full">
+      <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-1 gap-3 md:w-1/2 sm:w-4/5 w-full">
         {quizes[currentQue - 1]?.options.map((option, index) => {
           if (quizes[currentQue - 1]?.optionsContainImg)
             return (
@@ -197,10 +199,10 @@ const PlayQuiz = () => {
           onClick={handleSubmit}
         />
       ) : (
-        <div className="flex justify-between md:w-1/2 sm:w-4/5">
+        <div className="flex justify-between md:w-1/2 sm:w-4/5 w-full">
           <Button
             label="Prev"
-            className="bg-gray-400 py-2 px-4 rounded hover:bg-gray-500 text-xl"
+            className="bg-gray-300 py-2 px-4 rounded hover:bg-gray-400 text-xl"
             onClick={() => {
               setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
               setSelectedOptions([])
