@@ -18,13 +18,14 @@ import Sponsors from "./Sponsors"
 import ProgressBar from "./ProgressBar"
 import Admin from "./Admin"
 import Loader from "./Loader"
-import Banner from "./Banner"
 import Social from "./Social"
 import Contact from "./Contact"
 import DropDown from "./DropDown"
 import Gallery from "./Gallery"
 import NotAvailable from "./NotAvailable"
 import UserBtn from "./UserBtn"
+import Map from "./Map"
+import Accordion from "./Accordion"
 
 export {
   Header,
@@ -47,11 +48,12 @@ export {
   ProgressBar,
   Admin,
   Loader,
-  Banner,
   Social,
   Contact,
   DropDown,
   Gallery,
   NotAvailable,
-  UserBtn
+  UserBtn,
+  Map,
+  Accordion
 }

@@ -129,7 +129,10 @@ const PlayQuiz = () => {
   return (
     <Container
       id="play-quiz"
-      className="londrina-solid-regular w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-start gap-10 items-center sm:items-center"
+      onContextMenu={(e) => {
+        e.preventDefault()
+      }}
+      className="w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-start gap-10 items-center sm:items-center"
     >
       <ProgressBar progress={(currentQue / quizes.length) * 100} />
       <div className="flex w-full justify-evenly py-2 items-center border-4 border-white rounded-lg sm:text-2xl text-xl">

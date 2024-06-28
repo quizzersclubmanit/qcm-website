@@ -48,7 +48,7 @@ const Verification = () => {
             <div>
               <Button
                 label="Verify Account"
-                className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-3 bg-blue-700 border-none text-white text-sm shadow-sm"
+                className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-3 bg-[#020062] hover:bg-[#2b2b67] border-none text-white text-sm shadow-sm"
                 onClick={handleSubmit((formData) => {
                   const code = formData.codeArr.join("")
                   authService

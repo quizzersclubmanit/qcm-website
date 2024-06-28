@@ -7,7 +7,9 @@ const SectionHead = ({
   logo = false
 }) => {
   return (
-    <Container className={`flex items-center gap-2 ${className}`}>
+    <Container
+      className={`londrina-solid-regular flex items-center gap-2 ${className}`}
+    >
       {logo && <Logo className="w-[9vmax] md:w-[5vmax] sm:w-[7vmax]" />}
       <h3
         className={`sm:text-[5vmax] text-[6vmax] ${outline && "text-outline"}`}

@@ -20,6 +20,9 @@ const Layout = () => {
   window.addEventListener("mousemove", (e) => {
     animateCursor(e.x, e.y)
   })
+  window.addEventListener("keydown", (e) => {
+    if (e.code == "F12") e.preventDefault()
+  })
 
   return (
     <>

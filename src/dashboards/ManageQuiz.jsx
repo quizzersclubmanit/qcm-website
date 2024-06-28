@@ -39,7 +39,7 @@ const ManageQuiz = () => {
   return (
     <Container
       id="manage-quiz"
-      className="londrina-solid-regular md:p-[3vmax] p-[2vmax] min-h-screen flex flex-col  items-center md:gap-0 gap-4"
+      className="alatsi-regular md:p-[3vmax] p-[2vmax] min-h-screen flex flex-col  items-center md:gap-0 gap-4"
     >
       <Logo className="w-[8vmax] md:w-[5vmax] sm:w-[7vmax]" />
       <SearchBar content={searchContent} setContent={setSearchContent} />

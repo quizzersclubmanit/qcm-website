@@ -1,7 +1,7 @@
 {
   "organization": "Quizzers' Club",
   "acronym": "QCM",
-  "about": "QCM is the official quizzing society of Maulana Azad National Institute of Technology, formed by a bunch of quizzing prodigies of MANIT on February 2013. It aims to buff the grace of quizzing among quizzers until gleamed and trivialize the complexities of quizzing, indeed, ingraining the knack for it among non-quizzers. The society is driven by students from a variety of domain - the content writers, bloggers, executives, video editors, photographers, and web developers who work allied in rooting, sprouting and upshooting an entire idea, thus, instilling skills and ethics in them that last a lifetime.",
+  "about": "QCM is the official quizzing society of Maulana Azad National Institute of Technology, formed by a bunch of quizzing prodigies of NIT Bhopal on February 2013. It aims to buff the grace of quizzing among quizzers until gleamed and trivialize the complexities of quizzing, indeed, ingraining the knack for it among non-quizzers. The society is driven by students from a variety of domain - the content writers, bloggers, executives, video editors, photographers, and web developers who work allied in rooting, sprouting and upshooting an entire idea, thus, instilling skills and ethics in them that last a lifetime.",
   "contacts": [
     {
       "name": "Nishchal Prajapati",
@@ -14,11 +14,11 @@
   ],
   "email": "quizzersclubmanit@gmail.com",
   "address": {
-    "org": "Quizzers' Club MANIT",
+    "org": "Quizzers' Club NIT Bhopal",
     "college": "Maulana Azad National Institute of Technology",
     "city": "Bhopal",
     "pin": "462003",
-    "gmap": "https://www.google.com/maps/place/LRC+MANIT/@23.2166489,77.4067549,17z/data=!3m1!4b1!4m6!3m5!1s0x397c43accb2f81f9:0x603cfa000db72484!8m2!3d23.216644!4d77.4093298!16s%2Fg%2F11t89yzl7g?authuser=0&entry=ttu"
+    "gmap": "https://www.google.com/maps/place/LRC+NIT Bhopal/@23.2166489,77.4067549,17z/data=!3m1!4b1!4m6!3m5!1s0x397c43accb2f81f9:0x603cfa000db72484!8m2!3d23.216644!4d77.4093298!16s%2Fg%2F11t89yzl7g?authuser=0&entry=ttu"
   },
   "facebook": "https://www.facebook.com/quizzersclub",
   "instagram": "https://www.instagram.com/quizzersclub/",
@@ -65,7 +65,7 @@
       "id": "anveshan",
       "title": "Anveshan",
       "desc": "Where Intellect Meets Adventure",
-      "content": "Anveshan'24, organized by Quizzers' Club MANIT, was an exhilarating event combining intellect and adventure. Participants navigated a series of challenging clues, puzzles, and riddles across MANIT, testing their problem-solving skills, teamwork, and resilience. The competition was intense, with treasure hunters striving for victory. The event celebrated the triumph of the sharpest minds and most resilient teams, highlighting the power of determination and collaboration. Anveshan'24 left participants with unforgettable memories and a testament to the spirit of adventure and relentless pursuit of knowledge. Congratulations to all who took part and made history.",
+      "content": "Anveshan'24, organized by Quizzers' Club NIT Bhopal, was an exhilarating event combining intellect and adventure. Participants navigated a series of challenging clues, puzzles, and riddles across NIT Bhopal, testing their problem-solving skills, teamwork, and resilience. The competition was intense, with treasure hunters striving for victory. The event celebrated the triumph of the sharpest minds and most resilient teams, highlighting the power of determination and collaboration. Anveshan'24 left participants with unforgettable memories and a testament to the spirit of adventure and relentless pursuit of knowledge. Congratulations to all who took part and made history.",
       "cover": "/events/anveshan/main.JPG",
       "images": ["/events/anveshan/1.JPG", "/events/anveshan/2.JPG"],
       "insta": ""

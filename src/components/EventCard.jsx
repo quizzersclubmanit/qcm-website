@@ -11,6 +11,7 @@ const EventCard = ({ dets = {} }) => {
         style={{
           boxShadow: "0.7vmax 1.5vmax 0 10px black",
           borderTopLeftRadius: "10px",
+          borderBottomLeftRadius: "10px",
           borderTopRightRadius: "10px"
         }}
       >
@@ -23,7 +24,7 @@ const EventCard = ({ dets = {} }) => {
         <p className="w-full continue-text">{dets.desc}</p>
         <Button
           label="Read More"
-          className="theme-blue text-yellow-400 p-2 rounded hover:bg-blue-900 text-lg"
+          className="text-yellow-400 p-2 rounded bg-blue-950 hover:bg-blue-900 text-lg"
           onClick={() => {
             navigate(`events/${dets.id}`)
           }}

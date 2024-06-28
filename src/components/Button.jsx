@@ -22,7 +22,7 @@ const Button = forwardRef(
     return (
       <button
         ref={ref}
-        className={`londrina-solid-black transition-all ${className}`}
+        className={`transition-all ${className}`}
         onClick={onClick}
         {...props}
       >

@@ -9,7 +9,7 @@ import dbService from "../api/db.service"
 import { useCallback, useState } from "react"
 import env from "../../constants"
 import { useDispatch } from "react-redux"
-import { setData } from "../redux/user.slice"
+import { setData, login } from "../redux/user.slice"
 import toast from "react-hot-toast"
 
 const Auth = ({ label = "signup" }) => {
@@ -20,7 +20,8 @@ const Auth = ({ label = "signup" }) => {
       password: "",
       phone: "",
       school: "",
-      city: ""
+      city: "",
+      sex: ""
     }
   })
   const { errors } = formState
@@ -66,7 +67,7 @@ const Auth = ({ label = "signup" }) => {
                 .sendVerificationToken()
                 .then(() => {
                   const dets = JSON.stringify({
-                    userId: user.$id,
+                    userId: user.userId,
                     phone: formData.phone
                   })
                   navigate(`/account/verification/${dets}`)
@@ -87,10 +88,11 @@ const Auth = ({ label = "signup" }) => {
               collectionId: env.userId,
               data: {
                 userId: user.$id,
-                name: formData.name,
+                name: formData.name.toLowerCase(),
                 contactNo: formData.phone,
-                educationalInstitute: formData.school,
-                city: formData.city
+                educationalInstitute: formData.school.toLowerCase(),
+                city: formData.city.toLowerCase(),
+                sex: formData.sex.toLowerCase()
               }
             })
             .then((res) => {
@@ -117,13 +119,21 @@ const Auth = ({ label = "signup" }) => {
         setValue("phone", "")
         setValue("school", "")
         setValue("city", "")
+        setValue("sex", "")
       })
   }, [])
+
+  const requiredCheck = {
+    required: {
+      value: true,
+      message: "This is a required field"
+    }
+  }
 
   return (
     <Container
       id="auth"
-      className="londrina-solid-regular sm:p-[3.5vmax] p-[2vmax] min-h-screen flex justify-center items-center"
+      className="alatsi-regular sm:p-[3.5vmax] p-[2vmax] min-h-screen flex justify-center items-center"
     >
       <div className="left w-1/2 items-center hidden md:flex">
         <img src={authIllustration} alt="Auth Illustration" />
@@ -139,12 +149,15 @@ const Auth = ({ label = "signup" }) => {
                 placeholder="Name"
                 className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                 style={{ borderBottom: "2px solid blue" }}
-                {...register("name", {
-                  required: {
-                    value: true,
-                    message: "This is a required field"
-                  }
-                })}
+                {...register("name", requiredCheck)}
+              />
+
+              <Input
+                error={errors.sex}
+                placeholder="Male / Female / Other"
+                className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
+                style={{ borderBottom: "2px solid blue" }}
+                {...register("sex", requiredCheck)}
               />
 
               <Input
@@ -154,10 +167,7 @@ const Auth = ({ label = "signup" }) => {
                 className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                 style={{ borderBottom: "2px solid blue" }}
                 {...register("phone", {
-                  required: {
-                    value: true,
-                    message: "This is a required field"
-                  },
+                  ...requiredCheck,
                   pattern: {
                     value:
                       /^(?:(?:\+91|0)?(?:\s[-.\s])?\d{3}\s?\d{3}\s?\d{4})?$/,
@@ -171,12 +181,7 @@ const Auth = ({ label = "signup" }) => {
                 placeholder="School"
                 className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                 style={{ borderBottom: "2px solid blue" }}
-                {...register("school", {
-                  required: {
-                    value: true,
-                    message: "This is a required field"
-                  }
-                })}
+                {...register("school", requiredCheck)}
               />
 
               <Input
@@ -184,12 +189,7 @@ const Auth = ({ label = "signup" }) => {
                 placeholder="City"
                 className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                 style={{ borderBottom: "2px solid blue" }}
-                {...register("city", {
-                  required: {
-                    value: true,
-                    message: "This is a required field"
-                  }
-                })}
+                {...register("city", requiredCheck)}
               />
             </>
           )}
@@ -201,10 +201,7 @@ const Auth = ({ label = "signup" }) => {
             type="email"
             placeholder="Email"
             {...register("email", {
-              required: {
-                value: true,
-                message: "This is a required field"
-              },
+              ...requiredCheck,
               pattern: {
                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                 message: "Enter a valid Email"
@@ -219,10 +216,7 @@ const Auth = ({ label = "signup" }) => {
             type={showPassword ? "text" : "password"}
             placeholder="Password"
             {...register("password", {
-              required: {
-                value: true,
-                message: "This is a required field"
-              },
+              ...requiredCheck,
               pattern: {
                 value:
                   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-+])[^\s]{8,}$/,

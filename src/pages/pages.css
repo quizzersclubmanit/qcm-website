@@ -16,12 +16,6 @@
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 }
-#about {
-  background: url("/white-bg.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 #event {
   background: url("/blue-bg.svg");

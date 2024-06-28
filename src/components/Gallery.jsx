@@ -38,6 +38,7 @@ const Gallery = () => {
       <SectionHead
         label="Team"
         className="londrina-solid-regular sm:ml-[3vmax] h-[20%] self-center sm:self-start"
+        logo
       />
       <div ref={galleryRef} className="flex h-[80%] shrink-0 sm:gap-0 gap-2">
         {team.map((obj, index) => (

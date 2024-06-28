@@ -55,7 +55,7 @@ const Header = () => {
     >
       <div
         ref={headRef}
-        className="flex py-1 justify-around items-center alatsi-regular rounded-2xl overflow-y-hidden"
+        className="flex py-1 justify-around items-center rounded-2xl overflow-y-hidden"
       >
         <Logo ref={logoRef} className="w-[7vmax] md:w-[5vmax]" />
         <Nav ref={navRef} className="hidden md:flex" />

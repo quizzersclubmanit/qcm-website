@@ -21,7 +21,7 @@ const Event = () => {
   return (
     <Container
       id="event"
-      className="londrina-solid-regular min-h-screen flex flex-col px-5 pb-5 justify-evenly items-center"
+      className="alatsi-regular min-h-screen flex flex-col px-5 pb-5 justify-evenly items-center"
     >
       <SectionHead logo label="Event" className="text-white self-start" />
       <div className="sm:w-[60%] w-full flex flex-col p-[1vmax] bg-white rounded-lg gap-5">

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { Button, DropDown, UserBtn } from "./components"
 import authService from "../api/auth.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
@@ -21,7 +21,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     },
     {
       name: "Team",
-      to: "#gallery"
+      to: "team"
     },
     {
       name: "Sponsors",
@@ -58,16 +58,27 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
         className={`md:items-center gap-3 md:justify-between justify-around w-3/4 flex md:flex-row flex-col md:overflow-y-hidden md:pl-10 md:h-[12vh] ${className}`}
       >
         <div className="tabs-bar flex flex-col gap-[4vw] md:flex-row h-full md:items-center md:bg-[#000000a6] px-2 rounded-2xl">
-          {tabs.map((tab, index) => (
-            <a
-              key={index}
-              href={tab.to}
-              className="hover:text-yellow-400 md:hover:scale-125 transition-all p-2 rounded-lg text-lg no-underline md:text-white text-black"
-              onClick={offModal}
-            >
-              {tab.name}
-            </a>
-          ))}
+          {tabs.map((tab, index) =>
+            tab.to.startsWith("#") ? (
+              <a
+                key={index}
+                href={tab.to}
+                className="hover:text-yellow-400 md:hover:scale-125 transition-all p-2 rounded-lg text-lg no-underline md:text-white text-black"
+                onClick={offModal}
+              >
+                {tab.name}
+              </a>
+            ) : (
+              <Link
+                key={index}
+                to={tab.to}
+                className="hover:text-yellow-400 md:hover:scale-125 transition-all p-2 rounded-lg text-lg no-underline md:text-white text-black"
+                onClick={offModal}
+              >
+                {tab.name}
+              </Link>
+            )
+          )}
         </div>
         {loggedIn ? (
           <UserBtn

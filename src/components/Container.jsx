@@ -1,13 +1,16 @@
-import { createElement } from "react"
+import { createElement, forwardRef } from "react"
 
-const Container = ({ element = "div", children, className = "", ...props }) => {
-  const container = createElement(element, {
-    children: children,
-    className: className,
-    ...props
-  })
+const Container = forwardRef(
+  ({ element = "div", children, className = "", ...props }, ref) => {
+    const container = createElement(element, {
+      children: children,
+      className: className,
+      ref: ref,
+      ...props
+    })
 
-  return container
-}
+    return container
+  }
+)
 
 export default Container
