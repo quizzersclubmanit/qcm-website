@@ -16,7 +16,7 @@ const UserBtn = forwardRef(({ name, showDropDown, setShowDropDown }, ref) => {
     } else {
       gsap.to(ref.current, {
         opacity: 0,
-        transform: "translateY(-100%)",
+        transform: "translateY(-25%)",
         duration: 0.3,
         ease: "power1.out"
       })
@@ -30,7 +30,7 @@ const UserBtn = forwardRef(({ name, showDropDown, setShowDropDown }, ref) => {
   }, [])
 
   return (
-    <div className="flex items-center md:gap-2 sm:bg-white rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden">
+    <div className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden">
       <span className="uppercase text-black">{name}</span>
       <IoIosArrowDropdownCircle
         className="text-xl cursor-pointer"

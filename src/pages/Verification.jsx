@@ -19,7 +19,7 @@ const Verification = () => {
   dets = JSON.parse(dets)
 
   return (
-    <Container className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
+    <Container className="poppins-regular relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
       <div className="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl flex flex-col gap-7">
         <div className="flex flex-col items-center justify-center text-center space-y-2">
           <p className="font-semibold text-2xl">Phone Verification</p>

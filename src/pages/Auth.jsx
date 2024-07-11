@@ -21,7 +21,7 @@ const Auth = ({ label = "signup" }) => {
       phone: "",
       school: "",
       city: "",
-      sex: ""
+      sex: 2
     }
   })
   const { errors } = formState
@@ -133,14 +133,18 @@ const Auth = ({ label = "signup" }) => {
   return (
     <Container
       id="auth"
-      className="alatsi-regular sm:p-[3.5vmax] p-[2vmax] min-h-screen flex justify-center items-center"
+      className="poppins-regular background-blue sm:p-[3.5vmax] p-[2vmax] min-h-screen flex justify-center items-center"
     >
       <div className="left w-1/2 items-center hidden md:flex">
         <img src={authIllustration} alt="Auth Illustration" />
       </div>
 
       <div className="right md:w-1/2 sm:w-[70vw] w-full sm:h-full bg-white p-8 rounded-2xl flex flex-col gap-8">
-        <SectionHead logo label={label == "signup" ? "Register" : "Login"} />
+        <SectionHead
+          className="poppins-bold"
+          logo
+          label={label == "signup" ? "Register" : "Welcome"}
+        />
         <form noValidate className="flex flex-col gap-4">
           {label == "signup" && (
             <>
@@ -151,46 +155,60 @@ const Auth = ({ label = "signup" }) => {
                 style={{ borderBottom: "2px solid blue" }}
                 {...register("name", requiredCheck)}
               />
+              <div className="flex gap-10 items-center">
+                <div className="flex flex-col gap-1">
+                  <select
+                    className="p-1 cursor-pointer focus:outline-none"
+                    defaultValue={2}
+                    {...register("sex", requiredCheck)}
+                  >
+                    <option value={0}>Male</option>
+                    <option value={1}>Female</option>
+                    <option value={2}>Other</option>
+                  </select>
+                  <p className="text-red-500">{errors.sex?.message}</p>
+                </div>
+                {/* <Input
+                  error={errors.sex}
+                  placeholder="Male / Female / Other"
+                  className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
+                  style={{ borderBottom: "2px solid blue" }}
+                  {...register("sex", requiredCheck)}
+                /> */}
+                <Input
+                  type="tel"
+                  error={errors.phone}
+                  placeholder="Phone"
+                  className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
+                  style={{ borderBottom: "2px solid blue" }}
+                  {...register("phone", {
+                    ...requiredCheck,
+                    pattern: {
+                      value:
+                        /^(?:(?:\+91|0)?(?:\s[-.\s])?\d{3}\s?\d{3}\s?\d{4})?$/,
+                      message: "Enter a valid Indian phone number"
+                    }
+                  })}
+                />
+              </div>
 
-              <Input
-                error={errors.sex}
-                placeholder="Male / Female / Other"
-                className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                style={{ borderBottom: "2px solid blue" }}
-                {...register("sex", requiredCheck)}
-              />
+              <div className="flex">
+                <Input
+                  error={errors.school}
+                  placeholder="School"
+                  className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
+                  style={{ borderBottom: "2px solid blue" }}
+                  {...register("school", requiredCheck)}
+                />
 
-              <Input
-                type="tel"
-                error={errors.phone}
-                placeholder="Phone"
-                className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                style={{ borderBottom: "2px solid blue" }}
-                {...register("phone", {
-                  ...requiredCheck,
-                  pattern: {
-                    value:
-                      /^(?:(?:\+91|0)?(?:\s[-.\s])?\d{3}\s?\d{3}\s?\d{4})?$/,
-                    message: "Enter a valid Indian phone number"
-                  }
-                })}
-              />
-
-              <Input
-                error={errors.school}
-                placeholder="School"
-                className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                style={{ borderBottom: "2px solid blue" }}
-                {...register("school", requiredCheck)}
-              />
-
-              <Input
-                error={errors.city}
-                placeholder="City"
-                className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                style={{ borderBottom: "2px solid blue" }}
-                {...register("city", requiredCheck)}
-              />
+                <Input
+                  error={errors.city}
+                  placeholder="City"
+                  className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
+                  style={{ borderBottom: "2px solid blue" }}
+                  {...register("city", requiredCheck)}
+                />
+              </div>
             </>
           )}
 
@@ -230,7 +248,7 @@ const Auth = ({ label = "signup" }) => {
 
           <Button
             label={label == "signup" ? "Register" : "Login"}
-            className="p-2 rounded-l text-lg text-white bg-[#020062] hover:bg-[#2b2b67]"
+            className="p-2 rounded-l text-lg text-white hover:bg-[#1d2d50] bg-[#14213D]"
             onClick={handleSubmit((formData) => {
               if (label == "signup")
                 authenticate(authService.signupAndLogin, formData)

@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes, editQuiz } from "../redux/quiz.slice"
 import env, { timeLimits } from "../../constants"
-import { Navigate } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
 import {
   Button,
   Container,
@@ -17,8 +17,10 @@ import storeService from "../api/store.service"
 import { Query } from "appwrite"
 import toast from "react-hot-toast"
 import { arraysEqual } from "../utils/utils"
+import { Instructions } from "./pages"
 
 const PlayQuiz = () => {
+  const { sec } = useParams()
   const quizes = useSelector((state) => state.quizes)
   const { loggedIn, data } = useSelector((state) => state.user)
   const dispatch = useDispatch()
@@ -34,7 +36,7 @@ const PlayQuiz = () => {
 
   const handleNext = useCallback(() => {
     let len = quizes.length
-    if (currentQue >= len || timeleft == false) {
+    if (currentQue >= len || timer <= 0) {
       // Handles calculation part
       quizes.forEach((quiz) => {
         if (quiz.markedAnswers) {
@@ -46,11 +48,15 @@ const PlayQuiz = () => {
       setShowSubmitBtn(true)
     } else {
       setCurrentQue((prev) => prev + 1)
-      setSelectedOptions([])
+      setSelectedOptions([false, false, false, false])
     }
   }, [])
 
   const handleSubmit = useCallback(() => {
+    if (sec != 3) {
+      navigate(`/quiz/instr/${Number(sec) + 1}`)
+      return
+    }
     dbService
       .insert({
         collectionId: env.leaderboardId,
@@ -70,7 +76,12 @@ const PlayQuiz = () => {
     dbService
       .select({
         collectionId: env.quizId,
-        queries: [Query.equal("inActive", false), Query.orderAsc("section")]
+        queries: [
+          Query.and([
+            Query.equal("section", Number(sec)),
+            Query.equal("inActive", false)
+          ])
+        ]
       })
       .then((docs) => {
         dispatch(setQuizes(docs))
@@ -129,20 +140,20 @@ const PlayQuiz = () => {
   return (
     <Container
       id="play-quiz"
-      onContextMenu={(e) => {
-        e.preventDefault()
-      }}
-      className="w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-start gap-10 items-center sm:items-center"
+      // onContextMenu={(e) => {
+      //   e.preventDefault()
+      // }}
+      className="poppins-regular background-blue w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-start gap-10 items-center sm:items-center"
     >
       <ProgressBar progress={(currentQue / quizes.length) * 100} />
-      <div className="flex w-full justify-evenly py-2 items-center border-4 border-white rounded-lg sm:text-2xl text-xl">
+      <div className="flex w-full justify-evenly py-2 items-center border sm:border-4 border-white rounded-lg sm:text-xl">
         <div className="flex flex-col text-white">
           <span>Section: {quizes[currentQue - 1]?.section}</span>
           <span>
             Question: {currentQue}/{quizes.length}
           </span>
         </div>
-        <div className="flex flex-col text-yellow-400">
+        <div className="flex flex-col text-[#FCA311]">
           <span>
             Marking Scheme: +{quizes[currentQue - 1]?.reward}, -
             {quizes[currentQue - 1]?.nagativeMarking}
@@ -163,24 +174,22 @@ const PlayQuiz = () => {
         />
       )}
       <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-1 gap-3 md:w-1/2 sm:w-4/5 w-full">
-        {quizes[currentQue - 1]?.options.map((option, index) => {
-          if (quizes[currentQue - 1]?.optionsContainImg)
-            return (
-              <img
-                key={index}
-                src={storeService.fetchFilePreview({
-                  fileId: option
-                })}
-                className={`w-full aspect-video cursor-pointer ${selectedOptions[index] ? "border-4 border-yellow-400" : ""} ${!timer && "pointer-events-none"}`}
-                alt={`Option ${index}`}
-                onClick={() => {
-                  setSelectedOptions((prev) =>
-                    prev.map((bool, idx) => (idx == index ? !bool : bool))
-                  )
-                }}
-              />
-            )
-          return (
+        {quizes[currentQue - 1]?.options.map((option, index) =>
+          quizes[currentQue - 1]?.optionsContainImg ? (
+            <img
+              key={index}
+              src={storeService.fetchFilePreview({
+                fileId: option
+              })}
+              className={`w-full aspect-video cursor-pointer ${selectedOptions[index] ? "border-4 border-yellow-400" : ""} ${!timer && "pointer-events-none"}`}
+              alt={`Option ${index}`}
+              onClick={() => {
+                setSelectedOptions((prev) =>
+                  prev.map((bool, idx) => (idx == index ? !bool : bool))
+                )
+              }}
+            />
+          ) : (
             <p
               key={index}
               className={`p-4 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
@@ -193,7 +202,7 @@ const PlayQuiz = () => {
               {option}
             </p>
           )
-        })}
+        )}
       </div>
       {showSubmitBtn ? (
         <Button
@@ -202,18 +211,18 @@ const PlayQuiz = () => {
           onClick={handleSubmit}
         />
       ) : (
-        <div className="flex justify-between md:w-1/2 sm:w-4/5 w-full">
+        <div className="flex justify-between md:w-1/2 sm:w-4/5 w-full border border-white p-4 rounded">
           <Button
             label="Prev"
-            className="bg-gray-300 py-2 px-4 rounded hover:bg-gray-400 text-xl"
+            className="bg-[#E5E5E5] py-2 px-4 rounded hover:bg-gray-300 text-xl"
             onClick={() => {
               setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
-              setSelectedOptions([])
+              setSelectedOptions([false, false, false, false])
             }}
           />
           <Button
             label="Next"
-            className="bg-blue-400 py-2 px-4 rounded hover:bg-blue-500 text-xl"
+            className="bg-green-400 py-2 px-4 rounded hover:bg-green-500 text-xl"
             onClick={handleNext}
           />
         </div>

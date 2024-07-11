@@ -55,9 +55,9 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     <>
       <nav
         ref={ref}
-        className={`md:items-center gap-3 md:justify-between justify-around w-3/4 flex md:flex-row flex-col md:overflow-y-hidden md:pl-10 md:h-[12vh] ${className}`}
+        className={`alatsi-regular md:items-center gap-3 md:justify-between justify-around w-3/4 flex md:flex-row flex-col md:overflow-y-hidden md:pl-10 md:h-[12vh] ${className}`}
       >
-        <div className="tabs-bar flex flex-col gap-[4vw] md:flex-row h-full md:items-center md:bg-[#000000a6] px-2 rounded-2xl">
+        <div className="tabs-bar flex flex-col gap-[4vw] md:flex-row h-full md:items-center md:bg-[#000000c2] px-2 rounded-2xl">
           {tabs.map((tab, index) =>
             tab.to.startsWith("#") ? (
               <a
@@ -90,7 +90,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
         ) : (
           <Button
             label="Signup"
-            className="py-2 px-3 text-lg shadow-lg bg-gray-50 text-black rounded-lg hover:bg-gray-100 overflow-y-hidden"
+            className="poppins-regular py-2 px-3 text-lg shadow-lg bg-[#E5E5E5] text-black rounded-lg hover:bg-gray-100 overflow-y-hidden"
             onClick={() => {
               navigate("signup")
             }}

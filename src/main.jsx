@@ -16,7 +16,8 @@ import {
   Event,
   Result,
   Results,
-  Verification
+  Verification,
+  Instructions
 } from "./pages/pages.js"
 import { AddQuiz, ManageQuiz } from "./dashboards/dashboards.js"
 import { Admin, Gallery } from "./components/components.js"
@@ -33,7 +34,8 @@ const router = createBrowserRouter(
       <Route path="account/verification/:dets" element={<Verification />} />
       <Route path="events/:eventId" element={<Event />} />
       <Route path="quiz/" element={<Outlet />}>
-        <Route path="play" element={<PlayQuiz />} />
+        <Route path="instr/:sec" element={<Instructions />} />
+        <Route path="play/:sec" element={<PlayQuiz />} />
         <Route path="result/:score" element={<Result />} />
       </Route>
       <Route path="admin/" element={<Admin />}>

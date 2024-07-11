@@ -7,7 +7,7 @@ const NotAvailable = ({
   message = "No Questions Added Yet"
 }) => {
   return (
-    <Container className="h-screen flex flex-col justify-center items-center">
+    <Container className="poppins-regular h-screen flex flex-col justify-center items-center">
       <h1 className="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 h-[25vh]">
         OOPS!
       </h1>

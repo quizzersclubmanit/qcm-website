@@ -5,7 +5,7 @@ const EventCard = ({ dets = {} }) => {
   const navigate = useNavigate()
 
   return (
-    <Container className="flex justify-center">
+    <Container className="poppins-bold flex justify-center">
       <div
         className="flex flex-col items-start p-8 gap-2 w-[80vw] md:w-[40vw] xl:w-[25vw] bg-white"
         style={{
@@ -24,7 +24,7 @@ const EventCard = ({ dets = {} }) => {
         <p className="w-full continue-text">{dets.desc}</p>
         <Button
           label="Read More"
-          className="text-yellow-400 p-2 rounded bg-blue-950 hover:bg-blue-900 text-lg"
+          className="text-yellow-400 hover:text-[#FCA311] p-2 rounded bg-[#14213D] text-lg"
           onClick={() => {
             navigate(`events/${dets.id}`)
           }}

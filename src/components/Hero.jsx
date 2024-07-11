@@ -47,7 +47,7 @@ const Hero = () => {
   return (
     <Container
       id="hero"
-      className="h-screen flex flex-col sm:flex-row items-center justify-evenly relative"
+      className="poppins-regular h-screen flex flex-col sm:flex-row items-center justify-evenly relative"
     >
       <div className="background-img"></div>
       <div className="left w-full h-full sm:w-2/3 flex flex-col justify-center items-center text-white gap-5">
@@ -55,7 +55,7 @@ const Hero = () => {
           {organization.split("").map((char, index) => (
             <span
               key={index}
-              className="londrina-solid-regular sm:text-[9vmax] text-[8vmax] inline-block opacity-0"
+              className="londrina-solid-regular sm:text-[8vmax] text-[7.5vmax] inline-block opacity-0"
               style={{
                 WebkitTextStrokeWidth: "3px",
                 WebkitTextStrokeColor: "#00aded",

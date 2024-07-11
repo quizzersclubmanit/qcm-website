@@ -13,34 +13,6 @@
   z-index: -1;
   background-color: rgba(0, 0, 0, 0.7);
   background-blend-mode: overlay;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-}
-
-#event {
-  background: url("/blue-bg.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#auth {
-  background: url("/blue-bg.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#play-quiz {
-  background: url("/blue-bg.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#results {
-  background: url("/blue-bg.svg");
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: cover;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }

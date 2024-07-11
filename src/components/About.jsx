@@ -6,6 +6,30 @@ const About = () => {
     {
       question: "Question",
       answer: "Answer"
+    },
+    {
+      question: "Question",
+      answer: "Answer"
+    },
+    {
+      question: "Question",
+      answer: "Answer"
+    },
+    {
+      question: "Question",
+      answer: "Answer"
+    },
+    {
+      question: "Question",
+      answer: "Answer"
+    },
+    {
+      question: "Question",
+      answer: "Answer"
+    },
+    {
+      question: "Question",
+      answer: "Answer"
     }
   ]
   return (
@@ -13,7 +37,7 @@ const About = () => {
       id="about"
       className="w-screen sm:p-[3.5vmax] p-[2vmax] flex flex-col gap-5 justify-center sm:justify-between items-center sm:items-start"
     >
-      <SectionHead label="About" />
+      <SectionHead label="About Us" />
       <p className="w-2/3 mx-auto mb-10 md:text-lg">{about}</p>
       <Accordion qna={qna} />
     </Container>

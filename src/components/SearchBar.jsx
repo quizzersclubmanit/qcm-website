@@ -13,7 +13,7 @@ const SearchBar = ({ content, setContent = () => {} }) => {
         placeholder="Search"
         className="p-2 bg-white rounded-lg focus:outline-0 w-full sm:w-1/2"
       />
-      <IoSearchSharp className="md:text-[1.8vmax] text-[2.8vmax]" />
+      <IoSearchSharp className="md:text-[1.8vmax] text-[4vmax] text-white" />
     </Container>
   )
 }

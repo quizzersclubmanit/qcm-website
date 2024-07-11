@@ -11,7 +11,7 @@ import {
 
 const Home = () => {
   return (
-    <main className="alatsi-regular">
+    <main>
       <Header />
       <Hero />
       {/* <Container className="h-screen bg-white"></Container> */}

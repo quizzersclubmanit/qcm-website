@@ -30,7 +30,7 @@ const DropDown = forwardRef(({ user, visible = false }, ref) => {
     {
       label: "Play Quiz",
       f: () => {
-        navigate("/quiz/play")
+        navigate("/quiz/instr/1")
       },
       visible: true
     },
@@ -60,9 +60,9 @@ const DropDown = forwardRef(({ user, visible = false }, ref) => {
   return (
     <div
       ref={ref}
-      className={`md:w-[20vw] sm:w-[35vw] w-[45vw] sm:min-h-[20vh] sm:top-[20%] top-[10%] sm:right-10 right-2 text-black bg-[#fff7] transparent-white shadow-lg rounded-lg flex flex-col items-center justify-evenly gap-3 p-6 backdrop-blur ${!visible && "opacity-0 pointer-events-none"}`}
+      className={`poppins-regular md:w-[20vw] sm:w-[35vw] w-[45vw] sm:min-h-[20vh] sm:top-[20%] top-[10%] sm:right-10 right-2 text-black bg-[#fff7] transparent-white shadow-lg rounded-lg flex flex-col items-center justify-evenly gap-3 p-6 backdrop-blur ${!visible && "opacity-0 pointer-events-none"}`}
       style={{
-        transform: "translateY(-100%)",
+        transform: "translateY(-25%)",
         position: "fixed"
       }}
     >

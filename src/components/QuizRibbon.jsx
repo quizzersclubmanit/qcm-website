@@ -41,16 +41,16 @@ const QuizRibbon = ({ quiz = {} }) => {
 
   return (
     <Container
-      className="flex items-center md:w-1/2 sm:w-4/5 w-full justify-between pl-3 py-1 bg-white"
+      className="flex items-center md:w-1/2 sm:w-4/5 w-full justify-between pl-3 bg-white"
       style={{
         borderTopLeftRadius: "10px",
         borderBottomLeftRadius: "10px"
       }}
     >
       <p
-        className={`text-xl w-[90%] continue-text ${inActive && "line-through"}`}
+        className={`sm:text-xl w-[90%] continue-text ${inActive && "line-through"}`}
       >
-        Q. {quiz.question}?
+        Q. {quiz.question} ?
       </p>
       <div className="flex">
         {inActive ? (

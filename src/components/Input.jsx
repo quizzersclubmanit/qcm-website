@@ -16,7 +16,7 @@ const Input = forwardRef(
     const id = useId()
 
     return (
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 w-full">
         <div
           className={`flex ${oneline ? "flex-row justify-between items-center" : "flex-col items-center"}`}
         >

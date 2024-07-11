@@ -49,7 +49,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
       if (acceptFileFrom[index])
         return (
           <CiFileOff
-            className="text-2xl cursor-pointer ml-4"
+            className="text-2xl cursor-pointer ml-4 bg-white rounded"
             onClick={() => {
               if (index > 0) setOptionsContainImg(true)
               toggleAcceptFile(index)
@@ -58,7 +58,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
         )
       return (
         <CiFileOn
-          className="text-2xl cursor-pointer ml-4"
+          className="text-2xl cursor-pointer ml-4 bg-white rounded"
           onClick={() => {
             if (index > 0) setOptionsContainImg(false)
             toggleAcceptFile(index)
@@ -184,7 +184,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
       <Input
         error={errors.question}
         placeholder="Question here..."
-        className="p-4 rounded-lg text-xl focus:outline-0"
+        className="p-4 rounded-lg text-lg focus:outline-0"
         {...register("question", {
           required: {
             value: true,
@@ -199,7 +199,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
           oneline
           label="Supporting Picture"
           type="file"
-          className="p-4 rounded-lg text-xl focus:outline-0"
+          className="p-4 rounded-lg text-lg focus:outline-0"
           {...register("supportingPic")}
         />
       )}
@@ -208,7 +208,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
           <Input
             type={acceptFileFrom[index + 1] ? "file" : "text"}
             key={index}
-            className="px-4 py-2 rounded-lg text-lg focus:outline-0"
+            className="px-4 py-2 rounded-lg focus:outline-0"
             error={errors.options}
             placeholder={`Option ${option}`}
             {...register(`options.${index}`, {
@@ -238,17 +238,19 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
             <option value={3}>3</option>
           </select>
         </div>
-        <div className="flex gap-6 items-center bg-pink-300 p-2 rounded-lg">
-          <p className="text-xl">Answers: </p>
-          {options.map((option, index) => (
-            <Input
-              label={option}
-              key={index}
-              type="checkbox"
-              className="w-5 h-5 rounded focus:ring-blue-500 focus:ring-2"
-              {...register(`answers.${index}`)}
-            />
-          ))}
+        <div className="flex gap-5 items-center bg-pink-300 p-2 rounded-lg">
+          <p className="text-lg">Answers: </p>
+          <div className="flex items-center gap-5">
+            {options.map((option, index) => (
+              <Input
+                label={option}
+                key={index}
+                type="checkbox"
+                className="w-5 h-5 rounded focus:ring-blue-500 focus:ring-2"
+                {...register(`answers.${index}`)}
+              />
+            ))}
+          </div>
         </div>
         <div className="flex gap-6">
           <Input
@@ -274,7 +276,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
         </div>
       </div>
       <Button
-        className="text-xl bg-yellow-300 hover:bg-yellow-400 w-full p-3 rounded-lg"
+        className="text-xl hover:bg-[#FCA311] bg-yellow-400 w-full p-3 rounded-lg"
         label={editTab ? "Save" : "+ Add Question"}
         onClick={handleSubmit((formData) => {
           if (editTab) editQuizHandler(formData)

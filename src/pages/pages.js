@@ -5,5 +5,15 @@ import Event from "./Event"
 import Result from "./Result"
 import Results from "./Results"
 import Verification from "./Verification"
+import Instructions from "./Instructions"
 
-export { Home, Auth, PlayQuiz, Event, Result, Results, Verification }
+export {
+  Home,
+  Auth,
+  PlayQuiz,
+  Event,
+  Result,
+  Results,
+  Verification,
+  Instructions
+}

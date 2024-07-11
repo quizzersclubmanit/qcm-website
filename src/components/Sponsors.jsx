@@ -8,7 +8,7 @@ const Sponsors = () => {
       className="w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-8 items-center sm:items-center"
     >
       <SectionHead label="Our Sponsors" />
-      <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
+      <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 sm:gap-28">
         {sponsors.map((sponsor, index) => (
           <a
             key={index}
