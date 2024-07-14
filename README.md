@@ -1,7 +1,7 @@
 
 # QCM-Website
 
-The QCM website is your go-to place for everything related to our quizzing activities. Here, you'll find all the details about our upcoming quizzes, events, and tons of resources for quizzing enthusiasts. We have a rich database of quiz questions, insightful articles, and helpful tutorials to sharpen your quizzing skills. Our site also provides a platform for our members to collaborate on creating content, share their multimedia projects, and keep up with the latest updates from the society. We aim to build an engaging and educational online space where both seasoned quizzers and newcomers can learn, participate, and enjoy the world of quizzing.
+QCM is the official quizzing society of Maulana Azad National Institute of Technology, formed by a bunch of quizzing prodigies of NIT Bhopal on February 2013. It aims to buff the grace of quizzing among quizzers until gleamed and trivialize the complexities of quizzing, indeed, ingraining the knack for it among non-quizzers. The society is driven by students from a variety of domain - the content writers, bloggers, executives, video editors, photographers, and web developers who work allied in rooting, sprouting and upshooting an entire idea, thus, instilling skills and ethics in them that last a lifetime.
 
 ## Installation
 
