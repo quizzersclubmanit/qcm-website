@@ -19,6 +19,7 @@ const DropDown = forwardRef(({ user, visible = false }, ref) => {
           .logout()
           .then(() => {
             dispatch(logout())
+            window.location.reload()
           })
           .catch((error) => {
             toast.error(error.message)
