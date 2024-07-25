@@ -1,7 +1,7 @@
 {
   "organization": "Quizzers' Club",
   "acronym": "QCM",
-  "about": "QCM is the official quizzing society of Maulana Azad National Institute of Technology, formed by a bunch of quizzing prodigies of NIT Bhopal on February 2013. It aims to buff the grace of quizzing among quizzers until gleamed and trivialize the complexities of quizzing, indeed, ingraining the knack for it among non-quizzers. The society is driven by students from a variety of domain - the content writers, bloggers, executives, video editors, photographers, and web developers who work allied in rooting, sprouting and upshooting an entire idea, thus, instilling skills and ethics in them that last a lifetime.",
+  "about": "Quizzers’ Club NIT Bhopal, the premier quizzing society at Maulana Azad National Institute of Technology, that aims to polish the brilliance of quizzing for enthusiasts until it dazzles, while demystifying its complexities to ignite a passion for it among newcomers. Founded by a group of quizzing prodigies from MANIT in February 2013, this society is powered by students from diverse fields—quizzers, content writers, bloggers, executives, video editors, photographers, and web developers—who collaborate in nurturing, cultivating, and launching innovative ideas, instilling lifelong skills and values along the way. \n\n The Quizzer's Club MANIT orchestrates a series of intellectually stimulating events such as the Abhigyan, Manthan, Quizzotica, and Vihaan, in addition to a myriad of online quizzing contests. The Inter-City Quizzing Challenge, the pinnacle quizzing event of QCM, unites the nation's sharpest minds in an exhilarating showdown. These competitions attract immense participation from quizzing enthusiasts across various schools and colleges in India, as well as dedicated contenders from within MANIT. In addition to our quizzing events, we present captivating questions, intriguing facts, and diverse aptitudes that weave together immersive and enlightening content. These elements fortify the society's mission to deliver a rich blend of entertainment and education in every facet. \n\n Let’s dive into the realm of Quizzing, where curiosity meets competition!!",
   "contacts": [
     {
       "name": "Nishchal Prajapati",
@@ -209,6 +209,32 @@
       "member": "Olivia Thompson",
       "role": "Customer Service Manager",
       "picture": "https://images.pexels.com/photos/15681635/pexels-photo-15681635/free-photo-of-beautiful-woman-in-straw-hat.jpeg?auto=compress&cs=tinysrgb&w=600"
+    }
+  ],
+  "qna": [
+    {
+      "question": "What is Quizzers Club MANIT?",
+      "answer": "Quizzers Club MANIT is a student-run organization dedicated to promoting a quizzing culture within MANIT and across country. We organize regular quiz competitions and provide a platform for students to enhance their knowledge across various subjects."
+    },
+    {
+      "question": "What are the events organized by the club?",
+      "answer": "Quizzers’ Club MANIT organize mainly five events: \n • IQC - Inter-city Quizzing Competition, \n • Abhigyan - Inter-College Quizzing Competition, \n • Manthan - Inter-State Quizzing Competition, \n • Anveshan- a treasure hunt event, \n • Vihaan - A quiz contest for freshers."
+    },
+    {
+      "question": "How can I stay updated about upcoming events and activities?",
+      "answer": "You can follow our social media handles for staying updated with all our events and their detail: \n • Facebook - https://www.facebook.com/Quizofficial.manit/, \n • Instagram - https://www.instagram.com/quizzersclub/?hl=en, \n • linkedIn- https://in.linkedin.com/company/quizzers-club-manit, \n • Youtube - https://www.youtube.com/@quizzersclub, \n • Website - https://qcm-official-site.netlify.app/"
+    },
+    {
+      "question": "Who can join Quizzers’ Club MANIT?",
+      "answer": "Students pursuing their graduation from MANIT can join as a official member of QCM."
+    },
+    {
+      "question": "How to join Quizzers’ Club NIT-Bhopal?",
+      "answer": "Every year at the end of the second semester, QCM conducts an annual recruitment drive for freshers. You can fill out the registration form, and if you make it through all of the Assessment Rounds, you will be selected to join the team!"
+    },
+    {
+      "question": "Who should I contact if I have more questions?",
+      "answer": "For any further queries, you can contact us through the contact form on our website, email us at quizzersclubmanit@gmail.com, or reach out to any of the club’s executive members."
     }
   ]
 }
