@@ -1,4 +1,4 @@
-import { Container, Nav, Modal, Logo } from "./components"
+import { Container, Nav, Modal,Logo} from "./components"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { useState, useRef } from "react"
 import gsap from "gsap"
@@ -16,12 +16,12 @@ const Header = () => {
   useGSAP(() => {
     gsap
       .timeline()
-      .from(logoRef.current, {
-        x: "-100%",
-        ease: "power1.in",
-        duration: 0.7,
-        opacity: 0
-      })
+      // .from(logoRef.current, {
+      //   x: "-100%",
+      //   ease: "power1.in",
+      //   duration: 0.7,
+      //   opacity: 0
+      // })
       .from(navRef.current, {
         opacity: 0,
         y: "-100%",
@@ -43,6 +43,8 @@ const Header = () => {
         ease: "power2"
       })
       .to(headRef.current, {
+        paddingInline:12,
+        paddingBlock:4,
         backgroundColor: "#000000a6",
         ease: "power2"
       })
@@ -51,16 +53,18 @@ const Header = () => {
   return (
     <Container
       element="header"
-      className="w-screen md:p-[3.5vmax] p-[2vmax] fixed z-10"
+      className="w-screen fixed z-10  flex justify-center"
     >
       <div
         ref={headRef}
-        className="flex py-1 justify-around items-center rounded-2xl overflow-y-hidden"
+        className="w-[70%] h-20 flex m-4 justify-between md:justify-center items-center rounded-2xl overflow-y-hidden"
       >
-        <Logo ref={logoRef} className="w-[7vmax] md:w-[5vmax]" />
+        <Logo ref={logoRef} className=" block md:hidden md:w-[3vmax] w-[10vmin] " />
+        
         <Nav ref={navRef} className="hidden md:flex" />
+        
         <RxHamburgerMenu
-          className="block md:hidden text-2xl text-white cursor-pointer"
+          className="block md:hidden w-[15vmin]   text-white cursor-pointer"
           onClick={() => {
             setShowTabModal((prev) => !prev)
           }}
