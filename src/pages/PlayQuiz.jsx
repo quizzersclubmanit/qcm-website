@@ -1,5 +1,5 @@
 import "./pages.css"
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes, editQuiz } from "../redux/quiz.slice"
 import env, { timeLimits } from "../../constants"
@@ -9,7 +9,7 @@ import {
   Container,
   ProgressBar,
   Loader,
-  NotAvailable
+  NotAvailable, Logo
 } from "../components/components"
 import { useNavigate } from "react-router-dom"
 import dbService from "../api/db.service"
@@ -18,6 +18,7 @@ import { Query } from "appwrite"
 import toast from "react-hot-toast"
 import { arraysEqual } from "../utils/utils"
 import { Instructions } from "./pages"
+import { TbBackground } from "react-icons/tb"
 
 const PlayQuiz = () => {
   const { sec } = useParams()
@@ -33,6 +34,7 @@ const PlayQuiz = () => {
   const navigate = useNavigate()
   const [showSubmitBtn, setShowSubmitBtn] = useState(false)
   const [timer, setTimer] = useState(undefined)
+  const logoRef = useRef(null)
 
   const handleNext = useCallback(() => {
     let len = quizes.length
@@ -143,25 +145,32 @@ const PlayQuiz = () => {
       // onContextMenu={(e) => {
       //   e.preventDefault()
       // }}
-      className="poppins-regular background-blue w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-start gap-10 items-center sm:items-center"
+      className="Fira Sans w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-center items-center sm:items-center"
     >
-      <ProgressBar progress={(currentQue / quizes.length) * 100} />
-      <div className="flex w-full justify-evenly py-2 items-center border sm:border-4 border-white rounded-lg sm:text-xl">
-        <div className="flex flex-col text-white">
-          <span>Section: {quizes[currentQue - 1]?.section}</span>
-          <span>
-            Question: {currentQue}/{quizes.length}
-          </span>
+      {/* <ProgressBar progress={(currentQue / quizes.length) * 100} /> */}
+      <div className="flex w-full md:w-[70vw] justify-between  mt-6  p-4 items-center bg-white bg-opacity-25  rounded-3xl sm:text-xl">
+        <div className="flex w-[45%] flex-col text-white font-bold overflow-y-hidden " >
+          <div className="flex items-center ">SECTION-
+            <span className="text-xl md:text-3xl  overflow-y-hidden text-[#FCA311] ">
+              {quizes[currentQue - 1]?.section}</span>
+          </div>
         </div>
-        <div className="flex flex-col text-[#FCA311]">
+        <Logo ref={logoRef} className=" h-10 " />
+        <div className="flex justify-end w-[45%] text-[#FCA311] font-bold overflow-y-hidden">
           <span>
-            Marking Scheme: +{quizes[currentQue - 1]?.reward}, -
-            {quizes[currentQue - 1]?.nagativeMarking}
+            {/* Marking Scheme: +{quizes[currentQue - 1]?.reward}, - */}
+            {/* {quizes[currentQue - 1]?.nagativeMarking} */}
           </span>
-          <span>Time Left: {timer} (m)</span>
+          <span className="text-white overflow-y-hidden flex items-center">TIME LEFT-
+            <span className="text-[#FCA311] text-xl md:text-3xl overflow-y-hidden">
+              {timer}:00</span>
+          </span>
         </div>
       </div>
-      <p className="p-4 rounded-lg text-xl focus:outline-0 bg-white md:w-1/2 sm:w-4/5 cursor-default">
+      <span className="text-4xl leading-none overflow-y-hidden m-3 font-bold text-white z-1">
+        {currentQue}/{quizes.length}
+      </span>
+      <p className="p-4 rounded-lg text-xl text-center text-white leading-none focus:outline-0  md:w-1/2 sm:w-4/5 cursor-default z-10">
         Q. {quizes[currentQue - 1]?.question} ?
       </p>
       {quizes[currentQue - 1]?.supportingPic && (
@@ -181,7 +190,7 @@ const PlayQuiz = () => {
               src={storeService.fetchFilePreview({
                 fileId: option
               })}
-              className={`w-full aspect-video cursor-pointer ${selectedOptions[index] ? "border-4 border-yellow-400" : ""} ${!timer && "pointer-events-none"}`}
+              className={`w-full z-10 rounded-3xl aspect-video cursor-pointer  ${selectedOptions[index] ? "border-4 border-yellow-400" : ""} ${!timer && "pointer-events-none"}`}
               alt={`Option ${index}`}
               onClick={() => {
                 setSelectedOptions((prev) =>
@@ -192,7 +201,7 @@ const PlayQuiz = () => {
           ) : (
             <p
               key={index}
-              className={`p-4 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
+              className={`p-4 z-10 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
               onClick={() => {
                 setSelectedOptions((prev) =>
                   prev.map((bool, idx) => (idx == index ? !bool : bool))
@@ -207,26 +216,32 @@ const PlayQuiz = () => {
       {showSubmitBtn ? (
         <Button
           label="Submit"
-          className="text-xl bg-yellow-300 hover:bg-yellow-400 p-3 rounded-lg"
+          className="text-xl bg-orange-300 hover:bg-orange-400 p-3 rounded-lg"
           onClick={handleSubmit}
         />
       ) : (
-        <div className="flex justify-between md:w-1/2 sm:w-4/5 w-full border border-white p-4 rounded">
-          <Button
-            label="Prev"
-            className="bg-[#E5E5E5] py-2 px-4 rounded hover:bg-gray-300 text-xl"
-            onClick={() => {
-              setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
-              setSelectedOptions([false, false, false, false])
-            }}
-          />
-          <Button
-            label="Next"
-            className="bg-green-400 py-2 px-4 rounded hover:bg-green-500 text-xl"
-            onClick={handleNext}
-          />
+        <div className="flex z-10 justify-between items-center md:w-[60%] sm:w-4/5 w-full p-4 rounded">
+          <div className="previous flex flex-row items-center bg-[#E5E5E5] py-1 px-4 rounded-2xl hover:bg-gray-300">
+            <svg className="h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" /></svg>
+            <button className="text-xs font-bold p-1" onClick={() => {
+                setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
+                setSelectedOptions([false, false, false, false])
+              }}>
+                 NEXT
+              </button>
+          </div>
+          <div className="next flex flex-row justify-between items-center py-1 px-4 bg-yellow-600 rounded-2xl hover:bg-yellow-500">
+
+            
+              <button className="text-xs font-bold p-1" onClick={handleNext} >
+                NEXT
+              </button>
+            <svg className="h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" /></svg>
+          </div>
         </div>
       )}
+      <img src="\src\assets\image-quiz-left-illustration.png" alt="" srcset="" className="absolute hidden md:block  z-0 left-0 top-[25vh]" />
+      <img src="\src\assets\image-quiz-right-illustration.png" alt="" srcset="" className="absolute hidden md:block z-0 right-0 top-[25vh]" />
     </Container>
   )
 }
