@@ -1,37 +1,8 @@
 import { Container, SectionHead, Accordion } from "./components"
-import { about } from "../assets/qcmData.json"
+import { about, qna } from "../assets/qcmData.json"
+import Image from "../../public/hero-bg.jpeg"
 
 const About = () => {
-  const qna = [
-    {
-      question: "Question",
-      answer: "Answer"
-    },
-    {
-      question: "Question",
-      answer: "Answer"
-    },
-    {
-      question: "Question",
-      answer: "Answer"
-    },
-    {
-      question: "Question",
-      answer: "Answer"
-    },
-    {
-      question: "Question",
-      answer: "Answer"
-    },
-    {
-      question: "Question",
-      answer: "Answer"
-    },
-    {
-      question: "Question",
-      answer: "Answer"
-    }
-  ]
   return (
     <Container
       id="about"
@@ -39,9 +10,7 @@ const About = () => {
     >
       <div className="flex flex-col lg:flex-row lg:justify-between">
         <SectionHead label="About Us" />
-        <p className="w-2/3 mb-10 mx-auto lg:mx-0 md:text-lg font-semibold">
-          {about}
-        </p>
+        <p className="w-2/3 mb-10 mx-auto lg:mx-0 md:text-lg font-semibold whitespace-pre-wrap">{about}</p>
       </div>
       <div className="flex flex-col lg:flex-row gap-8 items-center">
         <img
