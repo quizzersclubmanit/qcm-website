@@ -1,4 +1,4 @@
-import { bulb } from "../assets/assets"
+import { bulb, gradientLogo, floatingMarks } from "../assets/assets"
 import { organization } from "../assets/qcmData.json"
 import { Container } from "./components"
 import gsap from "gsap"
@@ -65,24 +65,39 @@ const Hero = () => {
             </span>
           ))}
         </div>
-        <h4 ref={ref2} className="Fira Sans text-[5vmax] font-bold overflow-y-hidden leading-none" >
+        <h4
+          ref={ref2}
+          className="Fira Sans text-[5vmax] font-bold overflow-y-hidden leading-none"
+        >
           NIT BHOPAL
         </h4>
         <p ref={ref3} className="text-[2.0vmax] overflow-y-hidden">
           Central India's{" "}
-          <span className="" style={{color:'#fe9c02'}}>
+          <span className="" style={{ color: "#fe9c02" }}>
             Largest Quizzing Club
           </span>
         </p>
       </div>
       <div className="flex right h-full w-full justify-center sm:items-center mt-20 self-end overflow-y-hidden">
-        <img ref={bulbRef} src="\src\assets\gradient-qcm-logo.png" alt="gradientLogo" className="pt-[36px] scale-90 object-contain z-1" />
-        <img ref={bulbRef} src="\src\assets\bulb-inhand.png" alt="Bulb" className="h-1/3 sm:h-fit absolute md:bottom-0 top-48 md:top-auto md:p-0 z-5" />
+        <img
+          src={gradientLogo}
+          alt="gradientLogo"
+          className="pt-[36px] scale-90 object-contain z-1"
+        />
+        <img
+          ref={bulbRef}
+          src={bulb}
+          alt="Bulb"
+          className="h-1/3 sm:h-fit absolute md:bottom-0 top-48 md:top-auto md:p-0 z-5"
+        />
       </div>
-      
-      <img src="\src\assets\floating mark.png" alt="" className="hidden scale-90 md:block absolute left-14 top-14 h-[calc(100vh-40px)] object-cover  z-0"/>
+
+      <img
+        src={floatingMarks}
+        alt=""
+        className="hidden scale-90 md:block absolute left-14 top-14 h-[calc(100vh-40px)] object-cover  z-0"
+      />
     </Container>
-  
   )
 }
 
