@@ -2,6 +2,7 @@ import "./pages.css"
 import { useEffect, useState, useCallback, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes, editQuiz } from "../redux/quiz.slice"
+import { setScore } from "../redux/user.slice"
 import env, { timeLimits } from "../../constants"
 import { Navigate, useParams } from "react-router-dom"
 import {
@@ -17,20 +18,19 @@ import storeService from "../api/store.service"
 import { Query } from "appwrite"
 import toast from "react-hot-toast"
 import { arraysEqual } from "../utils/utils"
-import { Instructions } from "./pages"
-import { TbBackground } from "react-icons/tb"
 
 const PlayQuiz = () => {
   const { sec } = useParams()
+  const [section, setSection] = useState(sec)
   const quizes = useSelector((state) => state.quizes)
-  const { loggedIn, data } = useSelector((state) => state.user)
+  const { loggedIn, data, score } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const [currentQue, setCurrentQue] = useState(1)
   const [selectedOptions, setSelectedOptions] = useState(
     new Array(4).fill(false)
   )
-  const [score, setScore] = useState(0)
+  const [roundScore, setRoundScore] = useState(0)
   const navigate = useNavigate()
   const [showSubmitBtn, setShowSubmitBtn] = useState(false)
   const [timer, setTimer] = useState(undefined)
@@ -41,22 +41,22 @@ const PlayQuiz = () => {
     if (currentQue >= len || timer <= 0) {
       // Handles calculation part
       quizes.forEach((quiz) => {
-        if (quiz.markedAnswers) {
-          if (arraysEqual(quiz.markedAnswers, quiz.answers))
-            setScore((prev) => prev + quiz.reward)
-          else setScore((prev) => prev - quiz.nagativeMarking)
-        }
+        if (arraysEqual(quiz.markedAnswers || [], quiz.answers))
+          setRoundScore((prev) => prev + quiz.reward)
+        else setRoundScore((prev) => prev - quiz.nagativeMarking)
       })
       setShowSubmitBtn(true)
     } else {
       setCurrentQue((prev) => prev + 1)
       setSelectedOptions([false, false, false, false])
     }
-  }, [])
+  }, [quizes])
 
   const handleSubmit = useCallback(() => {
-    if (sec != 3) {
-      navigate(`/quiz/instr/${Number(sec) + 1}`)
+    if (section <= 3) {
+      dispatch(setScore(score + roundScore))
+      if (sec < 3) navigate(`/quiz/instr/${Number(sec) + 1}`)
+      else setSection(sec + 1)
       return
     }
     dbService
@@ -72,7 +72,7 @@ const PlayQuiz = () => {
         toast.error(error.message)
         console.error(error)
       })
-  }, [])
+  }, [roundScore, section])
 
   useEffect(() => {
     dbService
@@ -132,20 +132,21 @@ const PlayQuiz = () => {
     return () => {
       clearInterval(interval)
     }
-  }, [quizes.length])
+  }, [quizes.length, sec])
 
   if (!loggedIn) return <Navigate to="/signup" />
   if (loading) return <Loader />
+
   if (quizes.length == 0)
     return <NotAvailable command="Back to Home Page" redirectURL="/" />
 
   return (
     <Container
       id="play-quiz"
-      // onContextMenu={(e) => {
-      //   e.preventDefault()
-      // }}
       className="Fira Sans w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-center items-center sm:items-center"
+      onContextMenu={(e) => {
+        e.preventDefault()
+      }}
     >
       {/* <ProgressBar progress={(currentQue / quizes.length) * 100} /> */}
       <div className="flex w-full md:w-[70vw] justify-between  mt-6  p-4 items-center bg-white bg-opacity-25  rounded-3xl sm:text-xl">
