@@ -4,13 +4,16 @@
   background: url("/src/assets/bg-gradient.png") no-repeat center center/cover;
 }
 
+#play-quiz{
+  background:url('/src/assets/image-quiz-bg.png');
+}
+
 #about {
   background: url("/about-us-bg.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 1rem 2rem;
 }
-
 #hero .background-img {
   position: absolute;
   top: 0;
