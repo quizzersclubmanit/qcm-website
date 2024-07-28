@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../utils/styles.css';
 
 const team = Array(18).fill({
   member: "LOREM IPSUM",
@@ -47,74 +48,6 @@ const Team = () => {
   );
 
 
-};
-
-const styles = {
-  body: {
-    color: '#fff',
-    backgroundColor: 'black',
-    fontFamily: 'Arial, sans-serif',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '100vh',
-    margin: 0
-  },
-  header: {
-    display: 'flex',
-    flexDirection: 'row',
-    height: '100px',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '80px'
-  },
-  button: {
-    padding: '7px 17.5px',
-    borderRadius: '30px',
-    cursor: 'pointer',
-    border: '2px solid #5c5b5b',
-    fontSize: '17px',
-    transition: 'background-color 0.3s, color 0.3s'
-  },
-  buttonHover: {
-    color: '#d99507',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)'
-  },
-  title: {
-    fontSize: '62.5px',
-    marginBottom: '-5px',
-    fontWeight: 'bold',
-
-  },
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: '20px'
-  },
-  card: {
-    borderRadius: '10px',
-    padding: '10px',
-    textAlign: 'center',
-    width: '237px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    transition: 'all 0.3s ease',
-    cursor: 'pointer',
-    margin: '10px',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  cardHover: {
-    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
-    backgroundColor: 'rgba(255, 255, 255, 0.3)'
-  },
-  cardImg: {
-    width: '200px',
-    height: '200px',
-    borderRadius: '50%',
-    margin: '10px',
-    marginBottom: '30px'
-  }
 };
 
 export default Team;
