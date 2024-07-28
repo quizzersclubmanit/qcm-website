@@ -15,7 +15,6 @@ import QuizRibbon from "./QuizRibbon"
 import SearchBar from "./SearchBar"
 import Quiz from "./Quiz"
 import Sponsors from "./Sponsors"
-import ProgressBar from "./ProgressBar"
 import Admin from "./Admin"
 import Loader from "./Loader"
 import Social from "./Social"
@@ -45,7 +44,6 @@ export {
   SearchBar,
   Quiz,
   Sponsors,
-  ProgressBar,
   Admin,
   Loader,
   Social,
