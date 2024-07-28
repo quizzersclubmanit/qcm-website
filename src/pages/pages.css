@@ -1,7 +1,11 @@
 #hero {
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  background: url("/hero-bg.jpeg") no-repeat center center/cover;
+  /* backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); */
+  background: url("/src/assets/bg-gradient.png") no-repeat center center/cover;
+}
+
+#play-quiz{
+  background:url('/src/assets/image-quiz-bg.png');
 }
 
 #about {
@@ -10,7 +14,6 @@
   background-size: contain;
   background-position: 1rem 2rem;
 }
-
 #hero .background-img {
   position: absolute;
   top: 0;

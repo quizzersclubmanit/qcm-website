@@ -14,13 +14,9 @@ const Home = () => {
     <main>
       <Header />
       <Hero />
-      {/* <Container className="h-screen bg-white"></Container> */}
       <About />
-      {/* <Container className="h-screen bg-white"></Container> */}
       <Events />
-      {/* <Container className="h-screen bg-white"></Container> */}
       <Sponsors />
-      {/* <Container className="h-screen bg-white"></Container> */}
       <Footer />
     </main>
   )
