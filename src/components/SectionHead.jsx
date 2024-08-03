@@ -12,7 +12,7 @@ const SectionHead = ({
     >
       {logo && <Logo className="w-[9vmax] md:w-[5vmax] sm:w-[7vmax]" />}
       <h3
-        className={`sm:text-[5vmax] text-[6vmax] ${outline && "text-outline"}`}
+        className={`sm:text-[5vmax] text-[4vmax] ${outline && "text-outline"}`}
       >
         {label}
       </h3>
