@@ -198,7 +198,7 @@ const Auth = ({ label = "signup" }) => {
                   error={errors.school}
                   placeholder="School"
                   className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                  style={{ borderBottom: "2px solid blue" }}
+                  style={{ borderBottom: "2px solid blue , marginRight: "5px"}}
                   {...register("school", requiredCheck)}
                 />
 
@@ -206,7 +206,7 @@ const Auth = ({ label = "signup" }) => {
                   error={errors.city}
                   placeholder="City"
                   className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                  style={{ borderBottom: "2px solid blue" }}
+                  style={{ borderBottom: "2px solid blue" , marginLeft: "5px"}}
                   {...register("city", requiredCheck)}
                 />
               </div>
