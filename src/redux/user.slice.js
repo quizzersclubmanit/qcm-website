@@ -4,7 +4,8 @@ const UserSlice = createSlice({
   name: "user",
   initialState: {
     data: {},
-    loggedIn: false
+    loggedIn: false,
+    score: 0
   },
   reducers: {
     setData: (state, action) => {
@@ -15,11 +16,14 @@ const UserSlice = createSlice({
     },
     logout: (state) => {
       state.loggedIn = false
+    },
+    setScore: (state, action) => {
+      state.score = action.payload
     }
   }
 })
 
-export const { setData, login, logout } = UserSlice.actions
+export const { setData, login, logout, setScore } = UserSlice.actions
 
 const userReducer = UserSlice.reducer
 

@@ -4,9 +4,10 @@ import dbService from "../api/db.service"
 import { Query } from "appwrite"
 import {
   Container,
-  SectionHead,
+  Logo,
   Loader,
-  NotAvailable
+  NotAvailable,
+  SearchBar
 } from "../components/components"
 import toast from "react-hot-toast"
 
@@ -14,6 +15,8 @@ const Results = () => {
   const [leaderBoard, setLeaderBoard] = useState([])
   const [loading, setLoading] = useState(true)
   let scores = useMemo(() => [])
+  const [searchCity, setSearchCity] = useState("")
+  const [searchSchool, setSearchSchool] = useState("")
 
   useEffect(() => {
     dbService
@@ -64,34 +67,58 @@ const Results = () => {
   return (
     <Container
       id="results"
-      className="londrina-solid-regular w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col sm:justify-start gap-5 items-center sm:items-start"
+      className="poppins-regular w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col sm:justify-start gap-5 items-center sm:items-start background-blue"
     >
-      <SectionHead logo outline label="Leaderboard" className="text-white" />
+      <Logo className="w-[8vmax] md:w-[5vmax] sm:w-[7vmax]" />
+      <div className="flex gap-2 mx-auto">
+        <SearchBar
+          content={searchCity}
+          setContent={setSearchCity}
+          placeholder="City"
+          className="p-2 bg-white rounded-lg focus:outline-0 w-full"
+        />
+        <SearchBar
+          content={searchSchool}
+          setContent={setSearchSchool}
+          placeholder="School"
+          className="p-2 bg-white rounded-lg focus:outline-0 w-full"
+        />
+      </div>
       <div className="flex flex-col gap-3 w-full items-center">
         <div className="flex justify-around w-full sm:w-3/4 md:w-1/2 sm:text-[2vmax] text-[3vmax] text-white font-bold text-outline-thin">
           <span>Rank</span>
           <span>Details</span>
           <span>Score</span>
         </div>
-        {leaderBoard.map((user, index) => (
-          <div
-            key={index}
-            className="bg-white py-3 pl-5 rounded-xl justify-around flex gap-5 items-center w-full sm:w-3/4 md:w-1/2"
-          >
-            <span className="text-[3vmax] sm:text-[2.5vmax] text-yellow-500">
-              {index + 1}.{" "}
-            </span>
-            <p
-              className="text-[3vmax] sm:text-[2vmax]"
-              onClick={() => {
-                console.log(user)
-              }}
+        {leaderBoard
+          .filter(
+            (user) =>
+              user.city?.toLowerCase().startsWith(searchCity?.toLowerCase()) &&
+              user.educationalInstitute
+                ?.toLowerCase()
+                .startsWith(searchSchool?.toLowerCase())
+          )
+          .map((user, index) => (
+            <div
+              key={index}
+              className="bg-white py-3 pl-5 rounded-xl justify-around flex gap-5 items-center w-full sm:w-3/4 md:w-1/2"
             >
-              {user.name}, {user.educationalInstitute}, {user.city}
-            </p>
-            <span className="text-[3vmax] sm:text-[2.5vmax]">{user.score}</span>
-          </div>
-        ))}
+              <span className="text-[3vmax] sm:text-[2.5vmax] text-yellow-500">
+                {index + 1}.{" "}
+              </span>
+              <p
+                className="text-[3vmax] sm:text-[1.5vmax] uppercase"
+                onClick={() => {
+                  console.log(user)
+                }}
+              >
+                {user.name} | {user.educationalInstitute} | {user.city}
+              </p>
+              <span className="text-[3vmax] sm:text-[2.5vmax]">
+                {user.score}
+              </span>
+            </div>
+          ))}
       </div>
     </Container>
   )
