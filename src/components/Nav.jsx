@@ -104,7 +104,6 @@
 
 // export default Nav
 
-
 import { useNavigate, Link } from "react-router-dom"
 import { Button, DropDown, UserBtn,Logo } from "./components"
 import authService from "../api/auth.service"
@@ -185,7 +184,10 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               <a
                 key={index}
                 href={tab.to}
-                className="hover:text-yellow-400 md:hover:scale-125 transition-all p-2 rounded-lg text-base no-underline md:text-white font-xs text-black"
+                className="hover:text-yellow-400 transition-all text-base no-underline text-black 
+                border-2 rounded-[25px] py-[5px] px-[10px] 
+                md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
+                style={{ borderColor: "currentColor"}}
                 onClick={offModal}
               >
                 {tab.name}
@@ -194,7 +196,12 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               <Link
                 key={index}
                 to={tab.to}
-                className="hover:text-yellow-400 md:hover:scale-125 transition-all p-2 rounded-lg text-base no-underline md:text-white text-black"
+                // className="hover:text-yellow-400 md:hover:scale-125 transition-all p-2 rounded-lg text-base no-underline md:text-white text-black border-2 py-[5px] px-[10px] rounded-[25px]"
+
+                className="hover:text-yellow-400 transition-all text-base no-underline text-black 
+                border-2 rounded-[25px] py-[5px] px-[10px] 
+                md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
+                style={{ borderColor: "currentColor"}}
                 onClick={offModal}
               >
                 {tab.name}
