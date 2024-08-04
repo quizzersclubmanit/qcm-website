@@ -225,6 +225,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
             style={{
               color: isMobile ? 'rgb(15, 109, 115)' : 'white',
               borderColor: isMobile ? 'rgb(15, 109, 115)' : 'white',
+              ...(window.innerWidth < 768 && { marginTop: '10px' }),
             }}
             onClick={() => {
               navigate("signup")
