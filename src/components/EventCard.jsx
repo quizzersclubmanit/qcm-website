@@ -9,10 +9,10 @@ const EventCard = ({ dets = {} }) => {
       <div
         className="flex flex-col items-start p-8 gap-2 w-[80vw] md:w-[40vw] xl:w-[25vw] bg-white"
         style={{
-          boxShadow: "0.7vmax 1.5vmax 0 10px black",
           borderTopLeftRadius: "10px",
           borderBottomLeftRadius: "10px",
-          borderTopRightRadius: "10px"
+          borderTopRightRadius: "10px",
+          borderBottomRightRadius: "10px"
         }}
       >
         <div className="flex justify-center w-full">
