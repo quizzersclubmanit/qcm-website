@@ -1,5 +1,5 @@
 import { useNavigate, Link } from "react-router-dom"
-import { Button, DropDown, UserBtn,Logo } from "./components"
+import { Button, DropDown, UserBtn, Logo } from "./components"
 import authService from "../api/auth.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
@@ -39,16 +39,16 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   const logoRef = useRef(null)
   const [showDropDown, setShowDropDown] = useState(false)
   const dropDownRef = useRef(null)
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+      setIsMobile(window.innerWidth < 768)
+    }
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   useEffect(() => {
     authService
@@ -60,18 +60,18 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
       .catch((err) => {
         console.error(err)
       })
-  }, [dispatch])
+  }, [])
 
-
-
-  
   return (
     <>
       <nav
         ref={ref}
-        className={`font-Arimo md:items-center w-full md:justify-between justify-between flex md:flex-row flex-col items-center md:overflow-y-hidden md:h-[12vh] ${className}`}
+        className={`font-Arimo md:items-center md:justify-between justify-between flex md:flex-row flex-col items-center md:overflow-y-hidden md:h-[12vh] w-full ${className}`}
       >
-         <Logo ref={logoRef} className="hidden md:block md:w-[3vmax] w-[10vmin] " />
+        <Logo
+          ref={logoRef}
+          className="hidden md:block md:w-[3vmax] w-[10vmin] "
+        />
         <div className="tabs-bar flex flex-col gap-[2vw] mt-0 pt-0 md:flex-row h-full items-center px-2 rounded-2xl">
           {tabs.map((tab, index) =>
             tab.to.startsWith("#") ? (
@@ -81,7 +81,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
                 className="hover:text-yellow-400 transition-all text-base no-underline text-black 
                 border-2 rounded-[25px] py-[5px] px-[10px] 
                 md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
-                style={{ borderColor: "currentColor"}}
+                style={{ borderColor: "currentColor" }}
                 onClick={offModal}
               >
                 {tab.name}
@@ -93,7 +93,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
                 className="hover:text-yellow-400 transition-all text-base no-underline text-black 
                 border-2 rounded-[25px] py-[5px] px-[10px] 
                 md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
-                style={{ borderColor: "currentColor"}}
+                style={{ borderColor: "currentColor" }}
                 onClick={offModal}
               >
                 {tab.name}
@@ -113,9 +113,9 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
             label="Signup"
             className="poppins-regular ml-2vmax py-1 px-5 text-sm text-[rgb(15,109,115)] border-[rgb(15,109,115)] rounded-3xl border-2 overflow-y-hidden"
             style={{
-              color: isMobile ? 'rgb(15, 109, 115)' : 'white',
-              borderColor: isMobile ? 'rgb(15, 109, 115)' : 'white',
-              ...(window.innerWidth < 768 && { marginTop: '10px' }),
+              color: isMobile ? "rgb(15, 109, 115)" : "white",
+              borderColor: isMobile ? "rgb(15, 109, 115)" : "white",
+              ...(window.innerWidth < 768 && { marginTop: "10px" })
             }}
             onClick={() => {
               navigate("signup")

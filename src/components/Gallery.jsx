@@ -17,7 +17,6 @@ const Team = () => {
       id="team-gallery"
       className="text-white flex flex-col items-center md:p-[3vmax] p-[2vmax] min-h-screen"
     >
-      {/* <Logo className="w-[8vmax] md:w-[5vmax] sm:w-[7vmax] mb-9" /> */}
       <div className="flex justify-around w-full items-center glass-box">
         <Button
           label="Pre Final Year"

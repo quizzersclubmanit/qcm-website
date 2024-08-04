@@ -11,7 +11,7 @@ const Hero = () => {
   const ref2 = useRef(null)
   const ref3 = useRef(null)
   const bulbRef = useRef(null)
-  const organizationNameList = organization.split(" ");
+  const organizationNameList = organization.split(" ")
 
   useGSAP(() => {
     gsap
@@ -42,6 +42,7 @@ const Hero = () => {
       })
       .from(bulbRef.current, {
         x: "100%",
+        y: "-10%",
         opacity: 0
       })
       .to(bulbRef.current, {
@@ -60,9 +61,8 @@ const Hero = () => {
       className="Fira Sans h-screen flex flex-col-reverse sm:flex-row items-center justify-evenly relative"
     >
       <div className="background-img"></div>
-      <div className="left w-full h-full flex flex-col justify-center items-start px-16 text-white gap-0">
+      <div className="left w-full h-full flex flex-col justify-center items-start sm:px-16 px-10 text-white gap-0">
         <div className="organization-name flex flex-row flex-wrap">
-
           <div ref={ref0} className="overflow-y-hidden leading-none">
             {organizationNameList[0].split("").map((char, index) => (
               <span
@@ -98,11 +98,12 @@ const Hero = () => {
         >
           NIT BHOPAL
         </h4>
-        <p ref={ref3} className="text-[2.0vmax] overflow-y-hidden">
-          Central India's{" "}
-          <span className="text-[#fe9c02]">
-            Largest Quizzing Club
-          </span>
+        <p
+          ref={ref3}
+          className="sm:text-[2vmax] text-[3vmax] overflow-y-hidden"
+        >
+          Central India's
+          <span className="text-[#fe9c02] block">Largest Quizzing Club</span>
         </p>
       </div>
       <div className="flex right h-full w-full justify-center sm:items-center mt-20 self-end overflow-y-hidden">
