@@ -142,6 +142,7 @@ const Auth = ({ label = "signup" }) => {
 
       <div className="right md:w-1/2 sm:w-[70vw] w-full sm:h-full bg-white p-8 rounded-2xl flex flex-col gap-8">
         <SectionHead
+          blue
           className="poppins-bold"
           logo
           label={label == "signup" ? "Register" : "Welcome"}
