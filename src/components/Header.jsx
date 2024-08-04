@@ -52,7 +52,8 @@ const Header = () => {
     >
       <div
         ref={headRef}
-        className="w-[90%] h-20 flex m-4 justify-between md:w-[70%] md:justify-center items-center rounded-2xl overflow-y-hidden"
+        className="flex py-1 justify-around items-center rounded-2xl overflow-y-hidden"
+        style={{ borderRadius: '2rem' }}
       >
         <Logo
           ref={logoRef}
