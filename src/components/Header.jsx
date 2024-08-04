@@ -1,5 +1,5 @@
-import { Container, Nav, Modal, Logo } from "./components"
-import { RxHamburgerMenu } from "react-icons/rx"
+import { Container, Nav, Modal,Logo} from "./components"
+import { RxHamburgerMenu,RxCross1 } from "react-icons/rx"
 import { useState, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -12,6 +12,9 @@ const Header = () => {
   const headRef = useRef(null)
   const logoRef = useRef(null)
   const navRef = useRef(null)
+  const toggleModal = () => {
+    setShowTabModal((prev) => !prev);
+  };
 
   useGSAP(() => {
     gsap.from(navRef.current, {
@@ -49,7 +52,7 @@ const Header = () => {
     >
       <div
         ref={headRef}
-        className="w-[70%] h-20 flex m-4 justify-between md:justify-center items-center rounded-2xl overflow-y-hidden"
+        className="w-[90%] h-20 flex m-4 justify-between md:w-[70%] md:justify-center items-center rounded-2xl overflow-y-hidden"
       >
         <Logo
           ref={logoRef}
@@ -57,18 +60,22 @@ const Header = () => {
         />
 
         <Nav ref={navRef} className="hidden md:flex" />
-
-        <RxHamburgerMenu
-          className="block md:hidden w-[15vmin]   text-white cursor-pointer"
-          onClick={() => {
-            setShowTabModal((prev) => !prev)
-          }}
-        />
+        {showTabModal ? (
+          <RxCross1
+            className="block md:hidden w-[15vmin] text-white cursor-pointer"
+            onClick={toggleModal}
+          />
+        ) : (
+          <RxHamburgerMenu
+            className="block md:hidden w-[15vmin] text-white cursor-pointer"
+            onClick={toggleModal}
+          />
+        )}
         {showTabModal && (
           <Modal setShowModal={setShowTabModal}>
             <Nav
               offModal={() => {
-                setShowTabModal(false)
+                setShowTabModal(toggleModal)
               }}
             />
           </Modal>
