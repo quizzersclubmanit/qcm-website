@@ -8,9 +8,9 @@ import { Navigate, useParams } from "react-router-dom"
 import {
   Button,
   Container,
-  ProgressBar,
   Loader,
-  NotAvailable, Logo
+  NotAvailable,
+  Logo
 } from "../components/components"
 import { useNavigate } from "react-router-dom"
 import dbService from "../api/db.service"
@@ -18,6 +18,7 @@ import storeService from "../api/store.service"
 import { Query } from "appwrite"
 import toast from "react-hot-toast"
 import { arraysEqual } from "../utils/utils"
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa6"
 
 const PlayQuiz = () => {
   const { sec } = useParams()
@@ -143,35 +144,32 @@ const PlayQuiz = () => {
   return (
     <Container
       id="play-quiz"
-      className="Fira Sans w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-center items-center sm:items-center"
+      className="Fira Sans w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-around items-center sm:items-center sm:gap-5 gap-1 "
       onContextMenu={(e) => {
         e.preventDefault()
       }}
     >
-      {/* <ProgressBar progress={(currentQue / quizes.length) * 100} /> */}
-      <div className="flex w-full md:w-[70vw] justify-between  mt-6  p-4 items-center bg-white bg-opacity-25  rounded-3xl sm:text-xl">
-        <div className="flex w-[45%] flex-col text-white font-bold overflow-y-hidden " >
-          <div className="flex items-center ">SECTION-
-            <span className="text-xl md:text-3xl  overflow-y-hidden text-[#FCA311] ">
-              {quizes[currentQue - 1]?.section}</span>
-          </div>
+      <div className="flex w-full md:w-[70vw] justify-between mt-6 items-center glass-box">
+        <div className="flex w-[45%] flex-col text-white font-bold overflow-y-hidden uppercase sm:text-2xl">
+          <p className="flex items-center text-sm sm:text-xl">
+            Section -&nbsp;
+            <span className="overflow-y-hidden text-[#FCA311] ">
+              {quizes[currentQue - 1]?.section}
+            </span>
+          </p>
         </div>
-        <Logo ref={logoRef} className=" h-10 " />
-        <div className="flex justify-end w-[45%] text-[#FCA311] font-bold overflow-y-hidden">
-          <span>
-            {/* Marking Scheme: +{quizes[currentQue - 1]?.reward}, - */}
-            {/* {quizes[currentQue - 1]?.nagativeMarking} */}
-          </span>
-          <span className="text-white overflow-y-hidden flex items-center">TIME LEFT-
-            <span className="text-[#FCA311] text-xl md:text-3xl overflow-y-hidden">
-              {timer}:00</span>
-          </span>
+        <Logo ref={logoRef} className="h-10 sm:block hidden" />
+        <div className="flex justify-end w-[45%] text-[#FCA311] font-bold overflow-y-hidden sm:text-2xl">
+          <p className="text-white text-sm sm:text-xl overflow-y-hidden flex items-center uppercase">
+            Time Left -&nbsp;
+            <span className="text-[#FCA311] overflow-y-hidden">{timer}:00</span>
+          </p>
         </div>
       </div>
-      <span className="text-4xl leading-none overflow-y-hidden m-3 font-bold text-white z-1">
+      <span className="md:text-2xl text-xs leading-none overflow-y-hidden m-3 font-bold text-white z-1 glass-box">
         {currentQue}/{quizes.length}
       </span>
-      <p className="p-4 rounded-lg text-xl text-center text-white leading-none focus:outline-0  md:w-1/2 sm:w-4/5 cursor-default z-10">
+      <p className="p-1 rounded-lg text-center sm:text-lg text-white leading-none focus:outline-0  md:w-1/2 sm:w-4/5 cursor-default z-10 glass-box">
         Q. {quizes[currentQue - 1]?.question} ?
       </p>
       {quizes[currentQue - 1]?.supportingPic && (
@@ -183,7 +181,7 @@ const PlayQuiz = () => {
           className="w-1/3 sm:w-1/4 md:w-[20%]"
         />
       )}
-      <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-1 gap-3 md:w-1/2 sm:w-4/5 w-full">
+      <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-2 gap-5 md:w-1/2 sm:w-4/5 w-full mt-4 sm:mt-0">
         {quizes[currentQue - 1]?.options.map((option, index) =>
           quizes[currentQue - 1]?.optionsContainImg ? (
             <img
@@ -191,7 +189,7 @@ const PlayQuiz = () => {
               src={storeService.fetchFilePreview({
                 fileId: option
               })}
-              className={`w-full z-10 rounded-3xl aspect-video cursor-pointer  ${selectedOptions[index] ? "border-4 border-yellow-400" : ""} ${!timer && "pointer-events-none"}`}
+              className={`w-full mx-auto rounded z-10 aspect-video cursor-pointer border-4 ${selectedOptions[index] ? "border-yellow-400" : "border-white"} ${!timer && "pointer-events-none"}`}
               alt={`Option ${index}`}
               onClick={() => {
                 setSelectedOptions((prev) =>
@@ -217,32 +215,40 @@ const PlayQuiz = () => {
       {showSubmitBtn ? (
         <Button
           label="Submit"
-          className="text-xl bg-orange-300 hover:bg-orange-400 p-3 rounded-lg"
+          className="font-bold p-1 uppercase mt-4 py-1 px-4 bg-green-400 rounded-2xl hover:bg-green-500"
           onClick={handleSubmit}
         />
       ) : (
         <div className="flex z-10 justify-between items-center md:w-[60%] sm:w-4/5 w-full p-4 rounded">
           <div className="previous flex flex-row items-center bg-[#E5E5E5] py-1 px-4 rounded-2xl hover:bg-gray-300">
-            <svg className="h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" /></svg>
-            <button className="text-xs font-bold p-1" onClick={() => {
-              setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
-              setSelectedOptions([false, false, false, false])
-            }}>
-              NEXT
-            </button>
+            <FaAngleLeft />
+            <Button
+              label="Prev"
+              className="font-bold p-1 uppercase"
+              onClick={() => {
+                setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
+                setSelectedOptions([false, false, false, false])
+              }}
+            />
           </div>
           <div className="next flex flex-row justify-between items-center py-1 px-4 bg-yellow-600 rounded-2xl hover:bg-yellow-500">
-
-
-            <button className="text-xs font-bold p-1" onClick={handleNext} >
-              NEXT
-            </button>
-            <svg className="h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" /></svg>
+            <Button
+              label="Next"
+              className="font-bold p-1 uppercase"
+              onClick={handleNext}
+            />
+            <FaAngleRight />
           </div>
         </div>
       )}
-      <img src="/src/assets/image-quiz-left-illustration.png" alt="" srcset="" className="absolute hidden md:block  z-0 left-0 top-[25vh]" />
-      <img src="/src/assets/image-quiz-right-illustration.png" alt="" srcset="" className="absolute hidden md:block z-0 right-0 top-[25vh]" />
+      <img
+        src="/image-quiz-left-illustration.png"
+        className="absolute hidden md:block  z-0 left-0 top-[25vh]"
+      />
+      <img
+        src="/image-quiz-left-illustration.png"
+        className="absolute hidden md:block z-0 right-0 top-[25vh] scale-x-[-1]"
+      />
     </Container>
   )
 }
