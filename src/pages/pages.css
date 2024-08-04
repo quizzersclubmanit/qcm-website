@@ -9,10 +9,12 @@
 }
 
 #about {
-  background: url("/about-us-bg.png");
+  background: url("/src/assets/about\ us\ curve.png");
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: 1rem 2rem;
+  background-position: top;
+  background-color: #faf3e7;
+  min-height: 100vh;
 }
 #hero .background-img {
   position: absolute;

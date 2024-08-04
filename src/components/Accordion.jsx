@@ -31,7 +31,7 @@ const Accordion = ({ qna = [] }) => {
   })
 
   return (
-    <Container className="w-3/4 mx-auto" ref={ref}>
+    <Container className="w-3/4 lg:w-1/2 " ref={ref}>
       {qna.map((obj, index) => (
         <div
           className="mb-3"
