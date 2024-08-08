@@ -1,5 +1,5 @@
-import { Container, Nav, Modal,Logo} from "./components"
-import { RxHamburgerMenu,RxCross1 } from "react-icons/rx"
+import { Container, Nav, Modal, Logo } from "./components"
+import { RxHamburgerMenu, RxCross1 } from "react-icons/rx"
 import { useState, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -13,8 +13,8 @@ const Header = () => {
   const logoRef = useRef(null)
   const navRef = useRef(null)
   const toggleModal = () => {
-    setShowTabModal((prev) => !prev);
-  };
+    setShowTabModal((prev) => !prev)
+  }
 
   useGSAP(() => {
     gsap.from(navRef.current, {
@@ -38,8 +38,6 @@ const Header = () => {
         ease: "power2"
       })
       .to(headRef.current, {
-        paddingInline: 12,
-        paddingBlock: 4,
         backgroundColor: "#000000a2",
         ease: "power2"
       })
@@ -48,12 +46,12 @@ const Header = () => {
   return (
     <Container
       element="header"
-      className="w-screen fixed z-10  flex justify-center"
+      className="w-screen fixed z-10 flex justify-center"
     >
       <div
         ref={headRef}
-        className="flex py-1 justify-around items-center rounded-2xl overflow-y-hidden"
-        style={{ borderRadius: '2rem' }}
+        className="flex py-1 justify-around items-center rounded-3xl overflow-y-hidden sm:w-[75vw] w-[90vw] px-8 mt-3"
+        style={{ borderRadius: "2rem" }}
       >
         <Logo
           ref={logoRef}
