@@ -5,8 +5,7 @@ const env = {
   quizId: import.meta.env.VITE_QUIZ_COLLECTION_ID,
   leaderboardId: import.meta.env.VITE_LEADERBOARD_COLLECTION_ID,
   userId: import.meta.env.VITE_USER_COLLECTION_ID,
-  bucketId: import.meta.env.VITE_STORE_ID,
-  locationIqApiKey: import.meta.env.VITE_LOCATION_IQ_ACCESS_TOKEN
+  bucketId: import.meta.env.VITE_STORE_ID
 }
 
 export const timeLimits = [

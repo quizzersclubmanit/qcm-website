@@ -152,7 +152,7 @@ const Auth = ({ label = "signup" }) => {
             <>
               <Input
                 error={errors.name}
-                placeholder="Name"
+                placeholder="* Name"
                 className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                 style={{ borderBottom: "2px solid blue" }}
                 {...register("name", requiredCheck)}
@@ -170,17 +170,10 @@ const Auth = ({ label = "signup" }) => {
                   </select>
                   <p className="text-red-500">{errors.sex?.message}</p>
                 </div>
-                {/* <Input
-                  error={errors.sex}
-                  placeholder="Male / Female / Other"
-                  className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                  style={{ borderBottom: "2px solid blue" }}
-                  {...register("sex", requiredCheck)}
-                /> */}
                 <Input
                   type="tel"
                   error={errors.phone}
-                  placeholder="Phone"
+                  placeholder="* Phone"
                   className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                   style={{ borderBottom: "2px solid blue" }}
                   {...register("phone", {
@@ -197,7 +190,7 @@ const Auth = ({ label = "signup" }) => {
               <div className="flex">
                 <Input
                   error={errors.school}
-                  placeholder="School"
+                  placeholder="* School"
                   className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                   style={{ borderBottom: "2px solid blue", marginRight: "5px" }}
                   {...register("school", requiredCheck)}
@@ -205,7 +198,7 @@ const Auth = ({ label = "signup" }) => {
 
                 <Input
                   error={errors.city}
-                  placeholder="City"
+                  placeholder="* City"
                   className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                   style={{ borderBottom: "2px solid blue", marginLeft: "5px" }}
                   {...register("city", requiredCheck)}
@@ -219,7 +212,7 @@ const Auth = ({ label = "signup" }) => {
             style={{ borderBottom: "2px solid blue" }}
             error={errors.email}
             type="email"
-            placeholder="Email"
+            placeholder="* Email"
             {...register("email", {
               ...requiredCheck,
               pattern: {
@@ -234,12 +227,12 @@ const Auth = ({ label = "signup" }) => {
             style={{ borderBottom: "2px solid blue" }}
             error={errors.password}
             type={showPassword ? "text" : "password"}
-            placeholder="Password"
+            placeholder="* Password"
             {...register("password", {
               ...requiredCheck,
               pattern: {
                 value:
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-+])[^\s]{8,}$/,
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-+_])[^\s]{8,}$/,
                 message:
                   "Password should contain at least 1 lowercase, uppercase, special character and should at least be 8 characters long"
               }

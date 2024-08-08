@@ -31,6 +31,7 @@ const router = createBrowserRouter(
       <Route path="team" element={<Gallery />} />
       <Route path="signup" element={<Auth />} />
       <Route path="login" element={<Auth label="login" />} />
+      <Route path="update-phone" element={<Auth label="update" />} />
       <Route path="account/verification/:dets" element={<Verification />} />
       <Route path="events/:eventId" element={<Event />} />
       <Route path="quiz/" element={<Outlet />}>

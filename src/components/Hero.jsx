@@ -100,10 +100,12 @@ const Hero = () => {
         </h4>
         <p
           ref={ref3}
-          className="sm:text-[2vmax] text-[3vmax] overflow-y-hidden"
+          className="md:text-[2vmax] text-[3vmax] overflow-y-hidden"
         >
-          Central India's
-          <span className="text-[#fe9c02] block">Largest Quizzing Club</span>
+          Central India's{" "}
+          <span className="text-[#fe9c02] md:inline block">
+            Largest Quizzing Club
+          </span>
         </p>
       </div>
       <div className="flex right h-full w-full justify-center sm:items-center mt-20 self-end overflow-y-hidden">

@@ -1,4 +1,5 @@
-import { Container, Input, Button } from "../components/components"
+import { Container, Input, Button, Modal } from "../components/components"
+import { UpdatePhone } from "../dashboards/dashboards"
 import { useForm } from "react-hook-form"
 import authService from "../api/auth.service"
 import { useNavigate, useParams } from "react-router-dom"
@@ -8,17 +9,18 @@ import { useDispatch } from "react-redux"
 import { useState } from "react"
 
 const Verification = () => {
-  const { register, handleSubmit, setValue } = useForm({
+  const { register, handleSubmit, setValue, formState } = useForm({
     defaultValues: {
-      codeArr: new Array(6).fill("")
+      code: ""
     }
   })
+  const { errors } = formState
   const dispatch = useDispatch()
-  const digits = [0, 1, 2, 3, 4, 5]
   const navigate = useNavigate()
   let { dets } = useParams()
   dets = JSON.parse(dets)
   const [disableResendBtn, setDisableResendBtn] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <Container className="poppins-regular relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
@@ -30,20 +32,21 @@ const Verification = () => {
           </p>
         </div>
         <form noValidate className="flex flex-col gap-3 p-4">
-          <div className="flex items-center gap-3">
-            {digits.map((digit) => (
-              <Input
-                key={digit}
-                maxLength={1}
-                className="h-[8vh] flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white"
-                {...register(`codeArr.${digit}`, {
-                  required: {
-                    value: true,
-                    message: "Enter the entire code"
-                  }
-                })}
-              />
-            ))}
+          <div>
+            <Input
+              className="h-[8vh] flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-200 text-lg bg-white"
+              {...register("code", {
+                required: {
+                  value: true,
+                  message: "Code is reqiured"
+                },
+                pattern: {
+                  value: /^\d{6}$/,
+                  message: "Code should be a 6 digit string"
+                }
+              })}
+            />
+            <p className="text-sm text-red-500">{errors.code?.message}</p>
           </div>
 
           <div className="flex flex-col space-y-5">
@@ -52,11 +55,10 @@ const Verification = () => {
                 label="Verify Account"
                 className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-3 bg-[#020062] hover:bg-[#2b2b67] border-none text-white text-sm shadow-sm"
                 onClick={handleSubmit((formData) => {
-                  const code = formData.codeArr.join("")
                   authService
                     .verifyToken({
                       userId: dets.userId,
-                      secret: code
+                      secret: formData.code
                     })
                     .then(() => {
                       dispatch(login())
@@ -67,7 +69,7 @@ const Verification = () => {
                       console.error(error)
                     })
                     .finally(() => {
-                      setValue("codeArr", new Array(6).fill(""))
+                      setValue("code", "")
                     })
                 })}
               />
@@ -93,9 +95,24 @@ const Verification = () => {
                 }}
               />
             </div>
+
+            <Button
+              label="Change Phone Number?"
+              className="text-sm text-blue-600"
+              onClick={(e) => {
+                e.preventDefault()
+                setShowModal(true)
+                setDisableResendBtn(false)
+              }}
+            />
           </div>
         </form>
       </div>
+      {showModal && (
+        <Modal setShowModal={setShowModal}>
+          <UpdatePhone setShowModal={setShowModal} dets={dets} />
+        </Modal>
+      )}
     </Container>
   )
 }
