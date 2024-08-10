@@ -57,20 +57,40 @@ const Auth = ({ label = "signup" }) => {
     })
       .then((user) => {
         if (formData.name) {
-          authService
-            .addPhoneNumber({
-              phone: formData.phone,
-              password: formData.password
+          dbService
+            .insert({
+              collectionId: env.userId,
+              data: {
+                userId: user.$id,
+                name: formData.name.toLowerCase(),
+                contactNo: `+91${formData.phone}`,
+                educationalInstitute: formData.school.toLowerCase(),
+                city: formData.city.toLowerCase(),
+                sex: formData.sex.toLowerCase()
+              }
             })
-            .then(() => {
+            .then((res) => {
+              user = { ...user, ...res }
+              dispatch(setData(user))
               authService
-                .sendVerificationToken()
+                .addPhoneNumber({
+                  phone: formData.phone,
+                  password: formData.password
+                })
                 .then(() => {
-                  const dets = JSON.stringify({
-                    userId: user.userId,
-                    phone: formData.phone
-                  })
-                  navigate(`/account/verification/${dets}`)
+                  authService
+                    .sendVerificationToken()
+                    .then(() => {
+                      const dets = JSON.stringify({
+                        userId: user.userId,
+                        phone: `+91${formData.phone}`
+                      })
+                      navigate(`/account/verification/${dets}`)
+                    })
+                    .catch((error) => {
+                      console.error(error)
+                      toast.error(error.message)
+                    })
                 })
                 .catch((error) => {
                   console.error(error)
@@ -79,35 +99,13 @@ const Auth = ({ label = "signup" }) => {
             })
             .catch((error) => {
               console.error(error)
-              toast.error(error.message)
-            })
-        }
-
-        if (formData.name) {
-          dbService
-            .insert({
-              collectionId: env.userId,
-              data: {
-                userId: user.$id,
-                name: formData.name.toLowerCase(),
-                contactNo: formData.phone,
-                educationalInstitute: formData.school.toLowerCase(),
-                city: formData.city.toLowerCase(),
-                sex: formData.sex.toLowerCase()
-              }
-            })
-            .then((res) => {
-              user = { ...user, ...res }
-            })
-            .catch((error) => {
-              console.error(error)
             })
         } else {
+          dispatch(setData(user))
           dispatch(login())
           navigate("/")
           toast.success("Logged In Successfully")
         }
-        dispatch(setData(user))
       })
       .catch((error) => {
         console.error(error)
@@ -158,15 +156,15 @@ const Auth = ({ label = "signup" }) => {
                 {...register("name", requiredCheck)}
               />
               <div className="flex gap-10 items-center">
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1 sm:w-1/4 w-1/3">
                   <select
                     className="p-1 cursor-pointer focus:outline-none"
                     defaultValue={2}
                     {...register("sex", requiredCheck)}
                   >
-                    <option value={0}>Male</option>
-                    <option value={1}>Female</option>
-                    <option value={2}>Other</option>
+                    <option value={0}>M</option>
+                    <option value={1}>F</option>
+                    <option value={2}>O</option>
                   </select>
                   <p className="text-red-500">{errors.sex?.message}</p>
                 </div>

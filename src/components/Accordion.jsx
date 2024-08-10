@@ -46,15 +46,15 @@ const Accordion = ({ qna = [] }) => {
             }
           }}
         >
-          <Button className="flex justify-between items-center w-full p-4 text-left ease-in sm:text-base text-lg border border-black">
-            <span className="font-bold">{obj.question}</span>
+          <Button className="flex justify-between items-center w-full p-4 text-left ease-in border border-slate-800">
+            <span className="font-semibold">{obj.question}</span>
             {openAccordions.includes(index) ? <FaMinus /> : <FaPlus />}
           </Button>
           <div
             id={`id_${index}`}
             className={`h-0 opacity-0 overflow-hidden flex items-center`}
           >
-            <p className="px-4 sm:text-sm leading-normal text-slate-700 whitespace-pre-wrap">
+            <p className="px-4 text-sm leading-normal text-slate-800 whitespace-pre-wrap">
               {obj.answer}
             </p>
           </div>

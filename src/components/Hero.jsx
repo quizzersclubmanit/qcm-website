@@ -58,7 +58,7 @@ const Hero = () => {
   return (
     <Container
       id="hero"
-      className="Fira Sans h-screen flex flex-col-reverse sm:flex-row items-center justify-evenly relative"
+      className="poppins-bold h-screen flex flex-col-reverse sm:flex-row items-center justify-evenly relative"
     >
       <div className="background-img"></div>
       <div className="left w-full h-full flex flex-col justify-center items-start sm:px-16 px-10 text-white gap-0">
@@ -67,7 +67,7 @@ const Hero = () => {
             {organizationNameList[0].split("").map((char, index) => (
               <span
                 key={index}
-                className="Fira Sans sm:text-[5vmax] text-[12vmin] inline-block opacity-0 overflow-y-hidden "
+                className="sm:text-[5vmax] text-[12vmin] inline-block opacity-0 overflow-y-hidden "
                 style={{
                   fontWeight: 700,
                   transform: "translateY(50%)"
@@ -81,7 +81,7 @@ const Hero = () => {
             {organizationNameList[1].split("").map((char, index) => (
               <span
                 key={index}
-                className="Fira Sans sm:text-[5vmax] text-[12vmin] inline-block opacity-0 overflow-y-hidden "
+                className="sm:text-[5vmax] text-[12vmin] inline-block opacity-0 overflow-y-hidden "
                 style={{
                   fontWeight: 700,
                   transform: "translateY(50%)"
@@ -92,10 +92,7 @@ const Hero = () => {
             ))}
           </div>
         </div>
-        <h4
-          ref={ref2}
-          className="Fira Sans text-[5vmax] font-bold overflow-y-hidden leading-none"
-        >
+        <h4 ref={ref2} className="text-[5vmax] overflow-y-hidden leading-none">
           NIT BHOPAL
         </h4>
         <p

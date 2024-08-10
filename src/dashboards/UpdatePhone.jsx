@@ -1,7 +1,11 @@
 import { Input, Button } from "../components/components"
 import { useForm } from "react-hook-form"
 import authService from "../api/auth.service"
+import dbService from "../api/db.service"
+import constants from "../../constants"
 import { useNavigate } from "react-router-dom"
+import { setData } from "../redux/user.slice"
+import { useDispatch, useSelector } from "react-redux"
 
 const UpdatePhone = ({ dets = {}, setShowModal = () => {} }) => {
   const { register, handleSubmit, setValue, formState } = useForm({
@@ -12,6 +16,9 @@ const UpdatePhone = ({ dets = {}, setShowModal = () => {} }) => {
   })
   const { errors } = formState
   const navigate = useNavigate()
+  const user = useSelector((state) => state.user.data)
+  const dispatch = useDispatch()
+
   return (
     <form className="flex flex-col gap-3">
       <Input
@@ -52,9 +59,24 @@ const UpdatePhone = ({ dets = {}, setShowModal = () => {} }) => {
               password: formData.password
             })
             .then(() => {
-              dets.phone = formData.phone
-              navigate(`/account/verification/${JSON.stringify(dets)}`)
-              setShowModal(false)
+              dets.phone = `+91${formData.phone}`
+              dbService
+                .update({
+                  collectionId: constants.userId,
+                  documentId: user.$id,
+                  changes: {
+                    contactNo: `+91${formData.phone}`
+                  }
+                })
+                .then(() => {
+                  dispatch(
+                    setData({ ...user, contactNo: `+91${formData.phone}` })
+                  )
+                  authService.sendVerificationToken()
+                  navigate(`/account/verification/${JSON.stringify(dets)}`)
+                  setShowModal(false)
+                })
+                .catch((error) => console.error(error))
             })
             .catch((error) => console.error(error))
             .finally(() => {

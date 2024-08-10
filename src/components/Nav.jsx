@@ -66,7 +66,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     <>
       <nav
         ref={ref}
-        className={`font-Arimo md:items-center md:justify-between justify-between flex md:flex-row flex-col items-center md:overflow-y-hidden md:h-[12vh] w-full ${className}`}
+        className={`poppins-regular md:items-center md:justify-between justify-between flex md:flex-row flex-col items-center md:overflow-y-hidden md:h-[12vh] w-full ${className}`}
       >
         <Logo
           ref={logoRef}
