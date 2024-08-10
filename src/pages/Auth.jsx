@@ -57,20 +57,40 @@ const Auth = ({ label = "signup" }) => {
     })
       .then((user) => {
         if (formData.name) {
-          authService
-            .addPhoneNumber({
-              phone: formData.phone,
-              password: formData.password
+          dbService
+            .insert({
+              collectionId: env.userId,
+              data: {
+                userId: user.$id,
+                name: formData.name.toLowerCase(),
+                contactNo: `+91${formData.phone}`,
+                educationalInstitute: formData.school.toLowerCase(),
+                city: formData.city.toLowerCase(),
+                sex: formData.sex.toLowerCase()
+              }
             })
-            .then(() => {
+            .then((res) => {
+              user = { ...user, ...res }
+              dispatch(setData(user))
               authService
-                .sendVerificationToken()
+                .addPhoneNumber({
+                  phone: formData.phone,
+                  password: formData.password
+                })
                 .then(() => {
-                  const dets = JSON.stringify({
-                    userId: user.userId,
-                    phone: formData.phone
-                  })
-                  navigate(`/account/verification/${dets}`)
+                  authService
+                    .sendVerificationToken()
+                    .then(() => {
+                      const dets = JSON.stringify({
+                        userId: user.userId,
+                        phone: `+91${formData.phone}`
+                      })
+                      navigate(`/account/verification/${dets}`)
+                    })
+                    .catch((error) => {
+                      console.error(error)
+                      toast.error(error.message)
+                    })
                 })
                 .catch((error) => {
                   console.error(error)
@@ -79,35 +99,13 @@ const Auth = ({ label = "signup" }) => {
             })
             .catch((error) => {
               console.error(error)
-              toast.error(error.message)
-            })
-        }
-
-        if (formData.name) {
-          dbService
-            .insert({
-              collectionId: env.userId,
-              data: {
-                userId: user.$id,
-                name: formData.name.toLowerCase(),
-                contactNo: formData.phone,
-                educationalInstitute: formData.school.toLowerCase(),
-                city: formData.city.toLowerCase(),
-                sex: formData.sex.toLowerCase()
-              }
-            })
-            .then((res) => {
-              user = { ...user, ...res }
-            })
-            .catch((error) => {
-              console.error(error)
             })
         } else {
+          dispatch(setData(user))
           dispatch(login())
           navigate("/")
           toast.success("Logged In Successfully")
         }
-        dispatch(setData(user))
       })
       .catch((error) => {
         console.error(error)
@@ -142,6 +140,7 @@ const Auth = ({ label = "signup" }) => {
 
       <div className="right md:w-1/2 sm:w-[70vw] w-full sm:h-full bg-white p-8 rounded-2xl flex flex-col gap-8">
         <SectionHead
+          blue
           className="poppins-bold"
           logo
           label={label == "signup" ? "Register" : "Welcome"}
@@ -151,35 +150,28 @@ const Auth = ({ label = "signup" }) => {
             <>
               <Input
                 error={errors.name}
-                placeholder="Name"
+                placeholder="* Name"
                 className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                 style={{ borderBottom: "2px solid blue" }}
                 {...register("name", requiredCheck)}
               />
               <div className="flex gap-10 items-center">
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1 sm:w-1/4 w-1/3">
                   <select
                     className="p-1 cursor-pointer focus:outline-none"
                     defaultValue={2}
                     {...register("sex", requiredCheck)}
                   >
-                    <option value={0}>Male</option>
-                    <option value={1}>Female</option>
-                    <option value={2}>Other</option>
+                    <option value={0}>M</option>
+                    <option value={1}>F</option>
+                    <option value={2}>O</option>
                   </select>
                   <p className="text-red-500">{errors.sex?.message}</p>
                 </div>
-                {/* <Input
-                  error={errors.sex}
-                  placeholder="Male / Female / Other"
-                  className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                  style={{ borderBottom: "2px solid blue" }}
-                  {...register("sex", requiredCheck)}
-                /> */}
                 <Input
                   type="tel"
                   error={errors.phone}
-                  placeholder="Phone"
+                  placeholder="* Phone"
                   className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                   style={{ borderBottom: "2px solid blue" }}
                   {...register("phone", {
@@ -196,17 +188,17 @@ const Auth = ({ label = "signup" }) => {
               <div className="flex">
                 <Input
                   error={errors.school}
-                  placeholder="School"
+                  placeholder="* School"
                   className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                  style={{ borderBottom: "2px solid blue" }}
+                  style={{ borderBottom: "2px solid blue", marginRight: "5px" }}
                   {...register("school", requiredCheck)}
                 />
 
                 <Input
                   error={errors.city}
-                  placeholder="City"
+                  placeholder="* City"
                   className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                  style={{ borderBottom: "2px solid blue" }}
+                  style={{ borderBottom: "2px solid blue", marginLeft: "5px" }}
                   {...register("city", requiredCheck)}
                 />
               </div>
@@ -218,7 +210,7 @@ const Auth = ({ label = "signup" }) => {
             style={{ borderBottom: "2px solid blue" }}
             error={errors.email}
             type="email"
-            placeholder="Email"
+            placeholder="* Email"
             {...register("email", {
               ...requiredCheck,
               pattern: {
@@ -233,12 +225,12 @@ const Auth = ({ label = "signup" }) => {
             style={{ borderBottom: "2px solid blue" }}
             error={errors.password}
             type={showPassword ? "text" : "password"}
-            placeholder="Password"
+            placeholder="* Password"
             {...register("password", {
               ...requiredCheck,
               pattern: {
                 value:
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-+])[^\s]{8,}$/,
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-+_])[^\s]{8,}$/,
                 message:
                   "Password should contain at least 1 lowercase, uppercase, special character and should at least be 8 characters long"
               }

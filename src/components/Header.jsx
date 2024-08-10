@@ -1,5 +1,5 @@
-import { Container, Nav, Modal,Logo} from "./components"
-import { RxHamburgerMenu } from "react-icons/rx"
+import { Container, Nav, Modal, Logo } from "./components"
+import { RxHamburgerMenu, RxCross1 } from "react-icons/rx"
 import { useState, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -12,22 +12,17 @@ const Header = () => {
   const headRef = useRef(null)
   const logoRef = useRef(null)
   const navRef = useRef(null)
+  const toggleModal = () => {
+    setShowTabModal((prev) => !prev)
+  }
 
   useGSAP(() => {
-    gsap
-      .timeline()
-      // .from(logoRef.current, {
-      //   x: "-100%",
-      //   ease: "power1.in",
-      //   duration: 0.7,
-      //   opacity: 0
-      // })
-      .from(navRef.current, {
-        opacity: 0,
-        y: "-100%",
-        duration: 1,
-        ease: "back.out"
-      })
+    gsap.from(navRef.current, {
+      opacity: 0,
+      y: "-100%",
+      duration: 1,
+      ease: "back.out"
+    })
 
     gsap
       .timeline({
@@ -43,9 +38,7 @@ const Header = () => {
         ease: "power2"
       })
       .to(headRef.current, {
-        paddingInline:12,
-        paddingBlock:4,
-        backgroundColor: "#000000a6",
+        backgroundColor: "#000000a2",
         ease: "power2"
       })
   }, [])
@@ -53,27 +46,35 @@ const Header = () => {
   return (
     <Container
       element="header"
-      className="w-screen fixed z-10  flex justify-center"
+      className="w-screen fixed z-10 flex justify-center"
     >
       <div
         ref={headRef}
-        className="w-[70%] h-20 flex m-4 justify-between md:justify-center items-center rounded-2xl overflow-y-hidden"
+        className="flex py-1 sm:justify-around justify-between items-center rounded-3xl overflow-y-hidden sm:w-[75vw] w-[90vw] px-8 mt-3"
+        style={{ borderRadius: "2rem" }}
       >
-        <Logo ref={logoRef} className=" block md:hidden md:w-[3vmax] w-[10vmin] " />
-        
-        <Nav ref={navRef} className="hidden md:flex" />
-        
-        <RxHamburgerMenu
-          className="block md:hidden w-[15vmin]   text-white cursor-pointer"
-          onClick={() => {
-            setShowTabModal((prev) => !prev)
-          }}
+        <Logo
+          ref={logoRef}
+          className="block md:hidden md:w-[3vmax] w-[5vmax] "
         />
+
+        <Nav ref={navRef} className="hidden md:flex" />
+        {showTabModal ? (
+          <RxCross1
+            className="block md:hidden text-xl text-white cursor-pointer"
+            onClick={toggleModal}
+          />
+        ) : (
+          <RxHamburgerMenu
+            className="block md:hidden text-xl text-white cursor-pointer"
+            onClick={toggleModal}
+          />
+        )}
         {showTabModal && (
           <Modal setShowModal={setShowTabModal}>
             <Nav
               offModal={() => {
-                setShowTabModal(false)
+                setShowTabModal(toggleModal)
               }}
             />
           </Modal>

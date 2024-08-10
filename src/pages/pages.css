@@ -1,6 +1,4 @@
 #hero {
-  /* backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px); */
   background: url("/src/assets/bg-gradient.png") no-repeat center center/cover;
 }
 
@@ -8,8 +6,11 @@
   background: url("/src/assets/bg-gradient.png") no-repeat center center/cover;
 }
 
-#play-quiz{
-  background:url('/src/assets/image-quiz-bg.png');
+#play-quiz {
+  background: url("/src/assets/image-quiz-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 #about {
@@ -19,7 +20,8 @@
   background-position: top;
   background-color: #faf3e7;
   min-height: 100vh;
-}
+
+
 #hero .background-img {
   position: absolute;
   top: 0;
@@ -31,4 +33,15 @@
   background-blend-mode: overlay;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+}
+
+#team-gallery {
+  background-image: url("/black-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.glass-box {
+  @apply bg-white bg-opacity-25 p-4 rounded-xl;
 }
