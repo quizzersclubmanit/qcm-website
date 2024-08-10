@@ -74,7 +74,7 @@ const Header = () => {
           <Modal setShowModal={setShowTabModal}>
             <Nav
               offModal={() => {
-                setShowTabModal(toggleModal)
+                setShowTabModal(false)
               }}
             />
           </Modal>

@@ -13,15 +13,6 @@
   background-size: cover;
 }
 
-#about {
-  background: url("/src/assets/about\ us\ curve.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: top;
-  background-color: #faf3e7;
-  min-height: 100vh;
-
-
 #hero .background-img {
   position: absolute;
   top: 0;
