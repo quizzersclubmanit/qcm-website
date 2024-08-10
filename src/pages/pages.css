@@ -2,12 +2,25 @@
   background: url("/src/assets/bg-gradient.png") no-repeat center center/cover;
 }
 
+#events {
+  background: url("/src/assets/bg-gradient.png") no-repeat center center/cover;
+}
+
 #play-quiz {
   background: url("/src/assets/image-quiz-bg.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
+
+#about {
+  background: url("/src/assets/about\ us\ curve.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+  background-color: #faf3e7;
+  min-height: 100vh;
+
 
 #hero .background-img {
   position: absolute;
