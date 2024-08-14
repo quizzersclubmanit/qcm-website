@@ -6,6 +6,7 @@ import Result from "./Result"
 import Results from "./Results"
 import Verification from "./Verification"
 import Instructions from "./Instructions"
+import Team from "./Team"
 
 export {
   Home,
@@ -15,5 +16,6 @@ export {
   Result,
   Results,
   Verification,
-  Instructions
+  Instructions,
+  Team
 }

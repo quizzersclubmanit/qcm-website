@@ -1,6 +1,5 @@
 {
   "organization": "Quizzers' Club",
-  "acronym": "QCM",
   "about": "Quizzers' Club NIT Bhopal, the premier quizzing society at Maulana Azad National Institute of Technology, that aims to polish the brilliance of quizzing for enthusiasts until it dazzles, while demystifying its complexities to ignite a passion for it among newcomers. Founded by a group of quizzing prodigies from MANIT in February 2013, this society is powered by students from diverse fields—quizzers, content writers, bloggers, executives, video editors, photographers, and web developers—who collaborate in nurturing, cultivating, and launching innovative ideas, instilling lifelong skills and values along the way.\nThe Quizzer's Club MANIT orchestrates a series of intellectually stimulating events such as the Abhigyan, Manthan, Quizzotica, and Vihaan, in addition to a myriad of online quizzing contests. The Inter-City Quizzing Challenge, the pinnacle quizzing event of QCM, unites the nation's sharpest minds in an exhilarating showdown. These competitions attract immense participation from quizzing enthusiasts across various schools and colleges in India, as well as dedicated contenders from within MANIT. In addition to our quizzing events, we present captivating questions, intriguing facts, and diverse aptitudes that weave together immersive and enlightening content. These elements fortify the society's mission to deliver a rich blend of entertainment and education in every facet.",
   "contacts": [
     {
@@ -25,6 +24,7 @@
   "facebook": "https://www.facebook.com/quizzersclub",
   "instagram": "https://www.instagram.com/quizzersclub/",
   "linkedin": "https://www.linkedin.com/company/quizzersclub/",
+  "youtube": "https://www.youtube.com/@quizzersclub/",
   "eventDetails": [
     {
       "id": "iqc",

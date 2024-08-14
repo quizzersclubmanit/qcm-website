@@ -20,7 +20,6 @@ import Loader from "./Loader"
 import Social from "./Social"
 import Contact from "./Contact"
 import DropDown from "./DropDown"
-import Gallery from "./Gallery"
 import NotAvailable from "./NotAvailable"
 import UserBtn from "./UserBtn"
 import Map from "./Map"
@@ -50,7 +49,6 @@ export {
   Social,
   Contact,
   DropDown,
-  Gallery,
   NotAvailable,
   UserBtn,
   Map,
