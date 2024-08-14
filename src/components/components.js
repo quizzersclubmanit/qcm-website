@@ -25,6 +25,7 @@ import NotAvailable from "./NotAvailable"
 import UserBtn from "./UserBtn"
 import Map from "./Map"
 import Accordion from "./Accordion"
+import FAQs from "./FAQs"
 
 export {
   Header,
@@ -53,5 +54,6 @@ export {
   NotAvailable,
   UserBtn,
   Map,
-  Accordion
+  Accordion,
+  FAQs
 }

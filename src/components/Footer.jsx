@@ -1,8 +1,9 @@
-import { Container, Social, Contact, Map } from "./components"
+import { Container, Social, Contact, Map, FAQs } from "./components"
 
 const Footer = () => {
   return (
     <>
+      <FAQs />
       <Map />
       <Container
         id="contacts"

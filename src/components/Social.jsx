@@ -1,5 +1,5 @@
 import { FaFacebook, FaLinkedin } from "react-icons/fa"
-import { FaSquareInstagram } from "react-icons/fa6"
+import { FaSquareInstagram, FaYoutube } from "react-icons/fa6"
 import { facebook, instagram, linkedin, acronym } from "../assets/qcmData.json"
 import { Container } from "./components"
 

@@ -1,4 +1,5 @@
 import { FaLocationDot } from "react-icons/fa6"
+import { FaLinkedin } from "react-icons/fa"
 import { MdWifiCalling3 } from "react-icons/md"
 import { IoMdMail } from "react-icons/io"
 import { contacts, email, address } from "../assets/qcmData.json"
@@ -6,25 +7,32 @@ import { Container } from "./components"
 
 const Contact = () => {
   return (
-    <Container className="flex flex-col sm:flex-row w-full gap-7 justify-center sm:my-[20vh] sm:py-5 py-10">
-      <div className="left flex flex-col gap-5 w-full justify-center sm:pl-[8vmax] pl-2">
+    <Container className="flex flex-col sm:flex-row w-full gap-7 sm:my-[20vh] sm:py-5 py-10">
+      <div className="left flex flex-col gap-5 w-full justify-start sm:pl-[8vmax] pl-2">
         <h3 className="century-gothic font-bold text-[2.5vmax] sm:text-[2vmax] text-yellow-400">
           Contact Us
         </h3>
         <div className="flex gap-4">
-          <MdWifiCalling3 className="sm:text-2xl text-lg" />
-          <div className="flex flex-col text-[2vmax] sm:text-[1.3vmax]">
+          <div className="flex flex-col">
             {contacts.map((contact, index) => (
-              <div className="flex" key={index}>
-                <span>{contact.name} -&nbsp;</span>
-                <span
-                  onClick={() => {
-                    navigator.clipboard.writeText(contact.no)
-                  }}
-                  className="cursor-copy"
-                >
-                  {contact.no}
-                </span>
+              <div className="flex flex-col my-1" key={index}>
+                <div className="flex gap-3 text-[2vmax] sm:text-[1.3vmax]">
+                  <MdWifiCalling3 />
+                  <span>{contact.name} -</span>
+                </div>
+                <div className="flex gap-1">
+                  <span
+                    onClick={() => {
+                      navigator.clipboard.writeText(contact.no)
+                    }}
+                    className="cursor-copy text-xs sm:text-base text-[#FCA311]"
+                  >
+                    {contact.no}
+                  </span>
+                  <a href="">
+                    <FaLinkedin className="sm:text-xl text-lg" />
+                  </a>
+                </div>
               </div>
             ))}
           </div>
@@ -40,7 +48,7 @@ const Contact = () => {
           </a>
         </div>
       </div>
-      <div className="right flex flex-col w-full gap-5 sm:border-l sm:pl-[8vmax] pl-2 border-gray-300 justify-center">
+      <div className="right flex flex-col w-full justify-start gap-5 sm:border-l sm:pl-[8vmax] pl-2 border-gray-300">
         <h3 className="century-gothic font-bold text-[2.5vmax] sm:text-[2vmax] text-yellow-400">
           Locate Us
         </h3>
