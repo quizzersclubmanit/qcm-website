@@ -91,74 +91,140 @@
   ],
   "sponsors": [
     {
-      "brand": "Abhi Bus",
-      "logo": "/sponsors/abhibus.png",
-      "website": "https://www.abhibus.com/"
+      "category":"Co-Powered by",
+      "brands":[
+        {
+          "brand": "Bharat Petroleum Corporation",
+          "logo": "/sponsors/bpcl.jpeg",
+          "website": "https://www.bharatpetroleum.in/"
+        },
+        {
+          "brand": "National Thermal Power Corporation",
+          "logo": "/sponsors/ntpc.png",
+          "website": "https://ntpc.co.in/"
+        }
+      ]
     },
     {
-      "brand": "Bharat Petroleum Corporation",
-      "logo": "/sponsors/bpcl.jpeg",
-      "website": "https://www.bharatpetroleum.in/"
+      "category":"Associate Partner",
+      "brands":[
+        {
+          "brand": "Camlin",
+          "logo": "/sponsors/camlin.webp",
+          "website": "https://www.kokuyocamlin.com/camlin/"
+        },
+        {
+          "brand": "Life Insurance Corporation",
+          "logo": "/sponsors/lic.png",
+          "website": "https://licindia.in/"
+        },
+        {
+          "brand": "Khaadi",
+          "logo": "/sponsors/khaadi.jpg",
+          "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+        }
+      ]
     },
     {
-      "brand": "Canva",
-      "logo": "/sponsors/canva.png",
-      "website": "https://www.canva.com/en_in/"
+      "category":"Prize Sponsor",
+      "brands":[
+        {
+          "brand": "M.P. State Electronics Development Corporation Ltd.",
+          "logo": "/sponsors/mpsedc.png",
+          "website": "https://mpsedc.mp.gov.in/"
+        }
+      ]
     },
     {
-      "brand": "Easy My Trip",
-      "logo": "/sponsors/ease-my-trip.png",
-      "website": "https://www.canva.com/en_in/"
+      "category":"Gifting Sponsor",
+      "brands":[
+        {
+          "brand": "Kabira",
+          "logo": "/sponsors/kabira.png",
+          "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+        },
+        
+        {
+          "brand": "Mrig Naini",
+          "logo": "/sponsors/mrig-naini.jpg",
+          "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+        },
+        {
+          "brand": "Vidhya Valley",
+          "logo": "/sponsors/vindhya-valley.jpg",
+          "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+        }
+      ]
     },
     {
-      "brand": "Kabira",
-      "logo": "/sponsors/kabira.png",
-      "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+      "category":"Design Partner",
+      "brands":[
+        {
+          "brand": "Canva",
+          "logo": "/sponsors/canva.png",
+          "website": "https://www.canva.com/en_in/"
+        }
+      ]
     },
     {
-      "brand": "Khaadi",
-      "logo": "/sponsors/khaadi.jpg",
-      "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+      "category":"Snacks Partner",
+      "brands":[
+        {
+          "brand": "Unibic",
+          "logo": "/sponsors/unibic.png",
+          "website": "https://www.unibicfoods.com/"
+        }
+      ]
     },
     {
-      "brand": "Mrig Naini",
-      "logo": "/sponsors/mrig-naini.jpg",
-      "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+      "category":"Hospitality Partner",
+      "brands":[
+        {
+          "brand": "Easy My Trip",
+          "logo": "/sponsors/ease-my-trip.png",
+          "website": "https://www.easemytrip.com/"
+        }
+      ]
     },
     {
-      "brand": "Vidhya Valley",
-      "logo": "/sponsors/vindhya-valley.jpg",
-      "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+      "category":"Munching Partner",
+      "brands":[
+        {
+          "brand": "Cornitos",
+          "logo": "/sponsors/cornitos.png",
+          "website": "https://www.cornitos.in/"
+        }
+      ]
     },
     {
-      "brand": "Life Insurance Corporation",
-      "logo": "/sponsors/lic.png",
-      "website": "https://licindia.in/"
+      "category":"Health & Hygiene Partner",
+      "brands":[
+        {
+          "brand": "My Glamm",
+          "logo": "/sponsors/myglamm.png",
+          "website": "https://www.myglamm.com/"
+        }
+      ]
     },
     {
-      "brand": "National Thermal Power Corporation",
-      "logo": "/sponsors/ntpc.png",
-      "website": "https://ntpc.co.in/"
+      "category":"Travel Partner",
+      "brands":[
+        {
+          "brand": "Abhi Bus",
+          "logo": "/sponsors/abhibus.png",
+          "website": "https://www.abhibus.com/"
+        }
+      ]
     },
     {
-      "brand": "Quill Bot",
-      "logo": "/sponsors/quillbot.png",
-      "website": "https://quillbot.com/"
-    },
-    {
-      "brand": "The Hindu",
-      "logo": "/sponsors/the-hindu.png",
-      "website": "https://www.thehindu.com/"
-    },
-    {
-      "brand": "Unibic",
-      "logo": "/sponsors/unibic.png",
-      "website": "https://www.unibicfoods.com/"
-    },
-    {
-      "brand": "Unstop",
-      "logo": "/sponsors/unstop.jpg",
-      "website": "https://unstop.com/"
+      "category":"Education Partner",
+      "brands":[
+        {
+          "brand": "Quill Bot",
+          "logo": "/sponsors/quillbot.png",
+          "website": "https://quillbot.com/"
+        }
+      ]
     }
   ],
   "team": [
