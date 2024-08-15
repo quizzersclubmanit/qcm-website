@@ -91,8 +91,8 @@
   ],
   "sponsors": [
     {
-      "category":"Co-Powered by",
-      "brands":[
+      "category": "Co-Powered by",
+      "brands": [
         {
           "brand": "Bharat Petroleum Corporation",
           "logo": "/sponsors/bpcl.jpeg",
@@ -106,8 +106,8 @@
       ]
     },
     {
-      "category":"Associate Partner",
-      "brands":[
+      "category": "Associate Partner",
+      "brands": [
         {
           "brand": "Camlin",
           "logo": "/sponsors/camlin.webp",
@@ -126,8 +126,8 @@
       ]
     },
     {
-      "category":"Prize Sponsor",
-      "brands":[
+      "category": "Prize Sponsor",
+      "brands": [
         {
           "brand": "M.P. State Electronics Development Corporation Ltd.",
           "logo": "/sponsors/mpsedc.png",
@@ -136,14 +136,14 @@
       ]
     },
     {
-      "category":"Gifting Sponsor",
-      "brands":[
+      "category": "Gifting Sponsor",
+      "brands": [
         {
           "brand": "Kabira",
           "logo": "/sponsors/kabira.png",
           "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
         },
-        
+
         {
           "brand": "Mrig Naini",
           "logo": "/sponsors/mrig-naini.jpg",
@@ -157,8 +157,8 @@
       ]
     },
     {
-      "category":"Design Partner",
-      "brands":[
+      "category": "Design Partner",
+      "brands": [
         {
           "brand": "Canva",
           "logo": "/sponsors/canva.png",
@@ -167,8 +167,8 @@
       ]
     },
     {
-      "category":"Snacks Partner",
-      "brands":[
+      "category": "Snacks Partner",
+      "brands": [
         {
           "brand": "Unibic",
           "logo": "/sponsors/unibic.png",
@@ -177,8 +177,8 @@
       ]
     },
     {
-      "category":"Hospitality Partner",
-      "brands":[
+      "category": "Hospitality Partner",
+      "brands": [
         {
           "brand": "Easy My Trip",
           "logo": "/sponsors/ease-my-trip.png",
@@ -187,8 +187,8 @@
       ]
     },
     {
-      "category":"Munching Partner",
-      "brands":[
+      "category": "Munching Partner",
+      "brands": [
         {
           "brand": "Cornitos",
           "logo": "/sponsors/cornitos.png",
@@ -197,8 +197,8 @@
       ]
     },
     {
-      "category":"Health & Hygiene Partner",
-      "brands":[
+      "category": "Health & Hygiene Partner",
+      "brands": [
         {
           "brand": "My Glamm",
           "logo": "/sponsors/myglamm.png",
@@ -207,8 +207,8 @@
       ]
     },
     {
-      "category":"Travel Partner",
-      "brands":[
+      "category": "Travel Partner",
+      "brands": [
         {
           "brand": "Abhi Bus",
           "logo": "/sponsors/abhibus.png",
@@ -217,8 +217,8 @@
       ]
     },
     {
-      "category":"Education Partner",
-      "brands":[
+      "category": "Education Partner",
+      "brands": [
         {
           "brand": "Quill Bot",
           "logo": "/sponsors/quillbot.png",
@@ -227,58 +227,276 @@
       ]
     }
   ],
-  "team": [
-    {
-      "member": "John Smith",
-      "role": "CEO",
-      "picture": "https://images.pexels.com/photos/7752812/pexels-photo-7752812.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "member": "Jane Doe",
-      "role": "CFO",
-      "picture": "https://images.pexels.com/photos/26100579/pexels-photo-26100579/free-photo-of-modern-elegance-with-sleek-glasses.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "member": "Michael Johnson",
-      "role": "CTO",
-      "picture": "https://images.pexels.com/photos/2341350/pexels-photo-2341350.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "member": "Emily Davis",
-      "role": "CMO",
-      "picture": "https://images.pexels.com/photos/20602103/pexels-photo-20602103/free-photo-of-portrait-of-woman-in-black-and-white.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "member": "Daniel Brown",
-      "role": "COO",
-      "picture": "https://images.pexels.com/photos/12961917/pexels-photo-12961917.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "member": "Sarah Wilson",
-      "role": "HR Manager",
-      "picture": "https://images.pexels.com/photos/22601974/pexels-photo-22601974/free-photo-of-smiling-woman-in-black-and-white.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "member": "James Taylor",
-      "role": "IT Manager",
-      "picture": "https://images.pexels.com/photos/19966326/pexels-photo-19966326/free-photo-of-portrait-of-man-in-ivy-cap-and-with-microphone.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "member": "Laura White",
-      "role": "Marketing Manager",
-      "picture": "https://images.pexels.com/photos/20272895/pexels-photo-20272895/free-photo-of-portrait-of-woman-in-pink-blouse.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "member": "David Martinez",
-      "role": "Sales Manager",
-      "picture": "https://images.pexels.com/photos/19964078/pexels-photo-19964078/free-photo-of-man-in-eyeglasses-sitting-and-reading-book.jpeg?auto=compress&cs=tinysrgb&w=600"
-    },
-    {
-      "member": "Olivia Thompson",
-      "role": "Customer Service Manager",
-      "picture": "https://images.pexels.com/photos/15681635/pexels-photo-15681635/free-photo-of-beautiful-woman-in-straw-hat.jpeg?auto=compress&cs=tinysrgb&w=600"
-    }
-  ],
+  "team": {
+    "3": [
+      {
+        "name": "Shrishti Mishra",
+        "post": "Coordinator",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e6e0004df2c13c5/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Atharv Nerkar",
+        "post": "Coordinator",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d0e00290ec19598/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Ayushi Sinha",
+        "post": "Co-Coordinator",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d1d0026fcdab618/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Gautam Kumar",
+        "post": "Co-Coordinator",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d4a000813538d58/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Prakriti Shree",
+        "post": "Quizzing Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e59003e1eb6b29f/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Vyom Singhal",
+        "post": "Quizzing Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7df500350270e249/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Shilpa Koley",
+        "post": "Administrative Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dd60013d95de3ca/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Dhruv Singh Bhadauria",
+        "post": "Administrative Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7f4d0026c614915f/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Samarth Agarwal",
+        "post": "Quizzing Research and Content Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dc6000a7e8f6588/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Mridul Upadhyay",
+        "post": "Quizzing Research and Content Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e4b000cc32ed2d5/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Yash Raj Menaria",
+        "post": "Quizzing Research and Content Head",
+        "image": ""
+      },
+      {
+        "name": "Priyanshu Choudhury",
+        "post": "Technical Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dba001496e03800/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Ajay Yadav",
+        "post": "Designing Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7cfc001e81bdb546/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Archisha Singh",
+        "post": "Designing Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dfd001510ba1729/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Aksahat Jain",
+        "post": " Technical Design Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d020001ae41f040/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Sarthak Vyas",
+        "post": "Sponsorship Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e67000dab6ce5f5/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Anurag Dadarya",
+        "post": "Public Relations and Outreach Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d070038a18a6d5a/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+
+      {
+        "name": "Karnika Nagpure",
+        "post": "Event Management Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d570028d6107f4e/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Vikranth Reddy",
+        "post": "Event Management Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e7b001c09b9d728/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Sampurna Mandal",
+        "post": "Event Management Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dcc00196efd38c1/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+
+      {
+        "name": "Nimisha Shrivastava",
+        "post": "Finance Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dac000acb562e40/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+
+      {
+        "name": "Ganesh Nayak",
+        "post": "Alumini Convener",
+        "image": ""
+      },
+      {
+        "name": "Ayush Sharma",
+        "post": "Alumini Convener",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d17003080237e74/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+
+      {
+        "name": "Prakriti Sharma",
+        "post": "Content Writing Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7db2003d70bc7b43/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+
+      {
+        "name": "Mamunuri Vishwaendra Chary",
+        "post": "Content Writing Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dec002aa306f2b2/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Nethi Lehya Sri",
+        "post": "Creative Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7da5000ed91a2b84/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+
+      {
+        "name": "Pragya Kolpal",
+        "post": "Media Content and Relations Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e520035fe0f8eec/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Divy Pareek",
+        "post": "Media Content and Relations Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d4300202965e4fe/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Pranjal Jain",
+        "post": "Digital Growth and Communications Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e600000a0e3d5af/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+
+      {
+        "name": "Shruti Upadhyay",
+        "post": "Video Editing Head",
+        "image": ""
+      },
+      {
+        "name": "Rohit Kumar",
+        "post": "Video Editing Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dc00015e3e85c0f/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Shivam Malviya",
+        "post": "Photography Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be80c000343ce6826f/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+
+      {
+        "name": "Manan Verma",
+        "post": "Logistics and operations Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d5d002851e5e7f1/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+
+      {
+        "name": "Vemula Teja Manideep",
+        "post": "Logistics and operations Head",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e73003e72aaf95e/view?project=6658adc6003352cb4b85&mode=admin"
+      }
+    ],
+    "4": [
+      {
+        "name": "Nishchal Prajapati",
+        "post": "President",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79d600170478f6c1/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Harshita Nehra",
+        "post": "Vice-President(Organisation)",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79c7003e62d5327f/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Abhishek Meena",
+        "post": "Vice-President(Administration)",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be799e00053ec53f81/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Anurag Mishra",
+        "post": "General Secratory(Alumini Connect)",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79b6001c42854028/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Akshat Jain",
+        "post": "General Secratory(Creative Comms)",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79af00119ef70cb7/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Suhani Jain",
+        "post": "Secratory(Public Relations)",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be7a00000af7a8f8c8/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Dheeraj Mandvi",
+        "post": "Treasurer",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be798c001b5b3b67bf/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Chetan Vaddamani",
+        "post": "Secretary(Media and Connect)",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79c000302b703b83/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Shreevathsav Kyama",
+        "post": "Secretary(Logistics)",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79f800275c47cfe7/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Om Krishna",
+        "post": "Secretary(Compliance)",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79de001d44557b48/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Akash Goyal",
+        "post": "Secretary(Technical)",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79a40021bba40093/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Thrishul Reddy",
+        "post": "Secretary(Partnership)",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be7a0600317256792e/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Sameer Bajpayi",
+        "post": "Member",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79f20016dd4eceed/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Abhay Bhadoriya",
+        "post": "Member",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79960018141bb275/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Kushagra Rajput",
+        "post": "Member",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79ce001e3a585c7c/view?project=6658adc6003352cb4b85&mode=admin"
+      },
+      {
+        "name": "Adarsh Dinkar",
+        "post": "Member",
+        "image": ""
+      },
+      {
+        "name": "Rohaan Khan",
+        "post": "Member",
+        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79eb00285fbe3b67/view?project=6658adc6003352cb4b85&mode=admin"
+      }
+    ]
+  },
   "qna": [
     {
       "question": "What is Quizzers Club MANIT?",
@@ -304,7 +522,6 @@
   "instructions": {
     "general": {
       "Eligibility": "The quiz is open to all registered participants. Ensure you have registered before the deadline",
-      "Platform": "The quiz will be conducted on QCM official website. Ensure you have a stable internet connection",
       "Quiz Timing": "The quiz will start promptly at [start time] on [date]. Ensure you are logged in and ready by this time",
       "Total Duration": "The total quiz duration is 40 minutes",
       "Total Marks": "The quiz is of 150 marks"

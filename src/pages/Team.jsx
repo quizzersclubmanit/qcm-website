@@ -5,24 +5,25 @@ import {
   SectionHead,
   Footer
 } from "../components/components"
+import { team } from "../assets/qcmData.json"
 
 const Team = () => {
-  const team = Array(10).fill({
-    year: 3, // other possible value is 4
-    member: "Name",
-    role: "Post or Designation",
-    picture:
-      "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&d=identicon&r=PG"
-  })
+  // const team = Array(10).fill({
+  //   year: 3, // other possible value is 4
+  //   member: "Name",
+  //   role: "Post or Designation",
+  //   picture:
+  //     "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&d=identicon&r=PG"
+  // })
 
   const buttons = [
     {
-      label: "Final Year",
-      f: () => setYear(4)
-    },
-    {
       label: "Pre Final Year",
       f: () => setYear(3)
+    },
+    {
+      label: "Final Year",
+      f: () => setYear(4)
     }
   ]
 
@@ -39,38 +40,29 @@ const Team = () => {
         }}
       >
         <SectionHead label="Team" />
-        <div className="flex justify-around sm:w-[50%] w-full items-center">
+        <div className="flex justify-around sm:w-[50%] w-full items-center overflow-y-hidden">
           {buttons.map((btn, index) => (
             <Button
               key={index}
               label={btn.label}
-              className="border bg-white bg-opacity-15 h-fit sm:text-lg text-sm py-1 sm:px-5 px-1 rounded-3xl hover:text-[#fe9c02] transition-all cursor-pointer"
+              className={`border bg-white bg-opacity-15 h-fit sm:text-lg text-sm py-1 sm:px-5 px-1 rounded-3xl transition-all cursor-pointer hover:scale-105 ${index + 3 == year && "text-[#fe9c02]"}`}
               onClick={btn.f}
             />
           ))}
         </div>
         <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-1 gap-10 mt-4">
-          {team
-            .filter((obj) => obj.year == year)
-            .map((obj, index) => (
-              <div
-                className={`flex flex-col gap-2 items-center transition-all p-2 rounded text-sm cursor-default ${hoveredIndex == index && "hover:bg-gray-900"}`}
-                key={index}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                <img
-                  src={obj.picture}
-                  style={{
-                    borderRadius: "50%"
-                  }}
-                  alt="Member"
-                  className="w-4/5"
-                />
-                <h3>{obj.member}</h3>
-                <p className="text-center">{obj.role}</p>
-              </div>
-            ))}
+          {team[`${year}`].map((obj, index) => (
+            <div
+              key={index}
+              className={`flex flex-col gap-2 items-center justify-center transition-all p-2 rounded text-sm cursor-default h-[45vh] ${hoveredIndex == index && "hover:bg-gray-900"}`}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <img src={obj.image} alt="Member" className="h-3/4 rounded" />
+              <h3 className="font-bold uppercase">{obj.name}</h3>
+              <p className="text-center text-yellow-400">{obj.post}</p>
+            </div>
+          ))}
         </div>
       </Container>
       <Footer />

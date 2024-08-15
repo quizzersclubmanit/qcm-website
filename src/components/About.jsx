@@ -1,5 +1,5 @@
-import { Container, SectionHead, Accordion } from "./components"
-import { about, qna } from "../assets/qcmData.json"
+import { Container, SectionHead } from "./components"
+import { about } from "../assets/qcmData.json"
 
 const About = () => {
   return (

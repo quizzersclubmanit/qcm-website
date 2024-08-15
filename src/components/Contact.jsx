@@ -29,7 +29,7 @@ const Contact = () => {
                   >
                     {contact.no}
                   </span>
-                  <a href="">
+                  <a href={contact.linkedin} target="_blank">
                     <FaLinkedin className="sm:text-xl text-lg" />
                   </a>
                 </div>
