@@ -1,38 +1,43 @@
-import { Container, SectionHead, Accordion } from "./components"
+import { Container, SectionHead } from "./components"
 import { about } from "../assets/qcmData.json"
-import { bgAboutUs, aboutIllus } from "../assets/assets"
+import { aboutIllus } from "../assets/assets"
 import { useState } from "react"
 
 const About = () => {
   const [exploreMore, setExploreMore] = useState(false)
-  const content = exploreMore ? about : about.split("\n").slice(0,2).join("\n")
+  const content = exploreMore ? about : about.split("\n")[0]
+  console.log(window.innerWidth)
 
-  function exploreMoreHandler(){
+  function exploreMoreHandler() {
     setExploreMore(!exploreMore)
   }
 
   return (
-    <Container
-      id="about"
-      classname="w-screen"
-    >
-      <img
-        src={bgAboutUs}
-        alt="about"
-        className="w-full"
-      />
-      <div className="w-11/12 mx-auto flex my-4">
-        <p className="md:w-[60%] p-4 whitespace-pre-wrap">
+    <Container id="about" className="w-screen">
+      <div
+        className="justify-center lg:h-[60vh] md:h-[30vh] flex"
+        style={{
+          background:
+            window.innerWidth >= 768
+              ? "url('/bg-about.png') no-repeat"
+              : "url('/bg-gradient.png') no-repeat",
+          backgroundPosition: "top center",
+          backgroundSize: "cover"
+        }}
+      >
+        <SectionHead label="About Us" className="text-white" />
+      </div>
+      <div className="w-11/12 mx-auto flex my-4 items-center">
+        <p className="md:w-[60%] p-4 whitespace-pre-wrap text-justify md:text-base text-sm leading-relaxed">
           {content}
-          <span className="text-[#fe9c02] cursor-pointer" onClick={exploreMoreHandler}>
+          <span
+            className="text-[#FCA311] cursor-pointer"
+            onClick={exploreMoreHandler}
+          >
             {exploreMore ? "\nExplore Less..." : "\nExplore More..."}
           </span>
         </p>
-        <img
-          src={aboutIllus}
-          alt="about"
-          className="mx-auto hidden md:flex"
-        />
+        <img src={aboutIllus} alt="about" className="mx-auto hidden md:flex" />
       </div>
     </Container>
   )

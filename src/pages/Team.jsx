@@ -8,14 +8,6 @@ import {
 import { team } from "../assets/qcmData.json"
 
 const Team = () => {
-  // const team = Array(10).fill({
-  //   year: 3, // other possible value is 4
-  //   member: "Name",
-  //   role: "Post or Designation",
-  //   picture:
-  //     "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200&d=identicon&r=PG"
-  // })
-
   const buttons = [
     {
       label: "Pre Final Year",

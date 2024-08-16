@@ -170,7 +170,7 @@ const PlayQuiz = () => {
         {currentQue}/{quizes.length}
       </span>
       <p className="p-1 rounded-lg text-center sm:text-lg text-white leading-none focus:outline-0  md:w-1/2 sm:w-4/5 cursor-default z-10 glass-box">
-        Q. {quizes[currentQue - 1]?.question} ?
+        Q. {quizes[currentQue - 1]?.question}
       </p>
       {quizes[currentQue - 1]?.supportingPic && (
         <img
