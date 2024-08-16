@@ -70,7 +70,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
       >
         <Logo
           ref={logoRef}
-          className="hidden md:block md:w-[3vmax] w-[5vmax]"
+          className="hidden md:block md:w-[3vmax] w-[5vmax] cursor-default"
         />
         <div className="tabs-bar flex flex-col gap-[2vw] mt-0 pt-0 md:flex-row h-full items-center px-2 rounded-2xl">
           {tabs.map((tab, index) =>
