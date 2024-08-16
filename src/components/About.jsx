@@ -1,30 +1,38 @@
 import { Container, SectionHead, Accordion } from "./components"
 import { about, qna } from "../assets/qcmData.json"
+import { bgAboutUs, aboutIllus } from "../assets/assets"
+import { useState } from "react"
 
 const About = () => {
+  const [exploreMore, setExploreMore] = useState(false)
+  const content = exploreMore ? about : about.split("\n\n").slice(0,2).join("\n\n")
+
+  function exploreMoreHandler(){
+    setExploreMore(!exploreMore)
+  }
+
   return (
     <Container
       id="about"
-      className="w-screen bg-[#f8f3ea] sm:p-[3.5vmax] justify-center sm:justify-between items-center sm:items-start flex flex-col lg:flex-row lg:justify-between gap-4"
+      classname="w-screen"
     >
-      <div className="flex flex-col sm:w-1/3 sm:p-0 p-2 w-full mr-3 justify-between items-center">
-        <SectionHead label="About Us" />
-        {/* to be animated */}
+      <img
+        src={bgAboutUs}
+        alt="about"
+        className="w-full"
+      />
+      <div className="w-11/12 mx-auto flex my-4">
+        <p className="md:w-[60%] p-4 whitespace-pre-wrap">
+          {content}
+          <span className="text-[#fe9c02] cursor-pointer" onClick={exploreMoreHandler}>
+            {exploreMore ? "\nExplore Less..." : "\nExplore More..."}
+          </span>
+        </p>
         <img
-          src="/team.jpeg"
-          alt="Team"
-          className="rounded-lg hidden lg:inline-block"
+          src={aboutIllus}
+          alt="about"
+          className="mx-auto hidden md:flex"
         />
-      </div>
-      <div className="flex flex-col sm:gap-1 md:w-2/3 w-full mx-auto md:text-base text-xs border-2 border-slate-800 rounded-lg">
-        {about.split("\n").map((para, index) => (
-          <p
-            key={index}
-            className="text-justify px-4 sm:py-4 py-2 first-letter:text-[#FCA311] sm:first-letter:text-3xl first-letter:text-lg"
-          >
-            {para}
-          </p>
-        ))}
       </div>
     </Container>
   )

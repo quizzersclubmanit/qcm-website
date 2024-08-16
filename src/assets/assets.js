@@ -5,6 +5,8 @@ import arrowRight from "./arrow-right.svg"
 import qcmLogoBlue from "./qcm-logo-standard.png"
 import gradientLogo from "./gradient-qcm-logo.png"
 import floatingMarks from "./floating-mark.png"
+import bgAboutUs from "./bg about us.png"
+import aboutIllus from "./illus.jpg"
 
 export {
   qcmLogo,
@@ -13,5 +15,7 @@ export {
   arrowRight,
   qcmLogoBlue,
   gradientLogo,
-  floatingMarks
+  floatingMarks,
+  bgAboutUs,
+  aboutIllus
 }
