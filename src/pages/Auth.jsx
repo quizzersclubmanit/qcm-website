@@ -1,6 +1,12 @@
 import "./pages.css"
 import { useForm } from "react-hook-form"
-import { Container, Input, SectionHead, Button } from "../components/components"
+import {
+  Container,
+  Input,
+  SectionHead,
+  Button,
+  Footer
+} from "../components/components"
 import { authIllustration } from "../assets/assets"
 import { IoEye, IoEyeOff } from "react-icons/io5"
 import { Link, useNavigate } from "react-router-dom"
@@ -11,6 +17,7 @@ import env from "../../constants"
 import { useDispatch } from "react-redux"
 import { setData, login } from "../redux/user.slice"
 import toast from "react-hot-toast"
+import { LuHome } from "react-icons/lu"
 
 const Auth = ({ label = "signup" }) => {
   const { handleSubmit, setValue, formState, register } = useForm({
@@ -130,136 +137,154 @@ const Auth = ({ label = "signup" }) => {
   }
 
   return (
-    <Container
-      id="auth"
-      className="poppins-regular background-blue sm:p-[3.5vmax] p-[2vmax] min-h-screen flex justify-center items-center"
-    >
-      <div className="left w-1/2 items-center hidden md:flex">
-        <img src={authIllustration} alt="Auth Illustration" />
-      </div>
+    <>
+      <Container
+        id="auth"
+        className="poppins-regular sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-center"
+      >
+        <div className="flex">
+          <div className="left w-1/2 items-center hidden md:flex">
+            <img src={authIllustration} alt="Auth Illustration" />
+          </div>
 
-      <div className="right md:w-1/2 sm:w-[70vw] w-full sm:h-full bg-white p-8 rounded-2xl flex flex-col gap-8">
-        <SectionHead
-          blue
-          className="poppins-bold"
-          logo
-          label={label == "signup" ? "Register" : "Welcome"}
-        />
-        <form noValidate className="flex flex-col gap-4">
-          {label == "signup" && (
-            <>
-              <Input
-                error={errors.name}
-                placeholder="* Name"
-                className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                style={{ borderBottom: "2px solid blue" }}
-                {...register("name", requiredCheck)}
+          <div className="right md:w-1/2 sm:w-[70vw] w-full sm:h-full bg-white sm:pt-0 pt-4 pb-6 sm:px-8 px-6 rounded-2xl flex flex-col gap-8">
+            <div className="flex gap-5 items-center text-[3vmax]">
+              <LuHome
+                className="cursor-pointer"
+                onClick={() => {
+                  navigate("/")
+                }}
               />
-              <div className="flex gap-10 items-center">
-                <div className="flex flex-col gap-1 sm:w-1/4 w-1/3">
-                  <select
-                    className="p-1 cursor-pointer focus:outline-none"
-                    defaultValue={2}
-                    {...register("sex", requiredCheck)}
-                  >
-                    <option value={0}>M</option>
-                    <option value={1}>F</option>
-                    <option value={2}>O</option>
-                  </select>
-                  <p className="text-red-500">{errors.sex?.message}</p>
-                </div>
-                <Input
-                  type="tel"
-                  error={errors.phone}
-                  placeholder="* Phone"
-                  className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                  style={{ borderBottom: "2px solid blue" }}
-                  {...register("phone", {
-                    ...requiredCheck,
-                    pattern: {
-                      value:
-                        /^(?:(?:\+91|0)?(?:\s[-.\s])?\d{3}\s?\d{3}\s?\d{4})?$/,
-                      message: "Enter a valid Indian phone number"
-                    }
-                  })}
-                />
-              </div>
+              <SectionHead
+                blue
+                className="poppins-bold"
+                label={label == "signup" ? "Register" : "Welcome"}
+              />
+            </div>
+            <form noValidate className="flex flex-col gap-4">
+              {label == "signup" && (
+                <>
+                  <Input
+                    error={errors.name}
+                    placeholder="Name"
+                    className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
+                    style={{ borderBottom: "2px solid blue" }}
+                    {...register("name")}
+                  />
+                  <div className="flex gap-5 items-center">
+                    <select
+                      className="p-1 cursor-pointer focus:outline-none"
+                      defaultValue={2}
+                      {...register("sex", requiredCheck)}
+                    >
+                      <option value={0}>Male</option>
+                      <option value={1}>Female</option>
+                      <option value={2}>Other</option>
+                    </select>
+                    <Input
+                      type="tel"
+                      error={errors.phone}
+                      placeholder="Phone"
+                      className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
+                      style={{ borderBottom: "2px solid blue" }}
+                      {...register("phone", {
+                        ...requiredCheck,
+                        pattern: {
+                          value:
+                            /^(?:(?:\+91|0)?(?:\s[-.\s])?\d{3}\s?\d{3}\s?\d{4})?$/,
+                          message: "Enter a valid Indian phone number"
+                        }
+                      })}
+                    />
+                  </div>
 
-              <div className="flex">
-                <Input
-                  error={errors.school}
-                  placeholder="* School"
-                  className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                  style={{ borderBottom: "2px solid blue", marginRight: "5px" }}
-                  {...register("school", requiredCheck)}
-                />
+                  <div className="flex gap-5">
+                    <Input
+                      error={errors.school}
+                      placeholder="School"
+                      className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
+                      style={{ borderBottom: "2px solid blue" }}
+                      {...register("school", requiredCheck)}
+                    />
 
-                <Input
-                  error={errors.city}
-                  placeholder="* City"
-                  className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                  style={{ borderBottom: "2px solid blue", marginLeft: "5px" }}
-                  {...register("city", requiredCheck)}
-                />
-              </div>
-            </>
-          )}
+                    <Input
+                      error={errors.city}
+                      placeholder="City"
+                      className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
+                      style={{ borderBottom: "2px solid blue" }}
+                      {...register("city", requiredCheck)}
+                    />
+                  </div>
+                </>
+              )}
 
-          <Input
-            className="focus:outline-0 p-2 focus:bg-gray-100 transition-all"
-            style={{ borderBottom: "2px solid blue" }}
-            error={errors.email}
-            type="email"
-            placeholder="* Email"
-            {...register("email", {
-              ...requiredCheck,
-              pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "Enter a valid Email"
-              }
-            })}
-          />
+              <Input
+                className="focus:outline-0 p-2 focus:bg-gray-100 transition-all"
+                style={{ borderBottom: "2px solid blue" }}
+                error={errors.email}
+                type="email"
+                placeholder="Email"
+                {...register("email", {
+                  ...requiredCheck,
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "Enter a valid Email"
+                  }
+                })}
+              />
 
-          <Input
-            className="focus:outline-0 p-2 focus:bg-gray-100 transition-all"
-            style={{ borderBottom: "2px solid blue" }}
-            error={errors.password}
-            type={showPassword ? "text" : "password"}
-            placeholder="* Password"
-            {...register("password", {
-              ...requiredCheck,
-              pattern: {
-                value:
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-+_])[^\s]{8,}$/,
-                message:
-                  "Password should contain at least 1 lowercase, uppercase, special character and should at least be 8 characters long"
-              }
-            })}
-          >
-            <Eye />
-          </Input>
+              <Input
+                className="focus:outline-0 p-2 focus:bg-gray-100 transition-all"
+                style={{ borderBottom: "2px solid blue" }}
+                error={errors.password}
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                {...register("password", {
+                  ...requiredCheck,
+                  pattern: {
+                    value:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-+_])[^\s]{8,}$/,
+                    message:
+                      "Password should contain at least 1 lowercase, uppercase, special character and should at least be 8 characters long"
+                  }
+                })}
+              >
+                <Eye />
+              </Input>
 
-          <Button
-            label={label == "signup" ? "Register" : "Login"}
-            className="p-2 rounded-l text-lg text-white hover:bg-[#1d2d50] bg-[#14213D]"
-            onClick={handleSubmit((formData) => {
-              if (label == "signup")
-                authenticate(authService.signupAndLogin, formData)
-              else authenticate(authService.login, formData)
-            })}
-          />
-        </form>
+              <Button
+                label={label == "signup" ? "Register" : "Login"}
+                className="p-2 rounded-l text-lg text-white hover:bg-[#1d2d50] bg-[#14213D]"
+                onClick={handleSubmit((formData) => {
+                  if (label == "signup")
+                    authenticate(authService.signupAndLogin, formData)
+                  else authenticate(authService.login, formData)
+                })}
+              />
+            </form>
 
-        <Link
-          className="w-fit text-blue-500"
-          to={label == "signup" ? "/login" : "/signup"}
+            <Link
+              className="w-fit text-blue-500"
+              to={label == "signup" ? "/login" : "/signup"}
+            >
+              {label == "signup"
+                ? "Already have an account?"
+                : "Not having an account?"}
+            </Link>
+          </div>
+        </div>
+
+        <span
+          className="text-sm text-white text-left cursor-pointer w-fit mt-1"
+          onClick={() => {
+            console.log("Downloading...")
+          }}
         >
-          {label == "signup"
-            ? "Already have an account?"
-            : "Not having an account?"}
-        </Link>
-      </div>
-    </Container>
+          Download Instructions
+        </span>
+      </Container>
+      <Footer />
+    </>
   )
 }
 

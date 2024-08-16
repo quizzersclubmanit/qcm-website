@@ -1,4 +1,4 @@
-import { Client, Databases, ID } from "appwrite"
+import { Client, Databases, ID, Query } from "appwrite"
 import env from "../../constants"
 
 class DB {
@@ -26,11 +26,10 @@ class DB {
 
   async select({ collectionId, queries = [] }) {
     try {
-      const res = await this.databases.listDocuments(
-        env.dbId,
-        collectionId,
-        queries
-      )
+      const res = await this.databases.listDocuments(env.dbId, collectionId, [
+        ...queries,
+        Query.limit(50)
+      ])
       return res.documents
     } catch (error) {
       throw error

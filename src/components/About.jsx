@@ -1,11 +1,11 @@
 import { Container, SectionHead, Accordion } from "./components"
-import { about, qna } from "../assets/qcmData.json"
+import { about } from "../assets/qcmData.json"
 import { bgAboutUs, aboutIllus } from "../assets/assets"
 import { useState } from "react"
 
 const About = () => {
   const [exploreMore, setExploreMore] = useState(false)
-  const content = exploreMore ? about : about.split("\n\n").slice(0,2).join("\n\n")
+  const content = exploreMore ? about : about.split("\n").slice(0,2).join("\n")
 
   function exploreMoreHandler(){
     setExploreMore(!exploreMore)

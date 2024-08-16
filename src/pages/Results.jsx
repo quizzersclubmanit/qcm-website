@@ -14,9 +14,11 @@ import toast from "react-hot-toast"
 const Results = () => {
   const [leaderBoard, setLeaderBoard] = useState([])
   const [loading, setLoading] = useState(true)
-  let scores = useMemo(() => [])
+  let data = useMemo(() => new Map())
   const [searchCity, setSearchCity] = useState("")
   const [searchSchool, setSearchSchool] = useState("")
+
+  const bars = ["City", "School"]
 
   useEffect(() => {
     dbService
@@ -25,19 +27,19 @@ const Results = () => {
         queries: [Query.orderDesc("score")]
       })
       .then((res) => {
-        scores = res.map((obj) => obj.score)
-        const userIds = res.map((obj) => obj.userId)
+        res.forEach((obj) => data.set(obj.userId, obj.score))
+        let ids = []
+        for (let [key, _] of data) ids.push(key)
         dbService
           .select({
             collectionId: env.userId,
-            queries: [Query.equal("userId", userIds)]
+            queries: [Query.equal("userId", ids)]
           })
           .then((usersData) => {
-            let i = 0
             setLeaderBoard(
               usersData.map((userData) => ({
                 ...userData,
-                score: scores[i++]
+                score: data.get(userData.userId)
               }))
             )
           })
@@ -70,22 +72,19 @@ const Results = () => {
       className="poppins-regular w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col sm:justify-start gap-5 items-center sm:items-start background-blue"
     >
       <Logo className="w-[8vmax] md:w-[5vmax] sm:w-[7vmax]" />
-      <div className="flex gap-2 mx-auto">
-        <SearchBar
-          content={searchCity}
-          setContent={setSearchCity}
-          placeholder="City"
-          className="p-2 bg-white rounded-lg focus:outline-0 w-full"
-        />
-        <SearchBar
-          content={searchSchool}
-          setContent={setSearchSchool}
-          placeholder="School"
-          className="p-2 bg-white rounded-lg focus:outline-0 w-full"
-        />
+      <div className="flex w-full sm:gap-[10vw] gap-2">
+        {bars.map((bar, index) => (
+          <SearchBar
+            key={index}
+            content={searchCity}
+            setContent={setSearchCity}
+            placeholder={bar}
+            className="p-2 bg-white rounded-xl focus:outline-0 w-full"
+          />
+        ))}
       </div>
       <div className="flex flex-col gap-3 w-full items-center">
-        <div className="flex justify-around w-full sm:w-3/4 md:w-1/2 sm:text-[2vmax] text-[3vmax] text-white font-bold text-outline-thin">
+        <div className="flex justify-between w-full sm:text-[2vmax] text-[3vmax] text-white font-bold text-outline-thin">
           <span>Rank</span>
           <span>Details</span>
           <span>Score</span>
@@ -101,22 +100,18 @@ const Results = () => {
           .map((user, index) => (
             <div
               key={index}
-              className="bg-white py-3 pl-5 rounded-xl justify-around flex gap-5 items-center w-full sm:w-3/4 md:w-1/2"
+              className="bg-white py-3 pl-5 rounded-xl justify-between px-5 flex gap-5 items-center w-full"
             >
-              <span className="text-[3vmax] sm:text-[2.5vmax] text-yellow-500">
-                {index + 1}.{" "}
-              </span>
+              <span className="text-yellow-500">{index + 1}. </span>
               <p
-                className="text-[3vmax] sm:text-[1.5vmax] uppercase"
+                className="uppercase w-[70%] md:w-auto"
                 onClick={() => {
                   console.log(user)
                 }}
               >
                 {user.name} | {user.educationalInstitute} | {user.city}
               </p>
-              <span className="text-[3vmax] sm:text-[2.5vmax]">
-                {user.score}
-              </span>
+              <span>{user.score}</span>
             </div>
           ))}
       </div>

@@ -1,17 +1,10 @@
-import { Logo, Container } from "./components"
-
-const SectionHead = ({
-  label = "QCM",
-  className = "",
-  outline = false,
-  logo = false,
-  blue = false
-}) => {
+const SectionHead = ({ label = "QCM", className = "", outline = false }) => {
   return (
-    <Container className={`poppins-bold flex items-center gap-2 ${className}`}>
-      {logo && <Logo blue className="w-[9vmax] md:w-[5vmax] sm:w-[7vmax]" />}
-      <h3 className={`text-[5vmax] ${outline && "text-outline"}`}>{label}</h3>
-    </Container>
+    <h2
+      className={`text-[5vmax] poppins-bold flex items-center gap-2 ${outline && "text-outline"} ${className}`}
+    >
+      {label}
+    </h2>
   )
 }
 
