@@ -66,11 +66,11 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     <>
       <nav
         ref={ref}
-        className={`font-Arimo md:items-center md:justify-between justify-between flex md:flex-row flex-col items-center md:overflow-y-hidden md:h-[12vh] w-full ${className}`}
+        className={`poppins-regular md:items-center md:justify-between justify-between flex md:flex-row flex-col items-center md:overflow-y-hidden md:h-[12vh] w-full ${className}`}
       >
         <Logo
           ref={logoRef}
-          className="hidden md:block md:w-[3vmax] w-[10vmin] "
+          className="hidden md:block md:w-[3vmax] w-[5vmax] cursor-default"
         />
         <div className="tabs-bar flex flex-col gap-[2vw] mt-0 pt-0 md:flex-row h-full items-center px-2 rounded-2xl">
           {tabs.map((tab, index) =>
@@ -111,10 +111,10 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
         ) : (
           <Button
             label="Signup"
-            className="poppins-regular ml-2vmax py-1 px-5 text-sm text-[rgb(15,109,115)] border-[rgb(15,109,115)] rounded-3xl border-2 overflow-y-hidden"
+            className="poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
             style={{
-              color: isMobile ? "rgb(15, 109, 115)" : "white",
-              borderColor: isMobile ? "rgb(15, 109, 115)" : "white",
+              backgroundColor: isMobile && "rgb(15, 109, 115)",
+              borderColor: isMobile && "rgb(15, 109, 115)",
               ...(window.innerWidth < 768 && { marginTop: "10px" })
             }}
             onClick={() => {

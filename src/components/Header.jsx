@@ -50,23 +50,23 @@ const Header = () => {
     >
       <div
         ref={headRef}
-        className="flex py-1 justify-around items-center rounded-3xl overflow-y-hidden sm:w-[75vw] w-[90vw] px-8 mt-3"
-        style={{ borderRadius: "2rem" }}
+        className="flex py-1 sm:justify-around justify-between items-center rounded-3xl overflow-y-hidden sm:w-[75vw] w-[90vw] px-8 mt-3"
+        style={{ borderRadius: "3rem" }}
       >
         <Logo
           ref={logoRef}
-          className=" block md:hidden md:w-[3vmax] w-[10vmin] "
+          className="block md:hidden md:w-[3vmax] w-[5vmax] "
         />
 
         <Nav ref={navRef} className="hidden md:flex" />
         {showTabModal ? (
           <RxCross1
-            className="block md:hidden w-[15vmin] text-white cursor-pointer"
+            className="block md:hidden text-xl text-white cursor-pointer"
             onClick={toggleModal}
           />
         ) : (
           <RxHamburgerMenu
-            className="block md:hidden w-[15vmin] text-white cursor-pointer"
+            className="block md:hidden text-xl text-white cursor-pointer"
             onClick={toggleModal}
           />
         )}
@@ -74,7 +74,7 @@ const Header = () => {
           <Modal setShowModal={setShowTabModal}>
             <Nav
               offModal={() => {
-                setShowTabModal(toggleModal)
+                setShowTabModal(false)
               }}
             />
           </Modal>

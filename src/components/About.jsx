@@ -1,24 +1,30 @@
-import { Container, SectionHead, Accordion } from "./components"
-import { about, qna } from "../assets/qcmData.json"
+import { Container, SectionHead } from "./components"
+import { about } from "../assets/qcmData.json"
 
 const About = () => {
   return (
     <Container
       id="about"
-      className="w-screen sm:p-[3.5vmax] p-[2vmax] flex flex-col gap-5 justify-center sm:justify-between items-center sm:items-start relative"
+      className="w-screen bg-[#f8f3ea] sm:p-[3.5vmax] justify-center sm:justify-between items-center sm:items-start flex flex-col lg:flex-row lg:justify-between gap-4"
     >
-      <div className="flex flex-col lg:flex-row lg:justify-between">
-        <SectionHead label="About Us" className="p-2" />
-        <p className="sm:w-2/3 mx-auto lg:mx-0 md:text-base text-xs font-semibold whitespace-pre-wrap leading-relaxed">
-          {about}
-        </p>
-      </div>
-      <div className="flex flex-col lg:flex-row gap-8 items-center">
+      <div className="flex flex-col sm:w-1/3 sm:p-0 p-2 w-full mr-3 justify-between items-center">
+        <SectionHead label="About Us" />
+        {/* to be animated */}
         <img
-          src={`/team.jpeg?url`}
-          className="sm:w-[65%] h-[100%] sm:rounded-3xl bg-center mx-auto"
+          src="/team.jpeg"
+          alt="Team"
+          className="rounded-lg hidden lg:inline-block"
         />
-        <Accordion qna={qna} />
+      </div>
+      <div className="flex flex-col sm:gap-1 md:w-2/3 w-full mx-auto md:text-base text-xs border-2 border-slate-800 rounded-lg">
+        {about.split("\n").map((para, index) => (
+          <p
+            key={index}
+            className="text-justify px-4 sm:py-4 py-2 first-letter:text-[#FCA311] sm:first-letter:text-3xl first-letter:text-lg"
+          >
+            {para}
+          </p>
+        ))}
       </div>
     </Container>
   )

@@ -21,31 +21,31 @@ const Event = () => {
   return (
     <Container
       id="event"
-      className="min-h-screen flex flex-col px-5 justify-evenly items-center background-blue gap-5"
+      className="min-h-screen flex flex-col px-5 justify-evenly items-center background-blue sm:gap-5 gap-1 pb-5"
     >
       <SectionHead logo label="Event" className="self-start text-white" />
-      <div className="sm:w-[70%] w-full flex flex-col p-[2vmax] bg-white rounded-lg gap-5">
+      <div className="sm:w-[70%] w-full flex flex-col p-[2vmax] bg-white gap-2">
         <Slider {...settings}>
           {event.images.map((src, index) => (
             <div key={index}>
               <img
                 src={src}
                 alt="Event Picture"
-                className="aspect-video"
-                style={{
-                  borderTopLeftRadius: "8px",
-                  borderTopRightRadius: "8px"
-                }}
+                className="aspect-video rounded-xl"
               />
             </div>
           ))}
         </Slider>
-        <div className="p-2 flex flex-col gap-5">
-          <h3 className="font-bold text-[5vmax] century-gothic first-letter:text-[#FCA311]">
+        <div className="p-2 flex flex-col md:gap-2 gap-1">
+          <h3 className="font-bold text-2xl md:text-[3vmax] century-gothic first-letter:text-[#FCA311] md:py-4">
             {event.title}
           </h3>
           <hr />
-          <p>{event.content}</p>
+          {event.content.split("\n").map((para, index) => (
+            <p className="md:text-base text-xs leading-relaxed" key={index}>
+              {para}
+            </p>
+          ))}
         </div>
       </div>
     </Container>

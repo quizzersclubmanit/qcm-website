@@ -58,7 +58,7 @@ const Hero = () => {
   return (
     <Container
       id="hero"
-      className="Fira Sans h-screen flex flex-col-reverse sm:flex-row items-center justify-evenly relative"
+      className="poppins-bold h-screen flex flex-col-reverse sm:flex-row items-center justify-evenly relative"
     >
       <div className="background-img"></div>
       <div className="left w-full h-full flex flex-col justify-center items-start sm:px-16 px-10 text-white gap-0">
@@ -67,7 +67,7 @@ const Hero = () => {
             {organizationNameList[0].split("").map((char, index) => (
               <span
                 key={index}
-                className="Fira Sans sm:text-[5vmax] text-[12vmin] inline-block opacity-0 overflow-y-hidden "
+                className="sm:text-[5vmax] text-[12vmin] inline-block opacity-0 overflow-y-hidden "
                 style={{
                   fontWeight: 700,
                   transform: "translateY(50%)"
@@ -81,7 +81,7 @@ const Hero = () => {
             {organizationNameList[1].split("").map((char, index) => (
               <span
                 key={index}
-                className="Fira Sans sm:text-[5vmax] text-[12vmin] inline-block opacity-0 overflow-y-hidden "
+                className="sm:text-[5vmax] text-[12vmin] inline-block opacity-0 overflow-y-hidden "
                 style={{
                   fontWeight: 700,
                   transform: "translateY(50%)"
@@ -92,18 +92,17 @@ const Hero = () => {
             ))}
           </div>
         </div>
-        <h4
-          ref={ref2}
-          className="Fira Sans text-[5vmax] font-bold overflow-y-hidden leading-none"
-        >
+        <h4 ref={ref2} className="text-[5vmax] overflow-y-hidden leading-none">
           NIT BHOPAL
         </h4>
         <p
           ref={ref3}
-          className="sm:text-[2vmax] text-[3vmax] overflow-y-hidden"
+          className="md:text-[2vmax] text-[3vmax] overflow-y-hidden"
         >
-          Central India's
-          <span className="text-[#fe9c02] block">Largest Quizzing Club</span>
+          Central India's{" "}
+          <span className="text-[#fe9c02] md:inline block">
+            Largest Quizzing Club
+          </span>
         </p>
       </div>
       <div className="flex right h-full w-full justify-center sm:items-center mt-20 self-end overflow-y-hidden">

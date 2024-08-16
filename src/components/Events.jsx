@@ -7,7 +7,7 @@ import { eventDetails } from "../assets/qcmData.json"
 const Events = () => {
   const settings = {
     infinite: true,
-    speed: 800,
+    speed: 400,
     slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
@@ -28,7 +28,7 @@ const Events = () => {
   return (
     <Container
       id="events"
-      className="w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col justify-between gap-5 items-center sm:items-start background-blue"
+      className="w-screen sm:p-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-5 items-center"
     >
       <SectionHead label="Events" className="text-white" />
       <Slider {...settings}>
