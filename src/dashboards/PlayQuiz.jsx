@@ -60,10 +60,10 @@ const PlayQuiz = () => {
       })
       .then(() => {
         navigate(`/quiz/result`)
-        toast.success("Quiz Submitted Succesfully")
+        toast("Quiz Submitted Succesfully")
       })
       .catch((error) => {
-        toast.error(error.message)
+        toast(error.message)
         console.error(error)
       })
   }

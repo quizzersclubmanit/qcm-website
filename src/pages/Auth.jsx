@@ -95,12 +95,12 @@ const Auth = ({ label = "signup" }) => {
                     })
                     .catch((error) => {
                       console.error(error)
-                      toast.error(error.message)
+                      toast(error.message)
                     })
                 })
                 .catch((error) => {
                   console.error(error)
-                  toast.error(error.message)
+                  toast(error.message)
                 })
             })
             .catch((error) => {
@@ -110,12 +110,12 @@ const Auth = ({ label = "signup" }) => {
           dispatch(setData(user))
           dispatch(login())
           navigate("/")
-          toast.success("Logged In Successfully")
+          toast("Logged In Successfully")
         }
       })
       .catch((error) => {
         console.error(error)
-        toast.error(error.message)
+        toast(error.message)
       })
       .finally(() => {
         setValue("name", "")

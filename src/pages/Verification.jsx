@@ -63,7 +63,7 @@ const Verification = () => {
                     .then(() => {
                       dispatch(login())
                       navigate("/")
-                      toast.success("Logged In Successfully")
+                      toast("Logged In Successfully")
                     })
                     .catch((error) => {
                       console.error(error)
@@ -87,7 +87,7 @@ const Verification = () => {
                     .sendVerificationToken()
                     .catch((error) => {
                       console.error(error)
-                      toast.error(error.message)
+                      toast(error.message)
                     })
                     .finally(() => {
                       setDisableResendBtn(true)
