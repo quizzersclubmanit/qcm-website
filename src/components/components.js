@@ -15,17 +15,16 @@ import QuizRibbon from "./QuizRibbon"
 import SearchBar from "./SearchBar"
 import Quiz from "./Quiz"
 import Sponsors from "./Sponsors"
-import ProgressBar from "./ProgressBar"
 import Admin from "./Admin"
 import Loader from "./Loader"
 import Social from "./Social"
 import Contact from "./Contact"
 import DropDown from "./DropDown"
-import Gallery from "./Gallery"
 import NotAvailable from "./NotAvailable"
 import UserBtn from "./UserBtn"
 import Map from "./Map"
 import Accordion from "./Accordion"
+import FAQs from "./FAQs"
 
 export {
   Header,
@@ -45,15 +44,14 @@ export {
   SearchBar,
   Quiz,
   Sponsors,
-  ProgressBar,
   Admin,
   Loader,
   Social,
   Contact,
   DropDown,
-  Gallery,
   NotAvailable,
   UserBtn,
   Map,
-  Accordion
+  Accordion,
+  FAQs
 }

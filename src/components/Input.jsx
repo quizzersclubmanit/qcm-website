@@ -35,7 +35,7 @@ const Input = forwardRef(
             {children}
           </div>
         </div>
-        <p className="text-red-500">{error?.message}</p>
+        <p className="text-red-500 text-sm">{error?.message}</p>
       </div>
     )
   }

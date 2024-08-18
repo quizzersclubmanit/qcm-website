@@ -41,8 +41,13 @@ const ManageQuiz = () => {
       id="manage-quiz"
       className="poppins-regular background-blue md:p-[3vmax] p-[2vmax] min-h-screen flex flex-col items-center md:gap-0 gap-5"
     >
-      <Logo className="w-[8vmax] md:w-[5vmax] sm:w-[7vmax]" />
-      <SearchBar content={searchContent} setContent={setSearchContent} />
+      <Logo className="w-[8vmax] md:w-[5vmax] sm:w-[7vmax] mb-9" />
+      <SearchBar
+        content={searchContent}
+        setContent={setSearchContent}
+        logo
+        className="p-2 bg-white rounded-lg focus:outline-0 w-full sm:w-1/2"
+      />
       <div className="flex flex-col items-center gap-3 w-full">
         {quizes
           .filter((quiz) =>

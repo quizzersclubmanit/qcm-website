@@ -1,22 +1,31 @@
-import { Logo, Container } from "./components"
+import { LuHome } from "react-icons/lu"
+import { useNavigate } from "react-router-dom"
 
 const SectionHead = ({
   label = "QCM",
   className = "",
   outline = false,
-  logo = false
+  logo = false,
+  lightLogo = false
 }) => {
+  const navigate = useNavigate()
+
   return (
-    <Container
-      className={`londrina-solid-regular flex items-center gap-2 ${className}`}
-    >
-      {logo && <Logo className="w-[9vmax] md:w-[5vmax] sm:w-[7vmax]" />}
-      <h3
-        className={`sm:text-[5vmax] text-[6vmax] ${outline && "text-outline"}`}
+    <div className="flex gap-5 items-center text-[3vmax]">
+      {logo && (
+        <LuHome
+          className={`cursor-pointer ${lightLogo && "text-white"}`}
+          onClick={() => {
+            navigate("/")
+          }}
+        />
+      )}
+      <h2
+        className={`text-[5vmax] poppins-bold flex items-center gap-2 ${outline && "text-outline"} ${className}`}
       >
         {label}
-      </h3>
-    </Container>
+      </h2>
+    </div>
   )
 }
 

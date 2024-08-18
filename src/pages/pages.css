@@ -1,7 +1,17 @@
 #hero {
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  background: url("/hero-bg.jpeg") no-repeat center center/cover;
+  background: url("/bg-gradient.png") no-repeat center center/cover;
+}
+
+#events {
+  background: url("/bg-gradient.png") no-repeat center center/cover;
+}
+
+#auth {
+  background: url("/bg-gradient.png") no-repeat center center/cover;
+}
+
+#play-quiz {
+  background: url("/image-quiz-bg.png") no-repeat center center/cover;
 }
 
 #hero .background-img {
@@ -15,4 +25,8 @@
   background-blend-mode: overlay;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+}
+
+.glass-box {
+  @apply bg-white bg-opacity-25 p-4 rounded-xl;
 }
