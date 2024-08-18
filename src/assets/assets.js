@@ -6,6 +6,8 @@ import gradientLogo from "./gradient-qcm-logo.png"
 import floatingMarks from "./floating-mark.png"
 import bgAboutUs from "./bg-about-us.png"
 import aboutIllus from "./illus.jpg"
+import registrationProcess from "./qcm-registration-process.pdf"
+import liveGif from "./live.gif"
 
 export {
   qcmLogo,
@@ -15,5 +17,7 @@ export {
   gradientLogo,
   floatingMarks,
   bgAboutUs,
-  aboutIllus
+  aboutIllus,
+  registrationProcess,
+  liveGif
 }

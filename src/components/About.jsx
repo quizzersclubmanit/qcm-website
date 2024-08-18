@@ -6,7 +6,6 @@ import { useState } from "react"
 const About = () => {
   const [exploreMore, setExploreMore] = useState(false)
   const content = exploreMore ? about : about.split("\n")[0]
-  console.log(window.innerWidth)
 
   function exploreMoreHandler() {
     setExploreMore(!exploreMore)
