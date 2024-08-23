@@ -17,6 +17,10 @@ const Instructions = () => {
       value: sec
     },
     {
+      key: "Question Count",
+      value: instructions[`section-${sec}`].questions
+    },
+    {
       key: "Problem Type",
       value: instructions[`section-${sec}`].type
     },

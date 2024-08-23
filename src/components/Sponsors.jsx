@@ -13,7 +13,7 @@ const Sponsors = () => {
           if (!Array.isArray(sponsor))
             return (
               <div key={index}>
-                <p className="text-3xl p-1 text-center font-semibold bg-[#187b93] text-[#fff]">
+                <p className="text-3xl p-1 text-center font-semibold bg-[#2B7966] text-[#fff]">
                   {sponsor.category}
                 </p>
                 <div className="flex justify-evenly items-center flex-wrap">
@@ -44,7 +44,7 @@ const Sponsors = () => {
                 key={index + idx + Date.now()}
                 className="flex flex-col items-center"
               >
-                <p className="text-3xl w-full p-1 text-center font-semibold bg-[#187b93] text-[#fff]">
+                <p className="text-3xl w-full p-1 text-center font-semibold bg-[#2B7966] text-[#fff]">
                   {obj.category}
                 </p>
                 <a

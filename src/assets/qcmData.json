@@ -1,7 +1,10 @@
 {
   "organization": "Quizzers' Club NIT Bhopal",
   "acronym": "QCM",
-  "about": "Quizzers' Club NIT Bhopal, the premier quizzing society at Maulana Azad National Institute of Technology (an institute of National Importance acclaimed for its exceptional academic standards and innovative spirit), is committed to elevating the art of quizzing to dazzling heights. By unraveling the complexities of quizzing, the club ignites a passion for this intellectual pursuit among both seasoned enthusiasts and newcomers. Established in February 2013 by a cohort of quizzing prodigies from MANIT, the society has orchestrated over 100 successful quizzes, establishing itself as a cornerstone of intellectual engagement and competitive excellence. The Quizzers' Club is driven by a diverse team of students from various fields, including quizzers, content writers, bloggers, executives, video editors, photographers, and web developers. Together, they collaborate to nurture, cultivate, and launch innovative ideas, fostering lifelong skills and values in the process.\nThe Quizzer's Club MANIT curates a series of intellectually stimulating events such as Anveshan, Flashback Fiesta, Abhigyan, Manthan, Quizzotica, and Vihaan, alongside a wide array of online quizzing contests. Among these, the Inter-City Quizzing Challenge stands out as a prestigious state-level quiz competition. It brings together school students from Bhopal, Indore, Gwalior, Jabalpur, and Ujjain, creating a thrilling and competitive environment. These events draw significant participation from over 100 schools and colleges across India, including passionate contenders from within MANIT itself. In addition to its quizzing events, the club offers a rich tapestry of captivating questions, intriguing facts, and diverse aptitudes, all meticulously woven into immersive and enlightening content. These elements reinforce the society's mission to deliver a compelling blend of entertainment and education in every facet of its operations. Embark on a journey into the vibrant world of Quizzing, where curiosity meets competition and intellectual adventure awaits at every turn!",
+  "about": {
+    "manit": "Maulana Azad National Institute of Technology, also known as MANIT, is an Institute of National Importance under the Ministry of Education, Government of India. It is named after Independent India's first Minister of Education, scholar and activist Maulana Azad. Situated among the verdant hills of Bhopal, the institute houses a huge campus and is widely recognized for nurturing remarkable engineers, innovative technologists, creative architects, and planners who have made substantial contributions across various fields. The engineering and the architectural courses are ranked under 75 and 20, respectively as per NIRF 2024. The institute thrives with a profusion of activities, including technical fests, cultural events, sports competitions, and numerous clubs, cultivating a dynamic, engaging, and interactive space beyond the realm of academics",
+    "qcm": "Quizzer's Club NIT Bhopal (QCM), formed in February 2013 is the official quizzing society of Maulana Azad National Institute of Technology (MANIT) known for spreading quizzing culture among the youth. The society firmly abides by its motto to stem passion towards cultivating knowledge and celebrating learning among the enthusiasts. The Quizzers' Club, all equipped with a skillful team of quizzers, content writers, bloggers, editors to web developers ; instils a  zeal for innovation into the air through its stimulating events including Inter-City Quizzing Challenge, Anveshan, Flashback Fiesta, Abhigyan, Manthan, Quizzotica, Vihaan and a wide array of quizzing contests. Commending QCM's prestigious competition and extravaganza is the  Inter-City Quizzing Challenge which brings together passionate contenders from Bhopal, Indore, Gwalior, Jabalpur and Ujjain. These events draw significant participation from over 100 institutions, offer a rich tapestry of captivating questions, intriguing facts and diverse aptitudes , all meticulously woven into enlightening content. Having duly organized more than 200 quizzes to date, QCM also focuses on engaging activities like debates, group discussions, treasure hunts and numerous other. The exclusive events ,funded with diverse benevolent sponsors, are designed to target Indian youth for creating and implementing skills and ethics into the brightest of minds"
+  },
   "contacts": [
     {
       "name": "Nishchal Prajapati",
@@ -152,6 +155,16 @@
   ],
   "sponsors": [
     {
+      "category": "Title Sponsor",
+      "brands": [
+        {
+          "brand": "The Hindu",
+          "logo": "/sponsors/hindu.png",
+          "website": "https://www.thehindu.com/"
+        }
+      ]
+    },
+    {
       "category": "Co-Powered by",
       "brands": [
         {
@@ -183,6 +196,21 @@
           "brand": "Khaadi",
           "logo": "/sponsors/khaadi.jpg",
           "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+        }
+      ]
+    },
+    {
+      "category": "Education Partner",
+      "brands": [
+        {
+          "brand": "Quill Bot",
+          "logo": "/sponsors/quillbot.png",
+          "website": "https://quillbot.com/"
+        },
+        {
+          "brand": "Unstop",
+          "logo": "/sponsors/unstop.jpg",
+          "website": "https://unstop.com/"
         }
       ]
     },
@@ -267,14 +295,6 @@
           "logo": "/sponsors/abhibus.png",
           "website": "https://www.abhibus.com/"
         }
-      },
-      {
-        "category": "Education Partner",
-        "brand": {
-          "name": "Quill Bot",
-          "logo": "/sponsors/quillbot.png",
-          "website": "https://quillbot.com/"
-        }
       }
     ]
   ],
@@ -283,243 +303,299 @@
       {
         "name": "Shrishti Mishra",
         "post": "Coordinator",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e6e0004df2c13c5/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7e6e0004df2c13c5",
+        "linkedIn": "https://www.linkedin.com/in/srishti-mishra-99bb5b257/"
       },
       {
         "name": "Atharv Nerkar",
         "post": "Coordinator",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d0e00290ec19598/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7d0e00290ec19598",
+        "linkedIn": "https://www.linkedin.com/in/atharv-nerkar-3479aa259/"
       },
       {
         "name": "Ayushi Sinha",
         "post": "Co-Coordinator",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d1d0026fcdab618/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7d1d0026fcdab618",
+        "linkedIn": "https://www.linkedin.com/in/ayushi-s-5bb812249/"
       },
       {
         "name": "Gautam Kumar",
         "post": "Co-Coordinator",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d4a000813538d58/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7d4a000813538d58",
+        "linkedIn": ""
       },
       {
         "name": "Prakriti Shree",
         "post": "Quizzing Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e59003e1eb6b29f/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7e59003e1eb6b29f",
+        "linkedIn": "https://www.linkedin.com/in/prakriti-shree-0317a0254/"
       },
       {
         "name": "Vyom Singhal",
         "post": "Quizzing Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7df500350270e249/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7df500350270e249",
+        "linkedIn": "https://www.linkedin.com/in/vyom-singhal-bb1008260/"
       },
       {
         "name": "Shilpa Koley",
         "post": "Administrative Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dd60013d95de3ca/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7dd60013d95de3ca",
+        "linkedIn": "https://www.linkedin.com/in/shilpa-koley-719723259/"
       },
       {
         "name": "Dhruv Singh Bhadauria",
         "post": "Administrative Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7f4d0026c614915f/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7f4d0026c614915f",
+        "linkedIn": ""
       },
       {
         "name": "Samarth Agarwal",
         "post": "Quizzing Research and Content Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dc6000a7e8f6588/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7dc6000a7e8f6588",
+        "linkedIn": "https://www.linkedin.com/in/samarth-agrawal-51543921a/"
       },
       {
         "name": "Mridul Upadhyay",
         "post": "Quizzing Research and Content Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e4b000cc32ed2d5/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7e4b000cc32ed2d5",
+        "linkedIn": "https://www.linkedin.com/in/mridul-upadhyay-9680b7265/"
       },
       {
         "name": "Yash Raj Menaria",
         "post": "Quizzing Research and Content Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66bf6e9d00277fcf70ec/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66bf6e9d00277fcf70ec",
+        "linkedIn": "https://www.linkedin.com/in/yash-raj-menaria/"
       },
       {
         "name": "Priyanshu Choudhury",
         "post": "Technical Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dba001496e03800/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7dba001496e03800",
+        "linkedIn": "https://www.linkedin.com/in/priyanshuc/"
       },
       {
         "name": "Ajay Yadav",
         "post": "Designing Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7cfc001e81bdb546/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7cfc001e81bdb546",
+        "linkedIn": "https://www.linkedin.com/in/ajay-yadav-2o26/"
       },
       {
         "name": "Archisha Singh",
         "post": "Designing Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dfd001510ba1729/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7dfd001510ba1729",
+        "linkedIn": "https://www.linkedin.com/in/archisha-singh-518a6a222/"
       },
       {
-        "name": "Aksahat Jain",
+        "name": "Akshat Jain",
         "post": " Technical Design Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d020001ae41f040/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7d020001ae41f040",
+        "linkedIn": ""
       },
       {
         "name": "Sarthak Vyas",
         "post": "Sponsorship Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e67000dab6ce5f5/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7e67000dab6ce5f5",
+        "linkedIn": "https://www.linkedin.com/in/sarthak-vyas-99791b25b/"
       },
       {
         "name": "Anurag Dadarya",
         "post": "Public Relations and Outreach Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d070038a18a6d5a/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7d070038a18a6d5a",
+        "linkedIn": "https://www.linkedin.com/in/atharv-nerkar-3479aa259/"
       },
 
       {
         "name": "Karnika Nagpure",
         "post": "Event Management Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d570028d6107f4e/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7d570028d6107f4e",
+        "linkedIn": "https://www.linkedin.com/in/karnika-nagpure-3416b1278/"
       },
       {
         "name": "Vikranth Reddy",
         "post": "Event Management Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e7b001c09b9d728/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7e7b001c09b9d728",
+        "linkedIn": "https://www.linkedin.com/in/vikranth-reddy-bollam-14432722a"
       },
       {
         "name": "Sampurna Mandal",
         "post": "Event Management Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66bf6b320009e05022fc/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66bf6b320009e05022fc",
+        "linkedIn": "https://www.linkedin.com/in/sampurna-mandal-556a50259/"
       },
 
       {
         "name": "Nimisha Shrivastava",
         "post": "Finance Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dac000acb562e40/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7dac000acb562e40",
+        "linkedIn": "https://www.linkedin.com/in/nimisha-shrivastava-094579278/"
       },
 
       {
         "name": "Ganesh Nayak",
         "post": "Alumini Convener",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66bf6b29001c69d421ca/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66bf6b29001c69d421ca",
+        "linkedIn": "https://www.linkedin.com/in/ganesh-nayak-32b33b257/"
       },
       {
         "name": "Ayush Sharma",
         "post": "Alumini Convener",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d17003080237e74/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7d17003080237e74",
+        "linkedIn": "https://www.linkedin.com/in/ayush-sharma-27a488261/"
       },
 
       {
         "name": "Prakriti Sharma",
         "post": "Content Writing Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7db2003d70bc7b43/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7db2003d70bc7b43",
+        "linkedIn": "https://www.linkedin.com/in/prakriti-sharma-764671278/"
       },
 
       {
         "name": "Mamunuri Vishwaendra Chary",
         "post": "Content Writing Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dec002aa306f2b2/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7dec002aa306f2b2",
+        "linkedIn": "https://www.linkedin.com/in/vishwendra-chary-mamunuri-07972726b/"
       },
       {
         "name": "Nethi Lehya Sri",
         "post": "Creative Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7da5000ed91a2b84/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7da5000ed91a2b84",
+        "linkedIn": "https://www.linkedin.com/in/nethi-lehya-sri-0a2628261/"
       },
 
       {
         "name": "Pragya Kolpal",
         "post": "Media Content and Relations Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e520035fe0f8eec/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7e520035fe0f8eec",
+        "linkedIn": "https://www.linkedin.com/in/pragya-kolpal-1a76a5278/"
       },
       {
         "name": "Divy Pareek",
         "post": "Media Content and Relations Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d4300202965e4fe/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7d4300202965e4fe",
+        "linkedIn": "https://www.linkedin.com/in/divypareek/"
       },
       {
         "name": "Pranjal Jain",
         "post": "Digital Growth and Communications Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e600000a0e3d5af/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7e600000a0e3d5af",
+        "linkedIn": "https://www.linkedin.com/in/pranjal-jain-547a37256/"
       },
 
       {
         "name": "Shruti Upadhyay",
         "post": "Video Editing Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66bf861400053c748d37/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66bf861400053c748d37",
+        "linkedIn": "https://www.linkedin.com/in/shruti-upadhyay-41673b278/"
       },
       {
         "name": "Rohit Kumar",
         "post": "Video Editing Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7dc00015e3e85c0f/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7dc00015e3e85c0f",
+        "linkedIn": "https://www.linkedin.com/in/rohit-kumar-757690315/"
       },
       {
         "name": "Shivam Malviya",
         "post": "Photography Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be80c000343ce6826f/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be80c000343ce6826f",
+        "linkedIn": ""
       },
 
       {
         "name": "Manan Verma",
         "post": "Logistics and operations Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7d5d002851e5e7f1/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7d5d002851e5e7f1",
+        "linkedIn": "https://www.linkedin.com/in/manan-verma-54904525a/"
       },
 
       {
         "name": "Vemula Teja Manideep",
         "post": "Logistics and operations Head",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be78fe000854d7b4f5/files/66be7e73003e72aaf95e/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be7e73003e72aaf95e",
+        "linkedIn": "https://www.linkedin.com/in/tejamanideep-vemula-b77569278/"
       }
     ],
     "4": [
       {
         "name": "Nishchal Prajapati",
         "post": "President",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79d600170478f6c1/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be79d600170478f6c1",
+        "linkedIn": "https://www.linkedin.com/in/iamnishchal25/"
       },
       {
         "name": "Harshita Nehra",
-        "post": "Vice-President(Organisation)",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79c7003e62d5327f/view?project=6658adc6003352cb4b85&mode=admin"
+        "post": "Vice-President",
+        "domain": "Organisation",
+        "fileId": "66be79c7003e62d5327f",
+        "linkedIn": "https://www.linkedin.com/in/harshita-nehra-78bbb322a/"
       },
       {
         "name": "Abhishek Meena",
-        "post": "Vice-President(Administration)",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be799e00053ec53f81/view?project=6658adc6003352cb4b85&mode=admin"
+        "post": "Vice-President",
+        "domain": "Administration",
+        "fileId": "66be799e00053ec53f81",
+        "linkedIn": "https://www.linkedin.com/in/abhishek-meena01/"
       },
       {
         "name": "Anurag Mishra",
-        "post": "General Secratory(Alumini Connect)",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79b6001c42854028/view?project=6658adc6003352cb4b85&mode=admin"
+        "post": "General Secratory",
+        "domain": "Alumini Connect",
+        "fileId": "66be79b6001c42854028",
+        "linkedIn": "https://www.linkedin.com/in/anurag-mishra-66ba9b227/"
       },
       {
         "name": "Akshat Jain",
-        "post": "General Secratory(Creative Comms)",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79af00119ef70cb7/view?project=6658adc6003352cb4b85&mode=admin"
+        "post": "General Secratory",
+        "domain": "Creative Comms",
+        "fileId": "66be79af00119ef70cb7",
+        "linkedIn": "https://www.linkedin.com/in/akshat-jain-04a14b242/"
       },
       {
         "name": "Suhani Jain",
-        "post": "Secratory(Public Relations)",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be7a00000af7a8f8c8/view?project=6658adc6003352cb4b85&mode=admin"
+        "post": "Secratory",
+        "domain": "Public Relations",
+        "fileId": "66be7a00000af7a8f8c8",
+        "linkedIn": "https://www.linkedin.com/in/suhani-jain-b96800239/"
       },
       {
         "name": "Dheeraj Mandvi",
         "post": "Treasurer",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be798c001b5b3b67bf/view?project=6658adc6003352cb4b85&mode=admin"
+        "fileId": "66be798c001b5b3b67bf",
+        "linkedIn": "https://www.linkedin.com/in/dheeraj-mandvi-0899111bb/"
       },
       {
         "name": "Chetan Vaddamani",
-        "post": "Secretary(Media and Connect)",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79c000302b703b83/view?project=6658adc6003352cb4b85&mode=admin"
+        "post": "Secretary",
+        "domain": "Media and Connect",
+        "fileId": "66be79c000302b703b83",
+        "linkedIn": "https://www.linkedin.com/in/chethan-vaddamani-aa368122b/"
       },
       {
         "name": "Shreevathsav Kyama",
-        "post": "Secretary(Logistics)",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79f800275c47cfe7/view?project=6658adc6003352cb4b85&mode=admin"
+        "post": "Secretary",
+        "domain": "Logistics",
+        "fileId": "66be79f800275c47cfe7",
+        "linkedIn": "https://www.linkedin.com/in/sreevathsav-kyama-163ab5223/"
       },
       {
         "name": "Om Krishna",
-        "post": "Secretary(Compliance)",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79de001d44557b48/view?project=6658adc6003352cb4b85&mode=admin"
+        "post": "Secretary",
+        "domain": "Compliance",
+        "fileId": "66be79de001d44557b48",
+        "linkedIn": "https://www.linkedin.com/in/om-krishna-928663183/"
       },
       {
         "name": "Akash Goyal",
-        "post": "Secretary(Technical)",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be79a40021bba40093/view?project=6658adc6003352cb4b85&mode=admin"
+        "post": "Secretary",
+        "domain": "Technical",
+        "fileId": "66be79a40021bba40093",
+        "linkedIn": "https://www.linkedin.com/in/akash-goyal-244646222/"
       },
       {
         "name": "Thrishul Reddy",
-        "post": "Secretary(Partnership)",
-        "image": "https://cloud.appwrite.io/v1/storage/buckets/66be790c001a42910cde/files/66be7a0600317256792e/view?project=6658adc6003352cb4b85&mode=admin"
+        "post": "Secretary",
+        "domain": "Partnership",
+        "fileId": "66be7a0600317256792e",
+        "linkedIn": "https://www.linkedin.com/in/thrishulreddy/"
       }
     ]
   },

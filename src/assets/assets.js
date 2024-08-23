@@ -8,6 +8,7 @@ import bgAboutUs from "./bg-about-us.png"
 import aboutIllus from "./illus.jpg"
 import registrationProcess from "./qcm-registration-process.pdf"
 import liveGif from "./live.gif"
+import manit from "./manit.jpg"
 
 export {
   qcmLogo,
@@ -19,5 +20,6 @@ export {
   bgAboutUs,
   aboutIllus,
   registrationProcess,
-  liveGif
+  liveGif,
+  manit
 }
