@@ -47,10 +47,12 @@ const PlayQuiz = () => {
       })
       setShowSubmitBtn(true)
     } else {
-      setCurrentQue((prev) => prev + 1)
-      setSelectedOptions([false, false, false, false])
+      setCurrentQue((prev) => prev < quizes.length ? prev + 1 : prev)
+      let ans = quizes[currentQue].markedAnswers
+
+      setSelectedOptions(ans || [false, false, false, false])
     }
-  }, [quizes])
+  }, [quizes, currentQue])
 
   function submitQuiz({ disqualified = false }) {
     dbService
@@ -108,28 +110,29 @@ const PlayQuiz = () => {
           navigate("/")
           toast("You've already attempted the quiz")
         }
+        else {
+          document.documentElement
+            .requestFullscreen()
+        }
       })
       .catch((error) => {
         console.error(error)
       })
       .finally(() => {
-        document.documentElement
-          .requestFullscreen()
-          .then(() => setLoading(false))
-          .catch((error) => console.error(error))
+        setLoading(false)
       })
 
-    const handle = document.documentElement.addEventListener(
-      "fullscreenchange",
-      () => !document.fullscreenElement && submitQuiz({ disqualified: true })
-    )
-    document.documentElement.addEventListener("keydown", (e) => {
-      if (e.code == "F12") e.preventDefault()
-    })
+    // const handle = document.documentElement.addEventListener(
+    //   "fullscreenchange",
+    //   () => !document.fullscreenElement && submitQuiz({ disqualified: true })
+    // )
+    // document.documentElement.addEventListener("keydown", (e) => {
+    //   if (e.code == "F12") e.preventDefault()
+    // })
 
-    return () => {
-      document.documentElement.removeEventListener("fullscreenchange", handle)
-    }
+    // return () => {
+    //   document.documentElement.removeEventListener("fullscreenchange", handle)
+    // }
   }, [])
 
   useEffect(() => {
@@ -249,7 +252,8 @@ const PlayQuiz = () => {
             className="font-bold uppercase previous flex justify-between items-center py-1 px-4 rounded-2xl bg-[#E5E5E5] hover:bg-gray-300 gap-1"
             onClick={() => {
               setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
-              setSelectedOptions([false, false, false, false])
+              let ans = quizes[currentQue >= 2 ? currentQue - 2 : 0].markedAnswers
+              setSelectedOptions(ans || [false, false, false, false])
             }}
           >
             <FaAngleLeft />

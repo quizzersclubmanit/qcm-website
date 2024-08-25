@@ -5,7 +5,7 @@ import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { login, setData } from "../redux/user.slice"
 
-const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
+const Nav = forwardRef(({ className, offModal = () => { } }, ref) => {
   const tabs = [
     {
       name: "Home",
@@ -118,7 +118,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               ...(window.innerWidth < 768 && { marginTop: "10px" })
             }}
             onClick={() => {
-              navigate("signup")
+              navigate("register")
             }}
           />
         )}
