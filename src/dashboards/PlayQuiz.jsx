@@ -1,5 +1,5 @@
 import "../pages/pages.css"
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes, editQuiz } from "../redux/quiz.slice"
 import { setScore } from "../redux/user.slice"
@@ -47,12 +47,14 @@ const PlayQuiz = () => {
       })
       setShowSubmitBtn(true)
     } else {
-      setCurrentQue((prev) => prev + 1)
-      setSelectedOptions([false, false, false, false])
-    }
-  }, [quizes])
+      setCurrentQue((prev) => prev < quizes.length ? prev + 1 : prev)
+      let ans = quizes[currentQue].markedAnswers
 
-  function submitQuiz({ disqualified }) {
+      setSelectedOptions(ans || [false, false, false, false])
+    }
+  }, [quizes, currentQue])
+
+  function submitQuiz({ disqualified = false }) {
     dbService
       .insert({
         collectionId: env.leaderboardId,
@@ -60,18 +62,22 @@ const PlayQuiz = () => {
       })
       .then(() => {
         navigate(`/quiz/result`)
-        toast("Quiz Submitted Succesfully")
+        toast.success("Quiz Submitted Succesfully")
       })
       .catch((error) => {
-        toast(error.message)
+        toast.error(error.message)
         console.error(error)
       })
   }
 
   const handleSubmit = useCallback(() => {
-    dispatch(setScore(score + roundScore))
-    if (sec < 3) navigate(`/quiz/instr/${Number(sec) + 1}`)
-    else submitQuiz({ disqualified: false })
+    if (section <= 3) {
+      dispatch(setScore(score + roundScore))
+      if (sec < 3) navigate(`/quiz/instr/${Number(sec) + 1}`)
+      else setSection(sec + 1)
+      return
+    }
+    submitQuiz()
   }, [roundScore, section])
 
   useEffect(() => {
@@ -104,29 +110,29 @@ const PlayQuiz = () => {
           navigate("/")
           toast("You've already attempted the quiz")
         }
+        else {
+          document.documentElement
+            .requestFullscreen()
+        }
       })
       .catch((error) => {
         console.error(error)
       })
       .finally(() => {
         setLoading(false)
-        // document.documentElement
-        //   .requestFullscreen()
-        //   .then(() => setLoading(false))
-        //   .catch((error) => console.error(error))
       })
 
-    // const handle = document.documentElement.addEventListener(
-    //   "fullscreenchange",
-    //   () => !document.fullscreenElement && submitQuiz({ disqualified: true })
-    // )
-    // document.documentElement.addEventListener("keydown", (e) => {
-    //   if (e.code == "F12") e.preventDefault()
-    // })
+    const handle = document.documentElement.addEventListener(
+      "fullscreenchange",
+      () => !document.fullscreenElement && submitQuiz({ disqualified: true })
+    )
+    document.documentElement.addEventListener("keydown", (e) => {
+      if (e.code == "F12") e.preventDefault()
+    })
 
-    // return () => {
-    //   document.documentElement.removeEventListener("fullscreenchange", handle)
-    // }
+    return () => {
+      document.documentElement.removeEventListener("fullscreenchange", handle)
+    }
   }, [])
 
   useEffect(() => {
@@ -159,7 +165,7 @@ const PlayQuiz = () => {
   return (
     <Container
       id="play-quiz"
-      className="Fira Sans w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-around items-center sm:items-center sm:gap-5 gap-2 relative"
+      className="Fira Sans w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-around items-center sm:items-center sm:gap-5 gap-1 relative"
       onContextMenu={(e) => {
         e.preventDefault()
       }}
@@ -170,7 +176,7 @@ const PlayQuiz = () => {
         className="absolute top-0 right-3 w-1/5 md:w-fit"
       />
       <div className="flex w-full md:w-[70vw] justify-between mt-6 items-center glass-box">
-        <div className="text-white font-bold overflow-y-hidden sm:text-2xl">
+        <div className="flex w-[45%] flex-col text-white font-bold overflow-y-hidden uppercase sm:text-2xl">
           <p className="flex items-center text-sm sm:text-xl">
             Section -&nbsp;
             <span className="overflow-y-hidden text-[#FCA311] ">
@@ -178,8 +184,8 @@ const PlayQuiz = () => {
             </span>
           </p>
         </div>
-        <div className="flex justify-end text-[#FCA311] font-bold overflow-y-hidden sm:text-2xl">
-          <p className="text-white text-sm sm:text-xl overflow-y-hidden flex items-center">
+        <div className="flex justify-end w-[45%] text-[#FCA311] font-bold overflow-y-hidden sm:text-2xl">
+          <p className="text-white text-sm sm:text-xl overflow-y-hidden flex items-center uppercase">
             Time Left -&nbsp;
             <span className="text-[#FCA311] overflow-y-hidden">
               {timer} minutes
@@ -199,7 +205,7 @@ const PlayQuiz = () => {
             fileId: quizes[currentQue - 1]?.supportingPic
           })}
           alt="Supporting Picture"
-          className="object-contain aspect-video"
+          className="w-1/3"
         />
       )}
       <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-2 gap-5 md:w-1/2 sm:w-4/5 w-full mt-4 sm:mt-0">
@@ -246,7 +252,8 @@ const PlayQuiz = () => {
             className="font-bold uppercase previous flex justify-between items-center py-1 px-4 rounded-2xl bg-[#E5E5E5] hover:bg-gray-300 gap-1"
             onClick={() => {
               setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
-              setSelectedOptions([false, false, false, false])
+              let ans = quizes[currentQue >= 2 ? currentQue - 2 : 0].markedAnswers
+              setSelectedOptions(ans || [false, false, false, false])
             }}
           >
             <FaAngleLeft />

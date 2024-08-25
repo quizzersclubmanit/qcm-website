@@ -118,7 +118,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               ...(window.innerWidth < 768 && { marginTop: "10px" })
             }}
             onClick={() => {
-              navigate("signup")
+              navigate("register")
             }}
           />
         )}

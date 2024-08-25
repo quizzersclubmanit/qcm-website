@@ -257,7 +257,7 @@ const Auth = ({ label = "signup" }) => {
 
             <Link
               className="w-fit text-blue-500"
-              to={label == "signup" ? "/login" : "/signup"}
+              to={label == "signup" ? "/login" : "/register"}
             >
               {label == "signup"
                 ? "Already have an account?"
