@@ -5,7 +5,8 @@ import {
   Input,
   SectionHead,
   Button,
-  Footer
+  Footer,
+  Loader
 } from "../components/components"
 import { authIllustration, registrationProcess } from "../assets/assets"
 import { IoEye, IoEyeOff } from "react-icons/io5"
@@ -34,6 +35,7 @@ const Auth = ({ label = "signup" }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [showPassword, setShowPassword] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const Eye = useCallback(() => {
     if (!showPassword)
@@ -56,6 +58,7 @@ const Auth = ({ label = "signup" }) => {
   }, [showPassword])
 
   const authenticate = useCallback((f = async () => {}, formData = {}) => {
+    setLoading(true)
     f({
       email: formData.email,
       password: formData.password,
@@ -72,7 +75,7 @@ const Auth = ({ label = "signup" }) => {
                 contactNo: `+91${formData.phone}`,
                 educationalInstitute: formData.school.toLowerCase(),
                 city: formData.city.toLowerCase(),
-                sex: formData.sex.toLowerCase()
+                sex: formData.sex
               }
             })
             .then((res) => {
@@ -125,6 +128,7 @@ const Auth = ({ label = "signup" }) => {
         setValue("school", "")
         setValue("city", "")
         setValue("sex", "")
+        setLoading(false)
       })
   }, [])
 
@@ -135,6 +139,7 @@ const Auth = ({ label = "signup" }) => {
     }
   }
 
+  if (loading) return <Loader />
   return (
     <>
       <Container

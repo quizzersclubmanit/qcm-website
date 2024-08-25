@@ -66,6 +66,7 @@ const Verification = () => {
                       toast("Logged In Successfully")
                     })
                     .catch((error) => {
+                      toast(error.message)
                       console.error(error)
                     })
                     .finally(() => {
