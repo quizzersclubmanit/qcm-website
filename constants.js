@@ -12,7 +12,7 @@ const env = {
 
 export const timeLimits = [
   10, // in mins
-  20,
+  25,
   10
 ]
 

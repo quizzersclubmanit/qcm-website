@@ -49,7 +49,7 @@ const PlayQuiz = () => {
       })
       setShowSubmitBtn(true)
     } else {
-      setCurrentQue((prev) => (prev < quizes.length ? prev + 1 : prev))
+      setCurrentQue((prev) => (prev < len ? prev + 1 : prev))
       let ans = quizes[currentQue].markedAnswers
       setSelectedOptions(ans || [false, false, false, false])
     }
@@ -108,7 +108,7 @@ const PlayQuiz = () => {
       .then((docs) => {
         if (docs.length != 0) {
           navigate("/")
-          toast("You've already attempted the quiz")
+          toast("You've attempted the quiz")
         } else document.documentElement.requestFullscreen()
       })
       .catch((error) => {
@@ -129,7 +129,7 @@ const PlayQuiz = () => {
     return () => {
       document.documentElement.removeEventListener("fullscreenchange", handle)
     }
-  }, [])
+  }, [window.location.href])
 
   useEffect(() => {
     dispatch(
