@@ -14,7 +14,11 @@ class Store {
   async uploadFile({ file }) {
     if (!file || typeof file == "string") return null
     try {
-      const res = await this.storage.createFile(env.storeId, ID.unique(), file)
+      const res = await this.storage.createFile(
+        env.questionBucketId,
+        ID.unique(),
+        file
+      )
       return res
     } catch (error) {
       throw error
@@ -23,14 +27,14 @@ class Store {
 
   async deleteFile({ fileId }) {
     try {
-      const res = await this.storage.deleteFile(env.storeId, fileId)
+      const res = await this.storage.deleteFile(env.questionBucketId, fileId)
       return res
     } catch (error) {
       throw error
     }
   }
 
-  fetchFilePreview({ fileId, bucketId = env.storeId }) {
+  fetchFilePreview({ fileId, bucketId = env.questionBucketId }) {
     try {
       const res = this.storage.getFilePreview(bucketId, fileId)
       return res.toString()

@@ -38,6 +38,7 @@ const PlayQuiz = () => {
   const navigate = useNavigate()
   const [showSubmitBtn, setShowSubmitBtn] = useState(false)
   const [timer, setTimer] = useState(undefined)
+  let timesFullScreenExited = useMemo(() => 0)
 
   const handleNext = useCallback(() => {
     let len = quizes.length
@@ -65,13 +66,13 @@ const PlayQuiz = () => {
         let msg = disqualified
           ? "You are disqualified for exiting full-screen"
           : "Quiz Submitted Successfully"
-        navigate(`/quiz/result/${msg}`)
         toast("Quiz Submitted Succesfully")
       })
       .catch((error) => {
         toast(error.message)
         console.error(error)
       })
+      .finally(() => navigate(`/quiz/result/${msg}`))
   }
 
   const handleSubmit = useCallback(() => {
@@ -109,7 +110,10 @@ const PlayQuiz = () => {
         if (docs.length != 0) {
           navigate("/")
           toast("You've attempted the quiz")
-        } else document.documentElement.requestFullscreen()
+        } else
+          document.documentElement.requestFullscreen({
+            navigationUI: "hide"
+          })
       })
       .catch((error) => {
         console.error(error)
@@ -120,7 +124,16 @@ const PlayQuiz = () => {
 
     const handle = document.documentElement.addEventListener(
       "fullscreenchange",
-      () => !document.fullscreenElement && submitQuiz(true)
+      () => {
+        if (!document.fullscreenElement) {
+          timesFullScreenExited++
+          if (timesFullScreenExited > 2) submitQuiz(true)
+          else {
+            toast("Exiting fullscreen will lead to immediate disqualification")
+            navigate(`/quiz/instr/${Number(sec)}`)
+          }
+        }
+      }
     )
     document.documentElement.addEventListener("keydown", (e) => {
       if (e.code == "F12") e.preventDefault()
@@ -141,14 +154,14 @@ const PlayQuiz = () => {
   }, [selectedOptions])
 
   useEffect(() => {
-    let timeleft = timeLimits[quizes[currentQue - 1]?.section - 1] || 5
-    if (timeleft * 60 == 20) toast("Hurry! Only 20 seconds remaining")
-    if (timer == 0) toast("Time Up! Click on Next -> Submit")
+    let timeleft = 60 * (timeLimits[quizes[currentQue - 1]?.section - 1] || 5) // in seconds
+    // if (timeleft * 60 == 20) toast("Hurry! Only 20 seconds remaining")
+    // if (timer == 0) toast("Time Up! Click on Next -> Submit")
     setTimer(timeleft)
     const interval = setInterval(() => {
       timeleft--
       setTimer((prev) => (prev > 0 ? prev - 1 : prev))
-    }, 60000)
+    }, 1000)
     return () => {
       clearInterval(interval)
     }
@@ -177,16 +190,21 @@ const PlayQuiz = () => {
         <div className="flex w-[45%] flex-col text-white font-bold overflow-y-hidden uppercase sm:text-2xl">
           <p className="flex items-center text-sm sm:text-xl">
             Section -&nbsp;
-            <span className="overflow-y-hidden text-[#FCA311] ">
+            <span className="overflow-y-hidden text-[#FCA311]">
               {quizes[currentQue - 1]?.section}
             </span>
           </p>
         </div>
+        {multiCorrect && (
+          <span className="overflow-y-hidden text-[#FCA311] text-sm sm:text-xl font-bold">
+            Multicorrect
+          </span>
+        )}
         <div className="flex justify-end w-[45%] text-[#FCA311] font-bold overflow-y-hidden sm:text-2xl">
           <p className="text-white text-sm sm:text-xl overflow-y-hidden flex items-center uppercase">
             Time Left -&nbsp;
             <span className="text-[#FCA311] overflow-y-hidden">
-              {timer} minutes
+              {Math.floor(timer / 60)}:{timer % 60} minutes
             </span>
           </p>
         </div>
@@ -232,7 +250,9 @@ const PlayQuiz = () => {
                 )
               } else {
                 setSelectedOptions((prev) =>
-                  prev.map((_, idx) => (idx == index ? true : false))
+                  prev.map((bool, idx) =>
+                    idx == index ? (bool ? false : true) : false
+                  )
                 )
               }
             }}

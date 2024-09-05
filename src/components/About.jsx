@@ -14,7 +14,7 @@ const About = () => {
     >
       <div className="p-4 text-justify md:text-base text-sm flex gap-3 items-center justify-between">
         <p
-          className="md:w-1/2 leading-relaxed p-8 rounded-xl text-white hover:scale-105 transition-all duration-300"
+          className="md:w-1/2 leading-relaxed p-8 rounded-xl text-white transition-all duration-300"
           style={{
             backgroundColor: "#0f3a2e",
             backgroundImage: "linear-gradient(180deg, #0f3a2e 0%, #2b7966 100%)"
@@ -35,7 +35,7 @@ const About = () => {
           className="mx-auto hidden md:inline-block object-contain aspect-[9/16]"
         />
         <p
-          className="md:w-1/2 leading-relaxed p-8 rounded-xl text-white hover:scale-105 transition-all duration-300"
+          className="md:w-1/2 leading-relaxed p-8 rounded-xl text-white transition-all duration-300 relative md:right-12"
           style={{
             backgroundColor: "#0f3a2e",
             backgroundImage: "linear-gradient(180deg, #0f3a2e 0%, #2b7966 100%)"

@@ -6,7 +6,9 @@ import {
   SectionHead,
   Button,
   Footer,
-  Loader
+  Loader,
+  Modal,
+  Popup
 } from "../components/components"
 import { authIllustration, registrationProcess } from "../assets/assets"
 import { IoEye, IoEyeOff } from "react-icons/io5"
@@ -20,6 +22,7 @@ import { setData, login } from "../redux/user.slice"
 import toast from "react-hot-toast"
 
 const Auth = ({ label = "signup" }) => {
+  const [showModal, setShowModal] = useState(false)
   const { handleSubmit, setValue, formState, register } = useForm({
     defaultValues: {
       name: "",
@@ -36,6 +39,24 @@ const Auth = ({ label = "signup" }) => {
   const dispatch = useDispatch()
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  const [oldPass, setOldPass] = useState("")
+  const [newPass, setNewPass] = useState("")
+  const fields = [
+    <Input
+      className="text-sm focus:outline-0 p-3 font-normal rounded-xl border border-blue-500"
+      type="password"
+      placeholder="Current Password"
+      value={oldPass}
+      onChange={(e) => setOldPass(e.target.value)}
+    />,
+    <Input
+      className="text-sm focus:outline-0 p-3 font-normal rounded-xl border border-blue-500"
+      placeholder="New Password"
+      value={newPass}
+      onChange={(e) => setNewPass(e.target.value)}
+    />
+  ]
 
   const Eye = useCallback(() => {
     if (!showPassword)
@@ -100,6 +121,7 @@ const Auth = ({ label = "signup" }) => {
                       console.error(error)
                       toast(error.message)
                     })
+                    .finally(() => setLoading(false))
                 })
                 .catch((error) => {
                   console.error(error)
@@ -128,7 +150,6 @@ const Auth = ({ label = "signup" }) => {
         setValue("school", "")
         setValue("city", "")
         setValue("sex", "")
-        setLoading(false)
       })
   }, [])
 
@@ -260,14 +281,26 @@ const Auth = ({ label = "signup" }) => {
               />
             </form>
 
-            <Link
-              className="w-fit text-blue-500"
-              to={label == "signup" ? "/login" : "/register"}
-            >
-              {label == "signup"
-                ? "Already have an account?"
-                : "Not having an account?"}
-            </Link>
+            <div className="flex justify-between text-sm">
+              <Link
+                className="text-blue-500"
+                to={label == "signup" ? "/login" : "/register"}
+              >
+                {label == "signup"
+                  ? "Already have an account?"
+                  : "Not having an account?"}
+              </Link>
+              {label == "login" && (
+                <Button
+                  className="text-blue-500"
+                  onClick={() => {
+                    setShowModal(true)
+                  }}
+                >
+                  Forgot Password
+                </Button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -280,6 +313,30 @@ const Auth = ({ label = "signup" }) => {
         </a>
       </Container>
       <Footer />
+      {showModal && (
+        <Modal setShowModal={setShowModal}>
+          <Popup
+            submitLabel="Save Changes"
+            fieldComponents={fields}
+            functionality={(e) => {
+              e.preventDefault()
+              authService
+                .resetPassword({
+                  oldPass,
+                  newPass
+                })
+                .then(() => {
+                  setShowModal(false)
+                })
+                .catch((error) => console.error(error))
+                .finally(() => {
+                  setOldPass("")
+                  setNewPass("")
+                })
+            }}
+          />
+        </Modal>
+      )}
     </>
   )
 }

@@ -158,8 +158,13 @@
       "category": "Title Sponsor",
       "brands": [
         {
+          "brand": "Tata Power",
+          "logo": "66da12ed002d9e039026",
+          "website": "https://www.tatapower.com/"
+        },
+        {
           "brand": "The Hindu",
-          "logo": "/sponsors/hindu.png",
+          "logo": "66da17880034e3f34304",
           "website": "https://www.thehindu.com/"
         }
       ]
@@ -168,13 +173,18 @@
       "category": "Co-Powered by",
       "brands": [
         {
+          "brand": "State Bank of India",
+          "logo": "66da1527002e51b12cab",
+          "website": "https://www.onlinesbi.sbi/"
+        },
+        {
           "brand": "Bharat Petroleum Corporation",
-          "logo": "/sponsors/bpcl.jpeg",
+          "logo": "66da128f002c0572ca3e",
           "website": "https://www.bharatpetroleum.in/"
         },
         {
           "brand": "National Thermal Power Corporation",
-          "logo": "/sponsors/ntpc.png",
+          "logo": "66da12df001d68b442e0",
           "website": "https://ntpc.co.in/"
         }
       ]
@@ -184,17 +194,17 @@
       "brands": [
         {
           "brand": "Camlin",
-          "logo": "/sponsors/camlin.webp",
+          "logo": "66da16f9001961c114f7",
           "website": "https://www.kokuyocamlin.com/camlin/"
         },
         {
           "brand": "Life Insurance Corporation",
-          "logo": "/sponsors/lic.png",
+          "logo": "66da12b800343f0004ac",
           "website": "https://licindia.in/"
         },
         {
           "brand": "Khaadi",
-          "logo": "/sponsors/khaadi.jpg",
+          "logo": "66da12b30031d25a96a6",
           "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
         }
       ]
@@ -204,12 +214,12 @@
       "brands": [
         {
           "brand": "Quill Bot",
-          "logo": "/sponsors/quillbot.png",
+          "logo": "66da12e6003e0a5c5bb3",
           "website": "https://quillbot.com/"
         },
         {
           "brand": "Unstop",
-          "logo": "/sponsors/unstop.jpg",
+          "logo": "66da13000015aac60b14",
           "website": "https://unstop.com/"
         }
       ]
@@ -219,18 +229,18 @@
       "brands": [
         {
           "brand": "Kabira",
-          "logo": "/sponsors/kabira.png",
+          "logo": "66da12ad003d69be651b",
           "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
         },
 
         {
           "brand": "Mrig Naini",
-          "logo": "/sponsors/mrig-naini.jpg",
+          "logo": "66da12cd003a517d1ea3",
           "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
         },
         {
           "brand": "Vidhya Valley",
-          "logo": "/sponsors/vindhya-valley.jpg",
+          "logo": "66da13070031c9507486",
           "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
         }
       ]
@@ -240,7 +250,7 @@
         "category": "Prize Sponsor",
         "brand": {
           "name": "M.P. State Electronics Development Corporation Ltd.",
-          "logo": "/sponsors/mpsedc.png",
+          "logo": "66da12c2000ce7fb483c",
           "website": "https://mpsedc.mp.gov.in/"
         }
       },
@@ -248,7 +258,7 @@
         "category": "Design Partner",
         "brand": {
           "name": "Canva",
-          "logo": "/sponsors/canva.png",
+          "logo": "66da129a000a51ab4648",
           "website": "https://www.canva.com/en_in/"
         }
       }
@@ -258,7 +268,7 @@
         "category": "Snacks Partner",
         "brand": {
           "name": "Unibic",
-          "logo": "/sponsors/unibic.png",
+          "logo": "66da12fa003a314a9637",
           "website": "https://www.unibicfoods.com/"
         }
       },
@@ -266,7 +276,7 @@
         "category": "Munching Partner",
         "brand": {
           "name": "Cornitos",
-          "logo": "/sponsors/cornitos.png",
+          "logo": "66da129e002f118b947b",
           "website": "https://www.cornitos.in/"
         }
       },
@@ -274,7 +284,7 @@
         "category": "Health & Hygiene Partner",
         "brand": {
           "name": "My Glamm",
-          "logo": "/sponsors/myglamm.png",
+          "logo": "66da12d80013545b6b85",
           "website": "https://www.myglamm.com/"
         }
       }
@@ -284,7 +294,7 @@
         "category": "Hospitality Partner",
         "brand": {
           "name": "Easy My Trip",
-          "logo": "/sponsors/ease-my-trip.png",
+          "logo": "66da12a3002407998ec7",
           "website": "https://www.easemytrip.com/"
         }
       },
@@ -292,313 +302,309 @@
         "category": "Travel Partner",
         "brand": {
           "name": "Abhi Bus",
-          "logo": "/sponsors/abhibus.png",
+          "logo": "66da128a001b61661223",
           "website": "https://www.abhibus.com/"
         }
       }
     ]
   ],
-  "team": {
-    "3": [
-      {
-        "name": "Shrishti Mishra",
-        "post": "Coordinator",
-        "fileId": "66be7e6e0004df2c13c5",
-        "linkedIn": "https://www.linkedin.com/in/srishti-mishra-99bb5b257/"
-      },
-      {
-        "name": "Atharv Nerkar",
-        "post": "Coordinator",
-        "fileId": "66be7d0e00290ec19598",
-        "linkedIn": "https://www.linkedin.com/in/atharv-nerkar-3479aa259/"
-      },
-      {
-        "name": "Ayushi Sinha",
-        "post": "Co-Coordinator",
-        "fileId": "66be7d1d0026fcdab618",
-        "linkedIn": "https://www.linkedin.com/in/ayushi-s-5bb812249/"
-      },
-      {
-        "name": "Gautam Kumar",
-        "post": "Co-Coordinator",
-        "fileId": "66be7d4a000813538d58",
-        "linkedIn": ""
-      },
-      {
-        "name": "Prakriti Shree",
-        "post": "Quizzing Head",
-        "fileId": "66be7e59003e1eb6b29f",
-        "linkedIn": "https://www.linkedin.com/in/prakriti-shree-0317a0254/"
-      },
-      {
-        "name": "Vyom Singhal",
-        "post": "Quizzing Head",
-        "fileId": "66be7df500350270e249",
-        "linkedIn": "https://www.linkedin.com/in/vyom-singhal-bb1008260/"
-      },
-      {
-        "name": "Shilpa Koley",
-        "post": "Administrative Head",
-        "fileId": "66be7dd60013d95de3ca",
-        "linkedIn": "https://www.linkedin.com/in/shilpa-koley-719723259/"
-      },
-      {
-        "name": "Dhruv Singh Bhadauria",
-        "post": "Administrative Head",
-        "fileId": "66be7f4d0026c614915f",
-        "linkedIn": ""
-      },
-      {
-        "name": "Samarth Agarwal",
-        "post": "Quizzing Research and Content Head",
-        "fileId": "66be7dc6000a7e8f6588",
-        "linkedIn": "https://www.linkedin.com/in/samarth-agrawal-51543921a/"
-      },
-      {
-        "name": "Mridul Upadhyay",
-        "post": "Quizzing Research and Content Head",
-        "fileId": "66be7e4b000cc32ed2d5",
-        "linkedIn": "https://www.linkedin.com/in/mridul-upadhyay-9680b7265/"
-      },
-      {
-        "name": "Yash Raj Menaria",
-        "post": "Quizzing Research and Content Head",
-        "fileId": "66bf6e9d00277fcf70ec",
-        "linkedIn": "https://www.linkedin.com/in/yash-raj-menaria/"
-      },
-      {
-        "name": "Priyanshu Choudhury",
-        "post": "Technical Head",
-        "fileId": "66be7dba001496e03800",
-        "linkedIn": "https://www.linkedin.com/in/priyanshuc/"
-      },
-      {
-        "name": "Ajay Yadav",
-        "post": "Designing Head",
-        "fileId": "66be7cfc001e81bdb546",
-        "linkedIn": "https://www.linkedin.com/in/ajay-yadav-2o26/"
-      },
-      {
-        "name": "Archisha Singh",
-        "post": "Designing Head",
-        "fileId": "66be7dfd001510ba1729",
-        "linkedIn": "https://www.linkedin.com/in/archisha-singh-518a6a222/"
-      },
-      {
-        "name": "Akshat Jain",
-        "post": " Technical Design Head",
-        "fileId": "66be7d020001ae41f040",
-        "linkedIn": ""
-      },
-      {
-        "name": "Sarthak Vyas",
-        "post": "Sponsorship Head",
-        "fileId": "66be7e67000dab6ce5f5",
-        "linkedIn": "https://www.linkedin.com/in/sarthak-vyas-99791b25b/"
-      },
-      {
-        "name": "Anurag Dadarya",
-        "post": "Public Relations and Outreach Head",
-        "fileId": "66be7d070038a18a6d5a",
-        "linkedIn": "https://www.linkedin.com/in/atharv-nerkar-3479aa259/"
-      },
+  "team": [
+    {
+      "name": "Nishchal Prajapati",
+      "post": "President",
+      "fileId": "66da0c720020495bb366",
+      "linkedIn": "https://www.linkedin.com/in/iamnishchal25/"
+    },
+    {
+      "name": "Harshita Nehra",
+      "post": "Vice-President",
+      "domain": "Organisation",
+      "fileId": "66da0c6b002a150fbc63",
+      "linkedIn": "https://www.linkedin.com/in/harshita-nehra-78bbb322a/"
+    },
+    {
+      "name": "Abhishek Meena",
+      "post": "Vice-President",
+      "domain": "Administration",
+      "fileId": "66da0c04000f72b96186",
+      "linkedIn": "https://www.linkedin.com/in/abhishek-meena01/"
+    },
+    {
+      "name": "Anurag Mishra",
+      "post": "General Secratory",
+      "domain": "Alumini Connect",
+      "fileId": "66da0c4a001ec32accb0",
+      "linkedIn": "https://www.linkedin.com/in/anurag-mishra-66ba9b227/"
+    },
+    {
+      "name": "Akshat Jain",
+      "post": "General Secratory",
+      "domain": "Creative Comms",
+      "fileId": "66da0c52003af4f9d5bc",
+      "linkedIn": "https://www.linkedin.com/in/akshat-jain-04a14b242/"
+    },
+    {
+      "name": "Suhani Jain",
+      "post": "Secratory",
+      "domain": "Public Relations",
+      "fileId": "66da0c890029315ebc24",
+      "linkedIn": "https://www.linkedin.com/in/suhani-jain-b96800239/"
+    },
+    {
+      "name": "Dheeraj Mandvi",
+      "post": "Treasurer",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/dheeraj-mandvi-0899111bb/"
+    },
+    {
+      "name": "Chetan Vaddamani",
+      "post": "Secretary",
+      "domain": "Media and Connect",
+      "fileId": "66da0c610013d100d905",
+      "linkedIn": "https://www.linkedin.com/in/chethan-vaddamani-aa368122b/"
+    },
+    {
+      "name": "Shreevathsav Kyama",
+      "post": "Secretary",
+      "domain": "Logistics",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/sreevathsav-kyama-163ab5223/"
+    },
+    {
+      "name": "Om Krishna",
+      "post": "Secretary",
+      "domain": "Compliance",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/om-krishna-928663183/"
+    },
+    {
+      "name": "Akash Goyal",
+      "post": "Secretary",
+      "domain": "Technical",
+      "fileId": "66da0c36001e248a28aa",
+      "linkedIn": "https://www.linkedin.com/in/akash-goyal-244646222/"
+    },
+    {
+      "name": "Thrishul Reddy",
+      "post": "Secretary",
+      "domain": "Partnership",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/thrishulreddy/"
+    },
+    {
+      "name": "Shrishti Mishra",
+      "post": "Coordinator",
+      "fileId": "66be7e6e0004df2c13c5",
+      "linkedIn": "https://www.linkedin.com/in/srishti-mishra-99bb5b257/"
+    },
+    {
+      "name": "Atharv Nerkar",
+      "post": "Coordinator",
+      "fileId": "66be7d0e00290ec19598",
+      "linkedIn": "https://www.linkedin.com/in/atharv-nerkar-3479aa259/"
+    },
+    {
+      "name": "Ayushi Sinha",
+      "post": "Co-Coordinator",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/ayushi-s-5bb812249/"
+    },
+    {
+      "name": "Gautam Kumar",
+      "post": "Co-Coordinator",
+      "fileId": "66be7d4a000813538d58",
+      "linkedIn": ""
+    },
+    {
+      "name": "Prakriti Shree",
+      "post": "Quizzing Head",
+      "fileId": "66be7e59003e1eb6b29f",
+      "linkedIn": "https://www.linkedin.com/in/prakriti-shree-0317a0254/"
+    },
+    {
+      "name": "Vyom Singhal",
+      "post": "Quizzing Head",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/vyom-singhal-bb1008260/"
+    },
+    {
+      "name": "Shilpa Koley",
+      "post": "Administrative Head",
+      "fileId": "66be7dd60013d95de3ca",
+      "linkedIn": "https://www.linkedin.com/in/shilpa-koley-719723259/"
+    },
+    {
+      "name": "Dhruv Singh Bhadauria",
+      "post": "Administrative Head",
+      "fileId": "",
+      "linkedIn": ""
+    },
+    {
+      "name": "Samarth Agarwal",
+      "post": "Quizzing Research and Content Head",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/samarth-agrawal-51543921a/"
+    },
+    {
+      "name": "Mridul Upadhyay",
+      "post": "Quizzing Research and Content Head",
+      "fileId": "66be7e4b000cc32ed2d5",
+      "linkedIn": "https://www.linkedin.com/in/mridul-upadhyay-9680b7265/"
+    },
+    {
+      "name": "Yash Raj Menaria",
+      "post": "Quizzing Research and Content Head",
+      "fileId": "66bf6e9d00277fcf70ec",
+      "linkedIn": "https://www.linkedin.com/in/yash-raj-menaria/"
+    },
+    {
+      "name": "Priyanshu Choudhury",
+      "post": "Technical Head",
+      "fileId": "66be7dba001496e03800",
+      "linkedIn": "https://www.linkedin.com/in/priyanshuc/"
+    },
+    {
+      "name": "Ajay Yadav",
+      "post": "Designing Head",
+      "fileId": "66be7cfc001e81bdb546",
+      "linkedIn": "https://www.linkedin.com/in/ajay-yadav-2o26/"
+    },
+    {
+      "name": "Archisha Singh",
+      "post": "Designing Head",
+      "fileId": "66be7dfd001510ba1729",
+      "linkedIn": "https://www.linkedin.com/in/archisha-singh-518a6a222/"
+    },
+    {
+      "name": "Akshat Jain",
+      "post": " Technical Design Head",
+      "fileId": "",
+      "linkedIn": ""
+    },
+    {
+      "name": "Sarthak Vyas",
+      "post": "Sponsorship Head",
+      "fileId": "66be7e67000dab6ce5f5",
+      "linkedIn": "https://www.linkedin.com/in/sarthak-vyas-99791b25b/"
+    },
+    {
+      "name": "Anurag Dadarya",
+      "post": "Public Relations and Outreach Head",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/atharv-nerkar-3479aa259/"
+    },
 
-      {
-        "name": "Karnika Nagpure",
-        "post": "Event Management Head",
-        "fileId": "66be7d570028d6107f4e",
-        "linkedIn": "https://www.linkedin.com/in/karnika-nagpure-3416b1278/"
-      },
-      {
-        "name": "Vikranth Reddy",
-        "post": "Event Management Head",
-        "fileId": "66be7e7b001c09b9d728",
-        "linkedIn": "https://www.linkedin.com/in/vikranth-reddy-bollam-14432722a"
-      },
-      {
-        "name": "Sampurna Mandal",
-        "post": "Event Management Head",
-        "fileId": "66bf6b320009e05022fc",
-        "linkedIn": "https://www.linkedin.com/in/sampurna-mandal-556a50259/"
-      },
+    {
+      "name": "Karnika Nagpure",
+      "post": "Event Management Head",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/karnika-nagpure-3416b1278/"
+    },
+    {
+      "name": "Vikranth Reddy",
+      "post": "Event Management Head",
+      "fileId": "66be7e7b001c09b9d728",
+      "linkedIn": "https://www.linkedin.com/in/vikranth-reddy-bollam-14432722a"
+    },
+    {
+      "name": "Sampurna Mandal",
+      "post": "Event Management Head",
+      "fileId": "66bf6b320009e05022fc",
+      "linkedIn": "https://www.linkedin.com/in/sampurna-mandal-556a50259/"
+    },
 
-      {
-        "name": "Nimisha Shrivastava",
-        "post": "Finance Head",
-        "fileId": "66be7dac000acb562e40",
-        "linkedIn": "https://www.linkedin.com/in/nimisha-shrivastava-094579278/"
-      },
+    {
+      "name": "Nimisha Shrivastava",
+      "post": "Finance Head",
+      "fileId": "66be7dac000acb562e40",
+      "linkedIn": "https://www.linkedin.com/in/nimisha-shrivastava-094579278/"
+    },
 
-      {
-        "name": "Ganesh Nayak",
-        "post": "Alumini Convener",
-        "fileId": "66bf6b29001c69d421ca",
-        "linkedIn": "https://www.linkedin.com/in/ganesh-nayak-32b33b257/"
-      },
-      {
-        "name": "Ayush Sharma",
-        "post": "Alumini Convener",
-        "fileId": "66be7d17003080237e74",
-        "linkedIn": "https://www.linkedin.com/in/ayush-sharma-27a488261/"
-      },
+    {
+      "name": "Ganesh Nayak",
+      "post": "Alumini Convener",
+      "fileId": "66bf6b29001c69d421ca",
+      "linkedIn": "https://www.linkedin.com/in/ganesh-nayak-32b33b257/"
+    },
+    {
+      "name": "Ayush Sharma",
+      "post": "Alumini Convener",
+      "fileId": "66be7d17003080237e74",
+      "linkedIn": "https://www.linkedin.com/in/ayush-sharma-27a488261/"
+    },
 
-      {
-        "name": "Prakriti Sharma",
-        "post": "Content Writing Head",
-        "fileId": "66be7db2003d70bc7b43",
-        "linkedIn": "https://www.linkedin.com/in/prakriti-sharma-764671278/"
-      },
+    {
+      "name": "Prakriti Sharma",
+      "post": "Content Writing Head",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/prakriti-sharma-764671278/"
+    },
 
-      {
-        "name": "Mamunuri Vishwaendra Chary",
-        "post": "Content Writing Head",
-        "fileId": "66be7dec002aa306f2b2",
-        "linkedIn": "https://www.linkedin.com/in/vishwendra-chary-mamunuri-07972726b/"
-      },
-      {
-        "name": "Nethi Lehya Sri",
-        "post": "Creative Head",
-        "fileId": "66be7da5000ed91a2b84",
-        "linkedIn": "https://www.linkedin.com/in/nethi-lehya-sri-0a2628261/"
-      },
+    {
+      "name": "Mamunuri Vishwaendra Chary",
+      "post": "Content Writing Head",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/vishwendra-chary-mamunuri-07972726b/"
+    },
+    {
+      "name": "Nethi Lehya Sri",
+      "post": "Creative Head",
+      "fileId": "66be7da5000ed91a2b84",
+      "linkedIn": "https://www.linkedin.com/in/nethi-lehya-sri-0a2628261/"
+    },
 
-      {
-        "name": "Pragya Kolpal",
-        "post": "Media Content and Relations Head",
-        "fileId": "66be7e520035fe0f8eec",
-        "linkedIn": "https://www.linkedin.com/in/pragya-kolpal-1a76a5278/"
-      },
-      {
-        "name": "Divy Pareek",
-        "post": "Media Content and Relations Head",
-        "fileId": "66be7d4300202965e4fe",
-        "linkedIn": "https://www.linkedin.com/in/divypareek/"
-      },
-      {
-        "name": "Pranjal Jain",
-        "post": "Digital Growth and Communications Head",
-        "fileId": "66be7e600000a0e3d5af",
-        "linkedIn": "https://www.linkedin.com/in/pranjal-jain-547a37256/"
-      },
+    {
+      "name": "Pragya Kolpal",
+      "post": "Media Content and Relations Head",
+      "fileId": "66be7e520035fe0f8eec",
+      "linkedIn": "https://www.linkedin.com/in/pragya-kolpal-1a76a5278/"
+    },
+    {
+      "name": "Divy Pareek",
+      "post": "Media Content and Relations Head",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/divypareek/"
+    },
+    {
+      "name": "Pranjal Jain",
+      "post": "Digital Growth and Communications Head",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/pranjal-jain-547a37256/"
+    },
 
-      {
-        "name": "Shruti Upadhyay",
-        "post": "Video Editing Head",
-        "fileId": "66bf861400053c748d37",
-        "linkedIn": "https://www.linkedin.com/in/shruti-upadhyay-41673b278/"
-      },
-      {
-        "name": "Rohit Kumar",
-        "post": "Video Editing Head",
-        "fileId": "66be7dc00015e3e85c0f",
-        "linkedIn": "https://www.linkedin.com/in/rohit-kumar-757690315/"
-      },
-      {
-        "name": "Shivam Malviya",
-        "post": "Photography Head",
-        "fileId": "66be80c000343ce6826f",
-        "linkedIn": ""
-      },
+    {
+      "name": "Shruti Upadhyay",
+      "post": "Video Editing Head",
+      "fileId": "66bf861400053c748d37",
+      "linkedIn": "https://www.linkedin.com/in/shruti-upadhyay-41673b278/"
+    },
+    {
+      "name": "Rohit Kumar",
+      "post": "Video Editing Head",
+      "fileId": "66be7dc00015e3e85c0f",
+      "linkedIn": "https://www.linkedin.com/in/rohit-kumar-757690315/"
+    },
+    {
+      "name": "Shivam Malviya",
+      "post": "Photography Head",
+      "fileId": "",
+      "linkedIn": ""
+    },
 
-      {
-        "name": "Manan Verma",
-        "post": "Logistics and operations Head",
-        "fileId": "66be7d5d002851e5e7f1",
-        "linkedIn": "https://www.linkedin.com/in/manan-verma-54904525a/"
-      },
+    {
+      "name": "Manan Verma",
+      "post": "Logistics and operations Head",
+      "fileId": "",
+      "linkedIn": "https://www.linkedin.com/in/manan-verma-54904525a/"
+    },
 
-      {
-        "name": "Vemula Teja Manideep",
-        "post": "Logistics and operations Head",
-        "fileId": "66be7e73003e72aaf95e",
-        "linkedIn": "https://www.linkedin.com/in/tejamanideep-vemula-b77569278/"
-      }
-    ],
-    "4": [
-      {
-        "name": "Nishchal Prajapati",
-        "post": "President",
-        "fileId": "66be79d600170478f6c1",
-        "linkedIn": "https://www.linkedin.com/in/iamnishchal25/"
-      },
-      {
-        "name": "Harshita Nehra",
-        "post": "Vice-President",
-        "domain": "Organisation",
-        "fileId": "66be79c7003e62d5327f",
-        "linkedIn": "https://www.linkedin.com/in/harshita-nehra-78bbb322a/"
-      },
-      {
-        "name": "Abhishek Meena",
-        "post": "Vice-President",
-        "domain": "Administration",
-        "fileId": "66be799e00053ec53f81",
-        "linkedIn": "https://www.linkedin.com/in/abhishek-meena01/"
-      },
-      {
-        "name": "Anurag Mishra",
-        "post": "General Secratory",
-        "domain": "Alumini Connect",
-        "fileId": "66be79b6001c42854028",
-        "linkedIn": "https://www.linkedin.com/in/anurag-mishra-66ba9b227/"
-      },
-      {
-        "name": "Akshat Jain",
-        "post": "General Secratory",
-        "domain": "Creative Comms",
-        "fileId": "66be79af00119ef70cb7",
-        "linkedIn": "https://www.linkedin.com/in/akshat-jain-04a14b242/"
-      },
-      {
-        "name": "Suhani Jain",
-        "post": "Secratory",
-        "domain": "Public Relations",
-        "fileId": "66be7a00000af7a8f8c8",
-        "linkedIn": "https://www.linkedin.com/in/suhani-jain-b96800239/"
-      },
-      {
-        "name": "Dheeraj Mandvi",
-        "post": "Treasurer",
-        "fileId": "66be798c001b5b3b67bf",
-        "linkedIn": "https://www.linkedin.com/in/dheeraj-mandvi-0899111bb/"
-      },
-      {
-        "name": "Chetan Vaddamani",
-        "post": "Secretary",
-        "domain": "Media and Connect",
-        "fileId": "66be79c000302b703b83",
-        "linkedIn": "https://www.linkedin.com/in/chethan-vaddamani-aa368122b/"
-      },
-      {
-        "name": "Shreevathsav Kyama",
-        "post": "Secretary",
-        "domain": "Logistics",
-        "fileId": "66be79f800275c47cfe7",
-        "linkedIn": "https://www.linkedin.com/in/sreevathsav-kyama-163ab5223/"
-      },
-      {
-        "name": "Om Krishna",
-        "post": "Secretary",
-        "domain": "Compliance",
-        "fileId": "66be79de001d44557b48",
-        "linkedIn": "https://www.linkedin.com/in/om-krishna-928663183/"
-      },
-      {
-        "name": "Akash Goyal",
-        "post": "Secretary",
-        "domain": "Technical",
-        "fileId": "66be79a40021bba40093",
-        "linkedIn": "https://www.linkedin.com/in/akash-goyal-244646222/"
-      },
-      {
-        "name": "Thrishul Reddy",
-        "post": "Secretary",
-        "domain": "Partnership",
-        "fileId": "66be7a0600317256792e",
-        "linkedIn": "https://www.linkedin.com/in/thrishulreddy/"
-      }
-    ]
-  },
+    {
+      "name": "Vemula Teja Manideep",
+      "post": "Logistics and operations Head",
+      "fileId": "66be7e73003e72aaf95e",
+      "linkedIn": "https://www.linkedin.com/in/tejamanideep-vemula-b77569278/"
+    }
+  ],
   "qna": [
     {
       "question": "What is Quizzers Club MANIT?",
@@ -624,10 +630,9 @@
   "instructions": {
     "general": {
       "Don'ts": "Exit fullscreen mode, Change window - These will lead to immediate disqualification",
-      "Eligibility": "The quiz is open to all registered participants. Ensure you have registered before the deadline",
-      "Quiz Timing": "The quiz will start promptly at [start time] on [date]. Ensure you are logged in and ready by this time",
-      "Total Duration": "The total quiz duration is 40 minutes",
-      "Total Marks": "The quiz is of 150 marks"
+      "Timings": "The quiz will start promptly at [start time] on [date]. Ensure you are logged in and ready by this time",
+      "Total Duration": "40 minutes",
+      "Total Marks": "150"
     },
     "section-1": {
       "time": 10,
