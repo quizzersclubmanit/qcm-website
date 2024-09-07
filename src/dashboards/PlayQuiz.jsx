@@ -22,7 +22,7 @@ import { liveGif } from "../assets/assets"
 
 const PlayQuiz = () => {
   const { sec } = useParams()
-  const section = useMemo(() => sec)
+  let section = useMemo(() => Number(sec))
   const quizes = useSelector((state) => state.quizes)
   const [currentQue, setCurrentQue] = useState(1)
   const multiCorrect = useMemo(
@@ -39,6 +39,7 @@ const PlayQuiz = () => {
   const [showSubmitBtn, setShowSubmitBtn] = useState(false)
   const [timer, setTimer] = useState(undefined)
   let timesFullScreenExited = useMemo(() => 0)
+  let fullScreenHandle = useMemo(() => undefined)
 
   const handleNext = useCallback(() => {
     let len = quizes.length
@@ -57,27 +58,36 @@ const PlayQuiz = () => {
   }, [quizes, currentQue])
 
   function submitQuiz(disqualified = false) {
+    let msg = disqualified
+      ? "You are disqualified for exiting full-screen"
+      : "Quiz Submitted Successfully"
     dbService
       .insert({
         collectionId: env.leaderboardId,
         data: { userId: data.$id, score, disqualified: disqualified }
       })
       .then(() => {
-        let msg = disqualified
-          ? "You are disqualified for exiting full-screen"
-          : "Quiz Submitted Successfully"
-        toast("Quiz Submitted Succesfully")
+        document
+          .exitFullscreen()
+          .then(() => {
+            document.documentElement.removeEventListener(
+              "fullscreenchange",
+              fullScreenHandle
+            )
+            toast("Quiz Submitted Succesfully")
+          })
+          .catch((error) => console.error(error))
+          .finally(() => navigate(`/quiz/result/${msg}`))
       })
       .catch((error) => {
         toast(error.message)
         console.error(error)
       })
-      .finally(() => navigate(`/quiz/result/${msg}`))
   }
 
   const handleSubmit = useCallback(() => {
     dispatch(setScore(score + roundScore))
-    if (sec < 3) navigate(`/quiz/instr/${Number(sec) + 1}`)
+    if (section < 3) navigate(`/quiz/instr/${section + 1}`)
     else submitQuiz()
   }, [roundScore, section])
 
@@ -87,7 +97,7 @@ const PlayQuiz = () => {
         collectionId: env.quizId,
         queries: [
           Query.and([
-            Query.equal("section", Number(sec)),
+            Query.equal("section", section),
             Query.equal("inActive", false)
           ])
         ]
@@ -122,25 +132,28 @@ const PlayQuiz = () => {
         setLoading(false)
       })
 
-    const handle = document.documentElement.addEventListener(
+    fullScreenHandle = document.documentElement.addEventListener(
       "fullscreenchange",
       () => {
         if (!document.fullscreenElement) {
           timesFullScreenExited++
-          if (timesFullScreenExited > 2) submitQuiz(true)
-          else {
-            toast("Exiting fullscreen will lead to immediate disqualification")
-            navigate(`/quiz/instr/${Number(sec)}`)
-          }
+          if (timesFullScreenExited > 1) {
+            toast("You're disqualified")
+            submitQuiz(true)
+          } else navigate("/")
         }
       }
     )
-    document.documentElement.addEventListener("keydown", (e) => {
-      if (e.code == "F12") e.preventDefault()
-    })
+    document.documentElement.addEventListener(
+      "keydown",
+      (e) => e.code == "F12" && e.preventDefault()
+    )
 
     return () => {
-      document.documentElement.removeEventListener("fullscreenchange", handle)
+      document.documentElement.removeEventListener(
+        "fullscreenchange",
+        fullScreenHandle
+      )
     }
   }, [window.location.href])
 
@@ -155,8 +168,6 @@ const PlayQuiz = () => {
 
   useEffect(() => {
     let timeleft = 60 * (timeLimits[quizes[currentQue - 1]?.section - 1] || 5) // in seconds
-    // if (timeleft * 60 == 20) toast("Hurry! Only 20 seconds remaining")
-    // if (timer == 0) toast("Time Up! Click on Next -> Submit")
     setTimer(timeleft)
     const interval = setInterval(() => {
       timeleft--

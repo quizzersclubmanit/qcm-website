@@ -1,5 +1,5 @@
 import { FaFacebook, FaLinkedin } from "react-icons/fa"
-import { FaSquareInstagram, FaYoutube } from "react-icons/fa6"
+import { FaInstagram, FaYoutube } from "react-icons/fa6"
 import {
   facebook,
   instagram,
@@ -13,7 +13,7 @@ const Social = () => {
   const social = [
     {
       href: instagram,
-      image: FaSquareInstagram
+      image: FaInstagram
     },
     {
       href: youtube,
@@ -33,7 +33,7 @@ const Social = () => {
   return (
     <Container className="flex justify-between w-full bg-[#e5e5e51d] px-4 py-2 rounded-2xl border border-gray-600">
       <span className="sm:text-[1.5vmax] text-[1.7vmax] flex items-center gap-2">
-        {date.getFullYear()}: {organization}
+        {date.getFullYear()} - {organization}
       </span>
       <div className="flex items-center sm:gap-3 gap-1">
         {social.map((item, index) => (

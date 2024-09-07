@@ -224,14 +224,17 @@ const Auth = ({ label = "signup" }) => {
                       style={{ borderBottom: "2px solid blue" }}
                       {...register("school", requiredCheck)}
                     />
-
-                    <Input
-                      error={errors.city}
-                      placeholder="City"
-                      className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                      style={{ borderBottom: "2px solid blue" }}
+                    <select
+                      className="p-1 cursor-pointer focus:outline-none"
+                      defaultValue="bhopal"
                       {...register("city", requiredCheck)}
-                    />
+                    >
+                      <option value="bhopal">Bhopal</option>
+                      <option value="indore">Indore</option>
+                      <option value="gwalior">Gwalior</option>
+                      <option value="ujjain">Ujjain</option>
+                      <option value="jabalpur">Jabalpur</option>
+                    </select>
                   </div>
                 </>
               )}

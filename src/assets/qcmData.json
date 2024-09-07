@@ -1,5 +1,5 @@
 {
-  "organization": "Quizzers' Club NIT Bhopal",
+  "organization": "Quizzers' Club NITB",
   "acronym": "QCM",
   "about": {
     "manit": "Maulana Azad National Institute of Technology, also known as MANIT, is an Institute of National Importance under the Ministry of Education, Government of India. It is named after Independent India's first Minister of Education, scholar and activist Maulana Azad. Situated among the verdant hills of Bhopal, the institute houses a huge campus and is widely recognized for nurturing remarkable engineers, innovative technologists, creative architects, and planners who have made substantial contributions across various fields. The engineering and the architectural courses are ranked under 75 and 20, respectively as per NIRF 2024. The institute thrives with a profusion of activities, including technical fests, cultural events, sports competitions, and numerous clubs, cultivating a dynamic, engaging, and interactive space beyond the realm of academics",
@@ -629,9 +629,13 @@
   ],
   "instructions": {
     "general": {
-      "Don'ts": "Exit fullscreen mode, Change window - These will lead to immediate disqualification",
-      "Timings": "The quiz will start promptly at [start time] on [date]. Ensure you are logged in and ready by this time",
-      "Total Duration": "40 minutes",
+      "Remarks": [
+        "Pressing Esc key will flag you and you'll have to re-attempt the quiz",
+        "Multiple flags will lead to immediate disqualification",
+        "Ensure stable internet connectivity",
+        "Preferred device - Desktop"
+      ],
+      "Total Duration": "45 minutes",
       "Total Marks": "150"
     },
     "section-1": {

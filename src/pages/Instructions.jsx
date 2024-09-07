@@ -60,7 +60,12 @@ const Instructions = () => {
           <ul className="mt-2 text-gray-700 leading-relaxed">
             {Object.keys(instructions.general).map((key, index) => (
               <li key={index}>
-                <strong>{key}:</strong> {instructions.general[key]}
+                <strong>{key}:</strong>{" "}
+                {Array.isArray(instructions.general[key])
+                  ? instructions.general[key].map((remark, idx) => (
+                      <p key={idx}>{remark}</p>
+                    ))
+                  : instructions.general[key]}
               </li>
             ))}
           </ul>

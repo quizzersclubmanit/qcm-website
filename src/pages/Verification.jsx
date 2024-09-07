@@ -10,7 +10,7 @@ import authService from "../api/auth.service"
 import { useNavigate, useParams } from "react-router-dom"
 import toast from "react-hot-toast"
 import { login } from "../redux/user.slice"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
 
 const Verification = () => {
