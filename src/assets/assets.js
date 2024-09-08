@@ -6,6 +6,7 @@ import floatingMarks from "./floating-mark.png"
 import aboutIllus from "./illus.jpg"
 import liveGif from "./live.gif"
 import manit from "./manit.jpg"
+import team from "./team.jpg"
 
 export {
   qcmLogo,
@@ -15,5 +16,6 @@ export {
   floatingMarks,
   aboutIllus,
   liveGif,
-  manit
+  manit,
+  team
 }

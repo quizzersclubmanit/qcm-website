@@ -1,9 +1,9 @@
 {
-  "organization": "Quizzers' Club NITB",
+  "organization": "Quizzers' Club NIT Bhopal",
   "acronym": "QCM",
   "about": {
     "manit": "Maulana Azad National Institute of Technology, also known as MANIT, is an Institute of National Importance under the Ministry of Education, Government of India. It is named after Independent India's first Minister of Education, scholar and activist Maulana Azad. Situated among the verdant hills of Bhopal, the institute houses a huge campus and is widely recognized for nurturing remarkable engineers, innovative technologists, creative architects, and planners who have made substantial contributions across various fields. The engineering and the architectural courses are ranked under 75 and 20, respectively as per NIRF 2024. The institute thrives with a profusion of activities, including technical fests, cultural events, sports competitions, and numerous clubs, cultivating a dynamic, engaging, and interactive space beyond the realm of academics",
-    "qcm": "Quizzer's Club NIT Bhopal (QCM), formed in February 2013 is the official quizzing society of Maulana Azad National Institute of Technology (MANIT) known for spreading quizzing culture among the youth. The society firmly abides by its motto to stem passion towards cultivating knowledge and celebrating learning among the enthusiasts. The Quizzers' Club, all equipped with a skillful team of quizzers, content writers, bloggers, editors to web developers ; instils a  zeal for innovation into the air through its stimulating events including Inter-City Quizzing Challenge, Anveshan, Flashback Fiesta, Abhigyan, Manthan, Quizzotica, Vihaan and a wide array of quizzing contests. Commending QCM's prestigious competition and extravaganza is the  Inter-City Quizzing Challenge which brings together passionate contenders from Bhopal, Indore, Gwalior, Jabalpur and Ujjain. These events draw significant participation from over 100 institutions, offer a rich tapestry of captivating questions, intriguing facts and diverse aptitudes , all meticulously woven into enlightening content. Having duly organized more than 200 quizzes to date, QCM also focuses on engaging activities like debates, group discussions, treasure hunts and numerous other. The exclusive events ,funded with diverse benevolent sponsors, are designed to target Indian youth for creating and implementing skills and ethics into the brightest of minds"
+    "qcm": "The Quizzers' Club of Maulana Azad National Institute of Technology (QCM), is the official quizzing club of NIT Bhopal. It is a location where students from all walks of life assemble to exhibit their wit, wisdom, and fervour for learning. This club serves as a beacon of light, encouraging young minds to delve deeper and learn in a world where knowledge is power and curiosity is the fuel that propels progress. Its irrepressible enthusiasm and thriving community, which have spread to numerous other institutions, including IITs and IIMs, are what truly set QCM apart."
   },
   "contacts": [
     {
@@ -1031,18 +1031,23 @@
       "brands": [
         {
           "brand": "Camlin",
-          "logo": "66da16f9001961c114f7",
+          "logo": "66ddf8e2000f8540504f",
           "website": "https://www.kokuyocamlin.com/camlin/"
         },
         {
           "brand": "Life Insurance Corporation",
-          "logo": "66da12b800343f0004ac",
+          "logo": "66ddf94a00117e28e559",
           "website": "https://licindia.in/"
         },
         {
           "brand": "Khaadi",
           "logo": "66da12b30031d25a96a6",
           "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
+        },
+        {
+          "brand": "Civil Services Club",
+          "logo": "66dd0075002d1728d68c",
+          "website": "https://www.instagram.com/civil.services.club/"
         }
       ]
     },
@@ -1058,11 +1063,6 @@
           "brand": "Unstop",
           "logo": "66da13000015aac60b14",
           "website": "https://unstop.com/"
-        },
-        {
-          "brand": "Civil Services Club",
-          "logo": "66dd0075002d1728d68c",
-          "website": "https://www.instagram.com/civil.services.club/"
         }
       ]
     },

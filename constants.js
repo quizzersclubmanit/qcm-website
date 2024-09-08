@@ -7,7 +7,8 @@ const env = {
   userId: import.meta.env.VITE_USER_COLLECTION_ID,
   questionBucketId: import.meta.env.VITE_QUESTION_BUCKET_ID,
   teamBucketId: import.meta.env.VITE_TEAM_BUCKET_ID,
-  publicBucketId: import.meta.env.VITE_PUBLIC_BUCKET_ID
+  publicBucketId: import.meta.env.VITE_PUBLIC_BUCKET_ID,
+  devContact: import.meta.env.VITE_DEV_CONTACT
 }
 
 export const timeLimits = [

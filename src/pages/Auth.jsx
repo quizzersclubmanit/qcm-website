@@ -12,7 +12,7 @@ import {
 } from "../components/components"
 import { authIllustration } from "../assets/assets"
 import { IoEye, IoEyeOff } from "react-icons/io5"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useSearchParams } from "react-router-dom"
 import authService from "../api/auth.service"
 import dbService from "../api/db.service"
 import { useCallback, useState, useEffect } from "react"
@@ -24,7 +24,8 @@ import { schools } from "../assets/qcmData.json"
 import { filterObjects } from "../utils/utils"
 
 const Auth = ({ label = "signup" }) => {
-  const [showModal, setShowModal] = useState(false)
+  let [searchParams, setSearchParams] = useSearchParams()
+  const token = searchParams.get("secret")
   const { handleSubmit, setValue, formState, register } = useForm({
     defaultValues: {
       name: "",
@@ -43,18 +44,19 @@ const Auth = ({ label = "signup" }) => {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const [oldPass, setOldPass] = useState("")
+  const [userId, setUserId] = useState("")
   const [newPass, setNewPass] = useState("")
   const fields = [
     <Input
       className="text-sm focus:outline-0 p-3 font-normal rounded-xl border border-blue-500"
-      type="password"
-      placeholder="Current Password"
-      value={oldPass}
-      onChange={(e) => setOldPass(e.target.value)}
+      key={2}
+      placeholder="User Id"
+      value={userId}
+      onChange={(e) => setUserId(e.target.value)}
     />,
     <Input
       className="text-sm focus:outline-0 p-3 font-normal rounded-xl border border-blue-500"
+      key={3}
       placeholder="New Password"
       value={newPass}
       onChange={(e) => setNewPass(e.target.value)}
@@ -124,7 +126,6 @@ const Auth = ({ label = "signup" }) => {
                       console.error(error)
                       toast(error.message)
                     })
-                    .finally(() => setLoading(false))
                 })
                 .catch((error) => {
                   console.error(error)
@@ -134,6 +135,7 @@ const Auth = ({ label = "signup" }) => {
             .catch((error) => {
               console.error(error)
             })
+            .finally(() => setLoading(false))
         } else {
           dispatch(setData(user))
           dispatch(login())
@@ -164,6 +166,36 @@ const Auth = ({ label = "signup" }) => {
   }
 
   if (loading) return <Loader />
+  if (label == "update-password")
+    return (
+      <Popup
+        submitLabel="Update"
+        className="h-screen justify-center w-1/2 mx-auto"
+        fieldComponents={fields}
+        functionality={(e) => {
+          e.preventDefault()
+          authService
+            .resetPassword({
+              token,
+              userId,
+              newPass
+            })
+            .then(() => {
+              toast("Password updated successfully")
+              navigate("/")
+            })
+            .catch((error) => console.error(error))
+            .finally(() => {
+              setUserId("")
+              setNewPass("")
+            })
+        }}
+      >
+        <p className="text-sm">
+          For obtaining User Id, Whatsapp on +91{env.devContact}
+        </p>
+      </Popup>
+    )
   return (
     <>
       <Container
@@ -221,9 +253,10 @@ const Auth = ({ label = "signup" }) => {
                   <div className="grid grid-cols-2">
                     <select
                       className="p-1 cursor-pointer focus:outline-none text-gray-400"
+                      defaultValue=""
                       {...register("school", requiredCheck)}
                     >
-                      <option value="" disabled selected>
+                      <option value="" disabled>
                         Your School
                       </option>
                       {filterObjects(schools, "city", selectedCity).map(
@@ -315,7 +348,14 @@ const Auth = ({ label = "signup" }) => {
                 <Button
                   className="text-blue-500"
                   onClick={() => {
-                    setShowModal(true)
+                    const email = prompt("Your Email")
+                    if (!email) return
+                    authService
+                      .sendEmailToken({ email })
+                      .then(() =>
+                        toast("Password reset link has been sent to your email")
+                      )
+                      .catch((error) => console.error(error))
                   }}
                 >
                   Forgot Password
@@ -334,30 +374,6 @@ const Auth = ({ label = "signup" }) => {
         </a>
       </Container>
       <Footer />
-      {showModal && (
-        <Modal setShowModal={setShowModal}>
-          <Popup
-            submitLabel="Save Changes"
-            fieldComponents={fields}
-            functionality={(e) => {
-              e.preventDefault()
-              authService
-                .resetPassword({
-                  oldPass,
-                  newPass
-                })
-                .then(() => {
-                  setShowModal(false)
-                })
-                .catch((error) => console.error(error))
-                .finally(() => {
-                  setOldPass("")
-                  setNewPass("")
-                })
-            }}
-          />
-        </Modal>
-      )}
     </>
   )
 }

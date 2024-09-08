@@ -73,9 +73,21 @@ class Auth {
     }
   }
 
-  async resetPassword({ oldPass, newPass }) {
+  async sendEmailToken({ email }) {
     try {
-      const res = await account.updatePassword(newPass, oldPass)
+      const res = await account.createRecovery(
+        email,
+        `${location.origin}/update-password`
+      )
+      return res
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async resetPassword({ token, userId, newPass }) {
+    try {
+      const res = await account.updateRecovery(userId, token, newPass)
       return res
     } catch (error) {
       throw error
