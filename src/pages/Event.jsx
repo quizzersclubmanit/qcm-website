@@ -30,17 +30,25 @@ const Event = () => {
         className="self-start text-white"
       />
       <div className="sm:w-[70%] w-full flex flex-col p-[2vmax] bg-white gap-2">
-        <Slider {...settings}>
-          {event.images.map((src, index) => (
-            <div key={index}>
-              <img
-                src={src}
-                alt="Event Picture"
-                className="aspect-video rounded-xl"
-              />
-            </div>
-          ))}
-        </Slider>
+        {event.images.length > 1 ? (
+          <Slider {...settings}>
+            {event.images.map((src, index) => (
+              <div key={index}>
+                <img
+                  src={src}
+                  alt="Event Picture"
+                  className="aspect-video rounded-xl"
+                />
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          <img
+            src={event.images[0]}
+            alt="Event Picture"
+            className="aspect-video rounded-xl"
+          />
+        )}
         <div className="p-2 flex flex-col md:gap-2 gap-1">
           <h3 className="font-bold text-2xl md:text-[3vmax] century-gothic first-letter:text-[#FCA311] md:py-4">
             {event.title}

@@ -4,7 +4,6 @@ import authIllustration from "./auth-illustration.png"
 import gradientLogo from "./gradient-qcm-logo.png"
 import floatingMarks from "./floating-mark.png"
 import aboutIllus from "./illus.jpg"
-import registrationProcess from "./qcm-registration-process.pdf"
 import liveGif from "./live.gif"
 import manit from "./manit.jpg"
 
@@ -15,7 +14,6 @@ export {
   gradientLogo,
   floatingMarks,
   aboutIllus,
-  registrationProcess,
   liveGif,
   manit
 }

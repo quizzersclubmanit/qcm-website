@@ -10,16 +10,18 @@ import {
   Modal,
   Popup
 } from "../components/components"
-import { authIllustration, registrationProcess } from "../assets/assets"
+import { authIllustration } from "../assets/assets"
 import { IoEye, IoEyeOff } from "react-icons/io5"
 import { Link, useNavigate } from "react-router-dom"
 import authService from "../api/auth.service"
 import dbService from "../api/db.service"
-import { useCallback, useState } from "react"
+import { useCallback, useState, useEffect } from "react"
 import env from "../../constants"
 import { useDispatch } from "react-redux"
 import { setData, login } from "../redux/user.slice"
 import toast from "react-hot-toast"
+import { schools } from "../assets/qcmData.json"
+import { filterObjects } from "../utils/utils"
 
 const Auth = ({ label = "signup" }) => {
   const [showModal, setShowModal] = useState(false)
@@ -30,10 +32,11 @@ const Auth = ({ label = "signup" }) => {
       password: "",
       phone: "",
       school: "",
-      city: "",
-      sex: 2
+      sex: 1
     }
   })
+  const [selectedCity, setSelectedCity] = useState("indore")
+
   const { errors } = formState
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -95,7 +98,7 @@ const Auth = ({ label = "signup" }) => {
                 name: formData.name.toLowerCase(),
                 contactNo: `+91${formData.phone}`,
                 educationalInstitute: formData.school.toLowerCase(),
-                city: formData.city.toLowerCase(),
+                city: selectedCity,
                 sex: formData.sex
               }
             })
@@ -148,8 +151,8 @@ const Auth = ({ label = "signup" }) => {
         setValue("password", "")
         setValue("phone", "")
         setValue("school", "")
-        setValue("city", "")
-        setValue("sex", "")
+        setValue("sex", 1)
+        setSelectedCity("indore")
       })
   }, [])
 
@@ -192,7 +195,6 @@ const Auth = ({ label = "signup" }) => {
                   <div className="flex gap-5 items-center">
                     <select
                       className="p-1 cursor-pointer focus:outline-none"
-                      defaultValue={2}
                       {...register("sex", requiredCheck)}
                     >
                       <option value={0}>Male</option>
@@ -216,18 +218,34 @@ const Auth = ({ label = "signup" }) => {
                     />
                   </div>
 
-                  <div className="flex gap-5">
-                    <Input
-                      error={errors.school}
-                      placeholder="School"
-                      className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                      style={{ borderBottom: "2px solid blue" }}
+                  <div className="grid grid-cols-2">
+                    <select
+                      className="p-1 cursor-pointer focus:outline-none text-gray-400"
                       {...register("school", requiredCheck)}
-                    />
+                    >
+                      <option value="" disabled selected>
+                        Your School
+                      </option>
+                      {filterObjects(schools, "city", selectedCity).map(
+                        (obj, index) => {
+                          const v = `${obj.institution} - ${obj["pin code"]}`
+                          return (
+                            <option
+                              key={index}
+                              value={v}
+                              className="text-black"
+                            >
+                              {v}
+                            </option>
+                          )
+                        }
+                      )}
+                    </select>
+
                     <select
                       className="p-1 cursor-pointer focus:outline-none"
-                      defaultValue="bhopal"
-                      {...register("city", requiredCheck)}
+                      value={selectedCity}
+                      onChange={(e) => setSelectedCity(e.target.value)}
                     >
                       <option value="bhopal">Bhopal</option>
                       <option value="indore">Indore</option>
@@ -309,8 +327,8 @@ const Auth = ({ label = "signup" }) => {
 
         <a
           className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mt-1"
-          href={registrationProcess}
-          download
+          href="https://drive.google.com/drive/folders/1qgI-XaTZOJhlm9r-ywHiRczWPSzTljwg?usp=drive_link"
+          target="_blank"
         >
           Download Instructions
         </a>

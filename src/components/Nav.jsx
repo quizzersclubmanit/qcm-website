@@ -117,7 +117,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
           </div>
         ) : (
           <Button
-            label="Signup"
+            label="Register for IQC"
             className="poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
             style={{
               backgroundColor: isMobile && "rgb(15, 109, 115)",
