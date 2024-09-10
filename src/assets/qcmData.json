@@ -33,6 +33,365 @@
   "youtube": "https://www.youtube.com/@quizzersclub/",
   "schools": [
     {
+      "institution": "Bhopal Public School",
+      "city": "Bhopal",
+      "pin code": "462001"
+    },
+    {
+      "institution": "Cambridge Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462001"
+    },
+    {
+      "institution": "Genius Convent School",
+      "city": "Bhopal",
+      "pin code": "462001"
+    },
+    {
+      "institution": "Maharishi Vidya Mandir",
+      "city": "Bhopal",
+      "pin code": "462001"
+    },
+    {
+      "institution": "Red Rose School",
+      "city": "Bhopal",
+      "pin code": "462001"
+    },
+    {
+      "institution": "AVM Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "Bharti Vidya Mandir School",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "Kamla Nehru Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "Narayan e-Techno School",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "Sharda Vidya Mandir",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "Sri Aurobindo School",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "St. Mary's Convent School",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "Anand Vihar School",
+      "city": "Bhopal",
+      "pin code": "462004"
+    },
+    {
+      "institution": "Crescent Public School",
+      "city": "Bhopal",
+      "pin code": "462008"
+    },
+    {
+      "institution": "Bal Bhawan School",
+      "city": "Bhopal",
+      "pin code": "462013"
+    },
+    {
+      "institution": "Demonstration Multipurpose School",
+      "city": "Bhopal",
+      "pin code": "462013"
+    },
+    { "institution": "Campion School", "city": "Bhopal", "pin code": "462016" },
+    {
+      "institution": "Kendriya Vidyalaya No.2",
+      "city": "Bhopal",
+      "pin code": "462016"
+    },
+    {
+      "institution": "The Sanskar Valley School",
+      "city": "Bhopal",
+      "pin code": "462016"
+    },
+    {
+      "institution": "St. Joseph's Co-Ed School",
+      "city": "Bhopal",
+      "pin code": "462016"
+    },
+    {
+      "institution": "Subhash Government Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462016"
+    },
+    {
+      "institution": "St. Paul Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462021"
+    },
+    {
+      "institution": "St. Xavier's Senior Secondary Co-ed School",
+      "city": "Bhopal",
+      "pin code": "462021"
+    },
+    {
+      "institution": "The Oriental School",
+      "city": "Bhopal",
+      "pin code": "462021"
+    },
+    {
+      "institution": "APJ Public School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
+      "institution": "Carmel Convent Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
+      "institution": "NRI Global Discovery School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
+      "institution": "St. George Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
+      "institution": "St. Montfort Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
+      "institution": "Vikram Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
+      "institution": "Hema Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
+      "institution": "Bonnie Foi Co-Ed Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462023"
+    },
+    {
+      "institution": "Daffodils Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462023"
+    },
+    {
+      "institution": "GVN-The Global School",
+      "city": "Bhopal",
+      "pin code": "462023"
+    },
+    {
+      "institution": "Jawaharlal Nehru School",
+      "city": "Bhopal",
+      "pin code": "462024"
+    },
+    {
+      "institution": "Lifeline Convent Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462024"
+    },
+    {
+      "institution": "Sagar Public School (Saket Nagar)",
+      "city": "Bhopal",
+      "pin code": "462024"
+    },
+    {
+      "institution": "Gyan Ganga International Academy",
+      "city": "Bhopal",
+      "pin code": "462026"
+    },
+    {
+      "institution": "Kendriya Vidyalaya 3",
+      "city": "Bhopal",
+      "pin code": "462026"
+    },
+    {
+      "institution": "Mount Litera Zee School",
+      "city": "Bhopal",
+      "pin code": "462026"
+    },
+    {
+      "institution": "Orion International School",
+      "city": "Bhopal",
+      "pin code": "462026"
+    },
+    {
+      "institution": "Kendriya Vidyalaya 1",
+      "city": "Bhopal",
+      "pin code": "462027"
+    },
+    {
+      "institution": "Mithi Gobindram Public School",
+      "city": "Bhopal",
+      "pin code": "462030"
+    },
+    {
+      "institution": "Rukhmani Devi Public School",
+      "city": "Bhopal",
+      "pin code": "462030"
+    },
+    {
+      "institution": "St. Joseph's Convent Sr. Sec. Girl's School",
+      "city": "Bhopal",
+      "pin code": "462030"
+    },
+    {
+      "institution": "Eastern Public School",
+      "city": "Bhopal",
+      "pin code": "462033"
+    },
+    {
+      "institution": "Holy Family Convent Sr. Sec. School",
+      "city": "Bhopal",
+      "pin code": "462036"
+    },
+    {
+      "institution": "Laxmidevi Vikyomal Shroff Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462036"
+    },
+    {
+      "institution": "Sagar Public School, Gandhinagar",
+      "city": "Bhopal",
+      "pin code": "462036"
+    },
+    {
+      "institution": "People's Public School",
+      "city": "Bhopal",
+      "pin code": "462037"
+    },
+    {
+      "institution": "Army Public School",
+      "city": "Bhopal",
+      "pin code": "462038"
+    },
+    {
+      "institution": "Brigadier Trivedi Memorial Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462038"
+    },
+    {
+      "institution": "FR Agnel Co-Ed Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462038"
+    },
+    {
+      "institution": "St. George Sr. Sec. School",
+      "city": "Bhopal",
+      "pin code": "462038"
+    },
+    {
+      "institution": "Sagar Public School, Rohit Nagar",
+      "city": "Bhopal",
+      "pin code": "462039"
+    },
+    {
+      "institution": "Sage International School",
+      "city": "Bhopal",
+      "pin code": "462041"
+    },
+    {
+      "institution": "St Thomas Convent Sr. Sec. School",
+      "city": "Bhopal",
+      "pin code": "462041"
+    },
+    {
+      "institution": "Delhi Public School Kolar",
+      "city": "Bhopal",
+      "pin code": "462042"
+    },
+    {
+      "institution": "Green Valley Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462042"
+    },
+    {
+      "institution": "Mansarovar Public School",
+      "city": "Bhopal",
+      "pin code": "462042"
+    },
+    {
+      "institution": "Mother Teresa Secondary School",
+      "city": "Bhopal",
+      "pin code": "462042"
+    },
+    {
+      "institution": "Vidhyanchal Academy",
+      "city": "Bhopal",
+      "pin code": "462042"
+    },
+    { "institution": "Mount Carmel", "city": "Bhopal", "pin code": "462043" },
+    {
+      "institution": "Ryan International School",
+      "city": "Bhopal",
+      "pin code": "462043"
+    },
+    {
+      "institution": "Sharda Vidya Mandir",
+      "city": "Bhopal",
+      "pin code": "462043"
+    },
+    {
+      "institution": "Sri Chaitanya Techno School",
+      "city": "Bhopal",
+      "pin code": "462043"
+    },
+    {
+      "institution": "The IVY Global School",
+      "city": "Bhopal",
+      "pin code": "462043"
+    },
+    {
+      "institution": "Bal Bharti Public School",
+      "city": "Bhopal",
+      "pin code": "462044"
+    },
+    {
+      "institution": "Billabong High School",
+      "city": "Bhopal",
+      "pin code": "462044"
+    },
+    { "institution": "DPS", "city": "Bhopal", "pin code": "462044" },
+    { "institution": "Iconic School", "city": "Bhopal", "pin code": "462044" },
+    {
+      "institution": "IES Public School",
+      "city": "Bhopal",
+      "pin code": "462044"
+    },
+    {
+      "institution": "Carmel Convent Ratanpur",
+      "city": "Bhopal",
+      "pin code": "462047"
+    },
+    {
+      "institution": "International Public School",
+      "city": "Bhopal",
+      "pin code": "462047"
+    },
+    {
+      "institution": "St. Raphael Co-Ed School",
+      "city": "Bhopal",
+      "pin code": "462047"
+    },
+    {
       "institution": "St. Gabriel Higher Secondary School, Jabalpur",
       "city": "Jabalpur",
       "pin code": "482005"
