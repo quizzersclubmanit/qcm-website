@@ -229,9 +229,9 @@ const Auth = ({ label = "signup" }) => {
                       className="p-1 cursor-pointer focus:outline-none"
                       {...register("sex", requiredCheck)}
                     >
-                      <option value={0}>Male</option>
-                      <option value={1}>Female</option>
-                      <option value={2}>Other</option>
+                      <option value="0">Male</option>
+                      <option value="1">Female</option>
+                      <option value="2">Other</option>
                     </select>
                     <Input
                       type="tel"
