@@ -33,7 +33,7 @@ const Auth = ({ label = "signup" }) => {
       password: "",
       phone: "",
       school: "",
-      sex: 1
+      sex: "1"
     }
   })
   const [selectedCity, setSelectedCity] = useState("indore")
@@ -153,7 +153,7 @@ const Auth = ({ label = "signup" }) => {
         setValue("password", "")
         setValue("phone", "")
         setValue("school", "")
-        setValue("sex", 1)
+        setValue("sex", "1")
         setSelectedCity("indore")
       })
   }, [])
@@ -250,7 +250,7 @@ const Auth = ({ label = "signup" }) => {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2">
+                  <div className="grid grid-cols-2 gap-3">
                     <select
                       className="p-1 cursor-pointer focus:outline-none text-gray-400"
                       defaultValue=""
