@@ -7,7 +7,6 @@ import {
   Button,
   Footer,
   Loader,
-  Modal,
   Popup
 } from "../components/components"
 import { authIllustration } from "../assets/assets"
@@ -15,7 +14,7 @@ import { IoEye, IoEyeOff } from "react-icons/io5"
 import { Link, useNavigate, useSearchParams } from "react-router-dom"
 import authService from "../api/auth.service"
 import dbService from "../api/db.service"
-import { useCallback, useState, useEffect } from "react"
+import { useCallback, useState } from "react"
 import env from "../../constants"
 import { useDispatch } from "react-redux"
 import { setData, login } from "../redux/user.slice"
@@ -33,10 +32,11 @@ const Auth = ({ label = "signup" }) => {
       password: "",
       phone: "",
       school: "",
-      sex: "1"
+      sex: "1",
+      city: "bhopal"
     }
   })
-  const [selectedCity, setSelectedCity] = useState("indore")
+  const [selectedCity, setSelectedCity] = useState("bhopal")
 
   const { errors } = formState
   const navigate = useNavigate()
@@ -100,7 +100,7 @@ const Auth = ({ label = "signup" }) => {
                 name: formData.name.toLowerCase(),
                 contactNo: `+91${formData.phone}`,
                 educationalInstitute: formData.school.toLowerCase(),
-                city: selectedCity,
+                city: formData.city,
                 sex: formData.sex
               }
             })
@@ -126,11 +126,13 @@ const Auth = ({ label = "signup" }) => {
                       console.error(error)
                       toast(error.message)
                     })
+                    .finally(() => setLoading(false))
                 })
                 .catch((error) => {
                   console.error(error)
                   toast(error.message)
                 })
+                .finally(() => setLoading(false))
             })
             .catch((error) => {
               console.error(error)
@@ -154,7 +156,8 @@ const Auth = ({ label = "signup" }) => {
         setValue("phone", "")
         setValue("school", "")
         setValue("sex", "1")
-        setSelectedCity("indore")
+        setValue("city", "bhopal")
+        setSelectedCity("")
       })
   }, [])
 
@@ -222,7 +225,7 @@ const Auth = ({ label = "signup" }) => {
                     placeholder="Name"
                     className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                     style={{ borderBottom: "2px solid blue" }}
-                    {...register("name")}
+                    {...register("name", requiredCheck)}
                   />
                   <div className="flex gap-5 items-center">
                     <select
@@ -277,6 +280,7 @@ const Auth = ({ label = "signup" }) => {
 
                     <select
                       className="p-1 cursor-pointer focus:outline-none"
+                      {...register("city")}
                       value={selectedCity}
                       onChange={(e) => setSelectedCity(e.target.value)}
                     >
