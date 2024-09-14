@@ -348,6 +348,7 @@ const Auth = ({ label = "signup" }) => {
                   ? "Already have an account?"
                   : "Not having an account?"}
               </Link>
+            </div>
               <div className="md:mt-[-21px]  text-gray-600">
               <p className="text-black font-semibold">
                 Kindly fill all the details carefully.
@@ -355,8 +356,8 @@ const Auth = ({ label = "signup" }) => {
               <p>
                 For any technical query, please contact :
                 <span  > Pankaj Soni - 9680032837</span> 
-              </p>
-            </div>
+              </p
+              </div>
               {label == "login" && (
                 <Button
                   className="text-blue-500"
