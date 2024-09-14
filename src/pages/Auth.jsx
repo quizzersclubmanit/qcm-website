@@ -356,7 +356,7 @@ const Auth = ({ label = "signup" }) => {
               <p>
                 For any technical query, please contact :
                 <span  > Pankaj Soni - 9680032837</span> 
-              </p
+              </p>
               </div>
               {label == "login" && (
                 <Button
