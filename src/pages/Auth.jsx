@@ -206,8 +206,24 @@ const Auth = ({ label = "signup" }) => {
         className="poppins-regular sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-center"
       >
         <div className="flex">
-          <div className="left w-1/2 items-center hidden md:flex">
+          <div className="left w-1/2 items-center hidden md:flex flex-col justify-centre">
             <img src={authIllustration} alt="Auth Illustration" />
+            <div className="absolute bottom-10 left-6 flex flex-col">
+                <a
+                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
+                  href="https://drive.google.com/file/d/1NN5XC3IZqS71jfkH3dDQoHBof8AyMetz/view?usp=sharing"
+                  target="_blank"
+                >
+                  Download Instructions
+                </a>
+                <a
+                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit"
+                  href="https://drive.google.com/file/d/1hB1P7cMSwPrQcW1NFB-7g1CbDmdgC7zN/view"
+                  target="_blank"
+                >
+                  Download IQC 2024 Edition Brochure
+                </a>
+            </div>
           </div>
 
           <div className="right md:w-1/2 sm:w-[70vw] w-full sm:h-full bg-white sm:pt-0 pt-4 pb-6 sm:px-8 px-6 rounded-2xl flex flex-col gap-8 my-auto">
@@ -377,14 +393,6 @@ const Auth = ({ label = "signup" }) => {
               </div>
           </div>
         </div>
-
-        <a
-          className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mt-1"
-          href="https://drive.google.com/drive/folders/1qgI-XaTZOJhlm9r-ywHiRczWPSzTljwg?usp=drive_link"
-          target="_blank"
-        >
-          Download Instructions
-        </a>
       </Container>
       <Footer />
     </>
