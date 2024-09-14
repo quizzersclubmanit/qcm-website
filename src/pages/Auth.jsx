@@ -348,13 +348,13 @@ const Auth = ({ label = "signup" }) => {
                   ? "Already have an account?"
                   : "Not having an account?"}
               </Link>
-              <div className="mt-[-21px] flex flex-col justify-between text-gray-600">
+              <div className="md:mt-[-21px]  text-gray-600">
               <p className="text-black font-semibold">
                 Kindly fill all the details carefully.
               </p>
               <p>
                 For any technical query, please contact :
-                <span > Pankaj Soni - 9680032837</span> 
+                <span  > Pankaj Soni - 9680032837</span> 
               </p>
             </div>
               {label == "login" && (
