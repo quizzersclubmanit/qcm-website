@@ -198,7 +198,7 @@
     "pin code": "462003"
   },
   {
-    "institution": "Kendriya Vidyalaya 1",
+    "institution": "Kendriya Vidyalaya No.1",
     "city": "Bhopal",
     "pin code": "462027"
   },
@@ -208,7 +208,7 @@
     "pin code": "462016"
   },
   {
-    "institution": "Kendriya Vidyalaya 3",
+    "institution": "Kendriya Vidyalaya No.3",
     "city": "Bhopal",
     "pin code": "462026"
   },
@@ -593,24 +593,25 @@
     "pin code": "474004",
     "city": "Gwalior"
   },
-  {
-    "institution": "St. Paul's School",
-    "pin code": "474006",
+    {
+    "institution": "Sanskar Public School",
+    "pin code": "474011",
     "city": "Gwalior"
   },
-  {
+     {
     "institution": "Scindia Kanya Vidyalaya",
     "pin code": "474009",
     "city": "Gwalior"
   },
   {
-    "institution": "St. Teresa's School",
-    "pin code": "474009",
+    "institution": "St. Paul's School",
+    "pin code": "474006",
     "city": "Gwalior"
   },
+ 
   {
-    "institution": "Sanskar Public School",
-    "pin code": "474011",
+    "institution": "St. Teresa's School",
+    "pin code": "474009",
     "city": "Gwalior"
   },
   {
@@ -664,7 +665,7 @@
     "city": "Indore"
   },
   {
-    "institution": "Emerald Heights",
+    "institution": "The Emerald Heights",
     "pin code": "453331",
     "city": "Indore"
   },
@@ -743,14 +744,20 @@
     "pin code": "452008",
     "city": "Indore"
   },
+  
   {
+    "institution": "Rao Madhav Higher Secondary School",
+    "pin code": "453331",
+    "city": "Indore"
+  },
+    {
     "institution": "Ryan International School, Indore",
     "pin code": "452012",
     "city": "Indore"
   },
-  {
-    "institution": "Rao Madhav Higher Secondary School",
-    "pin code": "453331",
+      {
+    "institution": "Sanmati Higher Secondary School",
+    "pin code": "452001",
     "city": "Indore"
   },
   {
@@ -758,16 +765,13 @@
     "pin code": "452016",
     "city": "Indore"
   },
+    
   {
     "institution": "Shishukunj International North",
     "pin code": "452016",
     "city": "Indore"
   },
-  {
-    "institution": "Sri Sathya Sai Vidya Vihar",
-    "pin code": "452010",
-    "city": "Indore"
-  },
+  
   {
     "institution": "St Arnold's Higher Secondary School",
     "pin code": "452010",
@@ -793,16 +797,17 @@
     "pin code": "452014",
     "city": "Indore"
   },
+    {
+    "institution": "Sri Sathya Sai Vidya Vihar",
+    "pin code": "452010",
+    "city": "Indore"
+  },
   {
     "institution": "Shri Hansdas Higher Secondary School",
     "pin code": "452002",
     "city": "Indore"
   },
-  {
-    "institution": "Sanmati Higher Secondary School",
-    "pin code": "452001",
-    "city": "Indore"
-  },
+
   {
     "institution": "Shri Gujrati Samaj Higher Secondary School",
     "pin code": "452001",
@@ -1179,11 +1184,6 @@
     "pin code": "456006"
   },
   {
-    "institution": "KV Ujjjain",
-    "city": "Ujjain",
-    "pin code": "456010"
-  },
-  {
     "institution": "Ken International Girls School",
     "city": "Ujjain",
     "pin code": "456664"
@@ -1243,6 +1243,11 @@
     "city": "Ujjain",
     "pin code": "456010"
   },
+    {
+    "institution": "Saraswati Vidya Mandir High School Bhatpachlana",
+    "city": "Ujjain",
+    "pin code": "456313"
+  },
   {
     "institution": "St. Mary's Convent School, Ujjain",
     "city": "Ujjain",
@@ -1254,12 +1259,17 @@
     "pin code": "456001"
   },
   {
-    "institution": "Stanford International School",
+    "institution": "St. Paul Convent Se Sec School",
     "city": "Ujjain",
-    "pin code": "456010"
+    "pin code": "456335"
   },
   {
     "institution": "St. Thomas High Secondary School",
+    "city": "Ujjain",
+    "pin code": "456010"
+  },
+    {
+    "institution": "Stanford International School",
     "city": "Ujjain",
     "pin code": "456010"
   },
@@ -1268,15 +1278,10 @@
     "city": "Ujjain",
     "pin code": "456010"
   },
-  {
-    "institution": "Saraswati Vidya Mandir High School Bhatpachlana",
+     {
+    "institution": "Taiyebi Girls Higher Second School",
     "city": "Ujjain",
-    "pin code": "456313"
-  },
-  {
-    "institution": "St. Paul Convent Se Sec School",
-    "city": "Ujjain",
-    "pin code": "456335"
+    "pin code": "456001"
   },
   {
     "institution": "Takshshela Junior College Ujjain",
@@ -1288,11 +1293,7 @@
     "city": "Ujjain",
     "pin code": "456006"
   },
-  {
-    "institution": "Taiyebi Girls Higher Second School",
-    "city": "Ujjain",
-    "pin code": "456001"
-  },
+ 
   {
     "institution": "The Divine Higher Secondary School",
     "city": "Ujjain",
