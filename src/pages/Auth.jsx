@@ -208,7 +208,7 @@ const Auth = ({ label = "signup" }) => {
         <div className="flex">
           <div className="left w-1/2 items-center hidden md:flex flex-col justify-centre">
             <img src={authIllustration} alt="Auth Illustration" />
-            <div className="absolute bottom-10 left-6 flex flex-col">
+            <div className="absolute bottom-4 left-6 flex flex-col">
                 <a
                   className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
                   href="https://drive.google.com/file/d/1NN5XC3IZqS71jfkH3dDQoHBof8AyMetz/view?usp=sharing"
