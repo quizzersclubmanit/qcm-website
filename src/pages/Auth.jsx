@@ -142,7 +142,7 @@ const Auth = ({ label = "signup" }) => {
           dispatch(setData(user))
           dispatch(login())
           navigate("/")
-          toast("Registered Successfully")
+          toast("Thank you for Registering")
         }
       })
       .catch((error) => {
