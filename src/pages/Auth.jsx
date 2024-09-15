@@ -205,10 +205,10 @@ const Auth = ({ label = "signup" }) => {
         id="auth"
         className="poppins-regular sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-center"
       >
-        <div className="flex">
-          <div className="left w-1/2 items-center hidden md:flex flex-col justify-centre">
-            <img src={authIllustration} alt="Auth Illustration" />
-            <div className="absolute bottom-4 left-6 flex flex-col">
+        <div className="flex flex-col-reverse md:flex-row">
+          <div className="left w-full  md:flex flex-col items-center justify-centre w-1/2">
+            <img src={authIllustration} alt="Auth Illustration" className="hidden md:flex" />
+            <div className="mt-4  md:absolute bottom-4 left-6 flex flex-col ">
                 <a
                   className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
                   href="https://drive.google.com/file/d/1NN5XC3IZqS71jfkH3dDQoHBof8AyMetz/view?usp=sharing"
