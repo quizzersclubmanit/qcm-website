@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import { PopupModal } from "./components/components.js"
 const Layout = () => {
   const [showModal, setShowModal] = useState(false);
