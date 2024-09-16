@@ -26,6 +26,7 @@ import Map from "./Map"
 import Accordion from "./Accordion"
 import FAQs from "./FAQs"
 import Popup from "./Popup"
+import PopupModal from "./PopupModal"
 
 export {
   Header,
@@ -55,5 +56,6 @@ export {
   Map,
   Accordion,
   FAQs,
-  Popup
+  Popup,
+  PopupModal
 }
