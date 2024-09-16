@@ -387,8 +387,7 @@ const Auth = ({ label = "signup" }) => {
                 Kindly fill all the details carefully.
               </p>
               <p>
-                For any technical query, please contact :
-                <span  > Pankaj Soni - 9680032837</span> 
+                Facing any difficulty while registering? Please contact Pankaj Soni: +91 9680032837 
               </p>
               </div>
           </div>
