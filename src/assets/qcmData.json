@@ -671,11 +671,6 @@
     "city": "Indore"
   },
   {
-    "institution": "The Emerald Heights",
-    "pin code": "453331",
-    "city": "Indore"
-  },
-  {
     "institution": "G.D. Goenka Public School",
     "pin code": "453771",
     "city": "Indore"
@@ -752,6 +747,11 @@
   },
   
   {
+    "institution": "Rankers International School",
+    "pin code": "452016",
+    "city": "Indore"
+  },
+  {
     "institution": "Rao Madhav Higher Secondary School",
     "pin code": "453331",
     "city": "Indore"
@@ -822,6 +822,11 @@
   {
     "institution": "The International School of Bombay",
     "pin code": "452018",
+    "city": "Indore"
+  },
+    {
+    "institution": "The Emerald Heights",
+    "pin code": "453331",
     "city": "Indore"
   },
   {
