@@ -7,7 +7,7 @@ import aboutIllus from "./illus.jpg"
 import liveGif from "./live.gif"
 import manit from "./manit.jpg"
 import team from "./team.jpg"
-
+import poster from "./poster.jpg"
 export {
   qcmLogo,
   bulb,
@@ -17,5 +17,6 @@ export {
   aboutIllus,
   liveGif,
   manit,
-  team
+  team,
+  poster
 }
