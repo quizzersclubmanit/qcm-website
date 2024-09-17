@@ -142,7 +142,7 @@ const Auth = ({ label = "signup" }) => {
           dispatch(setData(user))
           dispatch(login())
           navigate("/")
-          toast("Registered Successfully")
+          toast("Thank you for Registering")
         }
       })
       .catch((error) => {
@@ -205,9 +205,25 @@ const Auth = ({ label = "signup" }) => {
         id="auth"
         className="poppins-regular sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-center"
       >
-        <div className="flex">
-          <div className="left w-1/2 items-center hidden md:flex">
-            <img src={authIllustration} alt="Auth Illustration" />
+        <div className="flex flex-col-reverse md:flex-row">
+          <div className="left w-full md:flex flex-col items-center justify-center md:w-1/2">
+            <img src={authIllustration} alt="Auth Illustration" className="hidden md:flex" />
+            <div className="mt-4 md:self-start mb-0 flex flex-col ">
+                <a
+                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
+                  href="https://drive.google.com/file/d/1NN5XC3IZqS71jfkH3dDQoHBof8AyMetz/view?usp=sharing"
+                  target="_blank"
+                >
+                  Download Instructions
+                </a>
+                <a
+                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit"
+                  href="https://drive.google.com/file/d/1hB1P7cMSwPrQcW1NFB-7g1CbDmdgC7zN/view"
+                  target="_blank"
+                >
+                  Download IQC 2024 Edition Brochure
+                </a>
+            </div>
           </div>
 
           <div className="right md:w-1/2 sm:w-[70vw] w-full sm:h-full bg-white sm:pt-0 pt-4 pb-6 sm:px-8 px-6 rounded-2xl flex flex-col gap-8 my-auto">
@@ -366,16 +382,16 @@ const Auth = ({ label = "signup" }) => {
                 </Button>
               )}
             </div>
+            <div className="md:mt-[-21px]  text-gray-600">
+              <p className="text-black font-semibold">
+                Kindly fill all the details carefully.
+              </p>
+              <p>
+                Facing any difficulty while registering? Please contact Pankaj Soni: +91 9680032837 
+              </p>
+              </div>
           </div>
         </div>
-
-        <a
-          className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mt-1"
-          href="https://drive.google.com/drive/folders/1qgI-XaTZOJhlm9r-ywHiRczWPSzTljwg?usp=drive_link"
-          target="_blank"
-        >
-          Download Instructions
-        </a>
       </Container>
       <Footer />
     </>

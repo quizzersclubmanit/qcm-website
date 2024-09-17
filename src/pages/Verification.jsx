@@ -93,7 +93,7 @@ const Verification = () => {
                     .then(() => {
                       dispatch(login())
                       navigate("/")
-                      toast("Logged In Successfully")
+                      toast("Thank you for Registering")
                     })
                     .catch((error) => {
                       toast(error.message)
