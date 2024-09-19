@@ -219,6 +219,7 @@ const Auth = ({ label = "signup" }) => {
                 <a
                   className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit"
                   href="https://drive.google.com/file/d/1v7uGkuJqD19WnxJY4LRiIaKlwORDSRfI/view?usp=sharing"
+                  target="_blank"
                 >
                   Download IQC 2024 Edition Brochure
                 </a>
