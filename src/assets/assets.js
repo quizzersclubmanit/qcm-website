@@ -7,7 +7,7 @@ import aboutIllus from "./illus.jpg"
 import liveGif from "./live.gif"
 import manit from "./manit.jpg"
 import team from "./team.jpg"
-import poster from "./poster.jpg"
+import poster from "./compressedPoster.jpg"
 export {
   qcmLogo,
   bulb,

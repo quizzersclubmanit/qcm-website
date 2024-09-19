@@ -12,11 +12,11 @@ const Layout = () => {
   document.addEventListener("cut", (e) => {
     e.preventDefault()
   })
-  // Trigger the modal after 5 seconds
+  // Trigger the modal after 1 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(true);
-    }, 5000); // 5 seconds
+    }, 1000); // 1 seconds
 
     // Cleanup timer on unmount
     return () => clearTimeout(timer);
