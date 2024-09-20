@@ -223,6 +223,13 @@ const Auth = ({ label = "signup" }) => {
                 >
                   Download IQC 2024 Edition Brochure
                 </a>
+                <a
+                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit"
+                  href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"
+                  target="_blank"
+                >
+                  Join Our WhatsApp Channel
+                </a>
             </div>
           </div>
 
