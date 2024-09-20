@@ -28,7 +28,7 @@ class DB {
     try {
       const res = await this.databases.listDocuments(env.dbId, collectionId, [
         ...queries,
-        Query.limit(50)
+        Query.limit(5000)
       ])
       return res.documents
     } catch (error) {

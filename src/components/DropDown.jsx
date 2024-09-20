@@ -5,6 +5,9 @@ import { logout } from "../redux/user.slice"
 import { useDispatch } from "react-redux"
 import authService from "../api/auth.service"
 import { useNavigate } from "react-router-dom"
+import dbService from "../api/db.service"
+import env from "../../constants"
+import { csvObject } from "../utils/utils"
 
 const DropDown = forwardRef(({ user, visible = false }, ref) => {
   const dispatch = useDispatch()
@@ -46,6 +49,21 @@ const DropDown = forwardRef(({ user, visible = false }, ref) => {
       label: "Show Leaderboard",
       f: () => {
         navigate("/admin/results")
+      },
+      visible: user == "admin"
+    },
+    {
+      label: "Download Registrations Sheet",
+      f: () => {
+        dbService
+          .select({
+            collectionId: env.userId
+          })
+          .then((data) => {
+            const csvData = csvObject.toCSV(data)
+            csvObject.downloadCSV(csvData, "registrations.csv")
+          })
+          .catch((error) => console.error(error))
       },
       visible: user == "admin"
     }
