@@ -217,14 +217,21 @@ const Auth = ({ label = "signup" }) => {
                   Download Instructions
                 </a>
                 <a
-                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit"
+                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
                   href="https://drive.google.com/file/d/1v7uGkuJqD19WnxJY4LRiIaKlwORDSRfI/view?usp=sharing"
                   target="_blank"
                 >
                   Download IQC 2024 Edition Brochure
                 </a>
                 <a
-                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit"
+                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
+                  href="https://drive.google.com/file/d/1KwjqQFAoLws_02-8Dp5kKzAyvf8421Zp/view"
+                  target="_blank"
+                >
+                  Download IQC Sample Booklet
+                </a>
+              <a
+                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
                   href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"
                   target="_blank"
                 >
