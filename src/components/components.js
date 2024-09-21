@@ -27,6 +27,7 @@ import Accordion from "./Accordion"
 import FAQs from "./FAQs"
 import Popup from "./Popup"
 import PopupModal from "./PopupModal"
+import MyglammPoster from "./MyglammPoster"
 
 export {
   Header,
@@ -57,5 +58,6 @@ export {
   Accordion,
   FAQs,
   Popup,
-  PopupModal
+  PopupModal,
+  MyglammPoster
 }
