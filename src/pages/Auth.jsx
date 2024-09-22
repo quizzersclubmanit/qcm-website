@@ -344,7 +344,7 @@ const Auth = ({ label = "signup" }) => {
                 style={{ borderBottom: "2px solid blue" }}
                 error={errors.password}
                 type={showPassword ? "text" : "password"}
-                placeholder="Password"
+                placeholder="Set New Password"
                 {...register("password", {
                   ...requiredCheck,
                   pattern: {
