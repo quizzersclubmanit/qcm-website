@@ -225,10 +225,10 @@ const Auth = ({ label = "signup" }) => {
                 </a>
                 <a
                   className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
-                  href="https://drive.google.com/file/d/1KwjqQFAoLws_02-8Dp5kKzAyvf8421Zp/view"
+                  href="https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing"
                   target="_blank"
                 >
-                  Download IQC Sample Booklet
+                  Download IQC Sample Preparation Booklet
                 </a>
               <a
                   className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
