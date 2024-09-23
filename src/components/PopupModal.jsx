@@ -66,7 +66,7 @@ const Modal = ({ setShowModal = () => { } }) => {
           </a>
         </div>
         <a
-          className="text-[12px] font-thin text-yellow-400 text-left cursor-pointer w-fit underline overflow-y-hidden "
+          className="text-xs text-yellow-400 underline text-left cursor-pointer w-fit overflow-y-hidden mt-3"
           href="https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing"
           target="_blank"
         >
