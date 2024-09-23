@@ -65,7 +65,13 @@ const Modal = ({ setShowModal = () => { } }) => {
             
           </a>
         </div>
-        
+        <a
+          className="text-[12px] font-thin text-yellow-400 text-left cursor-pointer w-fit underline overflow-y-hidden "
+          href="https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing"
+          target="_blank"
+        >
+          Download IQC Sample Preparation Booklet
+        </a>
       </div>
     </Container>,
     document.querySelector("#modal")
