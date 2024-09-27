@@ -4,6 +4,7 @@ import { Container } from "./components"
 import { poster } from "../assets/assets"
 import { Button} from "./components"
 import { useNavigate } from "react-router-dom"
+import { FaWhatsapp } from 'react-icons/fa'
 
 
 const Modal = ({ setShowModal = () => { } }) => {
@@ -41,15 +42,36 @@ const Modal = ({ setShowModal = () => { } }) => {
           &times;
         </button>
         <img src={poster} className="object-contain w-full h-full" alt="" />
-        <Button
+        
+        <div className="w-full flex flex-row justify-center overflow-y-hidden mt-2">
+
+          <Button
             label="Register for IQC"
-            className="mt-2 bg-green-950 poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
-          onClick={() => {
+            className="bg-green-950 poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
+            onClick={() => {
               setShowModal(false)
               navigate("register")
             }}
           />
-        
+          <a
+            className="h-auto flex justify-center items-center"
+            href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="bg-green-500 p-1 ml-4 rounded-full inline-block  border-white">
+              <FaWhatsapp size={25} color="white" />
+            </div>
+            
+          </a>
+        </div>
+        <a
+          className="text-xs text-yellow-400 underline text-left cursor-pointer w-fit overflow-y-hidden mt-3"
+          href="https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing"
+          target="_blank"
+        >
+          Download IQC Sample Preparation Booklet
+        </a>
       </div>
     </Container>,
     document.querySelector("#modal")

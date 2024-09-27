@@ -8,6 +8,7 @@ import liveGif from "./live.gif"
 import manit from "./manit.jpg"
 import team from "./team.jpg"
 import poster from "./compressedPoster.jpg"
+import myglamm from "./myglamm.jpg"
 export {
   qcmLogo,
   bulb,
@@ -18,5 +19,6 @@ export {
   liveGif,
   manit,
   team,
-  poster
+  poster,
+  myglamm
 }

@@ -258,6 +258,11 @@
     "pin code": "462003"
   },
   {
+    "institution": "Narayan e-Techno School",
+    "city": "Bhopal",
+    "pin code": "462042"
+  },
+  {
     "institution": "NRI Global Discovery School",
     "city": "Bhopal",
     "pin code": "462022"
@@ -276,6 +281,11 @@
     "institution": "Red Rose School",
     "city": "Bhopal",
     "pin code": "462001"
+  },
+  {
+    "institution": "Red Rose School",
+    "city": "Bhopal",
+    "pin code": "462018"
   },
   {
     "institution": "Rukhmani Devi Public School",
@@ -493,6 +503,11 @@
     "city": "Gwalior"
   },
   {
+    "institution": "Ebenezer Higher Secondary School",
+    "pin code": "474002",
+    "city": "Gwalior"
+  },
+  {
     "institution": "Gwalior Glory High School",
     "pin code": "474001",
     "city": "Gwalior"
@@ -505,6 +520,11 @@
   {
     "institution": "GEMS Public School",
     "pin code": "474011",
+    "city": "Gwalior"
+  },
+  {
+    "institution": "IATS School",
+    "pin code": "474005",
     "city": "Gwalior"
   },
   {
@@ -546,6 +566,11 @@
   {
     "institution": "Miss Hill Higher Secondary School",
     "pin code": "474002",
+    "city": "Gwalior"
+  },
+  {
+    "institution": "Neoteric World School",
+    "pin code": "474011",
     "city": "Gwalior"
   },
   {
@@ -633,6 +658,11 @@
     "institution": "The Scindia School, Gwalior",
     "pin code": "474008",
     "city": "Gwalior"
+  },
+    {
+    "institution": "Advanced Academy, Nipania",
+    "pin code": "452010",
+    "city": "Indore"
   },
     {
     "institution": "Agarwal Public School",
@@ -781,7 +811,7 @@
     "pin code": "452012",
     "city": "Indore"
   },
-      {
+    {
     "institution": "Sanmati Higher Secondary School",
     "pin code": "452001",
     "city": "Indore"
@@ -857,6 +887,11 @@
   {
     "institution": "The Bhavans' Prominent School",
     "pin code": "452010",
+    "city": "Indore"
+  },
+    {
+    "institution": "Tirathbai Kalachand School" ,
+    "pin code": "452004",
     "city": "Indore"
   },
     {
@@ -1035,7 +1070,12 @@
     "pin code": "482005"
   },
   {
-    "institution": "Stemfield International School, Jabalpur",
+    "institution": "Stemfield International School Baldeobagh, Jabalpur",
+    "city": "Jabalpur",
+    "pin code": "482002"
+  },
+  {
+    "institution": "Stemfield International School Vijay Nagar, Jabalpur",
     "city": "Jabalpur",
     "pin code": "482002"
   },
@@ -1155,6 +1195,11 @@
     "pin code": "456010"
   },
   {
+    "institution": "Chaitanya Keerti Public High Secondary Rupakhedi",
+    "city": "Ujjain",
+    "pin code": "456668"
+  },
+  {
     "institution": "Christ Jyoti Convent School",
     "city": "Ujjain",
     "pin code": "456001"
@@ -1243,6 +1288,11 @@
     "institution": "New Oxford Junior College, Ujjain",
     "city": "Ujjain",
     "pin code": "456010"
+  },
+  {
+    "institution": "Nirmala convent School Premnagar,Ujjain",
+    "city": "Ujjain",
+    "pin code": "456664"
   },
   {
     "institution": "Oxford Junior College, Ujjain",

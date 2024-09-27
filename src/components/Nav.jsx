@@ -108,6 +108,11 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               onClick={() => navigate("/quiz/instr/1")}
               className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2"
             />
+            <Button
+              label="IQC Preparation Booklet"
+              onClick={() => window.open("https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing", "_blank")}
+              className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2"
+            />
             <UserBtn
               name={name}
               showDropDown={showDropDown}
