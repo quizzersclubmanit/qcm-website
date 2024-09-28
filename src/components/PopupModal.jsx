@@ -1,13 +1,12 @@
 import { createPortal } from "react-dom"
-import { useEffect,useState } from "react"
+import { useEffect, useState } from "react"
 import { Container } from "./components"
 import { poster } from "../assets/assets"
-import { Button} from "./components"
+import { Button } from "./components"
 import { useNavigate } from "react-router-dom"
-import { FaWhatsapp } from 'react-icons/fa'
+import { FaWhatsapp } from "react-icons/fa"
 
-
-const Modal = ({ setShowModal = () => { } }) => {
+const Modal = ({ setShowModal = () => {} }) => {
   const navigate = useNavigate()
   useEffect(() => {
     const body = document.querySelector("body")
@@ -42,15 +41,14 @@ const Modal = ({ setShowModal = () => { } }) => {
           &times;
         </button>
         <img src={poster} className="object-contain w-full h-full" alt="" />
-        
-        <div className="w-full flex flex-row justify-center overflow-y-hidden mt-2">
 
+        <div className="w-full flex flex-row justify-center overflow-y-hidden mt-2">
           <Button
-            label="Register for IQC"
+            label="Login to Play Quiz"
             className="bg-green-950 poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
             onClick={() => {
               setShowModal(false)
-              navigate("register")
+              navigate("login")
             }}
           />
           <a
@@ -62,7 +60,6 @@ const Modal = ({ setShowModal = () => { } }) => {
             <div className="bg-green-500 p-1 ml-4 rounded-full inline-block  border-white">
               <FaWhatsapp size={25} color="white" />
             </div>
-            
           </a>
         </div>
         <a

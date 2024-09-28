@@ -108,11 +108,16 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               onClick={() => navigate("/quiz/instr/1")}
               className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2"
             />
-            <Button
+            {/* <Button
               label="IQC Preparation Booklet"
-              onClick={() => window.open("https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing",
+                  "_blank"
+                )
+              }
               className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2"
-            />
+            /> */}
             <UserBtn
               name={name}
               showDropDown={showDropDown}
@@ -122,7 +127,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
           </div>
         ) : (
           <Button
-            label="Register for IQC"
+            label="Login to Play"
             className="poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
             style={{
               backgroundColor: isMobile && "rgb(15, 109, 115)",
@@ -130,7 +135,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               ...(window.innerWidth < 768 && { marginTop: "10px" })
             }}
             onClick={() => {
-              navigate("register")
+              navigate("login")
             }}
           />
         )}

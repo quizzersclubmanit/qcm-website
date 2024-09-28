@@ -142,7 +142,7 @@ const Auth = ({ label = "signup" }) => {
           dispatch(setData(user))
           dispatch(login())
           navigate("/")
-          toast("Thank you for Registering")
+          toast("Logged In Successfully")
         }
       })
       .catch((error) => {
@@ -227,13 +227,13 @@ const Auth = ({ label = "signup" }) => {
               >
                 Download IQC 2024 Edition Brochure
               </a>
-              <a
+              {/* <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
                 href="https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing"
                 target="_blank"
               >
                 Download IQC Sample Preparation Booklet
-              </a>
+              </a> */}
               <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
                 href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"
@@ -367,7 +367,7 @@ const Auth = ({ label = "signup" }) => {
               />
             </form>
 
-            <div className="flex justify-between text-sm">
+            {/* <div className="flex justify-between text-sm">
               <Link
                 className="text-blue-500"
                 to={label == "signup" ? "/login" : "/register"}
@@ -393,14 +393,17 @@ const Auth = ({ label = "signup" }) => {
                   Forgot Password
                 </Button>
               )}
-            </div>
+            </div> */}
             <div className="md:mt-[-21px]  text-gray-600">
               <p className="text-black font-semibold">
                 Kindly fill all the details carefully.
               </p>
               <p>
-                Facing any difficulty while registering? Please contact Pankaj
-                Soni: +91 9680032837
+                Facing any difficulty while registering?
+                <br />
+                Please contact any of the undersigned
+                <br />
+                9680032837, 7337611169, 8956404950, 9079335539, 9244294331
               </p>
             </div>
           </div>

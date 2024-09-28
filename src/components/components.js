@@ -28,6 +28,7 @@ import FAQs from "./FAQs"
 import Popup from "./Popup"
 import PopupModal from "./PopupModal"
 import MyglammPoster from "./MyglammPoster"
+import Slot from "./Slot"
 
 export {
   Header,
@@ -59,5 +60,6 @@ export {
   FAQs,
   Popup,
   PopupModal,
-  MyglammPoster
+  MyglammPoster,
+  Slot
 }
