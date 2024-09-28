@@ -7,7 +7,7 @@ const MyglammPoster = () => {
         <img
           src={myglamm}
           alt="Sponsor"
-          className="w-full h-full object-cover opacity-70"
+          className="w-full h-full object-cover"
         />
        
       
