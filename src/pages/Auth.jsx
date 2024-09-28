@@ -348,7 +348,9 @@ const Auth = ({ label = "signup" }) => {
                 style={{ borderBottom: "2px solid blue" }}
                 error={errors.password}
                 type={showPassword ? "text" : "password"}
-                placeholder="Set New Password"
+                placeholder={
+                  label == "signup" ? "Set New Password" : "Password"
+                }
                 {...register("password", requiredCheck)}
               >
                 <Eye />
