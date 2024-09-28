@@ -113,6 +113,11 @@
     "pin code": "462047"
   },
   {
+    "institution": "Canyon Higher Secondary School",
+    "city": "Bhopal",
+    "pin code": "462001"
+  },
+  {
     "institution": "Demonstration Multipurpose School",
     "city": "Bhopal",
     "pin code": "462013"
@@ -867,6 +872,11 @@
   {
     "institution": "Shri Gujrati Samaj Higher Secondary School",
     "pin code": "452001",
+    "city": "Indore"
+  },
+  {
+    "institution": "Shri Vaishnav Academy",
+    "pin code": "452002",
     "city": "Indore"
   },
   {
