@@ -207,36 +207,40 @@ const Auth = ({ label = "signup" }) => {
       >
         <div className="flex flex-col-reverse md:flex-row">
           <div className="left w-full md:flex flex-col items-center justify-center md:w-1/2">
-            <img src={authIllustration} alt="Auth Illustration" className="hidden md:flex" />
+            <img
+              src={authIllustration}
+              alt="Auth Illustration"
+              className="hidden md:flex"
+            />
             <div className="mt-4 md:self-start mb-0 flex flex-col ">
-                <a
-                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
-                  href="https://drive.google.com/file/d/1NN5XC3IZqS71jfkH3dDQoHBof8AyMetz/view?usp=sharing"
-                  target="_blank"
-                >
-                  Download Instructions
-                </a>
-                <a
-                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
-                  href="https://drive.google.com/file/d/1v7uGkuJqD19WnxJY4LRiIaKlwORDSRfI/view?usp=sharing"
-                  target="_blank"
-                >
-                  Download IQC 2024 Edition Brochure
-                </a>
-                <a
-                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
-                  href="https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing"
-                  target="_blank"
-                >
-                  Download IQC Sample Preparation Booklet
-                </a>
               <a
-                  className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
-                  href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"
-                  target="_blank"
-                >
-                  Join Our WhatsApp Channel
-                </a>
+                className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
+                href="https://drive.google.com/file/d/1NN5XC3IZqS71jfkH3dDQoHBof8AyMetz/view?usp=sharing"
+                target="_blank"
+              >
+                Download Instructions
+              </a>
+              <a
+                className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
+                href="https://drive.google.com/file/d/1v7uGkuJqD19WnxJY4LRiIaKlwORDSRfI/view?usp=sharing"
+                target="_blank"
+              >
+                Download IQC 2024 Edition Brochure
+              </a>
+              <a
+                className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
+                href="https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing"
+                target="_blank"
+              >
+                Download IQC Sample Preparation Booklet
+              </a>
+              <a
+                className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
+                href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"
+                target="_blank"
+              >
+                Join Our WhatsApp Channel
+              </a>
             </div>
           </div>
 
@@ -345,15 +349,7 @@ const Auth = ({ label = "signup" }) => {
                 error={errors.password}
                 type={showPassword ? "text" : "password"}
                 placeholder="Set New Password"
-                {...register("password", {
-                  ...requiredCheck,
-                  pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-+_])[^\s]{8,}$/,
-                    message:
-                      "Password should contain at least 1 lowercase, uppercase, special character and should at least be 8 characters long"
-                  }
-                })}
+                {...register("password", requiredCheck)}
               >
                 <Eye />
               </Input>
@@ -401,9 +397,10 @@ const Auth = ({ label = "signup" }) => {
                 Kindly fill all the details carefully.
               </p>
               <p>
-                Facing any difficulty while registering? Please contact Pankaj Soni: +91 9680032837 
+                Facing any difficulty while registering? Please contact Pankaj
+                Soni: +91 9680032837
               </p>
-              </div>
+            </div>
           </div>
         </div>
       </Container>
