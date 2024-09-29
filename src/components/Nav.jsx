@@ -63,7 +63,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
             queries: [Query.equal("userId", user.$id)]
           })
           .then((doc) => {
-            user = { ...user, docId: doc[0].$id }
+            user = { ...user, docId: doc[0]?.$id }
             dispatch(setData(user))
             dispatch(login())
           })

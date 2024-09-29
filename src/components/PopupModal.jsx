@@ -44,6 +44,9 @@ const Modal = ({ setShowModal = () => {} }) => {
           &times;
         </button>
         <img src={slots} className="object-contain w-full h-full" alt="" />
+        <p className="text-yellow-400 font-bold overflow-y-hidden py-3">
+          At the respective time slots, students must start the 45 minute quiz
+        </p>
 
         <div className="w-full flex flex-row justify-center overflow-y-hidden mt-2">
           {Object.keys(data).length == 0 ? (
@@ -66,12 +69,12 @@ const Modal = ({ setShowModal = () => {} }) => {
             />
           )}
           <a
-            className="h-auto flex justify-center items-center"
+            className="h-auto flex justify-center items-center py-3 overflow-y-hidden"
             href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="bg-green-500 p-1 ml-4 rounded-full inline-block  border-white">
+            <div className="bg-green-500 p-1 ml-4 rounded-full inline-block border-white">
               <FaWhatsapp size={25} color="white" />
             </div>
           </a>

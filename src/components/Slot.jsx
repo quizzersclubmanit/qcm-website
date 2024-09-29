@@ -38,12 +38,14 @@ const Slot = () => {
   const [obj, setObj] = useState({})
 
   useEffect(() => {
+    console.log(data)
+
     dbService
       .select({
         collectionId: env.userId,
         queries: [Query.equal("userId", data.$id)]
       })
-      .then((res) => setObj(slots.get(res[0].city?.toLowerCase())))
+      .then((res) => setObj(slots.get(res[0]?.city?.toLowerCase())))
       .catch((error) => console.error(error))
   }, [])
 
