@@ -367,33 +367,28 @@ const Auth = ({ label = "signup" }) => {
               />
             </form>
 
-            {/* <div className="flex justify-between text-sm">
-              <Link
+            <div className="flex justify-between text-sm">
+              {/* <Link
                 className="text-blue-500"
                 to={label == "signup" ? "/login" : "/register"}
               >
                 {label == "signup"
                   ? "Already have an account?"
                   : "Not having an account?"}
-              </Link>
+              </Link> */}
               {label == "login" && (
                 <Button
                   className="text-blue-500"
                   onClick={() => {
-                    const email = prompt("Your Email")
-                    if (!email) return
-                    authService
-                      .sendEmailToken({ email })
-                      .then(() =>
-                        toast("Password reset link has been sent to your email")
-                      )
-                      .catch((error) => console.error(error))
+                    alert(
+                      "Kindly contact Pukhraj (9244294331) or Pankaj (9680032837)"
+                    )
                   }}
                 >
                   Forgot Password
                 </Button>
               )}
-            </div> */}
+            </div>
             <div className="md:mt-[-21px]  text-gray-600">
               <p className="text-black font-semibold">
                 Kindly fill all the details carefully.
