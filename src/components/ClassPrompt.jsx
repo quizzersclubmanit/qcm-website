@@ -14,6 +14,8 @@ const ClassPrompt = () => {
     let standard = prompt(
       "Enter you class (numeric value, eg. 10 for students of 10th standard)"
     )
+    if (standard == "") navigate("/")
+
     dbService
       .update({
         collectionId: env.userId,
