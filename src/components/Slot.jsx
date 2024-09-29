@@ -51,8 +51,9 @@ const Slot = () => {
         queries: [Query.equal("userId", data.$id)]
       })
       .then((res) => {
-        let key = res[0]?.city?.toLowerCase()
-        setObj(slots.get(school)) // isko change karna hai
+        // let key = res[0]?.city?.toLowerCase()
+        let key = res[0]?.educationalInstitute // isko change karna hai
+        setObj(slots.get(key))
       })
       .catch((error) => console.error(error))
   }, [])
