@@ -34,6 +34,11 @@ const Slot = () => {
     start: "9/29/2024, 08:00:00 PM",
     end: "9/29/2024, 08:30:00 PM"
   })
+  const school = "Scindia Kanya Vidyalaya - 474007"
+  slots.set(school, {
+    start: "9/29/2024, 02:00:00 PM",
+    end: "9/29/2024, 03:15:00 PM"
+  })
 
   const [obj, setObj] = useState({})
 
@@ -45,7 +50,10 @@ const Slot = () => {
         collectionId: env.userId,
         queries: [Query.equal("userId", data.$id)]
       })
-      .then((res) => setObj(slots.get(res[0]?.city?.toLowerCase())))
+      .then((res) => {
+        let key = res[0]?.city?.toLowerCase()
+        setObj(slots.get(school)) // isko change karna hai
+      })
       .catch((error) => console.error(error))
   }, [])
 
