@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Container } from "./components"
-import { poster } from "../assets/assets"
+import { slots } from "../assets/assets"
 import { Button } from "./components"
 import { useNavigate } from "react-router-dom"
 import { FaWhatsapp } from "react-icons/fa"
@@ -40,7 +40,7 @@ const Modal = ({ setShowModal = () => {} }) => {
         >
           &times;
         </button>
-        <img src={poster} className="object-contain w-full h-full" alt="" />
+        <img src={slots} className="object-contain w-full h-full" alt="" />
 
         <div className="w-full flex flex-row justify-center overflow-y-hidden mt-2">
           <Button
@@ -62,13 +62,13 @@ const Modal = ({ setShowModal = () => {} }) => {
             </div>
           </a>
         </div>
-        <a
+        {/* <a
           className="text-xs text-yellow-400 underline text-left cursor-pointer w-fit overflow-y-hidden mt-3"
           href="https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing"
           target="_blank"
         >
           Download IQC Sample Preparation Booklet
-        </a>
+        </a> */}
       </div>
     </Container>,
     document.querySelector("#modal")

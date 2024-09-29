@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
 import { useState, useEffect } from "react"
-// import { PopupModal } from "./components/components.js"
+import { PopupModal } from "./components/components.js"
 import { Analytics } from "@vercel/analytics/react"
 
 const Layout = () => {
@@ -26,7 +26,7 @@ const Layout = () => {
   return (
     <>
       <Outlet />
-      {/* {showModal && <PopupModal setShowModal={setShowModal}></PopupModal>} */}
+      {showModal && <PopupModal setShowModal={setShowModal}></PopupModal>}
       <Toaster position="top-center" toastOptions={{ duration: 4000 }} />
       <Analytics />
     </>
