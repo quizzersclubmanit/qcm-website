@@ -5,9 +5,12 @@ import { slots } from "../assets/assets"
 import { Button } from "./components"
 import { useNavigate } from "react-router-dom"
 import { FaWhatsapp } from "react-icons/fa"
+import { useSelector } from "react-redux"
 
 const Modal = ({ setShowModal = () => {} }) => {
+  const { data } = useSelector((state) => state.user)
   const navigate = useNavigate()
+
   useEffect(() => {
     const body = document.querySelector("body")
     body.style.overflowY = "hidden"
@@ -43,14 +46,25 @@ const Modal = ({ setShowModal = () => {} }) => {
         <img src={slots} className="object-contain w-full h-full" alt="" />
 
         <div className="w-full flex flex-row justify-center overflow-y-hidden mt-2">
-          <Button
-            label="Login to Play Quiz"
-            className="bg-green-950 poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
-            onClick={() => {
-              setShowModal(false)
-              navigate("login")
-            }}
-          />
+          {Object.keys(data).length == 0 ? (
+            <Button
+              label="Login to Play Quiz"
+              className="bg-green-950 poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
+              onClick={() => {
+                setShowModal(false)
+                navigate("login")
+              }}
+            />
+          ) : (
+            <Button
+              label="Play Quiz"
+              className="bg-green-950 poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
+              onClick={() => {
+                setShowModal(false)
+                navigate("/quiz/instr/")
+              }}
+            />
+          )}
           <a
             className="h-auto flex justify-center items-center"
             href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"

@@ -19,7 +19,7 @@ import {
   Leaderboard
 } from "./pages/pages.js"
 import { AddQuiz, ManageQuiz, PlayQuiz } from "./dashboards/dashboards.js"
-import { Admin, FAQs, NotAvailable, Slot } from "./components/components.js"
+import { Admin, FAQs, Slot, ClassPrompt } from "./components/components.js"
 import { Provider } from "react-redux"
 import store from "./redux/store.js"
 
@@ -38,7 +38,9 @@ const router = createBrowserRouter(
       <Route path="account/verification/:dets" element={<Verification />} />
       <Route path="events/:eventId" element={<Event />} />
       <Route path="quiz/" element={<Slot />}>
-        <Route path="instr/:sec" element={<Instructions />} />
+        <Route path="instr/" element={<ClassPrompt />}>
+          <Route path=":sec" element={<Instructions />} />
+        </Route>
         <Route path="play/:sec" element={<PlayQuiz />} />
         <Route path="result/:msg" element={<Result />} />
       </Route>

@@ -1,9 +1,12 @@
 import { useNavigate, Link } from "react-router-dom"
 import { Button, DropDown, UserBtn, Logo } from "./components"
 import authService from "../api/auth.service"
+import dbService from "../api/db.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { login, setData } from "../redux/user.slice"
+import env from "../../constants"
+import { Query } from "appwrite"
 
 const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   const tabs = [
@@ -54,12 +57,19 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     authService
       .getCurrentUser()
       .then((user) => {
-        dispatch(setData(user))
-        dispatch(login())
+        dbService
+          .select({
+            collectionId: env.userId,
+            queries: [Query.equal("userId", user.$id)]
+          })
+          .then((doc) => {
+            user = { ...user, docId: doc[0].$id }
+            dispatch(setData(user))
+            dispatch(login())
+          })
+          .catch((error) => console.error(error))
       })
-      .catch((err) => {
-        console.error(err)
-      })
+      .catch((error) => console.error(error))
   }, [])
 
   return (
@@ -105,7 +115,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
           <div className="flex sm:flex-row flex-col gap-2">
             <Button
               label="Play Quiz"
-              onClick={() => navigate("/quiz/instr/1")}
+              onClick={() => navigate("/quiz/instr/")}
               className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2"
             />
             {/* <Button
