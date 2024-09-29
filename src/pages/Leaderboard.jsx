@@ -116,10 +116,10 @@ const Leaderboard = () => {
         {leaderBoard
           .filter(
             (user) =>
-              user.city?.toLowerCase().startsWith(searchCity?.toLowerCase()) &&
+              user.city?.toLowerCase().includes(searchCity?.toLowerCase()) &&
               user.educationalInstitute
                 ?.toLowerCase()
-                .startsWith(searchSchool?.toLowerCase())
+                .includes(searchSchool?.toLowerCase())
           )
           .map((user, index) => (
             <div

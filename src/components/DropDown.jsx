@@ -66,6 +66,21 @@ const DropDown = forwardRef(({ user, visible = false }, ref) => {
           .catch((error) => console.error(error))
       },
       visible: user == "admin"
+    },
+    {
+      label: "Download Results Sheet",
+      f: () => {
+        dbService
+          .select({
+            collectionId: env.leaderboardId
+          })
+          .then((data) => {
+            const csvData = csvObject.toCSV(data)
+            csvObject.downloadCSV(csvData, "results.csv")
+          })
+          .catch((error) => console.error(error))
+      },
+      visible: user == "admin"
     }
   ]
 
