@@ -48,7 +48,7 @@ const Slot = () => {
     dbService
       .select({
         collectionId: env.userId,
-        queries: [Query.equal("userId", data.$id)]
+        queries: [Query.equal("userId", [data.$id])]
       })
       .then((res) => {
         // let key = res[0]?.city?.toLowerCase()

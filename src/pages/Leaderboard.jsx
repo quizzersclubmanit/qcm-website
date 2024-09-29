@@ -38,27 +38,38 @@ const Leaderboard = () => {
         queries: [Query.equal("disqualified", [false])]
       })
       .then((res) => {
-        res.forEach((obj) => data.set(obj.userId, obj.score))
+        res.forEach((obj) => {
+          if (data.has(obj.userId))
+            data.set(obj.userId, Math.max(obj.score, data.get(obj.userId)))
+          else data.set(obj.userId, obj.score)
+        })
+
+        console.log(data.size)
+
         let ids = []
         for (let [key, _] of data) ids.push(key)
-        dbService
-          .select({
-            collectionId: env.userId,
-            queries: [Query.equal("userId", ids)]
-          })
-          .then((usersData) => {
-            setLeaderBoard(
-              usersData
-                .map((userData) => ({
-                  ...userData,
-                  score: data.get(userData.userId)
-                }))
-                .sort((a, b) => b.score - a.score)
-            )
-          })
-          .catch((error) => {
-            console.error(error)
-          })
+
+        for (let i = 0; i < ids.length; ) {
+          let j = 0,
+            temp = new Array()
+          for (; j < 100 && i + j < ids.length; j++) temp.push(ids[i + j])
+          i += j
+          dbService
+            .select({
+              collectionId: env.userId,
+              queries: [Query.equal("userId", temp)]
+            })
+            .then((usersData) => {
+              let d = usersData.map((userData) => ({
+                ...userData,
+                score: data.get(userData.userId)
+              }))
+              setLeaderBoard((prev) => [...prev, ...d])
+            })
+            .catch((error) => {
+              console.error(error)
+            })
+        }
       })
       .catch((error) => {
         console.error(error)
