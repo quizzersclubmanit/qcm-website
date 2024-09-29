@@ -45,7 +45,7 @@ const Modal = ({ setShowModal = () => {} }) => {
         </button>
         <img src={slots} className="object-contain w-full h-full" alt="" />
         <p className="text-yellow-400 font-bold overflow-y-hidden py-3">
-          At the respective time slots, students must start the 45 minute quiz
+          Test Duration: 45 minutes
         </p>
 
         <div className="w-full flex flex-row justify-center overflow-y-hidden mt-2">
