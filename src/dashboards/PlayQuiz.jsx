@@ -64,7 +64,11 @@ const PlayQuiz = () => {
     dbService
       .insert({
         collectionId: env.leaderboardId,
-        data: { userId: data.$id, score, disqualified: disqualified }
+        data: {
+          userId: data.$id,
+          score: score % 150,
+          disqualified: disqualified
+        }
       })
       .then(() => {
         document
