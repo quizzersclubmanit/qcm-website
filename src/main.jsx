@@ -6,7 +6,8 @@ import {
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
-  Route
+  Route,
+  Outlet
 } from "react-router-dom"
 import {
   Home,
@@ -37,7 +38,8 @@ const router = createBrowserRouter(
       />
       <Route path="account/verification/:dets" element={<Verification />} />
       <Route path="events/:eventId" element={<Event />} />
-      <Route path="quiz/" element={<Slot />}>
+      {/* <Route path="quiz/" element={<Slot />}> */}
+      <Route path="quiz/" element={<Outlet />}>
         <Route path="instr/:sec" element={<ClassPrompt />} />
         <Route path="play/:sec" element={<PlayQuiz />} />
         <Route path="result/:msg" element={<Result />} />
