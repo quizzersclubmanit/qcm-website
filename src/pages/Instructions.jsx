@@ -1,11 +1,10 @@
-import { useParams, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Container } from "../components/components"
 import { useSelector } from "react-redux"
 import { timeLimits } from "../../constants"
 import { instructions } from "../assets/qcmData.json"
 
-const Instructions = () => {
-  const { sec } = useParams()
+const Instructions = ({ sec }) => {
   const { data } = useSelector((state) => state.user)
   const instrs = [
     {

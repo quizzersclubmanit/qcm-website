@@ -1,33 +1,31 @@
 import dbService from "../api/db.service"
-import { Outlet, useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { Outlet, useNavigate, useParams } from "react-router-dom"
+import { useEffect } from "react"
 import env from "../../constants"
 import { useSelector } from "react-redux"
-import { Loader } from "./components"
+import { Instructions } from "../pages/pages"
 
 const ClassPrompt = () => {
   const { data } = useSelector((state) => state.user)
-  const [loading, setLoading] = useState(true)
+  const { sec } = useParams()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    let standard = prompt(
-      "Enter you class (numeric value, eg. 10 for students of 10th standard)"
-    )
-    if (standard == "") navigate("/")
+  if (sec != 0) return <Instructions sec={sec} />
 
-    dbService
-      .update({
-        collectionId: env.userId,
-        documentId: data.docId,
-        changes: { standard }
-      })
-      .then(() => navigate("/quiz/instr/1"))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false))
-  }, [])
+  let standard = prompt(
+    "Enter you class (numeric value, eg. 10 for students of 10th standard)"
+  )
+  if (standard == "") navigate("/")
 
-  if (loading) return <Loader />
+  dbService
+    .update({
+      collectionId: env.userId,
+      documentId: data.docId,
+      changes: { standard }
+    })
+    .then(() => navigate("/quiz/instr/1"))
+    .catch((error) => console.error(error))
+
   return <Outlet />
 }
 

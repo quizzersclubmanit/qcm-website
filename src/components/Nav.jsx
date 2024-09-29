@@ -115,7 +115,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
           <div className="flex sm:flex-row flex-col gap-2">
             <Button
               label="Play Quiz"
-              onClick={() => navigate("/quiz/instr/")}
+              onClick={() => navigate("/quiz/instr/0")}
               className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2"
             />
             {/* <Button

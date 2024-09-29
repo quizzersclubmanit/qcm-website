@@ -64,7 +64,7 @@ const Modal = ({ setShowModal = () => {} }) => {
               className="bg-green-950 poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
               onClick={() => {
                 setShowModal(false)
-                navigate("/quiz/instr/")
+                navigate("/quiz/instr/0")
               }}
             />
           )}

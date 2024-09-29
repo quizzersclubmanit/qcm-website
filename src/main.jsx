@@ -38,9 +38,7 @@ const router = createBrowserRouter(
       <Route path="account/verification/:dets" element={<Verification />} />
       <Route path="events/:eventId" element={<Event />} />
       <Route path="quiz/" element={<Slot />}>
-        <Route path="instr/" element={<ClassPrompt />}>
-          <Route path=":sec" element={<Instructions />} />
-        </Route>
+        <Route path="instr/:sec" element={<ClassPrompt />} />
         <Route path="play/:sec" element={<PlayQuiz />} />
         <Route path="result/:msg" element={<Result />} />
       </Route>
