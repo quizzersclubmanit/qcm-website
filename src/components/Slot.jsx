@@ -16,23 +16,23 @@ const Slot = () => {
   })
   slots.set("indore", {
     start: "9/29/2024, 04:00:00 PM",
-    end: "9/29/2024, 04:10:00 PM"
+    end: "9/29/2024, 04:20:00 PM"
   })
   slots.set("ujjain", {
     start: "9/29/2024, 05:00:00 PM",
-    end: "9/29/2024, 05:10:00 PM"
+    end: "9/29/2024, 05:20:00 PM"
   })
   slots.set("gwalior", {
     start: "9/29/2024, 06:00:00 PM",
-    end: "9/29/2024, 06:10:00 PM"
+    end: "9/29/2024, 06:20:00 PM"
   })
   slots.set("jabalpur", {
     start: "9/29/2024, 07:00:00 PM",
-    end: "9/29/2024, 07:10:00 PM"
+    end: "9/29/2024, 07:20:00 PM"
   })
   slots.set("bhopal", {
     start: "9/29/2024, 08:00:00 PM",
-    end: "9/29/2024, 08:30:00 PM"
+    end: "9/29/2024, 08:20:00 PM"
   })
   const school = "Scindia Kanya Vidyalaya - 474007"
   slots.set(school, {
