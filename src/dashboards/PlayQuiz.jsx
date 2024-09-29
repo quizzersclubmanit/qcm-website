@@ -66,7 +66,7 @@ const PlayQuiz = () => {
         collectionId: env.leaderboardId,
         data: {
           userId: data.$id,
-          score: score % 150,
+          score: Math.min(150, score),
           disqualified: disqualified
         }
       })
