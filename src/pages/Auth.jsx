@@ -368,14 +368,14 @@ const Auth = ({ label = "signup" }) => {
             </form>
 
             <div className="flex justify-between text-sm">
-              {/* <Link
+              <Link
                 className="text-blue-500"
                 to={label == "signup" ? "/login" : "/register"}
               >
                 {label == "signup"
                   ? "Already have an account?"
                   : "Not having an account?"}
-              </Link> */}
+              </Link>
               {label == "login" && (
                 <Button
                   className="text-blue-500"
