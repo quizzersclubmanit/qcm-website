@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom"
 import { useEffect } from "react"
 import { Container } from "./components"
-import { slots } from "../assets/assets"
+import { poster } from "../assets/assets"
 import { Button } from "./components"
 import { useNavigate } from "react-router-dom"
 import { FaWhatsapp } from "react-icons/fa"
@@ -43,7 +43,7 @@ const Modal = ({ setShowModal = () => {} }) => {
         >
           &times;
         </button>
-        <img src={slots} className="object-contain w-full h-full" alt="" />
+        <img src={poster} className="object-contain w-full h-full" alt="" />
         <p className="text-yellow-400 font-bold overflow-y-hidden py-3">
           Test Duration: 45 minutes
         </p>

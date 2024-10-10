@@ -368,7 +368,7 @@ const Auth = ({ label = "signup" }) => {
             </form>
 
             <div className="flex justify-between text-sm">
-              {/* <Link
+{/*               <Link
                 className="text-blue-500"
                 to={label == "signup" ? "/login" : "/register"}
               >
