@@ -10,6 +10,7 @@ import team from "./team.jpg"
 import poster from "./compressedPoster.jpg"
 import myglamm from "./myglamm.jpg"
 import slots from "./slots.png"
+import vihaan from "./Vihaaan.jpg"
 
 export {
   qcmLogo,
@@ -23,5 +24,6 @@ export {
   team,
   poster,
   myglamm,
-  slots
+  slots,
+  vihaan
 }

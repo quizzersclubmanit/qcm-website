@@ -1,16 +1,16 @@
 import { createPortal } from "react-dom"
 import { useEffect } from "react"
 import { Container } from "./components"
-import { poster } from "../assets/assets"
+// import { poster } from "../assets/assets"
+import { vihaan } from "../assets/assets"
 import { Button } from "./components"
 import { useNavigate } from "react-router-dom"
 import { FaWhatsapp } from "react-icons/fa"
 import { useSelector } from "react-redux"
 
-const Modal = ({ setShowModal = () => {} }) => {
+const PopupModal = ({ setShowModal = () => { } }) => {
   const { data } = useSelector((state) => state.user)
   const navigate = useNavigate()
-
   useEffect(() => {
     const body = document.querySelector("body")
     body.style.overflowY = "hidden"
@@ -43,32 +43,35 @@ const Modal = ({ setShowModal = () => {} }) => {
         >
           &times;
         </button>
-        <img src={poster} className="object-contain w-full h-full" alt="" />
-        <p className="text-yellow-400 font-bold overflow-y-hidden py-3">
+        <img src={vihaan} className="object-contain w-full h-full" alt="" />
+        {/* <p className="text-yellow-400 font-bold overflow-y-hidden py-3">
           Test Duration: 45 minutes
-        </p>
+        </p> */}
 
         <div className="w-full flex flex-row justify-center overflow-y-hidden mt-2">
           {Object.keys(data).length == 0 ? (
             <Button
-              label="Login to Play Quiz"
-              className="bg-green-950 poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
+              label="Register Now"
+              className="bg-purple-950 poppins-regular ml-2vmax py-3 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
               onClick={() => {
                 setShowModal(false)
-                navigate("login")
+                window.location.href = "https://forms.gle/HWGaHJe9vgH1J6Lq5";
+                // navigate("login")
+
               }}
             />
           ) : (
             <Button
-              label="Play Quiz"
+              label="Register Now"
               className="bg-green-950 poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
               onClick={() => {
                 setShowModal(false)
-                navigate("/quiz/instr/0")
+                window.location.href = "https://forms.gle/HWGaHJe9vgH1J6Lq5";
+                // navigate("/quiz/instr/0")
               }}
             />
           )}
-          <a
+          {/* <a
             className="h-auto flex justify-center items-center py-3 overflow-y-hidden"
             href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"
             target="_blank"
@@ -77,7 +80,7 @@ const Modal = ({ setShowModal = () => {} }) => {
             <div className="bg-green-500 p-1 ml-4 rounded-full inline-block border-white">
               <FaWhatsapp size={25} color="white" />
             </div>
-          </a>
+          </a> */}
         </div>
         {/* <a
           className="text-xs text-yellow-400 underline text-left cursor-pointer w-fit overflow-y-hidden mt-3"
@@ -92,4 +95,4 @@ const Modal = ({ setShowModal = () => {} }) => {
   )
 }
 
-export default Modal
+export default PopupModal
