@@ -26,7 +26,7 @@ const Layout = () => {
   return (
     <>
       <Outlet />
-{/*       {showModal && <PopupModal setShowModal={setShowModal}></PopupModal>} */}
+       {showModal && <PopupModal setShowModal={setShowModal}></PopupModal>}
       <Toaster position="top-center" toastOptions={{ duration: 4000 }} />
       <Analytics />
     </>
