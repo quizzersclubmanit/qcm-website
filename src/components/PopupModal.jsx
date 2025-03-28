@@ -51,11 +51,12 @@ const PopupModal = ({ setShowModal = () => { } }) => {
         <div className="w-full flex flex-row justify-center overflow-y-hidden mt-2">
           {Object.keys(data).length == 0 ? (
             <Button
-              label="Register Now"
+              // label="Register Now"
+              label="Coming Soon"
               className="bg-purple-950 poppins-regular ml-2vmax py-3 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
               onClick={() => {
                 setShowModal(false)
-                window.location.href = "https://forms.gle/HWGaHJe9vgH1J6Lq5";
+                // window.location.href = "https://forms.gle/HWGaHJe9vgH1J6Lq5";
                 // navigate("login")
 
               }}
