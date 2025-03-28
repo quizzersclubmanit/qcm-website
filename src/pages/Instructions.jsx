@@ -1,20 +1,23 @@
-import { useParams, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Container } from "../components/components"
 import { useSelector } from "react-redux"
 import { timeLimits } from "../../constants"
 import { instructions } from "../assets/qcmData.json"
 
-const Instructions = () => {
-  const { sec } = useParams()
+const Instructions = ({ sec }) => {
   const { data } = useSelector((state) => state.user)
   const instrs = [
     {
-      key: "Quiz Duration",
+      key: "Duration",
       value: `${timeLimits[sec - 1]} minutes`
     },
     {
       key: "Section",
       value: sec
+    },
+    {
+      key: "Question Count",
+      value: instructions[`section-${sec}`].questions
     },
     {
       key: "Problem Type",
@@ -39,7 +42,7 @@ const Instructions = () => {
             Hey <span className="uppercase">{data.name}</span>, Welcome
           </h1>
           <h2 className="text-2xl font-bold mt-2">
-            Read the following Details Carefully
+            Read The Following Details Carefully
           </h2>
           <ul className="text-gray-700 leading-relaxed">
             {instrs.map((obj, index) => (
@@ -56,7 +59,12 @@ const Instructions = () => {
           <ul className="mt-2 text-gray-700 leading-relaxed">
             {Object.keys(instructions.general).map((key, index) => (
               <li key={index}>
-                <strong>{key}:</strong> {instructions.general[key]}
+                <strong>{key}:</strong>{" "}
+                {Array.isArray(instructions.general[key])
+                  ? instructions.general[key].map((remark, idx) => (
+                      <p key={idx}>{remark}</p>
+                    ))
+                  : instructions.general[key]}
               </li>
             ))}
           </ul>

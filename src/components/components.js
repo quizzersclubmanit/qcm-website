@@ -25,6 +25,11 @@ import UserBtn from "./UserBtn"
 import Map from "./Map"
 import Accordion from "./Accordion"
 import FAQs from "./FAQs"
+import Popup from "./Popup"
+import PopupModal from "./PopupModal"
+import MyglammPoster from "./MyglammPoster"
+import Slot from "./Slot"
+import ClassPrompt from "./ClassPrompt"
 
 export {
   Header,
@@ -53,5 +58,10 @@ export {
   UserBtn,
   Map,
   Accordion,
-  FAQs
+  FAQs,
+  Popup,
+  PopupModal,
+  MyglammPoster,
+  Slot,
+  ClassPrompt
 }

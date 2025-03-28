@@ -1,5 +1,5 @@
 import "../pages/pages.css"
-import { useEffect, useState, useCallback, useRef } from "react"
+import { useEffect, useState, useCallback, useMemo } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes, editQuiz } from "../redux/quiz.slice"
 import { setScore } from "../redux/user.slice"
@@ -16,18 +16,21 @@ import dbService from "../api/db.service"
 import storeService from "../api/store.service"
 import { Query } from "appwrite"
 import toast from "react-hot-toast"
-import { arraysEqual } from "../utils/utils"
+import { arraysEqual, countOf } from "../utils/utils"
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6"
 import { liveGif } from "../assets/assets"
 
 const PlayQuiz = () => {
   const { sec } = useParams()
-  const [section, setSection] = useState(sec)
+  let section = useMemo(() => Number(sec))
   const quizes = useSelector((state) => state.quizes)
+  const [currentQue, setCurrentQue] = useState(1)
+  const multiCorrect = useMemo(
+    () => countOf(true, quizes[currentQue - 1]?.answers) > 1
+  )
   const { loggedIn, data, score } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
-  const [currentQue, setCurrentQue] = useState(1)
   const [selectedOptions, setSelectedOptions] = useState(
     new Array(4).fill(false)
   )
@@ -35,11 +38,12 @@ const PlayQuiz = () => {
   const navigate = useNavigate()
   const [showSubmitBtn, setShowSubmitBtn] = useState(false)
   const [timer, setTimer] = useState(undefined)
+  let timesFullScreenExited = useMemo(() => 0)
+  let fullScreenHandle = useMemo(() => undefined)
 
   const handleNext = useCallback(() => {
     let len = quizes.length
     if (currentQue >= len || timer <= 0) {
-      // Handles calculation part
       quizes.forEach((quiz) => {
         if (arraysEqual(quiz.markedAnswers || [], quiz.answers))
           setRoundScore((prev) => prev + quiz.reward)
@@ -54,30 +58,42 @@ const PlayQuiz = () => {
     }
   }, [quizes, currentQue])
 
-  function submitQuiz({ disqualified = false }) {
+  function submitQuiz(disqualified = false) {
+    let msg = disqualified
+      ? "You are disqualified for exiting full-screen"
+      : "Quiz Submitted Successfully"
     dbService
       .insert({
         collectionId: env.leaderboardId,
-        data: { userId: data.$id, score, disqualified }
+        data: {
+          userId: data.$id,
+          score: Math.min(150, score),
+          disqualified: disqualified
+        }
       })
       .then(() => {
-        navigate(`/quiz/result`)
-        toast.success("Quiz Submitted Succesfully")
+        document
+          .exitFullscreen()
+          .then(() => {
+            document.documentElement.removeEventListener(
+              "fullscreenchange",
+              fullScreenHandle
+            )
+            toast("Quiz Submitted Succesfully")
+          })
+          .catch((error) => console.error(error))
+          .finally(() => navigate(`/quiz/result/${msg}`))
       })
       .catch((error) => {
-        toast.error(error.message)
+        toast(error.message)
         console.error(error)
       })
   }
 
   const handleSubmit = useCallback(() => {
-    if (section <= 3) {
-      dispatch(setScore(score + roundScore))
-      if (sec < 3) navigate(`/quiz/instr/${Number(sec) + 1}`)
-      else setSection(sec + 1)
-      return
-    }
-    submitQuiz()
+    dispatch(setScore(score + roundScore))
+    if (section < 3) navigate(`/quiz/instr/${section + 1}`)
+    else submitQuiz()
   }, [roundScore, section])
 
   useEffect(() => {
@@ -86,7 +102,7 @@ const PlayQuiz = () => {
         collectionId: env.quizId,
         queries: [
           Query.and([
-            Query.equal("section", Number(sec)),
+            Query.equal("section", section),
             Query.equal("inActive", false)
           ])
         ]
@@ -122,18 +138,30 @@ const PlayQuiz = () => {
         setLoading(false)
       })
 
-    // const handle = document.documentElement.addEventListener(
-    //   "fullscreenchange",
-    //   () => !document.fullscreenElement && submitQuiz({ disqualified: true })
-    // )
-    // document.documentElement.addEventListener("keydown", (e) => {
-    //   if (e.code == "F12") e.preventDefault()
-    // })
+    fullScreenHandle = document.documentElement.addEventListener(
+      "fullscreenchange",
+      () => {
+        if (!document.fullscreenElement) {
+          timesFullScreenExited++
+          if (timesFullScreenExited > 1) {
+            toast("You're disqualified")
+            submitQuiz(true)
+          } else navigate("/")
+        }
+      }
+    )
+    document.documentElement.addEventListener(
+      "keydown",
+      (e) => e.code == "F12" && e.preventDefault()
+    )
 
-    // return () => {
-    //   document.documentElement.removeEventListener("fullscreenchange", handle)
-    // }
-  }, [])
+    return () => {
+      document.documentElement.removeEventListener(
+        "fullscreenchange",
+        fullScreenHandle
+      )
+    }
+  }, [window.location.href])
 
   useEffect(() => {
     dispatch(
@@ -145,12 +173,12 @@ const PlayQuiz = () => {
   }, [selectedOptions])
 
   useEffect(() => {
-    let timeleft = timeLimits[quizes[currentQue - 1]?.section - 1] || 5
+    let timeleft = 60 * (timeLimits[quizes[currentQue - 1]?.section - 1] || 5) // in seconds
     setTimer(timeleft)
     const interval = setInterval(() => {
       timeleft--
       setTimer((prev) => (prev > 0 ? prev - 1 : prev))
-    }, 60000)
+    }, 1000)
     return () => {
       clearInterval(interval)
     }
@@ -179,16 +207,21 @@ const PlayQuiz = () => {
         <div className="flex w-[45%] flex-col text-white font-bold overflow-y-hidden uppercase sm:text-2xl">
           <p className="flex items-center text-sm sm:text-xl">
             Section -&nbsp;
-            <span className="overflow-y-hidden text-[#FCA311] ">
+            <span className="overflow-y-hidden text-[#FCA311]">
               {quizes[currentQue - 1]?.section}
             </span>
           </p>
         </div>
+        {multiCorrect && (
+          <span className="overflow-y-hidden text-[#FCA311] text-sm sm:text-xl font-bold">
+            Multicorrect
+          </span>
+        )}
         <div className="flex justify-end w-[45%] text-[#FCA311] font-bold overflow-y-hidden sm:text-2xl">
           <p className="text-white text-sm sm:text-xl overflow-y-hidden flex items-center uppercase">
             Time Left -&nbsp;
             <span className="text-[#FCA311] overflow-y-hidden">
-              {timer} minutes
+              {Math.floor(timer / 60)}:{timer % 60} minutes
             </span>
           </p>
         </div>
@@ -209,8 +242,8 @@ const PlayQuiz = () => {
         />
       )}
       <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-2 gap-5 md:w-1/2 sm:w-4/5 w-full mt-4 sm:mt-0">
-        {quizes[currentQue - 1]?.options.map((option, index) =>
-          quizes[currentQue - 1]?.optionsContainImg ? (
+        {quizes[currentQue - 1]?.options.map((option, index) => (
+          /*quizes[currentQue - 1]?.optionsContainImg ? (
             <img
               key={index}
               src={storeService.fetchFilePreview({
@@ -224,22 +257,28 @@ const PlayQuiz = () => {
                 )
               }}
             />
-          ) : (
-            <p
-              key={index}
-              className={`p-4 z-10 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
-              onClick={() => {
+          ) : */ <p
+            key={index}
+            className={`p-4 z-10 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
+            onClick={() => {
+              if (multiCorrect) {
                 setSelectedOptions((prev) =>
                   prev.map((bool, idx) => (idx == index ? !bool : bool))
                 )
-              }}
-            >
-              {option}
-            </p>
-          )
-        )}
+              } else {
+                setSelectedOptions((prev) =>
+                  prev.map((bool, idx) =>
+                    idx == index ? (bool ? false : true) : false
+                  )
+                )
+              }
+            }}
+          >
+            {option}
+          </p>
+        ))}
       </div>
-      {showSubmitBtn ? (
+      {showSubmitBtn && (
         <Button
           label="Submit"
           className="font-bold p-1 uppercase mt-4 py-1 px-4 bg-green-400 rounded-2xl hover:bg-green-500"
@@ -266,7 +305,7 @@ const PlayQuiz = () => {
             <FaAngleRight />
           </Button>
         </div>
-      )}
+
       <img
         src="/image-quiz-left-illustration.png"
         className="absolute hidden md:block  z-0 left-0 top-[25vh]"

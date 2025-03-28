@@ -20,11 +20,18 @@ const SectionHead = ({
           }}
         />
       )}
-      <h2
-        className={`text-[5vmax] poppins-bold flex items-center gap-2 ${outline && "text-outline"} ${className}`}
+      <div
+        className={`text-[5vmax] poppins-bold flex flex-col md:flex-row items-center justify-center  gap-2 ${outline && "text-outline"} ${className}`}
       >
-        {label}
-      </h2>
+        <h2>{label}</h2>
+
+        {label == "Register" && (
+          <p className="text-[22px] overflow-y-hidden text-blue-800  md:mt-10 md:self-auto">
+            {" "}
+            (Completely Free){" "}
+          </p>
+        )}
+      </div>
     </div>
   )
 }

@@ -1,23 +1,29 @@
 import qcmLogo from "./qcm-logo.png"
 import bulb from "./bulb.png"
 import authIllustration from "./auth-illustration.png"
-import qcmLogoBlue from "./qcm-logo-standard.png"
 import gradientLogo from "./gradient-qcm-logo.png"
 import floatingMarks from "./floating-mark.png"
-import bgAboutUs from "./bg-about-us.png"
 import aboutIllus from "./illus.jpg"
-import registrationProcess from "./qcm-registration-process.pdf"
 import liveGif from "./live.gif"
+import manit from "./manit.jpg"
+import team from "./team.jpg"
+import poster from "./compressedPoster.jpg"
+import myglamm from "./myglamm.jpg"
+import slots from "./slots.png"
+import vihaan from "./Vihaaan.jpg"
 
 export {
   qcmLogo,
   bulb,
   authIllustration,
-  qcmLogoBlue,
   gradientLogo,
   floatingMarks,
-  bgAboutUs,
   aboutIllus,
-  registrationProcess,
-  liveGif
+  liveGif,
+  manit,
+  team,
+  poster,
+  myglamm,
+  slots,
+  vihaan
 }

@@ -67,6 +67,28 @@ class Auth {
   async verifyToken({ userId, secret }) {
     try {
       const res = await account.updatePhoneVerification(userId, secret)
+      return res
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async sendEmailToken({ email }) {
+    try {
+      const res = await account.createRecovery(
+        email,
+        `${location.origin}/update-password`
+      )
+      return res
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async resetPassword({ token, userId, newPass }) {
+    try {
+      const res = await account.updateRecovery(userId, token, newPass)
+      return res
     } catch (error) {
       throw error
     }

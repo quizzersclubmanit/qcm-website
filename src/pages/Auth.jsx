@@ -5,11 +5,13 @@ import {
   Input,
   SectionHead,
   Button,
-  Footer
+  Footer,
+  Loader,
+  Popup
 } from "../components/components"
-import { authIllustration, registrationProcess } from "../assets/assets"
+import { authIllustration } from "../assets/assets"
 import { IoEye, IoEyeOff } from "react-icons/io5"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useSearchParams } from "react-router-dom"
 import authService from "../api/auth.service"
 import dbService from "../api/db.service"
 import { useCallback, useState } from "react"
@@ -17,8 +19,12 @@ import env from "../../constants"
 import { useDispatch } from "react-redux"
 import { setData, login } from "../redux/user.slice"
 import toast from "react-hot-toast"
+import { schools } from "../assets/qcmData.json"
+import { filterObjects } from "../utils/utils"
 
 const Auth = ({ label = "signup" }) => {
+  let [searchParams, setSearchParams] = useSearchParams()
+  const token = searchParams.get("secret")
   const { handleSubmit, setValue, formState, register } = useForm({
     defaultValues: {
       name: "",
@@ -26,14 +32,36 @@ const Auth = ({ label = "signup" }) => {
       password: "",
       phone: "",
       school: "",
-      city: "",
-      sex: 2
+      sex: "1",
+      city: "bhopal"
     }
   })
+  const [selectedCity, setSelectedCity] = useState("bhopal")
+
   const { errors } = formState
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [showPassword, setShowPassword] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const [userId, setUserId] = useState("")
+  const [newPass, setNewPass] = useState("")
+  const fields = [
+    <Input
+      className="text-sm focus:outline-0 p-3 font-normal rounded-xl border border-blue-500"
+      key={2}
+      placeholder="User Id"
+      value={userId}
+      onChange={(e) => setUserId(e.target.value)}
+    />,
+    <Input
+      className="text-sm focus:outline-0 p-3 font-normal rounded-xl border border-blue-500"
+      key={3}
+      placeholder="New Password"
+      value={newPass}
+      onChange={(e) => setNewPass(e.target.value)}
+    />
+  ]
 
   const Eye = useCallback(() => {
     if (!showPassword)
@@ -56,6 +84,7 @@ const Auth = ({ label = "signup" }) => {
   }, [showPassword])
 
   const authenticate = useCallback((f = async () => {}, formData = {}) => {
+    setLoading(true)
     f({
       email: formData.email,
       password: formData.password,
@@ -71,8 +100,8 @@ const Auth = ({ label = "signup" }) => {
                 name: formData.name.toLowerCase(),
                 contactNo: `+91${formData.phone}`,
                 educationalInstitute: formData.school.toLowerCase(),
-                city: formData.city.toLowerCase(),
-                sex: formData.sex.toLowerCase()
+                city: formData.city,
+                sex: formData.sex
               }
             })
             .then((res) => {
@@ -95,27 +124,30 @@ const Auth = ({ label = "signup" }) => {
                     })
                     .catch((error) => {
                       console.error(error)
-                      toast.error(error.message)
+                      toast(error.message)
                     })
+                    .finally(() => setLoading(false))
                 })
                 .catch((error) => {
                   console.error(error)
-                  toast.error(error.message)
+                  toast(error.message)
                 })
+                .finally(() => setLoading(false))
             })
             .catch((error) => {
               console.error(error)
             })
+            .finally(() => setLoading(false))
         } else {
           dispatch(setData(user))
           dispatch(login())
           navigate("/")
-          toast.success("Logged In Successfully")
+          toast("Logged In Successfully")
         }
       })
       .catch((error) => {
         console.error(error)
-        toast.error(error.message)
+        toast(error.message)
       })
       .finally(() => {
         setValue("name", "")
@@ -123,8 +155,9 @@ const Auth = ({ label = "signup" }) => {
         setValue("password", "")
         setValue("phone", "")
         setValue("school", "")
-        setValue("city", "")
-        setValue("sex", "")
+        setValue("sex", "1")
+        setValue("city", "bhopal")
+        setSelectedCity("")
       })
   }, [])
 
@@ -135,15 +168,80 @@ const Auth = ({ label = "signup" }) => {
     }
   }
 
+  if (loading) return <Loader />
+  if (label == "update-password")
+    return (
+      <Popup
+        submitLabel="Update"
+        className="h-screen justify-center w-1/2 mx-auto"
+        fieldComponents={fields}
+        functionality={(e) => {
+          e.preventDefault()
+          authService
+            .resetPassword({
+              token,
+              userId,
+              newPass
+            })
+            .then(() => {
+              toast("Password updated successfully")
+              navigate("/")
+            })
+            .catch((error) => console.error(error))
+            .finally(() => {
+              setUserId("")
+              setNewPass("")
+            })
+        }}
+      >
+        <p className="text-sm">
+          For obtaining User Id, Whatsapp on +91{env.devContact}
+        </p>
+      </Popup>
+    )
   return (
     <>
       <Container
         id="auth"
         className="poppins-regular sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-center"
       >
-        <div className="flex">
-          <div className="left w-1/2 items-center hidden md:flex">
-            <img src={authIllustration} alt="Auth Illustration" />
+        <div className="flex flex-col-reverse md:flex-row">
+          <div className="left w-full md:flex flex-col items-center justify-center md:w-1/2">
+            <img
+              src={authIllustration}
+              alt="Auth Illustration"
+              className="hidden md:flex"
+            />
+            <div className="mt-4 md:self-start mb-0 flex flex-col ">
+              <a
+                className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
+                href="https://drive.google.com/file/d/1NN5XC3IZqS71jfkH3dDQoHBof8AyMetz/view?usp=sharing"
+                target="_blank"
+              >
+                Download Instructions
+              </a>
+              <a
+                className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
+                href="https://drive.google.com/file/d/1v7uGkuJqD19WnxJY4LRiIaKlwORDSRfI/view?usp=sharing"
+                target="_blank"
+              >
+                Download IQC 2024 Edition Brochure
+              </a>
+              {/* <a
+                className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
+                href="https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing"
+                target="_blank"
+              >
+                Download IQC Sample Preparation Booklet
+              </a> */}
+              <a
+                className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
+                href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"
+                target="_blank"
+              >
+                Join Our WhatsApp Channel
+              </a>
+            </div>
           </div>
 
           <div className="right md:w-1/2 sm:w-[70vw] w-full sm:h-full bg-white sm:pt-0 pt-4 pb-6 sm:px-8 px-6 rounded-2xl flex flex-col gap-8 my-auto">
@@ -161,17 +259,16 @@ const Auth = ({ label = "signup" }) => {
                     placeholder="Name"
                     className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
                     style={{ borderBottom: "2px solid blue" }}
-                    {...register("name")}
+                    {...register("name", requiredCheck)}
                   />
                   <div className="flex gap-5 items-center">
                     <select
                       className="p-1 cursor-pointer focus:outline-none"
-                      defaultValue={2}
                       {...register("sex", requiredCheck)}
                     >
-                      <option value={0}>Male</option>
-                      <option value={1}>Female</option>
-                      <option value={2}>Other</option>
+                      <option value="0">Male</option>
+                      <option value="1">Female</option>
+                      <option value="2">Other</option>
                     </select>
                     <Input
                       type="tel"
@@ -190,22 +287,43 @@ const Auth = ({ label = "signup" }) => {
                     />
                   </div>
 
-                  <div className="flex gap-5">
-                    <Input
-                      error={errors.school}
-                      placeholder="School"
-                      className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                      style={{ borderBottom: "2px solid blue" }}
+                  <div className="grid grid-cols-2 gap-3">
+                    <select
+                      className="p-1 cursor-pointer focus:outline-none text-gray-400"
+                      defaultValue=""
                       {...register("school", requiredCheck)}
-                    />
+                    >
+                      <option value="" disabled>
+                        Your School
+                      </option>
+                      {filterObjects(schools, "city", selectedCity).map(
+                        (obj, index) => {
+                          const v = `${obj.institution} - ${obj["pin code"]}`
+                          return (
+                            <option
+                              key={index}
+                              value={v}
+                              className="text-black"
+                            >
+                              {v}
+                            </option>
+                          )
+                        }
+                      )}
+                    </select>
 
-                    <Input
-                      error={errors.city}
-                      placeholder="City"
-                      className="focus:outline-0 p-3 focus:bg-gray-100 transition-all"
-                      style={{ borderBottom: "2px solid blue" }}
-                      {...register("city", requiredCheck)}
-                    />
+                    <select
+                      className="p-1 cursor-pointer focus:outline-none"
+                      {...register("city")}
+                      value={selectedCity}
+                      onChange={(e) => setSelectedCity(e.target.value)}
+                    >
+                      <option value="bhopal">Bhopal</option>
+                      <option value="indore">Indore</option>
+                      <option value="gwalior">Gwalior</option>
+                      <option value="ujjain">Ujjain</option>
+                      <option value="jabalpur">Jabalpur</option>
+                    </select>
                   </div>
                 </>
               )}
@@ -230,16 +348,10 @@ const Auth = ({ label = "signup" }) => {
                 style={{ borderBottom: "2px solid blue" }}
                 error={errors.password}
                 type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                {...register("password", {
-                  ...requiredCheck,
-                  pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-+_])[^\s]{8,}$/,
-                    message:
-                      "Password should contain at least 1 lowercase, uppercase, special character and should at least be 8 characters long"
-                  }
-                })}
+                placeholder={
+                  label == "signup" ? "Set New Password" : "Password"
+                }
+                {...register("password", requiredCheck)}
               >
                 <Eye />
               </Input>
@@ -263,16 +375,34 @@ const Auth = ({ label = "signup" }) => {
                 ? "Already have an account?"
                 : "Not having an account?"}
             </Link>
+            <div className="flex justify-between text-sm">
+              {label == "login" && (
+                <Button
+                  className="text-blue-500"
+                  onClick={() => {
+                    alert(
+                      "Kindly contact Pukhraj (9244294331) or Pankaj (9680032837)"
+                    )
+                  }}
+                >
+                  Forgot Password
+                </Button>
+              )}
+            </div>
+            <div className="md:mt-[-21px]  text-gray-600">
+              <p className="text-black font-semibold">
+                Kindly fill all the details carefully.
+              </p>
+              <p>
+                Facing any difficulty while registering?
+                <br />
+                Please contact any of the undersigned
+                <br />
+                9680032837, 7337611169, 8956404950, 9079335539, 9244294331
+              </p>
+            </div>
           </div>
         </div>
-
-        <a
-          className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mt-1"
-          href={registrationProcess}
-          download
-        >
-          Download Instructions
-        </a>
       </Container>
       <Footer />
     </>
