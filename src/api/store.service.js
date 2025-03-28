@@ -7,7 +7,6 @@ class Store {
 
   constructor() {
     this.client.setEndpoint(env.apiEndpoint).setProject(env.projectId)
-
     this.storage = new Storage(this.client)
   }
 

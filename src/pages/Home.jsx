@@ -6,8 +6,7 @@ import {
   About,
   Events,
   Sponsors,
-  Map,
-  MyglammPoster
+  Map
 } from "../components/components"
 
 const Home = () => {
@@ -16,7 +15,6 @@ const Home = () => {
       <Header />
       <Hero />
       <About />
-      <MyglammPoster/>
       <Events />
       <Sponsors />
       <Map />
