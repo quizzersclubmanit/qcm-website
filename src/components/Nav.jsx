@@ -8,7 +8,7 @@ import { login, setData } from "../redux/user.slice"
 import env from "../../constants"
 import { Query } from "appwrite"
 
-const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
+const Nav = forwardRef(({ className, offModal = () => { } }, ref) => {
   const tabs = [
     {
       name: "Home",
@@ -136,19 +136,18 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
             />
           </div>
         ) : (
-          // <Button
-          //   label="Login to Play"
-          //   className="poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
-          //   style={{
-          //     backgroundColor: isMobile && "rgb(15, 109, 115)",
-          //     borderColor: isMobile && "rgb(15, 109, 115)",
-          //     ...(window.innerWidth < 768 && { marginTop: "10px" })
-          //   }}
-          //   onClick={() => {
-          //     navigate("login")
-          //   }}
-          // />
-          <div></div>
+          <Button
+            label="Signup"
+            className="poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
+            style={{
+              backgroundColor: isMobile && "rgb(15, 109, 115)",
+              borderColor: isMobile && "rgb(15, 109, 115)",
+              ...(window.innerWidth < 768 && { marginTop: "10px" })
+            }}
+            onClick={() => {
+              navigate("register")
+            }}
+          />
         )}
       </nav>
       <DropDown ref={dropDownRef} user={name} visible={showDropDown} />

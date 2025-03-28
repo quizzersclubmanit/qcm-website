@@ -28,7 +28,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
       <Route path="team" element={<Team />} />
-      {/*<Route path="register" element={<Auth />} />*/}
+      <Route path="register" element={<Auth />} />
       <Route path="login" element={<Auth label="login" />} />
       <Route path="update-phone" element={<Auth label="update" />} />
       <Route
@@ -37,11 +37,6 @@ const router = createBrowserRouter(
       />
       <Route path="account/verification/:dets" element={<Verification />} />
       <Route path="events/:eventId" element={<Event />} />
-      {/*<Route path="quiz/" element={<Outlet />}>
-        <Route path="instr/:sec" element={<ClassPrompt />} />
-        <Route path="play/:sec" element={<PlayQuiz />} />
-        <Route path="result/:msg" element={<Result />} />
-      </Route>*/}
       <Route path="admin/" element={<Admin />}>
         <Route path="add" element={<AddQuiz />} />
         <Route path="manage" element={<ManageQuiz />} />

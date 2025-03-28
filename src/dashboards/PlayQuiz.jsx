@@ -51,8 +51,9 @@ const PlayQuiz = () => {
       })
       setShowSubmitBtn(true)
     } else {
-      setCurrentQue((prev) => (prev < len ? prev + 1 : prev))
+      setCurrentQue((prev) => prev < quizes.length ? prev + 1 : prev)
       let ans = quizes[currentQue].markedAnswers
+
       setSelectedOptions(ans || [false, false, false, false])
     }
   }, [quizes, currentQue])
@@ -123,11 +124,12 @@ const PlayQuiz = () => {
       .then((docs) => {
         if (docs.length != 0) {
           navigate("/")
-          toast("You've attempted the quiz")
-        } else
-          document.documentElement.requestFullscreen({
-            navigationUI: "hide"
-          })
+          toast("You've already attempted the quiz")
+        }
+        else {
+          document.documentElement
+            .requestFullscreen()
+        }
       })
       .catch((error) => {
         console.error(error)
@@ -282,28 +284,28 @@ const PlayQuiz = () => {
           className="font-bold p-1 uppercase mt-4 py-1 px-4 bg-green-400 rounded-2xl hover:bg-green-500"
           onClick={handleSubmit}
         />
-      )}
-      <div className="flex z-10 justify-between items-center md:w-[60%] sm:w-4/5 w-full p-4 rounded">
-        <Button
-          label="Prev"
-          className="font-bold uppercase previous flex justify-between items-center py-1 px-4 rounded-2xl bg-[#E5E5E5] hover:bg-gray-300 gap-1"
-          onClick={() => {
-            setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
-            let ans = quizes[currentQue >= 2 ? currentQue - 2 : 0].markedAnswers
-            setSelectedOptions(ans || [false, false, false, false])
-            setShowSubmitBtn(false)
-          }}
-        >
-          <FaAngleLeft />
-        </Button>
-        <Button
-          label="Next"
-          className="font-bold uppercase next flex flex-row-reverse justify-between items-center py-1 px-4 rounded-2xl bg-[#FCA311] hover:bg-yellow-500 gap-1"
-          onClick={handleNext}
-        >
-          <FaAngleRight />
-        </Button>
-      </div>
+      ) : (
+        <div className="flex z-10 justify-between items-center md:w-[60%] sm:w-4/5 w-full p-4 rounded">
+          <Button
+            label="Prev"
+            className="font-bold uppercase previous flex justify-between items-center py-1 px-4 rounded-2xl bg-[#E5E5E5] hover:bg-gray-300 gap-1"
+            onClick={() => {
+              setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
+              let ans = quizes[currentQue >= 2 ? currentQue - 2 : 0].markedAnswers
+              setSelectedOptions(ans || [false, false, false, false])
+            }}
+          >
+            <FaAngleLeft />
+          </Button>
+          <Button
+            label="Next"
+            className="font-bold uppercase next flex flex-row-reverse justify-between items-center py-1 px-4 rounded-2xl bg-[#FCA311] hover:bg-yellow-500 gap-1"
+            onClick={handleNext}
+          >
+            <FaAngleRight />
+          </Button>
+        </div>
+
       <img
         src="/image-quiz-left-illustration.png"
         className="absolute hidden md:block  z-0 left-0 top-[25vh]"
