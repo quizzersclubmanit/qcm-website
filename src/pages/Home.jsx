@@ -6,7 +6,8 @@ import {
   About,
   Events,
   Sponsors,
-  Map
+  Map,
+  FacultyMessage
 } from "../components/components"
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
       <About />
       <Events />
       <Sponsors />
+      <FacultyMessage/>
       <Map />
       <Footer />
     </main>

@@ -2004,5 +2004,26 @@
       "type": "Image Based (5) & Match the Column (5)",
       "marking-scheme": "+3 for correct, 0 for incorrect"
     }
+  },
+  "facultyMessage":[
+    {
+      "name": "DR. DEEPAK KUMAR",
+      "designation": "Assistant Professor in Humanities at MANIT Bhopal",
+      "image":"/faculty/DrDeepakKrHumanities.jpg",
+      "message": "Dr. Deepak Kumar is the coordinator of the QCM Club. He holds a Ph.D. in English Language Education and specializes in curriculum development, teacher training, and English for Specific Purposes.Dr. Kumar integrates real-world challenges into academics, fostering critical thinking, communication skills, and competitive readiness. His innovative quizzing techniques promote practical application, preparing students to navigate personal and professional challenges with confidence."
+    },
+    {
+      "name": "DR. RAMESH KUMAR NAYAK",
+      "designation": "Associate Professor in MME at MANIT",
+      "image":"/faculty/DrRKNayak.png",
+      "message": "Dr. Ramesh Kumar Nayak, Associate Professor in MME at MANIT and an FI at the Quizzers' Club, is widely respected for his teaching excellence. He has worked at KIIT Bhubaneswar and NIT Rourkela and has guided numerous Ph.D. students.A dedicated mentor, Dr. Nayak inspires students to persevere, fostering a culture of resilience and intellectual growth within the club. His unwavering support motivates members to explore new opportunities and push their limits."
+    },
+    {
+      "name": "DR. SURABHI MEHROTRA",
+      "designation": " Assistant Professor in Architecture and Planning at MANIT",
+      "image":"/faculty/SurabhiMehrotra.jpg",
+      "message": "Dr. Surabhi Mehrotra is the new coordinator of the Quizzer’s Club. She has previously taught at IIT Bombay and has conducted significant research in urban design and sustainable architecture.Committed to interdisciplinary collaboration, Dr. Mehrotra encourages knowledge-sharing and curiosity-driven learning. Under her leadership, the club is poised to become a hub for creativity and intellectual exchange, benefiting both the architecture community and the larger academic sphere at NIT Bhopal."
   }
+  
+  ]
 }

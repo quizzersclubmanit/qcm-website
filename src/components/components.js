@@ -30,6 +30,8 @@ import PopupModal from "./PopupModal"
 import MyglammPoster from "./MyglammPoster"
 import Slot from "./Slot"
 import ClassPrompt from "./ClassPrompt"
+import MessageCard from "./MessageCard"
+import FacultyMessage from "./FacultyMessage"
 
 export {
   Header,
@@ -63,5 +65,7 @@ export {
   PopupModal,
   MyglammPoster,
   Slot,
-  ClassPrompt
+  ClassPrompt,
+  MessageCard,
+  FacultyMessage,
 }
