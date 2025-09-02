@@ -1668,81 +1668,157 @@
         "linkedIn": "https://www.linkedin.com/in/ayushi-s-5bb812249/"
       },
     {
-      "name": "Harshita Nehra",
-      "post": "Vice-President",
+  "name": "Atharv Nerkar",
+  "post": "Vice-President",
       "domain": "Organisation",
-      "fileId": "66da0c6b002a150fbc63",
-      "linkedIn": "https://www.linkedin.com/in/harshita-nehra-78bbb322a/"
-    },
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397753/Atharv_nltmtx.jpg",
+  "linkedIn": "https://www.linkedin.com/in/atharv-nerkar-3479aa259/"
+   },
+
     {
-      "name": "Abhishek Meena",
-      "post": "Vice-President",
-      "domain": "Administration",
-      "fileId": "66da0c04000f72b96186",
-      "linkedIn": "https://www.linkedin.com/in/abhishek-meena01/"
-    },
-    {
-      "name": "Anurag Mishra",
-      "post": "General Secratory",
-      "domain": "Alumini Connect",
-      "fileId": "66da0c4a001ec32accb0",
-      "linkedIn": "https://www.linkedin.com/in/anurag-mishra-66ba9b227/"
-    },
-    {
-      "name": "Akshat Jain",
-      "post": "General Secratory",
-      "domain": "Creative Comms",
-      "fileId": "66da0c52003af4f9d5bc",
-      "linkedIn": "https://www.linkedin.com/in/akshat-jain-04a14b242/"
-    },
-    {
-      "name": "Suhani Jain",
-      "post": "Secratory",
-      "domain": "Public Relations",
-      "fileId": "66da0c890029315ebc24",
-      "linkedIn": "https://www.linkedin.com/in/suhani-jain-b96800239/"
-    },
-    {
-      "name": "Dheeraj Mandvi",
-      "post": "Treasurer",
-      "fileId": "",
-      "linkedIn": "https://www.linkedin.com/in/dheeraj-mandvi-0899111bb/"
-    },
-    {
-      "name": "Chetan Vaddamani",
-      "post": "Secretary",
-      "domain": "Media and Connect",
-      "fileId": "66da0c610013d100d905",
-      "linkedIn": "https://www.linkedin.com/in/chethan-vaddamani-aa368122b/"
-    },
-    {
-      "name": "Shreevathsav Kyama",
-      "post": "Secretary",
-      "domain": "Logistics",
-      "fileId": "",
-      "linkedIn": "https://www.linkedin.com/in/sreevathsav-kyama-163ab5223/"
-    },
-    {
-      "name": "Om Krishna",
-      "post": "Secretary",
-      "domain": "Compliance",
-      "fileId": "",
-      "linkedIn": "https://www.linkedin.com/in/om-krishna-928663183/"
-    },
-    {
-      "name": "Akash Goyal",
-      "post": "Secretary",
-      "domain": "Technical",
-      "fileId": "66da0c36001e248a28aa",
-      "linkedIn": "https://www.linkedin.com/in/akash-goyal-244646222/"
-    },
-    {
-      "name": "Thrishul Reddy",
-      "post": "Secretary",
-      "domain": "Partnership",
-      "fileId": "",
-      "linkedIn": "https://www.linkedin.com/in/thrishulreddy/"
-    },
+  "name": "Shrishti Mishra",
+  "post": "General Secratory",
+  "fileId": "",
+  "linkedIn": "https://www.linkedin.com/in/abhishek-meena01/"
+},
+{
+  "name": "Shilpa Koley",
+  "post": "General Secratory",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397772/Shilpa__mfihcu.jpg",
+  "linkedIn": "https://www.linkedin.com/in/shilpa-koley-719723259/"
+},
+{
+  "name": "Priyanshu Choudhury",
+  "post": "Treasurer",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397764/priyanshu_choudhury_1_um7gpb.png",
+  "linkedIn": "https://www.linkedin.com/in/priyanshuc/"
+},
+{
+  "name": "Prakriti Shree",
+  "post": "Secretary",
+  "domain": "Quizzing",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397762/prakriti_shree_qcm_swvr39.jpg",
+  "linkedIn": "https://www.linkedin.com/in/prakriti-shree-0317a0254/"
+},
+{
+  "name": "Vyom Singhal",
+  "post": "Secretary",
+  "domain": "Quizzing",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397774/Vyom_Singhal__avu4ml.jpg",
+  "linkedIn": "https://www.linkedin.com/in/vyom-singhal-bb1008260/"
+},
+{
+  "name": "Dhruv Singh Bhadauria",
+  "post": "Secretary",
+  "domain": "Events & Planning",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397758/Dhruv_Singh_Bhadauria_hfogqg.jpg",
+  "linkedIn": ""
+},
+{
+  "name": "Prakriti Sharma",
+  "post": "Secretary",
+  "domain": "Content & Documentation",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397762/prakriti_shree_qcm_swvr39.jpg",
+  "linkedIn": "https://www.linkedin.com/in/prakriti-sharma-764671278/"
+},
+{
+  "name": "Ajay Yadav",
+  "post": "Secretary",
+  "domain": "Design",
+  "fileId": "66be7cfc001e81bdb546",
+  "linkedIn": "https://www.linkedin.com/in/ajay-yadav-2o26/"
+},
+{
+  "name": "Rohit Kumar",
+  "post": "Secretary",
+  "domain": "Media Production",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397764/Rohit_pyteor.jpg",
+  "linkedIn": "https://www.linkedin.com/in/rohit-kumar-757690315/"
+},
+{
+  "name": "Samarth Agarwal",
+  "post": "Quizzing Research and Content Head",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397775/SAMARTH_AGRAWAL_cloaxd.jpg",
+  "linkedIn": "https://www.linkedin.com/in/samarth-agrawal-51543921a/"
+},
+  {
+  "name": "Shivam Malviya",
+  "post": "Secretary",
+  "domain": "Community & Culture",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397772/Shivam_Malviya_utkxhw.heic",
+  "linkedIn": ""
+},
+{
+  "name": "Ayush Sharma",
+  "post": "Secretary",
+  "domain": "Alumini Connect",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397758/Ayush_sharma_pgda2t.jpg",
+  "linkedIn": "https://www.linkedin.com/in/ayush-sharma-27a488261/"
+},
+{
+  "name": "Ganesh Nayak",
+  "post": "Secretary",
+  "domain": "Alumini Connect",
+  "fileId": "",
+  "linkedIn": "https://www.linkedin.com/in/ganesh-nayak-32b33b257/"
+},
+{
+  "name": "Mridul Upadhyay",
+  "post": "Secretary",
+  "domain": "Compliance",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397760/mridulupadhyay_yrhzbj.jpg",
+  "linkedIn": "https://www.linkedin.com/in/mridul-upadhyay-9680b7265/"
+},
+{
+  "name": "Gautam Kumar",
+  "post": "Secretary",
+  "domain": "Compliance",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397757/Gautam__tfittk.jpg",
+  "linkedIn": ""
+},
+{
+  "name": "Manan Verma",
+  "post": "Secretary",
+  "domain": "Logistics & Operations",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397776/manan_photo_r6m9ln.jpg",
+  "linkedIn": "https://www.linkedin.com/in/manan-verma-54904525a/"
+},
+{
+  "name": "Vemula Teja Manideep",
+  "post": "Secretary",
+  "domain": "Logistics & Operations",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397769/Teja_Manideep_vemula__fhwqr8.jpg",
+  "linkedIn": "https://www.linkedin.com/in/tejamanideep-vemula-b77569278/"
+},
+{
+  "name": "Divy Pareek",
+  "post": "Secretary",
+  "domain": "Media Coverage",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397758/Divy__icvaqv.jpg",
+  "linkedIn": "https://www.linkedin.com/in/divypareek/"
+},
+{
+  "name": "Pranjal Jain",
+  "post": "Secretary",
+  "domain": "Digital Media",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397764/Pranjal_jain_ljjzbz.jpg",
+  "linkedIn": "https://www.linkedin.com/in/pranjal-jain-547a37256/"
+},
+{
+  "name": "Sarthak Vyas",
+  "post": "Secretary",
+  "domain": "Technical",
+  "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397766/Sarthak_vyas_zvb22o.jpg",
+  "linkedIn": "https://www.linkedin.com/in/sarthak-vyas-99791b25b/"
+},
+{
+  "name": "Nimisha Shrivastava",
+  "post": "Secretary",
+  "domain": "External Affairs",
+  "fileId": "",
+  "linkedIn": "https://www.linkedin.com/in/nimisha-shrivastava-094579278/"
+},
+
     {
   "name": "Yuvraj Singh Gaur",
   "post": "Coordinator",
