@@ -5,8 +5,6 @@ import {
   Footer
 } from "../components/components"
 import { team } from "../assets/qcmData.json"
-import storeService from "../api/store.service"
-import env from "../../constants"
 
 const Team = () => {
   return (
@@ -23,12 +21,12 @@ const Team = () => {
               className="flex flex-col bg-white shadow justify-between transition-all p-4 rounded cursor-default min-h-[45vh] md:text-sm text-xs font-bold"
             >
               <img
-                src={storeService.fetchFilePreview({
-                  fileId: obj.fileId,
-                  bucketId: env.teamBucketId
-                })}
+                src={obj.fileId || '/placeholder-avatar.png'}
                 alt="Member"
                 className="aspect-square h-3/4 object-contain"
+                onError={(e) => {
+                  e.target.src = '/placeholder-avatar.png'
+                }}
               />
               <div className="flex flex-col gap-1 items-center">
                 <a
@@ -51,3 +49,4 @@ const Team = () => {
 }
 
 export default Team
+
