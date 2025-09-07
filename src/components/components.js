@@ -30,7 +30,7 @@ import PopupModal from "./PopupModal"
 import MyglammPoster from "./MyglammPoster"
 import Slot from "./Slot"
 import ClassPrompt from "./ClassPrompt"
-import ScrollToTop from "./ScrollToTop"
+
 
 export {
   Header,
@@ -65,5 +65,5 @@ export {
   MyglammPoster,
   Slot,
   ClassPrompt,
-  ScrollToTop
+  
 }
