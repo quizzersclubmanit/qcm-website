@@ -22,6 +22,109 @@ import toast from "react-hot-toast"
 import { schools } from "../assets/qcmData.json"
 import { filterObjects } from "../utils/utils"
 
+// Forgot Password Component
+const ForgotPasswordButton = () => {
+  const [email, setEmail] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+
+  const handleForgotPassword = async (e) => {
+    e.preventDefault()
+    if (!email) {
+      toast.error("Please enter your email address")
+      return
+    }
+
+    setLoading(true)
+    try {
+      await authService.sendEmailToken({ email })
+      toast.success("Password reset link sent to your email!")
+      setShowModal(false)
+      setEmail("")
+    } catch (error) {
+      toast.error(error.message || "Failed to send reset email")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <>
+      <button
+        className="text-blue-500 hover:text-blue-700 underline text-sm font-medium transition-colors duration-200"
+        onClick={() => setShowModal(true)}
+        type="button"
+      >
+        Forgot Password?
+      </button>
+      
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-100">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-bold text-gray-900">Reset Password</h3>
+                <button
+                  onClick={() => {
+                    setShowModal(false)
+                    setEmail("")
+                  }}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                Enter your email address and we'll send you a secure link to reset your password.
+              </p>
+              
+              <form onSubmit={handleForgotPassword} className="space-y-4">
+                <div>
+                  <label htmlFor="reset-email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address
+                  </label>
+                  <Input
+                    id="reset-email"
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                    required
+                  />
+                </div>
+                
+                <div className="flex gap-3 pt-2">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {loading ? "Sending..." : "Send Reset Link"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowModal(false)
+                      setEmail("")
+                    }}
+                    className="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all duration-200"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
 const Auth = ({ label = "signup" }) => {
   let [searchParams, setSearchParams] = useSearchParams()
   const token = searchParams.get("secret")
@@ -88,59 +191,19 @@ const Auth = ({ label = "signup" }) => {
     f({
       email: formData.email,
       password: formData.password,
-      name: formData.name
+      name: formData.name,
+      phone: formData.phone,
+      city: formData.city,
+      school: formData.school,
+      sex: formData.sex
     })
       .then((user) => {
+        dispatch(setData(user))
+        dispatch(login())
         if (formData.name) {
-          dbService
-            .insert({
-              collectionId: env.userId,
-              data: {
-                userId: user.$id,
-                name: formData.name.toLowerCase(),
-                contactNo: `+91${formData.phone}`,
-                educationalInstitute: formData.school.toLowerCase(),
-                city: formData.city,
-                sex: formData.sex
-              }
-            })
-            .then((res) => {
-              user = { ...user, ...res }
-              dispatch(setData(user))
-              authService
-                .addPhoneNumber({
-                  phone: formData.phone,
-                  password: formData.password
-                })
-                .then(() => {
-                  authService
-                    .sendVerificationToken()
-                    .then(() => {
-                      const dets = JSON.stringify({
-                        userId: user.userId,
-                        phone: `+91${formData.phone}`
-                      })
-                      navigate(`/account/verification/${dets}`)
-                    })
-                    .catch((error) => {
-                      console.error(error)
-                      toast(error.message)
-                    })
-                    .finally(() => setLoading(false))
-                })
-                .catch((error) => {
-                  console.error(error)
-                  toast(error.message)
-                })
-                .finally(() => setLoading(false))
-            })
-            .catch((error) => {
-              console.error(error)
-            })
-            .finally(() => setLoading(false))
+          navigate("/")
+          toast("Registration successful! Welcome to QCM!")
         } else {
-          dispatch(setData(user))
-          dispatch(login())
           navigate("/")
           toast("Logged In Successfully")
         }
@@ -377,16 +440,7 @@ const Auth = ({ label = "signup" }) => {
                   : "Not having an account?"}
               </Link> */}
               {label == "login" && (
-                <Button
-                  className="text-blue-500"
-                  onClick={() => {
-                    alert(
-                      "Kindly contact Pukhraj (9244294331) or Pankaj (9680032837)"
-                    )
-                  }}
-                >
-                  Forgot Password
-                </Button>
+                <ForgotPasswordButton />
               )}
             </div>
             <div className="md:mt-[-21px]  text-gray-600">
