@@ -6,7 +6,6 @@ import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { login, setData } from "../redux/user.slice"
 import env from "../../constants"
-import { Query } from "appwrite"
 
 const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   const tabs = [
@@ -57,17 +56,8 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     authService
       .getCurrentUser()
       .then((user) => {
-        dbService
-          .select({
-            collectionId: env.userId,
-            queries: [Query.equal("userId", user.$id)]
-          })
-          .then((doc) => {
-            user = { ...user, docId: doc[0]?.$id }
-            dispatch(setData(user))
-            dispatch(login())
-          })
-          .catch((error) => console.error(error))
+        dispatch(setData(user))
+        dispatch(login())
       })
       .catch((error) => console.error(error))
   }, [])
@@ -136,19 +126,22 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
             />
           </div>
         ) : (
-          // <Button
-          //   label="Login to Play"
-          //   className="poppins-regular ml-2vmax py-2 px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden"
-          //   style={{
-          //     backgroundColor: isMobile && "rgb(15, 109, 115)",
-          //     borderColor: isMobile && "rgb(15, 109, 115)",
-          //     ...(window.innerWidth < 768 && { marginTop: "10px" })
-          //   }}
-          //   onClick={() => {
-          //     navigate("login")
-          //   }}
-          // />
-          <div></div>
+          <div className="flex sm:flex-row flex-col gap-2">
+            <Button
+              label="Login"
+              className="poppins-regular py-2 px-4 text-sm text-white rounded-3xl border-2 overflow-y-hidden bg-blue-600 border-blue-600 hover:bg-blue-700"
+              onClick={() => {
+                navigate("/auth/login")
+              }}
+            />
+            <Button
+              label="Sign Up"
+              className="poppins-regular py-2 px-4 text-sm text-blue-600 rounded-3xl border-2 border-blue-600 overflow-y-hidden hover:bg-blue-50"
+              onClick={() => {
+                navigate("/auth/signup")
+              }}
+            />
+          </div>
         )}
       </nav>
       <DropDown ref={dropDownRef} user={name} visible={showDropDown} />
