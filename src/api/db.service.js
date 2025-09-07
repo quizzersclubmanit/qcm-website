@@ -1,24 +1,32 @@
-import { Client, Databases, ID, Query } from "appwrite"
-import env from "../../constants"
+// Database service - Connected to Prisma MongoDB backend
+
+const API_BASE_URL = 'https://qcm-backend-ln5c.onrender.com/api'
 
 class DB {
-  client = new Client()
-  databases
-
-  constructor() {
-    this.client.setEndpoint(env.apiEndpoint).setProject(env.projectId)
-    this.databases = new Databases(this.client)
-  }
-
   async insert({ collectionId, data = {} }) {
     try {
-      const res = await this.databases.createDocument(
-        env.dbId,
-        collectionId,
-        ID.unique(),
-        data
-      )
-      return res
+      // Map collection types to appropriate endpoints
+      let endpoint = ''
+      if (collectionId.includes('quiz')) {
+        endpoint = '/quiz/score'
+      } else if (collectionId.includes('user')) {
+        endpoint = '/user/profile'
+      }
+      
+      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(data)
+      })
+      
+      if (!response.ok) {
+        throw new Error('Insert failed')
+      }
+      
+      return await response.json()
     } catch (error) {
       throw error
     }
@@ -26,41 +34,61 @@ class DB {
 
   async select({ collectionId, queries = [] }) {
     try {
-      const res = await this.databases.listDocuments(env.dbId, collectionId, [
-        ...queries,
-        Query.limit(5000)
-      ])
-      return res.documents
+      // Map collection types to appropriate endpoints
+      let endpoint = ''
+      if (collectionId.includes('leaderboard') || collectionId.includes('quiz')) {
+        endpoint = '/quiz/leaderboard'
+      } else if (collectionId.includes('user')) {
+        endpoint = '/user/profile'
+      }
+      
+      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        method: 'GET',
+        credentials: 'include'
+      })
+      
+      if (!response.ok) {
+        return []
+      }
+      
+      const data = await response.json()
+      return Array.isArray(data) ? data : [data]
     } catch (error) {
-      throw error
+      console.warn('DB service: select method error:', error)
+      return []
     }
   }
 
   async update({ collectionId, documentId, changes = {} }) {
     try {
-      const res = await this.databases.updateDocument(
-        env.dbId,
-        collectionId,
-        documentId,
-        changes
-      )
-      return res
+      let endpoint = ''
+      if (collectionId.includes('user')) {
+        endpoint = '/user/profile'
+      }
+      
+      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(changes)
+      })
+      
+      if (!response.ok) {
+        throw new Error('Update failed')
+      }
+      
+      return await response.json()
     } catch (error) {
       throw error
     }
   }
 
   async delete({ collectionId, documentId }) {
-    try {
-      const res = await this.databases.deleteDocument(
-        env.dbId,
-        collectionId,
-        documentId
-      )
-      return res
-    } catch (error) {
-      throw error
-    }
+    // TODO: Implement delete functionality if needed
+    console.warn('DB service: delete method not implemented yet')
+    return null
   }
 }
 
