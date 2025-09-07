@@ -59,7 +59,12 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
         dispatch(setData(user))
         dispatch(login())
       })
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        // Silently handle authentication errors - user is not logged in
+        if (error.message !== 'Not authenticated') {
+          console.error('Auth check error:', error)
+        }
+      })
   }, [])
 
   return (
@@ -150,3 +155,4 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
 })
 
 export default Nav
+
