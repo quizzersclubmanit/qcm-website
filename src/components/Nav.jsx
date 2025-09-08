@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link, useLocation } from "react-router-dom"
 import { Button, DropDown, UserBtn, Logo } from "./components"
 import authService from "../api/auth.service"
 import dbService from "../api/db.service"
@@ -8,6 +8,7 @@ import { login, setData } from "../redux/user.slice"
 import env from "../../constants"
 
 const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
+  const location = useLocation()
   const tabs = [
     {
       name: "Home",
@@ -53,6 +54,12 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   }, [])
 
   useEffect(() => {
+    // Skip auth check on authentication pages to prevent 401 errors
+    const authPages = ['/auth/signup', '/auth/login', '/auth/reset-password', '/login']
+    if (authPages.includes(location.pathname)) {
+      return
+    }
+
     authService
       .getCurrentUser()
       .then((user) => {
@@ -65,7 +72,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
           console.error('Auth check error:', error)
         }
       })
-  }, [])
+  }, [location.pathname])
 
   return (
     <>
@@ -155,4 +162,3 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
 })
 
 export default Nav
-
