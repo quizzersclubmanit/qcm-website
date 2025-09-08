@@ -1,11 +1,9 @@
 import { useNavigate, Link, useLocation } from "react-router-dom"
 import { Button, DropDown, UserBtn, Logo } from "./components"
 import authService from "../api/auth.service"
-import dbService from "../api/db.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { login, setData } from "../redux/user.slice"
-import env from "../../constants"
 
 const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   const location = useLocation()
