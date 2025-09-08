@@ -16,7 +16,8 @@ import {
   Result,
   Verification,
   Team,
-  Leaderboard
+  Leaderboard,
+  ResetPassword
 } from "./pages/pages.js"
 import { AddQuiz, ManageQuiz, PlayQuiz } from "./dashboards/dashboards.js"
 import { Admin, FAQs, ClassPrompt } from "./components/components.js"
@@ -28,7 +29,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
       <Route path="team" element={<Team />} />
-      {/*<Route path="register" element={<Auth />} />*/}
+      <Route path="signup" element={<Auth label="signup" />} />
+      <Route path="signin" element={<Auth label="login" />} />
+      <Route path="reset-password" element={<ResetPassword />} />
       <Route path="login" element={<Auth label="login" />} />
       <Route path="update-phone" element={<Auth label="update" />} />
       <Route
