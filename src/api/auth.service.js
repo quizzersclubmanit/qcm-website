@@ -10,9 +10,9 @@ class Auth {
       }
       
       console.log('Frontend sending signup data:', { email, password: '***', name, phone, city, school, sex });
-      console.log('API URL:', `${API_BASE_URL}/auth/signup`);
+      console.log('API URL:', `${API_BASE_URL}/api/auth/signup`);
       
-      const response = await fetch(`${API_BASE_URL}/auth/signup`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,9 +53,9 @@ class Auth {
   async login({ email = "", password = "" }) {
     try {
       console.log('Frontend sending login data:', { email, password: '***' });
-      console.log('API URL:', `${API_BASE_URL}/auth/login`);
+      console.log('API URL:', `${API_BASE_URL}/api/auth/login`);
       
-      const response = await fetch(`${API_BASE_URL}/auth/login`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ class Auth {
 
   async getCurrentUser() {
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/me`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
         method: 'GET',
         credentials: 'include'
       })
@@ -105,7 +105,7 @@ class Auth {
 
   async logout() {
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
         method: 'POST',
         credentials: 'include'
       })
@@ -119,7 +119,7 @@ class Auth {
 
   async addPhoneNumber({ phone, password }) {
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/phone`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/phone`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -154,7 +154,7 @@ class Auth {
 
   async sendEmailToken({ email }) {
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -176,7 +176,7 @@ class Auth {
 
   async resetPassword({ token, newPassword }) {
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/reset-password`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/reset-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
