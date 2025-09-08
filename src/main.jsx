@@ -52,7 +52,7 @@ const router = createBrowserRouter(
         <Route path="results" element={<Leaderboard />} />
       </Route>
       <Route path="faqs" element={<FAQs />} />
-      <Route path="reset-passowrd" element={<ResetPassword />} />
+      <Route path="reset-password-page" element={<ResetPassword />} />
     </Route>
   )
 )
