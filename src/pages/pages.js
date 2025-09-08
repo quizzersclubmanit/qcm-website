@@ -6,7 +6,7 @@ import Leaderboard from "./Leaderboard"
 import Verification from "./Verification"
 import Instructions from "./Instructions"
 import Team from "./Team"
-import ResetPassword from "./ResetPassword"
+// import ResetPassword from "./ResetPassword"
 
 export {
   Home,
@@ -17,5 +17,5 @@ export {
   Verification,
   Instructions,
   Team,
-  ResetPassword
+  // ResetPassword
 }
