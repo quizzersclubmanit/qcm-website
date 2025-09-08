@@ -31,7 +31,7 @@ const router = createBrowserRouter(
       <Route path="team" element={<Team />} />
       <Route path="signup" element={<Auth label="signup" />} />
       <Route path="signin" element={<Auth label="login" />} />
-      <Route path="reset-password" element={<ResetPassword />} />
+      <Route path="reset-password" element={<Auth label="update-password" />} />
       <Route path="login" element={<Auth label="login" />} />
       <Route path="update-phone" element={<Auth label="update" />} />
       <Route
