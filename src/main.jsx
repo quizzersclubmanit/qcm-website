@@ -17,6 +17,7 @@ import {
   Verification,
   Team,
   Leaderboard,
+  ResetPassword,
 
 } from "./pages/pages.js"
 import { AddQuiz, ManageQuiz, PlayQuiz } from "./dashboards/dashboards.js"
@@ -51,6 +52,7 @@ const router = createBrowserRouter(
         <Route path="results" element={<Leaderboard />} />
       </Route>
       <Route path="faqs" element={<FAQs />} />
+      <Route path="reset-passowrd" element={<ResetPassword />} />
     </Route>
   )
 )
