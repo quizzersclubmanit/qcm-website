@@ -54,9 +54,12 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   }, [])
 
   useEffect(() => {
-    return ;
+    // Temporarily disable auto auth check to prevent 401 errors on deployment
+    // TODO: Re-enable this after fixing CORS issues
+    return
+    
     // Skip auth check on authentication pages to prevent 401 errors
-    const authPages = ['/auth/signup', '/auth/login', '/auth/reset-password', '/login']
+    const authPages = ['/signup', '/signin', '/reset-password', '/login']
     if (authPages.includes(location.pathname)) {
       return
     }
@@ -144,14 +147,14 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               label="Login"
               className="poppins-regular py-2 px-4 text-sm text-white rounded-3xl border-2 overflow-y-hidden bg-blue-600 border-blue-600 hover:bg-blue-700"
               onClick={() => {
-                navigate("/auth/login")
+                navigate("/signin")
               }}
             />
             <Button
               label="Sign Up"
               className="poppins-regular py-2 px-4 text-sm text-blue-600 rounded-3xl border-2 border-blue-600 overflow-y-hidden hover:bg-blue-50"
               onClick={() => {
-                navigate("/auth/signup")
+                navigate("/signup")
               }}
             />
           </div>
