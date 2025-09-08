@@ -54,6 +54,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   }, [])
 
   useEffect(() => {
+    return ;
     // Skip auth check on authentication pages to prevent 401 errors
     const authPages = ['/auth/signup', '/auth/login', '/auth/reset-password', '/login']
     if (authPages.includes(location.pathname)) {
