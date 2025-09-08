@@ -17,7 +17,7 @@ import {
   Verification,
   Team,
   Leaderboard,
-  ResetPassword
+
 } from "./pages/pages.js"
 import { AddQuiz, ManageQuiz, PlayQuiz } from "./dashboards/dashboards.js"
 import { Admin, FAQs, ClassPrompt } from "./components/components.js"
