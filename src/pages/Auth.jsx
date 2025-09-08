@@ -452,7 +452,9 @@ const Auth = ({ label = "signup" }) => {
                 <br />
                 Please contact any of the undersigned
                 <br />
-                9680032837, 7337611169, 8956404950, 9079335539, 9244294331
+                Pukhraj Motwani: +919244294331 
+                <br />
+                Pankaj Soni: +919680032837 
               </p>
             </div>
           </div>
