@@ -8,7 +8,7 @@ QCM is the official quizzing society of Maulana Azad National Institute of Techn
 1. Clone the repository:
 
  ```bash
-   git clone "https://github.com/pecee06/qcm-website"
+   git clone "https://github.com/quizzersclubmanit/qcm-website"
 ```
 
 2. Install dependencies:
@@ -37,3 +37,4 @@ QCM provides a platform for enhancing quizzing skills and fostering a collaborat
 - [Pukhraj Motwani](https://github.com/pm-235779)
 - [Pankaj Soni](https://github.com/Pankajinos)
 - [Mradul Gupta](https://github.com/Mradulgupta1)
+
