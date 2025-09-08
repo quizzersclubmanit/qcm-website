@@ -1,6 +1,6 @@
 // Auth service - Connected to Prisma MongoDB backend
 
-const API_BASE_URL = 'https://qcm-backend-ln5c.onrender.com/api'
+const API_BASE_URL = 'https://qcm-backend-ln5c.onrender.com'
 
 class Auth {
   async signupAndLogin({ email, password, name, phone, city, school, sex }) {
