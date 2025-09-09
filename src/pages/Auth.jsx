@@ -288,7 +288,7 @@ const Auth = ({ label = "signup" }) => {
                 href="https://drive.google.com/file/d/1qBS5jWor5SI7wEns-XA0T6FsDdSRUmWY/view?usp=sharing"
                 target="_blank"
               >
-                Download IQC 2024 Edition Brochure
+                Download IQC 2025 Edition Brochure
               </a>
               {/* <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
