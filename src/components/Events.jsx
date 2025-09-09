@@ -20,7 +20,7 @@ const Events = () => {
       },
       {
         breakpoint: 815,
-        settings: { arrows: false, slidesToShow: 1 }
+        settings: { arrows: false, slidesToShow: 1}
       }
     ]
   }
@@ -30,7 +30,7 @@ const Events = () => {
       id="events"
       className="w-screen sm:px-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] flex flex-col sm:justify-between justify-center gap-5 items-center"
     >
-      <SectionHead label="Events" className="text-white" />
+      <SectionHead label="Events" className="text-white bg-red" />
       <Slider {...settings}>
         {eventDetails.map((dets, index) => (
           <EventCard dets={dets} key={index} />
@@ -41,3 +41,4 @@ const Events = () => {
 }
 
 export default Events
+
