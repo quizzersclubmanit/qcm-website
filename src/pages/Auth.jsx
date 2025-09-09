@@ -276,16 +276,16 @@ const Auth = ({ label = "signup" }) => {
               className="hidden md:flex"
             />
             <div className="mt-4 md:self-start mb-0 flex flex-col ">
-              <a
+              {/* <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
                 href="https://drive.google.com/file/d/1NN5XC3IZqS71jfkH3dDQoHBof8AyMetz/view?usp=sharing"
                 target="_blank"
               >
                 Download Instructions
-              </a>
+              </a> */}
               <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
-                href="https://drive.google.com/file/d/1v7uGkuJqD19WnxJY4LRiIaKlwORDSRfI/view?usp=sharing"
+                href="https://drive.google.com/file/d/1qBS5jWor5SI7wEns-XA0T6FsDdSRUmWY/view?usp=sharing"
                 target="_blank"
               >
                 Download IQC 2024 Edition Brochure
