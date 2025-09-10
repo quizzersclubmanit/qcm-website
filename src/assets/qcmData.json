@@ -1501,19 +1501,9 @@
       "category": "Co-Title Sponsors",
       "brands": [
         {
-          "brand": "State Bank of India",
+          "brand": "Madhya Pradesh State Tourism Development Corporation ",
           "logo": "66da1527002e51b12cab",
-          "website": "https://www.onlinesbi.sbi/"
-        },
-        {
-          "brand": "Bharat Petroleum Corporation",
-          "logo": "66da128f002c0572ca3e",
-          "website": "https://www.bharatpetroleum.in/"
-        },
-        {
-          "brand": "National Thermal Power Corporation",
-          "logo": "66dd0087001ad67bb3af",
-          "website": "https://ntpc.co.in/"
+          "website": "https://mpstdc.com/"
         }
       ]
     },
@@ -1521,19 +1511,9 @@
       "category": "Associate Sponsors",
       "brands": [
         {
-          "brand": "Camlin",
-          "logo": "66ddf8e2000f8540504f",
-          "website": "https://www.kokuyocamlin.com/camlin/"
-        },
-        {
           "brand": "Life Insurance Corporation",
           "logo": "66ddf94a00117e28e559",
           "website": "https://licindia.in/"
-        },
-        {
-          "brand": "Khaadi",
-          "logo": "66da12b30031d25a96a6",
-          "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
         },
         {
           "brand": "Civil Services Club",
@@ -1549,62 +1529,9 @@
           "brand": "Quill Bot",
           "logo": "66da12e6003e0a5c5bb3",
           "website": "https://quillbot.com/paragraph-rewriter"
-        },
-        {
-          "brand": "Unstop",
-          "logo": "66da13000015aac60b14",
-          "website": "https://unstop.com/"
-        },
-        {
-          "brand": "Symbolab",
-          "logo": "67085c97001819ace42e",
-          "website": "https://www.symbolab.com/"
-        },
-        {
-          "brand": "Language Tool",
-          "logo": "67085c90003a3d2feab3",
-          "website": "https://languagetool.org/"
         }
       ]
     },
-    {
-      "category": "Gifting Sponsors",
-      "brands": [
-        {
-          "brand": "Kabira",
-          "logo": "66da12ad003d69be651b",
-          "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
-        },
-        {
-          "brand": "Mrig Naini",
-          "logo": "66da12cd003a517d1ea3",
-          "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
-        },
-        {
-          "brand": "Vidhya Valley",
-          "logo": "66da13070031c9507486",
-          "website": "http://crisponlineservices.com/services/khadi/user_Registration_khadi.aspx"
-        }
-      ]
-    },
-    [
-      {
-        "category": "Prize Sponsor",
-        "brand": {
-          "name": "M.P. State Electronics Development Corporation Ltd.",
-          "logo": "66da12c2000ce7fb483c",
-          "website": "https://mpsedc.mp.gov.in/"
-        }
-      },
-      {
-        "category": "Design Partner",
-        "brand": {
-          "name": "Canva",
-          "logo": "66da129a000a51ab4648",
-          "website": "https://www.canva.com/en_in/"
-        }
-      }
-    ],
     [
       {
         "category": "Snacks Partner",
@@ -1620,24 +1547,6 @@
           "name": "Cornitos",
           "logo": "66da129e002f118b947b",
           "website": "https://www.cornitos.in/"
-        }
-      },
-      {
-        "category": "Beauty Partner",
-        "brand": {
-          "name": "My Glamm",
-          "logo": "66dd007e00264f7a8e3b",
-          "website": "https://www.myglamm.com/"
-        }
-      }
-    ],
-    [
-      {
-        "category": "Hospitality Partner",
-        "brand": {
-          "name": "Easy My Trip",
-          "logo": "66da12a3002407998ec7",
-          "website": "https://www.easemytrip.com/"
         }
       },
       {
