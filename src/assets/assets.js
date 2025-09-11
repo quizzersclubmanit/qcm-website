@@ -8,7 +8,7 @@ import liveGif from "./live.gif"
 import manit from "./manit.jpg"
 import team from "./team.jpg"
 import poster from "./compressedPoster.jpg"
-import myglamm from "./myglamm.jpg"
+// import myglamm from "./myglamm.jpg"
 import slots from "./slots.png"
 
 export {
@@ -22,6 +22,6 @@ export {
   manit,
   team,
   poster,
-  myglamm,
+  // myglamm,
   slots
 }
