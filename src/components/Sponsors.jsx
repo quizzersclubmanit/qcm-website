@@ -27,10 +27,7 @@ const Sponsors = () => {
                       className="h-[20vh] mx-4 sm:mx-0 flex justify-center items-center border-2 border-black p-1 my-8 shadow-[10px_10px_18px_-1px_rgba(88,163,232,1)] hover:scale-110 transition-all duration-300"
                     >
                       <img
-                        src={storeService.fetchFilePreview({
-                          fileId: obj.logo,
-                          bucketId: env.publicBucketId
-                        })}
+                        src={obj.logo}
                         alt={`${obj.brand} logo`}
                         className="max-h-full "
                       />
@@ -58,10 +55,7 @@ const Sponsors = () => {
                   className="h-[20vh] mx-4 sm:mx-0 flex justify-center items-center border-2 border-black p-1 my-8 shadow-[10px_10px_18px_-1px_rgba(88,163,232,1)] hover:scale-110 transition-all duration-300 w-fit"
                 >
                   <img
-                    src={storeService.fetchFilePreview({
-                      fileId: obj.brand.logo,
-                      bucketId: env.publicBucketId
-                    })}
+                    src={obj.brand.logo}
                     alt={`${obj.brand.name} logo`}
                     className="max-h-full "
                   />
