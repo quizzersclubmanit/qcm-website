@@ -30,8 +30,8 @@ const UserBtn = forwardRef(({ name, showDropDown, setShowDropDown }, ref) => {
   }, [])
 
   return (
-    <div className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2">
-      <span className="uppercase text-black">{name}</span>
+    <div className="poppins-regular py-3 px-4 flex items-center justify-center  text-sm lg:text-white border-black rounded-3xl border-2 lg:border-white overflow-y-hidden hover:backdrop-blur-md hover:text-black">
+      <span className="uppercase text-black lg:text-white">{name}</span>
       <IoIosArrowDropdownCircle
         className="text-xl cursor-pointer"
         onClick={() => {
