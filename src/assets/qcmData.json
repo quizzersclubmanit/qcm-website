@@ -1487,7 +1487,7 @@
       "brands": [
         {
           "brand": "Madhya Pradesh State Tourism Development Corporation ",
-          "logo": "66da1527002e51b12cab",
+          "logo": "https://www.mptourism.co/wp-content/uploads/2021/06/MPSTDC-New-logo.jpg",
           "website": "https://mpstdc.com/"
         }
       ]
@@ -1497,12 +1497,12 @@
       "brands": [
         {
           "brand": "Life Insurance Corporation",
-          "logo": "66ddf94a00117e28e559",
+          "logo": "https://i.pinimg.com/736x/96/67/47/966747a17f941a2f18493d82faae11bf.jpg",
           "website": "https://licindia.in/"
         },
         {
           "brand": "Civil Services Club",
-          "logo": "66dd0075002d1728d68c",
+          "logo": "https://content.jdmagicbox.com/comp/bhopal/v9/0755px755.x755.180620143125.q5v9/catalogue/civil-services-club-jawahar-chowk-bhopal-ias-institutes-inumtgkfpd-250.jpg",
           "website": "https://www.instagram.com/civil.services.club/"
         }
       ]
@@ -1512,7 +1512,7 @@
       "brands": [
         {
           "brand": "Quill Bot",
-          "logo": "66da12e6003e0a5c5bb3",
+          "logo" : "https://assets.quillbot.com/images/og-quillbot-img.png",
           "website": "https://quillbot.com/paragraph-rewriter"
         }
       ]
@@ -1522,7 +1522,7 @@
         "category": "Snacks Partner",
         "brand": {
           "name": "Unibic",
-          "logo": "66da12fa003a314a9637",
+          "logo": "https://www.unibicfoods.com/wp-content/uploads/2022/12/logo_Red-1.png",
           "website": "https://www.unibicfoods.com/"
         }
       },
@@ -1530,7 +1530,7 @@
         "category": "Munching Partner",
         "brand": {
           "name": "Cornitos",
-          "logo": "66da129e002f118b947b",
+          "logo": "https://cornitos.in/wp-content/uploads/2023/06/cropped-logo-6.png",
           "website": "https://www.cornitos.in/"
         }
       },
@@ -1538,7 +1538,7 @@
         "category": "Travel Partner",
         "brand": {
           "name": "Abhi Bus",
-          "logo": "66da128a001b61661223",
+          "logo": "https://www.abhibus.com/blog/wp-content/uploads/2023/05/abhiubs-logo.jpg",
           "website": "https://www.abhibus.com/"
         }
       }
