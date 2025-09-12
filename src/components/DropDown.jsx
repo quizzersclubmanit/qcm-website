@@ -87,10 +87,9 @@ const DropDown = forwardRef(({ user, visible = false }, ref) => {
   return (
     <div
       ref={ref}
-      className={`poppins-regular md:w-[20vw] sm:w-[35vw] w-[45vw] sm:min-h-[20vh] sm:top-[20%] top-[10%] sm:right-10 right-2 text-black bg-[#fff7] transparent-white shadow-lg rounded-lg flex flex-col items-center justify-evenly gap-3 p-6 backdrop-blur ${!visible && "opacity-0 pointer-events-none"}`}
+      className={`poppins-regular md:w-[13vw] sm:w-[35vw] w-[45vw] fixed min-h-[10vh] bottom-[0%] lg:top-[15%] right-[24%] lg:right-[12%]  text-black h-2 bg-transparent flex flex-col items-center justify-evenly ${!visible && "opacity-0 pointer-events-none"}`}
       style={{
-        transform: "translateY(-25%)",
-        position: "fixed"
+        transform: "translateY(-25%)"
       }}
     >
       {buttons.map((btn, index) => (
@@ -98,7 +97,7 @@ const DropDown = forwardRef(({ user, visible = false }, ref) => {
           key={index}
           label={btn.label}
           onClick={btn.f}
-          className={`${!btn.visible && "hidden"} text-lg border border-blue-800 w-full py-2 rounded-lg hover:bg-[#ffffff8e]`}
+          className={`${!btn.visible && "hidden"} text-lg border lg:border-white border-black w-full py-2 rounded-3xl lg:backdrop-blur-md lg:text-white hover:bg-[#ffffff8e]`}
         />
       ))}
     </div>
