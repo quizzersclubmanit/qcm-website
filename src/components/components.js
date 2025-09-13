@@ -29,7 +29,7 @@ import Popup from "./Popup"
 import PopupModal from "./PopupModal"
 import Slot from "./Slot"
 import ClassPrompt from "./ClassPrompt"
-
+import GreetingPoster from "./GreetingPoster"
 
 export {
   Header,
@@ -63,5 +63,5 @@ export {
   PopupModal,
   Slot,
   ClassPrompt,
-
+  GreetingPoster
 }
