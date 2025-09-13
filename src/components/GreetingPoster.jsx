@@ -1,16 +1,20 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from "react-redux"
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 export default function PageLoadPoster() {
   const [open, setOpen] = useState(false);
   const { data, loggedIn } = useSelector((state) => state.user)
   const dialogRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const id = setTimeout(() => setOpen(true), 300);
-    return () => clearTimeout(id);
-  }, []);
+    if (!loggedIn) {
+      const id = setTimeout(() => setOpen(true), 300);
+      return () => clearTimeout(id);
+    }
+  }, [loggedIn]);
 
   useEffect(() => {
     if (open) {
@@ -32,9 +36,21 @@ export default function PageLoadPoster() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
+  useEffect(() => {
+    if (loggedIn && open) {
+      setOpen(false);
+    }
+  }, [loggedIn, open]);
+
   function close() {
     setOpen(false);
   }
+
+  function handleRegister() {
+    navigate('/signup');
+    setOpen(false); 
+  }
+
   if (loggedIn || !open) return null;
 
   return (
@@ -80,7 +96,10 @@ export default function PageLoadPoster() {
             </div>
 
             <div className="flex gap-3 mt-1">
-              <Button className="px-5 py-2 rounded-lg shadow-lg text-white bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 transform transition-all">
+              <Button 
+                className="px-5 py-2 rounded-lg shadow-lg text-white bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 transform transition-all" 
+                onClick={handleRegister}
+              >
                 Register
               </Button>
 
