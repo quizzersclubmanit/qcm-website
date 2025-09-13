@@ -7,12 +7,14 @@ import {
   Events,
   Sponsors,
   Map,
+  GreetingPoster
 } from "../components/components"
 
 const Home = () => {
   return (
     <main>
       <Header />
+      <GreetingPoster />
       <Hero />
       <About />
       <Events />

@@ -25,7 +25,7 @@ const Modal = ({ setShowModal = () => {}, children }) => {
       ></div>
 
       <div
-        className="rounded-lg fixed top-1/2 left-1/2 sm:w-2/3 w-[90%] text-xl font-bold transparent-white py-14 z-10 flex justify-center"
+        className="rounded-lg fixed top-1/2 left-1/2 sm:w-2/3 w-[90%] text-xl font-bold transparent-white py-8 z-10 flex justify-center"
         style={{ transform: "translate(-50%, -50%)" }}
       >
         {children}

@@ -80,20 +80,20 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     <>
       <nav
         ref={ref}
-        className={`poppins-regular md:items-center md:justify-between justify-around gap-3 flex md:flex-row flex-col items-center md:overflow-y-hidden h-[50vh] lg:h-[15vh] w-full ${className}`}
+        className={`poppins-regular md:items-center md:justify-between justify-around flex md:flex-row flex-col items-center md:overflow-y-hidden sm:h-[50vh] gap-3 md:h-[15vh] lg:h-[15vh] w-full ${className}`}
       >
         <Logo
           ref={logoRef}
           className="hidden md:block md:w-[3vmax] w-[5vmax] cursor-default"
         />
-        <div className="tabs-bar flex flex-col gap-[2vw] mt-0 pt-0 md:flex-row h-22 items-center px-2 rounded-2xl">
+        <div className="tabs-bar flex flex-col gap-[2vw] mt-0 pt-0 md:flex-row h-22 lg:h-20 items-center px-2 rounded-2xl">
           {tabs.map((tab, index) =>
             tab.to.startsWith("#") ? (
               <a
                 key={index}
                 href={tab.to}
                 className="hover:text-yellow-400 transition-all text-base no-underline text-black 
-                border-2 rounded-[25px] py-[5px] px-[10px] 
+                border-2 rounded-[25px] py-[2px] px-[10px] 
                 md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
                 style={{ borderColor: "currentColor" }}
                 onClick={offModal}
@@ -164,7 +164,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
             />
             <Button
               label="Sign Up"
-              className="poppins-regular py-3 px-4 flex items-center justify-center  text-sm lg:text-white border-black rounded-3xl border-2 lg:border-white overflow-y-hidden hover:bg-blue-50 hover:text-black"
+              className="poppins-regular py-3 px-4 flex items-center justify-center  text-sm md:text-white border-black rounded-3xl border-2 md:border-white overflow-y-hidden hover:bg-blue-50 hover:text-black"
               onClick={() => {
                 navigate("/signup")
               }}
