@@ -1498,12 +1498,40 @@
   ],
   "sponsors": [
     {
+      "category": "Title Sponsors",
+      "brands": [
+        {
+          "brand": "The Hindu",
+          "logo": "https://www.getmeupadvertising.in/images/big-logo/the-hindu-logo.jpg",
+          "website": "https://www.thehindu.com/"
+        },
+        {
+          "brand": "Tata Power",
+          "logo": "https://www.tatapower.com/content/dam/tatapoweraemsitesprogram/tatapower/news---media/media-kit/media-kit-logos/TP-Black.png/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+          "website": "https://www.tatapower.com/"
+        }
+      ]
+    },
+    {
       "category": "Co-Title Sponsors",
       "brands": [
         {
           "brand": "Madhya Pradesh State Tourism Development Corporation ",
           "logo": "https://www.mptourism.co/wp-content/uploads/2021/06/MPSTDC-New-logo.jpg",
           "website": "https://mpstdc.com/"
+        },
+        {
+          "brand": "BPCL",
+          "logo": "https://www.bharatpetroleum.in/images/bpcl-golden-jubilee-logo-for-light-background.jpg",
+          "website": "https://www.bharatpetroleum.in/index"
+        },{
+          "brand": "NTPC Limited ",
+          "logo": "https://images.seeklogo.com/logo-png/39/2/ntpc-logo-png_seeklogo-390895.png",
+          "website": "https://ntpc.co.in/en"
+        },{
+          "brand": "State Bank Of India ",
+          "logo": "https://i.pinimg.com/736x/2a/2c/1d/2a2c1d90075390b22e7e6060254dab0d.jpg",
+          "website": "https://www.onlinesbi.sbi/"
         }
       ]
     },
@@ -1519,12 +1547,36 @@
           "brand": "Civil Services Club",
           "logo": "https://content.jdmagicbox.com/comp/bhopal/v9/0755px755.x755.180620143125.q5v9/catalogue/civil-services-club-jawahar-chowk-bhopal-ias-institutes-inumtgkfpd-250.jpg",
           "website": "https://www.instagram.com/civil.services.club/"
+        },
+        {
+          "brand": "MP Khadi Gramodhyog Board",
+          "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY7NPqAFWSbx6b4Ex50PM17V1eaVnq00OGKg&s",
+          "website": "https://www.kviconline.gov.in/khinstprofile/inst_detail.jsp?BEN_CD=99016"
+        },{
+          "brand": "Camlin Kokuyo",
+          "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsy6wTgjyr_pu4S29SHbtlMwnjThQFLYoFwA&s",
+          "website": "https://www.kokuyocamlin.com/camel/"
+        },
+        {
+          "brand": "Directorate Of Archaeology Archives And Museums Archives",
+          "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFH1fNugDxFfJ_AvYUeqEC8oslpkxsaUgD1A&s",
+          "website": "https://archaeology.mp.gov.in/"
         }
       ]
     },
     {
       "category": "Education Sponsors",
       "brands": [
+        {
+          "brand": "Quill Bot",
+          "logo" : "https://assets.quillbot.com/images/og-quillbot-img.png",
+          "website": "https://quillbot.com/paragraph-rewriter"
+        },
+        {
+          "brand": "Symbolab",
+          "logo" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ1ZtFyzEcXBPegFoWgz7kBgD1-hNkpxy4Ow&s",
+          "website": "https://www.symbolab.com/"
+        },
         {
           "brand": "Quill Bot",
           "logo" : "https://assets.quillbot.com/images/og-quillbot-img.png",
@@ -1555,6 +1607,32 @@
           "name": "Abhi Bus",
           "logo": "https://www.abhibus.com/blog/wp-content/uploads/2023/05/abhiubs-logo.jpg",
           "website": "https://www.abhibus.com/"
+        }
+      }
+    ],
+    [
+      {
+        "category": "Beauty Partner",
+        "brand": {
+          "name": "MyGlamm",
+          "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEWBNAhJmSt-IFF-l50Pw1d1dNHvDIq6X5Ug&s",
+          "website": "https://play.google.com/store/apps/details?id=com.myglamm.ecommerce&hl=en_IN"
+        }
+      },
+      {
+        "category": "Hospitality Partner",
+        "brand": {
+          "name": "EaseMyTrip",
+          "logo": "https://upload.wikimedia.org/wikipedia/commons/f/f8/EaseMyTrip_Logo.svg",
+          "website": "https://www.easemytrip.com/"
+        }
+      },
+      {
+        "category": "Design Partner",
+        "brand": {
+          "name": "Canva",
+          "logo": "https://public.canva.site/logo/media/dfb96cc174513093cd6ed61489ccb750.svg",
+          "website": "https://www.canva.com/"
         }
       }
     ]
