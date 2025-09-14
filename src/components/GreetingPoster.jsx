@@ -84,7 +84,7 @@ export default function PageLoadPoster() {
           <div className="flex-shrink-0 w-full md:w-1/2 flex items-center justify-center">
             <img
               className="w-full md:w-auto max-w-sm md:max-w-md h-auto object-contain rounded-lg shadow-lg max-h-[70vh] md:max-h-[75vh]"
-              src="https://res.cloudinary.com/dajbfxkin/image/upload/v1757754585/WhatsApp_Image_2025-09-13_at_14.26.11_6830c8e9_ivv3b9.jpg"
+              src="https://res.cloudinary.com/dajbfxkin/image/upload/v1757868327/IQC_25_poster_2_s2af5z.jpg"
               alt="poster"
             />
           </div>
