@@ -1576,11 +1576,6 @@
           "brand": "Symbolab",
           "logo" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ1ZtFyzEcXBPegFoWgz7kBgD1-hNkpxy4Ow&s",
           "website": "https://www.symbolab.com/"
-        },
-        {
-          "brand": "Quill Bot",
-          "logo" : "https://assets.quillbot.com/images/og-quillbot-img.png",
-          "website": "https://quillbot.com/paragraph-rewriter"
         }
       ]
     },
