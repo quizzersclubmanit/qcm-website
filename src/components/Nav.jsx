@@ -31,7 +31,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     }
   ]
   const { data, loggedIn } = useSelector((state) => state.user)
-  const name = data.name?.split(" ")[0] || "User"
+  const name = data?.name?.split(" ")[0] || "User"
   const navigate = useNavigate()
   const logoRef = useRef(null)
   const [showDropDown, setShowDropDown] = useState(false)
