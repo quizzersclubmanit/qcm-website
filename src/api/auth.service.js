@@ -1,6 +1,5 @@
 // Auth service - Connected to Prisma MongoDB backend
-
-const API_BASE_URL = "https://qcm-backend-ln5c.onrender.com"
+const API_BASE_URL = import.meta.env.API_BASE_URL || 'http://localhost:3000';
 
 class Auth {
   async signupAndLogin({ email, password, name, phone, city, school, sex }) {
@@ -8,18 +7,6 @@ class Auth {
       if (name === "admin") {
         throw new Error("Name is reserved. Please enter another name")
       }
-
-      console.log("Frontend sending signup data:", {
-        email,
-        password: "***",
-        name,
-        phone,
-        city,
-        school,
-        sex
-      })
-      console.log("API URL:", `${API_BASE_URL}/api/auth/signup`)
-
       const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
         method: "POST",
         headers: {
@@ -37,11 +24,8 @@ class Auth {
         })
       })
 
-      console.log("Response status:", response.status)
-      console.log("Response headers:", response.headers)
 
       const data = await response.json()
-      console.log("Response data:", data)
 
       if (!response.ok) {
         console.error(
@@ -67,10 +51,7 @@ class Auth {
 
   async login({ email = "", password = "" }) {
     try {
-      console.log("Frontend sending login data:", { email, password: "***" })
-      console.log("API URL:", `${API_BASE_URL}/api/auth/login`)
-
-      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+       const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -78,12 +59,7 @@ class Auth {
         credentials: "include",
         body: JSON.stringify({ email, password })
       })
-
-      console.log("Login response status:", response.status)
-      console.log("Login response headers:", response.headers)
-
       const data = await response.json()
-      console.log("Login response data:", data)
 
       if (!response.ok) {
         console.error(

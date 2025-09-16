@@ -146,7 +146,6 @@ const Auth = ({ label = "signup" }) => {
   const dispatch = useDispatch()
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
-
   const [userId, setUserId] = useState("")
   const [newPass, setNewPass] = useState("")
   const fields = [
@@ -210,6 +209,7 @@ const Auth = ({ label = "signup" }) => {
       })
       .catch((error) => {
         console.error(error)
+        navigate('/')
         toast(error.message)
       })
       .finally(() => {
