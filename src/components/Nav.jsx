@@ -1,12 +1,9 @@
-import { useNavigate, Link, useLocation } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { Button, DropDown, UserBtn, Logo } from "./components"
-import authService from "../api/auth.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { login, setData } from "../redux/user.slice"
+import { useSelector } from "react-redux"
 
 const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
-  const location = useLocation()
   const tabs = [
     {
       name: "Home",
@@ -36,7 +33,6 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   const { data, loggedIn } = useSelector((state) => state.user)
   const name = data.name?.split(" ")[0] || "User"
   const navigate = useNavigate()
-  const dispatch = useDispatch()
   const logoRef = useRef(null)
   const [showDropDown, setShowDropDown] = useState(false)
   const dropDownRef = useRef(null)
@@ -51,30 +47,9 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  useEffect(() => {
-    // Temporarily disable auto auth check to prevent 401 errors on deployment
-    // TODO: Re-enable this after fixing CORS issues
-    return
-    
-    // Skip auth check on authentication pages to prevent 401 errors
-    const authPages = ['/signup', '/signin', '/reset-password', '/login']
-    if (authPages.includes(location.pathname)) {
-      return
-    }
+  
 
-    authService
-      .getCurrentUser()
-      .then((user) => {
-        dispatch(setData(user))
-        dispatch(login())
-      })
-      .catch((error) => {
-        // Silently handle authentication errors - user is not logged in
-        if (error.message !== 'Not authenticated') {
-          console.error('Auth check error:', error)
-        }
-      })
-  }, [location.pathname])
+  
 
   return (
     <>
