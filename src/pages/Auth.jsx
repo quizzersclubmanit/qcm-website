@@ -281,7 +281,7 @@ const Auth = ({ label = "signup" }) => {
                 href="https://drive.google.com/file/d/1c4P0ZzeJLSf-SEluBLZzi_WGeEbfJLP9/view?usp=drive_link"
                 target="_blank"
               >
-                Download IQC Sample Quetions 
+                Download IQC Sample Questions 
               </a>
               {/* <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
