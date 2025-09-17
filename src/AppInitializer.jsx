@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setData, login, logout } from "./redux/user.slice";
+import authService from "./api/auth.service";
 
 function safeDecodeJwt(token) {
   try {
@@ -23,27 +24,57 @@ export default function AppInitializer({ children }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('AppInitializer: Checking for stored auth data...');
+    
     const token = localStorage.getItem("authToken") || localStorage.getItem("token");
     const storedUser = localStorage.getItem("userData");
+    
+    console.log('AppInitializer: Token exists:', !!token);
+    console.log('AppInitializer: User data exists:', !!storedUser);
 
-    if (!token || !storedUser) return;
+    // If no token, remain logged out
+    if (!token) {
+      console.log('AppInitializer: No token present, staying logged out');
+      dispatch(logout());
+      return;
+    }
 
+    // Quick local validity check (expiry), but do NOT auto-login yet
     const payload = safeDecodeJwt(token);
     const isValid = payload && payload.exp && payload.exp * 1000 > Date.now();
+    console.log('AppInitializer: Token valid (local check):', isValid);
 
-    if (isValid) {
-      try {
-        dispatch(setData(JSON.parse(storedUser)));
-        dispatch(login());
-      } catch (e) {
-        // ignore parsing/dispatch errors
-      }
-    } else {
+    if (!isValid) {
+      console.log('AppInitializer: Token expired, clearing storage');
       localStorage.removeItem("authToken");
       localStorage.removeItem("token");
       localStorage.removeItem("userData");
-      try { dispatch(logout()); } catch {}
+      dispatch(logout());
+      return;
     }
+
+    // Validate with backend before logging in
+    (async () => {
+      try {
+        const currentUser = await authService.getCurrentUser();
+        if (currentUser && currentUser._id) {
+          console.log('AppInitializer: Backend validated user. Logging in.');
+          // Persist latest user
+          try { localStorage.setItem('userData', JSON.stringify(currentUser)); } catch {}
+          dispatch(setData(currentUser));
+          dispatch(login());
+        } else {
+          console.log('AppInitializer: Backend returned null user. Staying logged out.');
+          localStorage.removeItem('userData');
+          dispatch(logout());
+        }
+      } catch (err) {
+        console.log('AppInitializer: Backend validation failed. Staying logged out.', err?.message);
+        // If backend says not authenticated or no user, keep logged out and clear stale storage
+        localStorage.removeItem('userData');
+        dispatch(logout());
+      }
+    })();
   }, [dispatch]);
 
   return children;
