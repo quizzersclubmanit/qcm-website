@@ -34,8 +34,8 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     }
   ]
   const { data, loggedIn } = useSelector((state) => state.user)
-  const name = data?.name?.split(" ")[0] || "User"
-  const isAdmin = data?.email === "admin@qcm.in"
+  const name = data.name?.split(" ")[0] || "User"
+  const isAdmin = data.email === "admin@qcm.in"
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const logoRef = useRef(null)
