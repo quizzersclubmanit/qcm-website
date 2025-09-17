@@ -1,5 +1,7 @@
 // Auth service - Connected to Prisma MongoDB backend
 const API_BASE_URL = 'https://qcm-backend-ln5c.onrender.com'
+// const API_BASE_URL = 'http://localhost:3000'
+
 
 class Auth {
   async signupAndLogin({ email, password, name, phone, city, school, sex }) {
@@ -51,7 +53,7 @@ class Auth {
 
   async login({ email = "", password = "" }) {
     try {
-       const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -85,6 +87,7 @@ class Auth {
 
   async getCurrentUser() {
     try {
+      console.log("Fetching current user from:", `${API_BASE_URL}/api/auth/me`)
       const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
         method: "GET",
         credentials: "include"
