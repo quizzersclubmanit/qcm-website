@@ -84,22 +84,26 @@ class Auth {
         throw new Error(data.error || 'Login failed')
       }
       
-      // Try to get the token from the response or cookies
-      const token = data.token || 
-                   document.cookie
-                     .split('; ')
-                     .find(row => row.startsWith('token='))
-                     ?.split('=')[1];
-      
-      // Store token in localStorage for future requests
-      if (token) {
-        console.log('Storing token in localStorage:', token.substring(0, 10) + '...');
-        localStorage.setItem('token', token);
-        localStorage.setItem('authToken', token);
+      // Store token from response (production fix for cross-origin cookies)
+      if (data.token) {
+        console.log('Storing token in localStorage from response');
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('authToken', data.token);
       } else {
-        console.warn('No token received in login response');
-        console.log('Available cookies:', document.cookie);
-        console.log('Response data keys:', Object.keys(data));
+        // Fallback: try to get from cookies (for localhost)
+        const cookieToken = document.cookie
+          .split('; ')
+          .find(row => row.startsWith('token='))
+          ?.split('=')[1];
+        
+        if (cookieToken) {
+          console.log('Storing token from cookies');
+          localStorage.setItem('token', cookieToken);
+          localStorage.setItem('authToken', cookieToken);
+        } else {
+          console.warn('No token received in login response or cookies');
+          console.log('Response data:', data);
+        }
       }
       
       // Store user data for persistence
@@ -134,7 +138,7 @@ class Auth {
                      ?.split('=')[1];
       
       if (!token) {
-        console.warn('No authentication token found');
+        // Silently return null if no token (expected when not logged in)
         return null;
       }
       
@@ -192,6 +196,7 @@ class Auth {
       // Clear local storage first
       localStorage.removeItem('token');
       localStorage.removeItem('authToken');
+      localStorage.removeItem('userData');
       
       // Clear cookies
       document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -227,6 +232,7 @@ class Auth {
       // Ensure we still clear local data even if something else fails
       localStorage.removeItem('token');
       localStorage.removeItem('authToken');
+      localStorage.removeItem('userData');
       document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
       
       // Only throw if it's not a network error
