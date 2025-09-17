@@ -39,14 +39,7 @@ class Auth {
         console.error('Signup failed with status:', response.status, 'Error:', data.error);
         throw new Error(data.error || 'Signup failed')
       }
-      // If backend returns a token on signup, persist it
-      try {
-        const token = data.token || null;
-        if (token) {
-          localStorage.setItem('token', token);
-          localStorage.setItem('authToken', token);
-        }
-      } catch {}
+      
       return data.user
     } catch (error) {
       console.error('Signup error:', error);
@@ -84,35 +77,22 @@ class Auth {
         throw new Error(data.error || 'Login failed')
       }
       
-      // Store token from response (production fix for cross-origin cookies)
-      if (data.token) {
-        console.log('Storing token in localStorage from response');
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('authToken', data.token);
-      } else {
-        // Fallback: try to get from cookies (for localhost)
-        const cookieToken = document.cookie
-          .split('; ')
-          .find(row => row.startsWith('token='))
-          ?.split('=')[1];
-        
-        if (cookieToken) {
-          console.log('Storing token from cookies');
-          localStorage.setItem('token', cookieToken);
-          localStorage.setItem('authToken', cookieToken);
-        } else {
-          console.warn('No token received in login response or cookies');
-          console.log('Response data:', data);
-        }
-      }
+      // Try to get the token from the response or cookies
+      const token = data.token || 
+                   document.cookie
+                     .split('; ')
+                     .find(row => row.startsWith('token='))
+                     ?.split('=')[1];
       
-      // Store user data for persistence (production fix)
-      if (data.user) {
-        try {
-          localStorage.setItem('userData', JSON.stringify(data.user));
-        } catch (e) {
-          console.warn('Failed to store user data:', e);
-        }
+      // Store token in localStorage for future requests
+      if (token) {
+        console.log('Storing token in localStorage:', token.substring(0, 10) + '...');
+        localStorage.setItem('token', token);
+        localStorage.setItem('authToken', token);
+      } else {
+        console.warn('No token received in login response');
+        console.log('Available cookies:', document.cookie);
+        console.log('Response data keys:', Object.keys(data));
       }
       
       return data.user
@@ -138,7 +118,7 @@ class Auth {
                      ?.split('=')[1];
       
       if (!token) {
-        // Silently return null if no token (expected when not logged in)
+        console.warn('No authentication token found');
         return null;
       }
       
@@ -178,13 +158,7 @@ class Auth {
       
       const data = await response.json();
       console.log('Current user data:', data);
-      
-      // If user is null, throw error to prevent auto-login
-      if (!data.user || data.user === null) {
-        throw new Error('No user data available');
-      }
-      
-      return data.user;
+      return data.user || data; // Handle both { user } and direct user object responses
     } catch (error) {
       console.error('Error in getCurrentUser:', error);
       // Only rethrow if it's not a 401 (which is expected when not logged in)
@@ -202,7 +176,6 @@ class Auth {
       // Clear local storage first
       localStorage.removeItem('token');
       localStorage.removeItem('authToken');
-      localStorage.removeItem('userData');
       
       // Clear cookies
       document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -238,7 +211,6 @@ class Auth {
       // Ensure we still clear local data even if something else fails
       localStorage.removeItem('token');
       localStorage.removeItem('authToken');
-      localStorage.removeItem('userData');
       document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
       
       // Only throw if it's not a network error
