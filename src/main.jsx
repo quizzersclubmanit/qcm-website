@@ -24,6 +24,7 @@ import { AddQuiz, ManageQuiz, PlayQuiz } from "./dashboards/dashboards.js"
 import { Admin, FAQs, ClassPrompt } from "./components/components.js"
 import { Provider } from "react-redux"
 import store from "./redux/store.js"
+import AppInitializer from "./AppInitializer.jsx"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,11 +42,11 @@ const router = createBrowserRouter(
       />
       <Route path="account/verification/:dets" element={<Verification />} />
       <Route path="events/:eventId" element={<Event />} />
-      {/*<Route path="quiz/" element={<Outlet />}>
+      <Route path="quiz/" element={<Outlet />}>
         <Route path="instr/:sec" element={<ClassPrompt />} />
         <Route path="play/:sec" element={<PlayQuiz />} />
         <Route path="result/:msg" element={<Result />} />
-      </Route>*/}
+      </Route>
       <Route path="admin/" element={<Admin />}>
         <Route path="add" element={<AddQuiz />} />
         <Route path="manage" element={<ManageQuiz />} />
@@ -61,6 +62,8 @@ const elem = document.getElementById("root")
 const root = ReactDOM.createRoot(elem)
 root.render(
   <Provider store={store}>
-    <RouterProvider router={router} />
+    <AppInitializer>
+      <RouterProvider router={router} />
+    </AppInitializer>
   </Provider>
 )

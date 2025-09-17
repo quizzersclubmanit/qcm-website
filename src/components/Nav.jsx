@@ -1,9 +1,12 @@
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link, useLocation } from "react-router-dom"
 import { Button, DropDown, UserBtn, Logo } from "./components"
+import authService from "../api/auth.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { login, setData } from "../redux/user.slice"
 
 const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
+  const location = useLocation()
   const tabs = [
     {
       name: "Home",
@@ -32,7 +35,9 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   ]
   const { data, loggedIn } = useSelector((state) => state.user)
   const name = data?.name?.split(" ")[0] || "User"
+  const isAdmin = data?.email === "admin@qcm.in"
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const logoRef = useRef(null)
   const [showDropDown, setShowDropDown] = useState(false)
   const dropDownRef = useRef(null)
@@ -47,28 +52,26 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  
-
-  
+  // Auth is now handled by AppInitializer - no need for redundant checks here
 
   return (
     <>
       <nav
         ref={ref}
-        className={`poppins-regular md:items-center md:justify-between justify-around flex md:flex-row flex-col items-center md:overflow-y-hidden sm:h-[50vh] gap-3 md:h-[15vh] lg:h-[15vh] w-full ${className}`}
+        className={`poppins-regular md:items-center md:justify-between justify-around gap-3 flex md:flex-row flex-col items-center md:overflow-y-hidden h-[50vh] lg:h-[15vh] w-full ${className}`}
       >
         <Logo
           ref={logoRef}
           className="hidden md:block md:w-[3vmax] w-[5vmax] cursor-default"
         />
-        <div className="tabs-bar flex flex-col gap-[2vw] mt-0 pt-0 md:flex-row h-22 lg:h-20 items-center px-2 rounded-2xl">
+        <div className="tabs-bar flex flex-col gap-[2vw] mt-0 pt-0 md:flex-row h-22 items-center px-2 rounded-2xl">
           {tabs.map((tab, index) =>
             tab.to.startsWith("#") ? (
               <a
                 key={index}
                 href={tab.to}
                 className="hover:text-yellow-400 transition-all text-base no-underline text-black 
-                border-2 rounded-[25px] py-[2px] px-[10px] 
+                border-2 rounded-[25px] py-[5px] px-[10px] 
                 md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
                 style={{ borderColor: "currentColor" }}
                 onClick={offModal}
@@ -92,11 +95,6 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
         </div>
         {loggedIn ? (
           <div className="flex sm:flex-row flex-col">
-            {/* <Button
-              label="Play Quiz"
-              onClick={() => navigate("/quiz/instr/0")}
-              className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2"
-            /> */}
             {/* <Button
               label="IQC Preparation Booklet"
               onClick={() =>
@@ -139,7 +137,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
             />
             <Button
               label="Sign Up"
-              className="poppins-regular py-3 px-4 flex items-center justify-center  text-sm md:text-white border-black rounded-3xl border-2 md:border-white overflow-y-hidden hover:bg-blue-50 hover:text-black"
+              className="poppins-regular py-3 px-4 flex items-center justify-center  text-sm lg:text-white border-black rounded-3xl border-2 lg:border-white overflow-y-hidden hover:bg-blue-50 hover:text-black"
               onClick={() => {
                 navigate("/signup")
               }}
@@ -147,7 +145,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
           </div>
         )}
       </nav>
-      <DropDown ref={dropDownRef} user={name} visible={showDropDown} />
+      <DropDown ref={dropDownRef} user={isAdmin ? "admin" : name} visible={showDropDown} />
     </>
   )
 })
