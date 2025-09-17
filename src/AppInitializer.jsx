@@ -32,9 +32,11 @@ export default function AppInitializer({ children }) {
     console.log('AppInitializer: Token exists:', !!token);
     console.log('AppInitializer: User data exists:', !!storedUser);
 
-    // If no token, remain logged out
+    // If no token, remain logged out and clear any stale user info
     if (!token) {
       console.log('AppInitializer: No token present, staying logged out');
+      try { localStorage.removeItem('userData'); } catch {}
+      dispatch(setData({}));
       dispatch(logout());
       return;
     }
@@ -49,6 +51,7 @@ export default function AppInitializer({ children }) {
       localStorage.removeItem("authToken");
       localStorage.removeItem("token");
       localStorage.removeItem("userData");
+      dispatch(setData({}));
       dispatch(logout());
       return;
     }
@@ -66,12 +69,14 @@ export default function AppInitializer({ children }) {
         } else {
           console.log('AppInitializer: Backend returned null user. Staying logged out.');
           localStorage.removeItem('userData');
+          dispatch(setData({}));
           dispatch(logout());
         }
       } catch (err) {
         console.log('AppInitializer: Backend validation failed. Staying logged out.', err?.message);
         // If backend says not authenticated or no user, keep logged out and clear stale storage
         localStorage.removeItem('userData');
+        dispatch(setData({}));
         dispatch(logout());
       }
     })();
