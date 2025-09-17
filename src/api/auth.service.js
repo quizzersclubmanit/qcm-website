@@ -105,34 +105,34 @@ class Auth {
     }
   }
 
-  async getCurrentUser() {
-    try {
-      console.log('Fetching current user from:', `${API_BASE_URL}/api/auth/me`);
+  // async getCurrentUser() {
+  //   try {
+  //     console.log('Fetching current user from:', `${API_BASE_URL}/api/auth/me`);
       
-      // Get token from localStorage or cookies
-      const token = localStorage.getItem('token') || 
-                   localStorage.getItem('authToken') ||
-                   document.cookie
-                     .split('; ')
-                     .find(row => row.startsWith('token='))
-                     ?.split('=')[1];
+  //     // Get token from localStorage or cookies
+  //     const token = localStorage.getItem('token') || 
+  //                  localStorage.getItem('authToken') ||
+  //                  document.cookie
+  //                    .split('; ')
+  //                    .find(row => row.startsWith('token='))
+  //                    ?.split('=')[1];
       
-      if (!token) {
-        console.warn('No authentication token found');
-        return null;
-      }
+  //     if (!token) {
+  //       console.warn('No authentication token found');
+  //       return null;
+  //     }
       
-      console.log('Using token for auth/me request');
+  //     console.log('Using token for auth/me request');
       
-      const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Accept': 'application/json',
-          'Cache-Control': 'no-cache',
-          'Authorization': `Bearer ${token}`
-        }
-      });
+  //     const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
+  //       method: 'GET',
+  //       credentials: 'include',
+  //       headers: {
+  //         'Accept': 'application/json',
+  //         'Cache-Control': 'no-cache',
+  //         'Authorization': `Bearer ${token}`
+  //       }
+  //     });
       
       console.log('Auth/me response status:', response.status);
       
