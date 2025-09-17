@@ -22,6 +22,7 @@ import toast from "react-hot-toast"
 import { schools } from "../assets/qcmData.json"
 import { filterObjects } from "../utils/utils"
 
+
 // Forgot Password Component
 const ForgotPasswordButton = () => {
   const [email, setEmail] = useState("")
@@ -57,7 +58,7 @@ const ForgotPasswordButton = () => {
       >
         Forgot Password?
       </button>
-      
+
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-100">
@@ -76,11 +77,11 @@ const ForgotPasswordButton = () => {
                   </svg>
                 </button>
               </div>
-              
+
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                 Enter your email address and we'll send you a secure link to reset your password.
               </p>
-              
+
               <form onSubmit={handleForgotPassword} className="space-y-4">
                 <div>
                   <label htmlFor="reset-email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -96,7 +97,7 @@ const ForgotPasswordButton = () => {
                     required
                   />
                 </div>
-                
+
                 <div className="flex gap-3 pt-2">
                   <button
                     type="submit"
@@ -185,7 +186,7 @@ const Auth = ({ label = "signup" }) => {
     )
   }, [showPassword])
 
-  const authenticate = useCallback((f = async () => {}, formData = {}) => {
+  const authenticate = useCallback((f = async () => { }, formData = {}) => {
     setLoading(true)
     f({
       email: formData.email,
@@ -262,6 +263,11 @@ const Auth = ({ label = "signup" }) => {
         </p>
       </Popup>
     )
+  const handleCityChange = (e) => {
+    const city = e.target.value;
+    setSelectedCity(city);
+    setValue("school", ""); // reset school when city changes
+  };
   return (
     <>
       <Container
@@ -281,7 +287,7 @@ const Auth = ({ label = "signup" }) => {
                 href="https://drive.google.com/file/d/1c4P0ZzeJLSf-SEluBLZzi_WGeEbfJLP9/view?usp=drive_link"
                 target="_blank"
               >
-                Download IQC Sample Quetions 
+                Download IQC Sample Quetions
               </a>
               {/* <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
@@ -358,6 +364,20 @@ const Auth = ({ label = "signup" }) => {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
+
+                    <select
+                      className="p-1 cursor-pointer focus:outline-none"
+                      {...register("city")}
+                      value={selectedCity}
+                      onChange={handleCityChange}
+                    >
+                      <option value="bhopal">Bhopal</option>
+                      <option value="indore">Indore</option>
+                      <option value="gwalior">Gwalior</option>
+                      <option value="ujjain">Ujjain</option>
+                      <option value="jabalpur">Jabalpur</option>
+                    </select>
+
                     <select
                       className="p-1 cursor-pointer focus:outline-none text-gray-400"
                       defaultValue=""
@@ -380,19 +400,6 @@ const Auth = ({ label = "signup" }) => {
                           )
                         }
                       )}
-                    </select>
-
-                    <select
-                      className="p-1 cursor-pointer focus:outline-none"
-                      {...register("city")}
-                      value={selectedCity}
-                      onChange={(e) => setSelectedCity(e.target.value)}
-                    >
-                      <option value="bhopal">Bhopal</option>
-                      <option value="indore">Indore</option>
-                      <option value="gwalior">Gwalior</option>
-                      <option value="ujjain">Ujjain</option>
-                      <option value="jabalpur">Jabalpur</option>
                     </select>
                   </div>
                 </>
@@ -438,7 +445,7 @@ const Auth = ({ label = "signup" }) => {
             </form>
 
             <div className="flex justify-between text-sm">
-{/*               <Link
+              {/*               <Link
                 className="text-blue-500"
                 to={label == "signup" ? "/login" : "/register"}
               >
@@ -458,10 +465,10 @@ const Auth = ({ label = "signup" }) => {
                 Facing any difficulty while registering?
                 <br />
                 Please contact any of the undersigned
-                 <br />
-                Pukhraj Motwani: +919244294331 
                 <br />
-                Pankaj Soni: +919680032837 
+                Pukhraj Motwani: +919244294331
+                <br />
+                Pankaj Soni: +919680032837
               </p>
             </div>
           </div>
