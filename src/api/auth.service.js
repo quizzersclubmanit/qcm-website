@@ -106,7 +106,7 @@ class Auth {
         }
       }
       
-      // Store user data for persistence
+      // Store user data for persistence (production fix)
       if (data.user) {
         try {
           localStorage.setItem('userData', JSON.stringify(data.user));
@@ -178,7 +178,13 @@ class Auth {
       
       const data = await response.json();
       console.log('Current user data:', data);
-      return data.user || data; // Handle both { user } and direct user object responses
+      
+      // If user is null, throw error to prevent auto-login
+      if (!data.user || data.user === null) {
+        throw new Error('No user data available');
+      }
+      
+      return data.user;
     } catch (error) {
       console.error('Error in getCurrentUser:', error);
       // Only rethrow if it's not a 401 (which is expected when not logged in)
