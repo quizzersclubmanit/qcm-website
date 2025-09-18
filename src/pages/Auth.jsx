@@ -281,6 +281,13 @@ const Auth = ({ label = "signup" }) => {
               className="hidden md:flex"
             />
             <div className="mt-4 md:self-start mb-0 flex flex-col ">
+               <a
+                className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
+                href="https://drive.google.com/file/d/1c4P0ZzeJLSf-SEluBLZzi_WGeEbfJLP9/view?usp=drive_link"
+                target="_blank"
+              >
+                Download IQC Sample Quetions 
+              </a>
               {/* <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
                 href="https://drive.google.com/file/d/1NN5XC3IZqS71jfkH3dDQoHBof8AyMetz/view?usp=sharing"
