@@ -3,7 +3,7 @@ import { Button, DropDown, UserBtn, Logo } from "./components"
 import authService from "../api/auth.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { login, setData } from "../redux/user.slice"
+import { login, logout, setData } from "../redux/user.slice"
 
 const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   const location = useLocation()
@@ -34,8 +34,8 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     }
   ]
   const { data, loggedIn } = useSelector((state) => state.user)
-  const name = data.name?.split(" ")[0] || "User"
-  const isAdmin = data.email === "admin@qcm.in"
+  const name = data?.name?.split(" ")[0] || "User"
+  const isAdmin = data?.email === "admin@qcm.in"
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const logoRef = useRef(null)
