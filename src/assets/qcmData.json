@@ -232,6 +232,8 @@
       "city": "Bhopal",
       "pin code": "462036"
     },
+  
+    
     {
       "institution": "Maharishi Vidya Mandir",
       "city": "Bhopal",
@@ -1299,6 +1301,11 @@
     },
     {
       "institution": "Kendriya Vidyalaya",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+      {
+      "institution": "Lokmanya Tilak Higher Secondary School",
       "city": "Ujjain",
       "pin code": "456010"
     },
