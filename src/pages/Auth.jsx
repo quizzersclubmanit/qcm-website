@@ -236,6 +236,12 @@ const Auth = ({ label = "signup" }) => {
     }
   }
 
+  const handleCityChange = (e) => {
+    const city = e.target.value;
+     setSelectedCity(city);
+     setValue("school", ""); // reset school when city changes
+  };
+
   if (loading) return <Loader />
   if (label == "update-password")
     return (
@@ -363,6 +369,21 @@ const Auth = ({ label = "signup" }) => {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
+
+                    <select
+                      className="p-1 cursor-pointer focus:outline-none"
+                      {...register("city")}
+                      value={selectedCity}
+                      onChange={handleCityChange}
+                    >
+                      <option value="bhopal">Bhopal</option>
+                      <option value="indore">Indore</option>
+                      <option value="gwalior">Gwalior</option>
+                      <option value="ujjain">Ujjain</option>
+                      <option value="jabalpur">Jabalpur</option>
+                    </select>
+
+                    
                     <select
                       className="p-1 cursor-pointer focus:outline-none text-gray-400"
                       defaultValue=""
@@ -385,19 +406,6 @@ const Auth = ({ label = "signup" }) => {
                           )
                         }
                       )}
-                    </select>
-
-                    <select
-                      className="p-1 cursor-pointer focus:outline-none"
-                      {...register("city")}
-                      value={selectedCity}
-                      onChange={(e) => setSelectedCity(e.target.value)}
-                    >
-                      <option value="bhopal">Bhopal</option>
-                      <option value="indore">Indore</option>
-                      <option value="gwalior">Gwalior</option>
-                      <option value="ujjain">Ujjain</option>
-                      <option value="jabalpur">Jabalpur</option>
                     </select>
                   </div>
                 </>
