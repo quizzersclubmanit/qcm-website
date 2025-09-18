@@ -206,6 +206,7 @@ const Auth = ({ label = "signup" }) => {
         dispatch(setData(user))
         dispatch(login())
         if (formData.name) {
+          localStorage.setItem("registrationSuccessShown", "true")
           navigate("/")
           toast("Registration successful! Welcome to QCM!")
         } else {
@@ -226,6 +227,7 @@ const Auth = ({ label = "signup" }) => {
         setValue("sex", "1")
         setValue("city", "bhopal")
         setSelectedCity("")
+        setLoading(false)
       })
   }, [])
 

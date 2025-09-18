@@ -30,6 +30,8 @@ import PopupModal from "./PopupModal"
 import Slot from "./Slot"
 import ClassPrompt from "./ClassPrompt"
 import GreetingPoster from "./GreetingPoster"
+import RegistrationSuccess from "./RegistrationSuccess"
+import RegistrationSuccessHandler from "./RegistrationSuccessHandler"
 
 export {
   Header,
@@ -63,5 +65,7 @@ export {
   PopupModal,
   Slot,
   ClassPrompt,
-  GreetingPoster
+  GreetingPoster,
+  RegistrationSuccess,
+  RegistrationSuccessHandler
 }
