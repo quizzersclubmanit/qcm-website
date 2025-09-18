@@ -15,7 +15,10 @@ const UserSlice = createSlice({
       state.loggedIn = true
     },
     logout: (state) => {
+      // Reset entire slice to a clean logged-out state
       state.loggedIn = false
+      state.data = {}
+      state.score = 0
     },
     setScore: (state, action) => {
       state.score = action.payload

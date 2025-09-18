@@ -187,6 +187,8 @@ const Auth = ({ label = "signup" }) => {
   }, [showPassword])
 
   const authenticate = useCallback((f = async () => {}, formData = {}) => {
+    console.log('=== AUTHENTICATE FUNCTION CALLED ===');
+    console.log('Form data:', { ...formData, password: '***' });
     setLoading(true)
     f({
       email: formData.email,
@@ -198,6 +200,9 @@ const Auth = ({ label = "signup" }) => {
       sex: formData.sex
     })
       .then((user) => {
+        try {
+          localStorage.setItem("userData", JSON.stringify(user))
+        } catch {}
         dispatch(setData(user))
         dispatch(login())
         if (formData.name) {

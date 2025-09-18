@@ -192,6 +192,11 @@
       "city": "Bhopal",
       "pin code": "462047"
     },
+     {
+      "institution": "IRA World School",
+      "city": "Gwalior",
+      "pin code": "474001"
+    },
     {
       "institution": "Jawaharlal Nehru School",
       "city": "Bhopal",
@@ -351,6 +356,11 @@
       "institution": "Sagar Public School (Saket Nagar)",
       "city": "Bhopal",
       "pin code": "462024"
+    },
+     {
+      "institution": "Sacred Heart Co-Ed Sr. Sec. School",
+      "city": "Indore",
+      "pin code": "452001"
     },
     {
       "institution": "St. Joseph's Convent Sr. Sec. Girl's School",
@@ -1502,7 +1512,7 @@
       "brands": [
         {
           "brand": "The Hindu",
-          "logo": "https://www.getmeupadvertising.in/images/big-logo/the-hindu-logo.jpg",
+          "logo": "https://kavitakishore.com/wp-content/uploads/2021/11/kisspng-india-the-hindu-newspaper-the-economic-times-adver-india-barth-matha-5aed5592cb9c18.118400341525503378834.png",
           "website": "https://www.thehindu.com/"
         },
         {
