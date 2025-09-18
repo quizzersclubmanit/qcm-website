@@ -1008,7 +1008,17 @@
       "city": "Indore"
     },
     {
+      "institution": "Aditya convent school",
+      "city": "Jabalpur",
+      "pin code": "482002"
+    },
+    {
       "institution": "Army Public School NO 1",
+      "city": "Jabalpur",
+      "pin code": "482001"
+    },
+    {
+      "institution": "APN CBSE Senior Secondary School",
       "city": "Jabalpur",
       "pin code": "482001"
     },
@@ -1111,6 +1121,11 @@
       "institution": "Kendriya Vidyalaya COD Jabalpur",
       "city": "Jabalpur",
       "pin code": "482011"
+    },
+    {
+      "institution": "Kendriya Vidyalaya Of Khamaria",
+      "city": "Jabalpur",
+      "pin code": "482005"
     },
     {
       "institution": "Little World School, Jabalpur",
@@ -1403,6 +1418,11 @@
       "pin code": "456010"
     },
     {
+      "institution": "Motherland Public School  ",
+      "city": "Ujjain",
+      "pin code": "456001"
+    },
+    {
       "institution": "New Oxford Junior College, Ujjain",
       "city": "Ujjain",
       "pin code": "456010"
@@ -1499,6 +1519,11 @@
     },
     {
       "institution": "Ujjain Public School",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
+      "institution": "Vidhya Bhawan Senior Sec. School",
       "city": "Ujjain",
       "pin code": "456010"
     },
