@@ -33,9 +33,9 @@
   "youtube": "https://www.youtube.com/@quizzersclub/",
   "schools": [
     {
-      "institution": "AVM Senior Secondary School",
+      "institution": "All Saints School",
       "city": "Bhopal",
-      "pin code": "462003"
+      "pin code": "462036"
     },
     {
       "institution": "Anand Vihar School",
@@ -48,14 +48,39 @@
       "pin code": "462022"
     },
     {
+      "institution": "Arera Convent School",
+      "city": "Bhopal",
+      "pin code": "462016"
+    },
+    {
       "institution": "Army Public School",
       "city": "Bhopal",
       "pin code": "462038"
     },
     {
-      "institution": "Bhopal Public School",
+      "institution": "Asia Pacific International School",
       "city": "Bhopal",
-      "pin code": "462001"
+      "pin code": "462042"
+    },
+    {
+      "institution": "Asnani Public School",
+      "city": "Bhopal",
+      "pin code": "462043"
+    },
+    {
+      "institution": "AVM Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "Bal Bharti Public School",
+      "city": "Bhopal",
+      "pin code": "462044"
+    },
+    {
+      "institution": "Bal Bhawan School",
+      "city": "Bhopal",
+      "pin code": "462013"
     },
     {
       "institution": "Bharti Vidya Mandir School",
@@ -63,9 +88,19 @@
       "pin code": "462003"
     },
     {
-      "institution": "Bal Bhawan School",
+      "institution": "Bhopal Girls School",
       "city": "Bhopal",
-      "pin code": "462013"
+      "pin code": "462030"
+    },
+    {
+      "institution": "Bhopal Public School",
+      "city": "Bhopal",
+      "pin code": "462001"
+    },
+    {
+      "institution": "Billabong High School",
+      "city": "Bhopal",
+      "pin code": "462044"
     },
     {
       "institution": "Bonnie Foi Co-Ed Senior Secondary School",
@@ -78,24 +113,9 @@
       "pin code": "462038"
     },
     {
-      "institution": "Bal Bharti Public School",
-      "city": "Bhopal",
-      "pin code": "462044"
-    },
-    {
-      "institution": "Billabong High School",
-      "city": "Bhopal",
-      "pin code": "462044"
-    },
-    {
       "institution": "Cambridge Higher Secondary School",
       "city": "Bhopal",
       "pin code": "462001"
-    },
-    {
-      "institution": "Crescent Public School",
-      "city": "Bhopal",
-      "pin code": "462008"
     },
     {
       "institution": "Campion School",
@@ -103,9 +123,9 @@
       "pin code": "462016"
     },
     {
-      "institution": "Carmel Convent Senior Secondary School",
+      "institution": "Canyon Higher Secondary School",
       "city": "Bhopal",
-      "pin code": "462022"
+      "pin code": "462001"
     },
     {
       "institution": "Carmel Convent Ratanpur",
@@ -113,14 +133,14 @@
       "pin code": "462047"
     },
     {
-      "institution": "Canyon Higher Secondary School",
+      "institution": "Carmel Convent Senior Secondary School",
       "city": "Bhopal",
-      "pin code": "462001"
+      "pin code": "462022"
     },
     {
-      "institution": "Demonstration Multipurpose School",
+      "institution": "Crescent Public School",
       "city": "Bhopal",
-      "pin code": "462013"
+      "pin code": "462008"
     },
     {
       "institution": "Daffodils Higher Secondary School",
@@ -133,6 +153,11 @@
       "pin code": "462042"
     },
     {
+      "institution": "Demonstration Multipurpose School",
+      "city": "Bhopal",
+      "pin code": "462013"
+    },
+    {
       "institution": "DPS",
       "city": "Bhopal",
       "pin code": "462044"
@@ -141,6 +166,11 @@
       "institution": "Eastern Public School",
       "city": "Bhopal",
       "pin code": "462033"
+    },
+    {
+      "institution": "Eklavya school",
+      "city": "Bhopal",
+      "pin code": "462039"
     },
     {
       "institution": "FR Agnel Co-Ed Senior Secondary School",
@@ -153,6 +183,11 @@
       "pin code": "462001"
     },
     {
+      "institution": "Green Valley Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462042"
+    },
+    {
       "institution": "GVN-The Global School",
       "city": "Bhopal",
       "pin code": "462023"
@@ -163,14 +198,14 @@
       "pin code": "462026"
     },
     {
-      "institution": "Green Valley Senior Secondary School",
-      "city": "Bhopal",
-      "pin code": "462042"
-    },
-    {
       "institution": "Hema Higher Secondary School",
       "city": "Bhopal",
       "pin code": "462022"
+    },
+    {
+      "institution": "HM higher secondary school",
+      "city": "Bhopal",
+      "pin code": "462010"
     },
     {
       "institution": "Holy Family Convent Sr. Sec. School",
@@ -192,15 +227,15 @@
       "city": "Bhopal",
       "pin code": "462047"
     },
-     {
-      "institution": "IRA World School",
-      "city": "Gwalior",
-      "pin code": "474001"
-    },
     {
       "institution": "Jawaharlal Nehru School",
       "city": "Bhopal",
       "pin code": "462024"
+    },
+    {
+      "institution": "Kamla devi school",
+      "city": "Bhopal",
+      "pin code": "462001"
     },
     {
       "institution": "Kamla Nehru Higher Secondary School",
@@ -223,26 +258,34 @@
       "pin code": "462026"
     },
     {
-      "institution": "Lifeline Convent Higher Secondary School",
+      "institution": "Laurels World School",
       "city": "Bhopal",
-      "pin code": "462024"
+      "pin code": "462042"
     },
     {
       "institution": "Laxmidevi Vikyomal Shroff Higher Secondary School",
       "city": "Bhopal",
       "pin code": "462036"
     },
-  
-    
+    {
+      "institution": "Lifeline Convent Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462024"
+    },
+    {
+      "institution": "M.G.M Co-Ed Sr. Sec School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
     {
       "institution": "Maharishi Vidya Mandir",
       "city": "Bhopal",
       "pin code": "462001"
     },
     {
-      "institution": "Mount Litera Zee School",
+      "institution": "Mansarovar Public School",
       "city": "Bhopal",
-      "pin code": "462026"
+      "pin code": "462042"
     },
     {
       "institution": "Mithi Gobindram Public School",
@@ -250,9 +293,9 @@
       "pin code": "462030"
     },
     {
-      "institution": "Mansarovar Public School",
+      "institution": "Model HS School",
       "city": "Bhopal",
-      "pin code": "462042"
+      "pin code": "462003"
     },
     {
       "institution": "Mother Teresa Secondary School",
@@ -265,9 +308,14 @@
       "pin code": "462043"
     },
     {
-      "institution": "Mount Carmel Convent School Kolar road  Pin",
+      "institution": "Mount Carmel School ",
       "city": "Bhopal",
-      "pin code": "462042"
+      "pin code": "462043"
+    },
+    {
+      "institution": "Mount Litera Zee School",
+      "city": "Bhopal",
+      "pin code": "462026"
     },
     {
       "institution": "Narayan e-Techno School",
@@ -278,6 +326,16 @@
       "institution": "Narayan e-Techno School",
       "city": "Bhopal",
       "pin code": "462042"
+    },
+    {
+      "institution": "Navnidh Hassomal Lakhani Public School",
+      "city": "Bhopal",
+      "pin code": "462030"
+    },
+    {
+      "institution": "New Dimension School",
+      "city": "Bhopal",
+      "pin code": "462038"
     },
     {
       "institution": "NRI Global Discovery School",
@@ -295,6 +353,11 @@
       "pin code": "462037"
     },
     {
+      "institution": "Radcliffe school",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
       "institution": "Red Rose School",
       "city": "Bhopal",
       "pin code": "462001"
@@ -305,9 +368,14 @@
       "pin code": "462018"
     },
     {
-      "institution": "Radcliffe School",
+      "institution": "Renaissance Divine Public School",
       "city": "Bhopal",
-      "pin code": "462003"
+      "pin code": "462042"
+    },
+    {
+      "institution": "Rose Mary Sr. Sec School",
+      "city": "Bhopal",
+      "pin code": "462038"
     },
     {
       "institution": "Rukhmani Devi Public School",
@@ -320,74 +388,14 @@
       "pin code": "462043"
     },
     {
-      "institution": "Sharda Vidya Mandir",
-      "city": "Bhopal",
-      "pin code": "462003"
-    },
-    {
-      "institution": "Sri Aurobindo School",
-      "city": "Bhopal",
-      "pin code": "462003"
-    },
-    {
-      "institution": "St. Mary's Convent School",
-      "city": "Bhopal",
-      "pin code": "462003"
-    },
-    {
-      "institution": "St. Joseph's Co-Ed School",
-      "city": "Bhopal",
-      "pin code": "462016"
-    },
-    {
-      "institution": "Subhash Government Higher Secondary School",
-      "city": "Bhopal",
-      "pin code": "462016"
-    },
-    {
-      "institution": "St. Paul Senior Secondary School",
-      "city": "Bhopal",
-      "pin code": "462021"
-    },
-    {
-      "institution": "St. Xavier's Senior Secondary Co-ed School",
-      "city": "Bhopal",
-      "pin code": "462021"
-    },
-    {
-      "institution": "St. George Senior Secondary School",
-      "city": "Bhopal",
-      "pin code": "462022"
-    },
-    {
-      "institution": "St. Montfort Senior Secondary School",
-      "city": "Bhopal",
-      "pin code": "462022"
-    },
-    {
       "institution": "Sagar Public School (Saket Nagar)",
       "city": "Bhopal",
       "pin code": "462024"
-    },
-     {
-      "institution": "Sacred Heart Co-Ed Sr. Sec. School",
-      "city": "Indore",
-      "pin code": "452001"
-    },
-    {
-      "institution": "St. Joseph's Convent Sr. Sec. Girl's School",
-      "city": "Bhopal",
-      "pin code": "462030"
     },
     {
       "institution": "Sagar Public School, Gandhinagar",
       "city": "Bhopal",
       "pin code": "462036"
-    },
-    {
-      "institution": "St. George Sr. Sec. School",
-      "city": "Bhopal",
-      "pin code": "462038"
     },
     {
       "institution": "Sagar Public School, Rohit Nagar",
@@ -400,9 +408,19 @@
       "pin code": "462041"
     },
     {
-      "institution": "St Thomas Convent Sr. Sec. School",
+      "institution": "Saint George Co-Ed Higher Secondary School",
       "city": "Bhopal",
-      "pin code": "462041"
+      "pin code": "462038"
+    },
+    {
+      "institution": "Sant Shri Asharamji Bapu Gurukul",
+      "city": "Bhopal",
+      "pin code": "462036"
+    },
+    {
+      "institution": "Sharda Vidhya Mandir",
+      "city": "Bhopal",
+      "pin code": "462003"
     },
     {
       "institution": "Sharda Vidya Mandir",
@@ -410,9 +428,19 @@
       "pin code": "462043"
     },
     {
-      "institution": "Sharda Vidya Mandir Barkhedi Kalan",
+      "institution": "Sharda Vidya Mandir Barkhedi Kalan",
       "city": "Bhopal",
       "pin code": "462044"
+    },
+    {
+      "institution": "Shree bhawan Bharti public school",
+      "city": "Bhopal",
+      "pin code": "462041"
+    },
+    {
+      "institution": "Sri Aurobindo School",
+      "city": "Bhopal",
+      "pin code": "462003"
     },
     {
       "institution": "Sri Chaitanya Techno School",
@@ -420,19 +448,89 @@
       "pin code": "462043"
     },
     {
+      "institution": "St Marys Senior Secondary Convent School",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "St Saviour Public HS School",
+      "city": "Bhopal",
+      "pin code": "462001"
+    },
+    {
+      "institution": "St Theresas Girls School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
+      "institution": "St Thomas Convent Sr. Sec. School",
+      "city": "Bhopal",
+      "pin code": "462041"
+    },
+    {
+      "institution": "St. Francis Hr. Sec. School",
+      "city": "Bhopal",
+      "pin code": "462043"
+    },
+    {
+      "institution": "St. George Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
+      "institution": "St. George Sr. Sec. School",
+      "city": "Bhopal",
+      "pin code": "462038"
+    },
+    {
+      "institution": "St. Johns Hr. Sec School",
+      "city": "Bhopal",
+      "pin code": "462023"
+    },
+    {
+      "institution": "St. Joseph's Co-Ed School",
+      "city": "Bhopal",
+      "pin code": "462016"
+    },
+    {
+      "institution": "St. Joseph's Convent Sr. Sec. Girl's School",
+      "city": "Bhopal",
+      "pin code": "462030"
+    },
+    {
+      "institution": "St. Mary's Convent School",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "St. Montfort Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
+      "institution": "St. Paul Senior Secondary School",
+      "city": "Bhopal",
+      "pin code": "462021"
+    },
+    {
       "institution": "St. Raphael Co-Ed School",
       "city": "Bhopal",
       "pin code": "462047"
     },
     {
-      "institution": "The Sanskar Valley School",
+      "institution": "St. Xavier's Senior Secondary Co-ed School",
+      "city": "Bhopal",
+      "pin code": "462021"
+    },
+    {
+      "institution": "Subhash Government Higher Secondary School",
       "city": "Bhopal",
       "pin code": "462016"
     },
     {
-      "institution": "The Oriental School",
+      "institution": "Suraj Premier Convent School",
       "city": "Bhopal",
-      "pin code": "462021"
+      "pin code": "462038"
     },
     {
       "institution": "The IVY Global School",
@@ -440,7 +538,22 @@
       "pin code": "462043"
     },
     {
-      "institution": "Vikram Higher Secondary School",
+      "institution": "The Mayoor School",
+      "city": "Bhopal",
+      "pin code": "462003"
+    },
+    {
+      "institution": "The Oriental School",
+      "city": "Bhopal",
+      "pin code": "462021"
+    },
+    {
+      "institution": "The Sanskar Valley School",
+      "city": "Bhopal",
+      "pin code": "462016"
+    },
+    {
+      "institution": "The Sanskriti School",
       "city": "Bhopal",
       "pin code": "462022"
     },
@@ -450,487 +563,882 @@
       "pin code": "462042"
     },
     {
+      "institution": "Vikram Higher Secondary School",
+      "city": "Bhopal",
+      "pin code": "462022"
+    },
+    {
       "institution": "7i World School",
-      "pin code": "474002",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "Army Public School Gwalior",
-      "pin code": "474006",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "Aryan School of Sanskar",
-      "pin code": "474006",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "AMI Sishu Mandir",
-      "pin code": "474007",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "Aditya World School",
-      "pin code": "474011",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "Amar Public School",
-      "pin code": "474011",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "Amity International School",
-      "pin code": "474020",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474002"
     },
     {
       "institution": "Aakar Public School",
-      "pin code": "475001",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "475001"
+    },
+    {
+      "institution": "Academic Heights Public School",
+      "city": "Gwalior",
+      "pin code": "474012"
+    },
+    {
+      "institution": "Aditya World School",
+      "city": "Gwalior",
+      "pin code": "474011"
+    },
+    {
+      "institution": "Amar Public School",
+      "city": "Gwalior",
+      "pin code": "474011"
+    },
+    {
+      "institution": "AMI Sishu Mandir",
+      "city": "Gwalior",
+      "pin code": "474007"
+    },
+    {
+      "institution": "Amity International School",
+      "city": "Gwalior",
+      "pin code": "474020"
+    },
+    {
+      "institution": "Army Public School Gwalior",
+      "city": "Gwalior",
+      "pin code": "474006"
+    },
+    {
+      "institution": "Aryan School of Sanskar",
+      "city": "Gwalior",
+      "pin code": "474006"
     },
     {
       "institution": "Awadhesh Bharth School",
-      "pin code": "475001",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "475001"
     },
     {
-      "institution": "BVN, Gwalior",
-      "pin code": "474001",
-      "city": "Gwalior"
+      "institution": "Balaji school",
+      "city": "Gwalior",
+      "pin code": "474001"
+    },
+    {
+      "institution": "Bhartiyam Vidya Niketan",
+      "city": "Gwalior",
+      "pin code": "474001"
     },
     {
       "institution": "Birla Open Minds International School",
-      "pin code": "474006",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474006"
     },
     {
       "institution": "BSF Senior Secondary School",
-      "pin code": "475005",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "475005"
+    },
+    {
+      "institution": "BVN, Gwalior",
+      "city": "Gwalior",
+      "pin code": "474001"
     },
     {
       "institution": "Carmel Convent Sr Sec School",
-      "pin code": "474001",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474001"
     },
     {
       "institution": "Central Academy School",
-      "pin code": "474020",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "Doon Public School",
-      "pin code": "474001",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474020"
     },
     {
       "institution": "Delhi Public School Gwalior",
-      "pin code": "474010",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474010"
     },
     {
-      "institution": "ECS Bagless",
-      "pin code": "474003",
-      "city": "Gwalior"
+      "institution": "Doon Public School",
+      "city": "Gwalior",
+      "pin code": "474001"
     },
     {
       "institution": "Ebenezer Higher Secondary School",
-      "pin code": "474002",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474002"
     },
     {
-      "institution": "Gwalior Glory High School",
-      "pin code": "474001",
-      "city": "Gwalior"
+      "institution": "ECS Bagless",
+      "city": "Gwalior",
+      "pin code": "474003"
     },
     {
       "institution": "GD Goenka, Gwalior",
-      "pin code": "474001",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474001"
     },
     {
       "institution": "GEMS Public School",
-      "pin code": "474011",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474011"
+    },
+    {
+      "institution": "Genius International Public School",
+      "city": "Gwalior",
+      "pin code": "474001"
+    },
+    {
+      "institution": "GREEN WOOD PUBLIC HIGH SCHOOL",
+      "city": "Gwalior",
+      "pin code": "474005"
+    },
+    {
+      "institution": "Gwalior Glory High School",
+      "city": "Gwalior",
+      "pin code": "474001"
     },
     {
       "institution": "IATS School",
-      "pin code": "474005",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474005"
     },
     {
       "institution": "ITM Global School",
-      "pin code": "474001",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474001"
     },
     {
-      "institution": "Kiddy's Corner, Gwalior",
-      "pin code": "474001",
-      "city": "Gwalior"
+      "institution": "javahar navoday vidyalay",
+      "city": "Gwalior",
+      "pin code": "475115"
     },
     {
       "institution": "Kendriya Vidyalaya No. 1",
-      "pin code": "474002",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474002"
     },
     {
       "institution": "Kendriya Vidyalaya No. 2",
-      "pin code": "474020",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474020"
     },
     {
       "institution": "Kendriya Vidyalaya No. 3",
-      "pin code": "474006",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474006"
     },
     {
       "institution": "Kendriya Vidyalaya No. 4",
-      "pin code": "474020",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474020"
     },
     {
       "institution": "Kendriya Vidyalaya No. 5",
-      "pin code": "474011",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474011"
+    },
+    {
+      "institution": "Kiddy's Corner, Gwalior",
+      "city": "Gwalior",
+      "pin code": "474001"
+    },
+    {
+      "institution": "Kids Heaven Care School",
+      "city": "Gwalior",
+      "pin code": "474005"
     },
     {
       "institution": "Little Angels High School, Gwalior",
-      "pin code": "474009",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474009"
     },
     {
       "institution": "Miss Hill Higher Secondary School",
-      "pin code": "474002",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474002"
+    },
+    {
+      "institution": "Morning Star School",
+      "city": "Gwalior",
+      "pin code": "474006"
+    },
+    {
+      "institution": "Motherland International School",
+      "city": "Gwalior",
+      "pin code": "474020"
+    },
+    {
+      "institution": "Mount Litera Zee School,Gwalior",
+      "city": "Gwalior",
+      "pin code": "474005"
+    },
+    {
+      "institution": "MPS PUBLIC SCHOOL",
+      "city": "Gwalior",
+      "pin code": "nan"
+    },
+    {
+      "institution": "Narayana e-Techno School",
+      "city": "Gwalior",
+      "pin code": "475001"
+    },
+    {
+      "institution": "National Children Higher Secondary School",
+      "city": "Gwalior",
+      "pin code": "474006"
     },
     {
       "institution": "Neoteric World School",
-      "pin code": "474011",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474011"
     },
     {
       "institution": "No. 1 Air Force School",
-      "pin code": "474020",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474020"
     },
     {
       "institution": "Oxford Public School, Gwalior",
-      "pin code": "474001",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474001"
+    },
+    {
+      "institution": "pgv higher secondary school",
+      "city": "Gwalior",
+      "pin code": "474005"
     },
     {
       "institution": "Podar International School",
-      "pin code": "462010",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "462010"
     },
     {
       "institution": "Pragati Vidya Peeth",
-      "pin code": "474006",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "Ramakrishna Mission CBSE School",
-      "pin code": "474011",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "Ramakrishna Mission School MPBSC",
-      "pin code": "474011",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "Ramshreee International School, Gwalior",
-      "pin code": "474001",
-      "city": "Gwalior"
-    },
-    {
-      "institution": "Rishikul Vidya Niketan",
-      "pin code": "474001",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474006"
     },
     {
       "institution": "Ram Krishna Vidya Mandir",
-      "pin code": "474002",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474002"
+    },
+    {
+      "institution": "Ramakrishna Mission CBSE School",
+      "city": "Gwalior",
+      "pin code": "474011"
+    },
+    {
+      "institution": "Ramakrishna Mission School MPBSC",
+      "city": "Gwalior",
+      "pin code": "474011"
+    },
+    {
+      "institution": "Ramshreee International School, Gwalior",
+      "city": "Gwalior",
+      "pin code": "474001"
+    },
+    {
+      "institution": "RISE INTERNATIONAL SCHOOL",
+      "city": "Gwalior",
+      "pin code": "474006"
     },
     {
       "institution": "Rishi Galav Public School",
-      "pin code": "474004",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474004"
+    },
+    {
+      "institution": "Rishikul Vidya Niketan",
+      "city": "Gwalior",
+      "pin code": "474001"
     },
     {
       "institution": "Sanskar Public School",
-      "pin code": "474011",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474011"
     },
     {
       "institution": "Scindia Kanya Vidyalaya",
-      "pin code": "474009",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474009"
     },
     {
-      "institution": "St. Paul's School",
-      "pin code": "474006",
-      "city": "Gwalior"
+      "institution": "Shramodaya Vidyalaya",
+      "city": "Gwalior",
+      "pin code": "474020"
     },
     {
-      "institution": "St. Teresa's School",
-      "pin code": "474009",
-      "city": "Gwalior"
+      "institution": "Shri Radha Vallabh Academy",
+      "city": "Gwalior",
+      "pin code": "474005"
+    },
+    {
+      "institution": "Simpkins Public School",
+      "city": "Gwalior",
+      "pin code": "474003"
     },
     {
       "institution": "Sri Chaitanya Techno School",
-      "pin code": "474009",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474009"
+    },
+    {
+      "institution": "St. John’s Vianney School",
+      "city": "Gwalior",
+      "pin code": "474005"
+    },
+    {
+      "institution": "St. Paul's School",
+      "city": "Gwalior",
+      "pin code": "474006"
+    },
+    {
+      "institution": "St. Teresa's School",
+      "city": "Gwalior",
+      "pin code": "474009"
+    },
+    {
+      "institution": "Sunrise Public Highr Secondary School",
+      "city": "Gwalior",
+      "pin code": "474020"
+    },
+    {
+      "institution": "Swami Vivekanand Academy",
+      "city": "Gwalior",
+      "pin code": "474005"
+    },
+    {
+      "institution": "The Pacific International Public School",
+      "city": "Gwalior",
+      "pin code": "474001"
     },
     {
       "institution": "The Radiant School CBSE",
-      "pin code": "474001",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474001"
     },
     {
       "institution": "The Scindia School, Gwalior",
-      "pin code": "474008",
-      "city": "Gwalior"
+      "city": "Gwalior",
+      "pin code": "474008"
+    },
+    {
+      "institution": "The Sun Smart School",
+      "city": "Gwalior",
+      "pin code": "474005"
+    },
+    {
+      "institution": "Vidya Bhavan Public School",
+      "city": "Gwalior",
+      "pin code": "474006"
+    },
+    {
+      "institution": "Vidya bhawan",
+      "city": "Gwalior",
+      "pin code": "474006"
+    },
+    {
+      "institution": "Academic Heights Public School",
+      "city": "Indore",
+      "pin code": "453111"
+    },
+    {
+      "institution": "ADARSH BOUDHIK HIGHER SECONDARY SCHOOL",
+      "city": "Indore",
+      "pin code": "452010"
     },
     {
       "institution": "Advanced Academy, Nipania",
-      "pin code": "452010",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452010"
     },
     {
       "institution": "Agarwal Public School",
-      "pin code": "452016",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452016"
     },
     {
       "institution": "Akshay Academy High Secondary School",
-      "pin code": "452001",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "Alpine Academy",
+      "city": "Indore",
+      "pin code": "452009"
+    },
+    {
+      "institution": "Annie Besant School",
+      "city": "Indore",
+      "pin code": "452009"
+    },
+    {
+      "institution": "ANUSUIYA SCHOOL",
+      "city": "Indore",
+      "pin code": "453771"
     },
     {
       "institution": "Army Public School, Mhow",
-      "pin code": "453441",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "453441"
     },
     {
-      "institution": "Billabong High International School Indore",
-      "pin code": "453111",
-      "city": "Indore"
+      "institution": "Atomic Energy Central School",
+      "city": "Indore",
+      "pin code": "452013"
     },
     {
-      "institution": "Brilliant Higher Secondary School",
-      "pin code": "452014",
-      "city": "Indore"
+      "institution": "B.P.CHILDREN PUBLIC SCHOOL",
+      "city": "Indore",
+      "pin code": "452005"
     },
     {
       "institution": "Bhagwati Convent Higher Secondary School",
-      "pin code": "453112",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "453112"
+    },
+    {
+      "institution": "Billabong High International School Indore",
+      "city": "Indore",
+      "pin code": "453111"
+    },
+    {
+      "institution": "Brilliant Higher Secondary School",
+      "city": "Indore",
+      "pin code": "452014"
+    },
+    {
+      "institution": "CHAMELI DEVI PUBLIC SCHOOL",
+      "city": "Indore",
+      "pin code": "452012"
+    },
+    {
+      "institution": "CHHATRAPATI SHIVAJI PUBLIC SCHOOL",
+      "city": "Indore",
+      "pin code": "452009"
     },
     {
       "institution": "Choithram School",
-      "pin code": "452009",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452009"
     },
     {
-      "institution": "Delhi Public School",
-      "pin code": "452010",
-      "city": "Indore"
+      "institution": "CM Rise Govt Multi Malhar Ashram Higher Secondary School, Indore",
+      "city": "Indore",
+      "pin code": "452007"
     },
     {
       "institution": "Daisy Dales School",
-      "pin code": "452010",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452010"
     },
     {
       "institution": "Daly College",
-      "pin code": "452001",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "Delhi Public School",
+      "city": "Indore",
+      "pin code": "452010"
+    },
+    {
+      "institution": "Ekayanaa School",
+      "city": "Indore",
+      "pin code": "452016"
     },
     {
       "institution": "G.D. Goenka Public School",
-      "pin code": "453771",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "453771"
+    },
+    {
+      "institution": "GARIMA VIDYA VIHAR SR SEC SCHOOL",
+      "city": "Indore",
+      "pin code": "452001"
     },
     {
       "institution": "Holy Cross School, Indore",
-      "pin code": "452001",
-      "city": "Indore"
-    },
-    {
-      "institution": "Ideal International CBSE School",
-      "pin code": "452015",
-      "city": "Indore"
-    },
-    {
-      "institution": "Ideal Academy",
-      "pin code": "452006",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452001"
     },
     {
       "institution": "I K Higher Secondary School",
-      "pin code": "452001",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "I.A.T.V. Educational Academy",
+      "city": "Indore",
+      "pin code": "452016"
+    },
+    {
+      "institution": "Ideal Academy",
+      "city": "Indore",
+      "pin code": "452006"
+    },
+    {
+      "institution": "Ideal International CBSE School",
+      "city": "Indore",
+      "pin code": "452015"
+    },
+    {
+      "institution": "Indore Public School",
+      "city": "Indore",
+      "pin code": "452012"
+    },
+    {
+      "institution": "JNV Indore",
+      "city": "Indore",
+      "pin code": "453661"
     },
     {
       "institution": "Kendriya Vidyalaya No.1",
-      "pin code": "452001",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "Little Flower School",
+      "city": "Indore",
+      "pin code": "452016"
+    },
+    {
+      "institution": "Little Wonders Convent School",
+      "city": "Indore",
+      "pin code": "452010"
+    },
+    {
+      "institution": "M.G.M MISSION H.S.SCHOOL, Dewas",
+      "city": "Indore",
+      "pin code": "455001"
+    },
+    {
+      "institution": "Medi-Caps International School",
+      "city": "Indore",
+      "pin code": "453331"
+    },
+    {
+      "institution": "MEDICAPS INTERNATIONAL SCHOOL",
+      "city": "Indore",
+      "pin code": "453331"
     },
     {
       "institution": "Milton Public Higher Secondary School",
-      "pin code": "452010",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452010"
     },
     {
-      "institution": "M.G.M MISSION H.S.SCHOOL, Dewas",
-      "pin code": "455001",
-      "city": "Indore"
+      "institution": "Mount Index International School",
+      "city": "Indore",
+      "pin code": "452001"
     },
     {
-      "institution": "New Digamber Public School",
-      "pin code": "452001",
-      "city": "Indore"
+      "institution": "Narayana e-Techno School - Indore",
+      "city": "Indore",
+      "pin code": "452016"
     },
     {
       "institution": "New City Convent Higher Secondary School",
-      "pin code": "452001",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "New Digamber Public School",
+      "city": "Indore",
+      "pin code": "452001"
     },
     {
       "institution": "New Silver Bells Higher Secondary School",
-      "pin code": "452002",
-      "city": "Indore"
-    },
-    {
-      "institution": "ORCHIDS The International School",
-      "pin code": "453771",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452002"
     },
     {
       "institution": "Om Shri Advance Academy High School",
-      "pin code": "454775",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "454775"
     },
     {
-      "institution": "Podar International School - Indore",
-      "pin code": "452010",
-      "city": "Indore"
-    },
-    {
-      "institution": "Prestige Public School, Indore",
-      "pin code": "452010",
-      "city": "Indore"
+      "institution": "ORCHIDS The International School",
+      "city": "Indore",
+      "pin code": "453771"
     },
     {
       "institution": "Pink Flower Higher Secondary School",
-      "pin code": "452008",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452008"
+    },
+    {
+      "institution": "Podar International School - Indore",
+      "city": "Indore",
+      "pin code": "452010"
+    },
+    {
+      "institution": "PRAGYA GIRLS SCHOOL",
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "Prestige Public School, Indore",
+      "city": "Indore",
+      "pin code": "452010"
+    },
+    {
+      "institution": "Progressive Education School",
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "QUEENS COLLEGE",
+      "city": "Indore",
+      "pin code": "452017"
     },
     {
       "institution": "Rankers International School",
-      "pin code": "452016",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452016"
     },
     {
       "institution": "Rao Madhav Higher Secondary School",
-      "pin code": "453331",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "453331"
+    },
+    {
+      "institution": "Reepan Public Higher Secondary School",
+      "city": "Indore",
+      "pin code": "452014"
     },
     {
       "institution": "Ryan International School, Indore",
-      "pin code": "452012",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452012"
+    },
+    {
+      "institution": "Sacred Heart Sr. Sec School",
+      "city": "Indore",
+      "pin code": "452002"
     },
     {
       "institution": "Sanmati Higher Secondary School",
-      "pin code": "452001",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "Sarafa vidya niketan",
+      "city": "Indore",
+      "pin code": "452009"
+    },
+    {
+      "institution": "SDPS International Girls School",
+      "city": "Indore",
+      "pin code": "452020"
+    },
+    {
+      "institution": "Sherringwood World School",
+      "city": "Indore",
+      "pin code": "452018"
     },
     {
       "institution": "Shishukunj International",
-      "pin code": "452016",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452016"
     },
     {
       "institution": "Shishukunj International North",
-      "pin code": "452016",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452016"
     },
     {
-      "institution": "St Arnold's Higher Secondary School",
-      "pin code": "452010",
-      "city": "Indore"
+      "institution": "Shri Agrasen Vidyalaya Higher Sec School",
+      "city": "Indore",
+      "pin code": "452001"
     },
     {
-      "institution": "St. Paul Higher Secondary School",
-      "pin code": "453441",
-      "city": "Indore"
+      "institution": "Shri Agrasen Vidyalaya, Sneh Nagar, Indore",
+      "city": "Indore",
+      "pin code": "452001"
     },
     {
-      "institution": "St. Mary's Higher Secondary School",
-      "pin code": "453441",
-      "city": "Indore"
+      "institution": "Shri Anand H.S. School",
+      "city": "Indore",
+      "pin code": "452009"
     },
     {
-      "institution": "St Umar Higher Sec School",
-      "pin code": "452002",
-      "city": "Indore"
+      "institution": "Shri Anand Higher Secondary School",
+      "city": "Indore",
+      "pin code": "452009"
     },
     {
-      "institution": "Surya Higher Secondary School",
-      "pin code": "452014",
-      "city": "Indore"
-    },
-    {
-      "institution": "Sri Sathya Sai Vidya Vihar",
-      "pin code": "452010",
-      "city": "Indore"
-    },
-    {
-      "institution": "Shri Hansdas Higher Secondary School",
-      "pin code": "452002",
-      "city": "Indore"
+      "institution": "Shri Balvinay Mandir School",
+      "city": "Indore",
+      "pin code": "452002"
     },
     {
       "institution": "Shri Gujrati Samaj Higher Secondary School",
-      "pin code": "452001",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "Shri Hansdas Higher Secondary School",
+      "city": "Indore",
+      "pin code": "452002"
+    },
+    {
+      "institution": "SHRI KASERA BAZAR VIDYA NIKETAN",
+      "city": "Indore",
+      "pin code": "452009"
+    },
+    {
+      "institution": "SHRI RAM CENTENNIAL SCHOOL",
+      "city": "Indore",
+      "pin code": "453111"
     },
     {
       "institution": "Shri Vaishnav Academy",
-      "pin code": "452002",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452002"
     },
     {
-      "institution": "The International School of Bombay",
-      "pin code": "452018",
-      "city": "Indore"
+      "institution": "South Valley International School, Betma (SVIS)",
+      "city": "Indore",
+      "pin code": "452001"
     },
     {
-      "institution": "The Emerald Heights",
-      "pin code": "453331",
-      "city": "Indore"
+      "institution": "Sri Chaitanya School",
+      "city": "Indore",
+      "pin code": "452020"
     },
     {
-      "institution": "The Millennium School",
-      "pin code": "452001",
-      "city": "Indore"
+      "institution": "Sri Sathya Sai Vidya Vihar",
+      "city": "Indore",
+      "pin code": "452010"
+    },
+    {
+      "institution": "St Arnold's Higher Secondary School",
+      "city": "Indore",
+      "pin code": "452010"
+    },
+    {
+      "institution": "St Joseph's",
+      "city": "Indore",
+      "pin code": "452010"
+    },
+    {
+      "institution": "st raphaels girls higher secondary school",
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "St Umar Higher Sec School",
+      "city": "Indore",
+      "pin code": "452002"
+    },
+    {
+      "institution": "St. Mary's Higher Secondary School",
+      "city": "Indore",
+      "pin code": "453441"
+    },
+    {
+      "institution": "St. Norbert Senior Secondary School (CBSE)",
+      "city": "Indore",
+      "pin code": "453331"
+    },
+    {
+      "institution": "St. Paul Higher Secondary School",
+      "city": "Indore",
+      "pin code": "453441"
+    },
+    {
+      "institution": "Standard Public School",
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "Surya Higher Secondary School",
+      "city": "Indore",
+      "pin code": "452014"
+    },
+    {
+      "institution": "TAGORE PUBLIC SCHOOL",
+      "city": "Indore",
+      "pin code": "452009"
     },
     {
       "institution": "The Bhavans' Prominent School",
-      "pin code": "452010",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452010"
+    },
+    {
+      "institution": "The Emerald Heights International School",
+      "city": "Indore",
+      "pin code": "453331"
+    },
+    {
+      "institution": "The International School of Bombay",
+      "city": "Indore",
+      "pin code": "452018"
+    },
+    {
+      "institution": "The Millennium School",
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "The new green field school",
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "The Shri G International School",
+      "city": "Indore",
+      "pin code": "452020"
+    },
+    {
+      "institution": "The Vidhyanjali International School",
+      "city": "Indore",
+      "pin code": "452020"
+    },
+    {
+      "institution": "The VITS School",
+      "city": "Indore",
+      "pin code": "452020"
     },
     {
       "institution": "Tirathbai Kalachand School",
-      "pin code": "452004",
-      "city": "Indore"
+      "city": "Indore",
+      "pin code": "452004"
     },
     {
-      "institution": "Army Public School NO 1",
+      "institution": "TIRATHBAI KALACHAND SCHOOL",
+      "city": "Indore",
+      "pin code": "452001"
+    },
+    {
+      "institution": "Vedansh international School",
+      "city": "Indore",
+      "pin code": "452009"
+    },
+    {
+      "institution": "Vidyasagar School",
+      "city": "Indore",
+      "pin code": "452016"
+    },
+    {
+      "institution": "A.P.N. C.B.S.E. Senior Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482001"
+    },
+    {
+      "institution": "Aditya Convent School",
+      "city": "Jabalpur",
+      "pin code": "482022"
+    },
+    {
+      "institution": "Aditya Convent School, Jabalpur",
+      "city": "Jabalpur",
+      "pin code": "482002"
+    },
+    {
+      "institution": "APN CBSE Senior Secondary School",
       "city": "Jabalpur",
       "pin code": "482001"
     },
@@ -940,9 +1448,9 @@
       "pin code": "482005"
     },
     {
-      "institution": "Ashoka Hall Senior Secondary School",
+      "institution": "Army Public School NO 1",
       "city": "Jabalpur",
-      "pin code": "482002"
+      "pin code": "482001"
     },
     {
       "institution": "Army Public School No.2 Jabalpur",
@@ -950,14 +1458,19 @@
       "pin code": "482001"
     },
     {
+      "institution": "Ashoka Hall Senior Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482002"
+    },
+    {
       "institution": "Billabong High International School",
       "city": "Jabalpur",
       "pin code": "482001"
     },
     {
-      "institution": "Christ Church Girls School, Jabalpur",
+      "institution": "British Fort Foundation",
       "city": "Jabalpur",
-      "pin code": "482001"
+      "pin code": "483053"
     },
     {
       "institution": "Central Academy",
@@ -965,12 +1478,17 @@
       "pin code": "482002"
     },
     {
-      "institution": "Christ Church Girl's Senior Secondary School",
+      "institution": "Chaudhary's Mother Care Higher Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482004"
+    },
+    {
+      "institution": "Christ Church Boys' Senior Secondary School",
       "city": "Jabalpur",
       "pin code": "482001"
     },
     {
-      "institution": "Christ Church Boys' Senior Secondary School",
+      "institution": "Christ Church Girl's Senior Secondary School",
       "city": "Jabalpur",
       "pin code": "482001"
     },
@@ -980,24 +1498,14 @@
       "pin code": "482003"
     },
     {
-      "institution": "First Step Senior Sec School",
-      "city": "Jabalpur",
-      "pin code": "482004"
-    },
-    {
-      "institution": "Green Valley Public School",
+      "institution": "Elza Heritage School",
       "city": "Jabalpur",
       "pin code": "482002"
     },
     {
-      "institution": "Gyan Ganga International School",
+      "institution": "First Step Senior Sec School",
       "city": "Jabalpur",
-      "pin code": "482003"
-    },
-    {
-      "institution": "Guru Gobind Singh Khalsa Higher Secondary School",
-      "city": "Jabalpur",
-      "pin code": "482001"
+      "pin code": "482004"
     },
     {
       "institution": "Govt. HSS Excellence",
@@ -1005,19 +1513,34 @@
       "pin code": "482007"
     },
     {
+      "institution": "Green Valley Public School",
+      "city": "Jabalpur",
+      "pin code": "482002"
+    },
+    {
+      "institution": "Guru Gobind Singh Khalsa Higher Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482001"
+    },
+    {
+      "institution": "Gyan Ganga International School",
+      "city": "Jabalpur",
+      "pin code": "482003"
+    },
+    {
       "institution": "Gyan Ganga Orchids The International School",
       "city": "Jabalpur",
       "pin code": "482003"
     },
     {
-      "institution": "Joy School, jabalpur",
-      "city": "Jabalpur",
-      "pin code": "482002"
-    },
-    {
       "institution": "Jawahar Navodaya Vidyalaya",
       "city": "Jabalpur",
       "pin code": "482056"
+    },
+    {
+      "institution": "Joy School, jabalpur",
+      "city": "Jabalpur",
+      "pin code": "482002"
     },
     {
       "institution": "Kendriya Vidhyalaya 1",
@@ -1027,7 +1550,7 @@
     {
       "institution": "Kendriya Vidhyalaya 2",
       "city": "Jabalpur",
-      "pin code": "482001"
+      "pin code": "482011"
     },
     {
       "institution": "Kendriya Vidyalaya COD Jabalpur",
@@ -1035,9 +1558,54 @@
       "pin code": "482011"
     },
     {
+      "institution": "Kendriya Vidyalaya of Khamira",
+      "city": "Jabalpur",
+      "pin code": "482005"
+    },
+    {
+      "institution": "Kendriya Vidyalaya VF",
+      "city": "Jabalpur",
+      "pin code": "482009"
+    },
+    {
+      "institution": "Lions International Public School",
+      "city": "Jabalpur",
+      "pin code": "482002"
+    },
+    {
+      "institution": "Little Kingdom Senior Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482004"
+    },
+    {
       "institution": "Little World School, Jabalpur",
       "city": "Jabalpur",
       "pin code": "482003"
+    },
+    {
+      "institution": "Maharishi Vidya Mandir 1",
+      "city": "Jabalpur",
+      "pin code": "482001"
+    },
+    {
+      "institution": "Maharishi Vidya Mandir 4",
+      "city": "Jabalpur",
+      "pin code": "482001"
+    },
+    {
+      "institution": "Marble Rock School",
+      "city": "Jabalpur",
+      "pin code": "482021"
+    },
+    {
+      "institution": "MGM Higher Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482001"
+    },
+    {
+      "institution": "Mispa Mission Higher Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482004"
     },
     {
       "institution": "MM International School",
@@ -1050,11 +1618,6 @@
       "pin code": "482001"
     },
     {
-      "institution": "Maharishi Vidya Mandir 1",
-      "city": "Jabalpur",
-      "pin code": "482001"
-    },
-    {
       "institution": "Nachiketa Higher Secondary School",
       "city": "Jabalpur",
       "pin code": "482001"
@@ -1063,6 +1626,16 @@
       "institution": "Nalanda Public School",
       "city": "Jabalpur",
       "pin code": "482003"
+    },
+    {
+      "institution": "New Christ Church Girl's Senior Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482002"
+    },
+    {
+      "institution": "Noble Children Academy",
+      "city": "Jabalpur",
+      "pin code": "482002"
     },
     {
       "institution": "ORCHIDS THE INTERNATIONAL SCHOOL",
@@ -1080,19 +1653,9 @@
       "pin code": "482002"
     },
     {
-      "institution": "Ryan International School",
+      "institution": "R. S. Bela Singh Higher Secondary School",
       "city": "Jabalpur",
-      "pin code": "482002"
-    },
-    {
-      "institution": "Royal Senior Secondary School",
-      "city": "Jabalpur",
-      "pin code": "482003"
-    },
-    {
-      "institution": "Royal Senior Secondary School",
-      "city": "Jabalpur",
-      "pin code": "482003"
+      "pin code": "482001"
     },
     {
       "institution": "Royal EdTech School",
@@ -1100,22 +1663,32 @@
       "pin code": "482004"
     },
     {
-      "institution": "Ryan international school",
+      "institution": "Royal Senior Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482003"
+    },
+    {
+      "institution": "Ryan International School",
       "city": "Jabalpur",
       "pin code": "482002"
     },
     {
-      "institution": "St. Gabriel Higher Secondary School, Jabalpur",
-      "city": "Jabalpur",
-      "pin code": "482005"
-    },
-    {
-      "institution": "Stemfield International School Baldeobagh, Jabalpur",
+      "institution": "Samdariya Public Higher Sec School",
       "city": "Jabalpur",
       "pin code": "482002"
     },
     {
-      "institution": "Stemfield International School Vijay Nagar, Jabalpur",
+      "institution": "Satya Prakash Public School",
+      "city": "Jabalpur",
+      "pin code": "482008"
+    },
+    {
+      "institution": "Scottish Convent School",
+      "city": "Jabalpur",
+      "pin code": "482004"
+    },
+    {
+      "institution": "Shri Balaji Public School",
       "city": "Jabalpur",
       "pin code": "482002"
     },
@@ -1125,9 +1698,9 @@
       "pin code": "482002"
     },
     {
-      "institution": "St. Mary's Higher Secondary School",
+      "institution": "Spring Day Public School",
       "city": "Jabalpur",
-      "pin code": "482009"
+      "pin code": "482004"
     },
     {
       "institution": "St. Aloyusis Senior Secondary School",
@@ -1140,39 +1713,9 @@
       "pin code": "482003"
     },
     {
-      "institution": "Shri Balaji Public School",
+      "institution": "St. Gabriel Higher Secondary School, Jabalpur",
       "city": "Jabalpur",
-      "pin code": "482002"
-    },
-    {
-      "institution": "Spring Day Public School",
-      "city": "Jabalpur",
-      "pin code": "482004"
-    },
-    {
-      "institution": "St. Xavier's High School",
-      "city": "Jabalpur",
-      "pin code": "482004"
-    },
-    {
-      "institution": "Samdariya Public Higher Sec School",
-      "city": "Jabalpur",
-      "pin code": "482002"
-    },
-    {
-      "institution": "St. Paul's Higher Secondary school",
-      "city": "Jabalpur",
-      "pin code": "482001"
-    },
-    {
-      "institution": "Satya Prakash Public School",
-      "city": "Jabalpur",
-      "pin code": "482008"
-    },
-    {
-      "institution": "St. Thomas Higher Secondary School",
-      "city": "Jabalpur",
-      "pin code": "482002"
+      "pin code": "482005"
     },
     {
       "institution": "St. Joseph's Convent Senior Secondary School",
@@ -1180,14 +1723,44 @@
       "pin code": "482001"
     },
     {
+      "institution": "St. Mary's Higher Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482009"
+    },
+    {
+      "institution": "St. Paul's Higher Secondary school",
+      "city": "Jabalpur",
+      "pin code": "482001"
+    },
+    {
+      "institution": "St. Thomas Higher Secondary School",
+      "city": "Jabalpur",
+      "pin code": "482002"
+    },
+    {
+      "institution": "St. Xavier's High School",
+      "city": "Jabalpur",
+      "pin code": "482004"
+    },
+    {
+      "institution": "Stemfield International School Baldeobagh, Jabalpur",
+      "city": "Jabalpur",
+      "pin code": "482002"
+    },
+    {
+      "institution": "Stemfield International School Vijay Nagar, Jabalpur",
+      "city": "Jabalpur",
+      "pin code": "482002"
+    },
+    {
       "institution": "The Royal Heritage Public School",
       "city": "Jabalpur",
       "pin code": "483001"
     },
     {
-      "institution": "Vps Higher Secondary English Medium School",
+      "institution": "Vision International School",
       "city": "Jabalpur",
-      "pin code": "482003"
+      "pin code": "482002"
     },
     {
       "institution": "Vivekanand Wisdom International Public School",
@@ -1195,9 +1768,9 @@
       "pin code": "483053"
     },
     {
-      "institution": "Wisdom Valley Public School",
+      "institution": "Vps Higher Secondary English Medium School",
       "city": "Jabalpur",
-      "pin code": "482001"
+      "pin code": "482003"
     },
     {
       "institution": "Wisdom Public Higher Sec School",
@@ -1205,9 +1778,9 @@
       "pin code": "482002"
     },
     {
-      "institution": "Alok International School",
-      "city": "Ujjain",
-      "pin code": "456006"
+      "institution": "Wisdom Valley Public School",
+      "city": "Jabalpur",
+      "pin code": "482001"
     },
     {
       "institution": "Aadharshila Academy",
@@ -1215,14 +1788,24 @@
       "pin code": "456001"
     },
     {
+      "institution": "AARADHYA INTERNATIONAL SCHOOL",
+      "city": "Ujjain",
+      "pin code": "456664"
+    },
+    {
       "institution": "Aditya Birla Senior Sec School",
       "city": "Ujjain",
       "pin code": "456006"
     },
     {
-      "institution": "Akshat International School Ujjain",
+      "institution": "AKSHAT INT SCHOOL LALPUR NAGZIRI UJJAIN MP",
       "city": "Ujjain",
       "pin code": "456010"
+    },
+    {
+      "institution": "Alok International School",
+      "city": "Ujjain",
+      "pin code": "456006"
     },
     {
       "institution": "Ankur Higher Secondary School",
@@ -1230,19 +1813,14 @@
       "pin code": "456313"
     },
     {
-      "institution": "Boson International School",
+      "institution": "Bhartiya Gyanpeeth Hr. Sec. School",
       "city": "Ujjain",
       "pin code": "456010"
     },
     {
-      "institution": "Chaitanya Keerti Public High Secondary Rupakhedi",
+      "institution": "Boson International School",
       "city": "Ujjain",
-      "pin code": "456668"
-    },
-    {
-      "institution": "Christ Jyoti Convent School",
-      "city": "Ujjain",
-      "pin code": "456001"
+      "pin code": "456010"
     },
     {
       "institution": "Cambridge Higher Secondary School",
@@ -1260,14 +1838,49 @@
       "pin code": "456335"
     },
     {
-      "institution": "DPS Ujjain",
+      "institution": "Chaitanya Keerti Public High Secondary Rupakhedi",
+      "city": "Ujjain",
+      "pin code": "456668"
+    },
+    {
+      "institution": "Christ Jyoti Convent School",
       "city": "Ujjain",
       "pin code": "456001"
+    },
+    {
+      "institution": "Dhruva Vidyapeeth",
+      "city": "Ujjain",
+      "pin code": "456010"
     },
     {
       "institution": "Dinah Convent School",
       "city": "Ujjain",
       "pin code": "456010"
+    },
+    {
+      "institution": "Divine Public School",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
+      "institution": "DPS Ujjain",
+      "city": "Ujjain",
+      "pin code": "456001"
+    },
+    {
+      "institution": "Ekta Convent Higher Secondary School",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
+      "institution": "Excellent Academy",
+      "city": "Ujjain",
+      "pin code": "456313"
+    },
+    {
+      "institution": "Fatima Convent Higher Secondary Schoo",
+      "city": "Ujjain",
+      "pin code": "456335"
     },
     {
       "institution": "Fatima Convent Higher Secondary School",
@@ -1280,9 +1893,24 @@
       "pin code": "456010"
     },
     {
+      "institution": "Green Field Higher Secondary School",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
+      "institution": "GYAN SAGAR ACADEMY",
+      "city": "Ujjain",
+      "pin code": "455001"
+    },
+    {
       "institution": "Gyan Sagar Academy, Ujjain",
       "city": "Ujjain",
       "pin code": "456010"
+    },
+    {
+      "institution": "Gyan Sagar Girls Academy",
+      "city": "Ujjain",
+      "pin code": "456006"
     },
     {
       "institution": "IBS Global Academy",
@@ -1300,24 +1928,39 @@
       "pin code": "456006"
     },
     {
+      "institution": "Kalidas Montessori Senior Secondary School",
+      "city": "Ujjain",
+      "pin code": "456001"
+    },
+    {
+      "institution": "KALIDAS MONTESSORI SR. SEC. SCHOOL",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
       "institution": "Ken International Girls School",
       "city": "Ujjain",
       "pin code": "456664"
     },
     {
-      "institution": "Kalidas Montessori Senior Secondary School",
+      "institution": "Ken International Girls School",
       "city": "Ujjain",
-      "pin code": "456001"
+      "pin code": "456661"
     },
     {
       "institution": "Kendriya Vidyalaya",
       "city": "Ujjain",
       "pin code": "456010"
     },
-      {
+    {
+      "institution": "Kolping Convent Higher Secondary School (Kanasiya)",
+      "city": "Ujjain",
+      "pin code": "456770"
+    },
+    {
       "institution": "Lokmanya Tilak Higher Secondary School",
       "city": "Ujjain",
-      "pin code": "456010"
+      "pin code": "456001"
     },
     {
       "institution": "Maharaja International School, Ujjain",
@@ -1330,9 +1973,29 @@
       "pin code": "456010"
     },
     {
+      "institution": "Motherland Public School",
+      "city": "Ujjain",
+      "pin code": "456001"
+    },
+    {
+      "institution": "Narayana e-Techno School",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
+      "institution": "New Oxford Junior College ",
+      "city": "Ujjain",
+      "pin code": "456664"
+    },
+    {
       "institution": "New Oxford Junior College, Ujjain",
       "city": "Ujjain",
       "pin code": "456010"
+    },
+    {
+      "institution": "Nirmala Convent School",
+      "city": "Ujjain",
+      "pin code": "456001"
     },
     {
       "institution": "Nirmala convent School Premnagar,Ujjain",
@@ -1340,17 +2003,12 @@
       "pin code": "456664"
     },
     {
+      "institution": "Oxford Junior College",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
       "institution": "Oxford Junior College, Ujjain",
-      "city": "Ujjain",
-      "pin code": "456010"
-    },
-    {
-      "institution": "Podar International School, Ujjain",
-      "city": "Ujjain",
-      "pin code": "456010"
-    },
-    {
-      "institution": "Patidar International School",
       "city": "Ujjain",
       "pin code": "456010"
     },
@@ -1360,9 +2018,39 @@
       "pin code": "456006"
     },
     {
+      "institution": "Patidar International School",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
       "institution": "Podar International School",
       "city": "Ujjain",
       "pin code": "456550"
+    },
+    {
+      "institution": "Podar International School",
+      "city": "Ujjain",
+      "pin code": "456664"
+    },
+    {
+      "institution": "Podar International School, Ujjain",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
+      "institution": "Pragya High School",
+      "city": "Ujjain",
+      "pin code": "456006"
+    },
+    {
+      "institution": "R K Bansal International School",
+      "city": "Ujjain",
+      "pin code": "456006"
+    },
+    {
+      "institution": "Rashtriya High School Ujjain",
+      "city": "Ujjain",
+      "pin code": "456006"
     },
     {
       "institution": "Rockford Academy",
@@ -1370,9 +2058,39 @@
       "pin code": "456010"
     },
     {
+      "institution": "Sai Kripa Higher Secondary School",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
+      "institution": "Sant Meera Girls H. S. School",
+      "city": "Ujjain",
+      "pin code": "456001"
+    },
+    {
       "institution": "Saraswati Vidya Mandir High School Bhatpachlana",
       "city": "Ujjain",
       "pin code": "456313"
+    },
+    {
+      "institution": "Savyasachi Vidyapeeth",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
+      "institution": "Shail Public School",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
+      "institution": "Shail Public School (CBSE)",
+      "city": "Ujjain",
+      "pin code": "456222"
+    },
+    {
+      "institution": "St Marys Senior Secondary Convent School",
+      "city": "Ujjain",
+      "pin code": "456010"
     },
     {
       "institution": "St. Mary's Convent School, Ujjain",
@@ -1395,12 +2113,17 @@
       "pin code": "456010"
     },
     {
+      "institution": "ST. THOMAS SCHOOL UJJAIN",
+      "city": "Ujjain",
+      "pin code": "456006"
+    },
+    {
       "institution": "Stanford International School",
       "city": "Ujjain",
       "pin code": "456010"
     },
     {
-      "institution": "Shail Public School",
+      "institution": "Stanford International School, Ujjain",
       "city": "Ujjain",
       "pin code": "456010"
     },
@@ -1415,14 +2138,24 @@
       "pin code": "456006"
     },
     {
+      "institution": "The Divine Higher Secondary School",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
       "institution": "The Vardhaman Heights International School",
       "city": "Ujjain",
       "pin code": "456006"
     },
     {
-      "institution": "The Divine Higher Secondary School",
+      "institution": "The Vardhman Heights International School",
       "city": "Ujjain",
-      "pin code": "456010"
+      "pin code": "456224"
+    },
+    {
+      "institution": "The Yugantar International School, Ujjain",
+      "city": "Ujjain",
+      "pin code": "456006"
     },
     {
       "institution": "Ujjain Public School",
@@ -1430,9 +2163,24 @@
       "pin code": "456010"
     },
     {
+      "institution": "Vidhya Bhawan Senior Sec. School",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
       "institution": "Virgin Mary Convent School",
       "city": "Ujjain",
       "pin code": "456001"
+    },
+    {
+      "institution": "Virgin Mary School, Ujjain",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+    {
+      "institution": "Venus Public School (Anand Nagar, Gwalior)",
+      "city": "Gwalior",
+      "pin code": "474012"
     }
   ],
   "eventDetails": [
@@ -1551,11 +2299,13 @@
           "brand": "BPCL",
           "logo": "https://www.bharatpetroleum.in/images/bpcl-golden-jubilee-logo-for-light-background.jpg",
           "website": "https://www.bharatpetroleum.in/index"
-        },{
+        },
+        {
           "brand": "NTPC Limited ",
           "logo": "https://images.seeklogo.com/logo-png/39/2/ntpc-logo-png_seeklogo-390895.png",
           "website": "https://ntpc.co.in/en"
-        },{
+        },
+        {
           "brand": "State Bank Of India ",
           "logo": "https://i.pinimg.com/736x/2a/2c/1d/2a2c1d90075390b22e7e6060254dab0d.jpg",
           "website": "https://www.onlinesbi.sbi/"
@@ -1579,7 +2329,8 @@
           "brand": "MP Khadi Gramodhyog Board",
           "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY7NPqAFWSbx6b4Ex50PM17V1eaVnq00OGKg&s",
           "website": "https://www.kviconline.gov.in/khinstprofile/inst_detail.jsp?BEN_CD=99016"
-        },{
+        },
+        {
           "brand": "Camlin Kokuyo",
           "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsy6wTgjyr_pu4S29SHbtlMwnjThQFLYoFwA&s",
           "website": "https://www.kokuyocamlin.com/camel/"
@@ -1596,12 +2347,12 @@
       "brands": [
         {
           "brand": "Quill Bot",
-          "logo" : "https://assets.quillbot.com/images/og-quillbot-img.png",
+          "logo": "https://assets.quillbot.com/images/og-quillbot-img.png",
           "website": "https://quillbot.com/paragraph-rewriter"
         },
         {
           "brand": "Symbolab",
-          "logo" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ1ZtFyzEcXBPegFoWgz7kBgD1-hNkpxy4Ow&s",
+          "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ1ZtFyzEcXBPegFoWgz7kBgD1-hNkpxy4Ow&s",
           "website": "https://www.symbolab.com/"
         }
       ]
