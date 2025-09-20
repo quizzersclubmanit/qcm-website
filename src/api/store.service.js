@@ -14,8 +14,12 @@ class Store {
   }
 
   fetchFilePreview({ fileId, bucketId }) {
-    // TODO: Implement alternative file preview method
-    console.warn('Store service: fetchFilePreview method disabled - Appwrite backend removed')
+    // For now, return the fileId as URL if it's already a URL, otherwise return null
+    if (fileId && (fileId.startsWith('http') || fileId.startsWith('/'))) {
+      return fileId
+    }
+    // If it's a file ID, we might need to construct a URL or return a placeholder
+    console.warn('Store service: fetchFilePreview method - no file storage configured')
     return null
   }
 }
