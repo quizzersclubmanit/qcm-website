@@ -103,6 +103,9 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
     
     console.log('Sending quiz data to API:', quizData)
     
+    // Show loading toast
+    const loadingToast = toast.loading('Adding quiz...')
+    
     dbService
       .insert({
         collectionId: "quiz",
@@ -110,13 +113,33 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
       })
       .then((doc) => {
         console.log('Quiz added successfully:', doc)
-        dispatch(addQuiz(doc))
+        toast.dismiss(loadingToast)
+        
+        // Handle different response formats from the API
+        const quizDoc = doc.data || doc
+        dispatch(addQuiz(quizDoc))
         toast.success("Quiz Added Successfully!")
         resetVals()
       })
       .catch((error) => {
         console.error('Error adding quiz:', error)
-        toast.error(error.message || 'Failed to add quiz')
+        toast.dismiss(loadingToast)
+        
+        // Provide more specific error messages
+        let errorMessage = 'Failed to add quiz'
+        if (error.message) {
+          if (error.message.includes('Network error')) {
+            errorMessage = 'Network error: Please check your internet connection'
+          } else if (error.message.includes('401')) {
+            errorMessage = 'Authentication error: Please login again'
+          } else if (error.message.includes('403')) {
+            errorMessage = 'Permission denied: You need admin privileges'
+          } else {
+            errorMessage = error.message
+          }
+        }
+        
+        toast.error(errorMessage)
       })
   }, [dispatch, resetVals])
 
