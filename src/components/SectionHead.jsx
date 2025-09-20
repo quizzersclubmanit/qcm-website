@@ -1,4 +1,4 @@
-import { LuHome } from "react-icons/lu"
+import { FaHome } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 
 const SectionHead = ({
@@ -13,7 +13,7 @@ const SectionHead = ({
   return (
     <div className="flex gap-5 items-center text-[3vmax]">
       {logo && (
-        <LuHome
+        <FaHome
           className={`cursor-pointer ${lightLogo && "text-white"}`}
           onClick={() => {
             navigate("/")
