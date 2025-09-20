@@ -38,8 +38,7 @@ export const {
   setQuizes,
   addQuiz,
   editQuiz,
-  deleteQuiz,
-  addMarkedAnswerField
+  deleteQuiz
 } = QuizSlice.actions
 
 const quizReducer = QuizSlice.reducer

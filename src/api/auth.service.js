@@ -7,9 +7,10 @@ const API_BASE_URL = 'https://qcm-backend-ln5c.onrender.com'
 class Auth {
   async signupAndLogin({ email, password, name, phone, city, school, sex }) {
     try {
-      if (name === "admin") {
-        throw new Error("Name is reserved. Please enter another name")
-      }
+      // Allow admin user creation for administrative purposes
+      // if (name === "admin") {
+      //   throw new Error("Name is reserved. Please enter another name")
+      // }
       
       console.log('Frontend sending signup data:', { email, password: '***', name, phone, city, school, sex });
       console.log('API URL:', `${API_BASE_URL}/api/auth/signup`);
@@ -41,14 +42,7 @@ class Auth {
         console.error('Signup failed with status:', response.status, 'Error:', data.error);
         throw new Error(data.error || 'Signup failed')
       }
-      // If backend returns a token on signup, persist it
-      try {
-        const token = data.token || null;
-        if (token) {
-          localStorage.setItem('token', token);
-          localStorage.setItem('authToken', token);
-        }
-      } catch {}
+      
       return data.user
     } catch (error) {
       console.error('Signup error:', error);
@@ -102,15 +96,6 @@ class Auth {
         console.warn('No token received in login response');
         console.log('Available cookies:', document.cookie);
         console.log('Response data keys:', Object.keys(data));
-      }
-      
-      // Store user data for persistence
-      if (data.user) {
-        try {
-          localStorage.setItem('userData', JSON.stringify(data.user));
-        } catch (e) {
-          console.warn('Failed to store user data:', e);
-        }
       }
       
       return data.user

@@ -206,6 +206,7 @@ const Auth = ({ label = "signup" }) => {
         dispatch(setData(user))
         dispatch(login())
         if (formData.name) {
+          localStorage.setItem("registrationSuccessShown", "true")
           navigate("/")
           toast("Registration successful! Welcome to QCM!")
         } else {
@@ -226,6 +227,7 @@ const Auth = ({ label = "signup" }) => {
         setValue("sex", "1")
         setValue("city", "bhopal")
         setSelectedCity("")
+        setLoading(false)
       })
   }, [])
 
@@ -235,6 +237,12 @@ const Auth = ({ label = "signup" }) => {
       message: "This is a required field"
     }
   }
+
+  const handleCityChange = (e) => {
+    const city = e.target.value;
+     setSelectedCity(city);
+     setValue("school", ""); // reset school when city changes
+  };
 
   if (loading) return <Loader />
   if (label == "update-password")
@@ -281,6 +289,13 @@ const Auth = ({ label = "signup" }) => {
               className="hidden md:flex"
             />
             <div className="mt-4 md:self-start mb-0 flex flex-col ">
+               <a
+                className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
+                href="https://drive.google.com/file/d/1c4P0ZzeJLSf-SEluBLZzi_WGeEbfJLP9/view?usp=drive_link"
+                target="_blank"
+              >
+                Download IQC Sample Quetions 
+              </a>
               {/* <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
                 href="https://drive.google.com/file/d/1NN5XC3IZqS71jfkH3dDQoHBof8AyMetz/view?usp=sharing"
@@ -356,6 +371,21 @@ const Auth = ({ label = "signup" }) => {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
+
+                    <select
+                      className="p-1 cursor-pointer focus:outline-none"
+                      {...register("city")}
+                      value={selectedCity}
+                      onChange={handleCityChange}
+                    >
+                      <option value="bhopal">Bhopal</option>
+                      <option value="indore">Indore</option>
+                      <option value="gwalior">Gwalior</option>
+                      <option value="ujjain">Ujjain</option>
+                      <option value="jabalpur">Jabalpur</option>
+                    </select>
+
+                    
                     <select
                       className="p-1 cursor-pointer focus:outline-none text-gray-400"
                       defaultValue=""
@@ -378,19 +408,6 @@ const Auth = ({ label = "signup" }) => {
                           )
                         }
                       )}
-                    </select>
-
-                    <select
-                      className="p-1 cursor-pointer focus:outline-none"
-                      {...register("city")}
-                      value={selectedCity}
-                      onChange={(e) => setSelectedCity(e.target.value)}
-                    >
-                      <option value="bhopal">Bhopal</option>
-                      <option value="indore">Indore</option>
-                      <option value="gwalior">Gwalior</option>
-                      <option value="ujjain">Ujjain</option>
-                      <option value="jabalpur">Jabalpur</option>
                     </select>
                   </div>
                 </>

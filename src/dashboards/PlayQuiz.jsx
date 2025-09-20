@@ -14,7 +14,6 @@ import {
 import { useNavigate } from "react-router-dom"
 import dbService from "../api/db.service"
 import storeService from "../api/store.service"
-import { Query } from "appwrite"
 import toast from "react-hot-toast"
 import { arraysEqual, countOf } from "../utils/utils"
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6"
@@ -63,7 +62,7 @@ const PlayQuiz = () => {
       : "Quiz Submitted Successfully"
     dbService
       .insert({
-        collectionId: env.leaderboardId,
+        collectionId: "leaderboard",
         data: {
           userId: data.$id,
           score: Math.min(150, score),
@@ -98,16 +97,13 @@ const PlayQuiz = () => {
   useEffect(() => {
     dbService
       .select({
-        collectionId: env.quizId,
-        queries: [
-          Query.and([
-            Query.equal("section", section),
-            Query.equal("inActive", false)
-          ])
-        ]
+        collectionId: "quiz",
+        queries: [`section=${section}`, `inActive=false`]
       })
       .then((docs) => {
-        dispatch(setQuizes(docs))
+        // Handle different response formats
+        const quizData = Array.isArray(docs) ? docs : (docs.data || [])
+        dispatch(setQuizes(quizData))
       })
       .catch((error) => {
         console.error(error)
@@ -115,13 +111,18 @@ const PlayQuiz = () => {
   }, [])
 
   useEffect(() => {
+    const userId = data?.$id || data?.id || data?.userId
+    
     dbService
       .select({
-        collectionId: env.leaderboardId,
-        queries: [Query.equal("userId", data.$id)]
+        collectionId: "leaderboard",
+        queries: [`userId=${userId}`]
       })
       .then((docs) => {
-        if (docs.length != 0) {
+        // Handle different response formats
+        const leaderboardData = Array.isArray(docs) ? docs : (docs.data || [])
+        
+        if (leaderboardData.length != 0) {
           navigate("/")
           toast("You've attempted the quiz")
         } else
