@@ -232,6 +232,8 @@
       "city": "Bhopal",
       "pin code": "462036"
     },
+  
+    
     {
       "institution": "Maharishi Vidya Mandir",
       "city": "Bhopal",
@@ -261,6 +263,11 @@
       "institution": "Mount Carmel",
       "city": "Bhopal",
       "pin code": "462043"
+    },
+    {
+      "institution": "Mount Carmel Convent School Kolar road  Pin",
+      "city": "Bhopal",
+      "pin code": "462042"
     },
     {
       "institution": "Narayan e-Techno School",
@@ -296,6 +303,11 @@
       "institution": "Red Rose School",
       "city": "Bhopal",
       "pin code": "462018"
+    },
+    {
+      "institution": "Radcliffe School",
+      "city": "Bhopal",
+      "pin code": "462003"
     },
     {
       "institution": "Rukhmani Devi Public School",
@@ -1299,6 +1311,11 @@
     },
     {
       "institution": "Kendriya Vidyalaya",
+      "city": "Ujjain",
+      "pin code": "456010"
+    },
+      {
+      "institution": "Lokmanya Tilak Higher Secondary School",
       "city": "Ujjain",
       "pin code": "456010"
     },
