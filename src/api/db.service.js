@@ -172,6 +172,7 @@ class DB {
         method: 'POST',
         headers: headers,
         mode: 'cors', // Explicitly set CORS mode
+        cache: 'no-cache', // Use cache option instead of header to avoid CORS preflight
         body: JSON.stringify(data)
       };
       
@@ -199,6 +200,7 @@ class DB {
               'Content-Type': 'application/json'
             },
             mode: 'cors',
+            cache: 'no-cache',
             body: JSON.stringify(data)
           };
           
@@ -272,7 +274,8 @@ class DB {
       const options = {
         method: 'GET',
         headers: this.getRequestHeaders(),
-        mode: 'cors'
+        mode: 'cors',
+        cache: 'no-cache'
       }
       
       this.logRequest('GET', url, null)
@@ -309,6 +312,7 @@ class DB {
         method: 'PUT',
         headers: this.getRequestHeaders(),
         mode: 'cors',
+        cache: 'no-cache',
         body: JSON.stringify(data)
       }
       
@@ -345,7 +349,8 @@ class DB {
       const options = {
         method: 'DELETE',
         headers: this.getRequestHeaders(),
-        mode: 'cors'
+        mode: 'cors',
+        cache: 'no-cache'
       }
       
       this.logRequest('DELETE', url, null)
