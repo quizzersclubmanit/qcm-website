@@ -5,6 +5,8 @@ const API_BASE_URL = (import.meta && import.meta.env && import.meta.env.VITE_API
   ? `${import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '')}/api`
   : 'https://qcm-backend-ln5c.onrender.com/api'
 
+console.log('DB Service initialized with API_BASE_URL:', API_BASE_URL)
+
 class DB {
   // Helper function to get token from cookies or local storage
   getTokenFromCookies() {
@@ -135,7 +137,9 @@ class DB {
 
   async insert({ collectionId, data = {} }) {
     try {
-      console.log('DB Service - Insert Operation');
+      console.log('=== DB Service - Insert Operation ===');
+      console.log('Collection ID:', collectionId);
+      console.log('Data to insert:', data);
       
       // Map collection types to appropriate endpoints
       let endpoint = '';
@@ -150,9 +154,11 @@ class DB {
       }
       
       const url = `${API_BASE_URL}${endpoint}`;
+      console.log('Target URL:', url);
       
       // Get headers with auth token
       const headers = this.getRequestHeaders();
+      console.log('Request headers:', headers);
       
       // Prepare fetch options with credentials
       const options = {
@@ -165,10 +171,21 @@ class DB {
         body: JSON.stringify(data)
       };
       
-      console.log('Sending request to:', url);
+      console.log('Request options:', {
+        method: options.method,
+        headers: options.headers,
+        bodyLength: options.body.length
+      });
       
       // Make the request
+      console.log('Making fetch request...');
       const response = await fetch(url, options);
+      
+      console.log('Response received:', {
+        status: response.status,
+        statusText: response.statusText,
+        headers: Object.fromEntries([...response.headers.entries()])
+      });
       
       // Check for HTTP error status
       if (!response.ok) {
@@ -179,6 +196,8 @@ class DB {
       
       // Parse and return response
       const responseData = await response.json();
+      console.log('Response data:', responseData);
+      console.log('=== Insert Operation Complete ===');
       return responseData;
       
     } catch (error) {
