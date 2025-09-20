@@ -1,46 +1,28 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Button from './Button';
-import { useNavigate } from 'react-router-dom';
-import { FaYoutube, FaWhatsapp, FaDownload } from 'react-icons/fa';
+import { FaWhatsapp, FaDownload } from 'react-icons/fa';
 
 export default function RegistrationSuccess({ open, setOpen }) {
   const dialogRef = useRef(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (open) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = prev;
-      };
+      return () => { document.body.style.overflow = prev; };
     }
   }, [open]);
 
   useEffect(() => {
     if (!open) return;
-
-    function onKey(e) {
-      if (e.key === 'Escape') setOpen(false);
-    }
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
-  function close() {
-    setOpen(false);
-  }
+  function close() { setOpen(false); }
 
-  function handleYoutube() {
-    window.open('https://www.youtube.com/watch?v=ZhvfIklHY0w', '_blank');
-    setOpen(false); 
-  }
-
-  function handleWhatsapp() {
-    window.open('https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O', '_blank');
-    setOpen(false); 
-  }
-
+  function handleWhatsapp() { window.open('https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O', '_blank'); setOpen(false); }
   function handleDownload() {
     const link = document.createElement('a');
     link.href = '/SampleQuestionsIQC.pdf';
@@ -53,76 +35,96 @@ export default function RegistrationSuccess({ open, setOpen }) {
 
   if (!open) return null;
 
+  /*
+    Glassy card with colored CTAs:
+    - WhatsApp button: green gradient
+    - Download button: blue gradient
+    Buttons keep full width, slightly rounded, with subtle shadow and hover transform.
+  */
+
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center px-4">
-      <div className="absolute inset-0 backdrop-blur-sm bg-black/30 transition-opacity" aria-hidden="true" />
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-6">
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" aria-hidden="true" />
+
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
-        className="relative w-full max-w-2xl rounded-2xl max-h-[90%] shadow-xl overflow-hidden flex flex-col"
+        className="relative w-full max-w-md rounded-xl shadow-2xl overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03))',
+          maxHeight: '88vh',
+          boxSizing: 'border-box',
+          background: 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
           border: '1px solid rgba(255,255,255,0.12)',
-          backdropFilter: 'blur(10px) saturate(120%)',
+          backdropFilter: 'blur(10px) saturate(110%)',
           WebkitBackdropFilter: 'blur(10px)'
         }}
       >
+        {/* glassy close button overlapping the card */}
         <button
           onClick={close}
-          className="absolute right-3 top-3 z-20 w-9 h-9 rounded-full flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition-transform"
-          aria-label="Close poster"
+          aria-label="Close"
           title="Close"
-          style={{ background: 'rgba(0,0,0,0.6)', color: 'white' }}
+          className="absolute top-3 right-3 z-40 w-9 h-9 rounded-full flex items-center justify-center"
+          style={{
+            background: 'rgba(255,255,255,0.12)',
+            border: '1px solid rgba(255,255,255,0.18)',
+            backdropFilter: 'blur(6px)',
+            WebkitBackdropFilter: 'blur(6px)',
+            color: 'white',
+            boxShadow: '0 6px 18px rgba(0,0,0,0.35)'
+          }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-        <div className="flex flex-col md:flex-row gap-3 items-center justify-center p-6 overflow-y-auto">
-          <div className="flex-shrink-0 w-full md:w-1/2 flex items-center justify-center">
-            <img
-              className="w-full md:w-auto max-w-sm md:max-w-md h-auto object-contain rounded-lg shadow-lg max-h-[70vh] md:max-h-[75vh]"
-              src="https://res.cloudinary.com/dajbfxkin/image/upload/v1757868327/IQC_25_poster_2_s2af5z.jpg"
-              alt="poster"
-            />
+
+        {/* Card interior uses the same frosted look but with inner padding */}
+        <div className="p-6 flex flex-col items-center gap-4" style={{ minHeight: 0 }}>
+
+          {/* Video - 3:2 aspect ratio */}
+          <div className="w-full rounded-md overflow-hidden shadow-inner" style={{ width: '100%' }}>
+            <div style={{ position: 'relative', width: '100%', paddingTop: '66.6667%' }}>
+              <iframe
+                src="https://www.youtube.com/embed/ZhvfIklHY0w?autoplay=1&mute=1&controls=0"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+              />
+            </div>
           </div>
 
-          <div className="w-full md:w-1/2 flex flex-col items-center justify-center gap-4 px-0">
-            <div className="text-center">
-              <h2 className="text-lg md:text-xl font-bold text-white mb-2">Registration Successful!</h2>
-              <p className="text-xs text-white/70 italic">Welcome to QCM!</p>
-            </div>
-
-            <div className="flex flex-col gap-3 mt-1">
-              <Button 
-                className="px-5 py-2 rounded-lg shadow-lg text-white bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 transform transition-all flex items-center justify-center gap-2"
-                onClick={handleYoutube}
-              >
-                <FaYoutube />
-                Last Year IQC
-              </Button>
-
-              <Button 
-                className="px-5 py-2 rounded-lg shadow-lg text-white bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 transform transition-all flex items-center justify-center gap-2"
-                onClick={handleWhatsapp}
-              >
-                <FaWhatsapp />
-                Join WhatsApp
-              </Button>
-
-              <Button 
-                className="px-5 py-2 rounded-lg shadow-lg text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 transform transition-all flex items-center justify-center gap-2"
-                onClick={handleDownload}
-              >
-                <FaDownload />
-                Download Sample Questions
-              </Button>
-            </div>
-            
-            <p className="text-[10px] text-white/50 mt-2">Press Esc or click the X to dismiss.</p>
+          {/* Heading */}
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-white">Registration Successful!</h3>
+            <p className="text-sm text-white/80 mt-1">Welcome to QCM</p>
           </div>
+
+          {/* Buttons: colored gradients */}
+          <div className="w-full flex flex-col gap-3" style={{ flexShrink: 0 }}>
+            <Button
+              className="w-full px-4 py-2 rounded-md text-white font-medium flex items-center justify-center gap-2 transform transition-all shadow-md"
+              onClick={handleWhatsapp}
+              style={{ background: 'linear-gradient(90deg,#25D366,#128C7E)' }}
+            >
+              <FaWhatsapp />
+              <span>Join WhatsApp</span>
+            </Button>
+
+            <Button
+              className="w-full px-4 py-2 rounded-md text-white font-medium flex items-center justify-center gap-2 transform transition-all shadow-md"
+              onClick={handleDownload}
+              style={{ background: 'linear-gradient(90deg,#4F46E5,#2563EB)' }}
+            >
+              <FaDownload />
+              <span>Download Sample Questions Booklet</span>
+            </Button>
+          </div>
+
         </div>
       </div>
     </div>
