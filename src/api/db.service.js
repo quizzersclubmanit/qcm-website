@@ -45,26 +45,21 @@ class DB {
       // Get token from localStorage
       const token = localStorage.getItem('authToken') || localStorage.getItem('token');
       
+      // Minimal headers to avoid CORS preflight issues
       const headers = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache'
+        'Content-Type': 'application/json'
       };
       
       if (token && token.trim() !== '') {
         // Only send the standard Authorization header to minimize CORS issues
         headers['Authorization'] = `Bearer ${token}`;
-      } else {
-        // Leave without auth header if no token present
       }
       
       return headers;
     } catch (error) {
       console.error('Error in getRequestHeaders:', error);
       return {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Content-Type': 'application/json'
       };
     }
   }
@@ -144,7 +139,7 @@ class DB {
       // Map collection types to appropriate endpoints
       let endpoint = '';
       if (collectionId.includes('quiz') && !collectionId.includes('leaderboard')) {
-        endpoint = '/quiz/create';
+        endpoint = '/quiz'; // Use POST to /api/quiz for creating quizzes
       } else if (collectionId.includes('leaderboard')) {
         endpoint = '/quiz/score';
       } else if (collectionId.includes('user')) {
@@ -160,14 +155,11 @@ class DB {
       const headers = this.getRequestHeaders();
       console.log('Request headers:', headers);
       
-      // Prepare fetch options with credentials
+      // Prepare fetch options - try without credentials first to avoid CORS preflight issues
       const options = {
         method: 'POST',
-        headers: {
-          ...headers,
-          'Content-Type': 'application/json'
-        },
-        // No credentials needed when using Bearer tokens
+        headers: headers,
+        mode: 'cors', // Explicitly set CORS mode
         body: JSON.stringify(data)
       };
       
@@ -179,7 +171,35 @@ class DB {
       
       // Make the request
       console.log('Making fetch request...');
-      const response = await fetch(url, options);
+      let response;
+      
+      try {
+        response = await fetch(url, options);
+      } catch (fetchError) {
+        console.error('Fetch failed:', fetchError);
+        
+        // Try a simpler request without Authorization header if the first fails
+        if (options.headers.Authorization) {
+          console.log('Retrying without Authorization header...');
+          const simpleOptions = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            mode: 'cors',
+            body: JSON.stringify(data)
+          };
+          
+          try {
+            response = await fetch(url, simpleOptions);
+          } catch (retryError) {
+            console.error('Retry also failed:', retryError);
+            throw fetchError; // Throw original error
+          }
+        } else {
+          throw fetchError;
+        }
+      }
       
       console.log('Response received:', {
         status: response.status,
@@ -240,7 +260,7 @@ class DB {
       const options = {
         method: 'GET',
         headers: this.getRequestHeaders(),
-        // No credentials needed when using Bearer tokens
+        mode: 'cors'
       }
       
       this.logRequest('GET', url, null)
@@ -276,7 +296,7 @@ class DB {
       const options = {
         method: 'PUT',
         headers: this.getRequestHeaders(),
-        // Remove credentials to avoid CORS issues
+        mode: 'cors',
         body: JSON.stringify(data)
       }
       
@@ -312,8 +332,8 @@ class DB {
       const url = `${API_BASE_URL}${endpoint}`
       const options = {
         method: 'DELETE',
-        headers: this.getRequestHeaders()
-        // Remove credentials to avoid CORS issues
+        headers: this.getRequestHeaders(),
+        mode: 'cors'
       }
       
       this.logRequest('DELETE', url, null)
