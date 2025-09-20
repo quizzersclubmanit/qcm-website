@@ -257,7 +257,7 @@ class DB {
       const options = {
         method: 'PUT',
         headers: this.getRequestHeaders(),
-        credentials: 'include',
+        // Remove credentials to avoid CORS issues
         body: JSON.stringify(data)
       }
       
@@ -293,8 +293,8 @@ class DB {
       const url = `${API_BASE_URL}${endpoint}`
       const options = {
         method: 'DELETE',
-        headers: this.getRequestHeaders(),
-        credentials: 'include'
+        headers: this.getRequestHeaders()
+        // Remove credentials to avoid CORS issues
       }
       
       this.logRequest('DELETE', url, null)
