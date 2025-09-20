@@ -77,9 +77,21 @@ class DB {
       errorData = { error: 'Failed to parse error response' }
     }
     
-    const error = new Error(
-      errorData.message || errorData.error || `Request failed with status ${response.status}`
-    )
+    // Log detailed error information for debugging
+    console.error('=== API Error Details ===');
+    console.error('Status:', response.status);
+    console.error('URL:', response.url);
+    console.error('Error Data:', errorData);
+    
+    // Create detailed error message
+    let errorMessage = errorData.message || errorData.error || `Request failed with status ${response.status}`;
+    
+    // If there are validation details, include them
+    if (errorData.details && Array.isArray(errorData.details)) {
+      errorMessage += '\nValidation errors:\n' + errorData.details.join('\n');
+    }
+    
+    const error = new Error(errorMessage)
     error.status = response.status
     error.data = errorData
     
@@ -139,7 +151,7 @@ class DB {
       // Map collection types to appropriate endpoints
       let endpoint = '';
       if (collectionId.includes('quiz') && !collectionId.includes('leaderboard')) {
-        endpoint = '/quiz'; // Use POST to /api/quiz for creating quizzes
+        endpoint = '/quiz/create'; // Use POST to /api/quiz/create for creating quizzes
       } else if (collectionId.includes('leaderboard')) {
         endpoint = '/quiz/score';
       } else if (collectionId.includes('user')) {
@@ -244,7 +256,7 @@ class DB {
       // Map collection types to appropriate endpoints
       let endpoint = ''
       if (collectionId.includes('quiz') && !collectionId.includes('leaderboard')) {
-        endpoint = '/quiz'
+        endpoint = '/quiz' // GET /api/quiz works for fetching quizzes
       } else if (collectionId.includes('leaderboard')) {
         endpoint = '/quiz/leaderboard'
       } else if (collectionId.includes('user')) {
