@@ -45,21 +45,26 @@ class DB {
       // Get token from localStorage
       const token = localStorage.getItem('authToken') || localStorage.getItem('token');
       
-      // Minimal headers to avoid CORS preflight issues
       const headers = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
       };
       
       if (token && token.trim() !== '') {
         // Only send the standard Authorization header to minimize CORS issues
         headers['Authorization'] = `Bearer ${token}`;
+      } else {
+        // Leave without auth header if no token present
       }
       
       return headers;
     } catch (error) {
       console.error('Error in getRequestHeaders:', error);
       return {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       };
     }
   }
@@ -77,21 +82,9 @@ class DB {
       errorData = { error: 'Failed to parse error response' }
     }
     
-    // Log detailed error information for debugging
-    console.error('=== API Error Details ===');
-    console.error('Status:', response.status);
-    console.error('URL:', response.url);
-    console.error('Error Data:', errorData);
-    
-    // Create detailed error message
-    let errorMessage = errorData.message || errorData.error || `Request failed with status ${response.status}`;
-    
-    // If there are validation details, include them
-    if (errorData.details && Array.isArray(errorData.details)) {
-      errorMessage += '\nValidation errors:\n' + errorData.details.join('\n');
-    }
-    
-    const error = new Error(errorMessage)
+    const error = new Error(
+      errorData.message || errorData.error || `Request failed with status ${response.status}`
+    )
     error.status = response.status
     error.data = errorData
     
@@ -151,7 +144,7 @@ class DB {
       // Map collection types to appropriate endpoints
       let endpoint = '';
       if (collectionId.includes('quiz') && !collectionId.includes('leaderboard')) {
-        endpoint = '/quiz/create'; // Use POST to /api/quiz/create for creating quizzes
+        endpoint = '/quiz/create';
       } else if (collectionId.includes('leaderboard')) {
         endpoint = '/quiz/score';
       } else if (collectionId.includes('user')) {
@@ -167,12 +160,14 @@ class DB {
       const headers = this.getRequestHeaders();
       console.log('Request headers:', headers);
       
-      // Prepare fetch options - try without credentials first to avoid CORS preflight issues
+      // Prepare fetch options with credentials
       const options = {
         method: 'POST',
-        headers: headers,
-        mode: 'cors', // Explicitly set CORS mode
-        cache: 'no-cache', // Use cache option instead of header to avoid CORS preflight
+        headers: {
+          ...headers,
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include', // Include credentials for CORS
         body: JSON.stringify(data)
       };
       
@@ -184,36 +179,7 @@ class DB {
       
       // Make the request
       console.log('Making fetch request...');
-      let response;
-      
-      try {
-        response = await fetch(url, options);
-      } catch (fetchError) {
-        console.error('Fetch failed:', fetchError);
-        
-        // Try a simpler request without Authorization header if the first fails
-        if (options.headers.Authorization) {
-          console.log('Retrying without Authorization header...');
-          const simpleOptions = {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            mode: 'cors',
-            cache: 'no-cache',
-            body: JSON.stringify(data)
-          };
-          
-          try {
-            response = await fetch(url, simpleOptions);
-          } catch (retryError) {
-            console.error('Retry also failed:', retryError);
-            throw fetchError; // Throw original error
-          }
-        } else {
-          throw fetchError;
-        }
-      }
+      const response = await fetch(url, options);
       
       console.log('Response received:', {
         status: response.status,
@@ -258,7 +224,7 @@ class DB {
       // Map collection types to appropriate endpoints
       let endpoint = ''
       if (collectionId.includes('quiz') && !collectionId.includes('leaderboard')) {
-        endpoint = '/quiz' // GET /api/quiz works for fetching quizzes
+        endpoint = '/quiz'
       } else if (collectionId.includes('leaderboard')) {
         endpoint = '/quiz/leaderboard'
       } else if (collectionId.includes('user')) {
@@ -274,8 +240,7 @@ class DB {
       const options = {
         method: 'GET',
         headers: this.getRequestHeaders(),
-        mode: 'cors',
-        cache: 'no-cache'
+        credentials: 'include' // Include credentials for CORS
       }
       
       this.logRequest('GET', url, null)
@@ -311,8 +276,7 @@ class DB {
       const options = {
         method: 'PUT',
         headers: this.getRequestHeaders(),
-        mode: 'cors',
-        cache: 'no-cache',
+        credentials: 'include', // Include credentials for CORS
         body: JSON.stringify(data)
       }
       
@@ -349,8 +313,7 @@ class DB {
       const options = {
         method: 'DELETE',
         headers: this.getRequestHeaders(),
-        mode: 'cors',
-        cache: 'no-cache'
+        credentials: 'include' // Include credentials for CORS
       }
       
       this.logRequest('DELETE', url, null)
