@@ -1,6 +1,6 @@
 import dbService from "../api/db.service"
 import { useEffect, useState } from "react"
-import env from "../../constants"
+// import env from "../../constants" // Not needed for new backend
 import {
   Container,
   QuizRibbon,
@@ -20,9 +20,11 @@ const ManageQuiz = () => {
 
   useEffect(() => {
     dbService
-      .select({ collectionId: env.quizId })
+      .select({ collectionId: "quiz" })
       .then((res) => {
-        dispatch(setQuizes(res))
+        // Handle different response formats
+        const quizData = Array.isArray(res) ? res : (res.data || [])
+        dispatch(setQuizes(quizData))
       })
       .catch((err) => {
         console.error(err)
