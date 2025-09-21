@@ -104,8 +104,14 @@ const PlayQuiz = () => {
     ))
 
     // Compute score deterministically from answered questions
-    const normalize = (v) => (v === undefined || v === null) ? '' : String(v).trim()
-    const computedScore = quizzesForScore.reduce((acc, quiz) => {
+    const normalize = (v) => {
+      if (v === undefined || v === null) return ''
+      return String(v)
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ')
+    }
+    const computedScore = quizzesForScore.reduce((acc, quiz, qIndex) => {
       try {
         const secNum = Number(quiz?.section)
         const opts = Array.isArray(quiz?.options) ? quiz.options : []
@@ -119,8 +125,8 @@ const PlayQuiz = () => {
           return correct ? 4 : -1
         }
 
-        // Integer Type: section 3 with blank options
-        if (secNum === 3 && isBlankOptions) {
+        // Integer Type: section 3 marked as integer OR blank options OR explicit userInput present
+        if (secNum === 3 && (quiz?.isInteger === true || isBlankOptions || (quiz && typeof quiz.userInput === 'string'))) {
           const userVal = normalize(quiz?.userInput)
           const correctVal = normalize(quiz?.correctAnswer)
           const correct = userVal && userVal === correctVal
@@ -129,16 +135,78 @@ const PlayQuiz = () => {
 
         // Other sections: evaluate via options and markedAnswers
         const marked = Array.isArray(quiz?.markedAnswers) ? quiz.markedAnswers : []
-        const correctIdx = (quiz?.options || []).findIndex((opt) => normalize(opt) === normalize(quiz?.correctAnswer))
-        const pickedCount = marked.filter(Boolean).length
-        const isCorrect = correctIdx >= 0 && marked[correctIdx] === true && pickedCount === 1
-        if (pickedCount === 0) return acc
-        return acc + marks(isCorrect)
+        const pickedIdxs = marked
+          .map((b, i) => (b ? i : -1))
+          .filter((i) => i >= 0)
+
+        // Preprocess correct answer to handle "Answer: (C) ..." and multi-correct like "A,B" or "A C"
+        const preprocess = (s) => normalize(s)
+          .replace(/^answer[:.\-\s]*/, '')
+          .replace(/^\(?[abcd]\)?[).:\-\s]*/, '')
+
+        const corrRaw = quiz?.correctAnswer
+        const corrNorm = preprocess(corrRaw)
+
+        // Build a map of option normalized text (strip leading labels like "a)")
+        const stripLead = (s) => normalize(s)
+          .replace(/^\(?[abcd]\)?[).:\-\s]*/, '')
+        const optNorms = (quiz?.options || []).map((o) => stripLead(o))
+
+        // Detect multi-correct: if corrRaw contains separators or multiple tokens
+        const tokens = String(corrRaw || '')
+          .split(/[\s,;|]+/)
+          .map((t) => t.trim())
+          .filter(Boolean)
+
+        let corrIdxs = []
+        if (tokens.length > 1) {
+          // Map tokens like A/B/C to indices
+          corrIdxs = tokens
+            .map((t) => t.replace(/\(|\)/g, '').toLowerCase())
+            .map((t) => {
+              if (["a","b","c","d"].includes(t)) return { a:0,b:1,c:2,d:3 }[t]
+              // else try to match option text
+              const idx = optNorms.findIndex((o) => o === normalize(t))
+              return idx >= 0 ? idx : -1
+            })
+            .filter((i) => i >= 0)
+        } else {
+          // Single-correct: find index by matching option text to cleaned correct
+          let idx = optNorms.findIndex((o) => o === corrNorm)
+          if (idx < 0) {
+            // Fallback: if corrRaw is a letter like B or (b)
+            const letter = String(corrRaw || '').trim().toLowerCase().replace(/[^a-d]/g, '')
+            if (["a","b","c","d"].includes(letter)) idx = { a:0,b:1,c:2,d:3 }[letter]
+          }
+          if (idx >= 0) corrIdxs = [idx]
+        }
+
+        // Evaluate correctness
+        if (pickedIdxs.length === 0) return acc
+
+        let correct = false
+        if (corrIdxs.length > 1) {
+          // multi-correct: exact set match
+          const a = new Set(pickedIdxs)
+          const b = new Set(corrIdxs)
+          correct = a.size === b.size && [...a].every((x) => b.has(x))
+        } else if (corrIdxs.length === 1) {
+          correct = pickedIdxs.length === 1 && pickedIdxs[0] === corrIdxs[0]
+        } else {
+          // Fallback: try direct text equality with any picked option
+          correct = pickedIdxs.some((i) => optNorms[i] === corrNorm)
+        }
+
+        const delta = marks(correct)
+        if (process.env.NODE_ENV !== 'production') {
+          console.log(`[Score] Q${qIndex+1} sec=${secNum}`, { pickedIdxs, corrIdxs, correct, delta, corrRaw, options: quiz?.options })
+        }
+        return acc + delta
       } catch {
         return acc
       }
     }, 0)
-    const safeScore = Number(Math.min(150, Math.max(0, computedScore)))
+    const safeScore = Number(Math.min(180, Math.max(0, computedScore)))
     dbService
       .insert({
         collectionId: "leaderboard",
@@ -220,8 +288,21 @@ const PlayQuiz = () => {
             console.log('First question sample:', quizData[0])
             
             // Filter questions by section (coerce to number for safety)
-            const sectionQuizzes = quizData.filter(quiz => Number(quiz.section) === Number(section))
+            let sectionQuizzes = quizData.filter(quiz => Number(quiz.section) === Number(section))
             console.log(`✅ Found ${sectionQuizzes.length} questions for section ${section} (of total ${quizData.length})`)
+
+            // For Section 3: first 5 = multi-correct, next 5 = integer
+            if (Number(section) === 3) {
+              // Sort deterministically by createdAt asc then id
+              sectionQuizzes = sectionQuizzes.sort((a,b) => {
+                const ta = new Date(a.createdAt || 0).getTime()
+                const tb = new Date(b.createdAt || 0).getTime()
+                if (ta !== tb) return ta - tb
+                const ia = String(a.id || a.$id || '')
+                const ib = String(b.id || b.$id || '')
+                return ia.localeCompare(ib)
+              }).map((q, idx) => ({ ...q, isInteger: idx >= 5 }))
+            }
             
             // Ensure each quiz has a markedAnswers array to track selections
           const withMarks = (list) => list.map(q => ({
@@ -443,7 +524,7 @@ const PlayQuiz = () => {
           className="w-1/3"
         />
       )}
-      {Number(quizes[currentQue - 1]?.section) === 4 ? (
+      {(Number(quizes[currentQue - 1]?.section) === 3 && quizes[currentQue - 1]?.isInteger === true) ? (
         <div className="md:w-1/2 sm:w-4/5 w-full mt-4 sm:mt-0">
           <label className="block text-white font-semibold mb-2">Enter your answer</label>
           <input
@@ -480,13 +561,19 @@ const PlayQuiz = () => {
                 onClick={() => {
                   if (isPaused) return
                   if (multiCorrect) {
-                    setSelectedOptions((prev) =>
-                      prev.map((bool, idx) => (idx == index ? !bool : bool))
-                    )
+                    setSelectedOptions((prev) => {
+                      const next = prev.map((bool, idx) => (idx == index ? !bool : bool))
+                      const q = quizes[currentQue - 1]
+                      if (q) dispatch(editQuiz({ $id: q.$id || q.id || 0, changes: { markedAnswers: next } }))
+                      return next
+                    })
                   } else {
-                    setSelectedOptions((prev) =>
-                      prev.map((bool, idx) => (idx == index ? (bool ? false : true) : false))
-                    )
+                    setSelectedOptions((prev) => {
+                      const next = prev.map((bool, idx) => (idx == index ? (bool ? false : true) : false))
+                      const q = quizes[currentQue - 1]
+                      if (q) dispatch(editQuiz({ $id: q.$id || q.id || 0, changes: { markedAnswers: next } }))
+                      return next
+                    })
                   }
                 }}
               />
