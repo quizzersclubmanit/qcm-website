@@ -12,13 +12,10 @@ const env = {
 }
 
 export const timeLimits = [
-  7,  // Section 1: Single Correct (5 Q)
-  8,  // Section 2: Multiple Correct (5 Q)
-  15, // Section 3: Aptitude (10 Q)
-  10, // Section 4: Integer Type (5 Q)
-  10, // Section 5: Match the Following (5 Q)
-  10, // Section 6: Assertion Reason (5 Q)
-  10  // Section 7: Image Based (5 Q)
+  8,  // Section 1: Aptitude (10)
+  8,  // Section 2: Single Correct + Assertion (5 each)
+  7,  // Section 3: Multiple Correct + Integer (5 each)
+  7   // Section 4: Match + Image (5 each)
 ]
 
 export default env
