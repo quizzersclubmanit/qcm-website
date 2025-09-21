@@ -1,11 +1,18 @@
 // Database service - Connected to Prisma MongoDB backend
 
 // Use environment variable when available; otherwise fallback to deployed backend
+// Based on testing, the working backend is https://qcm-backend-ln5c.onrender.com/api
 const API_BASE_URL = (import.meta && import.meta.env && import.meta.env.VITE_API_BASE_URL)
   ? `${import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '')}/api`
   : 'https://qcm-backend-ln5c.onrender.com/api'
 
 console.log('DB Service initialized with API_BASE_URL:', API_BASE_URL)
+console.log('Environment check:', {
+  hasImportMeta: !!(import.meta),
+  hasEnv: !!(import.meta && import.meta.env),
+  hasViteUrl: !!(import.meta && import.meta.env && import.meta.env.VITE_API_BASE_URL),
+  viteUrl: import.meta && import.meta.env && import.meta.env.VITE_API_BASE_URL
+})
 
 class DB {
   // Helper function to get token from cookies or local storage
@@ -45,26 +52,21 @@ class DB {
       // Get token from localStorage
       const token = localStorage.getItem('authToken') || localStorage.getItem('token');
       
+      // Minimal headers to avoid CORS preflight issues
       const headers = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache'
+        'Content-Type': 'application/json'
       };
       
       if (token && token.trim() !== '') {
         // Only send the standard Authorization header to minimize CORS issues
         headers['Authorization'] = `Bearer ${token}`;
-      } else {
-        // Leave without auth header if no token present
       }
       
       return headers;
     } catch (error) {
       console.error('Error in getRequestHeaders:', error);
       return {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Content-Type': 'application/json'
       };
     }
   }
@@ -82,9 +84,21 @@ class DB {
       errorData = { error: 'Failed to parse error response' }
     }
     
-    const error = new Error(
-      errorData.message || errorData.error || `Request failed with status ${response.status}`
-    )
+    // Log detailed error information for debugging
+    console.error('=== API Error Details ===');
+    console.error('Status:', response.status);
+    console.error('URL:', response.url);
+    console.error('Error Data:', errorData);
+    
+    // Create detailed error message
+    let errorMessage = errorData.message || errorData.error || `Request failed with status ${response.status}`;
+    
+    // If there are validation details, include them
+    if (errorData.details && Array.isArray(errorData.details)) {
+      errorMessage += '\nValidation errors:\n' + errorData.details.join('\n');
+    }
+    
+    const error = new Error(errorMessage)
     error.status = response.status
     error.data = errorData
     
@@ -144,7 +158,7 @@ class DB {
       // Map collection types to appropriate endpoints
       let endpoint = '';
       if (collectionId.includes('quiz') && !collectionId.includes('leaderboard')) {
-        endpoint = '/quiz/create';
+        endpoint = '/quiz/create'; // Use POST to /api/quiz/create for creating quizzes
       } else if (collectionId.includes('leaderboard')) {
         endpoint = '/quiz/score';
       } else if (collectionId.includes('user')) {
@@ -160,14 +174,12 @@ class DB {
       const headers = this.getRequestHeaders();
       console.log('Request headers:', headers);
       
-      // Prepare fetch options with credentials
+      // Prepare fetch options - try without credentials first to avoid CORS preflight issues
       const options = {
         method: 'POST',
-        headers: {
-          ...headers,
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include', // Include credentials for CORS
+        headers: headers,
+        mode: 'cors', // Explicitly set CORS mode
+        cache: 'no-cache', // Use cache option instead of header to avoid CORS preflight
         body: JSON.stringify(data)
       };
       
@@ -179,7 +191,36 @@ class DB {
       
       // Make the request
       console.log('Making fetch request...');
-      const response = await fetch(url, options);
+      let response;
+      
+      try {
+        response = await fetch(url, options);
+      } catch (fetchError) {
+        console.error('Fetch failed:', fetchError);
+        
+        // Try a simpler request without Authorization header if the first fails
+        if (options.headers.Authorization) {
+          console.log('Retrying without Authorization header...');
+          const simpleOptions = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            mode: 'cors',
+            cache: 'no-cache',
+            body: JSON.stringify(data)
+          };
+          
+          try {
+            response = await fetch(url, simpleOptions);
+          } catch (retryError) {
+            console.error('Retry also failed:', retryError);
+            throw fetchError; // Throw original error
+          }
+        } else {
+          throw fetchError;
+        }
+      }
       
       console.log('Response received:', {
         status: response.status,
@@ -221,36 +262,71 @@ class DB {
 
   async select({ collectionId, queries = [] }) {
     try {
+      console.log('=== DB SERVICE SELECT ===')
+      console.log('Collection ID:', collectionId)
+      console.log('Raw queries:', queries)
+      
       // Map collection types to appropriate endpoints
       let endpoint = ''
       if (collectionId.includes('quiz') && !collectionId.includes('leaderboard')) {
-        endpoint = '/quiz'
+        endpoint = '/quiz' // GET /api/quiz works for fetching quizzes
       } else if (collectionId.includes('leaderboard')) {
         endpoint = '/quiz/leaderboard'
       } else if (collectionId.includes('user')) {
         endpoint = '/user'
       }
       
+      console.log('Mapped endpoint:', endpoint)
+      
       // Add query parameters if any
-      const queryString = queries.length > 0 
-        ? `?${new URLSearchParams(queries).toString()}` 
-        : ''
+      let queryString = ''
+      if (queries.length > 0) {
+        // Handle different query formats
+        if (typeof queries[0] === 'string' && queries[0].includes('=')) {
+          // Format: ["key=value", "key2=value2"]
+          queryString = `?${queries.join('&')}`
+        } else {
+          // Format: [["key", "value"], ["key2", "value2"]] or URLSearchParams format
+          try {
+            queryString = `?${new URLSearchParams(queries).toString()}`
+          } catch (error) {
+            console.error('Query format error:', error)
+            queryString = `?${queries.join('&')}`
+          }
+        }
+      }
+      
+      console.log('Query string:', queryString)
       
       const url = `${API_BASE_URL}${endpoint}${queryString}`
+      console.log('Final URL:', url)
+      
       const options = {
         method: 'GET',
         headers: this.getRequestHeaders(),
-        credentials: 'include' // Include credentials for CORS
+        mode: 'cors',
+        cache: 'no-cache'
       }
+      
+      console.log('Request options:', options)
       
       this.logRequest('GET', url, null)
       const response = await fetch(url, options)
       
+      console.log('Response status:', response.status)
+      console.log('Response headers:', Object.fromEntries([...response.headers.entries()]))
+      
       if (!response.ok) {
+        console.error('Response not OK, handling error...')
         return this.handleErrorResponse(response)
       }
       
-      const responseData = await response.json().catch(() => ({}))
+      const responseData = await response.json().catch((e) => {
+        console.error('Failed to parse JSON response:', e)
+        return {}
+      })
+      
+      console.log('Final response data:', responseData)
       this.logResponse(response, responseData)
       
       return responseData
@@ -276,7 +352,8 @@ class DB {
       const options = {
         method: 'PUT',
         headers: this.getRequestHeaders(),
-        credentials: 'include', // Include credentials for CORS
+        mode: 'cors',
+        cache: 'no-cache',
         body: JSON.stringify(data)
       }
       
@@ -313,7 +390,8 @@ class DB {
       const options = {
         method: 'DELETE',
         headers: this.getRequestHeaders(),
-        credentials: 'include' // Include credentials for CORS
+        mode: 'cors',
+        cache: 'no-cache'
       }
       
       this.logRequest('DELETE', url, null)
