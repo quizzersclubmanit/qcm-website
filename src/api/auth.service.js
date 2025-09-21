@@ -1,13 +1,16 @@
 // Auth service - Connected to Prisma MongoDB backend
 
 const API_BASE_URL = 'https://qcm-backend-ln5c.onrender.com'
+// const API_BASE_URL = 'http://localhost:3000'
+
 
 class Auth {
   async signupAndLogin({ email, password, name, phone, city, school, sex }) {
     try {
-      if (name === "admin") {
-        throw new Error("Name is reserved. Please enter another name")
-      }
+      // Allow admin user creation for administrative purposes
+      // if (name === "admin") {
+      //   throw new Error("Name is reserved. Please enter another name")
+      // }
       
       console.log('Frontend sending signup data:', { email, password: '***', name, phone, city, school, sex });
       console.log('API URL:', `${API_BASE_URL}/api/auth/signup`);
@@ -52,6 +55,7 @@ class Auth {
 
   async login({ email = "", password = "" }) {
     try {
+      console.log('=== LOGIN ATTEMPT STARTED ===');
       console.log('Frontend sending login data:', { email, password: '***' });
       console.log('API URL:', `${API_BASE_URL}/api/auth/login`);
       
@@ -69,10 +73,29 @@ class Auth {
       
       const data = await response.json()
       console.log('Login response data:', data);
+      console.log('=== LOGIN RESPONSE RECEIVED ===');
       
       if (!response.ok) {
         console.error('Login failed with status:', response.status, 'Error:', data.error);
         throw new Error(data.error || 'Login failed')
+      }
+      
+      // Try to get the token from the response or cookies
+      const token = data.token || 
+                   document.cookie
+                     .split('; ')
+                     .find(row => row.startsWith('token='))
+                     ?.split('=')[1];
+      
+      // Store token in localStorage for future requests
+      if (token) {
+        console.log('Storing token in localStorage:', token.substring(0, 10) + '...');
+        localStorage.setItem('token', token);
+        localStorage.setItem('authToken', token);
+      } else {
+        console.warn('No token received in login response');
+        console.log('Available cookies:', document.cookie);
+        console.log('Response data keys:', Object.keys(data));
       }
       
       return data.user
@@ -87,33 +110,120 @@ class Auth {
 
   async getCurrentUser() {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
-        method: 'GET',
-        credentials: 'include'
-      })
+      console.log("Fetching current user from:", `${API_BASE_URL}/api/auth/me`)
+      console.log('Fetching current user from:', `${API_BASE_URL}/api/auth/me`);
       
-      if (!response.ok) {
-        throw new Error('Not authenticated')
+      // Get token from localStorage or cookies
+      const token = localStorage.getItem('token') || 
+                   localStorage.getItem('authToken') ||
+                   document.cookie
+                     .split('; ')
+                     .find(row => row.startsWith('token='))
+                     ?.split('=')[1];
+      
+      if (!token) {
+        console.warn('No authentication token found');
+        return null;
       }
       
-      const data = await response.json()
-      return data.user
+      console.log('Using token for auth/me request');
+      
+      const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+          'Cache-Control': 'no-cache',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
+      console.log('Auth/me response status:', response.status);
+      
+      // If unauthorized, clear the invalid token
+      if (response.status === 401) {
+        console.warn('Session expired or invalid token');
+        localStorage.removeItem('token');
+        localStorage.removeItem('authToken');
+        document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        return null;
+      }
+      
+      if (response.status === 401) {
+        console.log('Not authenticated - no valid session');
+        throw new Error('Not authenticated');
+      }
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Auth/me error:', response.status, errorData);
+        throw new Error(errorData.error || 'Failed to fetch user data');
+      }
+      
+      const data = await response.json();
+      console.log('Current user data:', data);
+      return data.user || data; // Handle both { user } and direct user object responses
     } catch (error) {
-      throw error
+      console.error('Error in getCurrentUser:', error);
+      // Only rethrow if it's not a 401 (which is expected when not logged in)
+      if (error.message !== 'Not authenticated') {
+        console.error('Unexpected error in getCurrentUser:', error);
+      }
+      throw error;
     }
   }
 
   async logout() {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
-        method: 'POST',
-        credentials: 'include'
-      })
+      console.log('Initiating logout...');
       
-      const data = await response.json()
-      return data
+      // Clear local storage first
+      localStorage.removeItem('token');
+      localStorage.removeItem('authToken');
+      
+      // Clear cookies
+      document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      document.cookie = 'accessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      document.cookie = 'authToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      
+      // Try to call the server to invalidate the session
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache'
+          }
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          console.error('Server logout failed:', response.status, errorData);
+          // Even if server logout fails, we've already cleared local data
+        }
+      } catch (serverError) {
+        console.error('Error during server logout:', serverError);
+        // Continue with local logout even if server logout fails
+      }
+      
+      console.log('Logout completed successfully');
+      return { success: true, message: 'Logout completed successfully' };
+      
     } catch (error) {
-      throw error
+      console.error('Error during logout process:', error);
+      // Ensure we still clear local data even if something else fails
+      localStorage.removeItem('token');
+      localStorage.removeItem('authToken');
+      document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      
+      // Only throw if it's not a network error
+      if (error.name !== 'TypeError' || !error.message.includes('fetch')) {
+        throw error;
+      }
+      
+      // For network errors, still resolve since we've cleared local data
+      return { success: true, message: 'Local logout completed (offline mode)' };
     }
   }
 

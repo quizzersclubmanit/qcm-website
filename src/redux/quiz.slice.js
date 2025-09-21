@@ -4,13 +4,14 @@ const QuizSlice = createSlice({
   name: "quizes",
   initialState: [
     /*{
-      $id: "",
+      id: "",
       question: "",
       options: ["", "", "", ""],
-      answers: [false, false, false, false],
-      reward: null,
+      correctAnswer: "",
+      section: 1,
+      supportingPic: null,
+      optionsContainImg: false,
       inActive: false,
-      negativeMarking: 0,
       markedAnswers: [false, false, false, false]
     }*/
   ],
@@ -21,7 +22,7 @@ const QuizSlice = createSlice({
     },
     editQuiz: (state, action) => {
       const { $id, changes } = action.payload
-      const todoIndex = state.findIndex((todo) => todo.$id === $id)
+      const todoIndex = state.findIndex((todo) => todo.$id === $id || todo.id === $id)
       if (todoIndex >= 0) {
         state[todoIndex] = {
           ...state[todoIndex],
@@ -38,8 +39,7 @@ export const {
   setQuizes,
   addQuiz,
   editQuiz,
-  deleteQuiz,
-  addMarkedAnswerField
+  deleteQuiz
 } = QuizSlice.actions
 
 const quizReducer = QuizSlice.reducer

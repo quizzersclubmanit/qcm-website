@@ -3,7 +3,7 @@ import { Button, DropDown, UserBtn, Logo } from "./components"
 import authService from "../api/auth.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { login, setData } from "../redux/user.slice"
+import { login, logout, setData } from "../redux/user.slice"
 
 const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   const location = useLocation()
@@ -34,7 +34,8 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     }
   ]
   const { data, loggedIn } = useSelector((state) => state.user)
-  const name = data.name?.split(" ")[0] || "User"
+  const name = data?.name?.split(" ")[0] || "User"
+  const isAdmin = data?.email === "admin@qcm.in"
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const logoRef = useRef(null)
@@ -52,29 +53,57 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   }, [])
 
   useEffect(() => {
-    // Temporarily disable auto auth check to prevent 401 errors on deployment
-    // TODO: Re-enable this after fixing CORS issues
-    return
+    console.log('Nav useEffect running, checking auth...')
     
     // Skip auth check on authentication pages to prevent 401 errors
     const authPages = ['/signup', '/signin', '/reset-password', '/login']
-    if (authPages.includes(location.pathname)) {
+    if (authPages.some(page => location.pathname.startsWith(page))) {
+      console.log('Skipping auth check on auth page:', location.pathname)
       return
     }
+
+    // Don't check auth if we're already logged in (from Redux state)
+    if (loggedIn && data?._id) {
+      console.log('User already authenticated in Redux state, skipping auth check')
+      return
+    }
+
+    console.log('Calling getCurrentUser to verify session...')
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
 
     authService
       .getCurrentUser()
       .then((user) => {
-        dispatch(setData(user))
-        dispatch(login())
-      })
-      .catch((error) => {
-        // Silently handle authentication errors - user is not logged in
-        if (error.message !== 'Not authenticated') {
-          console.error('Auth check error:', error)
+        console.log('Auth restored successfully:', user)
+        if (user && user._id) {
+          dispatch(setData(user))
+          dispatch(login())
+        } else {
+          console.warn('Invalid user data received:', user)
+          // Clear any invalid user data
+          dispatch(logout())
         }
       })
-  }, [location.pathname])
+      .catch((error) => {
+        if (error.name === 'AbortError') {
+          console.warn('Auth check timed out')
+        } else if (error.message !== 'Not authenticated') {
+          console.error('Auth check error:', error)
+        } else {
+          console.log('User not authenticated, clearing any existing session')
+          dispatch(logout())
+        }
+      })
+      .finally(() => {
+        clearTimeout(timeoutId)
+      })
+
+    return () => {
+      controller.abort()
+      clearTimeout(timeoutId)
+    }
+  }, [location.pathname, loggedIn, data?._id])
 
   return (
     <>
@@ -117,11 +146,6 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
         </div>
         {loggedIn ? (
           <div className="flex sm:flex-row flex-col">
-            {/* <Button
-              label="Play Quiz"
-              onClick={() => navigate("/quiz/instr/0")}
-              className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2"
-            /> */}
             {/* <Button
               label="IQC Preparation Booklet"
               onClick={() =>
@@ -172,9 +196,11 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
           </div>
         )}
       </nav>
-      <DropDown ref={dropDownRef} user={name} visible={showDropDown} />
+      <DropDown ref={dropDownRef} user={isAdmin ? "admin" : name} visible={showDropDown} />
     </>
   )
 })
 
 export default Nav
+
+

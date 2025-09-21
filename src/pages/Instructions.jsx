@@ -39,7 +39,7 @@ const Instructions = ({ sec }) => {
       <div className="bg-white p-10 sm:rounded-lg shadow-lg sm:w-3/4 min-h-1/2 flex sm:flex-row flex-col gap-5 items-center">
         <div className="sm:w-1/2 flex flex-col sm:gap-5">
           <h1 className="text-xl font-semibold">
-            Hey <span className="uppercase">{data.name}</span>, Welcome
+            Hey <span className="uppercase">{data?.name || data?.username || 'Student'}</span>, Welcome
           </h1>
           <h2 className="text-2xl font-bold mt-2">
             Read The Following Details Carefully

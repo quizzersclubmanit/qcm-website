@@ -1,4 +1,4 @@
-import env from "../../constants"
+// import env from "../../constants" // Not needed for new backend
 import dbService from "../api/db.service"
 import { Input, Button } from "./components"
 import { useForm } from "react-hook-form"
@@ -70,114 +70,145 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
   )
 
   const uploadQuizHandler = useCallback((formData) => {
-    let QNOs = {
-      supportingPic: "",
-      options: new Array(4)
+    // For now, handle text-based quizzes without file uploads
+    console.log('Adding quiz with data:', formData)
+    
+    // Validate required fields
+    if (!formData.question || !formData.question.trim()) {
+      toast.error('Question is required')
+      return
     }
-
-    uploadFiles(formData)
-      .then((results) => {
-        QNOs.supportingPic = results[0].value?.$id || ""
-        for (let i = 0; i < 4; i++)
-          QNOs.options[i] = results[i + 1].value?.$id || formData.options[i]
-
-        dbService
-          .insert({
-            collectionId: env.quizId,
-            data: {
-              ...formData,
-              ...QNOs,
-              optionsContainImg,
-              reward: Number(formData.reward),
-              nagativeMarking: Number(formData.nagativeMarking),
-              section: Number(formData.section)
-            }
-          })
-          .then((doc) => {
-            dispatch(addQuiz(doc))
-            toast("Quiz Added Successfully")
-          })
-          .catch((error) => {
-            toast(error.message)
-            console.error(error)
-          })
-          .finally(resetVals)
+    
+    if (!formData.options || formData.options.some(opt => !opt || !opt.trim())) {
+      toast.error('All options are required')
+      return
+    }
+    
+    if (!formData.answers || !formData.answers.some(ans => ans === true)) {
+      toast.error('At least one correct answer must be selected')
+      return
+    }
+    
+    // Convert answers array to correctAnswer string (matching Prisma schema)
+    const correctAnswerIndex = formData.answers.findIndex(ans => ans === true)
+    
+    if (correctAnswerIndex === -1) {
+      toast.error('Please select a correct answer')
+      return
+    }
+    
+    const correctAnswer = formData.options[correctAnswerIndex]
+    
+    if (!correctAnswer || !correctAnswer.trim()) {
+      toast.error('Correct answer cannot be empty')
+      return
+    }
+    
+    // Ensure all options are non-empty after trimming
+    const trimmedOptions = formData.options.map(opt => opt.trim()).filter(opt => opt.length > 0)
+    
+    if (trimmedOptions.length !== 4) {
+      toast.error('All 4 options must be filled')
+      return
+    }
+    
+    // Format data to match Prisma Quiz schema
+    const quizData = {
+      question: formData.question.trim(),
+      options: trimmedOptions,
+      correctAnswer: correctAnswer.trim(), // Single correct answer as string
+      section: Number(formData.section) || 1,
+      supportingPic: null, // Use null instead of empty string for optional field
+      optionsContainImg: false, // Default false
+      inActive: false // Default false
+    }
+    
+    console.log('=== Quiz Data Validation ===');
+    console.log('Question:', quizData.question, 'Length:', quizData.question.length);
+    console.log('Options:', quizData.options, 'Count:', quizData.options.length);
+    console.log('Correct Answer:', quizData.correctAnswer, 'Length:', quizData.correctAnswer.length);
+    console.log('Section:', quizData.section, 'Type:', typeof quizData.section);
+    console.log('Supporting Pic:', quizData.supportingPic);
+    console.log('Options Contain Img:', quizData.optionsContainImg, 'Type:', typeof quizData.optionsContainImg);
+    console.log('Inactive:', quizData.inActive, 'Type:', typeof quizData.inActive);
+    console.log('=== Sending to API ===');
+    
+    // Show loading toast
+    const loadingToast = toast.loading('Adding quiz...')
+    
+    dbService
+      .insert({
+        collectionId: "quiz",
+        data: quizData
+      })
+      .then((doc) => {
+        console.log('Quiz added successfully:', doc)
+        toast.dismiss(loadingToast)
+        
+        // Handle different response formats from the API
+        const quizDoc = doc.data || doc
+        dispatch(addQuiz(quizDoc))
+        toast.success("Quiz Added Successfully!")
+        resetVals()
       })
       .catch((error) => {
-        toast(error.message)
-        console.error(error)
+        console.error('Error adding quiz:', error)
+        toast.dismiss(loadingToast)
+        
+        // Provide more specific error messages
+        let errorMessage = 'Failed to add quiz'
+        if (error.message) {
+          if (error.message.includes('Network error')) {
+            errorMessage = 'Network error: Please check your internet connection'
+          } else if (error.message.includes('401')) {
+            errorMessage = 'Authentication error: Please login again'
+          } else if (error.message.includes('403')) {
+            errorMessage = 'Permission denied: You need admin privileges'
+          } else {
+            errorMessage = error.message
+          }
+        }
+        
+        toast.error(errorMessage)
       })
-  }, [])
+  }, [dispatch, resetVals])
 
   const editQuizHandler = useCallback((formData) => {
-    const obj = {
-      supportingPicChanged: Boolean(formData.supportingPic),
-      optionsChanged: [
-        quiz?.options[0] != formData.options[0],
-        quiz?.options[1] != formData.options[1],
-        quiz?.options[2] != formData.options[2],
-        quiz?.options[3] != formData.options[3]
-      ]
-    }
-
-    deleteFiles(quiz, [
-      obj.supportingPicChanged,
-      obj.optionsChanged[0],
-      obj.optionsChanged[1],
-      obj.optionsChanged[2],
-      obj.optionsChanged[3]
-    ])
-      .then(() => {
-        let QNOs = {
-          supportingPic: "",
-          options: new Array(4)
+    console.log('Updating quiz with data:', formData)
+    
+    // Convert answers array to correctAnswer string (matching Prisma schema)
+    const correctAnswerIndex = formData.answers.findIndex(ans => ans === true)
+    const correctAnswer = formData.options[correctAnswerIndex]
+    
+    dbService
+      .update({
+        collectionId: "quiz",
+        id: quiz.$id || quiz.id,
+        data: {
+          question: formData.question,
+          options: formData.options,
+          correctAnswer: correctAnswer, // Single correct answer as string
+          section: Number(formData.section),
+          optionsContainImg: false, // For now, only text options
+          supportingPic: "" // No image support for now
         }
-
-        uploadFiles(formData)
-          .then((results) => {
-            console.log(results)
-            QNOs.supportingPic = results[0].value?.$id || ""
-            for (let i = 0; i < 4; i++)
-              QNOs.options[i] = results[i + 1].value?.$id || formData.options[i]
-
-            dbService
-              .update({
-                collectionId: env.quizId,
-                documentId: quiz.$id,
-                changes: {
-                  ...formData,
-                  ...QNOs,
-                  setOptionsContainImg,
-                  reward: Number(formData.reward),
-                  nagativeMarking: Number(formData.nagativeMarking),
-                  section: Number(formData.section)
-                }
-              })
-              .then((doc) => {
-                dispatch(
-                  editQuiz({
-                    $id: quiz.$id,
-                    changes: doc
-                  })
-                )
-                toast("Quiz Updated Successfully")
-              })
-              .catch((error) => {
-                console.error(error)
-                toast(error.message)
-              })
-              .finally(() => {
-                setShowModal(false)
-              })
+      })
+      .then((doc) => {
+        console.log('Quiz updated successfully:', doc)
+        dispatch(
+          editQuiz({
+            $id: quiz.$id || quiz.id,
+            changes: doc
           })
-          .catch((error) => {
-            console.error(error)
-          })
+        )
+        toast.success("Quiz Updated Successfully!")
+        setShowModal(false)
       })
       .catch((error) => {
-        console.error(error)
+        console.error('Error updating quiz:', error)
+        toast.error(error.message || 'Failed to update quiz')
       })
-  }, [])
+  }, [quiz, dispatch, setShowModal])
 
   return (
     <form noValidate className="sm:w-2/3 w-4/5 flex flex-col gap-4">
@@ -192,8 +223,10 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
           }
         })}
       >
-        <File index={0} />
+        {/* <File index={0} /> */}
+        <span className="text-sm text-gray-500 ml-4">Text only for now</span>
       </Input>
+      {/* Temporarily disabled file upload
       {acceptFileFrom[0] && (
         <Input
           oneline
@@ -203,10 +236,11 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
           {...register("supportingPic")}
         />
       )}
+      */}
       <div>
         {options.map((option, index) => (
           <Input
-            type={acceptFileFrom[index + 1] ? "file" : "text"}
+            type="text"
             key={index}
             className="px-4 py-2 rounded-lg focus:outline-0"
             error={errors.options}
@@ -218,7 +252,8 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
               }
             })}
           >
-            <File index={index + 1} />
+            {/* <File index={index + 1} /> */}
+            <span className="text-xs text-gray-400 ml-2">Text only</span>
           </Input>
         ))}
       </div>
@@ -254,31 +289,43 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
         </div>
         <div className="flex gap-6">
           <Input
+            type="number"
             className="p-2 rounded-lg focus:outline-0 focus:bg-pink-200 transition-all bg-pink-300"
             oneline
             label="Negative Marking"
             error={errors.nagativeMarking}
-            {...register("nagativeMarking")}
+            {...register("nagativeMarking", {
+              min: {
+                value: 0,
+                message: "Cannot be negative"
+              }
+            })}
           />
           <Input
-            rules={{
-              required: {
-                value: true,
-                message: "This is a required field"
-              }
-            }}
+            type="number"
             className="p-2 rounded-lg focus:outline-0 focus:bg-pink-200 transition-all bg-pink-300"
             oneline
             label="Enter Points"
             error={errors.reward}
-            {...register("reward")}
+            {...register("reward", {
+              required: {
+                value: true,
+                message: "Points are required"
+              },
+              min: {
+                value: 1,
+                message: "Points must be at least 1"
+              }
+            })}
           />
         </div>
       </div>
       <Button
+        type="button"
         className="text-xl hover:bg-[#FCA311] bg-yellow-400 w-full p-3 rounded-lg"
         label={editTab ? "Save" : "+ Add Question"}
         onClick={handleSubmit((formData) => {
+          console.log('Form submitted with data:', formData)
           if (editTab) editQuizHandler(formData)
           else uploadQuizHandler(formData)
         })}
