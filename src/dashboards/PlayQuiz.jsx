@@ -49,6 +49,7 @@ const PlayQuiz = () => {
   const [quizzesLoading, setQuizzesLoading] = useState(true)
   const [noQuizzes, setNoQuizzes] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
+  const [userInput, setUserInput] = useState("") // for Integer Type (section 4)
 
   const requestFullscreen = async () => {
     try {
@@ -106,13 +107,33 @@ const PlayQuiz = () => {
     const normalize = (v) => (v === undefined || v === null) ? '' : String(v).trim()
     const computedScore = quizzesForScore.reduce((acc, quiz) => {
       try {
+        const secNum = Number(quiz?.section)
+        const opts = Array.isArray(quiz?.options) ? quiz.options : []
+        const isBlankOptions = opts.length === 0 || opts.every((o) => normalize(o) === '')
+
+        // Per-section marking scheme
+        // Sec1, Sec2: +4/-1; Sec3: +5/0; Sec4: +5/-1
+        const marks = (correct) => {
+          if (secNum === 3) return correct ? 5 : 0
+          if (secNum === 4) return correct ? 5 : -1
+          return correct ? 4 : -1
+        }
+
+        // Integer Type: section 3 with blank options
+        if (secNum === 3 && isBlankOptions) {
+          const userVal = normalize(quiz?.userInput)
+          const correctVal = normalize(quiz?.correctAnswer)
+          const correct = userVal && userVal === correctVal
+          return acc + marks(correct)
+        }
+
+        // Other sections: evaluate via options and markedAnswers
         const marked = Array.isArray(quiz?.markedAnswers) ? quiz.markedAnswers : []
         const correctIdx = (quiz?.options || []).findIndex((opt) => normalize(opt) === normalize(quiz?.correctAnswer))
         const pickedCount = marked.filter(Boolean).length
         const isCorrect = correctIdx >= 0 && marked[correctIdx] === true && pickedCount === 1
-        if (isCorrect) return acc + 4
-        if (pickedCount > 0) return acc - 1
-        return acc
+        if (pickedCount === 0) return acc
+        return acc + marks(isCorrect)
       } catch {
         return acc
       }
@@ -148,7 +169,7 @@ const PlayQuiz = () => {
   const handleSubmit = useCallback(() => {
     if (isPaused) return
     dispatch(setScore(score + roundScore))
-    if (section < 7) navigate(`/quiz/instr/${section + 1}`)
+    if (section < 4) navigate(`/quiz/instr/${section + 1}`)
     else submitQuiz()
   }, [roundScore, section])
 
@@ -341,6 +362,17 @@ const PlayQuiz = () => {
     )
   }, [selectedOptions, currentQue])
 
+  // Keep local userInput in sync for section 4
+  useEffect(() => {
+    const q = quizes[currentQue - 1]
+    if (!q) return
+    if (Number(q.section) === 4) {
+      setUserInput(q.userInput || "")
+    } else {
+      setUserInput("")
+    }
+  }, [currentQue, quizes.length])
+
   useEffect(() => {
     let timeleft = 60 * (timeLimits[quizes[currentQue - 1]?.section - 1] || 5) // in seconds
     setTimer(timeleft)
@@ -411,49 +443,76 @@ const PlayQuiz = () => {
           className="w-1/3"
         />
       )}
-      <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-2 gap-5 md:w-1/2 sm:w-4/5 w-full mt-4 sm:mt-0">
-        {quizes[currentQue - 1]?.options.map((option, index) => (
-          quizes[currentQue - 1]?.optionsContainImg ? (
-            <img
-              key={index}
-              src={storeService.fetchFilePreview({ fileId: option })}
-              className={`w-full mx-auto rounded z-10 aspect-video object-contain cursor-pointer border-4 ${selectedOptions[index] ? "border-yellow-400" : "border-white"} ${!timer && "pointer-events-none"}`}
-              alt={`Option ${index}`}
-              onClick={() => {
-                if (isPaused) return
-                if (multiCorrect) {
-                  setSelectedOptions((prev) =>
-                    prev.map((bool, idx) => (idx == index ? !bool : bool))
-                  )
-                } else {
-                  setSelectedOptions((prev) =>
-                    prev.map((bool, idx) => (idx == index ? (bool ? false : true) : false))
-                  )
-                }
-              }}
-            />
-          ) : (
-            <p
-              key={index}
-              className={`p-4 z-10 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
-              onClick={() => {
-                if (isPaused) return
-                if (multiCorrect) {
-                  setSelectedOptions((prev) =>
-                    prev.map((bool, idx) => (idx == index ? !bool : bool))
-                  )
-                } else {
-                  setSelectedOptions((prev) =>
-                    prev.map((bool, idx) => (idx == index ? (bool ? false : true) : false))
-                  )
-                }
-              }}
-            >
-              {option}
-            </p>
-          )
-        ))}
-      </div>
+      {Number(quizes[currentQue - 1]?.section) === 4 ? (
+        <div className="md:w-1/2 sm:w-4/5 w-full mt-4 sm:mt-0">
+          <label className="block text-white font-semibold mb-2">Enter your answer</label>
+          <input
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9\-\.]*"
+            className="w-full p-3 rounded-lg focus:outline-0"
+            placeholder="Type integer value here"
+            value={userInput}
+            onChange={(e) => {
+              const val = e.target.value
+              setUserInput(val)
+              const q = quizes[currentQue - 1]
+              if (q) {
+                dispatch(
+                  editQuiz({
+                    $id: q.$id || q.id || 0,
+                    changes: { userInput: val }
+                  })
+                )
+              }
+            }}
+          />
+        </div>
+      ) : (
+        <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-2 gap-5 md:w-1/2 sm:w-4/5 w-full mt-4 sm:mt-0">
+          {quizes[currentQue - 1]?.options.map((option, index) => (
+            quizes[currentQue - 1]?.optionsContainImg ? (
+              <img
+                key={index}
+                src={storeService.fetchFilePreview({ fileId: option })}
+                className={`w-full mx-auto rounded z-10 aspect-video object-contain cursor-pointer border-4 ${selectedOptions[index] ? "border-yellow-400" : "border-white"} ${!timer && "pointer-events-none"}`}
+                alt={`Option ${index}`}
+                onClick={() => {
+                  if (isPaused) return
+                  if (multiCorrect) {
+                    setSelectedOptions((prev) =>
+                      prev.map((bool, idx) => (idx == index ? !bool : bool))
+                    )
+                  } else {
+                    setSelectedOptions((prev) =>
+                      prev.map((bool, idx) => (idx == index ? (bool ? false : true) : false))
+                    )
+                  }
+                }}
+              />
+            ) : (
+              <p
+                key={index}
+                className={`p-4 z-10 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
+                onClick={() => {
+                  if (isPaused) return
+                  if (multiCorrect) {
+                    setSelectedOptions((prev) =>
+                      prev.map((bool, idx) => (idx == index ? !bool : bool))
+                    )
+                  } else {
+                    setSelectedOptions((prev) =>
+                      prev.map((bool, idx) => (idx == index ? (bool ? false : true) : false))
+                    )
+                  }
+                }}
+              >
+                {option}
+              </p>
+            )
+          ))}
+        </div>
+      )}
       {showSubmitBtn && (
         <Button
           label="Submit"
