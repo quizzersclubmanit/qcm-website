@@ -11,7 +11,7 @@ import { CiFileOn, CiFileOff } from "react-icons/ci"
 import { uploadFiles, deleteFiles } from "../utils/utils"
 
 const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
-  const { setValue, handleSubmit, formState, register } = useForm({
+  const { setValue, handleSubmit, formState, register, watch } = useForm({
     defaultValues: {
       question: quiz.question || "",
       supportingPic: quiz.supportingPic || "",
@@ -20,7 +20,9 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
       reward: quiz.reward || 0,
       nagativeMarking: quiz.nagativeMarking || 0,
       section: quiz.section || 1,
-      optionImages: new Array(4).fill("")
+      optionImages: new Array(4).fill(""),
+      isInteger: false,
+      integerAnswer: ""
     }
   })
   const { errors } = formState
@@ -29,6 +31,8 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
   const options = ["A", "B", "C", "D"]
   const [acceptFileFrom, setAcceptFileFrom] = useState(new Array(5).fill(false))
   const [optionsContainImg, setOptionsContainImg] = useState(false)
+  const selSection = watch("section")
+  const isInteger = watch("isInteger")
 
   const resetVals = useCallback(() => {
     setValue("question", "")
@@ -93,37 +97,50 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
       return
     }
     
-    if (!formData.options || formData.options.some(opt => !opt || !opt.trim())) {
-      toast.error('All options are required')
-      return
+    const integerMode = Number(formData.section) === 3 && formData.isInteger === true
+    
+    if (!integerMode) {
+      if (!formData.options || formData.options.some(opt => !opt || !opt.trim())) {
+        toast.error('All options are required')
+        return
+      }
+      if (!formData.answers || !formData.answers.some(ans => ans === true)) {
+        toast.error('At least one correct answer must be selected')
+        return
+      }
+    } else {
+      // Integer mode validations
+      if (!formData.integerAnswer || String(formData.integerAnswer).trim() === "") {
+        toast.error('Please enter the integer correct answer')
+        return
+      }
     }
     
-    if (!formData.answers || !formData.answers.some(ans => ans === true)) {
-      toast.error('At least one correct answer must be selected')
-      return
+    let correctAnswerIndex = -1
+    let correctAnswer = ""
+    if (!integerMode) {
+      // Convert answers array to correctAnswer string (matching Prisma schema)
+      correctAnswerIndex = formData.answers.findIndex(ans => ans === true)
+      if (correctAnswerIndex === -1) {
+        toast.error('Please select a correct answer')
+        return
+      }
+      correctAnswer = formData.options[correctAnswerIndex]
+      if (!correctAnswer || !correctAnswer.trim()) {
+        toast.error('Correct answer cannot be empty')
+        return
+      }
+    } else {
+      correctAnswer = String(formData.integerAnswer).trim()
     }
     
-    // Convert answers array to correctAnswer string (matching Prisma schema)
-    const correctAnswerIndex = formData.answers.findIndex(ans => ans === true)
-    
-    if (correctAnswerIndex === -1) {
-      toast.error('Please select a correct answer')
-      return
-    }
-    
-    const correctAnswer = formData.options[correctAnswerIndex]
-    
-    if (!correctAnswer || !correctAnswer.trim()) {
-      toast.error('Correct answer cannot be empty')
-      return
-    }
-    
-    // Ensure all options are non-empty after trimming
+    // Ensure all options are non-empty after trimming when not integer mode
     const trimmedOptions = formData.options.map(opt => opt.trim()).filter(opt => opt.length > 0)
-    
-    if (trimmedOptions.length !== 4) {
-      toast.error('All 4 options must be filled')
-      return
+    if (!integerMode) {
+      if (trimmedOptions.length !== 4) {
+        toast.error('All 4 options must be filled')
+        return
+      }
     }
     
     // Show loading toast
@@ -152,8 +169,8 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
         }
       }
       
-      // Handle option images upload
-      const hasOptionImages = optionsContainImg && formData.optionImages && 
+      // Handle option images upload (skip in integer mode)
+      const hasOptionImages = !integerMode && optionsContainImg && formData.optionImages && 
         formData.optionImages.some(img => img && img[0])
       
       if (hasOptionImages) {
@@ -184,16 +201,19 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
       }
       
       // Prepare final options (mix of text and image URLs)
-      const finalOptions = trimmedOptions.map((option, index) => {
-        if (optionImageUrls[index]) {
-          return optionImageUrls[index] // Use image URL if available
-        }
-        return option // Use text option
-      })
+      // Backend requires options to be a non-empty array; for integer mode, send blanks
+      const finalOptions = integerMode
+        ? new Array(4).fill("")
+        : trimmedOptions.map((option, index) => {
+            if (optionImageUrls[index]) {
+              return optionImageUrls[index] // Use image URL if available
+            }
+            return option // Use text option
+          })
       
       // Update correct answer to match the final options
       let finalCorrectAnswer = correctAnswer.trim()
-      if (optionImageUrls[correctAnswerIndex]) {
+      if (!integerMode && optionImageUrls[correctAnswerIndex]) {
         finalCorrectAnswer = optionImageUrls[correctAnswerIndex]
       }
       
@@ -204,7 +224,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
         correctAnswer: finalCorrectAnswer, // Use updated correct answer
         section: Number(formData.section) || 1,
         supportingPic: supportingPicUrl,
-        optionsContainImg: hasOptionImages,
+        optionsContainImg: !integerMode && hasOptionImages,
         inActive: false
       }
       
@@ -237,10 +257,16 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
         );
         
         if (proceedWithoutImages) {
-          // Reset to text-only quiz
+          // Reset to text-only quiz (or integer mode payload)
           quizData.supportingPic = null;
-          quizData.options = trimmedOptions; // Use original text options
-          quizData.correctAnswer = correctAnswer.trim(); // Use original text answer
+          if (integerMode) {
+            // Keep non-empty array to satisfy backend validation
+            quizData.options = new Array(4).fill("")
+            quizData.correctAnswer = String(formData.integerAnswer).trim()
+          } else {
+            quizData.options = trimmedOptions; // Use original text options
+            quizData.correctAnswer = correctAnswer.trim(); // Use original text answer
+          }
           quizData.optionsContainImg = false;
           console.log('Proceeding without images...');
         } else {
@@ -412,38 +438,63 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
         />
       )}
       <div>
-        {options.map((option, index) => (
-          <Input
-            type="text"
-            key={index}
-            className="px-4 py-2 rounded-lg focus:outline-0"
-            error={errors.options}
-            placeholder={`Option ${option}`}
-            {...register(`options.${index}`, {
-              required: {
-                value: true,
-                message: "This is a required field"
-              }
-            })}
-          >
-            <File index={index + 1} />
-            <span className="text-xs text-gray-400 ml-2">Click file icon for image option</span>
-          </Input>
-        ))}
-        
-        {/* File inputs for options */}
-        {acceptFileFrom.slice(1).map((acceptFile, index) => 
-          acceptFile && (
-            <Input
-              key={`option-file-${index}`}
-              oneline
-              label={`Option ${String.fromCharCode(65 + index)} Image`}
-              type="file"
-              accept="image/*"
-              className="p-4 rounded-lg text-lg focus:outline-0"
-              {...register(`optionImages.${index}`)}
-            />
-          )
+        {/* Integer mode hint and input when Section 3 (hidden as per new requirement) */}
+        {false && (
+          <div className="mb-3 flex items-center gap-4">
+            <label className="flex items-center gap-2 text-sm bg-pink-200 px-2 py-1 rounded">
+              <input type="checkbox" {...register("isInteger")} />
+              Integer Type (Section 3)
+            </label>
+            {isInteger && (
+              <Input
+                oneline
+                label="Integer Answer"
+                type="text"
+                placeholder="Enter correct integer"
+                className="px-4 py-2 rounded-lg focus:outline-0"
+                {...register("integerAnswer")}
+              />
+            )}
+          </div>
+        )}
+
+        {/* Options only when not integer mode */}
+        {!(Number(selSection) === 3 && isInteger) && (
+          <>
+            {options.map((option, index) => (
+              <Input
+                type="text"
+                key={index}
+                className="px-4 py-2 rounded-lg focus:outline-0"
+                error={errors.options}
+                placeholder={`Option ${option}`}
+                {...register(`options.${index}`, {
+                  required: {
+                    value: true,
+                    message: "This is a required field"
+                  }
+                })}
+              >
+                <File index={index + 1} />
+                <span className="text-xs text-gray-400 ml-2">Click file icon for image option</span>
+              </Input>
+            ))}
+
+            {/* File inputs for options */}
+            {acceptFileFrom.slice(1).map((acceptFile, index) =>
+              acceptFile && (
+                <Input
+                  key={`option-file-${index}`}
+                  oneline
+                  label={`Option ${String.fromCharCode(65 + index)} Image`}
+                  type="file"
+                  accept="image/*"
+                  className="p-4 rounded-lg text-lg focus:outline-0"
+                  {...register(`optionImages.${index}`)}
+                />
+              )
+            )}
+          </>
         )}
       </div>
       <div className="flex flex-col items-center justify-between gap-6 bg-pink-500 p-2 rounded-lg">
@@ -463,20 +514,22 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
             <option value={4}>4</option>
           </select>
         </div>
-        <div className="flex gap-5 items-center bg-pink-300 p-2 rounded-lg">
-          <p className="text-lg">Answers: </p>
-          <div className="flex items-center gap-5">
-            {options.map((option, index) => (
-              <Input
-                label={option}
-                key={index}
-                type="checkbox"
-                className="w-5 h-5 rounded focus:ring-blue-500 focus:ring-2"
-                {...register(`answers.${index}`)}
-              />
-            ))}
+        {!(Number(selSection) === 3 && isInteger) && (
+          <div className="flex gap-5 items-center bg-pink-300 p-2 rounded-lg">
+            <p className="text-lg">Answers: </p>
+            <div className="flex items-center gap-5">
+              {options.map((option, index) => (
+                <Input
+                  label={option}
+                  key={index}
+                  type="checkbox"
+                  className="w-5 h-5 rounded focus:ring-blue-500 focus:ring-2"
+                  {...register(`answers.${index}`)}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <div className="flex gap-6">
           <Input
             type="number"
