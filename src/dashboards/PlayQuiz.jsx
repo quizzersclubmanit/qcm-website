@@ -148,7 +148,7 @@ const PlayQuiz = () => {
   const handleSubmit = useCallback(() => {
     if (isPaused) return
     dispatch(setScore(score + roundScore))
-    if (section < 3) navigate(`/quiz/instr/${section + 1}`)
+    if (section < 7) navigate(`/quiz/instr/${section + 1}`)
     else submitQuiz()
   }, [roundScore, section])
 
@@ -198,9 +198,9 @@ const PlayQuiz = () => {
             console.log('✅ Found', quizData.length, 'quiz questions')
             console.log('First question sample:', quizData[0])
             
-            // Filter questions by section if needed
-            const sectionQuizzes = quizData.filter(quiz => quiz.section === section)
-            console.log(`✅ Found ${sectionQuizzes.length} questions for section ${section}`)
+            // Filter questions by section (coerce to number for safety)
+            const sectionQuizzes = quizData.filter(quiz => Number(quiz.section) === Number(section))
+            console.log(`✅ Found ${sectionQuizzes.length} questions for section ${section} (of total ${quizData.length})`)
             
             // Ensure each quiz has a markedAnswers array to track selections
           const withMarks = (list) => list.map(q => ({
@@ -401,40 +401,45 @@ const PlayQuiz = () => {
       )}
       <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-2 gap-5 md:w-1/2 sm:w-4/5 w-full mt-4 sm:mt-0">
         {quizes[currentQue - 1]?.options.map((option, index) => (
-          /*quizes[currentQue - 1]?.optionsContainImg ? (
+          quizes[currentQue - 1]?.optionsContainImg ? (
             <img
               key={index}
-              src={storeService.fetchFilePreview({
-                fileId: option
-              })}
-              className={`w-full mx-auto rounded z-10 aspect-video cursor-pointer border-4 ${selectedOptions[index] ? "border-yellow-400" : "border-white"} ${!timer && "pointer-events-none"}`}
+              src={storeService.fetchFilePreview({ fileId: option })}
+              className={`w-full mx-auto rounded z-10 aspect-video object-contain cursor-pointer border-4 ${selectedOptions[index] ? "border-yellow-400" : "border-white"} ${!timer && "pointer-events-none"}`}
               alt={`Option ${index}`}
               onClick={() => {
-                setSelectedOptions((prev) =>
-                  prev.map((bool, idx) => (idx == index ? !bool : bool))
-                )
+                if (isPaused) return
+                if (multiCorrect) {
+                  setSelectedOptions((prev) =>
+                    prev.map((bool, idx) => (idx == index ? !bool : bool))
+                  )
+                } else {
+                  setSelectedOptions((prev) =>
+                    prev.map((bool, idx) => (idx == index ? (bool ? false : true) : false))
+                  )
+                }
               }}
             />
-          ) : */ <p
-            key={index}
-            className={`p-4 z-10 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
-            onClick={() => {
-              if (isPaused) return
-              if (multiCorrect) {
-                setSelectedOptions((prev) =>
-                  prev.map((bool, idx) => (idx == index ? !bool : bool))
-                )
-              } else {
-                setSelectedOptions((prev) =>
-                  prev.map((bool, idx) =>
-                    idx == index ? (bool ? false : true) : false
+          ) : (
+            <p
+              key={index}
+              className={`p-4 z-10 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
+              onClick={() => {
+                if (isPaused) return
+                if (multiCorrect) {
+                  setSelectedOptions((prev) =>
+                    prev.map((bool, idx) => (idx == index ? !bool : bool))
                   )
-                )
-              }
-            }}
-          >
-            {option}
-          </p>
+                } else {
+                  setSelectedOptions((prev) =>
+                    prev.map((bool, idx) => (idx == index ? (bool ? false : true) : false))
+                  )
+                }
+              }}
+            >
+              {option}
+            </p>
+          )
         ))}
       </div>
       {showSubmitBtn && (
