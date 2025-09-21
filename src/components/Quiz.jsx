@@ -119,16 +119,27 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
     let correctAnswerIndex = -1
     let correctAnswer = ""
     if (!integerMode) {
-      // Convert answers array to correctAnswer string (matching Prisma schema)
-      correctAnswerIndex = formData.answers.findIndex(ans => ans === true)
-      if (correctAnswerIndex === -1) {
-        toast.error('Please select a correct answer')
+      // Allow multiple correct answers; serialize as letters (e.g., 'A C')
+      const selectedIdxs = (formData.answers || [])
+        .map((v, i) => (v ? i : -1))
+        .filter((i) => i >= 0)
+
+      if (selectedIdxs.length === 0) {
+        toast.error('Please select at least one correct answer')
         return
       }
-      correctAnswer = formData.options[correctAnswerIndex]
-      if (!correctAnswer || !correctAnswer.trim()) {
-        toast.error('Correct answer cannot be empty')
-        return
+
+      if (selectedIdxs.length === 1) {
+        correctAnswerIndex = selectedIdxs[0]
+        correctAnswer = formData.options[correctAnswerIndex]
+        if (!correctAnswer || !correctAnswer.trim()) {
+          toast.error('Correct answer cannot be empty')
+          return
+        }
+      } else {
+        // Multiple correct: store letters so play scorer can map to indices
+        const letters = selectedIdxs.map((i) => String.fromCharCode(65 + i)) // A,B,C,D
+        correctAnswer = letters.join(' ')
       }
     } else {
       correctAnswer = String(formData.integerAnswer).trim()
@@ -213,7 +224,7 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
       
       // Update correct answer to match the final options
       let finalCorrectAnswer = correctAnswer.trim()
-      if (!integerMode && optionImageUrls[correctAnswerIndex]) {
+      if (!integerMode && correctAnswerIndex > -1 && optionImageUrls[correctAnswerIndex]) {
         finalCorrectAnswer = optionImageUrls[correctAnswerIndex]
       }
       
