@@ -25,13 +25,13 @@ const PlayQuiz = () => {
   let section = useMemo(() => Number(sec))
   const quizes = useSelector((state) => state.quizes)
   const [currentQue, setCurrentQue] = useState(1)
-  const multiCorrect = useMemo(
-    () => {
-      // Check if current question has multiple correct answers
-      // For now, assume single correct unless specified otherwise
-      return false
-    }
-  )
+  const multiCorrect = useMemo(() => {
+    const q = quizes[currentQue - 1]
+    if (!q) return false
+    // Section C (3): first 5 are multi-correct (tagged with isInteger=false)
+    if (Number(q.section) === 3) return q.isInteger !== true
+    return false
+  }, [quizes, currentQue])
   const { loggedIn, data, score } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
@@ -584,13 +584,19 @@ const PlayQuiz = () => {
                 onClick={() => {
                   if (isPaused) return
                   if (multiCorrect) {
-                    setSelectedOptions((prev) =>
-                      prev.map((bool, idx) => (idx == index ? !bool : bool))
-                    )
+                    setSelectedOptions((prev) => {
+                      const next = prev.map((bool, idx) => (idx == index ? !bool : bool))
+                      const q = quizes[currentQue - 1]
+                      if (q) dispatch(editQuiz({ $id: q.$id || q.id || 0, changes: { markedAnswers: next } }))
+                      return next
+                    })
                   } else {
-                    setSelectedOptions((prev) =>
-                      prev.map((bool, idx) => (idx == index ? (bool ? false : true) : false))
-                    )
+                    setSelectedOptions((prev) => {
+                      const next = prev.map((bool, idx) => (idx == index ? (bool ? false : true) : false))
+                      const q = quizes[currentQue - 1]
+                      if (q) dispatch(editQuiz({ $id: q.$id || q.id || 0, changes: { markedAnswers: next } }))
+                      return next
+                    })
                   }
                 }}
               >
