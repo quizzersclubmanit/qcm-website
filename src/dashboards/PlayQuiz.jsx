@@ -261,24 +261,21 @@ const PlayQuiz = () => {
             document.documentElement.requestFullscreen({ navigationUI: 'hide' })
           }
         } else {
-          // If leaderboard check fails, just proceed with the quiz
-          document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+          // Do not enter fullscreen on error; inform the user instead
+          toast("Unable to verify attempt. Please try again.")
+          navigate("/")
         }
       } catch (error) {
         console.error('Leaderboard check error:', error)
-        document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+        // Do not enter fullscreen on error; inform the user instead
+        toast("Network error. Please try again.")
+        navigate("/")
       } finally {
         setLoading(false)
       }
     }
 
     checkLeaderboard()
-
-    // If not in fullscreen after check, try requesting it
-    if (!document.fullscreenElement) {
-      setIsPaused(true)
-      requestFullscreen()
-    }
 
     // Define handler references so we can remove them properly
     const onFullscreenChange = () => {
