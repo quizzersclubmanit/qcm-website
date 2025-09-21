@@ -2802,7 +2802,7 @@
       "answer": "For more inquiries, please email quizzersclubmanit@gmail.com or contact the club's officials listed below: \n Nishchal Prajapati (President, QCM): 8602012570 \n Harshita Nehra (Vice President QCM): 8962188298"
     }
   ],
- "instructions": {
+"instructions": {
     "general": {
       "Remarks": [
         "Pressing Esc key will flag you and you'll have to re-attempt the quiz",
@@ -2810,50 +2810,32 @@
         "Ensure stable internet connectivity",
         "Preferred device - Desktop"
       ],
-      "Total Duration": "70 minutes",
-      "Total Marks": "145"
+      "Total Duration": "30 minutes",
+      "Total Marks": "180"
     },
     "section-1": {
-      "time": 7,
-      "questions": 5,
-      "type": "Single Correct",
+      "time": 8,
+      "questions": 10,
+      "type": "Aptitude",
       "marking-scheme": "+4 for correct, -1 for incorrect"
     },
     "section-2": {
       "time": 8,
-      "questions": 5,
-      "type": "Multiple Correct",
-      "marking-scheme": "+4 for correct, 0 for incorrect"
-    },
-    "section-3": {
-      "time": 15,
       "questions": 10,
-      "type": "Aptitude Based",
+      "type": "Single Correct (5) & Assertion-Reason (5)",
       "marking-scheme": "+4 for correct, -1 for incorrect"
     },
+    "section-3": {
+      "time": 7,
+      "questions": 10,
+      "type": "Multiple Correct (5) & Integer (5)",
+      "marking-scheme": "+5 for correct, 0 for incorrect"
+    },
     "section-4": {
-      "time": 10,
-      "questions": 5,
-      "type": "Integer Type",
-      "marking-scheme": "+4 for correct, 0 for incorrect"
-    },
-    "section-5": {
-      "time": 10,
-      "questions": 5,
-      "type": "Match the Following",
-      "marking-scheme": "+3 for correct, 0 for incorrect"
-    },
-    "section-6": {
-      "time": 10,
-      "questions": 5,
-      "type": "Assertion Reason",
-      "marking-scheme": "+3 for correct, 0 for incorrect"
-    },
-    "section-7": {
-      "time": 10,
-      "questions": 5,
-      "type": "Image Based",
-      "marking-scheme": "+3 for correct, 0 for incorrect"
+      "time": 7,
+      "questions": 10,
+      "type": "Match the Following (5) & Image Based (5)",
+      "marking-scheme": "+5 for correct, -1 for incorrect"
     }
   }
 }
