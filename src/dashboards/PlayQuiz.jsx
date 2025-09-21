@@ -1,5 +1,5 @@
 import "../pages/pages.css"
-import { useEffect, useState, useCallback, useMemo } from "react"
+import { useEffect, useState, useCallback, useMemo, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes, editQuiz } from "../redux/quiz.slice"
 import { setScore } from "../redux/user.slice"
@@ -25,7 +25,11 @@ const PlayQuiz = () => {
   const quizes = useSelector((state) => state.quizes)
   const [currentQue, setCurrentQue] = useState(1)
   const multiCorrect = useMemo(
-    () => countOf(true, quizes[currentQue - 1]?.answers) > 1
+    () => {
+      // Check if current question has multiple correct answers
+      // For now, assume single correct unless specified otherwise
+      return false
+    }
   )
   const { loggedIn, data, score } = useSelector((state) => state.user)
   const dispatch = useDispatch()
@@ -37,16 +41,27 @@ const PlayQuiz = () => {
   const navigate = useNavigate()
   const [showSubmitBtn, setShowSubmitBtn] = useState(false)
   const [timer, setTimer] = useState(undefined)
-  let timesFullScreenExited = useMemo(() => 0)
-  let fullScreenHandle = useMemo(() => undefined)
+  const timesFullScreenExited = useRef(0)
+  const handlingFullscreen = useRef(false)
+  const [hasSubmitted, setHasSubmitted] = useState(false)
 
   const handleNext = useCallback(() => {
     let len = quizes.length
     if (currentQue >= len || timer <= 0) {
+      // Calculate score based on marked answers vs correct answers
       quizes.forEach((quiz) => {
-        if (arraysEqual(quiz.markedAnswers || [], quiz.answers))
-          setRoundScore((prev) => prev + quiz.reward)
-        else setRoundScore((prev) => prev - quiz.nagativeMarking)
+        const markedAnswers = quiz.markedAnswers || []
+        const correctIndex = quiz.options.findIndex(option => option === quiz.correctAnswer)
+        const isCorrect = markedAnswers[correctIndex] === true && markedAnswers.filter(Boolean).length === 1
+        
+        if (isCorrect) {
+          // Add points for correct answer (default +4)
+          setRoundScore((prev) => prev + 4)
+        } else if (markedAnswers.some(Boolean)) {
+          // Subtract points for wrong answer (default -1)
+          setRoundScore((prev) => prev - 1)
+        }
+        // No points change for unanswered questions
       })
       setShowSubmitBtn(true)
     } else {
@@ -57,26 +72,40 @@ const PlayQuiz = () => {
   }, [quizes, currentQue])
 
   function submitQuiz(disqualified = false) {
+    if (hasSubmitted) return
+    setHasSubmitted(true)
     let msg = disqualified
       ? "You are disqualified for exiting full-screen"
       : "Quiz Submitted Successfully"
+
+    // Compute score deterministically from answered questions
+    const computedScore = quizes.reduce((acc, quiz) => {
+      try {
+        const marked = Array.isArray(quiz?.markedAnswers) ? quiz.markedAnswers : []
+        const correctIdx = (quiz?.options || []).findIndex((opt) => opt === quiz?.correctAnswer)
+        const pickedCount = marked.filter(Boolean).length
+        const isCorrect = correctIdx >= 0 && marked[correctIdx] === true && pickedCount === 1
+        if (isCorrect) return acc + 4
+        if (pickedCount > 0) return acc - 1
+        return acc
+      } catch {
+        return acc
+      }
+    }, 0)
+    const safeScore = Number(Math.min(150, Math.max(0, computedScore)))
     dbService
       .insert({
         collectionId: "leaderboard",
         data: {
-          userId: data.$id,
-          score: Math.min(150, score),
-          disqualified: disqualified
+          userId: data.$id || data.id,
+          score: safeScore,
+          section: Number(section)
         }
       })
       .then(() => {
         document
           .exitFullscreen()
           .then(() => {
-            document.documentElement.removeEventListener(
-              "fullscreenchange",
-              fullScreenHandle
-            )
             toast("Quiz Submitted Succesfully")
           })
           .catch((error) => console.error(error))
@@ -85,6 +114,7 @@ const PlayQuiz = () => {
       .catch((error) => {
         toast(error.message)
         console.error(error)
+        setHasSubmitted(false)
       })
   }
 
@@ -95,81 +125,154 @@ const PlayQuiz = () => {
   }, [roundScore, section])
 
   useEffect(() => {
-    dbService
-      .select({
-        collectionId: "quiz",
-        queries: [`section=${section}`, `inActive=false`]
-      })
-      .then((docs) => {
-        // Handle different response formats
-        const quizData = Array.isArray(docs) ? docs : (docs.data || [])
-        dispatch(setQuizes(quizData))
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  }, [])
+    console.log('=== STARTING QUIZ DATA FETCH ===')
+    console.log('Section:', section)
+    
+    // Since the direct API call works but dbService fails, let's use direct fetch for now
+    const fetchQuizData = async () => {
+      try {
+        const token = localStorage.getItem('authToken') || localStorage.getItem('token')
+        console.log('Using direct fetch with token:', !!token)
+        
+        const response = await fetch('https://qcm-backend-ln5c.onrender.com/api/quiz', {
+          method: 'GET',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          mode: 'cors'
+        })
+        
+        console.log('Direct fetch response status:', response.status)
+        
+        if (response.ok) {
+          const docs = await response.json()
+          console.log('Direct fetch response data:', docs)
+          
+          // Handle the response format we know works
+          let quizData = []
+          if (docs && docs.quizzes && Array.isArray(docs.quizzes)) {
+            quizData = docs.quizzes
+            console.log('✅ Found quizzes in docs.quizzes:', quizData.length)
+          }
+          
+          console.log('Processed quiz data:', quizData)
+          console.log('Quiz data length:', quizData.length)
+          
+          if (quizData.length === 0) {
+            console.error('❌ NO QUIZ DATA FOUND!')
+            console.log('Available response properties:', Object.keys(docs || {}))
+          } else {
+            console.log('✅ Found', quizData.length, 'quiz questions')
+            console.log('First question sample:', quizData[0])
+            
+            // Filter questions by section if needed
+            const sectionQuizzes = quizData.filter(quiz => quiz.section === section)
+            console.log(`✅ Found ${sectionQuizzes.length} questions for section ${section}`)
+            
+            if (sectionQuizzes.length > 0) {
+              console.log('🎯 Dispatching section-specific quizzes to Redux store')
+              dispatch(setQuizes(sectionQuizzes))
+            } else {
+              console.warn(`⚠️ No questions found for section ${section}, using all questions`)
+              console.log('🎯 Dispatching all quizzes to Redux store')
+              dispatch(setQuizes(quizData))
+            }
+          }
+        } else {
+          console.error('Direct fetch failed with status:', response.status)
+        }
+      } catch (error) {
+        console.error('Direct fetch error:', error)
+      }
+    }
+    
+    fetchQuizData()
+  }, [section])
 
   useEffect(() => {
     const userId = data?.$id || data?.id || data?.userId
-    
-    dbService
-      .select({
-        collectionId: "leaderboard",
-        queries: [`userId=${userId}`]
-      })
-      .then((docs) => {
-        // Handle different response formats
-        const leaderboardData = Array.isArray(docs) ? docs : (docs.data || [])
-        
-        if (leaderboardData.length != 0) {
-          navigate("/")
-          toast("You've attempted the quiz")
-        } else
-          document.documentElement.requestFullscreen({
-            navigationUI: "hide"
-          })
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
 
-    fullScreenHandle = document.documentElement.addEventListener(
-      "fullscreenchange",
-      () => {
-        if (!document.fullscreenElement) {
-          timesFullScreenExited++
-          if (timesFullScreenExited > 1) {
-            toast("You're disqualified")
-            submitQuiz(true)
-          } else navigate("/")
+    // Check if user has already attempted the quiz using direct fetch
+    const checkLeaderboard = async () => {
+      try {
+        const token = localStorage.getItem('authToken') || localStorage.getItem('token')
+        const response = await fetch(`https://qcm-backend-ln5c.onrender.com/api/quiz/leaderboard?userId=${userId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          mode: 'cors'
+        })
+
+        if (response.ok) {
+          const docs = await response.json()
+          const leaderboardData = Array.isArray(docs) ? docs : (docs.data || docs.leaderboard || [])
+
+          if (leaderboardData.length !== 0) {
+            navigate("/")
+            toast("You've attempted the quiz")
+          } else {
+            document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+          }
+        } else {
+          // If leaderboard check fails, just proceed with the quiz
+          document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+        }
+      } catch (error) {
+        console.error('Leaderboard check error:', error)
+        document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    checkLeaderboard()
+
+    // Define handler references so we can remove them properly
+    const onFullscreenChange = () => {
+      // Debounce rapid duplicate events
+      if (handlingFullscreen.current) return
+      handlingFullscreen.current = true
+      setTimeout(() => (handlingFullscreen.current = false), 300)
+
+      if (!document.fullscreenElement) {
+        timesFullScreenExited.current += 1
+        if (timesFullScreenExited.current > 1) {
+          toast("You're disqualified")
+          submitQuiz(true)
+        } else {
+          navigate("/")
         }
       }
-    )
-    document.documentElement.addEventListener(
-      "keydown",
-      (e) => e.code == "F12" && e.preventDefault()
-    )
+    }
+
+    const onKeyDown = (e) => {
+      if (e.code === 'F12') e.preventDefault()
+    }
+
+    document.documentElement.addEventListener('fullscreenchange', onFullscreenChange)
+    document.documentElement.addEventListener('keydown', onKeyDown)
 
     return () => {
-      document.documentElement.removeEventListener(
-        "fullscreenchange",
-        fullScreenHandle
-      )
+      document.documentElement.removeEventListener('fullscreenchange', onFullscreenChange)
+      document.documentElement.removeEventListener('keydown', onKeyDown)
     }
-  }, [window.location.href])
+  }, [])
 
   useEffect(() => {
+    const currentQuiz = quizes[currentQue - 1]
+    if (!currentQuiz) return
+    const existing = currentQuiz.markedAnswers || [false, false, false, false]
+    if (arraysEqual(existing, selectedOptions)) return
     dispatch(
       editQuiz({
-        $id: quizes[currentQue - 1]?.$id || 0,
+        $id: currentQuiz.$id || currentQuiz.id || 0,
         changes: { markedAnswers: selectedOptions }
       })
     )
-  }, [selectedOptions])
+  }, [selectedOptions, currentQue])
 
   useEffect(() => {
     let timeleft = 60 * (timeLimits[quizes[currentQue - 1]?.section - 1] || 5) // in seconds
@@ -185,9 +288,7 @@ const PlayQuiz = () => {
 
   if (!loggedIn) return <Navigate to="/signup" />
   if (loading) return <Loader />
-
-  if (quizes.length == 0)
-    return <NotAvailable command="Back to Home Page" redirectURL="/" />
+  if (quizes.length == 0) return <NotAvailable command="Back to Home Page" redirectURL="/" />
 
   return (
     <Container
