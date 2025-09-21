@@ -45,10 +45,23 @@ const PlayQuiz = () => {
   const timesFullScreenExited = useRef(0)
   const handlingFullscreen = useRef(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
+  const submittedRef = useRef(false)
   const [quizzesLoading, setQuizzesLoading] = useState(true)
   const [noQuizzes, setNoQuizzes] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
+
+  const requestFullscreen = async () => {
+    try {
+      await document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+      setIsPaused(false)
+    } catch (e) {
+      console.warn('Re-enter fullscreen failed:', e?.message)
+      setIsPaused(true)
+    }
+  }
 
   const handleNext = useCallback(() => {
+    if (isPaused) return
     let len = quizes.length
     if (currentQue >= len || timer <= 0) {
       // Calculate score based on marked answers vs correct answers
@@ -75,8 +88,9 @@ const PlayQuiz = () => {
   }, [quizes, currentQue])
 
   function submitQuiz(disqualified = false) {
-    if (hasSubmitted) return
+    if (hasSubmitted || submittedRef.current) return
     setHasSubmitted(true)
+    submittedRef.current = true
     let msg = disqualified
       ? "You are disqualified for exiting full-screen"
       : "Quiz Submitted Successfully"
@@ -110,7 +124,8 @@ const PlayQuiz = () => {
         data: {
           userId: data.$id || data.id,
           score: safeScore,
-          section: Number(section)
+          section: Number(section),
+          disqualified: Boolean(disqualified)
         }
       })
       .then(() => {
@@ -126,10 +141,12 @@ const PlayQuiz = () => {
         toast(error.message)
         console.error(error)
         setHasSubmitted(false)
+        submittedRef.current = false
       })
   }
 
   const handleSubmit = useCallback(() => {
+    if (isPaused) return
     dispatch(setScore(score + roundScore))
     if (section < 3) navigate(`/quiz/instr/${section + 1}`)
     else submitQuiz()
@@ -257,6 +274,12 @@ const PlayQuiz = () => {
 
     checkLeaderboard()
 
+    // If not in fullscreen after check, try requesting it
+    if (!document.fullscreenElement) {
+      setIsPaused(true)
+      requestFullscreen()
+    }
+
     // Define handler references so we can remove them properly
     const onFullscreenChange = () => {
       // Debounce rapid duplicate events
@@ -265,26 +288,34 @@ const PlayQuiz = () => {
       setTimeout(() => (handlingFullscreen.current = false), 300)
 
       if (!document.fullscreenElement) {
-        timesFullScreenExited.current += 1
-        if (timesFullScreenExited.current > 1) {
-          toast("You're disqualified")
-          submitQuiz(true)
-        } else {
-          navigate("/")
-        }
+        // Immediate disqualification on leaving fullscreen
+        toast("You're disqualified")
+        submitQuiz(true)
+      } else {
+        // Fullscreen restored
+        setIsPaused(false)
       }
     }
 
     const onKeyDown = (e) => {
       if (e.code === 'F12') e.preventDefault()
+      if (e.code === 'Escape') {
+        // Try to prevent leaving; browser may still exit fullscreen.
+        e.preventDefault()
+        // Immediate disqualification on ESC
+        if (!submittedRef.current) {
+          toast("You're disqualified")
+          submitQuiz(true)
+        }
+      }
     }
 
-    document.documentElement.addEventListener('fullscreenchange', onFullscreenChange)
-    document.documentElement.addEventListener('keydown', onKeyDown)
+    document.addEventListener('fullscreenchange', onFullscreenChange)
+    document.addEventListener('keydown', onKeyDown)
 
     return () => {
-      document.documentElement.removeEventListener('fullscreenchange', onFullscreenChange)
-      document.documentElement.removeEventListener('keydown', onKeyDown)
+      document.removeEventListener('fullscreenchange', onFullscreenChange)
+      document.removeEventListener('keydown', onKeyDown)
     }
   }, [])
 
@@ -305,13 +336,15 @@ const PlayQuiz = () => {
     let timeleft = 60 * (timeLimits[quizes[currentQue - 1]?.section - 1] || 5) // in seconds
     setTimer(timeleft)
     const interval = setInterval(() => {
-      timeleft--
-      setTimer((prev) => (prev > 0 ? prev - 1 : prev))
+      if (!isPaused) {
+        timeleft--
+        setTimer((prev) => (prev > 0 ? prev - 1 : prev))
+      }
     }, 1000)
     return () => {
       clearInterval(interval)
     }
-  }, [quizes.length, sec])
+  }, [quizes.length, sec, isPaused])
 
   if (!loggedIn) return <Navigate to="/signup" />
   if (loading || quizzesLoading) return <Loader />
@@ -325,6 +358,7 @@ const PlayQuiz = () => {
         e.preventDefault()
       }}
     >
+      
       <img
         src={liveGif}
         alt="Live Gif"
@@ -388,6 +422,7 @@ const PlayQuiz = () => {
             key={index}
             className={`p-4 z-10 rounded-lg focus:outline-0 w-full cursor-pointer transition-all ${selectedOptions[index] ? "bg-yellow-400" : "bg-white hover:bg-gray-100"} ${!timer && "pointer-events-none"}`}
             onClick={() => {
+              if (isPaused) return
               if (multiCorrect) {
                 setSelectedOptions((prev) =>
                   prev.map((bool, idx) => (idx == index ? !bool : bool))
@@ -417,6 +452,7 @@ const PlayQuiz = () => {
           label="Prev"
           className="font-bold uppercase previous flex justify-between items-center py-1 px-4 rounded-2xl bg-[#E5E5E5] hover:bg-gray-300 gap-1"
           onClick={() => {
+            if (isPaused) return
             setCurrentQue((prev) => (prev > 1 ? prev - 1 : prev))
             let ans = quizes[currentQue >= 2 ? currentQue - 2 : 0].markedAnswers
             setSelectedOptions(ans || [false, false, false, false])
