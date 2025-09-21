@@ -1,7 +1,5 @@
-import env from "../../constants"
 import { useEffect, useState, useMemo } from "react"
 import dbService from "../api/db.service"
-import { Query } from "appwrite"
 import {
   Container,
   Logo,
@@ -32,52 +30,53 @@ const Leaderboard = () => {
   ]
 
   useEffect(() => {
-    dbService
-      .select({
-        collectionId: env.leaderboardId,
-        queries: [Query.equal("disqualified", [false])]
-      })
-      .then((res) => {
-        res.forEach((obj) => {
-          if (data.has(obj.userId))
-            data.set(obj.userId, Math.max(obj.score, data.get(obj.userId)))
-          else data.set(obj.userId, obj.score)
+    const loadLeaderboard = async () => {
+      try {
+        // Fetch leaderboard entries (backend: GET /api/quiz/leaderboard)
+        const docs = await dbService.select({
+          collectionId: "leaderboard",
+          // filter out disqualified on server if supported; otherwise we'll filter below
+          queries: ["disqualified=false"]
         })
 
-        console.log(data.size)
+        // Normalize response formats
+        let entries = []
+        if (Array.isArray(docs)) entries = docs
+        else if (docs && Array.isArray(docs.leaderboard)) entries = docs.leaderboard
+        else if (docs && Array.isArray(docs.data)) entries = docs.data
 
-        let ids = []
-        for (let [key, _] of data) ids.push(key)
+        // Client-side fallback filter if server ignored query: treat missing `disqualified` as allowed
+        entries = (entries || []).filter((e) => e && e.disqualified !== true)
 
-        for (let i = 0; i < ids.length; ) {
-          let j = 0,
-            temp = new Array()
-          for (; j < 100 && i + j < ids.length; j++) temp.push(ids[i + j])
-          i += j
-          dbService
-            .select({
-              collectionId: env.userId,
-              queries: [Query.equal("userId", temp)]
+        // Aggregate by userId, keep max score and normalize fields for UI
+        const byUser = new Map()
+        for (const obj of entries) {
+          const uid = obj?.userId?.$id || obj?.userId?.id || obj?.userId || obj?.userID
+          if (!uid) continue
+          const currentScore = obj?.score ?? 0
+          const prev = byUser.get(uid)
+          if (!prev || currentScore > (prev.score ?? 0)) {
+            byUser.set(uid, {
+              userId: uid,
+              name: obj?.name || obj?.fullName || obj?.username || uid,
+              city: obj?.city || obj?.town || obj?.location || "",
+              educationalInstitute: obj?.educationalInstitute || obj?.school || obj?.college || "",
+              score: currentScore
             })
-            .then((usersData) => {
-              let d = usersData.map((userData) => ({
-                ...userData,
-                score: data.get(userData.userId)
-              }))
-              setLeaderBoard((prev) => [...prev, ...d])
-            })
-            .catch((error) => {
-              console.error(error)
-            })
+          }
         }
-      })
-      .catch((error) => {
+
+        const list = Array.from(byUser.values()).sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+        setLeaderBoard(list)
+      } catch (error) {
         console.error(error)
         toast.error(error.message)
-      })
-      .finally(() => {
+      } finally {
         setLoading(false)
-      })
+      }
+    }
+
+    loadLeaderboard()
   }, [])
 
   if (loading) return <Loader />
