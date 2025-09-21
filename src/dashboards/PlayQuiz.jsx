@@ -1,5 +1,6 @@
 import "../pages/pages.css"
 import { useEffect, useState, useCallback, useMemo, useRef } from "react"
+import arraysEqual from "../utils/arraysEqual"
 import { useSelector, useDispatch } from "react-redux"
 import { setQuizes, editQuiz } from "../redux/quiz.slice"
 import { setScore } from "../redux/user.slice"
@@ -15,7 +16,7 @@ import { useNavigate } from "react-router-dom"
 import dbService from "../api/db.service"
 import storeService from "../api/store.service"
 import toast from "react-hot-toast"
-import { arraysEqual, countOf } from "../utils/utils"
+// Removed duplicate arraysEqual import from utils/utils
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6"
 import { liveGif } from "../assets/assets"
 
@@ -44,6 +45,8 @@ const PlayQuiz = () => {
   const timesFullScreenExited = useRef(0)
   const handlingFullscreen = useRef(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
+  const [quizzesLoading, setQuizzesLoading] = useState(true)
+  const [noQuizzes, setNoQuizzes] = useState(false)
 
   const handleNext = useCallback(() => {
     let len = quizes.length
@@ -78,11 +81,19 @@ const PlayQuiz = () => {
       ? "You are disqualified for exiting full-screen"
       : "Quiz Submitted Successfully"
 
+    // Include the latest selection of the current question before computing
+    const quizzesForScore = quizes.map((q, idx) => (
+      idx === (currentQue - 1)
+        ? { ...q, markedAnswers: Array.isArray(selectedOptions) ? selectedOptions : [false, false, false, false] }
+        : q
+    ))
+
     // Compute score deterministically from answered questions
-    const computedScore = quizes.reduce((acc, quiz) => {
+    const normalize = (v) => (v === undefined || v === null) ? '' : String(v).trim()
+    const computedScore = quizzesForScore.reduce((acc, quiz) => {
       try {
         const marked = Array.isArray(quiz?.markedAnswers) ? quiz.markedAnswers : []
-        const correctIdx = (quiz?.options || []).findIndex((opt) => opt === quiz?.correctAnswer)
+        const correctIdx = (quiz?.options || []).findIndex((opt) => normalize(opt) === normalize(quiz?.correctAnswer))
         const pickedCount = marked.filter(Boolean).length
         const isCorrect = correctIdx >= 0 && marked[correctIdx] === true && pickedCount === 1
         if (isCorrect) return acc + 4
@@ -131,6 +142,8 @@ const PlayQuiz = () => {
     // Since the direct API call works but dbService fails, let's use direct fetch for now
     const fetchQuizData = async () => {
       try {
+        setQuizzesLoading(true)
+        setNoQuizzes(false)
         const token = localStorage.getItem('authToken') || localStorage.getItem('token')
         console.log('Using direct fetch with token:', !!token)
         
@@ -162,6 +175,8 @@ const PlayQuiz = () => {
           if (quizData.length === 0) {
             console.error('❌ NO QUIZ DATA FOUND!')
             console.log('Available response properties:', Object.keys(docs || {}))
+            setNoQuizzes(true)
+            setQuizzesLoading(false)
           } else {
             console.log('✅ Found', quizData.length, 'quiz questions')
             console.log('First question sample:', quizData[0])
@@ -170,20 +185,32 @@ const PlayQuiz = () => {
             const sectionQuizzes = quizData.filter(quiz => quiz.section === section)
             console.log(`✅ Found ${sectionQuizzes.length} questions for section ${section}`)
             
-            if (sectionQuizzes.length > 0) {
-              console.log('🎯 Dispatching section-specific quizzes to Redux store')
-              dispatch(setQuizes(sectionQuizzes))
-            } else {
-              console.warn(`⚠️ No questions found for section ${section}, using all questions`)
-              console.log('🎯 Dispatching all quizzes to Redux store')
-              dispatch(setQuizes(quizData))
-            }
+            // Ensure each quiz has a markedAnswers array to track selections
+          const withMarks = (list) => list.map(q => ({
+            ...q,
+            markedAnswers: Array.isArray(q.markedAnswers) ? q.markedAnswers : [false, false, false, false]
+          }))
+
+          if (sectionQuizzes.length > 0) {
+            console.log('🎯 Dispatching section-specific quizzes to Redux store')
+            dispatch(setQuizes(withMarks(sectionQuizzes)))
+            setNoQuizzes(false)
+          } else {
+            console.warn(`⚠️ No questions found for section ${section}, using all questions`)
+            console.log('🎯 Dispatching all quizzes to Redux store')
+            dispatch(setQuizes(withMarks(quizData)))
+            // If even "all" is zero we already handled above; here we treat as available
+            setNoQuizzes(sectionQuizzes.length === 0 && quizData.length === 0)
+          }
+          setQuizzesLoading(false)
           }
         } else {
           console.error('Direct fetch failed with status:', response.status)
+          setQuizzesLoading(false)
         }
       } catch (error) {
         console.error('Direct fetch error:', error)
+        setQuizzesLoading(false)
       }
     }
     
@@ -287,8 +314,8 @@ const PlayQuiz = () => {
   }, [quizes.length, sec])
 
   if (!loggedIn) return <Navigate to="/signup" />
-  if (loading) return <Loader />
-  if (quizes.length == 0) return <NotAvailable command="Back to Home Page" redirectURL="/" />
+  if (loading || quizzesLoading) return <Loader />
+  if (noQuizzes) return <NotAvailable command="Back to Home Page" redirectURL="/" message={`No Questions Found for Section ${section}`} />
 
   return (
     <Container
