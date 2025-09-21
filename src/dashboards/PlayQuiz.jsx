@@ -252,9 +252,17 @@ const PlayQuiz = () => {
 
         if (response.ok) {
           const docs = await response.json()
-          const leaderboardData = Array.isArray(docs) ? docs : (docs.data || docs.leaderboard || [])
+          let leaderboardData = []
+          if (Array.isArray(docs)) leaderboardData = docs
+          else if (docs && Array.isArray(docs.data)) leaderboardData = docs.data
+          else if (docs && Array.isArray(docs.leaderboard)) leaderboardData = docs.leaderboard
 
-          if (leaderboardData.length !== 0) {
+          // Only count non-disqualified entries for this section
+          const filtered = leaderboardData.filter((e) =>
+            Number(e?.section) === Number(section) && e?.disqualified === false
+          )
+
+          if (Array.isArray(leaderboardData) && filtered.length > 0) {
             navigate("/")
             toast("You've attempted the quiz")
           } else {
@@ -285,6 +293,10 @@ const PlayQuiz = () => {
       setTimeout(() => (handlingFullscreen.current = false), 300)
 
       if (!document.fullscreenElement) {
+        // If we've already started submitting (normal finish), ignore leave-fullscreen events
+        if (submittedRef.current) {
+          return
+        }
         // Immediate disqualification on leaving fullscreen
         toast("You're disqualified")
         submitQuiz(true)
