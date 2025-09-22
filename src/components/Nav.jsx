@@ -76,7 +76,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
       .getCurrentUser()
       .then((user) => {
         console.log('Auth restored successfully:', user)
-        if (user && user._id) {
+        if (user && user.id) {
           dispatch(setData(user))
           dispatch(login())
         } else {

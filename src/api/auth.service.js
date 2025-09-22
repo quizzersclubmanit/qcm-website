@@ -126,7 +126,7 @@ class Auth {
         return null;
       }
 
-      if (!(response.status===200)) {
+      if (!(response.status === 200)) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.error || "Failed to fetch user data");
       }
@@ -202,57 +202,25 @@ class Auth {
 
   async logout() {
     try {
-      console.log('Initiating logout...');
+      const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
+        method: "POST",
+        credentials: "include", // 🔑 send session cookie
+      });
 
-      // Clear local storage first
-      localStorage.removeItem('token');
-      localStorage.removeItem('authToken');
-
-      // Clear cookies
-      document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      document.cookie = 'accessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      document.cookie = 'authToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-
-      // Try to call the server to invalidate the session
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
-          method: 'POST',
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-            'Cache-Control': 'no-cache'
-          }
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          console.error('Server logout failed:', response.status, errorData);
-          // Even if server logout fails, we've already cleared local data
-        }
-      } catch (serverError) {
-        console.error('Error during server logout:', serverError);
-        // Continue with local logout even if server logout fails
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || "Failed to logout");
       }
 
-      console.log('Logout completed successfully');
-      return { success: true, message: 'Logout completed successfully' };
-
+      console.log("Logged out successfully");
+      return true;
     } catch (error) {
-      console.error('Error during logout process:', error);
-      // Ensure we still clear local data even if something else fails
-      localStorage.removeItem('token');
-      localStorage.removeItem('authToken');
-      document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-
-      // Only throw if it's not a network error
-      if (error.name !== 'TypeError' || !error.message.includes('fetch')) {
-        throw error;
-      }
-
-      // For network errors, still resolve since we've cleared local data
-      return { success: true, message: 'Local logout completed (offline mode)' };
+      console.error("Logout error:", error);
+      return false;
     }
   }
+
+
 
   async addPhoneNumber({ phone, password }) {
     try {
