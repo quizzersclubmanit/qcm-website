@@ -1,6 +1,6 @@
 // Auth service - Connected to Prisma MongoDB backend
 
-const API_BASE_URL = 'https://qcm-backend-ln5c.onrender.com'
+const API_BASE_URL = 'http://qcm-backend-ln5c.onrender.com'
 // const API_BASE_URL = 'http://localhost:3000'
 
 
@@ -11,38 +11,38 @@ class Auth {
       // if (name === "admin") {
       //   throw new Error("Name is reserved. Please enter another name")
       // }
-      
+
       console.log('Frontend sending signup data:', { email, password: '***', name, phone, city, school, sex });
       console.log('API URL:', `${API_BASE_URL}/api/auth/signup`);
-      
+
       const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-        body: JSON.stringify({ 
-          email, 
-          password, 
-          name, 
+        body: JSON.stringify({
+          email,
+          password,
+          name,
           phoneNo: phone, // Convert phone to phoneNo for backend
-          city, 
-          school, 
-          sex 
+          city,
+          school,
+          sex
         })
       })
-      
+
       console.log('Response status:', response.status);
       console.log('Response headers:', response.headers);
-      
+
       const data = await response.json()
       console.log('Response data:', data);
-      
+
       if (!response.ok) {
         console.error('Signup failed with status:', response.status, 'Error:', data.error);
         throw new Error(data.error || 'Signup failed')
       }
-      
+
       return data.user
     } catch (error) {
       console.error('Signup error:', error);
@@ -58,7 +58,7 @@ class Auth {
       console.log('=== LOGIN ATTEMPT STARTED ===');
       console.log('Frontend sending login data:', { email, password: '***' });
       console.log('API URL:', `${API_BASE_URL}/api/auth/login`);
-      
+
       const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
@@ -67,26 +67,26 @@ class Auth {
         credentials: 'include',
         body: JSON.stringify({ email, password })
       })
-      
+
       console.log('Login response status:', response.status);
       console.log('Login response headers:', response.headers);
-      
+
       const data = await response.json()
       console.log('Login response data:', data);
       console.log('=== LOGIN RESPONSE RECEIVED ===');
-      
+
       if (!response.ok) {
         console.error('Login failed with status:', response.status, 'Error:', data.error);
         throw new Error(data.error || 'Login failed')
       }
-      
+
       // Try to get the token from the response or cookies
-      const token = data.token || 
-                   document.cookie
-                     .split('; ')
-                     .find(row => row.startsWith('token='))
-                     ?.split('=')[1];
-      
+      const token = data.token ||
+        document.cookie
+          .split('; ')
+          .find(row => row.startsWith('token='))
+          ?.split('=')[1];
+
       // Store token in localStorage for future requests
       if (token) {
         console.log('Storing token in localStorage:', token.substring(0, 10) + '...');
@@ -97,7 +97,7 @@ class Auth {
         console.log('Available cookies:', document.cookie);
         console.log('Response data keys:', Object.keys(data));
       }
-      
+
       return data.user
     } catch (error) {
       console.error('Login error:', error);
@@ -112,34 +112,43 @@ class Auth {
     try {
       console.log("Fetching current user from:", `${API_BASE_URL}/api/auth/me`)
       console.log('Fetching current user from:', `${API_BASE_URL}/api/auth/me`);
-      
+
       // Get token from localStorage or cookies
-      const token = localStorage.getItem('token') || 
-                   localStorage.getItem('authToken') ||
-                   document.cookie
-                     .split('; ')
-                     .find(row => row.startsWith('token='))
-                     ?.split('=')[1];
-      
+      const token = localStorage.getItem('token') ||
+        localStorage.getItem('authToken') ||
+        document.cookie
+          .split('; ')
+          .find(row => row.startsWith('token='))
+          ?.split('=')[1];
+
       if (!token) {
         console.warn('No authentication token found');
         return null;
       }
-      
+
       console.log('Using token for auth/me request');
-      
+
+      // const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
+      //   method: 'GET',
+      //   credentials: 'include',
+      //   headers: {
+      //     'Accept': 'application/json',
+      //     'Cache-Control': 'no-cache',
+      //     'Authorization': `Bearer ${token}`
+      //   }
+      // });
       const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
-        method: 'GET',
-        credentials: 'include',
+        method: "GET",
+        credentials: "include",  // 🔑 sends cookie qcm.sid
         headers: {
-          'Accept': 'application/json',
-          'Cache-Control': 'no-cache',
-          'Authorization': `Bearer ${token}`
+          "Accept": "application/json"
         }
       });
-      
+
+
+
       console.log('Auth/me response status:', response.status);
-      
+
       // If unauthorized, clear the invalid token
       if (response.status === 401) {
         console.warn('Session expired or invalid token');
@@ -148,18 +157,18 @@ class Auth {
         document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         return null;
       }
-      
+
       if (response.status === 401) {
         console.log('Not authenticated - no valid session');
         throw new Error('Not authenticated');
       }
-      
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         console.error('Auth/me error:', response.status, errorData);
         throw new Error(errorData.error || 'Failed to fetch user data');
       }
-      
+
       const data = await response.json();
       console.log('Current user data:', data);
       return data.user || data; // Handle both { user } and direct user object responses
@@ -176,16 +185,16 @@ class Auth {
   async logout() {
     try {
       console.log('Initiating logout...');
-      
+
       // Clear local storage first
       localStorage.removeItem('token');
       localStorage.removeItem('authToken');
-      
+
       // Clear cookies
       document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
       document.cookie = 'accessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
       document.cookie = 'authToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      
+
       // Try to call the server to invalidate the session
       try {
         const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
@@ -206,22 +215,22 @@ class Auth {
         console.error('Error during server logout:', serverError);
         // Continue with local logout even if server logout fails
       }
-      
+
       console.log('Logout completed successfully');
       return { success: true, message: 'Logout completed successfully' };
-      
+
     } catch (error) {
       console.error('Error during logout process:', error);
       // Ensure we still clear local data even if something else fails
       localStorage.removeItem('token');
       localStorage.removeItem('authToken');
       document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      
+
       // Only throw if it's not a network error
       if (error.name !== 'TypeError' || !error.message.includes('fetch')) {
         throw error;
       }
-      
+
       // For network errors, still resolve since we've cleared local data
       return { success: true, message: 'Local logout completed (offline mode)' };
     }
@@ -237,13 +246,13 @@ class Auth {
         credentials: 'include',
         body: JSON.stringify({ phone })
       })
-      
+
       const data = await response.json()
-      
+
       if (!response.ok) {
         throw new Error(data.error || 'Phone update failed')
       }
-      
+
       return data.user
     } catch (error) {
       throw error
@@ -271,13 +280,13 @@ class Auth {
         },
         body: JSON.stringify({ email })
       });
-      
+
       const data = await response.json();
-      
+
       if (!response.ok) {
         throw new Error(data.error || 'Failed to send reset email');
       }
-      
+
       return data;
     } catch (error) {
       throw error;
@@ -293,13 +302,13 @@ class Auth {
         },
         body: JSON.stringify({ token, newPassword })
       });
-      
+
       const data = await response.json();
-      
+
       if (!response.ok) {
         throw new Error(data.error || 'Failed to reset password');
       }
-      
+
       return data;
     } catch (error) {
       throw error;
