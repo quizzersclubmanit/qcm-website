@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Container } from "../components/components"
 import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import toast from "react-hot-toast"
 import { timeLimits } from "../../constants"
 import { instructions } from "../assets/qcmData.json"
 
 const Instructions = ({ sec }) => {
   const { data } = useSelector((state) => state.user)
+  const navigate = useNavigate()
   const instrs = [
     {
       key: "Duration",
@@ -28,6 +31,46 @@ const Instructions = ({ sec }) => {
       value: instructions[`section-${sec}`]["marking-scheme"]
     }
   ]
+
+  // Pre-check: block if user already attempted this section
+  useEffect(() => {
+    const userId = data?.$id || data?.id || data?.userId
+    if (!userId || !sec) return
+    const check = async () => {
+      try {
+        const token = localStorage.getItem('authToken') || localStorage.getItem('token')
+        const res = await fetch(`https://qcm-backend-ln5c.onrender.com/api/quiz/leaderboard?userId=${userId}&section=${Number(sec)}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          mode: 'cors'
+        })
+        if (res.ok) {
+          const body = await res.json()
+          let arr = []
+          if (Array.isArray(body)) arr = body
+          else if (body && Array.isArray(body.data)) arr = body.data
+          else if (body && Array.isArray(body.leaderboard)) arr = body.leaderboard
+          const hasAny = (arr || []).some((e) => Number(e?.section) === Number(sec))
+          if (hasAny) {
+            toast("You've attempted the quiz")
+            navigate('/')
+          }
+        } else {
+          // Soft-block on error
+          toast("Unable to verify attempt. Please try again.")
+          navigate('/')
+        }
+      } catch (e) {
+        console.error('Instructions pre-check error:', e)
+        toast("Network error. Please try again.")
+        navigate('/')
+      }
+    }
+    check()
+  }, [data?.$id, data?.id, data?.userId, sec])
 
   return (
     <Container
