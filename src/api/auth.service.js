@@ -107,80 +107,98 @@ class Auth {
       throw error
     }
   }
-
   async getCurrentUser() {
     try {
-      console.log("Fetching current user from:", `${API_BASE_URL}/api/auth/me`)
-      console.log('Fetching current user from:', `${API_BASE_URL}/api/auth/me`);
+      console.log("Fetching current user from:", `${API_BASE_URL}/api/auth/me`);
 
-      // Get token from localStorage or cookies
-      const token = localStorage.getItem('token') ||
-        localStorage.getItem('authToken') ||
-        document.cookie
-          .split('; ')
-          .find(row => row.startsWith('token='))
-          ?.split('=')[1];
-
-      if (!token) {
-        console.warn('No authentication token found');
-        return null;
-      }
-
-      console.log('Using token for auth/me request');
-
-      // const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
-      //   method: 'GET',
-      //   credentials: 'include',
-      //   headers: {
-      //     'Accept': 'application/json',
-      //     'Cache-Control': 'no-cache',
-      //     'Authorization': `Bearer ${token}`
-      //   }
-      // });
       const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
         method: "GET",
-        credentials: "include",  // 🔑 sends cookie qcm.sid
+        credentials: "include",  // 🔑 send qcm.sid automatically
         headers: {
           "Accept": "application/json"
         }
       });
 
+      console.log("Auth/me response status:", response.status);
 
-
-      console.log('Auth/me response status:', response.status);
-
-      // If unauthorized, clear the invalid token
       if (response.status === 401) {
-        console.warn('Session expired or invalid token');
-        localStorage.removeItem('token');
-        localStorage.removeItem('authToken');
-        document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        console.log("Not authenticated - session invalid or expired");
         return null;
-      }
-
-      if (response.status === 401) {
-        console.log('Not authenticated - no valid session');
-        throw new Error('Not authenticated');
       }
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        console.error('Auth/me error:', response.status, errorData);
-        throw new Error(errorData.error || 'Failed to fetch user data');
+        throw new Error(errorData.error || "Failed to fetch user data");
       }
 
       const data = await response.json();
-      console.log('Current user data:', data);
-      return data.user || data; // Handle both { user } and direct user object responses
+      console.log("Current user data:", data);
+      return data.user || data;
     } catch (error) {
-      console.error('Error in getCurrentUser:', error);
-      // Only rethrow if it's not a 401 (which is expected when not logged in)
-      if (error.message !== 'Not authenticated') {
-        console.error('Unexpected error in getCurrentUser:', error);
-      }
-      throw error;
+      console.error("Error in getCurrentUser:", error);
+      return null;
     }
   }
+  // async getCurrentUser() {
+  //   try {
+  //     console.log("Fetching current user from:", `${API_BASE_URL}/api/auth/me`);
+
+  //   const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
+  //     method: "GET",
+  //     credentials: "include",  // 🔑 send qcm.sid automatically
+  //     headers: {
+  //       "Accept": "application/json"
+  //     }
+  //   });
+
+  //   console.log("Auth/me response status:", response.status);
+  //     if (!token) {
+  //       console.warn('No authentication token found');
+  //       return null;
+  //     }
+
+  //     const rresponse = await fetch(`${API_BASE_URL}/api/auth/me`, {
+  //       method: "GET",
+  //       credentials: "include",  //sends cookie qcm.sid
+  //       headers: {
+  //         "Accept": "application/json"
+  //       }
+  //     });
+
+  //     console.log('Auth/me response status:', response);
+
+  //     // If unauthorized, clear the invalid token
+  //     if (response.status === 401) {
+  //       console.warn('Session expired or invalid token');
+  //       localStorage.removeItem('token');
+  //       localStorage.removeItem('authToken');
+  //       document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  //       return null;
+  //     }
+
+  //     if (response.status === 401) {
+  //       console.log('Not authenticated - no valid session');
+  //       throw new Error('Not authenticated');
+  //     }
+
+  //     if (!response.ok) {
+  //       const errorData = await response.json().catch(() => ({}));
+  //       console.error('Auth/me error:', response.status, errorData);
+  //       throw new Error(errorData.error || 'Failed to fetch user data');
+  //     }
+
+  //     const data = await response.json();
+  //     console.log('Current user data:', data);
+  //     return data.user || data; // Handle both { user } and direct user object responses
+  //   } catch (error) {
+  //     console.error('Error in getCurrentUser:', error);
+  //     // Only rethrow if it's not a 401 (which is expected when not logged in)
+  //     if (error.message !== 'Not authenticated') {
+  //       console.error('Unexpected error in getCurrentUser:', error);
+  //     }
+  //     throw error;
+  //   }
+  // }
 
   async logout() {
     try {
