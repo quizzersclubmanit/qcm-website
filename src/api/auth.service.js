@@ -7,15 +7,7 @@ const API_BASE_URL = 'http://qcm-backend-ln5c.onrender.com'
 class Auth {
   async signupAndLogin({ email, password, name, phone, city, school, sex }) {
     try {
-      // Allow admin user creation for administrative purposes
-      // if (name === "admin") {
-      //   throw new Error("Name is reserved. Please enter another name")
-      // }
-
-      console.log('Frontend sending signup data:', { email, password: '***', name, phone, city, school, sex });
-      console.log('API URL:', `${API_BASE_URL}/api/auth/signup`);
-
-      const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
+        const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
