@@ -88,7 +88,7 @@ const PlayQuiz = () => {
     }
   }, [quizes, currentQue])
 
-  function submitQuiz(disqualified = false) {
+  async function submitQuiz(disqualified = false) {
     if (hasSubmitted || submittedRef.current) return
     setHasSubmitted(true)
     submittedRef.current = true
@@ -207,8 +207,30 @@ const PlayQuiz = () => {
       }
     }, 0)
     const safeScore = Number(Math.min(180, Math.max(0, computedScore)))
-    dbService
-      .insert({
+
+    try {
+      // Final server-side pre-check to avoid duplicates
+      const existing = await dbService.select({
+        collectionId: "leaderboard",
+        queries: [
+          `userId=${data.$id || data.id}`,
+          `section=${Number(section)}`
+        ]
+      })
+      let list = []
+      if (Array.isArray(existing)) list = existing
+      else if (existing && Array.isArray(existing.data)) list = existing.data
+      else if (existing && Array.isArray(existing.leaderboard)) list = existing.leaderboard
+
+      const already = (list || []).some((e) => Number(e?.section) === Number(section) && (e?.userId === (data.$id || data.id) || e?.userId?.id === (data.$id || data.id) || e?.userId?.$id === (data.$id || data.id)))
+      if (already) {
+        toast("You've attempted the quiz")
+        await document.exitFullscreen().catch(() => {})
+        navigate("/")
+        return
+      }
+
+      await dbService.insert({
         collectionId: "leaderboard",
         data: {
           userId: data.$id || data.id,
@@ -217,21 +239,23 @@ const PlayQuiz = () => {
           disqualified: Boolean(disqualified)
         }
       })
-      .then(() => {
-        document
-          .exitFullscreen()
-          .then(() => {
-            toast("Quiz Submitted Succesfully")
-          })
-          .catch((error) => console.error(error))
-          .finally(() => navigate(`/quiz/result/${msg}`))
-      })
-      .catch((error) => {
-        toast(error.message)
-        console.error(error)
-        setHasSubmitted(false)
-        submittedRef.current = false
-      })
+
+      await document.exitFullscreen().catch(() => {})
+      toast("Quiz Submitted Succesfully")
+      navigate(`/quiz/result/${msg}`)
+    } catch (error) {
+      console.error(error)
+      // Handle duplicate/validation errors gracefully
+      if (error?.status === 409 || /duplicate/i.test(error?.message || '')) {
+        toast("You've already submitted")
+        await document.exitFullscreen().catch(() => {})
+        navigate("/")
+        return
+      }
+      toast(error.message || 'Submission failed')
+      setHasSubmitted(false)
+      submittedRef.current = false
+    }
   }
 
   const handleSubmit = useCallback(() => {
@@ -338,42 +362,49 @@ const PlayQuiz = () => {
 
   useEffect(() => {
     const userId = data?.$id || data?.id || data?.userId
+    const lockKey = userId ? `attempt-lock:${userId}:${Number(section)}` : null
 
-    // Check if user has already attempted the quiz using direct fetch
+    // Wait for userId to be available
+    if (!userId) {
+      return
+    }
+
+    // Check if user has already attempted the quiz using dbService
     const checkLeaderboard = async () => {
       try {
-        const token = localStorage.getItem('authToken') || localStorage.getItem('token')
-        const response = await fetch(`https://qcm-backend-ln5c.onrender.com/api/quiz/leaderboard?userId=${userId}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          mode: 'cors'
+        const docs = await dbService.select({
+          collectionId: "leaderboard",
+          queries: [
+            `userId=${userId}`,
+            `section=${Number(section)}`
+          ]
         })
 
-        if (response.ok) {
-          const docs = await response.json()
-          let leaderboardData = []
-          if (Array.isArray(docs)) leaderboardData = docs
-          else if (docs && Array.isArray(docs.data)) leaderboardData = docs.data
-          else if (docs && Array.isArray(docs.leaderboard)) leaderboardData = docs.leaderboard
+        let leaderboardData = []
+        if (Array.isArray(docs)) leaderboardData = docs
+        else if (docs && Array.isArray(docs.data)) leaderboardData = docs.data
+        else if (docs && Array.isArray(docs.leaderboard)) leaderboardData = docs.leaderboard
 
-          // Only count non-disqualified entries for this section
-          const filtered = leaderboardData.filter((e) =>
-            Number(e?.section) === Number(section) && e?.disqualified === false
-          )
+        // Fallback safety filter if server ignored filters
+        const filtered = (leaderboardData || []).filter(
+          (e) => Number(e?.section) === Number(section) &&
+            (e?.userId === userId || e?.userId?.id === userId || e?.userId?.$id === userId)
+        )
 
-          if (Array.isArray(leaderboardData) && filtered.length > 0) {
+        if (filtered.length > 0) {
+          navigate("/")
+          toast("You've attempted the quiz")
+        } else {
+          // Device-side lock: prevent re-attempts from same browser
+          if (lockKey && localStorage.getItem(lockKey)) {
             navigate("/")
             toast("You've attempted the quiz")
-          } else {
-            document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+            return
           }
-        } else {
-          // Do not enter fullscreen on error; inform the user instead
-          toast("Unable to verify attempt. Please try again.")
-          navigate("/")
+          if (lockKey) {
+            try { localStorage.setItem(lockKey, String(Date.now())) } catch {}
+          }
+          document.documentElement.requestFullscreen({ navigationUI: 'hide' })
         }
       } catch (error) {
         console.error('Leaderboard check error:', error)
@@ -428,7 +459,7 @@ const PlayQuiz = () => {
       document.removeEventListener('fullscreenchange', onFullscreenChange)
       document.removeEventListener('keydown', onKeyDown)
     }
-  }, [])
+  }, [data?.$id, data?.id, data?.userId, section])
 
   useEffect(() => {
     const currentQuiz = quizes[currentQue - 1]
