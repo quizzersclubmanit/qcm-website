@@ -1,5 +1,5 @@
 import dbService from "../api/db.service"
-import { Outlet, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { Instructions } from "../pages/pages"
@@ -14,17 +14,9 @@ const ClassPrompt = () => {
 
   console.log('ClassPrompt - sec:', sec, 'data:', data)
 
-  // Handle different sections
-  if (sec != 0) return <Instructions sec={sec} />
-  
-  // Show loading while processing to prevent multiple renders
-  if (isProcessing) return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="text-white text-xl">Processing class information...</div>
-    </div>
-  )
-
   useEffect(() => {
+    // Only run prompt flow for sec == 0
+    if (String(sec) !== '0') return
     // Check if user data exists and has required properties
     if (!data || (!data.$id && !data.id && !data.userId)) {
       console.error('User data not available in ClassPrompt:', data)
@@ -92,15 +84,32 @@ const ClassPrompt = () => {
         navigate("/quiz/instr/1")
       })
     */
-  }, [data, navigate, hasPrompted, isProcessing])
+  }, [data, navigate, hasPrompted, isProcessing, sec])
+
+  // Render based on section after hooks are registered
+  if (String(sec) !== '0') {
+    return <Instructions sec={sec} />
+  }
 
   // For section 0, show a proper UI instead of error screen
+  if (isProcessing) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-900 to-purple-900">
+        <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+          <h2 className="text-2xl font-bold mb-4">Quiz Setup</h2>
+          <p className="text-gray-600 mb-4">Please wait while we collect your class information...</p>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+        </div>
+      </div>
+    )
+  }
+
+  // Idle UI while waiting to prompt
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-900 to-purple-900">
       <div className="bg-white p-8 rounded-lg shadow-lg text-center">
         <h2 className="text-2xl font-bold mb-4">Quiz Setup</h2>
-        <p className="text-gray-600 mb-4">Please wait while we collect your class information...</p>
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+        <p className="text-gray-600 mb-4">Preparing class prompt...</p>
       </div>
     </div>
   )
