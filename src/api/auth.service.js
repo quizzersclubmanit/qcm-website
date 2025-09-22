@@ -126,7 +126,7 @@ class Auth {
         return null;
       }
 
-      if (!response.ok) {
+      if (!(response.status===200)) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.error || "Failed to fetch user data");
       }
