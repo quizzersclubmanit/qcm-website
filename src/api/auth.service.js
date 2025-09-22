@@ -1,298 +1,43 @@
-// Auth service - Connected to Prisma MongoDB backend
+const API_BASE_URL = "https://qcm-backend-ln5c.onrender.com";
 
-const API_BASE_URL = 'http://qcm-backend-ln5c.onrender.com'
-// const API_BASE_URL = 'http://localhost:3000'
+const authService = {
+  getCurrentUser: async () => {
+    const res = await fetch(`${API_BASE_URL}/api/auth/me`, { credentials: "include" });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.user || null;
+  },
 
+  login: async (email, password) => {
+    const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+    if (!res.ok) throw new Error("Login failed");
+    return res.json();
+  },
 
-class Auth {
-  async signupAndLogin({ email, password, name, phone, city, school, sex }) {
-    try {
-        const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          email,
-          password,
-          name,
-          phoneNo: phone, // Convert phone to phoneNo for backend
-          city,
-          school,
-          sex
-        })
-      })
+  signup: async (userData) => {
+    const res = await fetch(`${API_BASE_URL}/api/auth/signup`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData)
+    });
+    if (!res.ok) throw new Error("Signup failed");
+    return res.json();
+  },
 
-      console.log('Response status:', response.status);
-      console.log('Response headers:', response.headers);
-
-      const data = await response.json()
-      console.log('Response data:', data);
-
-      if (!response.ok) {
-        console.error('Signup failed with status:', response.status, 'Error:', data.error);
-        throw new Error(data.error || 'Signup failed')
-      }
-
-      return data.user
-    } catch (error) {
-      console.error('Signup error:', error);
-      if (error.name === 'TypeError' && error.message.includes('fetch')) {
-        throw new Error('Network error: Unable to connect to server. Please check your internet connection.');
-      }
-      throw error
-    }
+  logout: async () => {
+    const res = await fetch(`${API_BASE_URL}/api/auth/logout`, {
+      method: "POST",
+      credentials: "include"
+    });
+    if (!res.ok) throw new Error("Logout failed");
+    return res.json();
   }
+};
 
-  async login({ email = "", password = "" }) {
-    try {
-      console.log('=== LOGIN ATTEMPT STARTED ===');
-      console.log('Frontend sending login data:', { email, password: '***' });
-      console.log('API URL:', `${API_BASE_URL}/api/auth/login`);
-
-      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({ email, password })
-      })
-
-      console.log('Login response status:', response.status);
-      console.log('Login response headers:', response.headers);
-
-      const data = await response.json()
-      console.log('Login response data:', data);
-      console.log('=== LOGIN RESPONSE RECEIVED ===');
-
-      if (!response.ok) {
-        console.error('Login failed with status:', response.status, 'Error:', data.error);
-        throw new Error(data.error || 'Login failed')
-      }
-
-      // Try to get the token from the response or cookies
-      const token = data.token ||
-        document.cookie
-          .split('; ')
-          .find(row => row.startsWith('token='))
-          ?.split('=')[1];
-
-      // Store token in localStorage for future requests
-      if (token) {
-        console.log('Storing token in localStorage:', token.substring(0, 10) + '...');
-        localStorage.setItem('token', token);
-        localStorage.setItem('authToken', token);
-      } else {
-        console.warn('No token received in login response');
-        console.log('Available cookies:', document.cookie);
-        console.log('Response data keys:', Object.keys(data));
-      }
-
-      return data.user
-    } catch (error) {
-      console.error('Login error:', error);
-      if (error.name === 'TypeError' && error.message.includes('fetch')) {
-        throw new Error('Network error: Unable to connect to server. Please check your internet connection.');
-      }
-      throw error
-    }
-  }
-  async getCurrentUser() {
-    try {
-      console.log("Fetching current user from:", `${API_BASE_URL}/api/auth/me`);
-
-      const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
-        method: "GET",
-        credentials: "include",  // 🔑 send qcm.sid automatically
-        headers: {
-          "Accept": "application/json"
-        }
-      });
-
-      console.log("Auth/me response status:", response.status);
-
-      if (response.status === 401) {
-        console.log("Not authenticated - session invalid or expired");
-        return null;
-      }
-
-      if (!(response.status === 200)) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to fetch user data");
-      }
-
-      const data = await response.json();
-      console.log("Current user data:", data);
-      return data.user || data;
-    } catch (error) {
-      console.error("Error in getCurrentUser:", error);
-      return null;
-    }
-  }
-  // async getCurrentUser() {
-  //   try {
-  //     console.log("Fetching current user from:", `${API_BASE_URL}/api/auth/me`);
-
-  //   const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
-  //     method: "GET",
-  //     credentials: "include",  // 🔑 send qcm.sid automatically
-  //     headers: {
-  //       "Accept": "application/json"
-  //     }
-  //   });
-
-  //   console.log("Auth/me response status:", response.status);
-  //     if (!token) {
-  //       console.warn('No authentication token found');
-  //       return null;
-  //     }
-
-  //     const rresponse = await fetch(`${API_BASE_URL}/api/auth/me`, {
-  //       method: "GET",
-  //       credentials: "include",  //sends cookie qcm.sid
-  //       headers: {
-  //         "Accept": "application/json"
-  //       }
-  //     });
-
-  //     console.log('Auth/me response status:', response);
-
-  //     // If unauthorized, clear the invalid token
-  //     if (response.status === 401) {
-  //       console.warn('Session expired or invalid token');
-  //       localStorage.removeItem('token');
-  //       localStorage.removeItem('authToken');
-  //       document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-  //       return null;
-  //     }
-
-  //     if (response.status === 401) {
-  //       console.log('Not authenticated - no valid session');
-  //       throw new Error('Not authenticated');
-  //     }
-
-  //     if (!response.ok) {
-  //       const errorData = await response.json().catch(() => ({}));
-  //       console.error('Auth/me error:', response.status, errorData);
-  //       throw new Error(errorData.error || 'Failed to fetch user data');
-  //     }
-
-  //     const data = await response.json();
-  //     console.log('Current user data:', data);
-  //     return data.user || data; // Handle both { user } and direct user object responses
-  //   } catch (error) {
-  //     console.error('Error in getCurrentUser:', error);
-  //     // Only rethrow if it's not a 401 (which is expected when not logged in)
-  //     if (error.message !== 'Not authenticated') {
-  //       console.error('Unexpected error in getCurrentUser:', error);
-  //     }
-  //     throw error;
-  //   }
-  // }
-
-  async logout() {
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
-        method: "POST",
-        credentials: "include", // 🔑 send session cookie
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to logout");
-      }
-
-      console.log("Logged out successfully");
-      return true;
-    } catch (error) {
-      console.error("Logout error:", error);
-      return false;
-    }
-  }
-
-
-
-  async addPhoneNumber({ phone, password }) {
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/phone`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({ phone })
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Phone update failed')
-      }
-
-      return data.user
-    } catch (error) {
-      throw error
-    }
-  }
-
-  async sendVerificationToken() {
-    // TODO: Implement phone verification if needed
-    console.warn('Phone verification not implemented yet')
-    return null
-  }
-
-  async verifyToken({ userId, secret }) {
-    // TODO: Implement phone verification if needed
-    console.warn('Phone verification not implemented yet')
-    return null
-  }
-
-  async sendEmailToken({ email }) {
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/forgot-password`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send reset email');
-      }
-
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async resetPassword({ token, newPassword }) {
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/reset-password`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token, newPassword })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to reset password');
-      }
-
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  }
-}
-
-const authService = new Auth()
-export default authService
+export default authService;
