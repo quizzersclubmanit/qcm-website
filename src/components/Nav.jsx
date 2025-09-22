@@ -63,7 +63,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     }
 
     // Don't check auth if we're already logged in (from Redux state)
-    if (loggedIn && data?._id) {
+    if (loggedIn && data?.id) {
       console.log('User already authenticated in Redux state, skipping auth check')
       return
     }
@@ -103,7 +103,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
       controller.abort()
       clearTimeout(timeoutId)
     }
-  }, [location.pathname, loggedIn, data?._id])
+  }, [location.pathname, loggedIn, data?.id])
 
   return (
     <>

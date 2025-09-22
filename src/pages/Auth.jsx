@@ -291,7 +291,7 @@ const Auth = ({ label = "signup" }) => {
             <div className="mt-4 md:self-start mb-0 flex flex-col ">
                <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
-                href="https://drive.google.com/file/d/1c4P0ZzeJLSf-SEluBLZzi_WGeEbfJLP9/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1Bmtsw6k6FZNzaZmAR2qTQ0dpaLS_6hW7/view"
                 target="_blank"
               >
                 Download IQC Sample Question Booklet 
