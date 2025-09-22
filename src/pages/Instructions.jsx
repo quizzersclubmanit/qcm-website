@@ -47,6 +47,7 @@ const Instructions = ({ sec }) => {
           },
           mode: 'cors'
         })
+        console.log('Instructions pre-check response:', res)
         if (res.ok) {
           const body = await res.json()
           let arr = []
