@@ -321,18 +321,13 @@ class Auth {
       console.log('Fetching current user from:', `${API_BASE_URL}/api/auth/me`);
       
       // Get token from localStorage or cookies
-      const token = localStorage.getItem('token') || 
-                   localStorage.getItem('authToken') ||
-                   document.cookie
-                     .split('; ')
-                     .find(row => row.startsWith('token='))
-                     ?.split('=')[1];
-      
-      if (!token) {
-        console.warn('No authentication token found');
-        return null;
-      }
-      
+       const token = localStorage.getItem('token') || localStorage.getItem('authToken');
+
+      console.log("Token:", token);
+      if (!token) {
+        console.warn('No authentication token found in localStorage');
+        return null;
+      }
       console.log('Using token for auth/me request');
       
       const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
@@ -348,13 +343,13 @@ class Auth {
       console.log('Auth/me response status:', response.status);
       
       // If unauthorized, clear the invalid token
-      if (response.status === 401) {
-        console.warn('Session expired or invalid token');
-        localStorage.removeItem('token');
-        localStorage.removeItem('authToken');
-        document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        return null;
-      }
+      // if (response.status === 401) {
+      //   console.warn('Session expired or invalid token');
+      //   // localStorage.removeItem('token');
+      //   // localStorage.removeItem('authToken');
+      //   document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      //   return null;
+      // }
       
       if (response.status === 401) {
         console.log('Not authenticated - no valid session');

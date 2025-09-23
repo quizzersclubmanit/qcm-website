@@ -549,9 +549,7 @@ const PlayQuiz = () => {
       </p>
       {quizes[currentQue - 1]?.supportingPic && (
         <img
-          src={storeService.fetchFilePreview({
-            fileId: quizes[currentQue - 1]?.supportingPic
-          })}
+          src={quizes[currentQue - 1]?.supportingPic}
           alt="Supporting Picture"
           className="w-1/3"
         />
