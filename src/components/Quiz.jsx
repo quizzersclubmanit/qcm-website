@@ -129,7 +129,9 @@ const Quiz = ({ quiz = {}, setShowModal = () => {} }) => {
         return
       }
 
-      if (selectedIdxs.length === 1) {
+      const secNum = Number(formData.section)
+      if (selectedIdxs.length === 1 || secNum !== 3) {
+        // For sections other than 3, force single-correct using the first selected
         correctAnswerIndex = selectedIdxs[0]
         correctAnswer = formData.options[correctAnswerIndex]
         if (!correctAnswer || !correctAnswer.trim()) {
