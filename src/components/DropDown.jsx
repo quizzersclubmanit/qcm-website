@@ -122,7 +122,10 @@ import { csvObject } from "../utils/utils"
 const DropDown = forwardRef(({ user,email, visible = false }, ref) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  console.log(email);
+  if(email===undefined){
+    email="";
+  }
   const buttons = [
     {
       label: "Play Quiz",
