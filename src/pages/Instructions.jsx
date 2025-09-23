@@ -32,7 +32,7 @@ const Instructions = ({ sec }) => {
     }
   ]
 
-  // Pre-check: block if user already attempted this section
+  // Pre-check: block ONLY if server confirms user already attempted this section
   useEffect(() => {
     const userId = data?.$id || data?.id || data?.userId
     if (!userId || !sec) return
@@ -47,7 +47,6 @@ const Instructions = ({ sec }) => {
           },
           mode: 'cors'
         })
-        console.log('Instructions pre-check response:', res)
         if (res.ok) {
           const body = await res.json()
           let arr = []
@@ -60,14 +59,12 @@ const Instructions = ({ sec }) => {
             navigate('/')
           }
         } else {
-          // Soft-block on error
-          toast("Unable to verify attempt. Please try again.")
-          navigate('/')
+          // Do not block on non-OK; allow user to proceed
+          console.warn('Attempt pre-check non-OK status:', res.status)
         }
       } catch (e) {
         console.error('Instructions pre-check error:', e)
-        toast("Network error. Please try again.")
-        navigate('/')
+        // Do not block on network error; allow user to proceed
       }
     }
     check()
