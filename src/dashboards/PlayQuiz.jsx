@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { setQuizes, editQuiz } from "../redux/quiz.slice"
 import { setScore } from "../redux/user.slice"
 import env, { timeLimits } from "../../constants"
+import { instructions } from "../assets/qcmData.json"
 import { Navigate, useParams } from "react-router-dom"
 import {
   Button,
@@ -65,21 +66,7 @@ const PlayQuiz = () => {
     if (isPaused) return
     let len = quizes.length
     if (currentQue >= len || timer <= 0) {
-      // Calculate score based on marked answers vs correct answers
-      quizes.forEach((quiz) => {
-        const markedAnswers = quiz.markedAnswers || []
-        const correctIndex = quiz.options.findIndex(option => option === quiz.correctAnswer)
-        const isCorrect = markedAnswers[correctIndex] === true && markedAnswers.filter(Boolean).length === 1
-        
-        if (isCorrect) {
-          // Add points for correct answer (default +4)
-          setRoundScore((prev) => prev + 4)
-        } else if (markedAnswers.some(Boolean)) {
-          // Subtract points for wrong answer (default -1)
-          setRoundScore((prev) => prev - 1)
-        }
-        // No points change for unanswered questions
-      })
+      // End of section questions: just reveal Submit button; score is computed on submit
       setShowSubmitBtn(true)
     } else {
       setCurrentQue((prev) => (prev < len ? prev + 1 : prev))
@@ -87,6 +74,106 @@ const PlayQuiz = () => {
       setSelectedOptions(ans || [false, false, false, false])
     }
   }, [quizes, currentQue])
+
+  // Helper to compute score for the current section using marking scheme from qcmData.json
+  const computeSectionScore = (list) => {
+    const normalize = (v) => {
+      if (v === undefined || v === null) return ''
+      return String(v).trim().toLowerCase().replace(/\s+/g, ' ')
+    }
+
+    // Determine marks function per section based on qcmData.json instructions
+    const marksFn = (secNum) => {
+      const secKey = `section-${Number(secNum)}`
+      const scheme = instructions?.[secKey]?.["marking-scheme"] || ''
+      // Parse like "+4 for correct, -1 for incorrect" or "+5 for correct, 0 for incorrect"
+      const m = scheme.match(/([+\-]?\d+)\s*for\s*correct.*?([+\-]?\d+)\s*for\s*incorrect/i)
+      let pos = 0, neg = 0
+      if (m) {
+        pos = Number(m[1] || 0)
+        neg = Number(m[2] || 0)
+      } else {
+        // Fallbacks if parsing fails
+        if (Number(secNum) === 3) { pos = 5; neg = 0 }
+        else if (Number(secNum) === 4) { pos = 5; neg = -1 }
+        else { pos = 4; neg = -1 }
+      }
+      return (correct) => (correct ? pos : neg)
+    }
+
+    return (list || []).reduce((acc, quiz, qIndex) => {
+      try {
+        const secNum = Number(quiz?.section)
+        const marks = marksFn(secNum)
+        const opts = Array.isArray(quiz?.options) ? quiz.options : []
+        const isBlankOptions = opts.length === 0 || opts.every((o) => normalize(o) === '')
+
+        // Integer type (section 3 second half) or explicit integer flag
+        if (secNum === 3 && (quiz?.isInteger === true || isBlankOptions || (quiz && typeof quiz.userInput === 'string'))) {
+          const userVal = normalize(quiz?.userInput)
+          const correctVal = normalize(quiz?.correctAnswer)
+          const correct = !!userVal && userVal === correctVal
+          return acc + marks(correct)
+        }
+
+        // Options-based evaluation
+        const marked = Array.isArray(quiz?.markedAnswers) ? quiz.markedAnswers : []
+        const pickedIdxs = marked.map((b, i) => (b ? i : -1)).filter((i) => i >= 0)
+        if (pickedIdxs.length === 0) return acc
+
+        const preprocess = (s) => normalize(s)
+          .replace(/^answer[:.\_\-\s]*/, '')
+          .replace(/^\(?[abcd]\)?[).:\-\s]*/, '')
+        const corrRaw = quiz?.correctAnswer
+        const corrNorm = preprocess(corrRaw)
+        const stripLead = (s) => normalize(s).replace(/^\(?[abcd]\)?[).:\-\s]*/, '')
+        const optNorms = (quiz?.options || []).map((o) => stripLead(o))
+
+        const tokens = String(corrRaw || '')
+          .split(/[\s,;|]+/)
+          .map((t) => t.trim())
+          .filter(Boolean)
+
+        let corrIdxs = []
+        if (tokens.length > 1) {
+          corrIdxs = tokens
+            .map((t) => t.replace(/\(|\)/g, '').toLowerCase())
+            .map((t) => {
+              if (["a","b","c","d"].includes(t)) return { a:0,b:1,c:2,d:3 }[t]
+              const idx = optNorms.findIndex((o) => o === normalize(t))
+              return idx >= 0 ? idx : -1
+            })
+            .filter((i) => i >= 0)
+        } else {
+          let idx = optNorms.findIndex((o) => o === corrNorm)
+          if (idx < 0) {
+            const letter = String(corrRaw || '').trim().toLowerCase().replace(/[^a-d]/g, '')
+            if (["a","b","c","d"].includes(letter)) idx = { a:0,b:1,c:2,d:3 }[letter]
+          }
+          if (idx >= 0) corrIdxs = [idx]
+        }
+
+        let correct = false
+        if (corrIdxs.length > 1) {
+          const a = new Set(pickedIdxs)
+          const b = new Set(corrIdxs)
+          correct = a.size === b.size && [...a].every((x) => b.has(x))
+        } else if (corrIdxs.length === 1) {
+          correct = pickedIdxs.length === 1 && pickedIdxs[0] === corrIdxs[0]
+        } else {
+          correct = pickedIdxs.some((i) => optNorms[i] === corrNorm)
+        }
+
+        const delta = marks(correct)
+        if (process.env.NODE_ENV !== 'production') {
+          console.log(`[Score] Q${qIndex+1} sec=${secNum}`, { pickedIdxs, corrIdxs, correct, delta, corrRaw, options: quiz?.options })
+        }
+        return acc + delta
+      } catch {
+        return acc
+      }
+    }, 0)
+  }
 
   async function submitQuiz(disqualified = false) {
     if (hasSubmitted || submittedRef.current) return
@@ -103,110 +190,15 @@ const PlayQuiz = () => {
         : q
     ))
 
-    // Compute score deterministically from answered questions
-    const normalize = (v) => {
-      if (v === undefined || v === null) return ''
-      return String(v)
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, ' ')
-    }
-    const computedScore = quizzesForScore.reduce((acc, quiz, qIndex) => {
-      try {
-        const secNum = Number(quiz?.section)
-        const opts = Array.isArray(quiz?.options) ? quiz.options : []
-        const isBlankOptions = opts.length === 0 || opts.every((o) => normalize(o) === '')
-
-        // Per-section marking scheme
-        // Sec1, Sec2: +4/-1; Sec3: +5/0; Sec4: +5/-1
-        const marks = (correct) => {
-          if (secNum === 3) return correct ? 5 : 0
-          if (secNum === 4) return correct ? 5 : -1
-          return correct ? 4 : -1
-        }
-
-        // Integer Type: section 3 marked as integer OR blank options OR explicit userInput present
-        if (secNum === 3 && (quiz?.isInteger === true || isBlankOptions || (quiz && typeof quiz.userInput === 'string'))) {
-          const userVal = normalize(quiz?.userInput)
-          const correctVal = normalize(quiz?.correctAnswer)
-          const correct = userVal && userVal === correctVal
-          return acc + marks(correct)
-        }
-
-        // Other sections: evaluate via options and markedAnswers
-        const marked = Array.isArray(quiz?.markedAnswers) ? quiz.markedAnswers : []
-        const pickedIdxs = marked
-          .map((b, i) => (b ? i : -1))
-          .filter((i) => i >= 0)
-
-        // Preprocess correct answer to handle "Answer: (C) ..." and multi-correct like "A,B" or "A C"
-        const preprocess = (s) => normalize(s)
-          .replace(/^answer[:.\-\s]*/, '')
-          .replace(/^\(?[abcd]\)?[).:\-\s]*/, '')
-
-        const corrRaw = quiz?.correctAnswer
-        const corrNorm = preprocess(corrRaw)
-
-        // Build a map of option normalized text (strip leading labels like "a)")
-        const stripLead = (s) => normalize(s)
-          .replace(/^\(?[abcd]\)?[).:\-\s]*/, '')
-        const optNorms = (quiz?.options || []).map((o) => stripLead(o))
-
-        // Detect multi-correct: if corrRaw contains separators or multiple tokens
-        const tokens = String(corrRaw || '')
-          .split(/[\s,;|]+/)
-          .map((t) => t.trim())
-          .filter(Boolean)
-
-        let corrIdxs = []
-        if (tokens.length > 1) {
-          // Map tokens like A/B/C to indices
-          corrIdxs = tokens
-            .map((t) => t.replace(/\(|\)/g, '').toLowerCase())
-            .map((t) => {
-              if (["a","b","c","d"].includes(t)) return { a:0,b:1,c:2,d:3 }[t]
-              // else try to match option text
-              const idx = optNorms.findIndex((o) => o === normalize(t))
-              return idx >= 0 ? idx : -1
-            })
-            .filter((i) => i >= 0)
-        } else {
-          // Single-correct: find index by matching option text to cleaned correct
-          let idx = optNorms.findIndex((o) => o === corrNorm)
-          if (idx < 0) {
-            // Fallback: if corrRaw is a letter like B or (b)
-            const letter = String(corrRaw || '').trim().toLowerCase().replace(/[^a-d]/g, '')
-            if (["a","b","c","d"].includes(letter)) idx = { a:0,b:1,c:2,d:3 }[letter]
-          }
-          if (idx >= 0) corrIdxs = [idx]
-        }
-
-        // Evaluate correctness
-        if (pickedIdxs.length === 0) return acc
-
-        let correct = false
-        if (corrIdxs.length > 1) {
-          // multi-correct: exact set match
-          const a = new Set(pickedIdxs)
-          const b = new Set(corrIdxs)
-          correct = a.size === b.size && [...a].every((x) => b.has(x))
-        } else if (corrIdxs.length === 1) {
-          correct = pickedIdxs.length === 1 && pickedIdxs[0] === corrIdxs[0]
-        } else {
-          // Fallback: try direct text equality with any picked option
-          correct = pickedIdxs.some((i) => optNorms[i] === corrNorm)
-        }
-
-        const delta = marks(correct)
-        if (process.env.NODE_ENV !== 'production') {
-          console.log(`[Score] Q${qIndex+1} sec=${secNum}`, { pickedIdxs, corrIdxs, correct, delta, corrRaw, options: quiz?.options })
-        }
-        return acc + delta
-      } catch {
-        return acc
-      }
-    }, 0)
-    const safeScore = Number(Math.min(180, Math.max(0, computedScore)))
+    // Compute score for current section using qcmData.json marking scheme
+    const sectionScore = computeSectionScore(quizzesForScore)
+    console.log(`Section ${section} score:`, sectionScore)
+    
+    // Add to cumulative score from previous sections (stored in Redux)
+    const totalScore = score + sectionScore
+    const safeScore = Number(Math.min(180, Math.max(0, totalScore)))
+    
+    console.log(`Total cumulative score: ${score} + ${sectionScore} = ${totalScore} (capped: ${safeScore})`)
 
     try {
       // Final server-side pre-check to avoid duplicates
@@ -260,10 +252,28 @@ const PlayQuiz = () => {
 
   const handleSubmit = useCallback(() => {
     if (isPaused) return
-    dispatch(setScore(score + roundScore))
-    if (section < 4) navigate(`/quiz/instr/${section + 1}`)
-    else submitQuiz()
-  }, [roundScore, section])
+    
+    // Compute section score and update Redux store
+    const quizzesForScore = quizes.map((q, idx) => (
+      idx === (currentQue - 1)
+        ? { ...q, markedAnswers: Array.isArray(selectedOptions) ? selectedOptions : [false, false, false, false] }
+        : q
+    ))
+    const sectionScore = computeSectionScore(quizzesForScore)
+    const newTotalScore = score + sectionScore
+    
+    console.log(`Section ${section} completed with score: ${sectionScore}`)
+    console.log(`New total score: ${score} + ${sectionScore} = ${newTotalScore}`)
+    
+    dispatch(setScore(newTotalScore))
+    
+    if (section < 4) {
+      navigate(`/quiz/instr/${section + 1}`)
+    } else {
+      // Final section: submit to leaderboard
+      submitQuiz()
+    }
+  }, [quizes, selectedOptions, currentQue, score, section, computeSectionScore])
 
   useEffect(() => {
     console.log('=== STARTING QUIZ DATA FETCH ===')
@@ -362,7 +372,6 @@ const PlayQuiz = () => {
 
   useEffect(() => {
     const userId = data?.$id || data?.id || data?.userId
-    const lockKey = userId ? `attempt-lock:${userId}:${Number(section)}` : null
 
     // Wait for userId to be available
     if (!userId) {
@@ -395,15 +404,7 @@ const PlayQuiz = () => {
           navigate("/")
           toast("You've attempted the quiz")
         } else {
-          // Device-side lock: prevent re-attempts from same browser
-          if (lockKey && localStorage.getItem(lockKey)) {
-            navigate("/")
-            toast("You've attempted the quiz")
-            return
-          }
-          if (lockKey) {
-            try { localStorage.setItem(lockKey, String(Date.now())) } catch {}
-          }
+          // No previous attempt recorded on server, allow entering fullscreen and proceed
           document.documentElement.requestFullscreen({ navigationUI: 'hide' })
         }
       } catch (error) {
