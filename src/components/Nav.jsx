@@ -196,7 +196,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
           </div>
         )}
       </nav>
-      <DropDown ref={dropDownRef} user={isAdmin ? "admin" : name} visible={showDropDown} />
+      <DropDown ref={dropDownRef} user={isAdmin ? "admin" : name} email={user.email} visible={showDropDown} />
     </>
   )
 })

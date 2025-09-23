@@ -117,17 +117,19 @@ import { useNavigate } from "react-router-dom"
 import dbService from "../api/db.service"
 import env from "../../constants"
 import { csvObject } from "../utils/utils"
+ 
 
-const DropDown = forwardRef(({ user, visible = false }, ref) => {
+const DropDown = forwardRef(({ user,email, visible = false }, ref) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   const buttons = [
     {
       label: "Play Quiz",
       f: () => {
         navigate("/quiz/instr/0")
       },
-      visible: true
+      visible: email.endsWith("@qcmisbest.com")
     },
     {
       label: "Logout",
