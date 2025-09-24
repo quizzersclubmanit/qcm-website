@@ -116,7 +116,6 @@
 // }
 
 // export default ClassPrompt
-
 import dbService from "../api/db.service"
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
@@ -176,12 +175,12 @@ const ClassPrompt = () => {
         console.log('Updating user class in database:', { userId, class: classValue })
         console.log('User data available:', data)
         
-        // Based on backend analysis, try the most likely endpoints
+        // Based on backend analysis, prioritize the correct endpoint
         const endpoints = [
+          { url: `/api/user/profile`, method: 'PATCH' }, // This should work now!
           { url: `/api/user/profile`, method: 'PUT' },
-          { url: `/api/user/${userId}`, method: 'PUT' },
           { url: `/api/user/${userId}`, method: 'PATCH' },
-          { url: `/api/auth/profile`, method: 'PATCH' }
+          { url: `/api/user/${userId}`, method: 'PUT' }
         ]
         
         let success = false
