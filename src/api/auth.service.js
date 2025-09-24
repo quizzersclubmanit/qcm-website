@@ -244,7 +244,29 @@ class Auth {
       console.log('Response headers:', response.headers);
       
       const data = await response.json()
-      console.log('Response data:', data);
+      
+      if (!response.ok) {
+        console.error('Login failed with status:', response.status, 'Error:', data.error);
+        throw new Error(data.error || 'Login failed')
+      }
+      
+      // Try to get the token from the response or cookies
+      const token = data.token || 
+                   document.cookie
+                     .split('; ')
+                     .find(row => row.startsWith('token='))
+                     ?.split('=')[1];
+      
+      // Store token in localStorage for future requests
+      if (token) {
+        console.log('Storing token in localStorage:', token.substring(0, 10) + '...');
+        localStorage.setItem('token', token);
+        localStorage.setItem('authToken', token);
+      } else {
+        console.warn('No token received in login response');
+        console.log('Available cookies:', document.cookie);
+        console.log('Response data keys:', Object.keys(data));
+      }
       
       if (!response.ok) {
         console.error('Signup failed with status:', response.status, 'Error:', data.error);
