@@ -176,12 +176,14 @@ const ClassPrompt = () => {
         console.log('User data available:', data)
         
         // Based on backend analysis, prioritize the correct endpoint
-        const endpoints = [
+          const endpoints = [
           { url: `/api/user/profile`, method: 'PATCH' }, // This should work now!
           { url: `/api/user/profile`, method: 'PUT' },
+          { url: `/api/auth/profile`, method: 'PATCH' }, // Added for compatibility
           { url: `/api/user/${userId}`, method: 'PATCH' },
           { url: `/api/user/${userId}`, method: 'PUT' }
         ]
+        
         
         let success = false
         let lastError = null
