@@ -246,8 +246,8 @@ class Auth {
       const data = await response.json()
       
       if (!response.ok) {
-        console.error('Login failed with status:', response.status, 'Error:', data.error);
-        throw new Error(data.error || 'Login failed')
+        console.error('Signup failed with status:', response.status, 'Error:', data.error);
+        throw new Error(data.error || 'signup failed')
       }
       
       // Try to get the token from the response or cookies
@@ -263,14 +263,9 @@ class Auth {
         localStorage.setItem('token', token);
         localStorage.setItem('authToken', token);
       } else {
-        console.warn('No token received in login response');
+        console.warn('No token received in signup response');
         console.log('Available cookies:', document.cookie);
         console.log('Response data keys:', Object.keys(data));
-      }
-      
-      if (!response.ok) {
-        console.error('Signup failed with status:', response.status, 'Error:', data.error);
-        throw new Error(data.error || 'Signup failed')
       }
       
       return data.user
