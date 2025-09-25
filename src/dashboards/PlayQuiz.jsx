@@ -960,7 +960,6 @@ const PlayQuiz = () => {
 
   useEffect(() => {
     console.log('=== STARTING QUIZ DATA FETCH ===')
-    console.log('Section:', section)
 
     // Since the direct API call works but dbService fails, let's use direct fetch for now
     const fetchQuizData = async () => {
@@ -979,11 +978,10 @@ const PlayQuiz = () => {
           mode: 'cors'
         })
 
-        console.log('Direct fetch response status:', response.status)
 
         if (response.ok) {
           const docs = await response.json()
-          console.log('Direct fetch response data:', docs)
+          // console.log('Direct fetch response data:', docs)
 
           // Handle the response format we know works
           let quizData = []
@@ -992,8 +990,6 @@ const PlayQuiz = () => {
             console.log('✅ Found quizzes in docs.quizzes:', quizData.length)
           }
 
-          console.log('Processed quiz data:', quizData)
-          console.log('Quiz data length:', quizData.length)
 
           if (quizData.length === 0) {
             console.error('❌ NO QUIZ DATA FOUND!')

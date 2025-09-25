@@ -163,9 +163,13 @@ const DropDown = forwardRef(({ user, email, visible = false }, ref) => {
     {
       label: dynamicLabel,
       f: () => {
+        if(user == "admin") {
+          navigate("/quiz/instr/0")
+          return;
+        }
         const now = new Date();
         console.log("hours",now.getHours());
-        if(now.getHours()<=22) {
+        if(now.getHours()<22) {
           toast.error("The  test quiz can only be played after 10:00 PM IST.");
           return;
         }
