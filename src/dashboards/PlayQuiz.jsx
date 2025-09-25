@@ -679,7 +679,6 @@
 
 // export default PlayQuiz
 
-
 import "../pages/pages.css"
 import { useEffect, useState, useCallback, useMemo, useRef } from "react"
 import arraysEqual from "../utils/arraysEqual"
@@ -709,16 +708,6 @@ const PlayQuiz = () => {
   let section = useMemo(() => Number(sec))
   const quizes = useSelector((state) => state.quizes)
   const [currentQue, setCurrentQue] = useState(1)
-  
-  // Hardcoded multiple correct answers for Section 3 Q1-Q5
-  const hardcodedAnswers = useMemo(() => ({
-    1: ["A", "C" ,"D"],     // Q1: Options A and C are correct
-    2: ["A","B", "D"],     // Q2: Options B and D are correct
-    3: ["A", "B", "C"], // Q3: Options A, B, and C are correct
-    4: ["A","B", "C", "D"],     // Q4: Options A and D are correct
-    5: ["A","B", "D"]      // Q5: Options B and C are correct
-  }), [])
-  
   const multiCorrect = useMemo(() => {
     const q = quizes[currentQue - 1]
     if (!q) return false
@@ -815,47 +804,36 @@ const PlayQuiz = () => {
         const pickedIdxs = marked.map((b, i) => (b ? i : -1)).filter((i) => i >= 0)
         if (pickedIdxs.length === 0) return acc
 
-        // Use hardcoded answers for Section 3 Q1-Q5
+        const preprocess = (s) => normalize(s)
+          .replace(/^answer[:.\_\-\s]*/, '')
+          .replace(/^\(?[abcd]\)?[).:\-\s]*/, '')
+        const corrRaw = quiz?.correctAnswer
+        const corrNorm = preprocess(corrRaw)
+        const stripLead = (s) => normalize(s).replace(/^\(?[abcd]\)?[).:\-\s]*/, '')
+        const optNorms = (quiz?.options || []).map((o) => stripLead(o))
+
+        const tokens = String(corrRaw || '')
+          .split(/[\s,;|]+/)
+          .map((t) => t.trim())
+          .filter(Boolean)
+
         let corrIdxs = []
-        if (Number(quiz?.section) === 3 && qIndex >= 0 && qIndex < 5) {
-          // For Q1-Q5 in Section 3, use hardcoded answers
-          const hardcodedCorrect = hardcodedAnswers[qIndex + 1] || []
-          corrIdxs = hardcodedCorrect.map(letter => {
-            const letterLower = letter.toLowerCase()
-            return { a: 0, b: 1, c: 2, d: 3 }[letterLower] ?? -1
-          }).filter(idx => idx >= 0)
+        if (tokens.length > 1) {
+          corrIdxs = tokens
+            .map((t) => t.replace(/\(|\)/g, '').toLowerCase())
+            .map((t) => {
+              if (["a", "b", "c", "d"].includes(t)) return { a: 0, b: 1, c: 2, d: 3 }[t]
+              const idx = optNorms.findIndex((o) => o === normalize(t))
+              return idx >= 0 ? idx : -1
+            })
+            .filter((i) => i >= 0)
         } else {
-          // For other questions, use the original logic
-          const preprocess = (s) => normalize(s)
-            .replace(/^answer[:.\_\-\s]*/, '')
-            .replace(/^\(?[abcd]\)?[).:\-\s]*/, '')
-          const corrRaw = quiz?.correctAnswer
-          const corrNorm = preprocess(corrRaw)
-          const stripLead = (s) => normalize(s).replace(/^\(?[abcd]\)?[).:\-\s]*/, '')
-          const optNorms = (quiz?.options || []).map((o) => stripLead(o))
-
-          const tokens = String(corrRaw || '')
-            .split(/[\s,;|]+/)
-            .map((t) => t.trim())
-            .filter(Boolean)
-
-          if (tokens.length > 1) {
-            corrIdxs = tokens
-              .map((t) => t.replace(/\(|\)/g, '').toLowerCase())
-              .map((t) => {
-                if (["a","b","c","d"].includes(t)) return { a:0,b:1,c:2,d:3 }[t]
-                const idx = optNorms.findIndex((o) => o === normalize(t))
-                return idx >= 0 ? idx : -1
-              })
-              .filter((i) => i >= 0)
-          } else {
-            let idx = optNorms.findIndex((o) => o === corrNorm)
-            if (idx < 0) {
-              const letter = String(corrRaw || '').trim().toLowerCase().replace(/[^a-d]/g, '')
-              if (["a","b","c","d"].includes(letter)) idx = { a:0,b:1,c:2,d:3 }[letter]
-            }
-            if (idx >= 0) corrIdxs = [idx]
+          let idx = optNorms.findIndex((o) => o === corrNorm)
+          if (idx < 0) {
+            const letter = String(corrRaw || '').trim().toLowerCase().replace(/[^a-d]/g, '')
+            if (["a", "b", "c", "d"].includes(letter)) idx = { a: 0, b: 1, c: 2, d: 3 }[letter]
           }
+          if (idx >= 0) corrIdxs = [idx]
         }
 
         let correct = false
@@ -1417,16 +1395,3 @@ const PlayQuiz = () => {
 }
 
 export default PlayQuiz
-
-
-
-
-
-
-
-
-
-
-
-
-
