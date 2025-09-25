@@ -137,7 +137,7 @@ const DropDown = forwardRef(({ user, email, visible = false }, ref) => {
 
     // If the time has passed 10 PM, show a message
     if (difference < 0) {
-      return "Time's up!";
+      return "Play Quiz!";
     }
 
     // Calculate hours, minutes, and seconds from the difference
