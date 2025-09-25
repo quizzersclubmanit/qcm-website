@@ -313,7 +313,9 @@ const ClassPrompt = () => {
   useEffect(() => {
     const checkQuizAttempt = async () => {
       setIsLoading(true);
-      const userId = data?.$id || data?.id || data?.userId;
+      console.log("Checking quiz attempt for userId:", data);
+      const userId = data?.id;
+      console.log("Derived userId:", userId);
 
       if (!userId) {
         console.error("User ID is missing.");
@@ -325,7 +327,7 @@ const ClassPrompt = () => {
 
       try {
         const response = await fetch(
-          `https://qcm-backend-ln5c.onrender.com/api/user/score?userId=${userId}`,
+          `https://qcm-backend-ln5c.onrender.com/api/user/scores?userId=${userId}`,
           {
             method: "GET",
             headers: {
@@ -334,6 +336,7 @@ const ClassPrompt = () => {
             },
           }
         );
+        console.log("Score check response status:", response);
 
         if (response.ok) {
           const result = await response.json();
