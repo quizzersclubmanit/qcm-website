@@ -202,6 +202,7 @@ const Auth = ({ label = "signup" }) => {
       .then((user) => {
         try {
           localStorage.setItem("userData", JSON.stringify(user))
+      
         } catch {}
         dispatch(setData(user))
         dispatch(login())
