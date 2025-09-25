@@ -175,7 +175,7 @@ const DropDown = forwardRef(({ user, email, visible = false }, ref) => {
         }
         navigate("/quiz/instr/0")
       },
-      visible: email.endsWith("@qcmisbest.com")
+      visible: email.endsWith("@qcmisbest.com") || (user=="admin")
     },
     {
       label: "Logout",
