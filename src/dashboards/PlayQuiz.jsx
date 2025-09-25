@@ -236,7 +236,7 @@ const PlayQuiz = () => {
             fileId: quizes[currentQue - 1]?.supportingPic
           })}
           alt="Supporting Picture"
-          className="w-1/3"
+          className="w-full"
         />
       )}
       <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-2 gap-5 md:w-1/2 sm:w-4/5 w-full mt-4 sm:mt-0">
