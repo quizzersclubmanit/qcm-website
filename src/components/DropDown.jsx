@@ -161,7 +161,7 @@ const DropDown = forwardRef(({ user, email, visible = false }, ref) => {
 
   const buttons = [
     {
-      label: dynamicLabel,
+      label: "Play Quiz!",
       f: () => {
         if(user == "admin") {
           navigate("/quiz/instr/0")
