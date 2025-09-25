@@ -1111,7 +1111,7 @@ const PlayQuiz = () => {
           return
         }
         // Immediate disqualification on leaving fullscreen
-        toast("You're disqualified")
+        toast("You're disqualified but your response is recorded")
         submitQuiz(true)
       } else {
         // Fullscreen restored
@@ -1126,7 +1126,7 @@ const PlayQuiz = () => {
         e.preventDefault()
         // Immediate disqualification on ESC
         if (!submittedRef.current) {
-          toast("You're disqualified")
+          toast("You're disqualified but your response is recorded")
           submitQuiz(true)
         }
       }
