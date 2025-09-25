@@ -1263,7 +1263,7 @@ const PlayQuiz = () => {
           <img
             src={quizes[currentQue - 1]?.supportingPic}
             alt="Supporting Picture"
-            className="w-1/3"
+            className="w-full"
           />
         )}
         {(Number(quizes[currentQue - 1]?.section) === 3 && quizes[currentQue - 1]?.isInteger === true) ? (
