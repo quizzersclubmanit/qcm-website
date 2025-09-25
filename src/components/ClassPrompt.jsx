@@ -308,16 +308,67 @@ const ClassPrompt = () => {
   const { sec } = useParams()
   const navigate = useNavigate()
   const [isProcessing, setIsProcessing] = useState(false)
-
+  const [hasAttemptedQuiz, setHasAttemptedQuiz] = useState(false)
+  const [isLoading, setIsLoading] = useState(true) // New state for loading status
   useEffect(() => {
-    if (String(sec) !== "0") return
-    if (!data || (!data.$id && !data.id && !data.userId)) {
-      console.error("User data not available in ClassPrompt:", data)
-      toast.error("User not authenticated properly")
-      navigate("/")
-      return
+    const checkQuizAttempt = async () => {
+      setIsLoading(true);
+      const userId = data?.$id || data?.id || data?.userId;
+
+      if (!userId) {
+        console.error("User ID is missing.");
+        toast.error("User not authenticated properly");
+        navigate("/");
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `https://qcm-backend-ln5c.onrender.com/api/user/score?userId=${userId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("authToken") || localStorage.getItem("token")}`,
+            },
+          }
+        );
+
+        if (response.ok) {
+          const result = await response.json();
+          if (result.score !== null) {
+            setHasAttemptedQuiz(true);
+            toast.warn("You have already completed the quiz!");
+          }
+        } else {
+          console.warn("Could not retrieve score, proceeding with caution.");
+        }
+      } catch (error) {
+        console.error("Error checking quiz attempt:", error);
+        // In case of error, assume user can proceed
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (String(sec) === "0") {
+      checkQuizAttempt();
     }
-  }, [sec, data, navigate])
+    else {
+      setIsLoading(false);
+    }
+  }, [data, navigate, sec]);
+
+  // useEffect(() => {
+  //   if (String(sec) !== "0") return
+  //   if (!data || (!data.$id && !data.id && !data.userId)) {
+  //     console.error("User data not available in ClassPrompt:", data)
+  //     toast.error("User not authenticated properly")
+  //     navigate("/")
+  //     return
+  //   }
+  // }, [sec, data, navigate])
 
   const handleClassSelect = async (classValue) => {
     setIsProcessing(true)
@@ -361,12 +412,40 @@ const ClassPrompt = () => {
       setIsProcessing(false)
     }
   }
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
+        <p className="ml-3">Loading...</p>
+      </div>
+    );
+  }
+
+  if (hasAttemptedQuiz) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="bg-white p-10 rounded-lg shadow-lg text-center">
+          <h2 className="text-2xl font-bold text-red-600">
+            You've already taken the quiz.
+          </h2>
+          <p className="mt-4 text-gray-700">
+            You are not allowed to attempt it more than once.
+          </p>
+          <button
+            onClick={() => navigate("/")}
+            className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-md"
+          >
+            Go to Home
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   // If not section 0, show instructions normally
   if (String(sec) !== "0") {
     return <Instructions sec={sec} />
   }
-
   // UI for IQC Intro + Class Selection
   return (
     <div
