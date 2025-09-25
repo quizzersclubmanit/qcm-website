@@ -381,6 +381,7 @@ class Auth {
       
       const data = await response.json();
       console.log('Current user data:', data);
+      
       return data.user || data; // Handle both { user } and direct user object responses
     } catch (error) {
       console.error('Error in getCurrentUser:', error);
