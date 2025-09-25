@@ -202,6 +202,7 @@ const Auth = ({ label = "signup" }) => {
       .then((user) => {
         try {
           localStorage.setItem("userData", JSON.stringify(user))
+      
         } catch {}
         dispatch(setData(user))
         dispatch(login())
@@ -291,10 +292,10 @@ const Auth = ({ label = "signup" }) => {
             <div className="mt-4 md:self-start mb-0 flex flex-col ">
                <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
-                href="https://drive.google.com/file/d/1c4P0ZzeJLSf-SEluBLZzi_WGeEbfJLP9/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1Bmtsw6k6FZNzaZmAR2qTQ0dpaLS_6hW7/view"
                 target="_blank"
               >
-                Download IQC Sample Quetions 
+                Download IQC Sample Question Booklet 
               </a>
               {/* <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
@@ -305,7 +306,7 @@ const Auth = ({ label = "signup" }) => {
               </a> */}
               <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
-                href="https://drive.google.com/file/d/1qBS5jWor5SI7wEns-XA0T6FsDdSRUmWY/view?usp=sharing"
+                href="https://drive.google.com/file/d/1U89xMAbrQIGEagnwzbgYd2BxOJQ9QmJL/view?usp=sharing"
                 target="_blank"
               >
                 Download IQC 2025 Edition Brochure

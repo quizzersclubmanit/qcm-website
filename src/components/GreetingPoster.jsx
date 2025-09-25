@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function PageLoadPoster() {
   const [open, setOpen] = useState(false);
   const { data, loggedIn } = useSelector((state) => state.user)
+  console.log('User data in GreetingPoster:', data, loggedIn);
   const dialogRef = useRef(null);
   const navigate = useNavigate();
 

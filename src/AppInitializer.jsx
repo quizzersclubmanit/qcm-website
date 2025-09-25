@@ -159,7 +159,7 @@ export default function AppInitializer({ children }) {
       // Background validation with backend (optional - doesn't block UI)
       authService.getCurrentUser()
         .then((currentUser) => {
-          if (currentUser && currentUser._id) {
+          if (currentUser && currentUser.id) {
             console.log('AppInitializer: Backend validation successful, updating user data');
             // Update with fresh data from backend
             localStorage.setItem('userData', JSON.stringify(currentUser));
