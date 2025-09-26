@@ -29,7 +29,7 @@ const Sponsors = () => {
                       <img
                         src={obj.logo}
                         alt={`${obj.brand} logo`}
-                        className="max-h-full "
+                        className="max-h-full h-20 md:h-50"
                       />
                     </a>
                   ))}
