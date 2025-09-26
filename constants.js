@@ -13,8 +13,8 @@ const env = {
 
 export const timeLimits = [
   8,  // Section 1: Aptitude (10)
-  8,  // Section 2: Single Correct + Assertion (5 each)
-  7,  // Section 3: Multiple Correct + Integer (5 each)
+  7,  // Section 2: Single Correct + Assertion (5 each)
+  8,  // Section 3: Multiple Correct + Integer (5 each)
   7   // Section 4: Match + Image (5 each)
 ]
 
