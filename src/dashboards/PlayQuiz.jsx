@@ -1133,7 +1133,7 @@ const PlayQuiz = () => {
     }
 
     document.addEventListener('fullscreenchange', onFullscreenChange)
-    document.addEventListener('keydown', onKeyDown)
+    // document.addEventListener('keydown', onKeyDown)
 
     return () => {
       document.removeEventListener('fullscreenchange', onFullscreenChange)
@@ -1263,7 +1263,7 @@ const PlayQuiz = () => {
           <img
             src={quizes[currentQue - 1]?.supportingPic}
             alt="Supporting Picture"
-            className="w-full"
+            className="w-90 md:glass-box z-10 md:w-1/3"
           />
         )}
         {(Number(quizes[currentQue - 1]?.section) === 3 && quizes[currentQue - 1]?.isInteger === true) ? (
