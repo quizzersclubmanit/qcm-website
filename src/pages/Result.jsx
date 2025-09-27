@@ -41,7 +41,7 @@ const Result = () => {
 
         <div className="text-white/80 text-base md:text-lg flex flex-col gap-2">
           <p>Results will be announced via your school.</p>
-          <p>Next round will be hosted in your city — we’ll update you soon.</p>
+          <p>Next round will be hosted in your city, we’ll update you soon.</p>
         </div>
 
         <div className="flex flex-col items-center gap-3">
