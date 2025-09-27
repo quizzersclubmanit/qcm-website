@@ -16,7 +16,7 @@ export default function QuizLivePoster({
   useEffect(() => {
     const now = new Date();
     const shouldOpen = autoOpen && now.getHours() === 16 && now.getMinutes() <= 5;
-    if (!shouldOpen) return;
+    
     const id = setTimeout(() => setOpen(true), delay);
     return () => clearTimeout(id);
   }, [autoOpen, delay]);
