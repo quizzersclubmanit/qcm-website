@@ -38,7 +38,7 @@ const ForgotPasswordButton = () => {
     setLoading(true)
     try {
       await authService.sendEmailToken({ email })
-      toast.success("Password reset link sent to your email!")
+      toast.success("Password reset link sent to your email!, if you don't find the mail in your inbox, Please check spam.")
       setShowModal(false)
       setEmail("")
     } catch (error) {
