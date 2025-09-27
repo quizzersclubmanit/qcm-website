@@ -83,7 +83,6 @@ const Instructions = ({ sec }) => {
             Read The Following Details Carefully
           </h2>
           <ul className="text-gray-700 leading-relaxed">
-<<<<<<< HEAD
             {instrs.map((obj, index) => {
               // Special rendering for Marking Scheme: split at first comma
               if (
@@ -112,14 +111,13 @@ const Instructions = ({ sec }) => {
                 </li>
               )
             })}
-=======
+
             {instrs.map((obj, index) => (
               <li key={index}>
                 <strong className="text-sm">{obj.key}:</strong>
                 <span className="text-emerald-600 text-sm"> {obj.value}</span>
               </li>
             ))}
->>>>>>> 7fa6ded6b8e633dae3a70ed1024e2073d7be6613
           </ul>
         </div>
         <div className="sm:w-1/2 flex flex-col gap-5">
