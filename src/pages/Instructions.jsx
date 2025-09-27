@@ -32,7 +32,7 @@ const Instructions = ({ sec }) => {
     }
   ]
 
-  // Pre-check: block if user already attempted this section
+  // Pre-check: block ONLY if server confirms user already attempted this section
   useEffect(() => {
     const userId = data?.$id || data?.id || data?.userId
     if (!userId || !sec) return
@@ -47,7 +47,6 @@ const Instructions = ({ sec }) => {
           },
           mode: 'cors'
         })
-        console.log('Instructions pre-check response:', res)
         if (res.ok) {
           const body = await res.json()
           let arr = []
@@ -60,14 +59,12 @@ const Instructions = ({ sec }) => {
             navigate('/')
           }
         } else {
-          // Soft-block on error
-          toast("Unable to verify attempt. Please try again.")
-          navigate('/')
+          // Do not block on non-OK; allow user to proceed
+          console.warn('Attempt pre-check non-OK status:', res.status)
         }
       } catch (e) {
         console.error('Instructions pre-check error:', e)
-        toast("Network error. Please try again.")
-        navigate('/')
+        // Do not block on network error; allow user to proceed
       }
     }
     check()
@@ -82,36 +79,48 @@ const Instructions = ({ sec }) => {
     >
       <div className="bg-white p-10 sm:rounded-lg shadow-lg sm:w-3/4 min-h-1/2 flex sm:flex-row flex-col gap-5 items-center">
         <div className="sm:w-1/2 flex flex-col sm:gap-5">
-          <h1 className="text-xl font-semibold">
-            Hey <span className="uppercase">{data?.name || data?.username || 'Student'}</span>, Welcome
-          </h1>
           <h2 className="text-2xl font-bold mt-2">
             Read The Following Details Carefully
           </h2>
           <ul className="text-gray-700 leading-relaxed">
+            {instrs.map((obj, index) => {
+              // Special rendering for Marking Scheme: split at first comma
+              if (
+                obj.key === "Marking Scheme" &&
+                typeof obj.value === "string" &&
+                obj.value.includes(",")
+              ) {
+                // split into two parts: before-first-comma and rest
+                const parts = obj.value.split(/,(.+)/) // produces [before, after]
+                const before = parts[0] || ""
+                const after = parts[1] || ""
+                return (
+                  <li key={index}>
+                    <strong className="text-sm">{obj.key}:</strong>{" "}
+                    <span className="text-emerald-600 text-lg">{before}</span>
+                    <span className="text-red-600 text-lg">, {after}</span>
+                  </li>
+                )
+              }
+
+              // default rendering
+              return (
+                <li key={index}>
+                  <strong className="text-sm">{obj.key}:</strong>
+                  <span className="text-emerald-600 text-lg"> {obj.value}</span>
+                </li>
+              )
+            })}
+
             {instrs.map((obj, index) => (
               <li key={index}>
                 <strong className="text-sm">{obj.key}:</strong>
-                <span className="text-emerald-600 text-lg"> {obj.value}</span>
+                <span className="text-emerald-600 text-sm"> {obj.value}</span>
               </li>
             ))}
           </ul>
         </div>
         <div className="sm:w-1/2 flex flex-col gap-5">
-          <h2 className="text-xl font-semibold">General Instructions</h2>
-          <hr />
-          <ul className="mt-2 text-gray-700 leading-relaxed">
-            {Object.keys(instructions.general).map((key, index) => (
-              <li key={index}>
-                <strong>{key}:</strong>{" "}
-                {Array.isArray(instructions.general[key])
-                  ? instructions.general[key].map((remark, idx) => (
-                      <p key={idx}>{remark}</p>
-                    ))
-                  : instructions.general[key]}
-              </li>
-            ))}
-          </ul>
           <Link
             className="background-blue text-center text-white px-4 py-2 rounded-lg
           mr-4 mt-6"

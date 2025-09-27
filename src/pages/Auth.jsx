@@ -38,7 +38,7 @@ const ForgotPasswordButton = () => {
     setLoading(true)
     try {
       await authService.sendEmailToken({ email })
-      toast.success("Password reset link sent to your email!")
+      toast.success("Password reset link sent to your email!, if you don't find the mail in your inbox, Please check spam.")
       setShowModal(false)
       setEmail("")
     } catch (error) {
@@ -202,6 +202,7 @@ const Auth = ({ label = "signup" }) => {
       .then((user) => {
         try {
           localStorage.setItem("userData", JSON.stringify(user))
+      
         } catch {}
         dispatch(setData(user))
         dispatch(login())
@@ -305,7 +306,7 @@ const Auth = ({ label = "signup" }) => {
               </a> */}
               <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
-                href="https://drive.google.com/file/d/1qBS5jWor5SI7wEns-XA0T6FsDdSRUmWY/view?usp=sharing"
+                href="https://drive.google.com/file/d/1U89xMAbrQIGEagnwzbgYd2BxOJQ9QmJL/view?usp=sharing"
                 target="_blank"
               >
                 Download IQC 2025 Edition Brochure

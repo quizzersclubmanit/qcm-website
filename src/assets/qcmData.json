@@ -273,6 +273,11 @@
       "pin code": "462024"
     },
     {
+      "institution": "M.G.M MISSION H.S.SCHOOL",
+      "city": "Bhopal",
+      "pin code": "455001"
+    },
+    {
       "institution": "M.G.M Co-Ed Sr. Sec School",
       "city": "Bhopal",
       "pin code": "462022"
@@ -341,6 +346,11 @@
       "institution": "NRI Global Discovery School",
       "city": "Bhopal",
       "pin code": "462022"
+    },
+        {
+      "institution": "NIT Bhopal",
+      "city": "Bhopal",
+      "pin code": "462003"
     },
     {
       "institution": "Orion International School",
@@ -441,6 +451,11 @@
       "institution": "Sri Aurobindo School",
       "city": "Bhopal",
       "pin code": "462003"
+    },
+        {
+      "institution": "Shaskiya Ubeidiya High School",
+      "city": "Bhopal",
+      "pin code": "462001"
     },
     {
       "institution": "Sri Chaitanya Techno School",
@@ -1305,6 +1320,11 @@
     },
     {
       "institution": "South Valley International School, Betma (SVIS)",
+      "city": "Indore",
+      "pin code": "452001"
+    },
+        {
+      "institution": "Spring Valley Public School",
       "city": "Indore",
       "pin code": "452001"
     },
@@ -2811,8 +2831,6 @@
 "instructions": {
     "general": {
       "Remarks": [
-        "Pressing Esc key will flag you and you'll have to re-attempt the quiz",
-        "Multiple flags will lead to immediate disqualification",
         "Ensure stable internet connectivity",
         "Preferred device - Desktop"
       ],
@@ -2826,13 +2844,13 @@
       "marking-scheme": "+4 for correct, -1 for incorrect"
     },
     "section-2": {
-      "time": 8,
+      "time": 7,
       "questions": 10,
       "type": "Single Correct (5) & Assertion-Reason (5)",
       "marking-scheme": "+4 for correct, -1 for incorrect"
     },
     "section-3": {
-      "time": 7,
+      "time": 8,
       "questions": 10,
       "type": "Multiple Correct (5) & Integer (5)",
       "marking-scheme": "+5 for correct, 0 for incorrect"
