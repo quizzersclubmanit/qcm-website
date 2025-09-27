@@ -863,7 +863,7 @@ const PlayQuiz = () => {
     setHasSubmitted(true)
     submittedRef.current = true
     let msg = disqualified
-      ? "You are disqualified for exiting full-screen but your er"
+      ? "You are disqualified for exiting full-screen but your response is submitted"
       : "Quiz Submitted Successfully"
 
     // Include the latest selection of the current question before computing
