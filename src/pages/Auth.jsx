@@ -498,9 +498,11 @@ const Auth = ({ label = "signup" }) => {
                 <br />
                 Please contact any of the undersigned
                 <br />
-                Pukhraj Motwani: +919244294331
+                  Raghav Verma: +91 9057523114
                 <br />
-                Pankaj Soni: +919680032837
+                Aksh Shah : +91 9537801003
+                <br />
+                Jalaj Singh Bias: +91 9009830178
               </p>
             </div>
           </div>
