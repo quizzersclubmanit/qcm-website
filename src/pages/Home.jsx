@@ -8,7 +8,8 @@ import {
   Sponsors,
   Map,
   GreetingPoster,
-  RegistrationSuccessHandler
+  RegistrationSuccessHandler,
+  QuizLivePoster
 } from "../components/components"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
@@ -35,6 +36,7 @@ const Home = () => {
     <main>
       <Header />
       <GreetingPoster />
+      <QuizLivePoster/>
       <RegistrationSuccessHandler />
       <Hero />
       <About />

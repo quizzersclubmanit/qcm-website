@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from "react-redux"
 import Button from './Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function PageLoadPoster() {
   const [open, setOpen] = useState(false);
@@ -50,6 +50,11 @@ export default function PageLoadPoster() {
   function handleRegister() {
     navigate('/signup');
     setOpen(false); 
+  }
+
+  function handleLogin() {
+    navigate('/login');
+    setOpen(false);
   }
 
   if (loggedIn || !open) return null;
@@ -106,6 +111,15 @@ export default function PageLoadPoster() {
 
               <Button onClick={close} className="px-4 py-2 rounded-lg border border-white/10 bg-transparent text-white/90">
                 Maybe later
+              </Button>
+            </div>
+
+            <div className="mt-4 w-full">
+              <Button 
+                className="w-full px-5 py-2 rounded-lg shadow-lg text-white bg-blue-500 hover:bg-blue-600 transform transition-all" 
+                onClick={handleLogin}
+              >
+                Already Registered? Login
               </Button>
             </div>
             

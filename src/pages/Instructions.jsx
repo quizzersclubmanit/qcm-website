@@ -79,13 +79,39 @@ const Instructions = ({ sec }) => {
     >
       <div className="bg-white p-10 sm:rounded-lg shadow-lg sm:w-3/4 min-h-1/2 flex sm:flex-row flex-col gap-5 items-center">
         <div className="sm:w-1/2 flex flex-col sm:gap-5">
-          {/* <h1 className="text-xl font-semibold">
-            Hey <span className="uppercase">{data?.name || data?.username || 'Student'}</span>, Welcome
-          </h1> */}
           <h2 className="text-2xl font-bold mt-2">
             Read The Following Details Carefully
           </h2>
           <ul className="text-gray-700 leading-relaxed">
+            {instrs.map((obj, index) => {
+              // Special rendering for Marking Scheme: split at first comma
+              if (
+                obj.key === "Marking Scheme" &&
+                typeof obj.value === "string" &&
+                obj.value.includes(",")
+              ) {
+                // split into two parts: before-first-comma and rest
+                const parts = obj.value.split(/,(.+)/) // produces [before, after]
+                const before = parts[0] || ""
+                const after = parts[1] || ""
+                return (
+                  <li key={index}>
+                    <strong className="text-sm">{obj.key}:</strong>{" "}
+                    <span className="text-emerald-600 text-lg">{before}</span>
+                    <span className="text-red-600 text-lg">, {after}</span>
+                  </li>
+                )
+              }
+
+              // default rendering
+              return (
+                <li key={index}>
+                  <strong className="text-sm">{obj.key}:</strong>
+                  <span className="text-emerald-600 text-lg"> {obj.value}</span>
+                </li>
+              )
+            })}
+
             {instrs.map((obj, index) => (
               <li key={index}>
                 <strong className="text-sm">{obj.key}:</strong>
