@@ -57,7 +57,7 @@ const ForgotPasswordButton = () => {
       >
         Forgot Password?
       </button>
-      
+
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-100">
@@ -76,11 +76,11 @@ const ForgotPasswordButton = () => {
                   </svg>
                 </button>
               </div>
-              
+
               <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                 Enter your email address and we'll send you a secure link to reset your password.
               </p>
-              
+
               <form onSubmit={handleForgotPassword} className="space-y-4">
                 <div>
                   <label htmlFor="reset-email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -96,7 +96,7 @@ const ForgotPasswordButton = () => {
                     required
                   />
                 </div>
-                
+
                 <div className="flex gap-3 pt-2">
                   <button
                     type="submit"
@@ -186,51 +186,74 @@ const Auth = ({ label = "signup" }) => {
     )
   }, [showPassword])
 
-  const authenticate = useCallback((f = async () => {}, formData = {}) => {
-    console.log('=== AUTHENTICATE FUNCTION CALLED ===');
-    console.log('Form data:', { ...formData, password: '***' });
-    setLoading(true)
-    f({
-      email: formData.email,
-      password: formData.password,
-      name: formData.name,
-      phone: formData.phone,
-      city: formData.city,
-      school: formData.school,
-      sex: formData.sex
-    })
-      .then((user) => {
-        try {
-          localStorage.setItem("userData", JSON.stringify(user))
-      
-        } catch {}
-        dispatch(setData(user))
-        dispatch(login())
-        if (formData.name) {
-          localStorage.setItem("registrationSuccessShown", "true")
-          navigate("/")
-          toast("Registration successful! Welcome to QCM!")
-        } else {
-          navigate("/")
-          toast("Logged In Successfully")
-        }
+  const authenticate = useCallback(
+    (f = async () => { }, formData = {}) => {
+      setLoading(true);
+      f({
+        email: formData.email,
+        password: formData.password,
+        name: formData.name,
+        phone: formData.phone,
+        city: formData.city,
+        school: formData.school,
+        sex: formData.sex,
       })
-      .catch((error) => {
-        console.error(error)
-        toast(error.message)
-      })
-      .finally(() => {
-        setValue("name", "")
-        setValue("email", "")
-        setValue("password", "")
-        setValue("phone", "")
-        setValue("school", "")
-        setValue("sex", "1")
-        setValue("city", "bhopal")
-        setSelectedCity("")
-        setLoading(false)
-      })
-  }, [])
+        .then((user) => {
+          try {
+            localStorage.setItem("userData", JSON.stringify(user));
+          } catch { }
+
+          dispatch(setData(user));
+          dispatch(login());
+
+          if (formData.name) {
+            localStorage.setItem("registrationSuccessShown", "true");
+            navigate("/");
+            toast("Registration successful! Welcome to QCM!");
+          } else {
+            navigate("/");
+            toast("Logged In Successfully");
+          }
+        })
+        .catch(async (error) => {
+          console.error(error);
+
+          let message = error?.message || "Something went wrong";
+
+          // Handle backend error response (fetch or axios)
+          if (error?.response?.data?.error) {
+            // Axios style
+            message = error.response.data.error;
+          } else if (error?.json) {
+            // Fetch style (if error is a Response object)
+            try {
+              const data = await error.json();
+              message = data?.error || message;
+            } catch { }
+          }
+
+          toast(message);
+
+          // Redirect if user already exists
+          if (message.includes("already exists")) {
+            navigate("/login");
+          }
+        })
+        .finally(() => {
+          setValue("name", "");
+          setValue("email", "");
+          setValue("password", "");
+          setValue("phone", "");
+          setValue("school", "");
+          setValue("sex", "1");
+          setValue("city", "bhopal");
+          setSelectedCity("");
+          setLoading(false);
+        });
+    },
+    []
+  );
+
 
   const requiredCheck = {
     required: {
@@ -241,8 +264,8 @@ const Auth = ({ label = "signup" }) => {
 
   const handleCityChange = (e) => {
     const city = e.target.value;
-     setSelectedCity(city);
-     setValue("school", ""); // reset school when city changes
+    setSelectedCity(city);
+    setValue("school", ""); // reset school when city changes
   };
 
   if (loading) return <Loader />
@@ -290,12 +313,12 @@ const Auth = ({ label = "signup" }) => {
               className="hidden md:flex"
             />
             <div className="mt-4 md:self-start mb-0 flex flex-col ">
-               <a
+              <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit  mb-1"
                 href="https://drive.google.com/file/d/1Bmtsw6k6FZNzaZmAR2qTQ0dpaLS_6hW7/view"
                 target="_blank"
               >
-                Download IQC Sample Question Booklet 
+                Download IQC Sample Question Booklet
               </a>
               {/* <a
                 className="text-sm text-yellow-400 underline text-left cursor-pointer w-fit mb-1"
@@ -386,7 +409,7 @@ const Auth = ({ label = "signup" }) => {
                       <option value="jabalpur">Jabalpur</option>
                     </select>
 
-                    
+
                     <select
                       className="p-1 cursor-pointer focus:outline-none text-gray-400"
                       defaultValue=""
@@ -454,7 +477,7 @@ const Auth = ({ label = "signup" }) => {
             </form>
 
             <div className="flex justify-between text-sm">
-{/*               <Link
+              {/*               <Link
                 className="text-blue-500"
                 to={label == "signup" ? "/login" : "/register"}
               >
@@ -474,10 +497,10 @@ const Auth = ({ label = "signup" }) => {
                 Facing any difficulty while registering?
                 <br />
                 Please contact any of the undersigned
-                 <br />
-                Pukhraj Motwani: +919244294331 
                 <br />
-                Pankaj Soni: +919680032837 
+                Pukhraj Motwani: +919244294331
+                <br />
+                Pankaj Soni: +919680032837
               </p>
             </div>
           </div>
