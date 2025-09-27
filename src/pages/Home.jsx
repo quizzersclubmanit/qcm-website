@@ -36,7 +36,7 @@ const Home = () => {
     <main>
       <Header />
       <GreetingPoster />
-      <QuizLivePoster/>
+      {/* <QuizLivePoster/> */}
       <RegistrationSuccessHandler />
       <Hero />
       <About />
