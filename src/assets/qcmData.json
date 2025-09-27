@@ -2831,8 +2831,6 @@
 "instructions": {
     "general": {
       "Remarks": [
-        "Pressing Esc key will flag you and you'll have to re-attempt the quiz",
-        "Multiple flags will lead to immediate disqualification",
         "Ensure stable internet connectivity",
         "Preferred device - Desktop"
       ],
