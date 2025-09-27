@@ -66,7 +66,7 @@ const ResetPassword = () => {
           <div className="w-full max-w-md bg-white sm:pt-0 pt-4 pb-6 sm:px-8 px-6 rounded-2xl flex flex-col gap-8">
             <SectionHead
               blue
-              className="poppins-bold text-center text-[50px]"
+              className="poppins-bold text-center !text-[50px]"
               label="Reset Password"
               logo
             />

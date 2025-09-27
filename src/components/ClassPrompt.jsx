@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { Instructions } from "../pages/pages"
 import toast from "react-hot-toast"
+import { instructions } from "../assets/qcmData.json"
 
 const ClassPrompt = () => {
   const { data } = useSelector((state) => state.user)
@@ -140,13 +141,27 @@ const ClassPrompt = () => {
               you will be <u>disqualified immediately</u> without any warning.
             </li>
           </ul>
+
+          <h2 className="text-xl font-semibold">General Instructions</h2>
+          <hr />
+          <ul className="mt-2 text-gray-700 leading-relaxed">
+            {Object.keys(instructions.general).map((key, index) => (
+              <li key={index}>
+                <strong>{key}:</strong>{" "}
+                {Array.isArray(instructions.general[key])
+                  ? instructions.general[key].map((remark, idx) => (
+                    <p key={idx}>{remark}</p>
+                  ))
+                  : instructions.general[key]}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* RIGHT: class selection -- allow shrinking and inner scroll */}
-        <div className="sm:w-1/2 flex-1 min-w-0 flex flex-col items-center">
-          <h2 className="text-lg font-semibold mb-2">Select Your Standard</h2>
-          <hr className="w-full mb-3" />
-
+        {/* Right Side: Class Selection */}
+        <div className="sm:w-1/2 flex flex-col gap-5 items-center">
+          <h2 className="text-xl font-semibold">Select Your Standard to </h2>
+          <hr className="w-full" />
           {isProcessing ? (
             <div className="flex justify-center items-center py-6">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
