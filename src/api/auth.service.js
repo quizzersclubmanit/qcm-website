@@ -220,9 +220,6 @@ class Auth {
       //   throw new Error("Name is reserved. Please enter another name")
       // }
       
-      console.log('Frontend sending signup data:', { email, password: '***', name, phone, city, school, sex });
-      console.log('API URL:', `${API_BASE_URL}/api/auth/signup`);
-      
       const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
         method: 'POST',
         headers: {
@@ -240,9 +237,7 @@ class Auth {
         })
       })
       
-      console.log('Response status:', response.status);
-      console.log('Response headers:', response.headers);
-      
+       
       const data = await response.json()
       
       if (!response.ok) {
@@ -259,7 +254,6 @@ class Auth {
       
       // Store token in localStorage for future requests
       if (token) {
-        console.log('Storing token in localStorage:', token.substring(0, 10) + '...');
         localStorage.setItem('token', token);
         localStorage.setItem('authToken', token);
       } else {
@@ -280,10 +274,7 @@ class Auth {
 
   async login({ email = "", password = "" }) {
     try {
-      console.log('=== LOGIN ATTEMPT STARTED ===');
-      console.log('Frontend sending login data:', { email, password: '***' });
-      console.log('API URL:', `${API_BASE_URL}/api/auth/login`);
-      
+        
       const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
@@ -292,14 +283,8 @@ class Auth {
         credentials: 'include',
         body: JSON.stringify({ email, password })
       })
-      
-      console.log('Login response status:', response.status);
-      console.log('Login response headers:', response.headers);
-      
-      const data = await response.json()
-      console.log('Login response data:', data);
-      console.log('=== LOGIN RESPONSE RECEIVED ===');
-      
+          const data = await response.json()
+        
       if (!response.ok) {
         console.error('Login failed with status:', response.status, 'Error:', data.error);
         throw new Error(data.error || 'Login failed')
@@ -335,17 +320,14 @@ class Auth {
 
   async getCurrentUser() {
     try {
-      console.log('Fetching current user from:', `${API_BASE_URL}/api/auth/me`);
-      
+       
       // Get token from localStorage or cookies
        const token = localStorage.getItem('token') || localStorage.getItem('authToken');
 
-      console.log("Token:", token);
       if (!token) {
         console.warn('No authentication token found in localStorage');
         return null;
       }
-      console.log('Using token for auth/me request');
       
       const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
         method: 'GET',
@@ -357,7 +339,6 @@ class Auth {
         }
       });
       
-      console.log('Auth/me response status:', response.status);
       
       // If unauthorized, clear the invalid token
       // if (response.status === 401) {
@@ -380,7 +361,6 @@ class Auth {
       }
       
       const data = await response.json();
-      console.log('Current user data:', data);
       
       return data.user || data; // Handle both { user } and direct user object responses
     } catch (error) {

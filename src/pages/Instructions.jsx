@@ -111,13 +111,6 @@ const Instructions = ({ sec }) => {
                 </li>
               )
             })}
-
-            {instrs.map((obj, index) => (
-              <li key={index}>
-                <strong className="text-sm">{obj.key}:</strong>
-                <span className="text-emerald-600 text-sm"> {obj.value}</span>
-              </li>
-            ))}
           </ul>
         </div>
         <div className="sm:w-1/2 flex flex-col gap-5">

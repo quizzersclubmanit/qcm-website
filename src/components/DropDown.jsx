@@ -321,7 +321,7 @@ const DropDown = forwardRef(({ user, email, visible = false }, ref) => {
         // Allow all users to play quiz anytime - no time restrictions
         navigate("/quiz/instr/0")
       },
-      visible: email.endsWith("@qcmisbest.com") || (user=="admin")
+      visible: false
     },
     {
       label: "Logout",
