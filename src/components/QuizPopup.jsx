@@ -5,7 +5,7 @@ import Button from "./Button";
 
 export default function QuizLivePoster({
   delay = 300,              
-  quizPath = "/",      
+  quizPath = "/quiz/instr/0",      
   autoOpen = true,          
 }) {
   const [open, setOpen] = useState(false);
@@ -15,7 +15,7 @@ export default function QuizLivePoster({
 
   useEffect(() => {
     const now = new Date();
-    // const shouldOpen = autoOpen && now.getHours() === 16 && now.getMinutes() <= 5;
+    const shouldOpen = autoOpen && now.getHours() === 16 && now.getMinutes() <= 5;
     if (!shouldOpen) return;
     const id = setTimeout(() => setOpen(true), delay);
     return () => clearTimeout(id);
