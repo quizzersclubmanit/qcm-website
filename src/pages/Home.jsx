@@ -35,8 +35,8 @@ const Home = () => {
   return (
     <main>
       <Header />
-      <GreetingPoster />
-      {/* <QuizLivePoster/> */}
+      {/* <GreetingPoster /> */}
+      <QuizLivePoster/>
       <RegistrationSuccessHandler />
       <Hero />
       <About />
