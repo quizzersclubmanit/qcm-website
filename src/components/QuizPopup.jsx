@@ -5,7 +5,7 @@ import Button from "./Button";
 
 export default function QuizLivePoster({
   delay = 300,              
-  quizPath = "/quiz/instr/0",      
+  quizPath = "/",      
   autoOpen = true,          
 }) {
   const [open, setOpen] = useState(false);
