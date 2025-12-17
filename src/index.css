@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Alatsi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  overflow-x: hidden;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "century_gothic_paneuropeanRg";
+  src:
+    url("/fonts/centurygothicpaneuropeanregular-webfont.woff2") format("woff2"),
+    url("/fonts/centurygothicpaneuropeanregular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.alatsi-regular {
+  font-family: "Alatsi", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.century-gothic {
+  font-family: "century_gothic_paneuropeanRg", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+  height: 5px; /* Height of the scrollbar (for horizontal scrollbar) */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00aded; /* Color of the scrollbar handle */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1; /* Darker color on hover for the scrollbar handle */
+}
+
+.slick-prev {
+  left: -1px !important;
+  z-index: 5;
+}
+.slick-next {
+  right: -1px !important;
+  z-index: 5;
+}
+
+.text-outline {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+
+.text-outline-thin {
+  -webkit-text-stroke-width: 0.7px;
+  -webkit-text-stroke-color: black;
+}
+
+.continue-text {
+  @apply overflow-x-hidden whitespace-nowrap overflow-ellipsis;
+}
+
+.background-blue {
+  @apply bg-[#14213D];
+}
+
+.transparent-white {
+  @apply bg-[#ffffffc4];
+}
