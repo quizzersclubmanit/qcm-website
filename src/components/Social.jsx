@@ -11,34 +11,24 @@ import { Container } from "./components"
 
 const Social = () => {
   const social = [
-    {
-      href: instagram,
-      image: FaInstagram
-    },
-    {
-      href: youtube,
-      image: FaYoutube
-    },
-    {
-      href: linkedin,
-      image: FaLinkedin
-    },
-    {
-      href: facebook,
-      image: FaFacebook
-    }
+    { href: instagram, icon: FaInstagram },
+    { href: youtube, icon: FaYoutube },
+    { href: linkedin, icon: FaLinkedin },
+    { href: facebook, icon: FaFacebook }
   ]
-  const date = new Date()
+
+  const year = new Date().getFullYear()
 
   return (
-    <Container className="flex justify-between w-full bg-[#e5e5e51d] px-4 py-2 rounded-2xl border border-gray-600">
-      <span className="sm:text-[1.5vmax] text-[1.7vmax] flex items-center gap-2">
-        {date.getFullYear()} - {organization}
+    <Container className="flex items-center justify-between w-full bg-white/10 px-4 py-2 rounded-xl border border-gray-700">
+      <span className="text-sm">
+        {year} — {organization}
       </span>
-      <div className="flex items-center sm:gap-3 gap-1">
+
+      <div className="flex items-center gap-3">
         {social.map((item, index) => (
           <a key={index} href={item.href} target="_blank">
-            <item.image className="text-[3vmax] sm:text-[2vmax] cursor-pointer" />
+            <item.icon className="text-xl hover:text-yellow-400 transition" />
           </a>
         ))}
       </div>

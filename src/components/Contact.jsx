@@ -7,63 +7,62 @@ import { Container } from "./components"
 
 const Contact = () => {
   return (
-    <Container className="flex flex-col sm:flex-row w-full gap-7 sm:my-[20vh] sm:py-5 py-10">
-      <div className="left flex flex-col gap-5 w-full justify-start sm:pl-[8vmax] pl-2">
-        <h3 className="century-gothic font-bold text-[2.5vmax] sm:text-[2vmax] text-yellow-400">
+    <Container className="flex flex-col sm:flex-row w-full gap-6 py-4">
+      
+      <div className="flex flex-col gap-4 w-full sm:pl-12">
+        <h3 className="font-bold text-xl sm:text-2xl text-yellow-400">
           Contact Us
         </h3>
-        <div className="flex gap-4">
-          <div className="flex flex-col">
-            {contacts.map((contact, index) => (
-              <div className="flex flex-col my-1" key={index}>
-                <div className="flex gap-3 text-[2vmax] sm:text-[1.3vmax]">
-                  <MdWifiCalling3 />
-                  <span>{contact.name} -</span>
-                </div>
-                <span className="text-[#FCA311]">{contact.position}</span>
-                <div className="flex gap-1">
-                  <span
-                    onClick={() => {
-                      navigator.clipboard.writeText(contact.no)
-                    }}
-                    className="cursor-copy text-xs sm:text-base text-[#FCA311]"
-                  >
-                    {contact.no}
-                  </span>
-                  <a href={contact.linkedin} target="_blank">
-                    <FaLinkedin className="sm:text-xl text-lg" />
-                  </a>
-                </div>
-              </div>
-            ))}
+
+        {contacts.map((contact, index) => (
+          <div key={index} className="text-sm">
+            <div className="flex items-center gap-2">
+              <MdWifiCalling3 />
+              <span className="text-base sm:text-md font-semibold">{contact.name}</span>
+            </div>
+            <span className="text-gray-400">{contact.position}</span>
+            <div className="flex items-center gap-2">
+              <span
+                className="cursor-copy text-yellow-400"
+                onClick={() => navigator.clipboard.writeText(contact.no)}
+              >
+                {contact.no}
+              </span>
+              <a href={contact.linkedin} target="_blank">
+                <FaLinkedin className="text-base" />
+              </a>
+            </div>
           </div>
-        </div>
-        <div className="flex gap-5 items-center">
-          <IoMdMail className="sm:text-2xl text-lg" />
+        ))}
+
+        <div className="flex items-center gap-2 text-sm">
+          <IoMdMail />
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}`}
             target="_blank"
-            className="text-[2vmax] sm:text-[1.3vmax]"
+            className="hover:underline"
           >
             {email}
           </a>
         </div>
       </div>
-      <div className="right flex flex-col w-full justify-start gap-5 sm:border-l sm:pl-[8vmax] pl-2 border-gray-300">
-        <h3 className="century-gothic font-bold text-[2.5vmax] sm:text-[2vmax] text-yellow-400">
+
+      {/* RIGHT */}
+      <div className="flex flex-col gap-4 w-full sm:border-l sm:pl-12 border-gray-700">
+        <h3 className="font-bold text-xl sm:text-2xl text-yellow-400">
           Locate Us
         </h3>
-        <div className="flex gap-4">
-          <FaLocationDot className="sm:text-2xl text-lg" />
-          <div className="text-[2vmax] sm:text-[1.3vmax]">
+
+        <div className="flex gap-3 text-sm">
+          <FaLocationDot className="mt-1" />
+          <div>
             <p>{address.college}</p>
             <p>{address.locality}</p>
-            <p>
-              {address.city}, PIN: {address.pin}
-            </p>
+            <p>{address.city}, PIN: {address.pin}</p>
           </div>
         </div>
       </div>
+
     </Container>
   )
 }
