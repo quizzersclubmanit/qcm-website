@@ -193,11 +193,11 @@
 //     // Compute score for current section using qcmData.json marking scheme
 //     const sectionScore = computeSectionScore(quizzesForScore)
 //     console.log(`Section ${section} score:`, sectionScore)
-
+    
 //     // Add to cumulative score from previous sections (stored in Redux)
 //     const totalScore = score + sectionScore
 //     const safeScore = Number(Math.min(180, Math.max(0, totalScore)))
-
+    
 //     console.log(`Total cumulative score: ${score} + ${sectionScore} = ${totalScore} (capped: ${safeScore})`)
 
 //     try {
@@ -252,7 +252,7 @@
 
 //   const handleSubmit = useCallback(() => {
 //     if (isPaused) return
-
+    
 //     // Compute section score and update Redux store
 //     const quizzesForScore = quizes.map((q, idx) => (
 //       idx === (currentQue - 1)
@@ -261,12 +261,12 @@
 //     ))
 //     const sectionScore = computeSectionScore(quizzesForScore)
 //     const newTotalScore = score + sectionScore
-
+    
 //     console.log(`Section ${section} completed with score: ${sectionScore}`)
 //     console.log(`New total score: ${score} + ${sectionScore} = ${newTotalScore}`)
-
+    
 //     dispatch(setScore(newTotalScore))
-
+    
 //     if (section < 4) {
 //       navigate(`/quiz/instr/${section + 1}`)
 //     } else {
@@ -278,7 +278,7 @@
 //   useEffect(() => {
 //     console.log('=== STARTING QUIZ DATA FETCH ===')
 //     console.log('Section:', section)
-
+    
 //     // Since the direct API call works but dbService fails, let's use direct fetch for now
 //     const fetchQuizData = async () => {
 //       try {
@@ -286,7 +286,7 @@
 //         setNoQuizzes(false)
 //         const token = localStorage.getItem('authToken') || localStorage.getItem('token')
 //         console.log('Using direct fetch with token:', !!token)
-
+        
 //         const response = await fetch('https://qcm-backend-ln5c.onrender.com/api/quiz', {
 //           method: 'GET',
 //           headers: { 
@@ -295,23 +295,23 @@
 //           },
 //           mode: 'cors'
 //         })
-
+        
 //         console.log('Direct fetch response status:', response.status)
-
+        
 //         if (response.ok) {
 //           const docs = await response.json()
 //           console.log('Direct fetch response data:', docs)
-
+          
 //           // Handle the response format we know works
 //           let quizData = []
 //           if (docs && docs.quizzes && Array.isArray(docs.quizzes)) {
 //             quizData = docs.quizzes
 //             console.log('✅ Found quizzes in docs.quizzes:', quizData.length)
 //           }
-
+          
 //           console.log('Processed quiz data:', quizData)
 //           console.log('Quiz data length:', quizData.length)
-
+          
 //           if (quizData.length === 0) {
 //             console.error('❌ NO QUIZ DATA FOUND!')
 //             console.log('Available response properties:', Object.keys(docs || {}))
@@ -320,7 +320,7 @@
 //           } else {
 //             console.log('✅ Found', quizData.length, 'quiz questions')
 //             console.log('First question sample:', quizData[0])
-
+            
 //             // Filter questions by section (coerce to number for safety)
 //             let sectionQuizzes = quizData.filter(quiz => Number(quiz.section) === Number(section))
 //             console.log(`✅ Found ${sectionQuizzes.length} questions for section ${section} (of total ${quizData.length})`)
@@ -337,7 +337,7 @@
 //                 return ia.localeCompare(ib)
 //               }).map((q, idx) => ({ ...q, isInteger: idx >= 5 }))
 //             }
-
+            
 //             // Ensure each quiz has a markedAnswers array to track selections
 //           const withMarks = (list) => list.map(q => ({
 //             ...q,
@@ -366,7 +366,7 @@
 //         setQuizzesLoading(false)
 //       }
 //     }
-
+    
 //     fetchQuizData()
 //   }, [section])
 
@@ -512,7 +512,7 @@
 //         e.preventDefault()
 //       }}
 //     >
-
+      
 //       <img
 //         src={liveGif}
 //         alt="Live Gif"
@@ -863,7 +863,7 @@ const PlayQuiz = () => {
     setHasSubmitted(true)
     submittedRef.current = true
     let msg = disqualified
-      ? "You are disqualified for exiting full-screen but your response is recorded"
+      ? "You are disqualified for exiting full-screen but your response is submitted"
       : "Quiz Submitted Successfully"
 
     // Include the latest selection of the current question before computing
@@ -1186,37 +1186,37 @@ const PlayQuiz = () => {
   return (
     <>
       {showConfirmModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-          <div className="bg-white p-6 rounded-2xl shadow-xl max-w-sm text-center">
-            <h2 className="text-lg font-semibold mb-4">
-              Confirm Submission
-            </h2>
-            <p className="mb-6 text-gray-600">
-              Are you sure you want to submit? <br />
-              Once submitted, you won’t be able to change your answers.
-            </p>
-            <div className="flex justify-center gap-4">
-              <button
-                onClick={() => {
-                  setShowConfirmModal(false) // cancel
-                }}
-                className="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={() => {
-                  setShowConfirmModal(false)
-                  handleSubmit() // confirm
-                }}
-                className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
-              >
-                Yes, Submit
-              </button>
-            </div>
+      <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+        <div className="bg-white p-6 rounded-2xl shadow-xl max-w-sm text-center">
+          <h2 className="text-lg font-semibold mb-4">
+            Confirm Submission
+          </h2>
+          <p className="mb-6 text-gray-600">
+            Are you sure you want to submit? <br />
+            Once submitted, you won’t be able to change your answers.
+          </p>
+          <div className="flex justify-center gap-4">
+            <button
+              onClick={() => {
+                setShowConfirmModal(false) // cancel
+              }}
+              className="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={() => {
+                setShowConfirmModal(false)
+                handleSubmit() // confirm
+              }}
+              className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+            >
+              Yes, Submit
+            </button>
           </div>
         </div>
-      )}
+      </div>
+    )}
       <Container
         id="play-quiz"
         className="Fira Sans w-screen sm:p-[3.5vmax] p-[2vmax] min-h-screen flex flex-col justify-around items-center sm:items-center sm:gap-5 gap-1 relative"
@@ -1352,7 +1352,7 @@ const PlayQuiz = () => {
           <Button
             label="Submit"
             className="font-bold p-1 uppercase mt-4 py-1 px-4 bg-green-400 rounded-2xl hover:bg-green-500"
-            onClick={() => { setShowConfirmModal(true) }}
+            onClick={()=>{setShowConfirmModal(true)}}
           />
         )}
         <div className="flex z-10 justify-between items-center md:w-[60%] sm:w-4/5 w-full p-4 rounded">

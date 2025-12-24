@@ -1,3 +1,4 @@
+import footerBg from "../assets/manit.jpg"
 import { Container, Social, Contact } from "./components"
 
 const Footer = () => {
@@ -5,10 +6,39 @@ const Footer = () => {
     <Container
       id="contacts"
       element="footer"
-      className="poppins-regular sm:px-[3.5vmax] px-[2vmax] sm:pb-[3.5vmax] pb-[2vmax] sm:min-h-screen flex flex-col gap-5 items-center justify-between bg-black text-white"
+      className="
+        relative
+        h-[40vh]
+        w-full
+        max-w-full
+        flex flex-col
+        justify-between
+        text-sm
+        text-white
+        poppins-regular
+        overflow-hidden
+      "
     >
-      <Contact />
-      <Social />
+      {/* Background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${footerBg})` }}
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/60" />
+
+      {/* Content */}
+      <div className="relative z-10 w-full flex flex-col justify-between px-6 sm:px-12">
+
+        {/* Content */}
+
+        <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col justify-between h-full px-6">
+          <Contact />
+          <Social />
+        </div>
+
+      </div>
     </Container>
   )
 }
