@@ -7,16 +7,15 @@ const Footer = () => {
       id="contacts"
       element="footer"
       className="
-        relative
-        h-[40vh]
-        w-full
-        max-w-full
-        flex flex-col
-        justify-between
-        text-sm
-        text-white
-        poppins-regular
-        overflow-hidden
+    relative
+    min-h-[40vh]
+    w-full
+    max-w-full
+    flex flex-col
+    justify-between
+    text-sm
+    text-white
+    poppins-regular
       "
     >
       {/* Background */}
