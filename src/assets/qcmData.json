@@ -7,13 +7,13 @@
               },
     "contacts":  [
                      {
-                         "name":  "Ayushi Sinha",
-                         "no":  "9667228687",
+                         "name":  "Shreya Kumar",
+                         "no":  "88260 69744",
                          "position":  "President",
-                         "linkedin":  "https://www.linkedin.com/in/ayushi-s-5bb812249/"
+                         "linkedin":  "https://www.linkedin.com/in/shreyakumar0302/"
                      },
                      {
-                         "name":  "Atharv Nerkar",
+                         "name":  "Arzoo Kumar",
                          "no":  "8956404950",
                          "position":  "Vice President",
                          "linkedin":  "https://www.linkedin.com/in/atharv-nerkar-3479aa259/"
@@ -2437,15 +2437,15 @@
                  ],
     "team":  [
                  {
-                     "name":  "Ayushi Sinha",
+                     "name":  "Shreya Kumar",
                      "post":  "President",
                      "domain":  "Organisation",
                      "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397761/Ayushi_qcm_iucuk1.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/ayushi-s-5bb812249/",
+                     "linkedIn":  "https://www.linkedin.com/in/shreyakumar0302/",
                      "year":  "4th"
                  },
                  {
-                     "name":  "Atharv Nerkar",
+                     "name":  "Arzoo Kumar",
                      "post":  "Vice-President",
                      "domain":  "Organisation",
                      "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397753/Atharv_nltmtx.jpg",
