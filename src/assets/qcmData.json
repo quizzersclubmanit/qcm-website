@@ -7,13 +7,13 @@
               },
     "contacts":  [
                      {
-                         "name":  "Ayushi Sinha",
-                         "no":  "9667228687",
+                         "name":  "Shreya Kumar",
+                         "no":  "88260 69744",
                          "position":  "President",
-                         "linkedin":  "https://www.linkedin.com/in/ayushi-s-5bb812249/"
+                         "linkedin":  "https://www.linkedin.com/in/shreyakumar0302/"
                      },
                      {
-                         "name":  "Atharv Nerkar",
+                         "name":  "Arzoo Kumar",
                          "no":  "8956404950",
                          "position":  "Vice President",
                          "linkedin":  "https://www.linkedin.com/in/atharv-nerkar-3479aa259/"
@@ -2437,429 +2437,427 @@
                  ],
     "team":  [
                  {
-                     "name":  "Ayushi Sinha",
+                     "name":  "Shreya Kumar",
                      "post":  "President",
                      "domain":  "Organisation",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397761/Ayushi_qcm_iucuk1.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/ayushi-s-5bb812249/",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395714/Shreya_Kumar_Executive_ed7mym.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/shreyakumar0302/",
                      "year":  "4th"
                  },
                  {
-                     "name":  "Atharv Nerkar",
+                     "name":  "Arzoo Kumar",
                      "post":  "Vice-President",
                      "domain":  "Organisation",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397753/Atharv_nltmtx.jpg",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395705/Arzoo_Kumar_Quizzer_mtzenq.png",
                      "linkedIn":  "https://www.linkedin.com/in/atharv-nerkar-3479aa259/",
                      "year":  "4th"
                  },
                  {
-                     "name":  "Shrishti Mishra",
-                     "post":  "General Secratory",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1757057843/WhatsApp_Image_2025-09-05_at_11.59.57_abe70ebe_hske3e.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/abhishek-meena01/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Shilpa Koley",
-                     "post":  "General Secratory",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397772/Shilpa__mfihcu.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/shilpa-koley-719723259/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Priyanshu Choudhury",
-                     "post":  "Treasurer",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397764/priyanshu_choudhury_1_um7gpb.png",
-                     "linkedIn":  "https://www.linkedin.com/in/priyanshuc/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Prakriti Shree",
-                     "post":  "Secretary",
-                     "domain":  "Quizzing",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397762/prakriti_shree_qcm_swvr39.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/prakriti-shree-0317a0254/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Vyom Singhal",
-                     "post":  "Secretary",
-                     "domain":  "Quizzing",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397774/Vyom_Singhal__avu4ml.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/vyom-singhal-bb1008260/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Dhruv Singh Bhadauria",
-                     "post":  "Secretary",
-                     "domain":  "Events \u0026 Planning",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397758/Dhruv_Singh_Bhadauria_hfogqg.jpg",
-                     "linkedIn":  "",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Prakriti Sharma",
-                     "post":  "Secretary",
-                     "domain":  "Content \u0026 Documentation",
-                     "fileId":  "https://res.cloudinary.com/dqfrjz0kl/image/upload/q_auto:low/v1764321306/Prakriti_Sharma_vjnfdn.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/prakriti-sharma-764671278/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Ajay Yadav",
-                     "post":  "Secretary",
-                     "domain":  "Design",
-                     "fileId":  "66be7cfc001e81bdb546",
-                     "linkedIn":  "https://www.linkedin.com/in/ajay-yadav-2o26/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Rohit Kumar",
-                     "post":  "Secretary",
-                     "domain":  "Media Production",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397764/Rohit_pyteor.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/rohit-kumar-757690315/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Samarth Agarwal",
-                     "post":  "Secretary",
-                     "domain":  "Community \u0026 Culture",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397775/SAMARTH_AGRAWAL_cloaxd.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/samarth-agrawal-14bb5b266/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Shivam Malviya",
-                     "post":  "Secretary",
-                     "domain":  "Community \u0026 Culture",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397772/Shivam_Malviya_utkxhw.heic",
-                     "linkedIn":  "",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Ayush Sharma",
-                     "post":  "Secretary",
-                     "domain":  "Alumini Connect",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397758/Ayush_sharma_pgda2t.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/ayush-sharma-27a488261/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Ganesh Nayak",
-                     "post":  "Secretary",
-                     "domain":  "Alumini Connect",
-                     "fileId":  "",
-                     "linkedIn":  "https://www.linkedin.com/in/ganesh-nayak-32b33b257/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Mridul Upadhyay",
-                     "post":  "Secretary",
-                     "domain":  "Compliance",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397760/mridulupadhyay_yrhzbj.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/mridul-upadhyay-9680b7265/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Gautam Kumar",
-                     "post":  "Secretary",
-                     "domain":  "Compliance",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397757/Gautam__tfittk.jpg",
-                     "linkedIn":  "",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Manan Verma",
-                     "post":  "Secretary",
-                     "domain":  "Logistics \u0026 Operations",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397776/manan_photo_r6m9ln.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/manan-verma-54904525a/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Vemula Teja Manideep",
-                     "post":  "Secretary",
-                     "domain":  "Logistics \u0026 Operations",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397769/Teja_Manideep_vemula__fhwqr8.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/tejamanideep-vemula-b77569278/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Divy Pareek",
-                     "post":  "Secretary",
-                     "domain":  "Media Coverage",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397758/Divy__icvaqv.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/divypareek/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Pranjal Jain",
-                     "post":  "Secretary",
-                     "domain":  "Digital Media",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397764/Pranjal_jain_ljjzbz.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/pranjal-jain-547a37256/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Sarthak Vyas",
-                     "post":  "Secretary",
-                     "domain":  "Technical",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1756397766/Sarthak_vyas_zvb22o.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/sarthak-vyas-99791b25b/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Nimisha Shrivastava",
-                     "post":  "Secretary",
-                     "domain":  "External Affairs",
-                     "fileId":  "",
-                     "linkedIn":  "https://www.linkedin.com/in/nimisha-shrivastava-094579278/",
-                     "year":  "4th"
-                 },
-                 {
-                     "name":  "Yuvraj Singh Gaur",
-                     "post":  "Coordinator",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/q_auto:low/v1756395790/Yuvraj_Singh_Gaur_Executive_aoe5dw.png",
-                     "linkedIn":  "https://www.linkedin.com/in/gauryuvraj/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Saumya Singh",
-                     "post":  "Coordinator",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395743/Saumya_Singh_Executive_lil7dj.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/saumya-singh-470795290/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Surbhi Gupta",
-                     "post":  "Co-Coordinator",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395717/Surbhi_Gupta_Executive_zeo9cn.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/surbhi-gupta-716808290/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Akash Sharma",
-                     "post":  "Co-Coordinator",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1757133559/WhatsApp_Image_2025-09-06_at_10.09.11_c89b876a_g8gmrw.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/akash-sharma-7ab9a8259/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Arzoo Kumar",
-                     "post":  "Quizzing Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395705/Arzoo_Kumar_Quizzer_mtzenq.png",
-                     "linkedIn":  "https://www.linkedin.com/in/arzoo-kumar-614658287/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Anshuman Singh",
-                     "post":  "Quizzing Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395702/Anshumaan_Singh_Quizzer_odmx8g.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/anshumaan-singh-a4437627a/",
-                     "year":  "3rd"
-                 },
-                 {
                      "name":  "Siddhi Geed",
-                     "post":  "Administrative Head",
+                     "post":  "Vice-President",
+                     "domain":  "Administration",
                      "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756397912/Siddhi_Geed_Executive_page-0001_fpo4q6.jpg",
                      "linkedIn":  "https://www.linkedin.com/in/siddhi-geed-5a3a9b300/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Aryan Kadwey",
-                     "post":  "Administrative Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395696/AryanKadwey_CW_iimkdv.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/aryankadwey/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Akshat Jain",
-                     "post":  "Quizzing Research and Content Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395808/Akshat_Jain_Quizzer_bve6oh.jpg",
-                     "linkedIn":  "",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Aditya Jai Singh",
-                     "post":  "Quizzing Research and Content Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395818/Aditya_Jai_Singh_Quizzer_mqnpm0.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/aditya-jai-singh-74b5aa298/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Harsh Vardhan Patel",
-                     "post":  "Quizzing Research and Content Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395822/HarshVardhan_Quizzer_pa1z4h.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/harshvp-patel/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Saksham Dharkar",
-                     "post":  "Logistics and operations Head",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1757133255/WhatsApp_Image_2025-09-06_at_10.03.04_3d8364ac_k26puk.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/saksham-dharkar-6b193a302/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Hemanth Sharma",
-                     "post":  "Logistics and operations Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395771/Hemant_Sharma_Executive_udtlsp.jpg",
-                     "linkedIn":  "",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Niharika Singh",
-                     "post":  "Quizmaster Lead",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395792/Niharika_Singh_Quizzer_ctqt78.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/niharika-singh-5a3335310/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Piyush Omer",
-                     "post":  "Quizmaster Lead",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395701/Piyush_Omer_Quizzer_qsuazb.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/piyushomer1411/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Pukhraj Motwani",
-                     "post":  "Technical Head",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1757136445/pukhraj_rvzugo.png",
-                     "linkedIn":  "https://www.linkedin.com/in/pukhraj-motwani-21112527a/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Pankaj Soni",
-                     "post":  "Technical Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395676/Pankaj_Soni_WebDeveloper_vrrkgv.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/pankajinos/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Srishaa Kajva",
-                     "post":  "Designing Head",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1757159503/WhatsApp_Image_2025-09-06_at_17.17.28_88e55579_rlqtv9.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/srishaa-kajva-12a986285/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Rishikant Verma",
-                     "post":  "Designing Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395843/Rishikant_Verma_Designer_uyeku3.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/rishikant-verma-713635290/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Tisha Gadiya",
-                     "post":  "Sponsorship and Marketing Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395773/tisha_Gadiya___Executive_oa7vgo.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/tisha-gadiya20/",
-                     "year":  "3rd"
-                 },
-                 {
-                     "name":  "Sanket Bhargav",
-                     "post":  "Sponsorship and Marketing Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395707/Sanket_Bhargava_Executive_dopxlm.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/sanket22/",
-                     "year":  "3rd"
+                     "year":  "4th"
                  },
                  {
                      "name":  "Atharv Agarwal",
-                     "post":  "Sponsorship and Marketing Head",
+                     "post":  "General Secratory",
                      "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756399265/Atharv_Agrawal_Executive_e3i4ph.jpg",
                      "linkedIn":  "https://www.linkedin.com/in/atharv-agrawal-510aa0312/",
-                     "year":  "3rd"
+                     "year":  "4th"
                  },
                  {
-                     "name":  "Mahi Jain",
-                     "post":  "Public Relations and Outreach Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395772/mahi_patodi_executive_ccphan.png",
-                     "linkedIn":  "https://www.linkedin.com/in/mahi-patodi-179625290/",
-                     "year":  "3rd"
+                     "name":  "Akshat Jain",
+                     "post":  "General Secratory",
+                     "domain":  "Quizzing",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395808/Akshat_Jain_Quizzer_bve6oh.jpg",
+                     "linkedIn":  "",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Surbhi Gupta",
+                     "post":  "General Secretary",
+                     "domain":  "Events \u0026 Planning",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395717/Surbhi_Gupta_Executive_zeo9cn.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/surbhi-gupta-716808290/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Aryan Kadwey",
+                     "post":  "Treasurer",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395696/AryanKadwey_CW_iimkdv.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/aryankadwey/",
+                     "year":  "4th"
+                 },
+                 
+                 {
+                     "name":  "Anshuman Singh",
+                     "post":  "Secretary",
+                     "domain":  "Quizzing",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395702/Anshumaan_Singh_Quizzer_odmx8g.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/anshumaan-singh-a4437627a/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Akash Sharma",
+                     "post":  "Secretary",
+                     "domain":  "Alumini Connect",
+                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1757133559/WhatsApp_Image_2025-09-06_at_10.09.11_c89b876a_g8gmrw.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/akash-sharma-7ab9a8259/",
+                     "year":  "4th"
                  },
                  {
                      "name":  "Praneel Tomar",
-                     "post":  "Public Relations and Outreach Head",
+                     "post":  "Secretary",
+                     "domain":  "Compliance",
                      "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395702/Praneel_Tomar_Executive_hpa58a.png",
                      "linkedIn":  "https://www.linkedin.com/in/praneel-tomar-a25751303/",
-                     "year":  "3rd"
+                     "year":  "4th"
                  },
                  {
-                     "name":  "Shreya Kumar",
-                     "post":  "Event Management Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395714/Shreya_Kumar_Executive_ed7mym.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/shreyakumar0302/",
-                     "year":  "3rd"
+                     "name":  "Saumya Singh",
+                     "post":  "Secretary",
+                     "domain":  "Events \u0026 Planning",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395743/Saumya_Singh_Executive_lil7dj.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/saumya-singh-470795290/",
+                     "year":  "4th"
                  },
                  {
                      "name":  "Ashritha Adabala",
-                     "post":  "Event Management Head",
+                     "post":  "Secretary",
+                     "domain":  "Events \u0026 Planning",
                      "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395704/Ashritha_Quizzer_jiytqa.jpg",
                      "linkedIn":  "https://www.linkedin.com/in/ashritha-adabala-302171280/",
-                     "year":  "3rd"
+                     "year":  "4th"
                  },
                  {
                      "name":  "Anjali Verma",
-                     "post":  "Finance Head",
+                     "post":  "Secretary",
+                     "domain":  "Content \u0026 Documentation",
                      "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395699/Anjali_Verma__Content_Writer_sntjyn.jpg",
                      "linkedIn":  "https://www.linkedin.com/in/anjali-verma-9b7261260/",
-                     "year":  "3rd"
+                     "year":  "4th"
                  },
                  {
                      "name":  "Mrityunjay Mishra",
-                     "post":  "Finance Head",
+                     "post":  "Secretary",
+                     "domain":  "Content \u0026 Documentation",
                      "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395821/Mrityunjay_Mishra_Quizzer_mu8wxn.jpg",
                      "linkedIn":  "https://www.linkedin.com/in/mrityunjay-mishra-00a812290/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Lakshya Singh",
+                     "post":  "Secretary",
+                     "domain":  "Media Production",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395767/Lakshya_Singh_Photographer_vzrtuv.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/lakshya-singh-3466bb324/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Ashish",
+                     "post":  "Secretary",
+                     "domain":  "Multi Media",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395769/Ashish_VE_ulk12i.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/ashish-maheshwar-336876290/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Rishikant Verma", 
+                     "post":  "Secretary",
+                     "domain":  "Creative Comms",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395843/Rishikant_Verma_Designer_uyeku3.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/rishikant-verma-713635290/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Hemanth Sharma",
+                     "post":  "Secretary",
+                     "domain":  "Public Relations & Outreach",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395771/Hemant_Sharma_Executive_udtlsp.jpg",
+                     "linkedIn":  "",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Pukhraj Motwani",
+                     "post":  "Secretary",
+                     "domain":  "Technical",
+                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/q_auto:low/v1757136445/pukhraj_rvzugo.png",
+                     "linkedIn":  "https://www.linkedin.com/in/pukhraj-motwani-21112527a/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Pankaj Soni",
+                     "post":  "Secretary",
+                     "domain":  "Technical",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395676/Pankaj_Soni_WebDeveloper_vrrkgv.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/pankajinos/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Sanket Bhargav",
+                     "post":  "Secretary",
+                     "domain":  "Logistics \u0026 Operations",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395707/Sanket_Bhargava_Executive_dopxlm.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/sanket22/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Aditya Jai Singh",
+                     "post":  "Secretary",
+                     "domain":  "Logistics \u0026 Operations",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395818/Aditya_Jai_Singh_Quizzer_mqnpm0.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/aditya-jai-singh-74b5aa298/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Tisha Gadiya",
+                     "post":  "Secretary",
+                     "domain":  "Community \u0026 Culture",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395773/tisha_Gadiya___Executive_oa7vgo.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/tisha-gadiya20/",
+                     "year":  "4th"
+                 },
+                 {
+                     "name":  "Niharika Singh",
+                     "post":  "Secretary",
+                     "domain":  "Community \u0026 Culture",
+                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395792/Niharika_Singh_Quizzer_ctqt78.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/niharika-singh-5a3335310/",
+                     "year":  "4th"
+                 },
+                 
+                 {
+                     "name":  "Sakshi Priya",
+                     "post":  "Coordinator",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604671/Sakshi_Priya_Executive_lptve5.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
                      "year":  "3rd"
                  },
                  {
-                     "name":  "Ranjit Kumar Singh",
-                     "post":  "Alumini Convener",
-                     "fileId":  "https://res.cloudinary.com/djtxyzyh4/image/upload/v1757133980/RanjitKumarSingh_Quizzer_waxgy9.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/ranjit-kumar-singh/",
+                     "name":  "Charunya Zebade",
+                     "post":  "Coordinator",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604676/Charunya_Zerbade_Executive_ryzx2r.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
                      "year":  "3rd"
                  },
                  {
-                     "name":  "Nishtha Nayak",
-                     "post":  "Alumini Convener",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395811/Nistha_Nayak_Executive_opoktl.jpg",
+                     "name":  "Nikhil Soni",
+                     "post":  "Co-Coordinator",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604671/Nikhil_Soni_Executive_rge9d8.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Harsh Jain",
+                     "post":  "Co-Coordinator",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604678/IMG_1168_ri2amd.heic",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Harsh Kumar Singh",
+                     "post":  "Quizzing Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604669/Harsh_Kumar_Singh_Quizzer_b0m7s5.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Sourabh Manjhi",
+                     "post":  "Quizzing Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604675/Sourabh_Manjhi_Quizzer_ghpgvi.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Gati Goyal",
+                     "post":  "Administrative Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604674/Gati_Goyal_Executive_sckpns.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Tanmay Chhajed",
+                     "post":  "Administrative Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604674/tanmay_chhajed_photographer_ca2eb8.png",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Shobhit Gupta",
+                     "post":  "Sponsorship and Marketing Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604669/shobhitgupta_executive_gt3opn.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Puru Yadav",
+                     "post":  "Sponsorship and Marketing Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604673/Puru_Yadav_Executive_wt6pp7.jpg",
                      "linkedIn":  "",
                      "year":  "3rd"
                  },
                  {
-                     "name":  "Surya",
-                     "post":  "Content Writing Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395763/surya_quizzer_e46n1o.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/prakriti-sharma-764671278/",
+                     "name":  "Ansh Palod",
+                     "post":  "Sponsorship and Marketing Head",
+                     "fileId":  "",
+                     "linkedIn":  "https://www.linkedin.com/in/",
                      "year":  "3rd"
                  },
                  {
-                     "name":  "Ashish",
+                     "name":  "Kartikeya Pandey",
+                     "post":  "Quizzing Research and Content Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604672/Kartikeya_Pandey_Quizzer_t775p5.jpg",
+                     "linkedIn":  "",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Prem Shankar Upadhyay",
+                     "post":  "Quizzing Research and Content Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604672/Prem_Shankar_Upadhyay_Quizzer_pyqhxq.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Naman Jesani",
+                     "post":  "Quizzing Research and Content Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604677/Naman_Jesani_Quizzer_mcpamy.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 
+                 {
+                     "name":  "Gunjan Patre",
+                     "post":  "Event Management Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604673/Gunjan_Parte_Executive_rshlmv.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Khushi Rajbhar",
+                     "post":  "Event Management Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604669/KhushiRajbhar_Executive_pvhz2f.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Jalaj Singh Bais",
+                     "post":  "Event Management Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604676/Jalaj_Singh_Bais_Web_Developer_ua9e4c.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Vinamra Jain",
+                     "post":  "Public Relations and Outreach Head",
+                     "fileId":  "",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Arnavi Diwan",
+                     "post":  "Public Relations and Outreach Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604675/ArnaviDiwan_CW_fwltah.jpg",
+                     "linkedIn":  "",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Tarun Rajdev",
+                     "post":  "Logistics and operations Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604673/Tarun_Rajdev_Executive_x72iz1.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Arjun Kourav",
+                     "post":  "Logistics and operations Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604671/Arjunkourav_Executive_ivumbu.jpg",
+                     "linkedIn":  "",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Ali Asgar",
+                     "post":  "Finance Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604669/Aliasgar_Quizzer__cp7x5m.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Mahak Varshney",
+                     "post":  "Finance Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604671/Mahak_Varshney_Executive_mg7qvp.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Raghav Verma",
+                     "post":  "Technical Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604677/Raghav_Verma_Web_Developer_rnszkw.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Aksh Shah",
+                     "post":  "Technical Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604669/IMG_20260628_232413_gqrmgz.png",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Harini Bhumula",
+                     "post":  "Designing Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604669/harini_bhumula_designer_u74axm.png",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Pragati Jindal",
+                     "post":  "Designing Head",
+                     "fileId":  "",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Ayush Narganwe",
                      "post":  "Social Media Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395769/Ashish_VE_ulk12i.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/ashish-maheshwar-336876290/",
+                     "fileId":  "",
+                     "linkedIn":  "https://www.linkedin.com/in/",
                      "year":  "3rd"
                  },
                  {
-                     "name":  "Aditya Sen",
+                     "name":  "Aayushi Mathur",
+                     "post":  "Social Media Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604673/Aayushi_Mathur_VideoEditor_qtob8q.jpg",
+                     "linkedIn":  "https://www.linkedin.com/in/",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "Kratik Singh Kushwah",
                      "post":  "Video Editing Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395774/Aaditya_Sen_oeiriq.png",
-                     "linkedIn":  "https://www.linkedin.com/in/adityasen2/",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604671/Kratik_Singh_Kushwah_Video_Editor_mdmnxh.jpg",
+                     "linkedIn":  "",
                      "year":  "3rd"
                  },
                  {
-                     "name":  "Arushi Sagar",
-                     "post":  "Photography Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395759/Arushi_Sagar_Photographer_wsphep.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/arushi-sagar-155461296/",
+                     "name":  "Vaishnav Ambilpur",
+                     "post":  "Content Writing Head",
+                     "fileId":  "https://res.cloudinary.com/rwvgxwxi/image/upload/v1785604675/Vaishnav_Ambilpur_CW_m068ys.png",
+                     "linkedIn":  "",
                      "year":  "3rd"
                  },
                  {
-                     "name":  "Lakshya Singh",
+                     "name":  "",
+                     "post":  "Alumini Convener",
+                     "fileId":  "",
+                     "linkedIn":  "",
+                     "year":  "3rd"
+                 },
+                 {
+                     "name":  "",
                      "post":  "Photography Head",
-                     "fileId":  "https://res.cloudinary.com/dajbfxkin/image/upload/q_auto:low/v1756395767/Lakshya_Singh_Photographer_vzrtuv.jpg",
-                     "linkedIn":  "https://www.linkedin.com/in/lakshya-singh-3466bb324/",
+                     "fileId":  "",
+                     "linkedIn":  "",
                      "year":  "3rd"
                  }
              ],
