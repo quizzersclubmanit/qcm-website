@@ -2,9 +2,7 @@
 
 // Use environment variable when available; otherwise fallback to deployed backend
 // Based on testing, the working backend is https://qcm-backend-ln5c.onrender.com/api
-const API_BASE_URL = (import.meta && import.meta.env && import.meta.env.VITE_API_BASE_URL)
-  ? `${import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '')}/api`
-  : '/api'
+const API_BASE_URL = '/api'
 
 console.log('DB Service initialized with API_BASE_URL:', API_BASE_URL)
 console.log('Environment check:', {
