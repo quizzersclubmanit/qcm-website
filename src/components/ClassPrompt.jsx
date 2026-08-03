@@ -26,7 +26,7 @@ const ClassPrompt = () => {
       }
       try {
         const response = await fetch(
-          `https://qcm-backend-ln5c.onrender.com/api/user/scores?userId=${userId}`,
+          `/api/user/scores?userId=${userId}`,
           {
             method: "GET",
             headers: {
@@ -57,7 +57,7 @@ const ClassPrompt = () => {
     setIsProcessing(true)
     const userId = data.$id || data.id || data.userId
     try {
-      await fetch(`https://qcm-backend-ln5c.onrender.com/api/user/profile`, {
+      await fetch(`/api/user/profile`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
