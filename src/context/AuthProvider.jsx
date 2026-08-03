@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch(`https://qcm-backend-ln5c.onrender.com/api/auth/me`, {
+        const res = await fetch(`/api/auth/me`, {
           method: "GET",
           credentials: "include", // send JWT cookie
         }) 

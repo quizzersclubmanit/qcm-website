@@ -1,6 +1,6 @@
 // Storage service - Connected to backend API
 
-const API_BASE_URL = 'https://qcm-backend-ln5c.onrender.com/api'
+const API_BASE_URL = '/api'
 
 class Store {
   // Helper function to get token
