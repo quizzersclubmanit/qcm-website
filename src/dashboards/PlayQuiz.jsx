@@ -969,7 +969,7 @@ const PlayQuiz = () => {
         const token = localStorage.getItem('authToken') || localStorage.getItem('token')
         console.log('Using direct fetch with token:', !!token)
 
-        const response = await fetch('https://qcm-backend-ln5c.onrender.com/api/quiz', {
+        const response = await fetch('/api/quiz', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

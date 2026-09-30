@@ -39,7 +39,7 @@ const Instructions = ({ sec }) => {
     const check = async () => {
       try {
         const token = localStorage.getItem('authToken') || localStorage.getItem('token')
-        const res = await fetch(`https://qcm-backend-ln5c.onrender.com/api/quiz/leaderboard?userId=${userId}&section=${Number(sec)}`, {
+        const res = await fetch(`/api/quiz/leaderboard?userId=${userId}&section=${Number(sec)}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
