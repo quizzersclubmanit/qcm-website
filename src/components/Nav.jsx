@@ -185,14 +185,25 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               onClick={() => {
                 navigate("/signin")
               }}
-            />
+            />*/
             <Button
               label="Sign Up"
-              className="poppins-regular py-3 px-4 flex items-center justify-center  text-sm lg:text-white border-black rounded-3xl border-2 lg:border-white overflow-y-hidden hover:bg-blue-50 hover:text-black"
+              className="poppins-semibold
+    py-3 px-5
+    text-sm
+    font-semibold
+    flex items-center justify-center
+    text-[#FFB000]
+    rounded-3xl
+    border-2 border-[#FFB000]
+    bg-transparent
+    hover:bg-[#FFB000]
+    hover:text-[#163D4D]
+    transition-all duration-300"
               onClick={() => {
                 navigate("/signup")
               }}
-            /> */}
+            /> }
           </div>
         )}
       </nav>

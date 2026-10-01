@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import "./index.css"
 import Layout from "./Layout.jsx"
+import SignupPage from "./components/SignupPage.jsx"
 import {
   RouterProvider,
   createBrowserRouter,
@@ -31,7 +32,8 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
       <Route path="team" element={<Team />} />
-      <Route path="signup" element={<Auth label="signup" />} />
+      <Route path="signup" element={<SignupPage />} />
+
       <Route path="signin" element={<Auth label="login" />} />
       <Route path="reset-password" element={<Auth label="update-password" />} />
       <Route path="login" element={<Auth label="login" />} />
