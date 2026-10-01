@@ -1,0 +1,120 @@
+/* QBIT'26 registration: every rule is scoped under .qr / .qr-page so nothing here can change the rest of the site */
+.qr{--orange:#FF9800;--teal:#1E7A94;--paper:#F3F7F9;--ink:#10242F;--sub:#4A6472;--line:#CBD8DF;--err:#B3261E;--ok:#1B7F4B;
+  font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);line-height:1.5;text-align:left}
+.qr *,.qr *::before,.qr *::after{box-sizing:border-box}
+.qr .card{container-type:inline-size;background:var(--paper);color:var(--ink);border-radius:22px;padding:26px 20px;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+@media (min-width:600px){
+.qr .card{padding:34px 32px}
+}
+.qr h2{margin:0 0 6px;font-size:1.4rem;font-weight:700}
+.qr h3.sec{display:flex;align-items:baseline;justify-content:space-between;margin:26px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--ink);font-size:1rem;font-weight:600}
+.qr h3.sec span{font-size:.82rem;font-weight:500;color:var(--sub)}
+.qr .grid{display:grid;gap:12px 16px;grid-template-columns:minmax(0,1fr)}
+@container (min-width:480px){
+.qr .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.qr .field{grid-column:1/-1}
+.qr .field.half{grid-column:auto}
+}
+.qr .field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.qr label{font-size:.85rem;font-weight:500;color:#2E4756}
+.qr input{font:inherit;font-size:.95rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;min-height:46px;width:100%;min-width:0}
+.qr input::placeholder{color:#8AA0AD}
+.qr input:hover{border-color:#9FB3BF}
+.qr input:focus-visible, .qr button:focus-visible, .qr a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.qr input:focus-visible{border-color:var(--teal)}
+.qr .field.bad input{border-color:var(--err)}
+.qr .msg{margin:0;min-height:1.1em;font-size:.78rem;color:var(--err)}
+.qr .banner{margin:14px 0 0;padding:10px 14px;border-radius:10px;background:#FDECEA;border:1px solid var(--err);color:var(--err);font-size:.88rem}
+.qr .member{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px 6px;margin-top:14px}
+.qr .mhead{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.qr .num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:.85rem;font-weight:600}
+.qr .mtitle{font-weight:600;font-size:.95rem}
+.qr .done{animation:qr-rise .35s ease-out}
+@keyframes qr-rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.qr .tick{width:52px;height:52px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font-size:1.7rem;font-weight:700;margin-bottom:14px}
+.qr dl{margin:16px 0 0;display:grid;gap:8px;font-size:.92rem}
+.qr dl .row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px}
+.qr dt{color:var(--sub)}
+.qr dd{margin:0;font-weight:600;word-break:break-word}
+.qr .summary-member{margin-top:12px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:12px;font-size:.9rem}
+.qr .summary-member p{margin:0;word-break:break-word;color:var(--sub)}
+.qr .summary-member .who{font-weight:600;color:var(--ink);margin-bottom:2px}
+@media (prefers-reduced-motion:reduce){
+.qr .done{animation:none}
+}
+
+/* page shell */
+.qr-page{position:relative;min-height:100vh;color:#fff;overflow-x:hidden;
+  background:radial-gradient(ellipse at 85% 40%,#1F86A3 0%,rgba(31,134,163,0) 55%),linear-gradient(120deg,#22404F 0%,#25566A 55%,#1E6F88 100%);
+  background-attachment:fixed}
+.qr-page .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
+.qr-page .logo{width:46px;height:46px;display:block}
+.qr-page a:focus-visible{outline:3px solid #FF9800;outline-offset:2px}
+.qr-page .bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.qr-page .bg img{position:absolute;left:0;top:0;width:min(560px,70vw);height:auto;opacity:.5}
+.qr-page .page{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 20px 64px}
+.qr-page .layout{display:grid;gap:28px;padding-top:8px;align-items:start}
+@media (min-width:960px){
+.qr-page .layout{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;padding-top:28px}
+.qr-page .intro{position:sticky;top:28px}
+}
+.qr-page h1{margin:0;font-weight:700;font-size:clamp(3.4rem,12vw,6.6rem);line-height:.95;letter-spacing:-.03em}
+.qr-page .club{margin:12px 0 0;font-size:1.3rem;font-weight:600;color:var(--orange)}
+.qr-page .lede{margin:16px 0 0;max-width:36ch;color:rgba(255,255,255,.88)}
+.qr-page .meta{display:flex;flex-wrap:wrap;gap:8px 32px;margin:22px 0 0}
+.qr-page .meta dt{font-size:.8rem;color:rgba(255,255,255,.65)}
+.qr-page .meta dd{margin:0;font-weight:600}
+.qr-page .facts{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:10px;font-size:.95rem}
+.qr-page .facts li{display:flex;gap:12px;align-items:baseline}
+.qr-page .facts li::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--orange);transform:translateY(-1px)}
+.qr-page .art{display:none;position:relative;width:300px;margin-top:28px}
+.qr-page .art .q{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.3))}
+.qr-page .art .bulb{position:absolute;left:32%;top:30%;width:36%;height:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))}
+@media (min-width:960px) and (min-height:880px){
+.qr-page .art{display:block;margin-bottom:70px}
+}
+
+/* ---------- buttons ---------- */
+.qr button,.qr-page .pill{-webkit-tap-highlight-color:transparent;user-select:none;
+  transition:transform .15s ease,background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease,filter .2s ease}
+
+/* main action */
+.qr button.go{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:26px;padding:15px 28px;min-height:56px;
+  font:inherit;font-weight:600;font-size:1rem;letter-spacing:.01em;color:var(--ink);background:var(--orange);border:0;border-radius:999px;cursor:pointer;
+  box-shadow:0 8px 20px color-mix(in srgb,var(--orange) 38%,transparent)}
+.qr button.go::after{content:"\2192";font-size:1.15em;transition:transform .2s ease}
+.qr button.go:hover{filter:brightness(1.06);transform:translateY(-2px);box-shadow:0 12px 26px color-mix(in srgb,var(--orange) 46%,transparent)}
+.qr button.go:hover::after{transform:translateX(4px)}
+.qr button.go:active{transform:translateY(0) scale(.985);box-shadow:0 4px 10px color-mix(in srgb,var(--orange) 34%,transparent)}
+.qr button.go:disabled{opacity:.65;cursor:wait;transform:none;filter:none;box-shadow:none}
+.qr button.go:disabled::after{content:none}
+
+/* outlined buttons (success screen) */
+.qr button.alt{display:inline-flex;align-items:center;justify-content:center;margin:20px 10px 0 0;padding:12px 28px;min-height:48px;
+  font:inherit;font-weight:600;font-size:.95rem;color:var(--teal);background:transparent;border:1.5px solid var(--teal);border-radius:999px;cursor:pointer}
+.qr button.alt:hover{background:var(--teal);color:#fff;transform:translateY(-1px)}
+.qr button.alt:active{transform:translateY(0) scale(.985)}
+
+/* add member (also has the .alt class, so this block must stay below it) */
+.qr button.add{display:flex;width:100%;margin:16px 0 0;padding:13px 20px;min-height:52px;font-size:.95rem;
+  color:var(--teal);background:rgba(30,122,148,.06);border:1.5px dashed var(--teal);border-radius:14px}
+.qr button.add:hover{color:var(--teal);background:rgba(30,122,148,.13);border-style:solid;transform:translateY(-1px)}
+.qr button.add:active{transform:translateY(0) scale(.99)}
+
+/* remove member */
+.qr button.remove{margin-left:auto;padding:7px 14px;min-height:34px;font:inherit;font-size:.8rem;font-weight:600;
+  color:var(--err);background:rgba(179,38,30,.08);border:1px solid transparent;border-radius:999px;cursor:pointer}
+.qr button.remove:hover{background:rgba(179,38,30,.15);border-color:rgba(179,38,30,.35)}
+.qr button.remove:active{transform:scale(.97)}
+
+/* "Back to website" pill */
+.qr-page .pill{display:inline-flex;align-items:center;justify-content:center;padding:11px 28px;min-height:44px;
+  color:#fff;text-decoration:none;font-weight:500;font-size:.92rem;border:1.5px solid #fff;border-radius:999px}
+.qr-page .pill:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.qr-page .pill:active{transform:scale(.97)}
+
+@media (prefers-reduced-motion:reduce){
+.qr button,.qr-page .pill,.qr button.go::after{transition:none}
+.qr button:hover,.qr button:active,.qr-page .pill:active{transform:none}
+.qr button.go:hover::after{transform:none}
+}
