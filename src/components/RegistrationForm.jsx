@@ -5,7 +5,7 @@ export const MIN_MEMBERS = 4;
 export const MAX_MEMBERS = 4;
 
 // Address of your website's backend, with no trailing slash (use '' if the site and backend share one address).
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://api.quizzersclub.com';
 // Path of the signup route in auth.js: the prefix auth.js is mounted at in your server, then /signup
 const SIGNUP_PATH = '/api/auth/signup';
 
