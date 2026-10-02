@@ -5,7 +5,10 @@ export const MIN_MEMBERS = 4;
 export const MAX_MEMBERS = 4;
 
 // Address of your website's backend, with no trailing slash (use '' if the site and backend share one address).
-const API_URL = 'https://api.quizzersclub.com';
+const API_URL =
+  import.meta && import.meta.env && import.meta.env.VITE_API_BASE_URL
+    ? import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '')
+    : '';
 // Path of the signup route in auth.js: the prefix auth.js is mounted at in your server, then /signup
 const SIGNUP_PATH = '/api/auth/signup';
 
@@ -117,6 +120,27 @@ export default function RegistrationForm({ onClose, closeLabel }) {
       const msg = check(k, valueOf(k));
       if (msg) found[k] = msg;
     });
+
+    // Validate duplicate contact details among team members
+    const seenEmails = new Set();
+    const seenPhones = new Set();
+    members.forEach((m, i) => {
+      const em = m.email.trim().toLowerCase();
+      const ph = m.phone.trim().replace(/\D/g, '').slice(-10);
+      if (em) {
+        if (seenEmails.has(em)) {
+          found[`members.${i}.email`] = 'Duplicate email: Each member must have a distinct email.';
+        }
+        seenEmails.add(em);
+      }
+      if (ph.length === 10) {
+        if (seenPhones.has(ph)) {
+          found[`members.${i}.phone`] = 'Duplicate phone: Each member must have a distinct phone number.';
+        }
+        seenPhones.add(ph);
+      }
+    });
+
     setErrors(found);
     const firstBad = keys.find((k) => found[k]);
     if (firstBad) {
@@ -139,7 +163,12 @@ export default function RegistrationForm({ onClose, closeLabel }) {
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok) {
-        setSubmitted(payload);
+        setSubmitted({
+          ...payload,
+          id: data.id,
+          registrationCode: data.registrationCode || (data.team && data.team.registrationCode) || 'CONFIRMED',
+          createdAt: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
+        });
       } else {
         const serverErrors = data.errors || {};
         setErrors(serverErrors);
@@ -162,15 +191,70 @@ export default function RegistrationForm({ onClose, closeLabel }) {
     setSubmitted(null);
   };
 
+  const copyDetails = async () => {
+    if (!submitted) return;
+    const text = [
+      `QBIT'26 Registration Pass`,
+      `Pass Code: ${submitted.registrationCode}`,
+      `Team Name: ${submitted.teamName}`,
+      `College: ${submitted.college}`,
+      `Members:`,
+      ...submitted.members.map((m, i) => `  ${i + 1}. ${m.name} (${m.phone}, ${m.email}) - ${m.course}`),
+    ].join('\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('Registration pass copied to clipboard!');
+    } catch {
+      // fallback
+    }
+  };
+
   if (submitted) {
     return (
       <section className="card done" role="status" aria-live="polite">
-        <div className="tick" aria-hidden="true">&#10003;</div>
-        <h2>Team registered</h2>
-        <dl>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div className="tick" aria-hidden="true" style={{ margin: 0 }}>&#10003;</div>
+            <div>
+              <h2 style={{ margin: 0 }}>Registration Confirmed!</h2>
+              <p style={{ margin: 0, fontSize: '.88rem', color: 'var(--sub)' }}>Quizzers' Club NIT Bhopal &middot; QBIT'26</p>
+            </div>
+          </div>
+          {submitted.registrationCode && (
+            <div style={{
+              background: '#EFF6FF',
+              border: '2px solid #2563EB',
+              borderRadius: 12,
+              padding: '6px 14px',
+              textAlign: 'center'
+            }}>
+              <span style={{ fontSize: '.75rem', fontWeight: 600, color: '#1D4ED8', textTransform: 'uppercase', letterSpacing: '.05em', display: 'block' }}>Pass Code</span>
+              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1E3A8A', fontFamily: 'monospace' }}>{submitted.registrationCode}</span>
+            </div>
+          )}
+        </div>
+
+        <div style={{
+          marginTop: 18,
+          padding: '12px 16px',
+          background: '#F0FDF4',
+          border: '1px solid #BBF7D0',
+          borderRadius: 12,
+          fontSize: '.88rem',
+          color: '#166534'
+        }}>
+          <strong>Important:</strong> Please save or print this registration slip. Your team will need this Pass Code at the check-in desk at MANIT Bhopal.
+        </div>
+
+        <dl style={{ marginTop: 16 }}>
           <div className="row"><dt>Team name</dt><dd>{submitted.teamName}</dd></div>
           <div className="row"><dt>College</dt><dd>{submitted.college}</dd></div>
+          {submitted.registrationCode && (
+            <div className="row"><dt>Pass Code</dt><dd style={{ color: '#2563EB' }}>{submitted.registrationCode}</dd></div>
+          )}
         </dl>
+
+        <h3 style={{ margin: '20px 0 8px', fontSize: '.95rem', fontWeight: 600 }}>Team Members (4)</h3>
         {submitted.members.map((m, i) => (
           <div className="summary-member" key={i}>
             <p className="who">{`Member ${i + 1}`}: {m.name}</p>
@@ -178,8 +262,19 @@ export default function RegistrationForm({ onClose, closeLabel }) {
             <p>{m.course}</p>
           </div>
         ))}
-        <button className="alt" type="button" onClick={reset}>Register another team</button>
-        {onClose && <button className="alt" type="button" onClick={onClose}>{closeLabel || 'Close'}</button>}
+
+        <div className="no-print" style={{ marginTop: 24, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+          <button className="alt" type="button" onClick={() => window.print()} style={{ background: '#2563EB', color: '#fff', border: 'none' }}>
+            Print / Save Pass (PDF)
+          </button>
+          <button className="alt" type="button" onClick={copyDetails}>
+            Copy Details
+          </button>
+          <button className="alt" type="button" onClick={reset}>
+            Register another team
+          </button>
+          {onClose && <button className="alt" type="button" onClick={onClose}>{closeLabel || 'Back to Website'}</button>}
+        </div>
       </section>
     );
   }
@@ -204,15 +299,12 @@ export default function RegistrationForm({ onClose, closeLabel }) {
           ))}
         </div>
 
-        <h3 className="sec">Members <span>{members.length} of {MAX_MEMBERS}</span></h3>
+        <h3 className="sec">Members <span>All 4 members required</span></h3>
         {members.map((m, i) => (
           <div className="member" role="group" aria-label={`Member ${i + 1}`} key={i}>
             <div className="mhead">
               <span className="num" aria-hidden="true">{i + 1}</span>
               <span className="mtitle">{`Member ${i + 1}`}</span>
-              {i >= MIN_MEMBERS && (
-                <button type="button" className="remove" onClick={() => removeMember(i)}>Remove</button>
-              )}
             </div>
             <div className="grid">
               {MEMBER_FIELDS.map((f) => {
@@ -234,11 +326,6 @@ export default function RegistrationForm({ onClose, closeLabel }) {
         ))}
 
         {errors.members && <p className="msg">{errors.members}</p>}
-        {members.length < MAX_MEMBERS && (
-          <button type="button" className="alt add" onClick={addMember}>
-            + Add member ({members.length}/{MAX_MEMBERS})
-          </button>
-        )}
 
         <button className="go" type="submit" disabled={submitting}>
           {submitting ? 'Registering...' : 'Register team'}

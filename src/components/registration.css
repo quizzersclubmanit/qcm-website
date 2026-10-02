@@ -1,5 +1,5 @@
 /* QBIT'26 registration: every rule is scoped under .qr / .qr-page so nothing here can change the rest of the site */
-.qr{--orange:#FF9800;--teal:#1E7A94;--paper:#F3F7F9;--ink:#10242F;--sub:#4A6472;--line:#CBD8DF;--err:#B3261E;--ok:#1B7F4B;
+.qr{--blue-primary:#2563EB;--blue-dark:#1D4ED8;--blue-light:#60A5FA;--teal:#1E7A94;--paper:#F3F7F9;--ink:#10242F;--sub:#4A6472;--line:#CBD8DF;--err:#B3261E;--ok:#1B7F4B;
   font-family:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);line-height:1.5;text-align:left}
 .qr *,.qr *::before,.qr *::after{box-sizing:border-box}
 .qr .card{container-type:inline-size;background:var(--paper);color:var(--ink);border-radius:22px;padding:26px 20px;box-shadow:0 24px 60px rgba(0,0,0,.3)}
@@ -20,8 +20,8 @@
 .qr input{font:inherit;font-size:.95rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;min-height:46px;width:100%;min-width:0}
 .qr input::placeholder{color:#8AA0AD}
 .qr input:hover{border-color:#9FB3BF}
-.qr input:focus-visible, .qr button:focus-visible, .qr a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
-.qr input:focus-visible{border-color:var(--teal)}
+.qr input:focus-visible, .qr button:focus-visible, .qr a:focus-visible{outline:3px solid var(--blue-light);outline-offset:2px}
+.qr input:focus-visible{border-color:var(--blue-primary)}
 .qr .field.bad input{border-color:var(--err)}
 .qr .msg{margin:0;min-height:1.1em;font-size:.78rem;color:var(--err)}
 .qr .banner{margin:14px 0 0;padding:10px 14px;border-radius:10px;background:#FDECEA;border:1px solid var(--err);color:var(--err);font-size:.88rem}
@@ -44,29 +44,32 @@
 }
 
 /* page shell */
-.qr-page{position:relative;min-height:100vh;color:#fff;overflow-x:hidden;
+.qr-page{position:relative;min-height:100vh;color:#fff;overflow-x:clip;
   background:radial-gradient(ellipse at 85% 40%,#1F86A3 0%,rgba(31,134,163,0) 55%),linear-gradient(120deg,#22404F 0%,#25566A 55%,#1E6F88 100%);
   background-attachment:fixed}
 .qr-page .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
 .qr-page .logo{width:46px;height:46px;display:block}
-.qr-page a:focus-visible{outline:3px solid #FF9800;outline-offset:2px}
+.qr-page a:focus-visible{outline:3px solid #60A5FA;outline-offset:2px}
 .qr-page .bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 .qr-page .bg img{position:absolute;left:0;top:0;width:min(560px,70vw);height:auto;opacity:.5}
-.qr-page .page{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 20px 64px}
+.qr-page .page{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 20px 64px}
 .qr-page .layout{display:grid;gap:28px;padding-top:8px;align-items:start}
-@media (min-width:960px){
-.qr-page .layout{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;padding-top:28px}
-.qr-page .intro{position:sticky;top:28px}
+@media (min-width:768px){
+.qr-page .layout{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:40px;padding-top:24px;align-items:start}
+.qr-page .intro{position:sticky;top:32px;align-self:start}
+}
+@media (min-width:1024px){
+.qr-page .layout{gap:56px;padding-top:28px}
 }
 .qr-page h1{margin:0;font-weight:700;font-size:clamp(3.4rem,12vw,6.6rem);line-height:.95;letter-spacing:-.03em}
-.qr-page .club{margin:12px 0 0;font-size:1.3rem;font-weight:600;color:var(--orange)}
+.qr-page .club{margin:12px 0 0;font-size:1.3rem;font-weight:600;color:var(--blue-light)}
 .qr-page .lede{margin:16px 0 0;max-width:36ch;color:rgba(255,255,255,.88)}
 .qr-page .meta{display:flex;flex-wrap:wrap;gap:8px 32px;margin:22px 0 0}
 .qr-page .meta dt{font-size:.8rem;color:rgba(255,255,255,.65)}
 .qr-page .meta dd{margin:0;font-weight:600}
 .qr-page .facts{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:10px;font-size:.95rem}
 .qr-page .facts li{display:flex;gap:12px;align-items:baseline}
-.qr-page .facts li::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--orange);transform:translateY(-1px)}
+.qr-page .facts li::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--blue-light);transform:translateY(-1px)}
 .qr-page .art{display:none;position:relative;width:300px;margin-top:28px}
 .qr-page .art .q{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.3))}
 .qr-page .art .bulb{position:absolute;left:32%;top:30%;width:36%;height:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))}
@@ -80,25 +83,25 @@
 
 /* main action */
 .qr button.go{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:26px;padding:15px 28px;min-height:56px;
-  font:inherit;font-weight:600;font-size:1rem;letter-spacing:.01em;color:var(--ink);background:var(--orange);border:0;border-radius:999px;cursor:pointer;
-  box-shadow:0 8px 20px color-mix(in srgb,var(--orange) 38%,transparent)}
+  font:inherit;font-weight:600;font-size:1rem;letter-spacing:.01em;color:#fff;background:var(--blue-primary);border:0;border-radius:999px;cursor:pointer;
+  box-shadow:0 8px 20px rgba(37,99,235,0.35)}
 .qr button.go::after{content:"\2192";font-size:1.15em;transition:transform .2s ease}
-.qr button.go:hover{filter:brightness(1.06);transform:translateY(-2px);box-shadow:0 12px 26px color-mix(in srgb,var(--orange) 46%,transparent)}
+.qr button.go:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 12px 26px rgba(37,99,235,0.45)}
 .qr button.go:hover::after{transform:translateX(4px)}
-.qr button.go:active{transform:translateY(0) scale(.985);box-shadow:0 4px 10px color-mix(in srgb,var(--orange) 34%,transparent)}
+.qr button.go:active{transform:translateY(0) scale(.985);box-shadow:0 4px 10px rgba(37,99,235,0.25)}
 .qr button.go:disabled{opacity:.65;cursor:wait;transform:none;filter:none;box-shadow:none}
 .qr button.go:disabled::after{content:none}
 
 /* outlined buttons (success screen) */
-.qr button.alt{display:inline-flex;align-items:center;justify-content:center;margin:20px 10px 0 0;padding:12px 28px;min-height:48px;
-  font:inherit;font-weight:600;font-size:.95rem;color:var(--teal);background:transparent;border:1.5px solid var(--teal);border-radius:999px;cursor:pointer}
-.qr button.alt:hover{background:var(--teal);color:#fff;transform:translateY(-1px)}
+.qr button.alt{display:inline-flex;align-items:center;justify-content:center;margin:12px 10px 0 0;padding:12px 24px;min-height:46px;
+  font:inherit;font-weight:600;font-size:.92rem;color:var(--blue-primary);background:#fff;border:1.5px solid var(--blue-primary);border-radius:999px;cursor:pointer}
+.qr button.alt:hover{background:var(--blue-primary);color:#fff;transform:translateY(-1px)}
 .qr button.alt:active{transform:translateY(0) scale(.985)}
 
 /* add member (also has the .alt class, so this block must stay below it) */
 .qr button.add{display:flex;width:100%;margin:16px 0 0;padding:13px 20px;min-height:52px;font-size:.95rem;
-  color:var(--teal);background:rgba(30,122,148,.06);border:1.5px dashed var(--teal);border-radius:14px}
-.qr button.add:hover{color:var(--teal);background:rgba(30,122,148,.13);border-style:solid;transform:translateY(-1px)}
+  color:var(--blue-primary);background:rgba(37,99,235,.06);border:1.5px dashed var(--blue-primary);border-radius:14px}
+.qr button.add:hover{color:var(--blue-primary);background:rgba(37,99,235,.13);border-style:solid;transform:translateY(-1px)}
 .qr button.add:active{transform:translateY(0) scale(.99)}
 
 /* remove member */
@@ -110,11 +113,20 @@
 /* "Back to website" pill */
 .qr-page .pill{display:inline-flex;align-items:center;justify-content:center;padding:11px 28px;min-height:44px;
   color:#fff;text-decoration:none;font-weight:500;font-size:.92rem;border:1.5px solid #fff;border-radius:999px}
-.qr-page .pill:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.qr-page .pill:hover{background:#fff;border-color:#fff;color:var(--ink)}
 .qr-page .pill:active{transform:scale(.97)}
 
 @media (prefers-reduced-motion:reduce){
 .qr button,.qr-page .pill,.qr button.go::after{transition:none}
 .qr button:hover,.qr button:active,.qr-page .pill:active{transform:none}
 .qr button.go:hover::after{transform:none}
+}
+
+/* Printable Registration Slip / Admit Pass */
+@media print {
+  body, .qr-page { background: #fff !important; color: #111 !important; padding: 0 !important; }
+  .qr-page .bg, .qr-page .topbar, .qr-page .intro, .qr button, .no-print { display: none !important; }
+  .qr-page .page { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+  .qr-page .layout { display: block !important; }
+  .qr .card { box-shadow: none !important; border: 2px solid #2563EB !important; border-radius: 8px !important; padding: 24px !important; }
 }
