@@ -1,5 +1,5 @@
-import { Container, Nav, Modal, Logo } from "./components"
-import { RxHamburgerMenu, RxCross1 } from "react-icons/rx"
+import { Container, Nav, MobileDrawer, Logo } from "./components"
+import { RxHamburgerMenu } from "react-icons/rx"
 import { useState, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -46,7 +46,7 @@ const Header = () => {
   return (
     <Container
       element="header"
-      className="w-screen fixed z-10 flex justify-center"
+      className="w-screen fixed top-0 left-0 z-10 flex justify-center"
     >
       <div
         ref={headRef}
@@ -59,26 +59,14 @@ const Header = () => {
         />
 
         <Nav ref={navRef} className="hidden md:flex" />
-        {showTabModal ? (
-          <RxCross1
-            className="block md:hidden text-xl text-white cursor-pointer"
-            onClick={toggleModal}
-          />
-        ) : (
-          <RxHamburgerMenu
-            className="block md:hidden text-xl text-white cursor-pointer"
-            onClick={toggleModal}
-          />
-        )}
-        {showTabModal && (
-          <Modal setShowModal={setShowTabModal}>
-            <Nav
-              offModal={() => {
-                setShowTabModal(false)
-              }}
-            />
-          </Modal>
-        )}
+        <RxHamburgerMenu
+          className="block md:hidden text-xl text-white cursor-pointer"
+          onClick={toggleModal}
+        />
+        <MobileDrawer
+          open={showTabModal}
+          onClose={() => setShowTabModal(false)}
+        />
       </div>
     </Container>
   )

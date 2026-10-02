@@ -4,8 +4,8 @@ import './registration.css';
 import qcmLogo from '../assets/qcm-logo.png'
 import floatingMarks  from '../assets/floating-mark.png';
 
-// Fill these in when the details are final; empty values are hidden.
-const EVENT = { name: "QBIT'26", date: '', venue: '' };
+// Event details for QBIT'26
+const EVENT = { name: "QBIT'26", date: 'April 2026', venue: 'MANIT Bhopal Campus' };
 
 export default function SignupPage() {
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function SignupPage() {
             )}
 
             <ul className="facts">
-              <li>Teams of {MIN_MEMBERS} to {MAX_MEMBERS} members</li>
+              <li>Teams of 4 members</li>
               <li>One form per team, with every member's details</li>
               <li>Your confirmation appears as soon as you submit</li>
             </ul>

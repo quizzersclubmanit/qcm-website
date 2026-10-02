@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Container, SectionHead, Footer } from "../components/components"
+import { Container, SectionHead, Footer, Header } from "../components/components"
 import { team } from "../assets/qcmData.json"
 
 const Team = () => {
@@ -20,9 +20,12 @@ const Team = () => {
     >
       <Container
         id="team-gallery"
-        className="flex flex-col gap-5 items-center min-h-screen pb-8 px-2"
+        className="flex flex-col gap-5 items-center min-h-screen pb-8 px-2 pt-16 md:pt-[16vh]"
       >
-        <SectionHead label="Team" className="text-white" logo />
+        <Header />
+        <div className="md:hidden">
+          <SectionHead label="Team" className="text-white" logo />
+        </div>
 
         <div className="flex gap-4 mt-4 bg-white/20 p-2 rounded-full">
           <button

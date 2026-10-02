@@ -4,6 +4,7 @@ import authService from "../api/auth.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { login, logout, setData } from "../redux/user.slice"
+import { isStaffUser } from "../utils/authUtils"
 
 const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   const location = useLocation()
@@ -35,12 +36,12 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   ]
   const { data, loggedIn } = useSelector((state) => state.user)
   const name = data?.name?.split(" ")[0] || "User"
-  const isAdmin = data?.email === "admin@qcm.in"
+  const isAdmin = isStaffUser(data)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const logoRef = useRef(null)
   const [showDropDown, setShowDropDown] = useState(false)
-  const dropDownRef = useRef(null)
+  const anchorRef = useRef(null)
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
 
   useEffect(() => {
@@ -120,7 +121,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
             tab.to.startsWith("#") ? (
               <a
                 key={index}
-                href={tab.to}
+                href={`/${tab.to}`}
                 className="hover:text-yellow-400 transition-all text-base no-underline text-black 
                 border-2 rounded-[25px] py-[5px] px-[10px] 
                 md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
@@ -145,7 +146,7 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
           )}
         </div>
         {loggedIn ? (
-          <div className="flex sm:flex-row flex-col">
+          <div ref={anchorRef} className="flex sm:flex-row flex-col relative">
             {/* <Button
               label="IQC Preparation Booklet"
               onClick={() =>
@@ -160,54 +161,33 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               name={name}
               showDropDown={showDropDown}
               setShowDropDown={setShowDropDown}
-              ref={dropDownRef}
+            />
+            <DropDown
+              user={isAdmin ? "admin" : name}
+              visible={showDropDown}
+              onClose={() => setShowDropDown(false)}
+              anchorRef={anchorRef}
             />
           </div>
         ) : (
-          <div className="flex sm:flex-row flex-col gap-2">
-{/*             <Button
+          <div className="flex sm:flex-row flex-col gap-2 items-center">
+            <Button
               label="Login"
-              className="poppins-regular py-4 lg:py-2 lg:h-10 flex items-center justify-center px-5 text-sm text-white rounded-3xl border-2 overflow-y-hidden bg-blue-600 border-blue-600 hover:bg-transparent hover:text-gray hover:border-white"
+              className="poppins-medium py-2 px-4 text-sm flex items-center justify-center text-white/90 rounded-full border border-white/60 bg-transparent hover:bg-white hover:text-blue-900 transition-all duration-200"
               onClick={() => {
                 navigate("/signin")
               }}
             />
             <Button
               label="Sign Up"
-              className="poppins-regular py-3 lg:h-10 flex items-center px-4 text-sm border-black lg:text-white rounded-3xl border-2 lg:border-white overflow-y-hidden hover:bg-blue-50 hover:text-black"
-              onClick={() => {
-                navigate("/signup")
-              }} */}
-
-             {/* <Button
-              label="Login"
-              className="poppins-regular py-3 px-5 text-sm flex items-center justify-center text-white rounded-3xl border-2 overflow-y-hidden bg-blue-600 border-blue-600 hover:bg-transparent hover:text-gray hover:border-white"
-              onClick={() => {
-                navigate("/signin")
-              }}
-            />*/
-            <Button
-              label="Sign Up"
-              className="poppins-semibold
-    py-3 px-5
-    text-sm
-    font-semibold
-    flex items-center justify-center
-    text-[#FFB000]
-    rounded-3xl
-    border-2 border-[#FFB000]
-    bg-transparent
-    hover:bg-[#FFB000]
-    hover:text-[#163D4D]
-    transition-all duration-300"
+              className="poppins-semibold py-2 px-5 text-sm flex items-center justify-center text-white rounded-full bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-900/20 border border-blue-500 transition-all duration-200"
               onClick={() => {
                 navigate("/signup")
               }}
-            /> }
+            />
           </div>
         )}
       </nav>
-      <DropDown ref={dropDownRef} user={isAdmin ? "admin" : name} email={data?.email} visible={showDropDown} />
     </>
   )
 })

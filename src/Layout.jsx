@@ -7,13 +7,6 @@ import { Analytics } from "@vercel/analytics/react"
 const Layout = () => {
   const [showModal, setShowModal] = useState(false)
 
-  document.addEventListener("copy", (e) => {
-    e.preventDefault()
-  })
-
-  document.addEventListener("cut", (e) => {
-    e.preventDefault()
-  })
   // Trigger the modal after 1 seconds
   useEffect(() => {
     const timer = setTimeout(() => {

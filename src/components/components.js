@@ -23,6 +23,7 @@ import DropDown from "./DropDown"
 import NotAvailable from "./NotAvailable"
 import UserBtn from "./UserBtn"
 import Map from "./Map"
+import MobileDrawer from "./MobileDrawer"
 import Accordion from "./Accordion"
 import FAQs from "./FAQs"
 import Popup from "./Popup"
@@ -32,7 +33,6 @@ import ClassPrompt from "./ClassPrompt"
 import GreetingPoster from "./GreetingPoster"
 import RegistrationSuccess from "./RegistrationSuccess"
 import RegistrationSuccessHandler from "./RegistrationSuccessHandler"
-import QuizLivePoster from "./QuizPopup"
 
 export {
   Header,
@@ -60,6 +60,7 @@ export {
   NotAvailable,
   UserBtn,
   Map,
+  MobileDrawer,
   Accordion,
   FAQs,
   Popup,
@@ -68,6 +69,5 @@ export {
   ClassPrompt,
   GreetingPoster,
   RegistrationSuccess,
-  RegistrationSuccessHandler,
-  QuizLivePoster
+  RegistrationSuccessHandler
 }
