@@ -1,70 +1,101 @@
-import env from "../../constants"
-import storeService from "../api/store.service"
 import { sponsors } from "../assets/qcmData.json"
-import { Container, SectionHead } from "./components"
 
 const Sponsors = () => {
+  const renderSponsorCard = (brand, idx) => {
+    const brandName = brand.name || brand.brand || brand.company || `Sponsor ${idx + 1}`
+    const website = brand.website || "#"
+    const logo = brand.logo
+
+    return (
+      <a
+        key={`${brandName}-${idx}`}
+        href={website}
+        target="_blank"
+        rel="noreferrer"
+        className="group flex min-h-[82px] min-w-[120px] items-center justify-center rounded-md px-3 py-2 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_10px_25px_rgba(0,0,0,0.12)]"
+        aria-label={brandName}
+      >
+        {logo ? (
+          <img
+            src={logo}
+            alt={`${brandName} logo`}
+            className="max-h-[52px] w-auto max-w-[180px] object-contain opacity-100 transition duration-300 sm:max-h-[72px]"
+          />
+        ) : (
+          <span className="text-[clamp(1.3rem,2vw,2.4rem)] font-semibold tracking-[-0.04em] text-[#2a2a2a]">
+            {brandName}
+          </span>
+        )}
+      </a>
+    )
+  }
+
   return (
-    <Container
+    <section
       id="sponsors"
-      className="w-screen sm:px-[3.5vmax] p-[2vmax] sm:min-h-screen min-h-[70vh] gap-x-8 flex flex-col"
+      className="w-full bg-[#f2f2ee] px-4 py-10 sm:px-8 lg:px-16"
+      style={{ background: 'url("/bg-gradient.png") no-repeat center center / cover' }}
     >
-      <SectionHead label="Our Sponsors" className="mx-auto sm:mb-8 mb-3" />
-      <div className="flex flex-col">
-        {sponsors.map((sponsor, index) => {
-          if (!Array.isArray(sponsor))
+      <div className="mx-auto max-w-[1200px] rounded-[4px] bg-[#f5f5f2]/90 px-4 pb-10 pt-5 shadow-[0_0_0_1px_rgba(0,0,0,0.03)] backdrop-blur-[1px] sm:px-8 lg:px-10">
+        <div className="flex items-center justify-center">
+          <h2 className="text-center leading-[0.9] text-[#1b1b1b]">
+            <span className="block text-[clamp(2.7rem,5vw,6rem)] font-black tracking-[-0.06em]">
+              Special thanks
+            </span>
+            <span className="block text-[clamp(2.7rem,5vw,6rem)] font-black tracking-[-0.06em]">
+              to our <span className="italic text-[#3ab8b4] [font-family:'Londrina_Solid',cursive]">Sponsors</span>
+            </span>
+          </h2>
+        </div>
+
+        <div className="mt-6 flex flex-col gap-5">
+          {sponsors.map((sponsor, index) => {
+            if (!Array.isArray(sponsor)) {
+              return (
+                <div key={`${sponsor.category}-${index}`}>
+                  <div className="bg-[#5ac3c0] px-4 py-3 text-center">
+                    <p className="text-[0.9rem] font-black uppercase tracking-[0.08em] text-white sm:text-[1.7rem] [font-family:'Londrina_Solid',cursive]">
+                      {sponsor.category}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center justify-evenly gap-x-7 gap-y-6 px-3 py-6 sm:px-6 lg:px-8">
+                    {sponsor.brands.map((brand, idx) => renderSponsorCard(brand, idx))}
+                  </div>
+                </div>
+              )
+            }
+
             return (
-              <div key={index}>
-                <p className="text-3xl p-1 text-center font-semibold bg-[#2B7966] text-[#fff]">
-                  {sponsor.category}
-                </p>
-                <div className="flex justify-evenly items-center flex-wrap">
-                  {sponsor.brands.map((obj, idx) => (
-                    <a
-                      key={idx + Date.now()}
-                      href={obj.website}
-                      target="_blank"
-                      className="h-[20vh] mx-4 sm:mx-0 flex justify-center items-center border-2 border-black p-1 my-8 shadow-[10px_10px_18px_-1px_rgba(88,163,232,1)] hover:scale-110 transition-all duration-300"
-                    >
-                      <img
-                        src={obj.logo}
-                        alt={`${obj.brand} logo`}
-                        className="max-h-full h-20 md:h-50"
-                      />
-                    </a>
+              <div key={`row-${index}`} className="flex flex-col gap-5">
+                <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-3">
+                  {sponsor.map((item, idx) => (
+                    <div key={`${item.category}-${idx}`}>
+                      <div className="bg-[#5ac3c0] px-4 py-3 text-center">
+                        <p className="text-[0.9rem] font-black uppercase tracking-[0.08em] text-white sm:text-[1.7rem] [font-family:'Londrina_Solid',cursive]">
+                          {item.category}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-center px-3 py-6 sm:px-6 lg:px-8">
+                        {renderSponsorCard(
+                          {
+                            name: item.brand?.name || item.brand || item.category,
+                            logo: item.brand?.logo || item.logo,
+                            website: item.brand?.website || item.website
+                          },
+                          idx
+                        )}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
             )
-        })}
+          })}
+        </div>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3">
-        {sponsors.map((sponsor, index) => {
-          if (Array.isArray(sponsor))
-            return sponsor.map((obj, idx) => (
-              <div
-                key={index + idx + Date.now()}
-                className="flex flex-col items-center"
-              >
-                <p className="text-3xl w-full p-1 text-center font-semibold bg-[#2B7966] text-[#fff]">
-                  {obj.category}
-                </p>
-                <a
-                  href={obj.brand.website}
-                  target="_blank"
-                  className="h-[20vh] mx-4 sm:mx-0 flex justify-center items-center border-2 border-black p-1 my-8 shadow-[10px_10px_18px_-1px_rgba(88,163,232,1)] hover:scale-110 transition-all duration-300 w-fit"
-                >
-                  <img
-                    src={obj.brand.logo}
-                    alt={`${obj.brand.name} logo`}
-                    className="max-h-full "
-                  />
-                </a>
-              </div>
-            ))
-        })}
-      </div>
-    </Container>
+    </section>
   )
 }
 
