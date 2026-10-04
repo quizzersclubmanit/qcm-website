@@ -5,7 +5,15 @@ import qcmLogo from '../assets/qcm-logo.png'
 import floatingMarks  from '../assets/floating-mark.png';
 
 // Event details for QBIT'26
-const EVENT = { name: "QBIT'26", date: 'April 2026', venue: 'MANIT Bhopal Campus' };
+const EVENT = {
+  name: "QBIT'26",
+  date: '31 October 2026',
+  venue: 'MANIT Bhopal Campus',
+  contacts: [
+    { name: 'Sakshi Priya', phone: '8226872015' },
+    { name: 'Charunya Zerbade', phone: '7222928982' }
+  ]
+};
 
 export default function SignupPage() {
   useEffect(() => {
@@ -29,28 +37,36 @@ export default function SignupPage() {
           <a className="pill" href="/">Back to website</a>
         </div>
 
-        <div className="layout">
-          <header className="intro">
+        <div className="layout hero-layout">
+          <header className="intro hero-copy">
             <h1>{EVENT.name}</h1>
             <p className="club">Quizzers' Club NIT Bhopal</p>
             <p className="lede">Register your team for {EVENT.name}, the quiz event hosted by QCM.</p>
 
             {(EVENT.date || EVENT.venue) && (
-              <dl className="meta">
-                {EVENT.date && <div><dt>Date</dt><dd>{EVENT.date}</dd></div>}
-                {EVENT.venue && <div><dt>Venue</dt><dd>{EVENT.venue}</dd></div>}
-              </dl>
+              <div className="meta-grid">
+                {EVENT.date && (
+                  <div className="meta-block">
+                    <div className="meta-label">DATE</div>
+                    <div className="meta-value">{EVENT.date}</div>
+                  </div>
+                )}
+                {EVENT.venue && (
+                  <div className="meta-block">
+                    <div className="meta-label">VENUE</div>
+                    <div className="meta-value">{EVENT.venue}</div>
+                  </div>
+                )}
+              </div>
             )}
 
-            <ul className="facts">
-              <li>Teams of 4 members</li>
-              <li>One form per team, with every member's details</li>
-              <li>Your confirmation appears as soon as you submit</li>
-            </ul>
-
-            <div className="art" aria-hidden="true">
-              <img className="q" src="/gradient-qcm-logo.png" alt="" />
-              <img className="bulb" src="/bulb.png" alt="" />
+            <div className="contact-block">
+              <div className="meta-label contact-title">CONTACT US</div>
+              {EVENT.contacts.map((contact) => (
+                <div key={contact.phone} className="contact-line">
+                  <span>{contact.name}:</span> <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+                </div>
+              ))}
             </div>
           </header>
 
