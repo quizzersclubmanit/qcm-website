@@ -1,7 +1,10 @@
-import { Container, SectionHead, EventCard } from "../components/components"
+import Container from "./Container";
+import SectionHead from "./SectionHead";
+import EventCard from "./EventCard";
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import Slider from "react-slick"
+import SliderImport from "react-slick";
+const Slider = SliderImport.default ?? SliderImport;
 import { eventDetails } from "../assets/qcmData.json"
 
 const Events = () => {
@@ -24,6 +27,17 @@ const Events = () => {
       }
     ]
   }
+
+  console.log({
+  Container,
+  SectionHead,
+  EventCard,
+  Slider,
+  containerType: typeof Container,
+  sectionHeadType: typeof SectionHead,
+  eventCardType: typeof EventCard,
+  sliderType: typeof Slider
+});
 
   return (
     <Container
