@@ -7,11 +7,14 @@ import floatingMarks  from '../assets/floating-mark.png';
 // Event details for QBIT'26
 const EVENT = {
   name: "QBIT'26",
-  date: '31 October 2026',
+  date: '31 OCT',
   venue: 'MANIT Bhopal Campus',
-  contacts: [
-    { name: 'Sakshi Priya', phone: '8226872015' },
-    { name: 'Charunya Zerbade', phone: '7222928982' }
+  prizePool: '₹ 35,000',
+  prizes: [
+    { label: 'Winner', value: '₹ 15,000 Cash Prize' },
+    { label: 'Runner Up', value: '₹ 10,000' },
+    { label: '2nd Runner Up', value: '₹ 7,000' },
+    { label: 'Goodies for all participants', value: '' }
   ]
 };
 
@@ -39,34 +42,38 @@ export default function SignupPage() {
 
         <div className="layout hero-layout">
           <header className="intro hero-copy">
-            <h1>{EVENT.name}</h1>
+            <h1 className="qbit-heading" aria-label="QBIT 26">
+              <span className="qbit-main">QBIT</span>
+              <span className="qbit-year">'26</span>
+            </h1>
             <p className="club">Quizzers' Club NIT Bhopal</p>
-            <p className="lede">Register your team for {EVENT.name}, the quiz event hosted by QCM.</p>
 
-            {(EVENT.date || EVENT.venue) && (
-              <div className="meta-grid">
-                {EVENT.date && (
-                  <div className="meta-block">
-                    <div className="meta-label">DATE</div>
-                    <div className="meta-value">{EVENT.date}</div>
-                  </div>
-                )}
-                {EVENT.venue && (
-                  <div className="meta-block">
-                    <div className="meta-label">VENUE</div>
-                    <div className="meta-value">{EVENT.venue}</div>
-                  </div>
-                )}
+            <div className="poster-details">
+              <div className="poster-date">
+                <span className="meta-label">DATE</span>
+                <span className="meta-value">{EVENT.date}</span>
               </div>
-            )}
 
-            <div className="contact-block">
-              <div className="meta-label contact-title">CONTACT US</div>
-              {EVENT.contacts.map((contact) => (
-                <div key={contact.phone} className="contact-line">
-                  <span>{contact.name}:</span> <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+              <div className="poster-prizes">
+                <div className="total-prize">
+                  TOTAL PRIZE POOL: <span>{EVENT.prizePool}</span>
                 </div>
-              ))}
+                <div className="meta-label">PRIZES</div>
+                <ul>
+                  {EVENT.prizes.map((prize) => (
+                    <li key={prize.label} className={prize.value ? 'has-value' : 'no-value'}>
+                      <span className="prize-dot" aria-hidden="true" />
+                      <span className="prize-copy">
+                        {prize.label}: {prize.value ? <span className="prize-value">{prize.value}</span> : null}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="poster-inline">Open to All UG and PG Students</p>
+              <p className="poster-strong">Grand Finale at MANIT Bhopal Campus</p>
+              <p className="poster-strong poster-strong--free">Free Registration</p>
             </div>
           </header>
 
