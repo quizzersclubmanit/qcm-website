@@ -15,29 +15,29 @@ const SIGNUP_PATH = '/api/auth/signup';
 const TEAM_FIELDS = [
   { key: 'teamName', label: 'Team name', placeholder: 'e.g. Byte Busters', autoComplete: 'off', maxLength: 80 },
   { key: 'college', label: 'College name', placeholder: 'Full college name', autoComplete: 'organization', maxLength: 150 },
+  { key: 'email', label: 'Team Email', placeholder: 'contact@team.com (One email for your team)', type: 'email', autoComplete: 'email', maxLength: 120 },
 ];
 
 const MEMBER_FIELDS = [
   { key: 'name', label: 'Member name', placeholder: 'Full name', autoComplete: 'off', maxLength: 80 },
   { key: 'phone', label: 'Contact number', placeholder: '10-digit mobile number', type: 'tel', inputMode: 'numeric', autoComplete: 'off', half: true },
-  { key: 'email', label: 'Email', placeholder: 'name@college.edu', type: 'email', autoComplete: 'off', maxLength: 120, half: true },
-  { key: 'course', label: 'Course', placeholder: 'e.g. B.Tech CSE, 2nd year', autoComplete: 'off', maxLength: 100 },
+  { key: 'course', label: 'Course', placeholder: 'e.g. B.Tech CSE, 2nd year', autoComplete: 'off', maxLength: 100, half: true },
 ];
 
 const RULES = {
   teamName: (v) => v.length >= 2 || 'Enter your team name.',
   college: (v) => v.length >= 3 || 'Enter your college name.',
+  email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) || 'Enter a valid team email address.',
   name: (v) => v.length >= 2 || 'Enter the member\u2019s full name.',
   phone: (v) => {
     let d = v.replace(/\D/g, '');
     if (d.length === 12 && d.startsWith('91')) d = d.slice(2);
     return /^[6-9]\d{9}$/.test(d) || 'Enter a valid 10-digit mobile number.';
   },
-  email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) || 'Enter a valid email address.',
   course: (v) => v.length >= 2 || 'Enter the course.',
 };
 
-const emptyMember = () => ({ name: '', phone: '', email: '', course: '' });
+const emptyMember = () => ({ name: '', phone: '', course: '' });
 const initialMembers = () => Array.from({ length: MIN_MEMBERS }, emptyMember);
 const idOf = (key) => key.replace(/\./g, '-');
 
@@ -64,7 +64,7 @@ function Field({ def, id, value, error, onChange, onBlur }) {
 }
 
 export default function RegistrationForm({ onClose, closeLabel }) {
-  const [team, setTeam] = useState({ teamName: '', college: '' });
+  const [team, setTeam] = useState({ teamName: '', college: '', email: '' });
   const [members, setMembers] = useState(initialMembers);
   const [errors, setErrors] = useState({});
   const [banner, setBanner] = useState('');
@@ -121,18 +121,10 @@ export default function RegistrationForm({ onClose, closeLabel }) {
       if (msg) found[k] = msg;
     });
 
-    // Validate duplicate contact details among team members
-    const seenEmails = new Set();
+    // Validate duplicate phone numbers among team members
     const seenPhones = new Set();
     members.forEach((m, i) => {
-      const em = m.email.trim().toLowerCase();
       const ph = m.phone.trim().replace(/\D/g, '').slice(-10);
-      if (em) {
-        if (seenEmails.has(em)) {
-          found[`members.${i}.email`] = 'Duplicate email: Each member must have a distinct email.';
-        }
-        seenEmails.add(em);
-      }
       if (ph.length === 10) {
         if (seenPhones.has(ph)) {
           found[`members.${i}.phone`] = 'Duplicate phone: Each member must have a distinct phone number.';
@@ -151,7 +143,13 @@ export default function RegistrationForm({ onClose, closeLabel }) {
     const payload = {
       teamName: team.teamName.trim(),
       college: team.college.trim(),
-      members: members.map((m) => ({ name: m.name.trim(), phone: m.phone.trim(), email: m.email.trim(), course: m.course.trim() })),
+      email: team.email.trim().toLowerCase(),
+      members: members.map((m) => ({
+        name: m.name.trim(),
+        phone: m.phone.trim(),
+        email: team.email.trim().toLowerCase(),
+        course: m.course.trim(),
+      })),
     };
 
     setSubmitting(true);
@@ -184,7 +182,7 @@ export default function RegistrationForm({ onClose, closeLabel }) {
   };
 
   const reset = () => {
-    setTeam({ teamName: '', college: '' });
+    setTeam({ teamName: '', college: '', email: '' });
     setMembers(initialMembers());
     setErrors({});
     setBanner('');
@@ -198,8 +196,9 @@ export default function RegistrationForm({ onClose, closeLabel }) {
       `Pass Code: ${submitted.registrationCode}`,
       `Team Name: ${submitted.teamName}`,
       `College: ${submitted.college}`,
+      `Team Email: ${submitted.email}`,
       `Members:`,
-      ...submitted.members.map((m, i) => `  ${i + 1}. ${m.name} (${m.phone}, ${m.email}) - ${m.course}`),
+      ...submitted.members.map((m, i) => `  ${i + 1}. ${m.name} (${m.phone}) - ${m.course}`),
     ].join('\n');
     try {
       await navigator.clipboard.writeText(text);
@@ -249,6 +248,7 @@ export default function RegistrationForm({ onClose, closeLabel }) {
         <dl style={{ marginTop: 16 }}>
           <div className="row"><dt>Team name</dt><dd>{submitted.teamName}</dd></div>
           <div className="row"><dt>College</dt><dd>{submitted.college}</dd></div>
+          <div className="row"><dt>Team Email</dt><dd>{submitted.email}</dd></div>
           {submitted.registrationCode && (
             <div className="row"><dt>Pass Code</dt><dd style={{ color: '#2563EB' }}>{submitted.registrationCode}</dd></div>
           )}
@@ -258,8 +258,7 @@ export default function RegistrationForm({ onClose, closeLabel }) {
         {submitted.members.map((m, i) => (
           <div className="summary-member" key={i}>
             <p className="who">{`Member ${i + 1}`}: {m.name}</p>
-            <p>{m.phone} &middot; {m.email}</p>
-            <p>{m.course}</p>
+            <p>{m.phone} &middot; {m.course}</p>
           </div>
         ))}
 
