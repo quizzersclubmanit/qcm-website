@@ -256,13 +256,14 @@ const ManageTeams = () => {
     setEditForm({
       teamName: team.teamName || "",
       college: team.college || "",
+      email: team.email || team.members?.[0]?.email || "",
       notes: team.notes || "",
       status: team.status || "CONFIRMED",
       members: (team.members || []).map((m) => ({
         name: m.name || "",
         phone: m.phone || "",
-        email: m.email || "",
-        course: m.course || ""
+        course: m.course || "",
+        email: m.email || team.email || ""
       }))
     })
   }
@@ -340,13 +341,14 @@ const ManageTeams = () => {
       `Pass Code: ${team.registrationCode || "—"}`,
       `Team: ${team.teamName}`,
       `College: ${team.college}`,
+      `Team Email: ${team.email || team.members?.[0]?.email || "—"}`,
       `Status: ${team.checkedIn ? "CHECKED IN" : team.status || "CONFIRMED"}`,
       `Registered: ${formatDate(team.createdAt)}`,
       "",
       "Members (4):",
       ...(team.members || []).map(
         (m, i) =>
-          `${i + 1}. ${m.name} | Phone: ${m.phone} | Email: ${m.email} | Course: ${m.course}`
+          `${i + 1}. ${m.name} | Phone: ${m.phone} | Course: ${m.course}`
       )
     ].join("\n")
 
@@ -843,7 +845,7 @@ const ManageTeams = () => {
                     {expanded && (
                       <div className="border-t border-white/10 bg-slate-950/45 backdrop-blur-md p-4 sm:p-5 flex flex-col gap-3">
                         <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-white/10">
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-[11px] uppercase font-semibold tracking-wider text-white/90">
                               Team Members (4)
                             </span>
@@ -851,6 +853,16 @@ const ManageTeams = () => {
                               <span className="text-xs font-mono font-medium text-blue-200 bg-blue-600/20 px-2 py-0.5 rounded-full border border-blue-400/30">
                                 Pass: {team.registrationCode}
                               </span>
+                            )}
+                            {(team.email || team.members?.[0]?.email) && (
+                              <a
+                                href={`mailto:${team.email || team.members?.[0]?.email}`}
+                                className="inline-flex items-center gap-1.5 text-xs text-blue-300 hover:text-white bg-blue-900/30 px-2.5 py-0.5 rounded-full border border-blue-400/30 transition-colors"
+                                title="Team Contact Email"
+                              >
+                                <FiMail className="text-[10px]" />
+                                <span className="font-mono">{team.email || team.members?.[0]?.email}</span>
+                              </a>
                             )}
                           </div>
 
@@ -1061,7 +1073,7 @@ const ManageTeams = () => {
             </div>
 
             <form onSubmit={handleSaveEdit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-slate-200 mb-1">Team Name</label>
                   <input
@@ -1079,6 +1091,16 @@ const ManageTeams = () => {
                     required
                     value={editForm.college}
                     onChange={(e) => setEditForm({ ...editForm, college: e.target.value })}
+                    className="w-full px-3 py-1.5 rounded-lg bg-slate-950/60 border border-white/15 text-white text-xs focus:outline-none focus:border-blue-400"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-200 mb-1">Team Email</label>
+                  <input
+                    type="email"
+                    required
+                    value={editForm.email}
+                    onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
                     className="w-full px-3 py-1.5 rounded-lg bg-slate-950/60 border border-white/15 text-white text-xs focus:outline-none focus:border-blue-400"
                   />
                 </div>
@@ -1104,7 +1126,7 @@ const ManageTeams = () => {
                   {editForm.members.map((m, idx) => (
                     <div key={idx} className="p-3 rounded-lg bg-slate-950/50 border border-white/10 space-y-2">
                       <div className="text-[11px] font-semibold text-blue-300">Member {idx + 1}</div>
-                      <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                         <input
                           type="text"
                           placeholder="Full Name"
@@ -1125,18 +1147,6 @@ const ManageTeams = () => {
                           onChange={(e) => {
                             const newM = [...editForm.members]
                             newM[idx].phone = e.target.value
-                            setEditForm({ ...editForm, members: newM })
-                          }}
-                          className="px-2.5 py-1.5 rounded-md border border-white/15 text-xs bg-slate-900 text-white focus:border-blue-400"
-                        />
-                        <input
-                          type="email"
-                          placeholder="Email"
-                          required
-                          value={m.email}
-                          onChange={(e) => {
-                            const newM = [...editForm.members]
-                            newM[idx].email = e.target.value
                             setEditForm({ ...editForm, members: newM })
                           }}
                           className="px-2.5 py-1.5 rounded-md border border-white/15 text-xs bg-slate-900 text-white focus:border-blue-400"
