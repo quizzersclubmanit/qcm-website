@@ -33,6 +33,7 @@ import ClassPrompt from "./ClassPrompt"
 import GreetingPoster from "./GreetingPoster"
 import RegistrationSuccess from "./RegistrationSuccess"
 import RegistrationSuccessHandler from "./RegistrationSuccessHandler"
+import SEO from "./SEO"
 
 export {
   Header,
@@ -69,5 +70,6 @@ export {
   ClassPrompt,
   GreetingPoster,
   RegistrationSuccess,
-  RegistrationSuccessHandler
+  RegistrationSuccessHandler,
+  SEO
 }

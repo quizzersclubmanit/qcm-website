@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom"
 import { FaHome, FaArrowLeft } from "react-icons/fa"
+import SEO from "../components/SEO.jsx"
 
 const NotFound = () => {
   return (
     <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-16 text-center">
+      <SEO
+        title="Page Not Found | Quizzers' Club NIT Bhopal"
+        description="The page you are looking for doesn't exist. Go back to Quizzers' Club NIT Bhopal home or register for QBIT."
+        path="/404"
+        noindex
+      />
       <div className="w-20 h-20 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 text-3xl font-bold mb-6 shadow-sm">
         404
       </div>

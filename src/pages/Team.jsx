@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Container, SectionHead, Footer, Header } from "../components/components"
+import SEO from "../components/SEO.jsx"
 import { team } from "../assets/qcmData.json"
 
 const Team = () => {
@@ -13,16 +14,26 @@ const Team = () => {
 
   return (
     <div
+      id="main"
       style={{
         backgroundColor: "#0f3a2e",
         backgroundImage: "linear-gradient(180deg, #0f3a2e 0%, #2b7966 100%)",
       }}
     >
+      <SEO
+        title="Meet the Team | Quizzers' Club NIT Bhopal (QCM MANIT)"
+        description="Meet the coordinators and members of Quizzers' Club NIT Bhopal (QCM MANIT) — the students behind QBIT, college quizzes and events."
+        path="/team"
+        crumbs={[{ name: "Team", item: "https://www.quizzersclub.com/team" }]}
+      />
       <Container
         id="team-gallery"
         className="flex flex-col gap-5 items-center min-h-screen pb-8 px-2 pt-16 md:pt-[16vh]"
       >
         <Header />
+        <h1 className="poppins-bold text-white text-[5vmax] md:text-[3vmax] text-center leading-tight">
+          Meet the Team — Quizzers&apos; Club NIT Bhopal
+        </h1>
         <div className="md:hidden">
           <SectionHead label="Team" className="text-white" logo />
         </div>
@@ -54,8 +65,11 @@ const Team = () => {
               >
                 <img
                   src={obj.fileId || "/placeholder-avatar.png"}
-                  alt="Member"
+                  alt={`${obj.name || "QCM member"} — Quizzers' Club NIT Bhopal${obj.post ? `, ${obj.post}` : ""}`}
                   className="aspect-square h-40 object-contain rounded-lg mx-auto"
+                  width="160"
+                  height="160"
+                  loading="lazy"
                   onError={(e) => {
                     e.target.src = "/placeholder-avatar.png"
                   }}
@@ -65,6 +79,7 @@ const Team = () => {
                     className="uppercase text-md font-bold text-white hover:text-[#fe9c02] transition-colors"
                     href={obj.linkedIn}
                     target={obj.linkedIn ? "_blank" : "_parent"}
+                    rel={obj.linkedIn ? "noopener noreferrer" : undefined}
                   >
                     {obj.name}
                   </a>

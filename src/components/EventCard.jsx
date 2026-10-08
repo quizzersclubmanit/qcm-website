@@ -2,15 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
+import { avifSrcSet, webpSrcSet } from '../utils/img.js';
 
 const EventCard = ({ dets = {} }) => {
   const navigate = useNavigate();
+  const avif = avifSrcSet(dets.cover);
+  const webp = webpSrcSet(dets.cover);
   return (
     <StyledWrapper>
       <div className="card m-5 md:m-10  h-[440px] w-[300px] md:w-[400px] rounded-lg flex items-start justify-center bg-[rgb(255,255,255)]">
         <div className='img w-[300px] md:w-[400px] mt-0 rounded-lg '>
-          <img className='cover object-cover h-[400px] w-[300px] md:w-[400px]' src={dets.cover} />
-          <h4 className="title h-[40px] text-lg md:text-2xl text-center font-bold">{dets.title}</h4>
+          <picture>
+            {avif && <source srcSet={avif} sizes="(max-width: 768px) 300px, 400px" type="image/avif" />}
+            {webp && <source srcSet={webp} sizes="(max-width: 768px) 300px, 400px" type="image/webp" />}
+            <img
+              className='cover object-cover h-[400px] w-[300px] md:w-[400px]'
+              src={dets.cover}
+              alt={`${dets.title || 'QCM quiz event'} — Quizzers' Club NIT Bhopal`}
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="400"
+            />
+          </picture>
+          <p className="title h-[40px] text-lg md:text-2xl text-center font-bold">{dets.title}</p>
         </div>
         <div className="textBox h-[440px] w-[300px] md:w-[400px] bg-[rgba(0,0,0,0.38)] flex flex-col items-center justify-center text-cyan-50 gap-3 p-4">
           <h3 className='font-bold text-3xl overflow-hidden text-center'>{dets.title}</h3>

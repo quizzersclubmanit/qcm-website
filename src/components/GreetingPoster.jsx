@@ -2,11 +2,12 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from "react-redux"
 import Button from './Button';
 import { useNavigate, Link } from 'react-router-dom';
+import { log } from "../utils/log.js"
 
 export default function PageLoadPoster() {
   const [open, setOpen] = useState(false);
   const { data, loggedIn } = useSelector((state) => state.user)
-  console.log('User data in GreetingPoster:', data, loggedIn);
+  log('User data in GreetingPoster:', data, loggedIn);
   const dialogRef = useRef(null);
   const navigate = useNavigate();
 

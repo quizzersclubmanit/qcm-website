@@ -1,0 +1,21 @@
+{
+  "name": "Quizzers' Club NIT Bhopal (QCM MANIT)",
+  "short_name": "QCM",
+  "description": "Official quizzing club of MANIT Bhopal — QBIT, college quizzes and events.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f3a2e",
+  "theme_color": "#0f3a2e",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
