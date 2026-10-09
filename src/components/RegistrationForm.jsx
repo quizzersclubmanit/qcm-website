@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaUserCircle } from 'react-icons/fa';
 
 // Team size limits (keep in sync with server/server.js)
 export const MIN_MEMBERS = 4;
@@ -280,7 +281,13 @@ export default function RegistrationForm({ onClose, closeLabel }) {
 
   return (
     <section className="card">
-      <h2>Register your team</h2>
+      <div className="form-heading">
+        <FaUserCircle aria-hidden="true" />
+        <div>
+          <h2>Register your team</h2>
+          <p>Be a part of the ultimate quiz showdown!</p>
+        </div>
+      </div>
       {banner && <p className="banner" role="alert">{banner}</p>}
       <form onSubmit={handleSubmit} noValidate>
         <h3 className="sec">Team</h3>
