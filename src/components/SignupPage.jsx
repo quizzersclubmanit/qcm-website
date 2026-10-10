@@ -3,16 +3,20 @@ import RegistrationForm, { MIN_MEMBERS, MAX_MEMBERS } from './RegistrationForm.j
 import './registration.css';
 import qcmLogoSm from '../assets/qcm-logo-sm.png'
 import floatingMarks  from '../assets/floating-mark.png';
+import { FaArrowLeft, FaCalendarAlt, FaGraduationCap, FaMapMarkerAlt, FaTrophy } from 'react-icons/fa';
 import SEO from './SEO.jsx';
 
 // Event details for QBIT'26
 const EVENT = {
   name: "QBIT'26",
-  date: '31 October 2026',
+  date: '31 OCT 2026',
   venue: 'MANIT Bhopal Campus',
-  contacts: [
-    { name: 'Sakshi Priya', phone: '8226872015' },
-    { name: 'Charunya Zerbade', phone: '7222928982' }
+  prizePool: '₹35,000',
+  prizes: [
+    { label: 'Winner', value: '₹ 15,000 Cash Prize' },
+    { label: 'Runner Up', value: '₹ 10,000' },
+    { label: '2nd Runner Up', value: '₹ 7,000' },
+    { label: 'Goodies for all participants', value: '' }
   ]
 };
 
@@ -54,42 +58,56 @@ export default function SignupPage() {
 
       <div className="page">
         <div className="topbar">
+
+          <a className="brand" href="/" aria-label="Quizzers' Club home">
+            <img className="logo" src={qcmLogo} alt="QCM logo" width="54" height="54" />
+            <span className="brand-copy"><strong>Quizzers' Club</strong><small>NIT Bhopal</small></span>
           <a href="/" aria-label="Quizzers' Club home">
             <img className="logo" src={qcmLogoSm} alt="QCM logo" width="46" height="46" />
           </a>
-          <a className="pill" href="/">Back to website</a>
+          <a className="pill" href="/"><FaArrowLeft aria-hidden="true" />Back to website</a>
         </div>
 
         <div className="layout hero-layout">
           <header className="intro hero-copy">
-            <h1>{EVENT.name}</h1>
-            <p className="club">Quizzers' Club NIT Bhopal</p>
-            <p className="lede">Register your team for {EVENT.name}, the quiz event hosted by QCM.</p>
+            <h1 className="qbit-heading" aria-label="QBIT 26">
+              <span className="qbit-main"><span className="qbit-mark">Q</span>-BIT</span>
+              <span className="qbit-year">'26</span>
+            </h1>
+            <p className="club">QUIZZERS' CLUB NIT BHOPAL</p>
 
-            {(EVENT.date || EVENT.venue) && (
-              <div className="meta-grid">
-                {EVENT.date && (
-                  <div className="meta-block">
-                    <div className="meta-label">DATE</div>
-                    <div className="meta-value">{EVENT.date}</div>
-                  </div>
-                )}
-                {EVENT.venue && (
-                  <div className="meta-block">
-                    <div className="meta-label">VENUE</div>
-                    <div className="meta-value">{EVENT.venue}</div>
-                  </div>
-                )}
-              </div>
-            )}
-
-            <div className="contact-block">
-              <div className="meta-label contact-title">CONTACT US</div>
-              {EVENT.contacts.map((contact) => (
-                <div key={contact.phone} className="contact-line">
-                  <span>{contact.name}:</span> <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+            <div className="poster-details">
+              <div className="event-facts">
+                <div className="poster-date">
+                  <FaCalendarAlt aria-hidden="true" />
+                  <span><span className="meta-label">DATE</span><span className="meta-value">{EVENT.date}</span></span>
                 </div>
-              ))}
+                <div className="poster-venue">
+                  <FaMapMarkerAlt aria-hidden="true" />
+                  <span><span className="meta-label">VENUE</span><span className="meta-value">NIT BHOPAL</span></span>
+                </div>
+              </div>
+
+              <div className="poster-prizes">
+                <div className="prize-total">
+                  <FaTrophy aria-hidden="true" />
+                  <span><span className="meta-label">TOTAL PRIZE POOL</span><strong>{EVENT.prizePool}</strong></span>
+                </div>
+                <div className="prize-list">
+                  <span className="meta-label">PRIZES</span>
+                  <ul>
+                    {EVENT.prizes.map((prize) => (
+                      <li key={prize.label}>
+                        <span className="prize-dot" aria-hidden="true" />
+                        <span>{prize.label}{prize.value ? `: ${prize.value}` : ''}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <p className="poster-inline"><FaGraduationCap aria-hidden="true" />FOR COLLEGE STUDENTS</p>
+              <p className="poster-strong">Grand Finale at MANIT</p>
             </div>
           </header>
 
