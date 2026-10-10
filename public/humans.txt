@@ -1,0 +1,8 @@
+/* TEAM */
+Quizzers' Club NIT Bhopal (QCM MANIT)
+Maulana Azad National Institute of Technology, Bhopal
+Site: https://www.quizzersclub.com/
+
+/* SITE */
+Built with React + Vite. Prerendered for crawlers.
+Contact: quizzersclubmanit@gmail.com

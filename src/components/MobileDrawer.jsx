@@ -126,7 +126,7 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
         }`}
         style={{
           background:
-            "linear-gradient(rgba(10, 30, 40, 0.55), rgba(10, 30, 40, 0.65)), url('/bg-gradient.png') no-repeat center center/cover"
+              "linear-gradient(rgba(10, 30, 40, 0.55), rgba(10, 30, 40, 0.65)), url('/bg-gradient.webp') no-repeat center center/cover"
         }}
         aria-hidden={!open}
       >

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { logout } from "../redux/user.slice"
 import authService from "../api/auth.service"
 import { isAdminUser } from "../utils/authUtils"
-import qcmLogo from "../assets/qcm-logo.png"
+import qcmLogo from "../assets/qcm-logo-sm.png"
 import {
   FiUsers,
   FiFileText,
@@ -60,7 +60,7 @@ const AdminNav = ({ activeTab = "teams", actions = null }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3 border-b border-white/5">
         <div className="flex items-center gap-3 w-full sm:w-auto">
           <Link to="/" className="flex items-center gap-2.5 group">
-            <img src={qcmLogo} alt="QCM Logo" className="w-8 h-8 object-contain" />
+            <img src={qcmLogo} alt="QCM Logo" width="32" height="32" className="w-8 h-8 object-contain" />
             <div className="flex items-center gap-2">
               <span className="text-white font-extrabold text-base tracking-tight">
                 QBIT'26

@@ -1,0 +1,27 @@
+# ISR-equivalent freshness: redeploy weekly so prerendered HTML, sitemap
+# lastmod and feed stay current without code changes.
+#
+# Setup (one time, 2 minutes):
+#   1. Vercel Dashboard → Project → Settings → Git → Deploy Hooks → Create
+#      (name: "weekly-rebuild", branch: main) → copy the URL.
+#   2. GitHub repo → Settings → Secrets → Actions → New secret
+#      VERCEL_DEPLOY_HOOK = <the copied URL>
+# Without the secret the workflow no-ops successfully (no failure noise).
+name: weekly-rebuild
+
+on:
+  schedule:
+    - cron: "30 2 * * 1" # Mondays 02:30 UTC
+  workflow_dispatch: {}
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        run: |
+          if [ -z "${{ secrets.VERCEL_DEPLOY_HOOK }}" ]; then
+            echo "VERCEL_DEPLOY_HOOK not set — skipping (see workflow comments)."
+            exit 0
+          fi
+          curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}" && echo "redeploy triggered"

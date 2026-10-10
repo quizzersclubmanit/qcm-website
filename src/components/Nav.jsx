@@ -5,6 +5,7 @@ import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { login, logout, setData } from "../redux/user.slice"
 import { isStaffUser } from "../utils/authUtils"
+import { log, warn, error as logError } from "../utils/log.js"
 
 const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   const location = useLocation()
@@ -54,45 +55,45 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
   }, [])
 
   useEffect(() => {
-    console.log('Nav useEffect running, checking auth...')
+    log('Nav useEffect running, checking auth...')
     
     // Skip auth check on authentication pages to prevent 401 errors
     const authPages = ['/signup', '/signin', '/reset-password', '/login']
     if (authPages.some(page => location.pathname.startsWith(page))) {
-      console.log('Skipping auth check on auth page:', location.pathname)
+      log('Skipping auth check on auth page:', location.pathname)
       return
     }
 
     // Don't check auth if we're already logged in (from Redux state)
     if (loggedIn && data?.id) {
-      console.log('User already authenticated in Redux state, skipping auth check')
+      log('User already authenticated in Redux state, skipping auth check')
       return
     }
 
-    console.log('Calling getCurrentUser to verify session...')
+    log('Calling getCurrentUser to verify session...')
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
 
     authService
       .getCurrentUser()
       .then((user) => {
-        console.log('Auth restored successfully:', user)
+        log('Auth restored successfully:', user)
         if (user && user.id) {
           dispatch(setData(user))
           dispatch(login())
         } else {
-          console.warn('Invalid user data received:', user)
+          warn('Invalid user data received:', user)
           // Clear any invalid user data
           dispatch(logout())
         }
       })
       .catch((error) => {
         if (error.name === 'AbortError') {
-          console.warn('Auth check timed out')
+          warn('Auth check timed out')
         } else if (error.message !== 'Not authenticated') {
-          console.error('Auth check error:', error)
+          logError('Auth check error:', error)
         } else {
-          console.log('User not authenticated, clearing any existing session')
+          log('User not authenticated, clearing any existing session')
           dispatch(logout())
         }
       })
@@ -122,11 +123,23 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
               <a
                 key={index}
                 href={`/${tab.to}`}
-                className="hover:text-yellow-400 transition-all text-base no-underline text-black 
-                border-2 rounded-[25px] py-[5px] px-[10px] 
+                className="hover:text-yellow-400 transition-all text-base no-underline text-black
+                border-2 rounded-[25px] py-[5px] px-[10px]
                 md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
                 style={{ borderColor: "currentColor" }}
-                onClick={offModal}
+                onClick={(e) => {
+                  // In-app hash scroll without full page reload (href kept for crawlers)
+                  e.preventDefault()
+                  offModal()
+                  const scroll = () =>
+                    document.querySelector(tab.to)?.scrollIntoView({ behavior: "smooth" })
+                  if (location.pathname !== "/") {
+                    navigate("/")
+                    setTimeout(scroll, 350)
+                  } else {
+                    scroll()
+                  }
+                }}
               >
                 {tab.name}
               </a>

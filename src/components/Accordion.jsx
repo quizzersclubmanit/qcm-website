@@ -30,36 +30,43 @@ const Accordion = ({ qna = [] }) => {
     })
   })
 
+  const toggle = (index) => {
+    if (openAccordions.includes(index)) {
+      setOpenAccordions((prev) => prev.filter((id) => id != index))
+      hideAnswer(index)
+    } else {
+      setOpenAccordions((prev) => [...prev, index])
+      showAnswer(index)
+    }
+  }
+
   return (
     <Container className="sm:w-3/4 w-11/12 mx-auto" ref={ref}>
-      {qna.map((obj, index) => (
-        <div
-          className="mb-3"
-          key={index}
-          onClick={() => {
-            if (openAccordions.includes(index)) {
-              setOpenAccordions((prev) => prev.filter((id) => id != index))
-              hideAnswer(index)
-            } else {
-              setOpenAccordions((prev) => [...prev, index])
-              showAnswer(index)
-            }
-          }}
-        >
-          <Button className="flex justify-between items-center w-full p-4 text-left ease-in border border-slate-800">
-            <span className="font-semibold">{obj.question}</span>
-            {openAccordions.includes(index) ? <FaMinus /> : <FaPlus />}
-          </Button>
-          <div
-            id={`id_${index}`}
-            className={`h-0 opacity-0 overflow-hidden flex items-center`}
-          >
-            <p className="px-4 text-sm leading-normal text-slate-800 whitespace-pre-wrap">
-              {obj.answer}
-            </p>
+      {qna.map((obj, index) => {
+        const open = openAccordions.includes(index)
+        return (
+          <div className="mb-3" key={index}>
+            <Button
+              className="flex justify-between items-center w-full p-4 text-left ease-in border border-slate-800"
+              aria-expanded={open}
+              aria-controls={`id_${index}`}
+              onClick={() => toggle(index)}
+            >
+              <span className="font-semibold">{obj.question}</span>
+              {open ? <FaMinus aria-hidden="true" /> : <FaPlus aria-hidden="true" />}
+            </Button>
+            <div
+              id={`id_${index}`}
+              role="region"
+              className={`h-0 opacity-0 overflow-hidden flex items-center`}
+            >
+              <p className="px-4 text-sm leading-normal text-slate-800 whitespace-pre-wrap">
+                {obj.answer}
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </Container>
   )
 }

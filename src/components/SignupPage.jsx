@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import RegistrationForm, { MIN_MEMBERS, MAX_MEMBERS } from './RegistrationForm.jsx';
 import './registration.css';
-import qcmLogo from '../assets/qcm-logo.png'
+import qcmLogoSm from '../assets/qcm-logo-sm.png'
 import floatingMarks  from '../assets/floating-mark.png';
 import { FaArrowLeft, FaCalendarAlt, FaGraduationCap, FaMapMarkerAlt, FaTrophy } from 'react-icons/fa';
+import SEO from './SEO.jsx';
 
 // Event details for QBIT'26
 const EVENT = {
@@ -21,23 +22,48 @@ const EVENT = {
 
 export default function SignupPage() {
   useEffect(() => {
-    const previous = document.title;
-    document.title = `${EVENT.name} Registration | Quizzers' Club NIT Bhopal`;
     window.scrollTo(0, 0);
-    return () => { document.title = previous; };
   }, []);
+
+  const eventSchema = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: `${EVENT.name} — Quizzers' Club NIT Bhopal`,
+    description: `Register your team for ${EVENT.name}, the quiz event hosted by Quizzers' Club NIT Bhopal (QCM MANIT).`,
+    startDate: "2026-10-31",
+    location: {
+      "@type": "Place",
+      name: EVENT.venue,
+      address: "MANIT Bhopal, Madhya Pradesh, India",
+    },
+    organizer: {
+      "@type": "Organization",
+      name: "Quizzers' Club NIT Bhopal",
+      url: "https://www.quizzersclub.com/",
+    },
+  };
 
   return (
     <div className="qr qr-page">
+      <SEO
+        title={`${EVENT.name} Registration | Quizzers' Club NIT Bhopal (QCM MANIT)`}
+        description={`Register your team for ${EVENT.name} at ${EVENT.venue} — the flagship quiz event by Quizzers' Club NIT Bhopal. Free team registration.`}
+        path="/signup"
+        schema={eventSchema}
+        crumbs={[{ name: `${EVENT.name} Registration`, item: "https://www.quizzersclub.com/signup" }]}
+      />
       <div className="bg" aria-hidden="true">
         <img src={floatingMarks} alt="" />
       </div>
 
       <div className="page">
         <div className="topbar">
+
           <a className="brand" href="/" aria-label="Quizzers' Club home">
             <img className="logo" src={qcmLogo} alt="QCM logo" width="54" height="54" />
             <span className="brand-copy"><strong>Quizzers' Club</strong><small>NIT Bhopal</small></span>
+          <a href="/" aria-label="Quizzers' Club home">
+            <img className="logo" src={qcmLogoSm} alt="QCM logo" width="46" height="46" />
           </a>
           <a className="pill" href="/"><FaArrowLeft aria-hidden="true" />Back to website</a>
         </div>

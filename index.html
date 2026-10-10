@@ -1,61 +1,139 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <!-- Meta Description -->
-    <meta
-      name="description"
-      content="Join Quizzers Club for exciting quizzes, trivia challenges, and online quiz competitions. Test your knowledge, compete with others, and become a quiz master."
-    />
+<head>
+  <meta charset="UTF-8" />
 
-    <!-- Meta Keywords -->
-    <meta
-      name="keywords"
-      content="quizzes, online quizzes, trivia, quiz challenges, quiz competitions, quiz club, quizzers, knowledge tests, fun quizzes, trivia games, manit, qcm, bhopal"
-    />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Meta Author -->
-    <meta name="author" content="Quizzers Club" />
+  <title>Quizzers' Club NIT Bhopal (QCM MANIT) | College Quizzes, QBIT & Events</title>
 
-    <!-- Open Graph Meta Tags (for Social Media) -->
-    <meta
-      property="og:title"
-      content="Quizzers Club - Fun Quizzes & Competitive Challenges"
-    />
-    <meta
-      property="og:description"
-      content="Take part in online quizzes and trivia challenges. Join the Quizzers Club community and test your knowledge today."
-    />
-    <meta property="og:url" content="https://quizzersclub.in" />
-    <meta property="og:type" content="website" />
+  <meta name="description"
+    content="Quizzers' Club NIT Bhopal (QCM MANIT) is the official quizzing club of MANIT Bhopal — QBIT, inter-college quizzes, competitions and events in Bhopal." />
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Quizzers Club - Engage in Fun, Competitive Quizzes"
-    />
-    <meta
-      name="twitter:description"
-      content="Join Quizzers Club for engaging quizzes, trivia, and fun challenges. Test your knowledge now!"
-    />
+  <meta name="keywords"
+    content="Quizzers Club NIT Bhopal, QCM MANIT, MANIT quiz club, NIT Bhopal quizzes, QBIT, college quiz Bhopal, quizzing club Bhopal" />
 
-    <!-- Robots Meta Tag (to allow search engine indexing) -->
-    <meta name="robots" content="index, follow" />
+  <meta name="author" content="Quizzers' Club NIT Bhopal" />
 
-    <!-- Viewport (for Mobile Optimization) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0f3a2e" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="geo.region" content="IN-MP" />
+  <meta name="geo.placename" content="Bhopal" />
 
-    <!-- Canonical Link (Avoid Duplicate Content Issues) -->
-    <link rel="canonical" href="https://quizzersclub.in/" />
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.quizzersclub.com/" />
 
-    <title>Quizzers' Club NIT Bhopal</title>
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <div id="modal"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <!-- Performance: self-hosted Poppins (latin 400/500/600/700, woff2) — no third-party font request -->
+  <link rel="preload" href="/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/poppins-500-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/poppins.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Quizzers' Club NIT Bhopal (QCM MANIT) | College Quizzes, QBIT & Events" />
+
+  <meta property="og:description"
+    content="Official quizzing club of NIT Bhopal (MANIT). QBIT, inter-city quizzes, competitions, events and the QCM community." />
+
+  <meta property="og:url" content="https://www.quizzersclub.com/" />
+
+  <meta property="og:type" content="website" />
+
+  <meta property="og:locale" content="en_IN" />
+
+  <meta property="og:site_name" content="Quizzers' Club NIT Bhopal" />
+
+  <meta property="og:image" content="https://www.quizzersclub.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Quizzers' Club NIT Bhopal (QCM MANIT) — official college quizzing club" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta name="twitter:title" content="Quizzers' Club NIT Bhopal (QCM MANIT) | College Quizzes, QBIT & Events" />
+
+  <meta name="twitter:description"
+    content="Official quizzing club of NIT Bhopal (MANIT). QBIT, inter-city quizzes, competitions, events and the QCM community." />
+
+  <meta name="twitter:image" content="https://www.quizzersclub.com/og-image.png" />
+  <meta name="twitter:image:alt" content="Quizzers' Club NIT Bhopal (QCM MANIT)" />
+
+  <!-- Favicon / PWA -->
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="alternate" type="application/rss+xml" title="Quizzers' Club NIT Bhopal — Quiz Events" href="/feed.xml" />
+
+  <!-- Speculation Rules: instant same-origin nav for key routes (progressive enhancement) -->
+  <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": ["/team", "/faqs", "/signup"],
+          "eagerness": "moderate"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Structured data: Organization + WebSite -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.quizzersclub.com/#organization",
+            "name": "Quizzers' Club NIT Bhopal",
+            "alternateName": [
+              "Quizzers' Club",
+              "Quizzers' Club MANIT",
+              "QCM",
+              "QCM MANIT"
+            ],
+            "description": "Official quizzing club of Maulana Azad National Institute of Technology (MANIT) Bhopal. Organizes QBIT, inter-city and inter-college quizzes, competitions and knowledge events.",
+            "url": "https://www.quizzersclub.com/",
+            "logo": "https://www.quizzersclub.com/logo.png",
+            "image": "https://www.quizzersclub.com/og-image.png",
+            "parentOrganization": {
+              "@type": "CollegeOrUniversity",
+              "name": "Maulana Azad National Institute of Technology Bhopal",
+              "alternateName": ["MANIT", "NIT Bhopal"],
+              "url": "https://www.manit.ac.in/"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/quizzersclub/",
+              "https://www.instagram.com/quizzersclub/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.quizzersclub.com/#website",
+            "url": "https://www.quizzersclub.com/",
+            "name": "Quizzers' Club NIT Bhopal",
+            "publisher": { "@id": "https://www.quizzersclub.com/#organization" },
+            "inLanguage": "en-IN"
+          }
+        ]
+      }
+    </script>
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <div id="root"></div>
+  <div id="modal"></div>
+  <noscript>
+    <p><strong>Quizzers' Club NIT Bhopal (QCM MANIT)</strong> — official quizzing club of MANIT Bhopal. Explore QBIT registration, inter-college quizzes, events, team and FAQs at quizzersclub.com.</p>
+    <a href="/team">Team</a> <a href="/faqs">FAQs</a> <a href="/signup">QBIT Registration</a>
+  </noscript>
+
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

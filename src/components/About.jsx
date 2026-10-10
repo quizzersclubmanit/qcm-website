@@ -1,17 +1,23 @@
 import { Container } from "./components"
 import { about } from "../assets/qcmData.json"
-import { manit, team } from "../assets/assets"
+import { manit, manitWebp, manitFallback, team, teamWebp, teamFallback } from "../assets/assets"
 
 const About = () => {
   const data = [
     {
       content: about.manit,
       imgSrc: manit,
+      imgWebp: manitWebp,
+      imgFallback: manitFallback,
+      alt: "Maulana Azad National Institute of Technology (MANIT) Bhopal campus",
       reverse: false
     },
     {
       content: about.qcm,
       imgSrc: team,
+      imgWebp: teamWebp,
+      imgFallback: teamFallback,
+      alt: "Quizzers' Club NIT Bhopal (QCM MANIT) members at a quiz event",
       reverse: true
     }
   ]
@@ -36,11 +42,17 @@ const About = () => {
           >
             {obj.content}
           </p>
-          <img
-            src={obj.imgSrc}
-            alt="about"
-            className="object-contain rounded-xl hidden md:inline-block w-[40%]"
-          />
+          <picture className="hidden md:inline-block w-[40%]">
+            <source srcSet={obj.imgSrc} type="image/avif" />
+            <source srcSet={obj.imgWebp} type="image/webp" />
+            <img
+              src={obj.imgFallback}
+              alt={obj.alt}
+              loading="lazy"
+              decoding="async"
+              className="object-contain rounded-xl w-full"
+            />
+          </picture>
         </div>
       ))}
     </Container>

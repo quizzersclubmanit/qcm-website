@@ -152,7 +152,7 @@ const ManageSheets = () => {
       <div
         className="fixed inset-0 pointer-events-none -z-20"
         style={{
-          backgroundImage: "url('/bg-gradient.png')",
+          backgroundImage: "url('/bg-gradient.webp')",
           backgroundPosition: "center center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
