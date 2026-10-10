@@ -58,10 +58,6 @@ export default function SignupPage() {
 
       <div className="page">
         <div className="topbar">
-
-          <a className="brand" href="/" aria-label="Quizzers' Club home">
-            <img className="logo" src={qcmLogo} alt="QCM logo" width="54" height="54" />
-            <span className="brand-copy"><strong>Quizzers' Club</strong><small>NIT Bhopal</small></span>
           <a href="/" aria-label="Quizzers' Club home">
             <img className="logo" src={qcmLogoSm} alt="QCM logo" width="46" height="46" />
           </a>
