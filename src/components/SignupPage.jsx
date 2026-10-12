@@ -58,19 +58,21 @@ export default function SignupPage() {
 
       <div className="page">
         <div className="topbar">
-          <a href="/" aria-label="Quizzers' Club home">
+
+          <a className="brand" href="/" aria-label="Quizzers' Club home">
             <img className="logo" src={qcmLogoSm} alt="QCM logo" width="46" height="46" />
+            <span className="brand-copy"><strong>Quizzers' Club</strong><small>NIT Bhopal</small></span>
           </a>
           <a className="pill" href="/"><FaArrowLeft aria-hidden="true" />Back to website</a>
         </div>
 
         <div className="layout hero-layout">
           <header className="intro hero-copy">
+            <p className="club">QUIZZERS' CLUB NIT BHOPAL</p>
             <h1 className="qbit-heading" aria-label="QBIT 26">
               <span className="qbit-main"><span className="qbit-mark">Q</span>-BIT</span>
               <span className="qbit-year">'26</span>
             </h1>
-            <p className="club">QUIZZERS' CLUB NIT BHOPAL</p>
 
             <div className="poster-details">
               <div className="event-facts">
@@ -102,7 +104,7 @@ export default function SignupPage() {
                 </div>
               </div>
 
-              <p className="poster-inline"><FaGraduationCap aria-hidden="true" />FOR COLLEGE STUDENTS</p>
+              <p className="poster-inline"><FaGraduationCap aria-hidden="true" />OPEN TO ALL UG AND PG STUDENTS</p>
               <p className="poster-strong">Grand Finale at MANIT</p>
             </div>
           </header>
