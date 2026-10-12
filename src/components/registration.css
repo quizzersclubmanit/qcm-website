@@ -281,3 +281,219 @@
   .qr-page .layout { display: block !important; }
   .qr .card { box-shadow: none !important; border: 2px solid #2563EB !important; border-radius: 8px !important; padding: 24px !important; }
 }
+
+/* Q-BIT'26 reference layout */
+.qr-page {
+  min-height: 100svh;
+  overflow-x: hidden;
+  padding: 18px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 8% 13%, rgba(12, 76, 56, .12) 0 2px, transparent 3px) 0 0 / 22px 22px,
+    #f3f5eb;
+  background-attachment: scroll;
+}
+.qr-page::before,
+.qr-page::after {
+  width: 240px;
+  height: 240px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.qr-page::before {
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, transparent 45%, rgba(197, 159, 61, .72) 46% 48%, transparent 49%);
+}
+.qr-page::after {
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(315deg, transparent 45%, rgba(197, 159, 61, .72) 46% 48%, transparent 49%);
+}
+.qr-page .bg img { opacity: .08; filter: sepia(1) saturate(.55); mix-blend-mode: screen; }
+.qr-page .page {
+  max-width: 1480px;
+  min-height: calc(100svh - 36px);
+  padding: 10px 32px 28px;
+  border-radius: 30px;
+  background: #064936;
+  box-shadow: 0 18px 55px rgba(4, 48, 36, .2);
+}
+.qr-page .topbar { padding: 8px 0 4px; }
+.qr-page .brand-copy {
+  border-color: rgba(226, 196, 98, .8);
+  color: #f1d77d;
+  letter-spacing: .02em;
+}
+.qr-page .brand-copy strong {
+  font-family: "Poppins", system-ui, sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+}
+.qr-page .brand-copy small { font-size: .76rem; letter-spacing: .12em; }
+.qr-page .pill { border-color: rgba(226, 196, 98, .72); }
+.qr-page .layout {
+  grid-template-columns: minmax(0, .92fr) minmax(500px, 1.08fr);
+  gap: clamp(22px, 3vw, 42px);
+  padding-top: 12px;
+  align-items: center;
+}
+.qr-page .intro { position: static; margin: 0; }
+.qr-page .hero-copy { padding: 8px 0 12px; }
+.qr-page .hero-copy > .club { display: none; }
+.qr-page .qbit-heading { justify-content: flex-start; gap: 2px; line-height: .9; }
+.qr-page .qbit-main {
+  font-size: clamp(5rem, 8vw, 7.4rem);
+  color: #f2e5b4;
+  -webkit-text-fill-color: #f2e5b4;
+  -webkit-text-stroke: 0;
+  text-shadow: 0 4px 0 rgba(174, 139, 50, .46);
+}
+.qr-page .qbit-mark { color: #f2e5b4; -webkit-text-fill-color: #f2e5b4; text-shadow: inherit; }
+.qr-page .qbit-year {
+  font-size: clamp(4.6rem, 7.3vw, 6.8rem);
+  color: #f2d477;
+  background: none;
+  -webkit-text-fill-color: #f2d477;
+  text-shadow: 0 4px 0 rgba(174, 139, 50, .38);
+}
+.qr-page .poster-details { gap: 14px; margin-top: 22px; }
+.qr-page .event-facts { gap: 16px; padding-bottom: 14px; border-color: rgba(226, 196, 98, .62); }
+.qr-page .poster-date,
+.qr-page .poster-venue { gap: 12px; }
+.qr-page .poster-date > svg,
+.qr-page .poster-venue > svg { color: #f1d477; }
+.qr-page .meta-label { color: #ead47f; }
+.qr-page .meta-value { font-size: clamp(1rem, 1.5vw, 1.35rem); }
+.qr-page .poster-prizes {
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.qr-page .prize-total {
+  min-height: 0;
+  padding: 0 0 8px;
+  border: 0;
+}
+.qr-page .prize-total > svg { display: none; }
+.qr-page .prize-total > span { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+.qr-page .prize-total .meta-label { font-size: clamp(1.1rem, 2vw, 1.65rem); }
+.qr-page .prize-total strong { font-size: clamp(1.55rem, 2.6vw, 2.2rem); color: #fff; }
+.qr-page .prize-list { gap: 4px; }
+.qr-page .prize-list .meta-label { color: #fff; font-size: 1rem; }
+.qr-page .prize-list ul { gap: 3px; }
+.qr-page .prize-list li { font-size: clamp(.84rem, 1.12vw, 1.02rem); }
+.qr-page .prize-dot { width: 5px; height: 5px; }
+.qr-page .poster-inline {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  justify-content: flex-start;
+  font-size: clamp(.95rem, 1.35vw, 1.2rem);
+  letter-spacing: 0;
+}
+.qr-page .poster-inline svg { color: #f1d477; }
+.qr-page .poster-strong {
+  margin: 0;
+  text-align: left;
+  font-family: "Poppins", system-ui, sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.55rem);
+  font-weight: 800;
+  line-height: 1.12;
+  color: #f2d477;
+}
+.qr .card {
+  width: 100%;
+  max-width: 680px;
+  margin-left: auto;
+  padding: 24px 26px 20px;
+  border: 4px solid #c39b31;
+  border-radius: 38px;
+  background: linear-gradient(135deg, #fffdf0 0%, #f2edcc 100%);
+  color: #171916;
+  box-shadow: 0 12px 34px rgba(0, 28, 21, .22), inset 0 0 0 1px rgba(255, 255, 255, .8);
+  backdrop-filter: none;
+}
+.qr .form-heading { margin-bottom: 8px; }
+.qr .form-heading > svg,
+.qr .form-heading p { display: none; }
+.qr .form-heading h2 { color: #171916; font-family: "Poppins", system-ui, sans-serif; font-size: 1.75rem; }
+.qr h3.sec { margin: 10px 0 6px; color: #25251f; }
+.qr h3.sec span { color: #625f50; }
+.qr label { color: #28271f; }
+.qr input {
+  border-color: transparent;
+  border-radius: 999px;
+  background: #e5e1cf;
+  color: #1d211d;
+}
+.qr input::placeholder { color: #827f74; }
+.qr input:hover { border-color: #c5a64c; }
+.qr input:focus-visible { border-color: #98751e; outline-color: #98751e; }
+.qr .member {
+  display: block;
+  padding: 10px 12px;
+  border-color: rgba(108, 98, 66, .2);
+  border-radius: 10px;
+  background: rgba(177, 165, 121, .18);
+}
+.qr .mhead { margin: 0 0 8px; }
+.qr .num { background: #124b37; color: #fff; }
+.qr .mtitle { display: inline; color: #24241f; }
+.qr .member input { min-height: 40px; font-size: .88rem; }
+.qr button.go {
+  margin-top: 10px;
+  background: #111313;
+  color: #fff;
+  box-shadow: none;
+}
+.qr button.go:hover { background: #294b39; box-shadow: 0 6px 14px rgba(0, 0, 0, .15); }
+.qr button.add {
+  border-color: rgba(88, 81, 54, .25);
+  color: #28271f;
+  background: rgba(164, 153, 113, .18);
+}
+.qr button.add:hover { color: #173e30; background: rgba(164, 153, 113, .3); }
+.qr .banner { background: #fdecea; color: #8c1e18; }
+.qr .card input:focus-visible,
+.qr .card button:focus-visible,
+.qr .card a:focus-visible { outline-color: #99771f; }
+
+@media (max-width: 899px) {
+  .qr-page { padding: 12px; }
+  .qr-page .page { min-height: calc(100svh - 24px); padding: 8px 22px 24px; }
+  .qr-page .layout { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-top: 8px; }
+  .qr-page .hero-copy { padding: 8px 0 0; }
+  .qr-page .qbit-heading { justify-content: center; }
+  .qr-page .poster-details { max-width: 620px; margin: 16px auto 0; }
+  .qr-page .poster-strong { text-align: center; }
+  .qr .card { max-width: 680px; margin: 0 auto; }
+}
+@media (max-width: 540px) {
+  .qr-page { padding: 8px; }
+  .qr-page .page { min-height: calc(100svh - 16px); padding: 8px 14px 20px; border-radius: 20px; }
+  .qr-page .topbar { gap: 8px; }
+  .qr-page .brand-copy { padding-left: 9px; }
+  .qr-page .brand-copy strong { font-size: .8rem; }
+  .qr-page .brand-copy small { font-size: .62rem; }
+  .qr-page .pill { gap: 5px; padding: 6px 9px; font-size: .66rem; }
+  .qr-page .qbit-main { font-size: 3.7rem; }
+  .qr-page .qbit-year { font-size: 3.4rem; }
+  .qr-page .event-facts { gap: 8px; }
+  .qr-page .poster-date,
+  .qr-page .poster-venue { gap: 7px; }
+  .qr-page .poster-date > svg,
+  .qr-page .poster-venue > svg { width: 24px; height: 24px; font-size: 1.4rem; }
+  .qr-page .meta-value { font-size: .83rem; }
+  .qr-page .prize-total .meta-label { font-size: 1rem; }
+  .qr-page .prize-total strong { font-size: 1.5rem; }
+  .qr-page .poster-strong { font-size: 1.75rem; }
+  .qr .card { padding: 18px 14px 14px; border-width: 3px; border-radius: 26px; }
+  .qr .form-heading h2 { font-size: 1.45rem; }
+  .qr .member .grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
