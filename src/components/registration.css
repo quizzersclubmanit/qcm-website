@@ -345,26 +345,42 @@
 .qr-page .qbit-heading { justify-content: flex-start; gap: 2px; line-height: .9; }
 .qr-page .qbit-main {
   font-size: clamp(5rem, 8vw, 7.4rem);
-  color: #f2e5b4;
-  -webkit-text-fill-color: #f2e5b4;
+  color: #f3df9b;
+  background: linear-gradient(108deg, #fff6d2 0%, #d6b34b 22%, #fff1b6 42%, #b98d2b 58%, #fff2c0 78%, #d3aa40 100%);
+  background-size: 180% 100%;
+  background-position: 18% center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0;
-  text-shadow: 0 4px 0 rgba(174, 139, 50, .46);
+  text-shadow: 0 3px 0 rgba(132, 97, 24, .32), 0 8px 22px rgba(236, 199, 92, .2);
 }
-.qr-page .qbit-mark { color: #f2e5b4; -webkit-text-fill-color: #f2e5b4; text-shadow: inherit; }
+.qr-page .qbit-mark {
+  color: #f3df9b;
+  background: linear-gradient(108deg, #fff6d2 0%, #d6b34b 22%, #fff1b6 42%, #b98d2b 58%, #fff2c0 78%, #d3aa40 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 3px 0 rgba(132, 97, 24, .32), 0 8px 22px rgba(236, 199, 92, .2);
+}
 .qr-page .qbit-year {
   font-size: clamp(4.6rem, 7.3vw, 6.8rem);
   color: #f2d477;
-  background: none;
-  -webkit-text-fill-color: #f2d477;
-  text-shadow: 0 4px 0 rgba(174, 139, 50, .38);
+  background: linear-gradient(115deg, #fff0ad 0%, #d09f31 26%, #ffefad 48%, #bd8b27 66%, #ffe8a0 86%, #d1a23a 100%);
+  background-size: 180% 100%;
+  background-position: 22% center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 3px 0 rgba(132, 97, 24, .28), 0 8px 22px rgba(236, 199, 92, .16);
 }
 .qr-page .poster-details { gap: 14px; margin-top: 22px; }
 .qr-page .event-facts { gap: 16px; padding-bottom: 14px; border-color: rgba(226, 196, 98, .62); }
 .qr-page .poster-date,
 .qr-page .poster-venue { gap: 12px; }
 .qr-page .poster-date > svg,
-.qr-page .poster-venue > svg { color: #f1d477; }
-.qr-page .meta-label { color: #ead47f; }
+.qr-page .poster-venue > svg { color: #f5d874; }
+.qr-page .meta-label { color: #f2d984; }
 .qr-page .meta-value { font-size: clamp(1rem, 1.5vw, 1.35rem); }
 .qr-page .poster-prizes {
   display: block;
@@ -380,10 +396,13 @@
 }
 .qr-page .prize-total > svg { display: none; }
 .qr-page .prize-total > span { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
-.qr-page .prize-total .meta-label { font-size: clamp(1.1rem, 2vw, 1.65rem); }
-.qr-page .prize-total strong { font-size: clamp(1.55rem, 2.6vw, 2.2rem); color: #fff; }
+.qr-page .prize-total .meta-label { font-size: clamp(1.1rem, 2vw, 1.65rem); color: #e8ca69; }
+.qr-page .prize-total strong {
+  font-size: clamp(1.55rem, 2.6vw, 2.2rem);
+  color: #fff;
+}
 .qr-page .prize-list { gap: 4px; }
-.qr-page .prize-list .meta-label { color: #fff; font-size: 1rem; }
+.qr-page .prize-list .meta-label { color: #fff5d4; font-size: 1rem; }
 .qr-page .prize-list ul { gap: 3px; }
 .qr-page .prize-list li { font-size: clamp(.84rem, 1.12vw, 1.02rem); }
 .qr-page .prize-dot { width: 5px; height: 5px; }
@@ -397,7 +416,7 @@
   font-size: clamp(.95rem, 1.35vw, 1.2rem);
   letter-spacing: 0;
 }
-.qr-page .poster-inline svg { color: #f1d477; }
+.qr-page .poster-inline svg { color: #f5d874; }
 .qr-page .poster-strong {
   margin: 0;
   text-align: left;
