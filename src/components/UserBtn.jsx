@@ -1,46 +1,22 @@
-import { forwardRef, useEffect } from "react"
 import { IoIosArrowDropdownCircle } from "react-icons/io"
-import gsap from "gsap"
-import { useGSAP } from "@gsap/react"
 
-const UserBtn = forwardRef(({ name, showDropDown, setShowDropDown }, ref) => {
-  const { contextSafe } = useGSAP()
-
-  const animateDropDown = contextSafe((cond) => {
-    if (cond) {
-      gsap.to(ref.current, {
-        opacity: 1,
-        transform: "translateY(0)",
-        ease: "back.out"
-      })
-    } else {
-      gsap.to(ref.current, {
-        opacity: 0,
-        transform: "translateY(-25%)",
-        duration: 0.3,
-        ease: "power1.out"
-      })
-    }
-  })
-
-  useEffect(() => {
-    return () => {
-      animateDropDown(false)
-    }
-  }, [])
-
+// Account button in the desktop nav. The whole pill toggles the menu
+// (not just the chevron), which rotates to indicate open state.
+// eslint-disable-next-line react/prop-types
+const UserBtn = ({ name, showDropDown, setShowDropDown }) => {
   return (
-    <div className="poppins-regular py-3 px-4 flex items-center justify-center  text-sm lg:text-white border-black rounded-3xl border-2 lg:border-white overflow-y-hidden hover:backdrop-blur-md hover:text-black">
+    <div
+      className="poppins-regular py-3 px-4 flex items-center justify-center gap-2 text-sm lg:text-white border-black rounded-3xl border-2 lg:border-white overflow-y-hidden hover:backdrop-blur-md hover:text-black cursor-pointer select-none"
+      onClick={() => {
+        setShowDropDown((prev) => !prev)
+      }}
+    >
       <span className="uppercase text-black lg:text-white">{name}</span>
       <IoIosArrowDropdownCircle
-        className="text-xl cursor-pointer"
-        onClick={() => {
-          setShowDropDown((prev) => !prev)
-          animateDropDown(!showDropDown)
-        }}
+        className={`text-xl transition-transform duration-200 ${showDropDown ? "rotate-180" : ""}`}
       />
     </div>
   )
-})
+}
 
 export default UserBtn

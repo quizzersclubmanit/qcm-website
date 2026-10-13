@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /signin
+Disallow: /login
+Disallow: /update-phone
+Disallow: /update-password
+Disallow: /reset-password
+Disallow: /reset-password-page
+Disallow: /account/
+
+Sitemap: https://www.quizzersclub.com/sitemap.xml

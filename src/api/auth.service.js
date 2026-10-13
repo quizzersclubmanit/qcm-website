@@ -210,6 +210,8 @@
 
 // Auth service - Connected to Prisma MongoDB backend
 
+import { log, warn, error as logError } from "../utils/log.js"
+
 const API_BASE_URL = ''
 
 class Auth {
@@ -324,10 +326,10 @@ class Auth {
       // Get token from localStorage or cookies
        const token = localStorage.getItem('token') || localStorage.getItem('authToken');
 
-      if (!token) {
-        console.warn('No authentication token found in localStorage');
-        return null;
-      }
+      if (!token) {
+        warn('No authentication token found in localStorage');
+        return null;
+      }
       
       const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
         method: 'GET',
@@ -350,13 +352,13 @@ class Auth {
       // }
       
       if (response.status === 401) {
-        console.log('Not authenticated - no valid session');
+        log('Not authenticated - no valid session');
         throw new Error('Not authenticated');
       }
       
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        console.error('Auth/me error:', response.status, errorData);
+        logError('Auth/me error:', response.status, errorData);
         throw new Error(errorData.error || 'Failed to fetch user data');
       }
       
@@ -364,10 +366,10 @@ class Auth {
       
       return data.user || data; // Handle both { user } and direct user object responses
     } catch (error) {
-      console.error('Error in getCurrentUser:', error);
+      logError('Error in getCurrentUser:', error);
       // Only rethrow if it's not a 401 (which is expected when not logged in)
       if (error.message !== 'Not authenticated') {
-        console.error('Unexpected error in getCurrentUser:', error);
+        logError('Unexpected error in getCurrentUser:', error);
       }
       throw error;
     }

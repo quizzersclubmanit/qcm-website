@@ -10,9 +10,9 @@ const Contact = () => {
     <Container className="flex flex-col sm:flex-row w-full gap-6 py-4">
       
       <div className="flex flex-col gap-4 w-full sm:pl-12">
-        <h3 className="font-bold text-xl sm:text-2xl text-yellow-400">
+        <h2 className="font-bold text-xl sm:text-2xl text-yellow-400">
           Contact Us
-        </h3>
+        </h2>
 
         {contacts.map((contact, index) => (
           <div key={index} className="text-sm">
@@ -28,8 +28,8 @@ const Contact = () => {
               >
                 {contact.no}
               </span>
-              <a href={contact.linkedin} target="_blank">
-                <FaLinkedin className="text-base" />
+              <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${contact.name} on LinkedIn`}>
+                <FaLinkedin className="text-base" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -40,6 +40,7 @@ const Contact = () => {
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}`}
             target="_blank"
+            rel="noopener noreferrer"
             className="hover:underline"
           >
             {email}
@@ -49,9 +50,9 @@ const Contact = () => {
 
       {/* RIGHT */}
       <div className="flex flex-col gap-4 w-full sm:border-l sm:pl-12 border-gray-700">
-        <h3 className="font-bold text-xl sm:text-2xl text-yellow-400">
+        <h2 className="font-bold text-xl sm:text-2xl text-yellow-400">
           Locate Us
-        </h3>
+        </h2>
 
         <div className="flex gap-3 text-sm">
           <FaLocationDot className="mt-1" />

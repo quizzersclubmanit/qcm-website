@@ -8,14 +8,17 @@ const Slider = SliderImport.default ?? SliderImport;
 import { eventDetails } from "../assets/qcmData.json"
 
 const Events = () => {
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
   const settings = {
     infinite: true,
-    speed: 400,
+    speed: reduceMotion ? 0 : 400,
     slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
     className: "w-full",
-    autoplay: true,
+    autoplay: !reduceMotion,
     responsive: [
       {
         breakpoint: 1300,
@@ -27,17 +30,6 @@ const Events = () => {
       }
     ]
   }
-
-  console.log({
-  Container,
-  SectionHead,
-  EventCard,
-  Slider,
-  containerType: typeof Container,
-  sectionHeadType: typeof SectionHead,
-  eventCardType: typeof EventCard,
-  sliderType: typeof Slider
-});
 
   return (
     <Container
