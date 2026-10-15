@@ -181,6 +181,10 @@
 .qr-page .poster-inline{display:flex;justify-content:center;align-items:center;gap:12px;width:max-content;max-width:100%;margin:0 auto;padding:8px 20px;border:1px solid rgba(226,203,123,.42);border-radius:999px;color:#fff;font-size:.8rem;font-weight:600;letter-spacing:.18em}
 .qr-page .poster-inline svg{font-size:1.3rem;color:#e9c55f}
 .qr-page .poster-strong{position:relative;margin:4px auto 0;text-align:center;font-family:"Brush Script MT","Segoe Script",cursive;font-size:2.35rem;font-weight:600;line-height:1.2;letter-spacing:0;color:#f2d16f}
+.qr-page .poster-sample-paper{display:flex;align-items:center;gap:.45rem;width:max-content;margin:4px auto 0;color:#fff;font-size:.85rem;font-weight:600;text-align:center;text-decoration:none}
+.qr-page .poster-sample-paper svg{flex:none;font-size:1.1em}
+.qr-page .poster-sample-paper span{text-decoration:underline;text-underline-offset:3px}
+.qr-page .poster-sample-paper:hover{color:#f2d16f}
 .qr .card{padding:23px 24px 17px;border:1px solid rgba(225,199,117,.48);border-radius:20px;background:linear-gradient(145deg,rgba(5,62,47,.92),rgba(1,43,33,.88));box-shadow:0 20px 60px rgba(0,0,0,.23),inset 0 1px rgba(255,255,255,.08);backdrop-filter:blur(10px)}
 .qr .form-heading{display:flex;align-items:center;gap:14px;margin-bottom:14px}
 .qr .form-heading>svg{flex:none;width:46px;height:46px;color:#072f23;font-size:2.8rem;fill:#f1c75b}
@@ -506,6 +510,9 @@
   .qr-page .poster-details { max-width: 620px; margin: 16px auto 0; }
   .qr-page .poster-strong { text-align: center; }
   .qr .card { max-width: 680px; margin: 0 auto; }
+}
+@media (min-width: 900px) {
+  .qr-page .poster-sample-paper { margin: 4px 0 0; font-size: 1rem; text-align: left; }
 }
 @media (max-width: 540px) {
   .qr-page { padding: 8px; }

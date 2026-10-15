@@ -3,7 +3,7 @@ import RegistrationForm, { MIN_MEMBERS, MAX_MEMBERS } from './RegistrationForm.j
 import './registration.css';
 import qcmLogoSm from '../assets/qcm-logo-sm.png'
 import floatingMarks  from '../assets/floating-mark.png';
-import { FaArrowLeft, FaCalendarAlt, FaGraduationCap, FaMapMarkerAlt, FaTrophy } from 'react-icons/fa';
+import { FaArrowLeft, FaCalendarAlt, FaFilePdf, FaGraduationCap, FaMapMarkerAlt, FaTrophy } from 'react-icons/fa';
 import SEO from './SEO.jsx';
 
 // Event details for QBIT'26
@@ -106,6 +106,15 @@ export default function SignupPage() {
 
               <p className="poster-inline"><FaGraduationCap aria-hidden="true" />OPEN TO ALL UG AND PG STUDENTS</p>
               <p className="poster-strong">Grand Finale at MANIT</p>
+              <a
+                className="poster-sample-paper"
+                href="https://drive.google.com/drive/folders/17J4Pd7uOIaZLTpS7UHDlQxxxgLIoozip?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFilePdf aria-hidden="true" />
+                <span>Sample Booklet</span>
+              </a>
             </div>
           </header>
 

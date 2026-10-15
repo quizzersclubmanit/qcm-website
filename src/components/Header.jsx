@@ -46,7 +46,7 @@ const Header = () => {
   return (
     <Container
       element="header"
-      className="w-screen fixed top-0 left-0 z-10 flex justify-center"
+      className="w-screen fixed top-0 left-0 z-20 flex justify-center"
     >
       <div
         ref={headRef}
