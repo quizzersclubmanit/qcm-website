@@ -35,7 +35,7 @@ const About = () => {
           <p
             className="md:w-1/2 leading-relaxed p-8 rounded-xl text-white transition-all duration-300"
             style={{
-              backgroundColor: "#1E3743",
+              backgroundColor: "rgba(0, 0, 0, 0.3)",
               boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
             }}
           >
