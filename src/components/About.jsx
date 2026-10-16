@@ -25,7 +25,7 @@ const About = () => {
   return (
     <Container
       id="about"
-      className="md:w-11/12 mx-auto flex flex-col gap-3 my-8"
+      className="md:w-11/12 mx-auto flex flex-col gap-3 my-8 bg-[url('/bg-gradient.webp')] bg-no-repeat bg-center bg-cover"
     >
       {data.map((obj, index) => (
         <div
