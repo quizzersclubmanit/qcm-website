@@ -35,9 +35,9 @@ const About = () => {
           <p
             className="md:w-1/2 leading-relaxed p-8 rounded-xl text-white transition-all duration-300"
             style={{
-              backgroundColor: "#0f3a2e",
+              backgroundColor: "#1E3743",
               backgroundImage:
-                "linear-gradient(180deg, #0f3a2e 0%, #2b7966 100%)"
+                "linear-gradient(180deg, #1E3743 0%, #008D9F 100%)"
             }}
           >
             {obj.content}
