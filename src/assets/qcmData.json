@@ -2301,9 +2301,9 @@
                          "category":  "Title Sponsors",
                          "brands":  [
                                         {
-                                            "brand":  "The Hindu",
-                                            "logo":  "https://www.thehindu.com/theme/images/th-online/thehindu-logo.svg",
-                                            "website":  "https://www.thehindu.com/"
+                                            "brand":  "Madhya Pradesh State Tourism Development Corporation ",
+                                            "logo":  "https://images.seeklogo.com/logo-png/17/1/madhya-pradesh-tourism-logo-png_seeklogo-179866.png",
+                                            "website":  "https://mpstdc.com/"
                                         },
                                         {
                                             "brand":  "Tata Power",
@@ -2316,9 +2316,9 @@
                          "category":  "Co-Title Sponsors",
                          "brands":  [
                                         {
-                                            "brand":  "Madhya Pradesh State Tourism Development Corporation ",
-                                            "logo":  "https://images.seeklogo.com/logo-png/17/1/madhya-pradesh-tourism-logo-png_seeklogo-179866.png",
-                                            "website":  "https://mpstdc.com/"
+                                            "brand":  "Sage University",
+                                            "logo":  "https://portal.sageuniversity.in/AccSoft/images/sagelogo.png",
+                                            "website":  "https://sageuniversity.edu.in/"
                                         },
                                         {
                                             "brand":  "BPCL",
@@ -2345,11 +2345,7 @@
                                             "logo":  "https://i.pinimg.com/736x/96/67/47/966747a17f941a2f18493d82faae11bf.jpg",
                                             "website":  "https://licindia.in/"
                                         },
-                                        {
-                                            "brand":  "Civil Services Club",
-                                            "logo":  "https://content.jdmagicbox.com/comp/bhopal/v9/0755px755.x755.180620143125.q5v9/catalogue/civil-services-club-jawahar-chowk-bhopal-ias-institutes-inumtgkfpd-250.jpg",
-                                            "website":  "https://www.instagram.com/civil.services.club/"
-                                        },
+                                        
                                         {
                                             "brand":  "MP Khadi Gramodhyog Board",
                                             "logo":  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY7NPqAFWSbx6b4Ex50PM17V1eaVnq00OGKg\u0026s",
@@ -2374,6 +2370,11 @@
                                             "brand":  "Quill Bot",
                                             "logo":  "https://assets.quillbot.com/images/og-quillbot-img.png",
                                             "website":  "https://quillbot.com/paragraph-rewriter"
+                                        },
+                                        {
+                                            "brand":  "Civil Services Club",
+                                            "logo":  "https://content.jdmagicbox.com/comp/bhopal/v9/0755px755.x755.180620143125.q5v9/catalogue/civil-services-club-jawahar-chowk-bhopal-ias-institutes-inumtgkfpd-250.jpg",
+                                            "website":  "https://www.instagram.com/civil.services.club/"
                                         },
                                         {
                                             "brand":  "Symbolab",
@@ -2432,7 +2433,25 @@
                                            "logo":  "https://cdn.brandfetch.io/id9mVQlyB1/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX",
                                            "website":  "https://www.canva.com/"
                                        }
-                         }
+                         },
+            
+                         {
+                             "category":  "Banking Partner",
+                             "brand":  {
+                                           "name":  "Canara Bank",
+                                           "logo":  "https://crystalpng.com/wp-content/uploads/2025/11/Canara-Bank-Logo.png",
+                                           "website":  "https://www.canarabank.bank.in/"
+                                       }
+                         },
+                            {
+                                "category":  "Media Partner",
+                                "brand":  {
+                                            "name":  "Dainik Bhaskar",
+                                            "logo":  "https://images.seeklogo.com/logo-png/25/1/dainik-bhaskar-logo-png_seeklogo-259274.png",
+                                            "website":  "https://www.bhaskar.com/"
+                                        }
+                            }
+
                      ]
                  ],
     "team":  [
