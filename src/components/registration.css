@@ -431,9 +431,14 @@
   text-align: left;
   font-family: "Poppins", system-ui, sans-serif;
   font-size: clamp(1.8rem, 3vw, 2.55rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.12;
   color: #f2d477;
+  background: linear-gradient(180deg, #fff4b5 0%, #e6c04f 28%, #a97718 52%, #f9df81 68%, #c08c26 84%, #fff0a4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 1px rgba(255, 244, 181, .24), 0 3px 8px rgba(96, 66, 10, .24);
 }
 .qr .card {
   width: 100%;
@@ -485,6 +490,15 @@
   box-shadow: none;
 }
 .qr button.go:hover { background: #294b39; box-shadow: 0 6px 14px rgba(0, 0, 0, .15); }
+.qr .form-contact {
+  margin-top: 14px;
+  color: #6d6c63;
+  font-size: .82rem;
+  line-height: 1.6;
+}
+.qr .form-contact p { margin: 0; }
+.qr .form-contact ul { margin: 3px 0 0; padding-left: 20px; }
+.qr .form-contact a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .qr button.add {
   border-color: rgba(88, 81, 54, .25);
   color: #28271f;
@@ -497,11 +511,11 @@
 .qr .card a:focus-visible { outline-color: #99771f; }
 
 @media (max-width: 899px) {
-  .qr-page { padding: 12px; }
-  .qr-page .page { height: calc(100svh - 24px); padding: 8px 22px 24px; }
+  .qr-page { padding: 12px; overflow-x: clip; overflow-y: visible; }
+  .qr-page .page { height: auto; min-height: calc(100svh - 24px); padding: 8px 22px 24px; }
   .qr-page .layout {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
     gap: 16px;
     padding-top: 8px;
   }
@@ -509,14 +523,14 @@
   .qr-page .qbit-heading { justify-content: center; }
   .qr-page .poster-details { max-width: 620px; margin: 16px auto 0; }
   .qr-page .poster-strong { text-align: center; }
-  .qr .card { max-width: 680px; margin: 0 auto; }
+  .qr .card { max-width: 680px; max-height: none; margin: 0 auto; overflow: visible; overscroll-behavior: auto; }
 }
 @media (min-width: 900px) {
   .qr-page .poster-sample-paper { margin: 4px 0 0; font-size: 1rem; text-align: left; }
 }
 @media (max-width: 540px) {
   .qr-page { padding: 8px; }
-  .qr-page .page { height: calc(100svh - 16px); padding: 8px 14px 20px; border-radius: 20px; }
+  .qr-page .page { height: auto; min-height: calc(100svh - 16px); padding: 8px 14px 20px; border-radius: 20px; }
   .qr-page .topbar { gap: 8px; }
   .qr-page .brand-copy { padding-left: 9px; }
   .qr-page .brand-copy strong { font-size: .8rem; }

@@ -336,6 +336,13 @@ export default function RegistrationForm({ onClose, closeLabel }) {
         <button className="go" type="submit" disabled={submitting}>
           {submitting ? 'Registering...' : 'Register team'}
         </button>
+        <div className="form-contact">
+          <p><strong>Have questions? Reach out to us:</strong></p>
+          <ul>
+            <li>Yashika : <a href="tel:+918000264938">+91 80002 64938</a></li>
+            <li>Rihansh : <a href="tel:+919953493370">+91 99534 93370</a></li>
+          </ul>
+        </div>
       </form>
     </section>
   );
