@@ -27,7 +27,7 @@ const Nav = forwardRef(({ className = "", offModal = () => {} }, ref) => {
   }
 
   return (
-    <nav ref={ref} className={`poppins-medium flex items-center gap-1 lg:gap-2 ${className}`}>
+    <nav ref={ref} className={`poppins-medium flex items-center ${className}`}>
       {tabs.map((tab) => {
         const isActive = tab.hash
           ? location.pathname === "/" && (location.hash === tab.hash || (!location.hash && tab.hash === "#hero"))
@@ -38,13 +38,16 @@ const Nav = forwardRef(({ className = "", offModal = () => {} }, ref) => {
             key={tab.name}
             to={tab.to}
             onClick={(e) => handleTabClick(e, tab.to)}
-            className={`px-3 lg:px-3.5 py-1.5 rounded-full text-xs lg:text-[13px] tracking-wide transition-all duration-200 ${
+            className={`relative py-1 text-sm tracking-wide transition-colors duration-200 ${
               isActive
-                ? "bg-white/15 text-[#fe9c02] font-semibold border border-[#fe9c02]/30 shadow-sm"
-                : "text-slate-300 hover:text-white hover:bg-white/10 font-medium"
+                ? "text-[#fe9c02] font-semibold"
+                : "text-slate-200 hover:text-[#fe9c02] font-medium"
             }`}
           >
-            {tab.name}
+            <span>{tab.name}</span>
+            {isActive && (
+              <span className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-[#fe9c02] rounded-full shadow-[0_0_8px_rgba(254,156,2,0.8)]" />
+            )}
           </Link>
         )
       })}

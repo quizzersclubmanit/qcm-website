@@ -33,10 +33,10 @@ const TABS = [
 ]
 
 const rowClass = (active) =>
-  `flex items-center gap-3.5 w-full px-4 py-3 rounded-2xl text-[13px] font-semibold transition-all duration-200 border ${
+  `flex items-center gap-3.5 w-full px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
     active
-      ? "bg-[#fe9c02]/20 backdrop-blur-md border-[#fe9c02]/40 text-[#fe9c02] shadow-[0_0_15px_rgba(254,156,2,0.15)]"
-      : "border-transparent text-slate-300 hover:bg-white/10 hover:text-white"
+      ? "bg-[#fe9c02]/15 text-[#fe9c02] font-bold"
+      : "text-slate-200 hover:text-white hover:bg-white/10"
   }`
 
 // eslint-disable-next-line react/prop-types
@@ -115,11 +115,11 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
 
       {/* Drawer Panel */}
       <aside
-        className={`fixed right-0 top-0 bottom-0 z-[70] w-[82vw] max-w-[320px] flex flex-col shadow-[0_0_50px_rgba(0,0,0,0.85)] border-l border-white/15 text-white transition-transform duration-300 ease-out ${
+        className={`fixed right-0 top-0 bottom-0 z-[70] w-[80vw] max-w-[320px] flex flex-col shadow-2xl border-l border-white/10 text-white transition-transform duration-300 ease-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
-          background: "linear-gradient(180deg, #07131b 0%, #050b10 100%)"
+          backgroundColor: "#0d222e"
         }}
         aria-hidden={!open}
       >
@@ -129,21 +129,21 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
             <Logo className="w-9 h-9" />
             <div className="leading-tight">
               <p className="poppins-bold text-white text-sm">Quizzers&apos; Club</p>
-              <p className="text-[10px] text-[#fe9c02] font-bold tracking-widest uppercase">NIT Bhopal</p>
+              <p className="text-[10px] text-[#fe9c02] font-semibold uppercase tracking-wider">NIT Bhopal</p>
             </div>
           </div>
           <button
             onClick={onClose}
             aria-label="Close menu"
-            className="w-8 h-8 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors border border-white/10"
+            className="w-8 h-8 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors"
           >
             <FaTimes className="text-xs" />
           </button>
         </div>
 
         {/* Links */}
-        <nav className="flex-1 overflow-y-auto px-3.5 py-4 flex flex-col gap-1.5">
-          <p className="px-3 pt-1 pb-2 text-[10px] font-bold tracking-[0.2em] text-[#fe9c02] uppercase">
+        <nav className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-1">
+          <p className="px-3 pt-1 pb-2 text-[10px] font-bold tracking-widest text-[#fe9c02] uppercase">
             Menu
           </p>
           {TABS.map(({ name: tabName, to, Icon }) =>
@@ -172,8 +172,8 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
 
           {loggedIn && isAdmin && (
             <>
-              <p className="px-3 pt-4 pb-2 text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">
-                Admin Area
+              <p className="px-3 pt-4 pb-2 text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                Admin
               </p>
               <Link
                 to="/admin/manage-teams"
@@ -191,7 +191,7 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
         </nav>
 
         {/* Footer CTA */}
-        <div className="p-4 border-t border-white/10 bg-black/25">
+        <div className="p-4 border-t border-white/10 bg-black/20">
           {loggedIn ? (
             <button
               onClick={handleLogout}
@@ -201,11 +201,11 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
               <span>Logout</span>
             </button>
           ) : (
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-2">
               <button
                 type="button"
                 onClick={go(() => navigate("/signup"))}
-                className="btn-shimmer w-full py-3.5 px-4 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-amber-400 via-[#fe9c02] to-amber-500 hover:from-amber-300 hover:to-amber-400 text-[#060e14] flex items-center justify-center gap-2 shadow-lg shadow-[#fe9c02]/25 active:scale-[0.98] transition-all"
+                className="w-full py-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#fe9c02] hover:bg-amber-400 text-[#0c1e28] flex items-center justify-center gap-2 shadow-md shadow-[#fe9c02]/20 active:scale-[0.98] transition-all"
               >
                 <FaUserPlus className="text-sm" />
                 <span>Register for Q-BIT &apos;26</span>
