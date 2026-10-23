@@ -1,74 +1,46 @@
-import { Container, Nav, MobileDrawer, Logo } from "./components"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { RxHamburgerMenu } from "react-icons/rx"
-import { useState, useRef } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { useGSAP } from "@gsap/react"
-
-gsap.registerPlugin(ScrollTrigger)
+import Logo from "./Logo"
+import Nav from "./Nav"
+import MobileDrawer from "./MobileDrawer"
 
 const Header = () => {
   const [showTabModal, setShowTabModal] = useState(false)
-  const headRef = useRef(null)
-  const logoRef = useRef(null)
-  const navRef = useRef(null)
-  const toggleModal = () => {
-    setShowTabModal((prev) => !prev)
-  }
-
-  useGSAP(() => {
-    gsap.from(navRef.current, {
-      opacity: 0,
-      y: "-100%",
-      duration: 1,
-      ease: "back.out"
-    })
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          start: "top 0",
-          scroller: "body",
-          trigger: headRef.current,
-          scrub: 1
-        }
-      })
-      .to(navRef.current.querySelectorAll(".tabs-bar"), {
-        backgroundColor: "transparent",
-        ease: "power2"
-      })
-      .to(headRef.current, {
-        backgroundColor: "#000000a2",
-        ease: "power2"
-      })
-  }, [])
+  const navigate = useNavigate()
 
   return (
-    <Container
-      element="header"
-      className="w-screen fixed top-0 left-0 z-20 flex justify-center"
-    >
-      <div
-        ref={headRef}
-        className="flex sm:justify-around justify-between items-center rounded-3xl overflow-y-hidden lg:w-[75vw] w-[90vw] px-8 mt-3"
-        style={{ borderRadius: "3rem" }}
-      >
-        <Logo
-          ref={logoRef}
-          className="block md:hidden md:w-[3vmax] w-[5vmax] "
-        />
+    <header className="fixed top-0 left-0 right-0 w-full z-50 px-3 sm:px-6 py-3 flex justify-center pointer-events-none">
+      <div className="pointer-events-auto flex items-center justify-between w-full max-w-6xl mx-auto px-4 sm:px-6 py-2 rounded-full bg-[#14213D]/90 backdrop-blur-md border border-white/10 shadow-lg shadow-black/25">
+        <Logo className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
 
-        <Nav ref={navRef} className="hidden md:flex" />
-        <RxHamburgerMenu
-          className="block md:hidden text-xl text-white cursor-pointer"
-          onClick={toggleModal}
-        />
+        <Nav className="hidden md:flex items-center gap-1 lg:gap-2 flex-1 justify-between ml-6" />
+
+        {/* Mobile Controls */}
+        <div className="flex md:hidden items-center gap-2.5">
+          <button
+            type="button"
+            onClick={() => navigate("/signup")}
+            className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FCA311] text-[#14213D] hover:bg-amber-400 transition-colors shadow-sm"
+          >
+            Register
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowTabModal(true)}
+            aria-label="Open navigation menu"
+            className="p-1.5 text-white hover:text-[#FCA311] transition-colors focus:outline-none"
+          >
+            <RxHamburgerMenu className="text-2xl" />
+          </button>
+        </div>
+
         <MobileDrawer
           open={showTabModal}
           onClose={() => setShowTabModal(false)}
         />
       </div>
-    </Container>
+    </header>
   )
 }
 

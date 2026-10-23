@@ -3,7 +3,9 @@ import { createPortal } from "react-dom"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import {
+  FaHome,
   FaInfoCircle,
+  FaQuestionCircle,
   FaCalendarAlt,
   FaUsers,
   FaHandshake,
@@ -27,9 +29,11 @@ import { isStaffUser } from "../utils/authUtils"
 // Desktop navigation is untouched — this renders only below the md breakpoint.
 
 const TABS = [
+  { name: "Home", to: "#hero", Icon: FaHome },
   { name: "About", to: "#about", Icon: FaInfoCircle },
   { name: "Events", to: "#events", Icon: FaCalendarAlt },
   { name: "Team", to: "team", Icon: FaUsers },
+  { name: "FAQs", to: "faqs", Icon: FaQuestionCircle },
   { name: "Sponsors", to: "#sponsors", Icon: FaHandshake },
   { name: "Contact Us", to: "#contacts", Icon: FaEnvelope }
 ]

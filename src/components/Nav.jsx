@@ -1,5 +1,5 @@
 import { useNavigate, Link, useLocation } from "react-router-dom"
-import { Button, DropDown, UserBtn, Logo } from "./components"
+import { Button, DropDown, UserBtn } from "./components"
 import authService from "../api/auth.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
@@ -7,94 +7,53 @@ import { login, logout, setData } from "../redux/user.slice"
 import { isStaffUser } from "../utils/authUtils"
 import { log, warn, error as logError } from "../utils/log.js"
 
-const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
+const Nav = forwardRef(({ className = "", offModal = () => {} }, ref) => {
   const location = useLocation()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const tabs = [
-    {
-      name: "Home",
-      to: "#hero"
-    },
-    {
-      name: "About",
-      to: "#about"
-    },
-    {
-      name: "Events",
-      to: "#events"
-    },
-    {
-      name: "Team",
-      to: "team"
-    },
-    {
-      name: "Sponsors",
-      to: "#sponsors"
-    },
-    {
-      name: "Contact Us",
-      to: "#contacts"
-    }
+    { name: "Home", to: "/#hero" },
+    { name: "About", to: "/#about" },
+    { name: "Events", to: "/#events" },
+    { name: "Team", to: "/team" },
+    { name: "FAQs", to: "/faqs" },
+    { name: "Sponsors", to: "/#sponsors" },
+    { name: "Contact", to: "/#contacts" }
   ]
+
   const { data, loggedIn } = useSelector((state) => state.user)
   const name = data?.name?.split(" ")[0] || "User"
   const isAdmin = isStaffUser(data)
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const logoRef = useRef(null)
   const [showDropDown, setShowDropDown] = useState(false)
   const anchorRef = useRef(null)
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
-
-  useEffect(() => {
-    log('Nav useEffect running, checking auth...')
-    
-    // Skip auth check on authentication pages to prevent 401 errors
     const authPages = ['/signup', '/signin', '/reset-password', '/login']
     if (authPages.some(page => location.pathname.startsWith(page))) {
-      log('Skipping auth check on auth page:', location.pathname)
       return
     }
 
-    // Don't check auth if we're already logged in (from Redux state)
     if (loggedIn && data?.id) {
-      log('User already authenticated in Redux state, skipping auth check')
       return
     }
 
-    log('Calling getCurrentUser to verify session...')
     const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 5000)
 
     authService
       .getCurrentUser()
       .then((user) => {
-        log('Auth restored successfully:', user)
         if (user && user.id) {
           dispatch(setData(user))
           dispatch(login())
         } else {
-          warn('Invalid user data received:', user)
-          // Clear any invalid user data
           dispatch(logout())
         }
       })
       .catch((error) => {
-        if (error.name === 'AbortError') {
-          warn('Auth check timed out')
-        } else if (error.message !== 'Not authenticated') {
+        if (error.name !== 'AbortError' && error.message !== 'Not authenticated') {
           logError('Auth check error:', error)
-        } else {
-          log('User not authenticated, clearing any existing session')
-          dispatch(logout())
         }
       })
       .finally(() => {
@@ -105,72 +64,40 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
       controller.abort()
       clearTimeout(timeoutId)
     }
-  }, [location.pathname, loggedIn, data?.id])
+  }, [location.pathname, loggedIn, data?.id, dispatch])
+
+  const handleTabClick = (e, to) => {
+    offModal()
+    if (to.startsWith("/#")) {
+      const hash = to.replace("/", "")
+      if (location.pathname === "/") {
+        e.preventDefault()
+        const el = document.querySelector(hash)
+        if (el) el.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+  }
 
   return (
-    <>
-      <nav
-        ref={ref}
-        className={`poppins-regular md:items-center md:justify-between justify-around gap-3 flex md:flex-row flex-col items-center md:overflow-y-hidden h-[50vh] lg:h-[15vh] w-full ${className}`}
-      >
-        <Logo
-          ref={logoRef}
-          className="hidden md:block md:w-[3vmax] w-[5vmax] cursor-default"
-  
-        />
-        <div className="tabs-bar flex flex-col gap-[2vw] mt-0 pt-0 md:flex-row h-22 items-center px-2 rounded-2xl">
-          {tabs.map((tab, index) =>
-            tab.to.startsWith("#") ? (
-              <a
-                key={index}
-                href={`/${tab.to}`}
-                className="hover:text-yellow-400 transition-all text-base no-underline text-black
-                border-2 rounded-[25px] py-[5px] px-[10px]
-                md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
-                style={{ borderColor: "currentColor" }}
-                onClick={(e) => {
-                  // In-app hash scroll without full page reload (href kept for crawlers)
-                  e.preventDefault()
-                  offModal()
-                  const scroll = () =>
-                    document.querySelector(tab.to)?.scrollIntoView({ behavior: "smooth" })
-                  if (location.pathname !== "/") {
-                    navigate("/")
-                    setTimeout(scroll, 350)
-                  } else {
-                    scroll()
-                  }
-                }}
-              >
-                {tab.name}
-              </a>
-            ) : (
-              <Link
-                key={index}
-                to={tab.to}
-                className="hover:text-yellow-400 transition-all text-base no-underline text-black 
-                border-2 rounded-[25px] py-[5px] px-[10px] 
-                md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
-                style={{ borderColor: "currentColor" }}
-                onClick={offModal}
-              >
-                {tab.name}
-              </Link>
-            )
-          )}
-        </div>
+    <nav ref={ref} className={`poppins-regular ${className}`}>
+      {/* Navigation Links */}
+      <div className="flex items-center gap-1 lg:gap-2">
+        {tabs.map((tab) => (
+          <Link
+            key={tab.name}
+            to={tab.to}
+            onClick={(e) => handleTabClick(e, tab.to)}
+            className="text-slate-200 hover:text-[#FCA311] text-xs lg:text-sm font-medium px-2.5 py-1 rounded-full transition-colors duration-150 hover:bg-white/5"
+          >
+            {tab.name}
+          </Link>
+        ))}
+      </div>
+
+      {/* Auth Action */}
+      <div className="flex items-center gap-3">
         {loggedIn ? (
-          <div ref={anchorRef} className="flex sm:flex-row flex-col relative">
-            {/* <Button
-              label="IQC Preparation Booklet"
-              onClick={() =>
-                window.open(
-                  "https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing",
-                  "_blank"
-                )
-              }
-              className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2"
-            /> */}
+          <div ref={anchorRef} className="relative">
             <UserBtn
               name={name}
               showDropDown={showDropDown}
@@ -184,29 +111,19 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
             />
           </div>
         ) : (
-          <div className="flex sm:flex-row flex-col gap-2 items-center">
-            {/* Login button commented out per request
-            <Button
-              label="Login"
-              className="poppins-medium py-2 px-4 text-sm flex items-center justify-center text-white/90 rounded-full border border-white/60 bg-transparent hover:bg-white hover:text-blue-900 transition-all duration-200"
-              onClick={() => {
-                navigate("/signin")
-              }}
-            /> */}
-            <Button
-              label="Sign Up"
-              className="poppins-semibold py-2 px-5 text-sm flex items-center justify-center text-white rounded-full bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-900/20 border border-blue-500 transition-all duration-200"
-              onClick={() => {
-                navigate("/signup")
-              }}
-            />
-          </div>
+          <Button
+            label="Register"
+            className="py-1.5 px-4 text-xs font-bold rounded-full bg-[#FCA311] text-[#14213D] hover:bg-amber-400 shadow-sm transition-all duration-150"
+            onClick={() => {
+              navigate("/signup")
+            }}
+          />
         )}
-      </nav>
-    </>
+      </div>
+    </nav>
   )
 })
 
+Nav.displayName = "Nav"
+
 export default Nav
-
-
