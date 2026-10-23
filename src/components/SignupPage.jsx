@@ -68,6 +68,17 @@ export default function SignupPage() {
       {/* Theatrical spotlight & subtle background lighting */}
       <div className="ds-ambient-lighting" aria-hidden="true">
         <div className="ds-spotlight" />
+        {/* Subtle Ambient Constellation Grid Matrix */}
+        <div 
+          className="fixed inset-0 pointer-events-none z-0 opacity-20"
+          style={{
+            backgroundImage: "radial-gradient(rgba(254, 156, 2, 0.25) 1px, transparent 1px)",
+            backgroundSize: "36px 36px",
+            maskImage: "radial-gradient(ellipse 80% 60% at 50% 25%, #000 40%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 25%, #000 40%, transparent 100%)"
+          }}
+          aria-hidden="true"
+        />
       </div>
 
       <div className="ds-container">
