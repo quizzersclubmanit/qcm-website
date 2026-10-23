@@ -52,6 +52,7 @@ const Footer = () => {
             <Link to="/events/iqc" className="hover:text-yellow-400 transition">IQC</Link>
             <Link to="/events/manthan" className="hover:text-yellow-400 transition">Manthan</Link>
             <Link to="/events/anveshan" className="hover:text-yellow-400 transition">Anveshan</Link>
+            <a href="/SampleQestionsIQC.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition">Sample Questions (PDF)</a>
           </nav>
           <Social />
         </div>

@@ -10,7 +10,18 @@ const EventCard = ({ dets = {} }) => {
   const webp = webpSrcSet(dets.cover);
   return (
     <StyledWrapper>
-      <div className="card m-5 md:m-10  h-[440px] w-[300px] md:w-[400px] rounded-lg flex items-start justify-center bg-[rgb(255,255,255)]">
+      <div
+        className="card m-5 md:m-10 h-[440px] w-[300px] md:w-[400px] rounded-lg flex items-start justify-center bg-[rgb(255,255,255)] cursor-pointer select-none shadow-md hover:shadow-xl transition-all"
+        onClick={() => navigate('/events/' + dets.id)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            navigate('/events/' + dets.id);
+          }
+        }}
+      >
         <div className='img w-[300px] md:w-[400px] mt-0 rounded-lg '>
           <picture>
             {avif && <source srcSet={avif} sizes="(max-width: 768px) 300px, 400px" type="image/avif" />}
@@ -33,8 +44,9 @@ const EventCard = ({ dets = {} }) => {
           <Button
             label="Read More"
             className="text-[#fed002] hover:text-[#e1fe02] p-2 rounded bg-[#14213D] sm:text-lg text-sm"
-            onClick={() => {
-              navigate(`events/${dets.id}`)
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate('/events/' + dets.id);
             }}
           />
 

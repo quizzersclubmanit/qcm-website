@@ -1,11 +1,13 @@
 import { bulb, bulbFallback, gradientLogo, gradientLogoFallback, floatingMarks } from "../assets/assets"
 import { organization } from "../assets/qcmData.json"
 import { Container } from "./components"
+import { useNavigate } from "react-router-dom"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
 
 const Hero = () => {
+  const navigate = useNavigate()
   const ref0 = useRef(null)
   const ref1 = useRef(null)
   const ref2 = useRef(null)
@@ -120,6 +122,24 @@ const Hero = () => {
             Largest Quizzing Club
           </span>
         </p>
+
+        <div className="mt-7 flex flex-wrap items-center gap-3.5 relative z-20">
+          <button
+            type="button"
+            onClick={() => navigate("/signup")}
+            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-900/30 transition-all duration-200 hover:bg-blue-500 hover:shadow-blue-900/50 hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <span>Register for Q-BIT '26</span>
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+          <a
+            href="#events"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/50"
+          >
+            <span>Explore Events</span>
+            <span aria-hidden="true">&darr;</span>
+          </a>
+        </div>
       </div>
 
       <div className="right w-full sm:w-1/2 flex items-center justify-center relative z-10">
