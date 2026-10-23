@@ -1,6 +1,6 @@
 import "./pages.css"
-import { useParams, Link, useNavigate } from "react-router-dom"
-import { Container, Header, Footer } from "../components/components"
+import { useParams, Link } from "react-router-dom"
+import { Header, Footer } from "../components/components"
 import SEO from "../components/SEO.jsx"
 import { avifSrcSet, webpSrcSet } from "../utils/img.js"
 import { eventDetails } from "../assets/qcmData.json"
@@ -12,103 +12,88 @@ import {
   ArrowLeft,
   ArrowRight,
   Download,
-  Sparkles,
-  Trophy,
-  Compass,
-  MapPin,
-  Users,
-  Award,
-  Layers,
   FileText,
-  Calendar,
+  ChevronLeft,
   ChevronRight,
-  CheckCircle2,
 } from "lucide-react"
 
 const Slider = (SliderModule && SliderModule.default) || SliderModule
 
-// Specialized metadata per event
-const EVENT_ENRICHMENT = {
+const EVENT_METADATA = {
   iqc: {
-    badge: "Flagship School Competition",
-    tagline: "Madhya Pradesh's Premier Inter-City School Quiz",
-    icon: Trophy,
-    stats: [
-      { label: "Participating Cities", val: "5 Major Cities", sub: "Bhopal, Indore, Jabalpur, Gwalior, Ujjain" },
-      { label: "Target Audience", val: "Classes 8th–12th", sub: "Top regional institutions" },
-      { label: "Tournament Rounds", val: "3 Competitive Stages", sub: "Online → City Finals → Grand Finale" },
-      { label: "Prize Pool", val: "₹35,000+", sub: "Trophies, certificates & cash awards" },
-    ],
-    resource: {
-      title: "Download Official Sample Questions (PDF)",
-      desc: "Prepare for IQC with previous year screening questions, trivia drills, and reference rounds.",
-      url: "/SampleQestionsIQC.pdf",
-    },
+    category: "Inter-City Competition",
+    tagline: "Madhya Pradesh's largest school quizzing event spanning 5 major cities.",
+    hasPdf: true,
+    pdfUrl: "/SampleQestionsIQC.pdf",
+    pdfTitle: "Official IQC Sample Questions (PDF)",
+    pdfDesc: "Practice with actual screening questions, trivia formats, and quiz sheets from previous editions.",
   },
   anveshan: {
-    badge: "Maffick Cultural Fest Legend",
-    tagline: "Where Intellect Meets Adventure across MANIT's 650-Acre Campus",
-    icon: Compass,
-    stats: [
-      { label: "Annual Footfall", val: "5,000+ Students", sub: "MANIT's largest fest turnout" },
-      { label: "Event Format", val: "Campus Treasure Hunt", sub: "Multi-stage physical & cryptic hunt" },
-      { label: "Challenge Type", val: "Mind & Endurance", sub: "Deciphering ciphers under time pressure" },
-      { label: "Finale Glory", val: "The Grand Treasure", sub: "High-stakes hunt for the ultimate prize" },
-    ],
+    category: "Annual Fest Special",
+    tagline: "NIT Bhopal's legendary campus-wide treasure hunt during Maffick.",
+    hasPdf: false,
   },
   manthan: {
-    badge: "National Open Quizzing Arena",
-    tagline: "Bringing Together the Brightest Quizzers Across the Country",
-    icon: Sparkles,
-    stats: [
-      { label: "Eligibility", val: "National Circuit", sub: "Open to colleges and quiz enthusiasts" },
-      { label: "Format", val: "Multi-Genre Quiz", sub: "MELA, General, Sci-Tech & Pop-Culture" },
-      { label: "Standard", val: "National Tier", sub: "Crafted by seasoned QCM quizmasters" },
-    ],
+    category: "National Open Quiz",
+    tagline: "The flagship quiz of QCM bringing together top college quizzers from across India.",
+    hasPdf: false,
   },
   vihaan: {
-    badge: "Freshers' Flagship Clash",
-    tagline: "The Ultimate Inter-Section Quizzing Battle for First-Year Students",
-    icon: Award,
-    stats: [
-      { label: "Participants", val: "1st Year Students", sub: "Inter-department bragging rights" },
-      { label: "Vibe", val: "High Adrenaline", sub: "Buzzer rounds, rapid fire & direct duels" },
-    ],
+    category: "Intra-College Clash",
+    tagline: "The ultimate inter-section quiz war for first-year students.",
+    hasPdf: false,
   },
   "flashback-fiesta": {
-    badge: "Technosearch Special",
-    tagline: "A Nostalgic Pop-Culture & Trivia Odyssey",
-    icon: Layers,
-    stats: [
-      { label: "Festival", val: "Technosearch MANIT", sub: "700+ Registered enthusiasts" },
-      { label: "Games", val: "3 Signature Rounds", sub: "Nostalgic Spin, Funky Flip & Vintage Walk" },
-    ],
+    category: "Technosearch Fest",
+    tagline: "A nostalgic pop-culture and mindfulness challenge at NIT Bhopal.",
+    hasPdf: false,
   },
   "aps-quiz": {
-    badge: "Inter-School Invitational",
-    tagline: "Cluster-Level Battle of Intellect for Army Public Schools",
-    icon: Trophy,
-    stats: [
-      { label: "Circuit", val: "APS Cluster", sub: "Competitive multi-round arena" },
-      { label: "Curated By", val: "QCM Quizmasters", sub: "Rigorous standards & dynamic scoring" },
-    ],
+    category: "School Invitational",
+    tagline: "Cluster-level battle of intellect for Army Public Schools.",
+    hasPdf: false,
   },
+}
+
+const SliderPrevArrow = (props) => {
+  const { onClick } = props
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label="Previous photo"
+      className="!flex absolute top-1/2 left-3 -translate-y-1/2 z-10 items-center justify-center w-9 h-9 rounded-full bg-[#14213D]/80 hover:bg-[#FCA311] text-white hover:text-[#14213D] border border-white/20 transition-all"
+    >
+      <ChevronLeft className="w-5 h-5" />
+    </button>
+  )
+}
+
+const SliderNextArrow = (props) => {
+  const { onClick } = props
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label="Next photo"
+      className="!flex absolute top-1/2 right-3 -translate-y-1/2 z-10 items-center justify-center w-9 h-9 rounded-full bg-[#14213D]/80 hover:bg-[#FCA311] text-white hover:text-[#14213D] border border-white/20 transition-all"
+    >
+      <ChevronRight className="w-5 h-5" />
+    </button>
+  )
 }
 
 const Event = () => {
   const { eventId } = useParams()
-  const navigate = useNavigate()
   const sliderRef = useRef(null)
-  const [activeSlide, setActiveSlide] = useState(0)
+  const [activeIdx, setActiveIdx] = useState(0)
 
   const event = eventDetails.find((item) => item.id === eventId)
-  const enrichment = EVENT_ENRICHMENT[eventId] || {
-    badge: "Quizzers' Club Event",
-    tagline: "Official event of Quizzers' Club NIT Bhopal",
-    icon: Sparkles,
-    stats: [],
+  const meta = EVENT_METADATA[eventId] || {
+    category: "Quiz Event",
+    tagline: "Official event organized by Quizzers' Club NIT Bhopal.",
+    hasPdf: false,
   }
-  const Icon = enrichment.icon
 
   const reduceMotion =
     typeof window !== "undefined" &&
@@ -120,8 +105,10 @@ const Event = () => {
     slidesToShow: 1,
     initialSlide: 0,
     autoplay: !reduceMotion,
-    autoplaySpeed: 4000,
-    beforeChange: (_, next) => setActiveSlide(next),
+    autoplaySpeed: 4500,
+    prevArrow: <SliderPrevArrow />,
+    nextArrow: <SliderNextArrow />,
+    beforeChange: (_, next) => setActiveIdx(next),
     className: "w-full",
   }
 
@@ -155,32 +142,32 @@ const Event = () => {
 
   if (!event) {
     return (
-      <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
+      <div className="min-h-screen bg-[#1D3441] text-white flex flex-col justify-between">
         <Header />
-        <Container className="flex-1 flex flex-col items-center justify-center p-8 text-center pt-24">
+        <div className="flex-1 flex flex-col items-center justify-center p-6 text-center pt-32">
           <SEO
             title="Event Not Found | Quizzers' Club NIT Bhopal"
             description="The quiz event you are looking for doesn't exist. Explore QBIT, inter-college quizzes and events by QCM MANIT."
             path={`/events/${eventId}`}
             noindex
           />
-          <div className="max-w-md bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-md">
-            <h1 className="font-bold text-2xl uppercase text-amber-400">
-              Event not found
+          <div className="max-w-md bg-[#14213D]/90 border border-white/10 p-8 rounded-2xl shadow-xl">
+            <h1 className="font-bold text-2xl uppercase text-[#FCA311]">
+              Event Not Found
             </h1>
-            <p className="mt-3 text-sm text-gray-300">
+            <p className="mt-3 text-sm text-slate-300">
               The event “{eventId}” doesn’t exist or has moved. Explore our other
-              quizzing competitions.
+              quizzing events.
             </p>
             <Link
-              to="/"
-              className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all"
+              to="/#events"
+              className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FCA311] text-[#14213D] text-sm font-semibold hover:bg-amber-400 transition-all"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>Back to Home</span>
+              <span>Back to Events</span>
             </Link>
           </div>
-        </Container>
+        </div>
         <Footer />
       </div>
     )
@@ -190,12 +177,10 @@ const Event = () => {
 
   return (
     <div
-      id="main"
-      className="min-h-screen text-white relative overflow-hidden"
+      id="event-page"
+      className="min-h-screen text-white relative flex flex-col justify-between"
       style={{
-        backgroundColor: "#0d1b2a",
-        backgroundImage:
-          "radial-gradient(circle at 50% 10%, #1b3a57 0%, #0d1b2a 60%, #060d15 100%)",
+        background: "linear-gradient(180deg, #1D3441 0%, #182e3b 50%, #14213D 100%)",
       }}
     >
       <SEO
@@ -211,62 +196,36 @@ const Event = () => {
 
       <Header />
 
-      <main className="pt-24 md:pt-[14vh] pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col gap-10">
-        {/* Top Breadcrumb & Navigation Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-16 flex flex-col gap-8">
+        {/* Top Breadcrumb Navigation */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
           <Link
             to="/#events"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-xs sm:text-sm font-semibold text-gray-200 hover:text-white transition-all shadow-sm"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-300 hover:text-[#FCA311] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>All Events</span>
+            <span>Back to All Events</span>
           </Link>
-
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-400/20 text-amber-300 border border-amber-400/30">
-              <Icon className="w-3.5 h-3.5" />
-              <span>{enrichment.badge}</span>
-            </span>
-          </div>
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#FCA311]/15 text-[#FCA311] border border-[#FCA311]/30">
+            {meta.category}
+          </span>
         </div>
 
-        {/* Hero Title & Tagline */}
-        <div className="space-y-3 max-w-4xl">
-          <h1 className="poppins-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight">
+        {/* Event Header */}
+        <div className="space-y-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
             {event.title}
           </h1>
-          <p className="text-base sm:text-lg text-amber-300/90 font-medium leading-relaxed">
-            {enrichment.tagline}
+          <p className="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
+            {meta.tagline}
           </p>
         </div>
 
-        {/* Highlight Stats Strip (if available) */}
-        {enrichment.stats && enrichment.stats.length > 0 && (
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {enrichment.stats.map((st, i) => (
-              <div
-                key={i}
-                className="bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 p-4 rounded-2xl backdrop-blur-md transition-all shadow-lg"
-              >
-                <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
-                  {st.label}
-                </p>
-                <p className="text-lg sm:text-xl font-bold text-white mt-1">
-                  {st.val}
-                </p>
-                <p className="text-xs text-amber-400/80 mt-0.5 line-clamp-1">
-                  {st.sub}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Main Content Split Grid: Slider & Description */}
+        {/* Content Section: Gallery & Description */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Photos Gallery (7 cols on lg) */}
+          {/* Gallery Column (7 cols on lg) */}
           <div className="lg:col-span-7 flex flex-col gap-4">
-            <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-white/15 shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden bg-[#0e1626] border border-white/15 shadow-2xl">
               {images.length > 1 ? (
                 <Slider ref={sliderRef} {...settings}>
                   {images.map((src, index) => {
@@ -275,27 +234,26 @@ const Event = () => {
                     const isLcp = index === 0
                     return (
                       <div key={index} className="outline-none">
-                        <div className="relative aspect-[16/10] w-full bg-slate-950 flex items-center justify-center overflow-hidden">
+                        <div className="relative aspect-[16/10] w-full bg-[#0e1626] flex items-center justify-center overflow-hidden">
                           <picture>
                             {avif && <source srcSet={avif} sizes="(max-width: 1024px) 95vw, 650px" type="image/avif" />}
                             {webp && <source srcSet={webp} sizes="(max-width: 1024px) 95vw, 650px" type="image/webp" />}
                             <img
                               src={src}
-                              alt={`${event.title} quiz event photo ${index + 1} — Quizzers' Club NIT Bhopal`}
+                              alt={`${event.title} photo ${index + 1} — Quizzers' Club NIT Bhopal`}
                               className="h-full w-full object-cover object-center"
                               loading={isLcp ? "eager" : "lazy"}
                               fetchPriority={isLcp ? "high" : undefined}
                               decoding="async"
                             />
                           </picture>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                         </div>
                       </div>
                     )
                   })}
                 </Slider>
               ) : (
-                <div className="relative aspect-[16/10] w-full bg-slate-950 overflow-hidden">
+                <div className="relative aspect-[16/10] w-full bg-[#0e1626] overflow-hidden">
                   <picture>
                     {avifSrcSet(images[0]) && <source srcSet={avifSrcSet(images[0])} sizes="650px" type="image/avif" />}
                     {webpSrcSet(images[0]) && <source srcSet={webpSrcSet(images[0])} sizes="650px" type="image/webp" />}
@@ -306,25 +264,24 @@ const Event = () => {
                       decoding="async"
                     />
                   </picture>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                 </div>
               )}
             </div>
 
-            {/* Thumbnail Strip (for multi-image events like IQC with 12 photos) */}
+            {/* Photo Thumbnail Navigation */}
             {images.length > 1 && (
-              <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+              <div className="flex items-center gap-2 overflow-x-auto py-1">
                 {images.map((img, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => {
                       sliderRef.current?.slickGoTo(idx)
-                      setActiveSlide(idx)
+                      setActiveIdx(idx)
                     }}
                     className={`relative flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
-                      activeSlide === idx
-                        ? "border-amber-400 scale-105 shadow-md shadow-amber-500/20"
+                      activeIdx === idx
+                        ? "border-[#FCA311] scale-105 shadow-md"
                         : "border-white/20 opacity-60 hover:opacity-100"
                     }`}
                   >
@@ -339,66 +296,50 @@ const Event = () => {
               </div>
             )}
 
-            {/* IQC Special Resource Download Card */}
-            {enrichment.resource && (
-              <div className="mt-2 p-5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-orange-500/10 to-amber-500/15 border border-amber-400/40 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+            {/* IQC Sample Questions PDF Box */}
+            {meta.hasPdf && (
+              <div className="p-5 rounded-2xl bg-[#14213D]/90 border border-[#FCA311]/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center flex-shrink-0 shadow-md">
+                  <div className="w-10 h-10 rounded-xl bg-[#FCA311] text-[#14213D] flex items-center justify-center flex-shrink-0 font-bold shadow-md">
                     <FileText className="w-5 h-5" />
                   </div>
                   <div>
                     <h2 className="text-base font-bold text-white">
-                      {enrichment.resource.title}
+                      {meta.pdfTitle}
                     </h2>
-                    <p className="text-xs text-gray-300 mt-1 max-w-lg leading-relaxed">
-                      {enrichment.resource.desc}
+                    <p className="text-xs text-slate-300 mt-0.5 leading-relaxed">
+                      {meta.pdfDesc}
                     </p>
                   </div>
                 </div>
 
                 <a
-                  href={enrichment.resource.url}
+                  href={meta.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs sm:text-sm font-bold shadow-lg shadow-amber-400/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FCA311] hover:bg-amber-400 text-[#14213D] text-xs sm:text-sm font-bold shadow-md transition-all"
                 >
                   <Download className="w-4 h-4" />
-                  <span>View &amp; Download PDF</span>
+                  <span>Download PDF</span>
                 </a>
               </div>
             )}
           </div>
 
-          {/* Right Column: Narrative, Breakdown & Details (5 cols on lg) */}
+          {/* Description & Details Column (5 cols on lg) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="bg-white/[0.06] border border-white/10 rounded-2xl p-6 sm:p-7 backdrop-blur-md shadow-xl space-y-4">
-              <h2 className="text-lg font-bold text-white flex items-center gap-2 border-b border-white/10 pb-3">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>Event Overview</span>
+            <div className="bg-[#14213D]/70 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-xl space-y-4">
+              <h2 className="text-lg font-bold text-white border-b border-white/10 pb-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#FCA311]" />
+                <span>About the Event</span>
               </h2>
 
-              <div className="space-y-4 text-gray-200 text-sm sm:text-base leading-relaxed">
+              <div className="space-y-4 text-slate-200 text-sm sm:text-base leading-relaxed text-justify">
                 {event.content.split("\n").map((para, index) => {
                   const trimmed = para.trim()
                   if (!trimmed) return null
-
-                  // Check if bullet point
-                  if (trimmed.startsWith("•") || trimmed.startsWith("-")) {
-                    return (
-                      <div
-                        key={index}
-                        className="flex items-start gap-2.5 bg-white/5 p-3 rounded-xl border border-white/5"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm text-gray-200">
-                          {trimmed.replace(/^[•-]\s*/, "")}
-                        </span>
-                      </div>
-                    )
-                  }
-
                   return (
-                    <p key={index} className="text-justify leading-relaxed">
+                    <p key={index} className="leading-relaxed">
                       {trimmed}
                     </p>
                   )
@@ -406,19 +347,19 @@ const Event = () => {
               </div>
             </div>
 
-            {/* Quick Action Navigation Card */}
-            <div className="bg-gradient-to-br from-slate-900/90 to-slate-950 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-xl flex flex-col gap-3">
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider text-amber-400">
-                Participate in QCM Events
+            {/* Quick Action Box */}
+            <div className="bg-[#14213D]/70 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-xl flex flex-col gap-3">
+              <h3 className="text-sm font-bold text-[#FCA311] uppercase tracking-wider">
+                Join QCM Quizzing Action
               </h3>
-              <p className="text-xs text-gray-300 leading-relaxed">
-                Ready to represent your institution or test your trivia prowess?
-                Registrations for Q-BIT &apos;26 are live now.
+              <p className="text-xs text-slate-300 leading-relaxed">
+                Ready to represent your college or school? Register your team for
+                Q-BIT &apos;26 or explore our FAQ knowledge base.
               </p>
               <div className="pt-2 flex flex-wrap gap-2.5">
                 <Link
                   to="/signup"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold shadow-md shadow-blue-900/40 transition-all hover:scale-[1.02]"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold shadow-md transition-all"
                 >
                   <span>Register for Q-BIT &apos;26</span>
                   <ArrowRight className="w-3.5 h-3.5" />

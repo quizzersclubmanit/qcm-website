@@ -4,7 +4,7 @@ import EventCard from "./EventCard"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import SliderImport from "react-slick"
-import { ChevronLeft, ChevronRight, CalendarDays } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { eventDetails } from "../assets/qcmData.json"
 
 const Slider = SliderImport.default ?? SliderImport
@@ -16,7 +16,7 @@ const SlickPrevArrow = (props) => {
       type="button"
       onClick={onClick}
       aria-label="Previous event"
-      className="!hidden md:!flex absolute top-1/2 -left-3 lg:-left-6 -translate-y-1/2 z-20 items-center justify-center w-11 h-11 rounded-full bg-slate-900/90 hover:bg-amber-400 text-white hover:text-slate-950 border border-white/20 hover:border-amber-400 shadow-2xl backdrop-blur-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-400"
+      className="!hidden md:!flex absolute top-1/2 -left-4 lg:-left-6 -translate-y-1/2 z-20 items-center justify-center w-10 h-10 rounded-full bg-[#14213D]/90 hover:bg-[#FCA311] text-white hover:text-[#14213D] border border-white/20 hover:border-[#FCA311] shadow-xl backdrop-blur-md transition-all duration-200 focus:outline-none"
     >
       <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
     </button>
@@ -30,7 +30,7 @@ const SlickNextArrow = (props) => {
       type="button"
       onClick={onClick}
       aria-label="Next event"
-      className="!hidden md:!flex absolute top-1/2 -right-3 lg:-right-6 -translate-y-1/2 z-20 items-center justify-center w-11 h-11 rounded-full bg-slate-900/90 hover:bg-amber-400 text-white hover:text-slate-950 border border-white/20 hover:border-amber-400 shadow-2xl backdrop-blur-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-400"
+      className="!hidden md:!flex absolute top-1/2 -right-4 lg:-right-6 -translate-y-1/2 z-20 items-center justify-center w-10 h-10 rounded-full bg-[#14213D]/90 hover:bg-[#FCA311] text-white hover:text-[#14213D] border border-white/20 hover:border-[#FCA311] shadow-xl backdrop-blur-md transition-all duration-200 focus:outline-none"
     >
       <ChevronRight className="w-5 h-5 stroke-[2.5]" />
     </button>
@@ -49,13 +49,14 @@ const Events = () => {
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: !reduceMotion,
-    autoplaySpeed: 4500,
+    autoplaySpeed: 5000,
     pauseOnHover: true,
+    arrows: true,
     prevArrow: <SlickPrevArrow />,
     nextArrow: <SlickNextArrow />,
     responsive: [
       {
-        breakpoint: 1280,
+        breakpoint: 1180,
         settings: { slidesToShow: 2 },
       },
       {
@@ -63,33 +64,35 @@ const Events = () => {
         settings: {
           arrows: false,
           slidesToShow: 1,
-          dots: true,
+          dots: false,
         },
       },
     ],
   }
 
   return (
-    <Container
+    <section
       id="events"
-      className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col gap-8 items-center"
+      className="w-full py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     >
-      <div className="w-full flex flex-col items-center text-center">
-        <SectionHead label="Events" className="text-white" />
-        <p className="mt-2 text-sm sm:text-base text-gray-300 max-w-2xl">
-          From nationwide open quizzes to thrilling campus-wide treasure hunts,
-          explore the legacy and excitement of Quizzers&apos; Club NIT Bhopal.
-        </p>
-      </div>
+      <div className="max-w-7xl mx-auto flex flex-col gap-6 items-center">
+        <div className="w-full flex flex-col items-center text-center">
+          <SectionHead label="Events" className="text-white" />
+          <p className="mt-2 text-sm sm:text-base text-slate-200 max-w-2xl">
+            From premier inter-city school challenges to national quizzing arenas
+            and campus-wide treasure hunts.
+          </p>
+        </div>
 
-      <div className="w-full relative px-2 sm:px-6">
-        <Slider {...settings}>
-          {eventDetails.map((dets, index) => (
-            <EventCard dets={dets} key={index} />
-          ))}
-        </Slider>
+        <div className="w-full relative">
+          <Slider {...settings}>
+            {eventDetails.map((dets, index) => (
+              <EventCard dets={dets} key={index} />
+            ))}
+          </Slider>
+        </div>
       </div>
-    </Container>
+    </section>
   )
 }
 
