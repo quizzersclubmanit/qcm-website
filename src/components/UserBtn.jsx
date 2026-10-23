@@ -6,14 +6,14 @@ import { IoIosArrowDropdownCircle } from "react-icons/io"
 const UserBtn = ({ name, showDropDown, setShowDropDown }) => {
   return (
     <div
-      className="poppins-regular py-3 px-4 flex items-center justify-center gap-2 text-sm lg:text-white border-black rounded-3xl border-2 lg:border-white overflow-y-hidden hover:backdrop-blur-md hover:text-black cursor-pointer select-none"
+      className="poppins-regular py-1.5 px-4 flex items-center justify-center gap-2 text-sm text-white rounded-full bg-white/10 hover:bg-white/15 border border-white/20 transition-all cursor-pointer select-none"
       onClick={() => {
         setShowDropDown((prev) => !prev)
       }}
     >
-      <span className="uppercase text-black lg:text-white">{name}</span>
+      <span className="uppercase text-xs font-semibold tracking-wider text-white">{name}</span>
       <IoIosArrowDropdownCircle
-        className={`text-xl transition-transform duration-200 ${showDropDown ? "rotate-180" : ""}`}
+        className={`text-lg text-[#fe9c02] transition-transform duration-200 ${showDropDown ? "rotate-180" : ""}`}
       />
     </div>
   )
