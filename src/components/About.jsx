@@ -1,203 +1,219 @@
 import { useRef } from "react"
-import { Link } from "react-router-dom"
-import { Container } from "./components"
-import { about } from "../assets/qcmData.json"
 import { manit, manitWebp, manitFallback, team, teamWebp, teamFallback } from "../assets/assets"
+import { about } from "../assets/qcmData.json"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Building2, Trophy, Users, Sparkles, MapPin, Award } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
 const About = () => {
-  const containerRef = useRef(null)
+  const sectionRef = useRef(null)
 
   useGSAP(() => {
     if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
-    const cards = containerRef.current?.querySelectorAll(".bento-card")
-    if (cards) {
-      gsap.from(cards, {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-        opacity: 0,
-        y: 40,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power2.out",
+    const rows = sectionRef.current?.querySelectorAll(".showcase-row")
+    if (rows) {
+      rows.forEach((row, i) => {
+        gsap.from(row, {
+          scrollTrigger: {
+            trigger: row,
+            start: "top 82%",
+            toggleActions: "play none none none",
+          },
+          opacity: 0,
+          y: 50,
+          duration: 0.9,
+          delay: i * 0.1,
+          ease: "power3.out",
+        })
       })
     }
-  }, { scope: containerRef })
+  }, { scope: sectionRef })
 
   return (
-    <Container
+    <section
       id="about"
-      ref={containerRef}
-      className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex flex-col gap-12"
+      ref={sectionRef}
+      className="relative w-full py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {/* Section Header */}
-      <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-2.5">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#fe9c02]/10 border border-[#fe9c02]/30 text-xs font-bold uppercase tracking-[0.2em] text-[#fe9c02]">
-          <span>Heritage &amp; Legacy</span>
-        </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-          About Us
-        </h2>
-        <div className="w-12 h-1 bg-[#fe9c02] rounded-full mt-1" />
-        <p className="text-slate-300 text-xs sm:text-sm max-w-md pt-1">
-          A decade of intellectual curiosity, national arenas, and cultivating Central India&apos;s
-          sharpest quizzing culture.
-        </p>
-      </div>
+      {/* Ambient Atmospheric Lighting */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#fe9c02]/10 via-[#1D3441]/25 to-transparent blur-3xl pointer-events-none rounded-full" />
+      <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-[#26556A]/15 blur-3xl pointer-events-none rounded-full" />
 
-      {/* Bento Grid Architecture */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col gap-20 sm:gap-24">
         
-        {/* Bento 1: MANIT Bhopal (7 cols) */}
-        <div className="bento-card lg:col-span-7 rounded-3xl bg-[#0c1e28]/80 hover:bg-[#0c1e28]/95 border border-white/10 hover:border-[#fe9c02]/40 backdrop-blur-md shadow-xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1">
-          <div>
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#fe9c02]">
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-md shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#fe9c02]" />
+            <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#fe9c02]">
+              About The Society
+            </span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08]">
+            Intellect in Motion.{" "}
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-[#fe9c02] to-amber-200">
+              Driven by Curiosity.
+            </span>
+          </h2>
+
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+            A decade of competitive quizzing, national championships, and cultivating
+            Central India&apos;s sharpest collegiate thinkers at MANIT Bhopal.
+          </p>
+        </div>
+
+        {/* Showcase 1: The Institute — MANIT Bhopal */}
+        <div className="showcase-row grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+          
+          {/* Narrative Side (6 cols) */}
+          <div className="lg:col-span-6 flex flex-col gap-5 text-left order-2 lg:order-1">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#fe9c02] inline-block shadow-[0_0_10px_#fe9c02]" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#fe9c02]">
                 Institute of National Importance
               </span>
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-slate-300">
-                Est. 1960
-              </span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-2">
+
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
               Maulana Azad National Institute of Technology
             </h3>
-            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
               {about.manit}
             </p>
-          </div>
 
-          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-slate-900 border border-white/10">
-            <picture className="w-full h-full">
-              <source srcSet={manit} type="image/avif" />
-              <source srcSet={manitWebp} type="image/webp" />
-              <img
-                src={manitFallback}
-                alt="MANIT Bhopal Campus"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-            </picture>
-            <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-medium text-slate-200">
-              650-Acre Campus &bull; Bhopal, MP
+            {/* Metric Pills */}
+            <div className="grid grid-cols-3 gap-3 pt-2">
+              <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex flex-col text-left">
+                <span className="text-lg sm:text-xl font-black text-white">650+</span>
+                <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Acres</span>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex flex-col text-left">
+                <span className="text-lg sm:text-xl font-black text-white">1960</span>
+                <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Est. Year</span>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex flex-col text-left">
+                <span className="text-lg sm:text-xl font-black text-[#fe9c02]">Top NIT</span>
+                <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Central India</span>
+              </div>
             </div>
           </div>
+
+          {/* Media Visual Side (6 cols) */}
+          <div className="lg:col-span-6 relative order-1 lg:order-2">
+            <div className="relative rounded-3xl overflow-hidden bg-slate-900 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group">
+              <picture className="w-full aspect-[4/3] block">
+                <source srcSet={manit} type="image/avif" />
+                <source srcSet={manitWebp} type="image/webp" />
+                <img
+                  src={manitFallback}
+                  alt="MANIT Bhopal 650-Acre Campus"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </picture>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0c1e28]/85 via-transparent to-transparent pointer-events-none" />
+
+              {/* Overlay Glass Badge */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-4 py-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 text-white">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-[#fe9c02]" />
+                  <span className="text-xs font-semibold">MANIT Bhopal Campus</span>
+                </div>
+                <span className="text-[11px] font-mono font-bold text-slate-300 uppercase tracking-wider">
+                  Bhopal, MP
+                </span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        {/* Bento 2: Quizzers' Club Society (5 cols) */}
-        <div className="bento-card lg:col-span-5 rounded-3xl bg-[#0c1e28]/80 hover:bg-[#0c1e28]/95 border border-white/10 hover:border-[#fe9c02]/40 backdrop-blur-md shadow-xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1">
-          <div>
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#fe9c02]">
-                Official Society
-              </span>
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#fe9c02]/15 text-[#fe9c02]">
-                10+ Years
+        {/* Showcase 2: The Society — Quizzers' Club MANIT */}
+        <div className="showcase-row grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center pt-8">
+          
+          {/* Media Visual Side (6 cols) */}
+          <div className="lg:col-span-6 relative order-1">
+            <div className="relative rounded-3xl overflow-hidden bg-slate-900 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group">
+              <picture className="w-full aspect-[4/3] block">
+                <source srcSet={team} type="image/avif" />
+                <source srcSet={teamWebp} type="image/webp" />
+                <img
+                  src={teamFallback}
+                  alt="Quizzers' Club MANIT Members and Quiz Arena"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </picture>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0c1e28]/85 via-transparent to-transparent pointer-events-none" />
+
+              {/* Overlay Glass Badge */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-4 py-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 text-white">
+                <div className="flex items-center gap-2">
+                  <Award className="w-4 h-4 text-[#fe9c02]" />
+                  <span className="text-xs font-semibold">The Quizzing Vanguard</span>
+                </div>
+                <span className="text-[11px] font-bold text-[#fe9c02] uppercase tracking-wider">
+                  Official Society
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Narrative Side (6 cols) */}
+          <div className="lg:col-span-6 flex flex-col gap-5 text-left order-2">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#fe9c02] inline-block shadow-[0_0_10px_#fe9c02]" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#fe9c02]">
+                Central India&apos;s Largest Quizzing Hub
               </span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-extrabold text-white mb-2">
-              Quizzers&apos; Club MANIT
+
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              Quizzers&apos; Club MANIT Bhopal
             </h3>
-            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
               {about.qcm}
             </p>
-          </div>
 
-          <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-slate-900 border border-white/10">
-            <picture className="w-full h-full">
-              <source srcSet={team} type="image/avif" />
-              <source srcSet={teamWebp} type="image/webp" />
-              <img
-                src={teamFallback}
-                alt="Quizzers' Club Members"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-            </picture>
-            <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-medium text-[#fe9c02]">
-              Central India&apos;s Quizzing Hub
+            {/* Society Pillars */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex items-start gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#fe9c02]/15 text-[#fe9c02] flex items-center justify-center shrink-0">
+                  <Trophy className="w-4 h-4" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-sm font-bold text-white">National Arenas</span>
+                  <span className="text-xs text-slate-400 mt-0.5">Organizers of Q-BIT, IQC, and Manthan Open</span>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex items-start gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#fe9c02]/15 text-[#fe9c02] flex items-center justify-center shrink-0">
+                  <Users className="w-4 h-4" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-sm font-bold text-white">1,500+ Community</span>
+                  <span className="text-xs text-slate-400 mt-0.5">Active quizzers &amp; alumni in civil services &amp; tech</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Bento 3: Pillar Stat 1 - Flagship Arena (4 cols) */}
-        <div className="bento-card lg:col-span-4 rounded-3xl bg-[#0c1e28]/70 hover:bg-[#0c1e28]/90 border border-white/10 hover:border-[#fe9c02]/40 backdrop-blur-md p-6 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1">
-          <div>
-            <div className="w-10 h-10 rounded-xl bg-[#fe9c02]/15 border border-[#fe9c02]/30 flex items-center justify-center text-[#fe9c02] text-lg font-bold mb-4">
-              Q
-            </div>
-            <h4 className="text-lg font-bold text-white group-hover:text-[#fe9c02] transition-colors mb-2">
-              Q-BIT Annual Fest
-            </h4>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Central India&apos;s premier collegiate quiz championship bringing top quizzing teams from institutions nationwide.
-            </p>
-          </div>
-          <Link
-            to="/signup"
-            className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-[#fe9c02] hover:text-amber-300 transition-colors pt-2.5 border-t border-white/10"
-          >
-            <span>Register for Q-BIT &apos;26</span>
-            <span>&rarr;</span>
-          </Link>
-        </div>
-
-        {/* Bento 4: Pillar Stat 2 - IQC (4 cols) */}
-        <div className="bento-card lg:col-span-4 rounded-3xl bg-[#0c1e28]/70 hover:bg-[#0c1e28]/90 border border-white/10 hover:border-[#fe9c02]/40 backdrop-blur-md p-6 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1">
-          <div>
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white text-sm font-bold mb-4 font-mono">
-              IQC
-            </div>
-            <h4 className="text-lg font-bold text-white group-hover:text-[#fe9c02] transition-colors mb-2">
-              Inter-City Championship
-            </h4>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              The prestigious junior and inter-city tournament inspiring thousands of high school &amp; prep scholars across Central India.
-            </p>
-          </div>
-          <Link
-            to="/events/iqc"
-            className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-slate-300 group-hover:text-[#fe9c02] transition-colors pt-2.5 border-t border-white/10"
-          >
-            <span>Explore IQC Details</span>
-            <span>&rarr;</span>
-          </Link>
-        </div>
-
-        {/* Bento 5: Pillar Stat 3 - Anveshan (4 cols) */}
-        <div className="bento-card lg:col-span-4 rounded-3xl bg-[#0c1e28]/70 hover:bg-[#0c1e28]/90 border border-white/10 hover:border-[#fe9c02]/40 backdrop-blur-md p-6 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1">
-          <div>
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white text-lg font-bold mb-4">
-              🧭
-            </div>
-            <h4 className="text-lg font-bold text-white group-hover:text-[#fe9c02] transition-colors mb-2">
-              Anveshan Treasure Hunt
-            </h4>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              650-acre sprawling campus hunt. Cryptic clues, physical checkpoints, and a high-stakes race against the clock.
-            </p>
-          </div>
-          <Link
-            to="/events/anveshan"
-            className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-slate-300 group-hover:text-[#fe9c02] transition-colors pt-2.5 border-t border-white/10"
-          >
-            <span>Discover Anveshan</span>
-            <span>&rarr;</span>
-          </Link>
         </div>
 
       </div>
-    </Container>
+    </section>
   )
 }
 

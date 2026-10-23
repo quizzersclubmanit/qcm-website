@@ -2,7 +2,7 @@ import { useRef } from "react"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import SliderImport from "react-slick"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Trophy } from "lucide-react"
 import EventCard from "./EventCard"
 import { eventDetails } from "../assets/qcmData.json"
 import gsap from "gsap"
@@ -20,7 +20,7 @@ const SlickPrevArrow = (props) => {
       type="button"
       onClick={onClick}
       aria-label="Previous event"
-      className="!hidden lg:!flex absolute top-1/2 -left-5 -translate-y-1/2 z-20 items-center justify-center w-11 h-11 rounded-full bg-[#0c1e28]/90 hover:bg-[#fe9c02] text-white hover:text-[#0c1e28] border border-white/20 hover:border-[#fe9c02] shadow-xl backdrop-blur-md transition-all duration-200 focus:outline-none"
+      className="!hidden lg:!flex absolute top-1/2 -left-6 -translate-y-1/2 z-20 items-center justify-center w-12 h-12 rounded-full bg-[#0c1e28]/95 hover:bg-[#fe9c02] text-white hover:text-[#0c1e28] border border-white/20 hover:border-[#fe9c02] shadow-xl backdrop-blur-md transition-all duration-200 focus:outline-none hover:scale-105 active:scale-95"
     >
       <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
     </button>
@@ -34,7 +34,7 @@ const SlickNextArrow = (props) => {
       type="button"
       onClick={onClick}
       aria-label="Next event"
-      className="!hidden lg:!flex absolute top-1/2 -right-5 -translate-y-1/2 z-20 items-center justify-center w-11 h-11 rounded-full bg-[#0c1e28]/90 hover:bg-[#fe9c02] text-white hover:text-[#0c1e28] border border-white/20 hover:border-[#fe9c02] shadow-xl backdrop-blur-md transition-all duration-200 focus:outline-none"
+      className="!hidden lg:!flex absolute top-1/2 -right-6 -translate-y-1/2 z-20 items-center justify-center w-12 h-12 rounded-full bg-[#0c1e28]/95 hover:bg-[#fe9c02] text-white hover:text-[#0c1e28] border border-white/20 hover:border-[#fe9c02] shadow-xl backdrop-blur-md transition-all duration-200 focus:outline-none hover:scale-105 active:scale-95"
     >
       <ChevronRight className="w-5 h-5 stroke-[2.5]" />
     </button>
@@ -99,20 +99,23 @@ const Events = () => {
     <section
       id="events"
       ref={sectionRef}
-      className="w-full py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="w-full py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto flex flex-col gap-8 items-center">
+      <div className="max-w-6xl mx-auto flex flex-col gap-10 items-center">
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-2">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#fe9c02]">
-            Quizzers&apos; Club MANIT
-          </p>
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-2.5">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#fe9c02]/10 border border-[#fe9c02]/30 text-xs font-bold uppercase tracking-[0.2em] text-[#fe9c02]">
+            <Trophy className="w-3.5 h-3.5" />
+            <span>Competitive Arenas</span>
+          </div>
+
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            Events
+            Flagship Events
           </h2>
-          <div className="w-12 h-1 bg-[#fe9c02] rounded-full mt-2" />
+          <div className="w-12 h-1 bg-[#fe9c02] rounded-full mt-1" />
+
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg pt-1">
-            From premier inter-city school quizzing challenges to campus-wide
+            From premier inter-city collegiate championships to campus-wide
             treasure hunts and national open arenas.
           </p>
         </div>
