@@ -75,16 +75,16 @@ const About = () => {
 
             {/* Metric Pills */}
             <div className="grid grid-cols-3 gap-3 pt-2">
-              <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex flex-col text-left">
-                <span className="text-lg sm:text-xl font-black text-white">650+</span>
+              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
+                <span className="text-lg sm:text-2xl font-black text-white group-hover/pill:text-[#fe9c02] transition-colors">650+</span>
                 <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Acres</span>
               </div>
-              <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex flex-col text-left">
-                <span className="text-lg sm:text-xl font-black text-white">1960</span>
+              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
+                <span className="text-lg sm:text-2xl font-black text-white group-hover/pill:text-[#fe9c02] transition-colors">1960</span>
                 <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Est. Year</span>
               </div>
-              <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex flex-col text-left">
-                <span className="text-lg sm:text-xl font-black text-[#fe9c02]">Top NIT</span>
+              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
+                <span className="text-lg sm:text-2xl font-black text-[#fe9c02]">Top NIT</span>
                 <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Central India</span>
               </div>
             </div>
@@ -174,23 +174,23 @@ const About = () => {
 
             {/* Society Pillars */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#fe9c02]/15 text-[#fe9c02] flex items-center justify-center shrink-0">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.08] backdrop-blur-md flex items-start gap-3.5 transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pillar">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#fe9c02]/25 to-[#fe9c02]/5 border border-[#fe9c02]/30 text-[#fe9c02] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(254,156,2,0.15)] group-hover/pillar:scale-110 transition-transform">
                   <Trophy className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-sm font-bold text-white">National Arenas</span>
-                  <span className="text-xs text-slate-400 mt-0.5">Organizers of Q-BIT, IQC, and Manthan Open</span>
+                  <span className="text-sm font-bold text-white group-hover/pillar:text-[#fe9c02] transition-colors">National Arenas</span>
+                  <span className="text-xs text-slate-400 mt-0.5 leading-relaxed">Organizers of Q-BIT, IQC, and Manthan Open</span>
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#fe9c02]/15 text-[#fe9c02] flex items-center justify-center shrink-0">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.08] backdrop-blur-md flex items-start gap-3.5 transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pillar">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#fe9c02]/25 to-[#fe9c02]/5 border border-[#fe9c02]/30 text-[#fe9c02] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(254,156,2,0.15)] group-hover/pillar:scale-110 transition-transform">
                   <Users className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-sm font-bold text-white">1,500+ Community</span>
-                  <span className="text-xs text-slate-400 mt-0.5">Active quizzers &amp; alumni in civil services &amp; tech</span>
+                  <span className="text-sm font-bold text-white group-hover/pillar:text-[#fe9c02] transition-colors">1,500+ Community</span>
+                  <span className="text-xs text-slate-400 mt-0.5 leading-relaxed">Active quizzers &amp; alumni in civil services &amp; tech</span>
                 </div>
               </div>
             </div>

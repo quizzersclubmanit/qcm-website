@@ -136,14 +136,14 @@ const Hero = () => {
           <button
             type="button"
             onClick={() => navigate("/signup")}
-            className="btn-shimmer inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 via-[#fe9c02] to-amber-500 px-6 py-3 text-sm font-bold text-[#0c1e28] shadow-lg shadow-[#fe9c02]/25 hover:shadow-xl hover:shadow-[#fe9c02]/40 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
+            className="btn-shimmer inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 via-[#fe9c02] to-amber-500 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-bold text-[#0c1e28] shadow-[0_4px_25px_rgba(254,156,2,0.35),inset_0_1px_1px_rgba(255,255,255,0.35)] hover:shadow-[0_8px_35px_rgba(254,156,2,0.5),inset_0_1px_1px_rgba(255,255,255,0.4)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
           >
             <span>Register for Q-BIT &apos;26</span>
             <span aria-hidden="true">&rarr;</span>
           </button>
           <a
             href="#events"
-            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/50 hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 sm:px-7 py-3 sm:py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-all duration-200 hover:bg-white/20 hover:border-white/50 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-black/20"
           >
             <span>Explore Events</span>
             <span aria-hidden="true">&darr;</span>
@@ -159,14 +159,14 @@ const Hero = () => {
           <div className="absolute w-3/4 h-3/4 rounded-full bg-[#fe9c02]/15 blur-3xl pointer-events-none" />
 
           {/* Floating Pill Badge 1 (Top-Right) */}
-          <div className="hidden xs:flex absolute top-3 -right-2 sm:top-6 sm:-right-4 z-20 px-3.5 py-1.5 rounded-full bg-[#0c1e28]/90 border border-white/20 backdrop-blur-md shadow-xl text-xs font-semibold text-white items-center gap-2 animate-float-slow">
-            <span className="w-2 h-2 rounded-full bg-[#fe9c02] inline-block" />
+          <div className="hidden xs:flex absolute top-3 -right-2 sm:top-6 sm:-right-4 z-20 px-4 py-2 rounded-2xl bg-[#0c1e28]/95 border border-white/20 backdrop-blur-xl shadow-[0_12px_35px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.2)] text-xs font-semibold text-white items-center gap-2.5 animate-float-slow hover:scale-105 transition-transform duration-300">
+            <span className="w-2 h-2 rounded-full bg-[#fe9c02] inline-block shadow-[0_0_8px_#fe9c02]" />
             <span>Central India&apos;s #1</span>
           </div>
 
           {/* Floating Pill Badge 2 (Bottom-Left) */}
-          <div className="hidden xs:flex absolute bottom-4 -left-2 sm:bottom-8 sm:-left-4 z-20 px-3.5 py-1.5 rounded-full bg-[#0c1e28]/90 border border-white/20 backdrop-blur-md shadow-xl text-xs font-semibold text-white items-center gap-2 animate-float-slow [animation-delay:2s]">
-            <span className="text-[#fe9c02] text-xs font-bold">★</span>
+          <div className="hidden xs:flex absolute bottom-4 -left-2 sm:bottom-8 sm:-left-4 z-20 px-4 py-2 rounded-2xl bg-[#0c1e28]/95 border border-white/20 backdrop-blur-xl shadow-[0_12px_35px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.2)] text-xs font-semibold text-white items-center gap-2.5 animate-float-slow [animation-delay:2s] hover:scale-105 transition-transform duration-300">
+            <span className="text-[#fe9c02] text-xs font-bold drop-shadow">★</span>
             <span>10+ Yrs Quizzing</span>
           </div>
 

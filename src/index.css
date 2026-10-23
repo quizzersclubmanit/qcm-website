@@ -17,6 +17,11 @@ body {
   min-height: 100vh;
 }
 
+::selection {
+  background-color: #fe9c02;
+  color: #0c1e28;
+}
+
 /* Skip link: visible on keyboard focus only */
 .skip-link {
   position: absolute;

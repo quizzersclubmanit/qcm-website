@@ -102,7 +102,7 @@ const Sponsors = () => {
         background: 'transparent',
       }}
     >
-      <div className="mx-auto max-w-[1240px] rounded-3xl bg-[#fdfdfb]/95 p-6 shadow-[0_16px_50px_rgba(0,0,0,0.08)] backdrop-blur-md sm:p-10 lg:p-14 border border-white">
+      <div className="mx-auto max-w-[1240px] rounded-3xl bg-[#fdfdfb] p-6 sm:p-10 lg:p-14 border border-white/80 shadow-[0_25px_70px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.1)] backdrop-blur-md">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center">

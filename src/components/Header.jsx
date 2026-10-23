@@ -107,7 +107,7 @@ const Header = () => {
             <button
               type="button"
               onClick={() => navigate("/signup")}
-              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-[#0c1e28] bg-[#fe9c02] hover:bg-amber-400 shadow-md shadow-[#fe9c02]/20 hover:shadow-lg hover:shadow-[#fe9c02]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-[#0c1e28] bg-gradient-to-r from-amber-400 via-[#fe9c02] to-amber-500 shadow-md shadow-[#fe9c02]/25 hover:shadow-lg hover:shadow-[#fe9c02]/40 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 border border-amber-300/40"
             >
               <span>Register</span>
               <span aria-hidden="true">&rarr;</span>

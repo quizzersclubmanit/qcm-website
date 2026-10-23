@@ -34,7 +34,7 @@ const EventCard = ({ dets = {} }) => {
             handleNavigate()
           }
         }}
-        className="group relative flex flex-col justify-end h-[440px] sm:h-[460px] w-full rounded-2xl overflow-hidden bg-[#0c1e28] border border-white/15 hover:border-[#fe9c02]/70 shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_rgba(0,0,0,0.7),0_0_20px_rgba(254,156,2,0.12)] cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#fe9c02]"
+        className="group relative flex flex-col justify-end h-[440px] sm:h-[460px] w-full rounded-2xl overflow-hidden bg-[#0c1e28] border border-white/15 hover:border-[#fe9c02]/80 shadow-xl shadow-black/50 hover:shadow-[0_24px_50px_rgba(0,0,0,0.8),0_0_25px_rgba(254,156,2,0.18)] transition-all duration-300 hover:-translate-y-1.5 cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-[#fe9c02]"
       >
         {/* Full Card Cover Image */}
         <picture className="absolute inset-0 w-full h-full pointer-events-none">
@@ -59,7 +59,7 @@ const EventCard = ({ dets = {} }) => {
             decoding="async"
             width="400"
             height="460"
-            className="w-full h-full object-cover object-center transform transition-transform duration-500 ease-out group-hover:scale-105"
+            className="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-105"
           />
         </picture>
 
@@ -68,8 +68,9 @@ const EventCard = ({ dets = {} }) => {
 
         {/* Top Tag Badge */}
         <div className="absolute top-4 left-4 z-10 pointer-events-none">
-          <span className="inline-block px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-black/75 backdrop-blur-md text-[#fe9c02] border border-[#fe9c02]/40 shadow-md">
-            {tag}
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-black/75 backdrop-blur-md text-[#fe9c02] border border-[#fe9c02]/40 shadow-lg">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#fe9c02] inline-block shadow-[0_0_6px_#fe9c02]" />
+            <span>{tag}</span>
           </span>
         </div>
 
