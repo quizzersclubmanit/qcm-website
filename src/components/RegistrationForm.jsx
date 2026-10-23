@@ -165,6 +165,7 @@ export default function RegistrationForm({ onClose, closeLabel }) {
           ...payload,
           id: data.id,
           registrationCode: generatedCode,
+          passToken: data.passToken || (data.team && data.team.passToken),
           createdAt: new Date().toLocaleDateString('en-IN', {
             day: 'numeric',
             month: 'short',
@@ -206,6 +207,7 @@ export default function RegistrationForm({ onClose, closeLabel }) {
       `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
       `Pass Code : ${submitted.registrationCode}`,
       `Team Name : ${submitted.teamName}`,
+      `Pass Link : ${typeof window !== 'undefined' && !window.location.hostname.includes('localhost') ? window.location.origin : 'https://www.quizzersclub.com'}/pass?code=${encodeURIComponent(submitted.registrationCode)}${submitted.passToken ? `&token=${encodeURIComponent(submitted.passToken)}` : ''}`,
       `College   : ${submitted.college}`,
       `Email     : ${submitted.email}`,
       `Event Date: 31 OCT 2026`,
@@ -383,7 +385,7 @@ export default function RegistrationForm({ onClose, closeLabel }) {
 
         {/* Open Digital Pass Button */}
         <a
-          href={`/pass?code=${encodeURIComponent(submitted.registrationCode)}`}
+          href={`/pass?code=${encodeURIComponent(submitted.registrationCode)}${submitted.passToken ? `&token=${encodeURIComponent(submitted.passToken)}` : ''}`}
           className="ds-btn-open-digital-pass"
           target="_blank"
           rel="noopener noreferrer"

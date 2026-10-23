@@ -200,8 +200,16 @@ export default function DigitalPass() {
 
   // Dynamic QR Code link with secure token embedding for instant check-in verification
   const activeToken = passData?.passToken || token;
+  const isLocalHost =
+    typeof window !== 'undefined' &&
+    (window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      window.location.hostname.startsWith('192.168.'));
+  const publicOrigin = isLocalHost
+    ? 'https://www.quizzersclub.com'
+    : (typeof window !== 'undefined' ? window.location.origin : 'https://www.quizzersclub.com');
   const verifiedUrl = passData
-    ? `${typeof window !== 'undefined' ? window.location.origin : 'https://www.quizzersclub.com'}/pass?code=${encodeURIComponent(
+    ? `${publicOrigin}/pass?code=${encodeURIComponent(
         passData.registrationCode
       )}${activeToken ? `&token=${encodeURIComponent(activeToken)}` : ''}`
     : '';
