@@ -185,13 +185,14 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
           </div>
         ) : (
           <div className="flex sm:flex-row flex-col gap-2 items-center">
+            {/* Login button commented out per request
             <Button
               label="Login"
               className="poppins-medium py-2 px-4 text-sm flex items-center justify-center text-white/90 rounded-full border border-white/60 bg-transparent hover:bg-white hover:text-blue-900 transition-all duration-200"
               onClick={() => {
                 navigate("/signin")
               }}
-            />
+            /> */}
             <Button
               label="Sign Up"
               className="poppins-semibold py-2 px-5 text-sm flex items-center justify-center text-white rounded-full bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-900/20 border border-blue-500 transition-all duration-200"

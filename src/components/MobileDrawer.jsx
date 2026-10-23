@@ -209,17 +209,18 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
             </button>
           ) : (
             <div className="flex gap-2">
+              {/* Login button commented out per request
               <Button
                 label="Login"
                 onClick={go(() => navigate("/signin"))}
                 className="flex-1 py-2.5 rounded-xl text-sm font-bold bg-white text-[#163D4D] flex items-center justify-center gap-2"
               >
                 <FaSignInAlt /> Login
-              </Button>
+              </Button> */}
               <Button
                 label="Sign Up"
                 onClick={go(() => navigate("/signup"))}
-                className="flex-1 py-2.5 rounded-xl text-sm font-bold border-2 border-white/40 text-white flex items-center justify-center gap-2"
+                className="w-full py-2.5 rounded-xl text-sm font-bold border-2 border-white/40 text-white flex items-center justify-center gap-2"
               >
                 <FaUserPlus /> Sign Up
               </Button>
