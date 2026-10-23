@@ -4,12 +4,19 @@ const Map = () => {
       {/* Top Gradient Blend */}
       <div className="absolute top-0 inset-x-0 h-12 bg-gradient-to-b from-[#091822] to-transparent z-10 pointer-events-none" />
 
-      {/* Floating Venue Pill Badge */}
-      <div className="absolute top-5 left-4 sm:left-8 z-20 pointer-events-none">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0c1e28]/90 border border-white/15 backdrop-blur-md shadow-lg text-xs font-semibold text-white">
+      {/* Floating Venue Pill Badge with Direct Navigation Link */}
+      <div className="absolute top-5 left-4 sm:left-8 z-20">
+        <a
+          href="https://maps.google.com/?q=LRC+MANIT+Bhopal"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open LRC MANIT Bhopal location in Google Maps"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0c1e28]/95 hover:bg-[#0c1e28] border border-white/20 hover:border-[#fe9c02]/50 backdrop-blur-md shadow-xl text-xs font-semibold text-white transition-all hover:scale-[1.02] group"
+        >
           <span className="w-2 h-2 rounded-full bg-[#fe9c02] inline-block" />
-          <span>MANIT Bhopal &bull; LRC (Learning Resource Centre)</span>
-        </div>
+          <span>MANIT Bhopal &bull; Learning Resource Centre (LRC)</span>
+          <span className="text-[#fe9c02] text-xs group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+        </a>
       </div>
 
       <div className="w-full h-[45vh] sm:h-[55vh] relative">

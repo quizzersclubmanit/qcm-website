@@ -127,6 +127,11 @@ const Hero = () => {
           </span>
         </p>
 
+        <p className="text-slate-300 text-xs sm:text-sm md:text-base font-normal max-w-lg mt-3.5 leading-relaxed">
+          Where sharp minds clash and curiosity thrives. Central India&apos;s
+          largest collegiate quizzing society, hosted live at MANIT Bhopal.
+        </p>
+
         <div className="mt-7 flex flex-wrap items-center gap-3.5 relative z-20">
           <button
             type="button"
