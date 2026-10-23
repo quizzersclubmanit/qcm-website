@@ -20,6 +20,7 @@ import AppInitializer from "./AppInitializer.jsx"
 // Code-split below-the-fold / non-LCP routes so the home bundle stays lean.
 // Home stays eager (LCP); everything else loads on demand.
 const SignupPage = lazy(() => import("./components/SignupPage.jsx"))
+const DigitalPass = lazy(() => import("./pages/DigitalPass.jsx"))
 const Auth = lazy(() => import("./pages/Auth.jsx"))
 const Event = lazy(() => import("./pages/Event.jsx"))
 const Verification = lazy(() => import("./pages/Verification.jsx"))
@@ -63,6 +64,8 @@ const router = createBrowserRouter(
       <Route path="" element={<Home />} />
       <Route path="team" element={withSuspense(<Team />)} />
       <Route path="signup" element={withSuspense(<SignupPage />)} />
+      <Route path="pass" element={withSuspense(<DigitalPass />)} />
+      <Route path="pass/:code" element={withSuspense(<DigitalPass />)} />
 
       <Route path="signin" element={withSuspense(<Auth label="login" />)} />
       <Route path="reset-password" element={withSuspense(<Auth label="update-password" />)} />
