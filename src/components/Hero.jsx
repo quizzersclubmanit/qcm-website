@@ -146,7 +146,7 @@ const Hero = () => {
         </div>
 
         <div className="mt-8 flex flex-wrap items-center gap-6 text-xs text-slate-300 border-t border-white/10 pt-4 relative z-10">
-          <div><span className="font-bold text-white text-sm">₹35k+</span> Prize Pool</div>
+          <div><span className="font-bold text-white text-sm">50+</span> Colleges</div>
           <div><span className="font-bold text-white text-sm">1,500+</span> Quizzers</div>
           <div><span className="font-bold text-white text-sm">10+ Yrs</span> Heritage</div>
         </div>

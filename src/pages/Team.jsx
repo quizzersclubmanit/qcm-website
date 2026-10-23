@@ -1,10 +1,10 @@
 import { useState, useMemo, useRef, useEffect } from "react"
-import { Container, Footer, Header } from "../components/components"
+import { Footer, Header } from "../components/components"
 import SEO from "../components/SEO.jsx"
 import { team } from "../assets/qcmData.json"
 import gsap from "gsap"
 import { FaLinkedin } from "react-icons/fa6"
-import { Search } from "lucide-react"
+import { Search, Sparkles } from "lucide-react"
 
 const Team = () => {
   const [selectedYear, setSelectedYear] = useState("4th")
@@ -20,8 +20,8 @@ const Team = () => {
     []
   )
 
-  const filteredMembers = useMemo(() => {
-    return team.filter((member) => {
+  const { leaders, coordinators } = useMemo(() => {
+    const list = team.filter((member) => {
       if (member.year !== selectedYear) return false
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase().trim()
@@ -32,6 +32,19 @@ const Team = () => {
       }
       return true
     })
+
+    if (searchQuery.trim()) {
+      return { leaders: [], coordinators: list }
+    }
+
+    const leadersList = list.filter((m) =>
+      m.post?.toLowerCase().includes("president")
+    )
+    const coordsList = list.filter(
+      (m) => !m.post?.toLowerCase().includes("president")
+    )
+
+    return { leaders: leadersList, coordinators: coordsList }
   }, [selectedYear, searchQuery])
 
   // GSAP subtle fade/lift on tab switch or search
@@ -47,11 +60,79 @@ const Team = () => {
         opacity: 1,
         y: 0,
         duration: 0.35,
-        stagger: 0.03,
+        stagger: 0.025,
         ease: "power2.out",
       }
     )
   }, [selectedYear, searchQuery])
+
+  const renderCard = (member, isLeader = false) => (
+    <div
+      key={member.name}
+      className={`team-card group flex flex-col justify-between rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1.5 shadow-lg text-center ${
+        isLeader
+          ? "bg-[#184638]/70 hover:bg-[#184638]/90 border border-[#fe9c02]/40 shadow-[#fe9c02]/5"
+          : "bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 hover:border-[#fe9c02]/40"
+      }`}
+    >
+      <div>
+        {/* Photo Portrait */}
+        <div className="aspect-square w-full rounded-xl overflow-hidden bg-slate-900/60 border border-white/10 mb-3 relative">
+          <img
+            src={member.fileId || "/placeholder-avatar.png"}
+            alt={`${member.name || "QCM member"} — Quizzers' Club NIT Bhopal`}
+            className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+            loading="lazy"
+            onError={(e) => {
+              e.target.src = "/placeholder-avatar.png"
+            }}
+          />
+          {isLeader && (
+            <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-[#fe9c02] text-[#0d2820] text-[10px] font-bold uppercase tracking-wider shadow">
+              Core
+            </div>
+          )}
+        </div>
+
+        {/* Name */}
+        <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-[#fe9c02] transition-colors line-clamp-1">
+          {member.name}
+        </h3>
+
+        {/* Post */}
+        <p
+          className={`text-xs font-semibold mt-1 tracking-wide uppercase line-clamp-1 ${
+            isLeader ? "text-[#fe9c02]" : "text-[#fe9c02]/90"
+          }`}
+        >
+          {member.post || "Coordinator"}
+        </p>
+
+        {/* Domain */}
+        {member.domain && (
+          <p className="text-[11px] text-slate-300 mt-0.5 line-clamp-1">
+            {member.domain}
+          </p>
+        )}
+      </div>
+
+      {/* LinkedIn Button */}
+      {member.linkedIn && (
+        <div className="mt-3.5 pt-2.5 border-t border-white/10 flex justify-center">
+          <a
+            href={member.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold text-slate-200 hover:text-white bg-white/10 hover:bg-[#0A66C2] transition-colors"
+            aria-label={`${member.name}'s LinkedIn profile`}
+          >
+            <FaLinkedin className="w-3.5 h-3.5 text-blue-400 group-hover:text-white transition-colors" />
+            <span>Connect</span>
+          </a>
+        </div>
+      )}
+    </div>
+  )
 
   return (
     <div
@@ -71,16 +152,17 @@ const Team = () => {
 
       <Header />
 
-      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-20 flex flex-col items-center gap-8">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-20 flex flex-col items-center gap-10">
         {/* Title Block */}
         <div className="flex flex-col items-center text-center space-y-2 max-w-2xl mx-auto">
-          <p className="text-xs sm:text-sm font-semibold text-[#FCA311] tracking-wider uppercase">
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#fe9c02]">
             Quizzers&apos; Club MANIT Bhopal
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
             Meet the Team
           </h1>
-          <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-lg">
+          <div className="w-12 h-1 bg-[#fe9c02] rounded-full mt-2" />
+          <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-lg pt-1">
             The student coordinators, quizmasters, and organizers behind Central
             India&apos;s largest quizzing society.
           </p>
@@ -128,77 +210,48 @@ const Team = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search coordinator..."
-              className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm rounded-full bg-white/10 border border-white/15 focus:border-[#FCA311] focus:bg-white/15 text-white placeholder-slate-400 focus:outline-none transition-all"
+              className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm rounded-full bg-white/10 border border-white/15 focus:border-[#fe9c02] focus:bg-white/15 text-white placeholder-slate-400 focus:outline-none transition-all"
             />
           </div>
         </div>
 
-        {/* Member Grid */}
-        <div
-          ref={gridRef}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 w-full"
-        >
-          {filteredMembers.map((member, index) => (
-            <div
-              key={`${member.name}-${index}`}
-              className="team-card flex flex-col justify-between bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 hover:border-[#FCA311]/50 rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1 shadow-lg text-center"
-            >
-              <div>
-                {/* Photo Portrait */}
-                <div className="aspect-square w-full rounded-xl overflow-hidden bg-slate-900/60 border border-white/10 mb-3">
-                  <img
-                    src={member.fileId || "/placeholder-avatar.png"}
-                    alt={`${member.name || "QCM member"} — Quizzers' Club NIT Bhopal`}
-                    className="h-full w-full object-cover object-top transition-transform duration-300 hover:scale-105"
-                    loading="lazy"
-                    onError={(e) => {
-                      e.target.src = "/placeholder-avatar.png"
-                    }}
-                  />
-                </div>
-
-                {/* Name */}
-                <h2 className="text-sm sm:text-base font-bold text-white hover:text-[#FCA311] transition-colors line-clamp-1">
-                  {member.name}
-                </h2>
-
-                {/* Post */}
-                <p className="text-xs font-semibold text-[#FCA311] mt-0.5 tracking-wide uppercase line-clamp-1">
-                  {member.post || "Coordinator"}
-                </p>
-
-                {/* Domain */}
-                {member.domain && (
-                  <p className="text-[11px] text-slate-300 mt-0.5 line-clamp-1">
-                    {member.domain}
-                  </p>
-                )}
+        {/* Content Area */}
+        <div ref={gridRef} className="w-full flex flex-col gap-10">
+          {/* Core Leadership Spotlight (when not searching) */}
+          {leaders.length > 0 && (
+            <div className="flex flex-col items-center gap-4">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#fe9c02]/15 text-[#fe9c02] border border-[#fe9c02]/30">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Executive Leadership</span>
               </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 w-full max-w-4xl mx-auto">
+                {leaders.map((leader) => renderCard(leader, true))}
+              </div>
+            </div>
+          )}
 
-              {/* LinkedIn Button */}
-              {member.linkedIn && (
-                <div className="mt-3 pt-2.5 border-t border-white/10 flex justify-center">
-                  <a
-                    href={member.linkedIn}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold text-slate-200 hover:text-white bg-white/10 hover:bg-[#0A66C2] transition-colors"
-                    aria-label={`${member.name}'s LinkedIn profile`}
-                  >
-                    <FaLinkedin className="w-3.5 h-3.5" />
-                    <span>LinkedIn</span>
-                  </a>
+          {/* Coordinators Grid */}
+          {coordinators.length > 0 && (
+            <div className="flex flex-col gap-4">
+              {leaders.length > 0 && (
+                <div className="border-t border-white/10 pt-6 text-center">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-slate-300">
+                    Team Coordinators
+                  </h3>
                 </div>
               )}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
+                {coordinators.map((coordinator) => renderCard(coordinator, false))}
+              </div>
             </div>
-          ))}
-        </div>
+          )}
 
-        {filteredMembers.length === 0 && (
-          <div className="py-12 text-center text-slate-300">
-            <p className="text-sm">No members found matching &ldquo;{searchQuery}&rdquo;</p>
-          </div>
-        )}
+          {leaders.length === 0 && coordinators.length === 0 && (
+            <div className="py-12 text-center text-slate-300">
+              <p className="text-sm">No members found matching &ldquo;{searchQuery}&rdquo;</p>
+            </div>
+          )}
+        </div>
       </main>
 
       <Footer />

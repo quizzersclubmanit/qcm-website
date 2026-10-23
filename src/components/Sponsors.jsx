@@ -32,7 +32,7 @@ const Sponsors = () => {
 
   // Key metrics to build prestige and social proof (light theme)
   const metrics = [
-    { value: "₹35,000+", label: "Championship Prize Pool" },
+    { value: "100+", label: "Quiz Competitions" },
     { value: "1,500+", label: "Collegiate Participants" },
     { value: "50+", label: "Institutions Nationwide" },
     { value: "10+ Yrs", label: "Quizzing Heritage" },

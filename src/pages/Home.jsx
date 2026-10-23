@@ -9,6 +9,7 @@ import {
   Map,
   RegistrationSuccessHandler
 } from "../components/components"
+import QbitModal from "../components/QbitModal"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useLocation } from "react-router-dom"
@@ -83,6 +84,7 @@ const Home = () => {
       />
       <div className="w-full relative overflow-x-clip">
         <RegistrationSuccessHandler />
+        <QbitModal />
         <Header />
         <Hero />
         <About />

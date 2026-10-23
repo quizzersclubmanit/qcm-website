@@ -1,9 +1,15 @@
+import { useRef } from "react"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import SliderImport from "react-slick"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import EventCard from "./EventCard"
 import { eventDetails } from "../assets/qcmData.json"
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Slider = SliderImport.default ?? SliderImport
 
@@ -36,9 +42,27 @@ const SlickNextArrow = (props) => {
 }
 
 const Events = () => {
+  const sectionRef = useRef(null)
+
   const reduceMotion =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+  useGSAP(() => {
+    if (reduceMotion) return
+
+    gsap.from(sectionRef.current?.querySelector(".events-slider-wrap"), {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      ease: "power2.out",
+    })
+  }, { scope: sectionRef })
 
   const settings = {
     infinite: true,
@@ -74,6 +98,7 @@ const Events = () => {
   return (
     <section
       id="events"
+      ref={sectionRef}
       className="w-full py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     >
       <div className="max-w-6xl mx-auto flex flex-col gap-8 items-center">
@@ -85,14 +110,15 @@ const Events = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Events
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg">
+          <div className="w-12 h-1 bg-[#FCA311] rounded-full mt-2" />
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg pt-1">
             From premier inter-city school quizzing challenges to campus-wide
             treasure hunts and national open arenas.
           </p>
         </div>
 
         {/* Carousel */}
-        <div className="w-full relative">
+        <div className="events-slider-wrap w-full relative">
           <Slider {...settings}>
             {eventDetails.map((dets, index) => (
               <EventCard dets={dets} key={index} />
