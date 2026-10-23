@@ -87,11 +87,6 @@ const Team = () => {
               e.target.src = "/placeholder-avatar.png"
             }}
           />
-          {isLeader && (
-            <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-[#fe9c02] text-[#0d2820] text-[10px] font-bold uppercase tracking-wider shadow">
-              Core
-            </div>
-          )}
         </div>
 
         {/* Name */}

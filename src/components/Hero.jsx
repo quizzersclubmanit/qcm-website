@@ -81,7 +81,7 @@ const Hero = () => {
           Quizzers&apos; Club NIT Bhopal (QCM MANIT) — Official College Quizzing Club
         </h1>
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-xs font-semibold text-slate-200 mb-4 w-fit">
-          <span className="w-2 h-2 rounded-full bg-[#FCA311] inline-block" />
+          <span className="w-2 h-2 rounded-full bg-[#fe9c02] inline-block" />
           <span>NIT Bhopal&apos;s Official Quizzing Society</span>
         </div>
         <div className="organization-name flex flex-row flex-wrap" aria-hidden="true">
@@ -131,7 +131,7 @@ const Hero = () => {
           <button
             type="button"
             onClick={() => navigate("/signup")}
-            className="btn-shimmer inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 via-[#FCA311] to-amber-500 px-6 py-3 text-sm font-bold text-[#14213D] shadow-lg shadow-[#FCA311]/25 hover:shadow-xl hover:shadow-[#FCA311]/40 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
+            className="btn-shimmer inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 via-[#fe9c02] to-amber-500 px-6 py-3 text-sm font-bold text-[#0c1e28] shadow-lg shadow-[#fe9c02]/25 hover:shadow-xl hover:shadow-[#fe9c02]/40 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
           >
             <span>Register for Q-BIT &apos;26</span>
             <span aria-hidden="true">&rarr;</span>

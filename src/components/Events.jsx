@@ -20,7 +20,7 @@ const SlickPrevArrow = (props) => {
       type="button"
       onClick={onClick}
       aria-label="Previous event"
-      className="!hidden lg:!flex absolute top-1/2 -left-5 -translate-y-1/2 z-20 items-center justify-center w-11 h-11 rounded-full bg-[#14213D]/90 hover:bg-[#FCA311] text-white hover:text-[#14213D] border border-white/20 hover:border-[#FCA311] shadow-xl backdrop-blur-md transition-all duration-200 focus:outline-none"
+      className="!hidden lg:!flex absolute top-1/2 -left-5 -translate-y-1/2 z-20 items-center justify-center w-11 h-11 rounded-full bg-[#0c1e28]/90 hover:bg-[#fe9c02] text-white hover:text-[#0c1e28] border border-white/20 hover:border-[#fe9c02] shadow-xl backdrop-blur-md transition-all duration-200 focus:outline-none"
     >
       <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
     </button>
@@ -34,7 +34,7 @@ const SlickNextArrow = (props) => {
       type="button"
       onClick={onClick}
       aria-label="Next event"
-      className="!hidden lg:!flex absolute top-1/2 -right-5 -translate-y-1/2 z-20 items-center justify-center w-11 h-11 rounded-full bg-[#14213D]/90 hover:bg-[#FCA311] text-white hover:text-[#14213D] border border-white/20 hover:border-[#FCA311] shadow-xl backdrop-blur-md transition-all duration-200 focus:outline-none"
+      className="!hidden lg:!flex absolute top-1/2 -right-5 -translate-y-1/2 z-20 items-center justify-center w-11 h-11 rounded-full bg-[#0c1e28]/90 hover:bg-[#fe9c02] text-white hover:text-[#0c1e28] border border-white/20 hover:border-[#fe9c02] shadow-xl backdrop-blur-md transition-all duration-200 focus:outline-none"
     >
       <ChevronRight className="w-5 h-5 stroke-[2.5]" />
     </button>
@@ -104,13 +104,13 @@ const Events = () => {
       <div className="max-w-6xl mx-auto flex flex-col gap-8 items-center">
         {/* Section Heading */}
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-2">
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#FCA311]">
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#fe9c02]">
             Quizzers&apos; Club MANIT
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Events
           </h2>
-          <div className="w-12 h-1 bg-[#FCA311] rounded-full mt-2" />
+          <div className="w-12 h-1 bg-[#fe9c02] rounded-full mt-2" />
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg pt-1">
             From premier inter-city school quizzing challenges to campus-wide
             treasure hunts and national open arenas.

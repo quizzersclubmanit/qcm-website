@@ -62,7 +62,7 @@ const SliderPrevArrow = (props) => {
       type="button"
       onClick={onClick}
       aria-label="Previous photo"
-      className="!flex absolute top-1/2 left-3 -translate-y-1/2 z-10 items-center justify-center w-9 h-9 rounded-full bg-[#14213D]/80 hover:bg-[#FCA311] text-white hover:text-[#14213D] border border-white/20 transition-all"
+      className="!flex absolute top-1/2 left-3 -translate-y-1/2 z-10 items-center justify-center w-9 h-9 rounded-full bg-[#0c1e28]/80 hover:bg-[#fe9c02] text-white hover:text-[#0c1e28] border border-white/20 transition-all"
     >
       <ChevronLeft className="w-5 h-5" />
     </button>
@@ -76,7 +76,7 @@ const SliderNextArrow = (props) => {
       type="button"
       onClick={onClick}
       aria-label="Next photo"
-      className="!flex absolute top-1/2 right-3 -translate-y-1/2 z-10 items-center justify-center w-9 h-9 rounded-full bg-[#14213D]/80 hover:bg-[#FCA311] text-white hover:text-[#14213D] border border-white/20 transition-all"
+      className="!flex absolute top-1/2 right-3 -translate-y-1/2 z-10 items-center justify-center w-9 h-9 rounded-full bg-[#0c1e28]/80 hover:bg-[#fe9c02] text-white hover:text-[#0c1e28] border border-white/20 transition-all"
     >
       <ChevronRight className="w-5 h-5" />
     </button>
@@ -151,8 +151,8 @@ const Event = () => {
             path={`/events/${eventId}`}
             noindex
           />
-          <div className="max-w-md bg-[#14213D]/90 border border-white/10 p-8 rounded-2xl shadow-xl">
-            <h1 className="font-bold text-2xl uppercase text-[#FCA311]">
+          <div className="max-w-md bg-[#0c1e28]/90 border border-white/10 p-8 rounded-2xl shadow-xl">
+            <h1 className="font-bold text-2xl uppercase text-[#fe9c02]">
               Event Not Found
             </h1>
             <p className="mt-3 text-sm text-slate-300">
@@ -161,7 +161,7 @@ const Event = () => {
             </p>
             <Link
               to="/#events"
-              className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FCA311] text-[#14213D] text-sm font-semibold hover:bg-amber-400 transition-all"
+              className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#fe9c02] text-[#0c1e28] text-sm font-semibold hover:bg-amber-400 transition-all"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Events</span>
@@ -180,7 +180,7 @@ const Event = () => {
       id="event-page"
       className="min-h-screen text-white relative flex flex-col justify-between"
       style={{
-        background: "linear-gradient(180deg, #1D3441 0%, #182e3b 50%, #14213D 100%)",
+        background: "linear-gradient(180deg, #1D3441 0%, #182e3b 50%, #0c1e28 100%)",
       }}
     >
       <SEO
@@ -201,12 +201,12 @@ const Event = () => {
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
           <Link
             to="/#events"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-300 hover:text-[#FCA311] transition-colors"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-300 hover:text-[#fe9c02] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to All Events</span>
           </Link>
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#FCA311]/15 text-[#FCA311] border border-[#FCA311]/30">
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#fe9c02]/15 text-[#fe9c02] border border-[#fe9c02]/30">
             {meta.category}
           </span>
         </div>
@@ -281,7 +281,7 @@ const Event = () => {
                     }}
                     className={`relative flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
                       activeIdx === idx
-                        ? "border-[#FCA311] scale-105 shadow-md"
+                        ? "border-[#fe9c02] scale-105 shadow-md"
                         : "border-white/20 opacity-60 hover:opacity-100"
                     }`}
                   >
@@ -298,9 +298,9 @@ const Event = () => {
 
             {/* IQC Sample Questions PDF Box */}
             {meta.hasPdf && (
-              <div className="p-5 rounded-2xl bg-[#14213D]/90 border border-[#FCA311]/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+              <div className="p-5 rounded-2xl bg-[#0c1e28]/90 border border-[#fe9c02]/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
                 <div className="flex items-start gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-[#FCA311] text-[#14213D] flex items-center justify-center flex-shrink-0 font-bold shadow-md">
+                  <div className="w-10 h-10 rounded-xl bg-[#fe9c02] text-[#0c1e28] flex items-center justify-center flex-shrink-0 font-bold shadow-md">
                     <FileText className="w-5 h-5" />
                   </div>
                   <div>
@@ -317,7 +317,7 @@ const Event = () => {
                   href={meta.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FCA311] hover:bg-amber-400 text-[#14213D] text-xs sm:text-sm font-bold shadow-md transition-all"
+                  className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#fe9c02] hover:bg-amber-400 text-[#0c1e28] text-xs sm:text-sm font-bold shadow-md transition-all"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download PDF</span>
@@ -328,9 +328,9 @@ const Event = () => {
 
           {/* Description & Details Column (5 cols on lg) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="bg-[#14213D]/70 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-xl space-y-4">
+            <div className="bg-[#0c1e28]/70 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-xl space-y-4">
               <h2 className="text-lg font-bold text-white border-b border-white/10 pb-3 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#FCA311]" />
+                <span className="w-2 h-2 rounded-full bg-[#fe9c02]" />
                 <span>About the Event</span>
               </h2>
 
@@ -348,8 +348,8 @@ const Event = () => {
             </div>
 
             {/* Quick Action Box */}
-            <div className="bg-[#14213D]/70 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-xl flex flex-col gap-3">
-              <h3 className="text-sm font-bold text-[#FCA311] uppercase tracking-wider">
+            <div className="bg-[#0c1e28]/70 border border-white/10 rounded-2xl p-6 backdrop-blur-md shadow-xl flex flex-col gap-3">
+              <h3 className="text-sm font-bold text-[#fe9c02] uppercase tracking-wider">
                 Join QCM Quizzing Action
               </h3>
               <p className="text-xs text-slate-300 leading-relaxed">

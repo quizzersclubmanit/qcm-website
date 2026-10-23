@@ -18,8 +18,8 @@ const Accordion = ({ qna = [] }) => {
             key={index}
             className={`rounded-xl border transition-all duration-200 overflow-hidden ${
               isOpen
-                ? "bg-[#14213D]/90 border-[#FCA311]/50 shadow-lg"
-                : "bg-[#14213D]/60 hover:bg-[#14213D]/80 border-white/10"
+                ? "bg-[#0c1e28]/90 border-[#fe9c02]/50 shadow-lg"
+                : "bg-[#0c1e28]/60 hover:bg-[#0c1e28]/80 border-white/10"
             }`}
           >
             <button
@@ -33,7 +33,7 @@ const Accordion = ({ qna = [] }) => {
                 {obj.question}
               </span>
               <ChevronDown
-                className={`w-4 h-4 text-[#FCA311] flex-shrink-0 transition-transform duration-200 ${
+                className={`w-4 h-4 text-[#fe9c02] flex-shrink-0 transition-transform duration-200 ${
                   isOpen ? "rotate-180" : ""
                 }`}
               />

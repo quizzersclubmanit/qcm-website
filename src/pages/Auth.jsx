@@ -467,7 +467,7 @@ const Auth = ({ label = "signup" }) => {
 
               <Button
                 label={label == "signup" ? "Register" : "Login"}
-                className="p-2 rounded-lg text-lg text-white hover:bg-[#1d2d50] bg-[#14213D]"
+                className="p-2.5 rounded-xl text-base font-bold text-[#0c1e28] bg-[#fe9c02] hover:bg-amber-400 transition-all shadow-md"
                 onClick={handleSubmit((formData) => {
                   if (label == "signup")
                     authenticate(authService.signupAndLogin, formData)

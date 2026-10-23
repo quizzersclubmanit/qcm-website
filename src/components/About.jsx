@@ -63,13 +63,13 @@ const About = () => {
     >
       {/* Section Header */}
       <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-2">
-        <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#FCA311]">
+        <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#fe9c02]">
           Our Heritage &amp; Legacy
         </p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
           About Us
         </h2>
-        <div className="w-12 h-1 bg-[#FCA311] rounded-full mt-2" />
+        <div className="w-12 h-1 bg-[#fe9c02] rounded-full mt-2" />
       </div>
 
       <div className="flex flex-col gap-14">
@@ -81,8 +81,8 @@ const About = () => {
             } items-center gap-8 lg:gap-12`}
           >
             {/* Text Card */}
-            <div className="w-full md:w-3/5 p-6 sm:p-8 rounded-2xl bg-[#14213D]/75 hover:bg-[#14213D]/90 border border-white/10 hover:border-[#FCA311]/40 backdrop-blur-md shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#FCA311]">
+            <div className="w-full md:w-3/5 p-6 sm:p-8 rounded-2xl bg-[#0c1e28]/75 hover:bg-[#0c1e28]/90 border border-white/10 hover:border-[#fe9c02]/40 backdrop-blur-md shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#fe9c02]">
                 {obj.subtitle}
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-white mt-1 mb-3">
