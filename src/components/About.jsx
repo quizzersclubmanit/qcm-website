@@ -4,7 +4,7 @@ import { about } from "../assets/qcmData.json"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Building2, Trophy, Users, Sparkles, MapPin, Award } from "lucide-react"
+import { Trophy, Users, MapPin, Award } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -46,25 +46,11 @@ const About = () => {
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col gap-20 sm:gap-24">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/15 backdrop-blur-md shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#fe9c02]" />
-            <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#fe9c02]">
-              About The Society
-            </span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08]">
-            Intellect in Motion.{" "}
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-[#fe9c02] to-amber-200">
-              Driven by Curiosity.
-            </span>
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-2">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+            About Us
           </h2>
-
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
-            A decade of competitive quizzing, national championships, and cultivating
-            Central India&apos;s sharpest collegiate thinkers at MANIT Bhopal.
-          </p>
+          <div className="w-12 h-1 bg-[#fe9c02] rounded-full mt-1" />
         </div>
 
         {/* Showcase 1: The Institute — MANIT Bhopal */}

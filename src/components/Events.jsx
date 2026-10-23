@@ -2,7 +2,7 @@ import { useRef } from "react"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import SliderImport from "react-slick"
-import { ChevronLeft, ChevronRight, Trophy } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import EventCard from "./EventCard"
 import { eventDetails } from "../assets/qcmData.json"
 import gsap from "gsap"
@@ -103,21 +103,11 @@ const Events = () => {
     >
       <div className="max-w-6xl mx-auto flex flex-col gap-10 items-center">
         {/* Section Heading */}
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-2.5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#fe9c02]/10 border border-[#fe9c02]/30 text-xs font-bold uppercase tracking-[0.2em] text-[#fe9c02]">
-            <Trophy className="w-3.5 h-3.5" />
-            <span>Competitive Arenas</span>
-          </div>
-
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-2">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            Flagship Events
+            Events
           </h2>
           <div className="w-12 h-1 bg-[#fe9c02] rounded-full mt-1" />
-
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg pt-1">
-            From premier inter-city collegiate championships to campus-wide
-            treasure hunts and national open arenas.
-          </p>
         </div>
 
         {/* Carousel */}

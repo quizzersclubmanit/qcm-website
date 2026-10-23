@@ -128,10 +128,10 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Col 3: Flagships (3 cols) */}
+          {/* Col 3: Events (3 cols) */}
           <div className="lg:col-span-3 flex flex-col gap-3 text-left">
             <p className="text-xs font-bold uppercase tracking-widest text-[#fe9c02]">
-              Flagship Arenas
+              Events
             </p>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-300 font-medium">
               <li>
