@@ -150,6 +150,9 @@ const Hero = () => {
 
       <div className="right w-full sm:w-1/2 flex items-center justify-center relative z-10">
         <div className="relative flex items-center justify-center w-[250px] xs:w-[290px] sm:w-[380px] md:w-[440px] lg:w-[490px] aspect-square">
+          {/* Subtle Ambient Backlight */}
+          <div className="absolute w-3/4 h-3/4 rounded-full bg-[#fe9c02]/15 blur-3xl pointer-events-none" />
+
           {/* QCM Gradient Logo (Backdrop Emblem) */}
           <picture className="w-full h-full flex items-center justify-center">
             <source srcSet={gradientLogo} type="image/webp" />

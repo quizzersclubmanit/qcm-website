@@ -88,7 +88,7 @@ const About = () => {
               <h3 className="text-xl sm:text-2xl font-bold text-white mt-1 mb-3">
                 {obj.title}
               </h3>
-              <p className="text-slate-200 text-xs sm:text-sm leading-relaxed text-justify">
+              <p className="text-slate-200 text-xs sm:text-sm leading-relaxed text-left">
                 {obj.content}
               </p>
             </div>
