@@ -90,6 +90,7 @@ const Home = () => {
         <About />
         <Events />
         <Sponsors />
+        <Map />
         <Footer />
       </div>
     </>
