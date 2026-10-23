@@ -30,7 +30,7 @@ const Sponsors = () => {
   const loopTrack1 = [...track1, ...track1, ...track1, ...track1]
   const loopTrack2 = [...track2, ...track2, ...track2, ...track2]
 
-  // Key metrics to build prestige and social proof
+  // Key metrics to build prestige and social proof (light theme)
   const metrics = [
     { value: "₹35,000+", label: "Championship Prize Pool" },
     { value: "1,500+", label: "Collegiate Participants" },
@@ -38,7 +38,7 @@ const Sponsors = () => {
     { value: "10+ Yrs", label: "Quizzing Heritage" },
   ]
 
-  // Render individual brand card with white canvas on dark glass
+  // Render individual brand card with crisp white canvas & soft elevation
   const renderCard = (brand, category, isPrimary = false) => {
     const brandName = brand.brand || brand.name || brand.company || "Partner"
     const website = brand.website || "#"
@@ -50,8 +50,8 @@ const Sponsors = () => {
         href={website}
         target="_blank"
         rel="sponsored noopener noreferrer"
-        className={`group relative flex flex-col justify-between rounded-xl bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_16px_36px_rgba(0,0,0,0.18)] border border-transparent hover:border-[#3ab8b4]/60 ${
-          isPrimary ? "min-h-[180px] sm:min-h-[210px] p-6 sm:p-7" : "min-h-[145px]"
+        className={`group relative flex flex-col justify-between rounded-xl bg-white p-5 border border-zinc-200/90 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[#3ab8b4] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] ${
+          isPrimary ? "min-h-[175px] sm:min-h-[200px] p-6 sm:p-7" : "min-h-[140px]"
         }`}
         aria-label={`${brandName} - ${category}`}
       >
@@ -71,10 +71,10 @@ const Sponsors = () => {
               alt={`${brandName} logo`}
               loading="lazy"
               decoding="async"
-              className={`w-auto object-contain transition-transform duration-300 ease-out group-hover:scale-[1.05] ${
+              className={`w-auto object-contain transition-transform duration-300 ease-out group-hover:scale-[1.04] ${
                 isPrimary
-                  ? "max-h-[64px] max-w-[220px] sm:max-h-[80px]"
-                  : "max-h-[44px] max-w-[160px] sm:max-h-[52px]"
+                  ? "max-h-[64px] max-w-[210px] sm:max-h-[78px]"
+                  : "max-h-[44px] max-w-[155px] sm:max-h-[50px]"
               }`}
             />
           ) : (
@@ -102,16 +102,16 @@ const Sponsors = () => {
         background: 'url("/bg-gradient.webp") no-repeat center center / cover',
       }}
     >
-      <div className="mx-auto max-w-[1240px] rounded-3xl bg-[#091512]/85 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-10 lg:p-14 border border-white/10 text-white">
+      <div className="mx-auto max-w-[1240px] rounded-3xl bg-[#fdfdfb]/95 p-6 shadow-[0_16px_50px_rgba(0,0,0,0.08)] backdrop-blur-md sm:p-10 lg:p-14 border border-white">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#3ab8b4]/30 bg-[#3ab8b4]/10 px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#4ade80]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-teal-600/20 bg-teal-50 px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1f736f]">
             <FaHandshake className="text-xs" />
             <span>Official Partners</span>
           </div>
 
-          <h2 className="mt-4 text-center leading-[0.95] text-white">
+          <h2 className="mt-4 text-center leading-[0.95] text-zinc-900">
             <span className="block text-[clamp(2.4rem,4.5vw,5rem)] font-black tracking-[-0.05em]">
               Special Thanks to
             </span>
@@ -120,19 +120,19 @@ const Sponsors = () => {
             </span>
           </h2>
 
-          <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed">
+          <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-600 font-normal leading-relaxed">
             Leading enterprises, government boards, and academic institutions driving knowledge discovery and quizzing culture across Central India.
           </p>
         </div>
 
-        {/* Impact Metric Strip */}
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 border-y border-white/10 py-6">
+        {/* Impact Metric Strip (Clean Light Design) */}
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 border-y border-zinc-200/80 py-6">
           {metrics.map((m, idx) => (
             <div key={idx} className="flex flex-col items-center text-center px-2">
-              <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-[#e2b755]">
+              <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-[#b48227]">
                 {m.value}
               </span>
-              <span className="mt-1 text-[11px] sm:text-xs font-medium text-zinc-400">
+              <span className="mt-1 text-[11px] sm:text-xs font-semibold text-zinc-500 uppercase tracking-wider">
                 {m.label}
               </span>
             </div>
@@ -150,11 +150,11 @@ const Sponsors = () => {
               <div key={group.category} className="flex flex-col">
                 {/* Refined Category Divider */}
                 <div className="mb-6 flex items-center gap-4">
-                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-                  <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-zinc-200">
+                  <div className="h-px flex-1 bg-zinc-200" />
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-zinc-700">
                     {group.category}
                   </span>
-                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                  <div className="h-px flex-1 bg-zinc-200" />
                 </div>
 
                 {/* Grid */}
@@ -177,11 +177,11 @@ const Sponsors = () => {
         {/* Domain & Event Partners (Dual-Track Infinite Marquee) */}
         <div className="mt-16 flex flex-col">
           <div className="mb-6 flex items-center gap-4">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-zinc-200">
+            <div className="h-px flex-1 bg-zinc-200" />
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-zinc-700">
               Event, Hospitality &amp; Media Partners
             </span>
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+            <div className="h-px flex-1 bg-zinc-200" />
           </div>
 
           {/* Marquee Track 1 (Scrolls Left) */}
@@ -195,7 +195,7 @@ const Sponsors = () => {
                     href={p.website}
                     target="_blank"
                     rel="sponsored noopener noreferrer"
-                    className="group flex min-w-[170px] sm:min-w-[195px] flex-col items-center justify-between rounded-xl bg-white px-5 py-3.5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-[#3ab8b4]/60"
+                    className="group flex min-w-[170px] sm:min-w-[195px] flex-col items-center justify-between rounded-xl bg-white px-5 py-3.5 border border-zinc-200/90 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#3ab8b4] hover:shadow-md"
                   >
                     <span className="text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#288f8b] transition-colors">
                       {p.category}
@@ -237,7 +237,7 @@ const Sponsors = () => {
                     href={p.website}
                     target="_blank"
                     rel="sponsored noopener noreferrer"
-                    className="group flex min-w-[170px] sm:min-w-[195px] flex-col items-center justify-between rounded-xl bg-white px-5 py-3.5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-[#3ab8b4]/60"
+                    className="group flex min-w-[170px] sm:min-w-[195px] flex-col items-center justify-between rounded-xl bg-white px-5 py-3.5 border border-zinc-200/90 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#3ab8b4] hover:shadow-md"
                   >
                     <span className="text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#288f8b] transition-colors">
                       {p.category}
@@ -269,20 +269,20 @@ const Sponsors = () => {
           </div>
         </div>
 
-        {/* Corporate Sponsorship Callout Banner */}
-        <div className="mt-14 rounded-2xl border border-white/15 bg-white/5 p-6 sm:p-8 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        {/* Corporate Sponsorship Callout Banner (Clean Light Design) */}
+        <div className="mt-14 rounded-2xl border border-zinc-200 bg-white p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-white">
+            <h3 className="text-lg sm:text-xl font-bold text-zinc-900">
               Partner with Central India's Premier Quizzing Festival
             </h3>
-            <p className="mt-1.5 text-xs sm:text-sm text-zinc-300 max-w-xl leading-relaxed">
+            <p className="mt-1.5 text-xs sm:text-sm text-zinc-600 max-w-xl leading-relaxed">
               Collaborate on upcoming editions of Q-BIT to engage directly with top academic talent, quizzers, and future leaders from across the nation.
             </p>
           </div>
 
           <a
             href="mailto:quizzersclubmanit@gmail.com?subject=Partnership%20Inquiry%20-%20QCM%20Q-BIT"
-            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-[#3ab8b4] px-6 py-3 text-xs sm:text-sm font-bold text-zinc-950 transition-all duration-200 hover:bg-[#4ddbd6] hover:shadow-lg hover:shadow-[#3ab8b4]/20"
+            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-zinc-900 px-6 py-3 text-xs sm:text-sm font-bold text-white transition-all duration-200 hover:bg-zinc-800 hover:shadow-md"
           >
             <span>Inquire for Partnership</span>
             <FaArrowUpRightFromSquare className="text-xs" />
