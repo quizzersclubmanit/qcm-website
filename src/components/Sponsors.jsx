@@ -2,6 +2,7 @@ import React from "react"
 import { sponsors } from "../assets/qcmData.json"
 import logoMap from "../generated/sponsor-logos.json"
 import { FaArrowUpRightFromSquare } from "react-icons/fa6"
+import { FaHandshake } from "react-icons/fa"
 
 const Sponsors = () => {
   // Helper to resolve optimized mirrored logo or fallback
@@ -21,16 +22,24 @@ const Sponsors = () => {
     }))
   )
 
-  // Double partner brands for seamless infinite loop
-  const seamlessMarquee = [
-    ...partnerBrands,
-    ...partnerBrands,
-    ...partnerBrands,
-    ...partnerBrands,
+  // Split into two smooth staggered marquee tracks
+  const mid = Math.ceil(partnerBrands.length / 2)
+  const track1 = partnerBrands.slice(0, mid)
+  const track2 = partnerBrands.slice(mid)
+
+  const loopTrack1 = [...track1, ...track1, ...track1, ...track1]
+  const loopTrack2 = [...track2, ...track2, ...track2, ...track2]
+
+  // Key metrics to build prestige and social proof
+  const metrics = [
+    { value: "₹35,000+", label: "Championship Prize Pool" },
+    { value: "1,500+", label: "Collegiate Participants" },
+    { value: "50+", label: "Institutions Nationwide" },
+    { value: "10+ Yrs", label: "Quizzing Heritage" },
   ]
 
-  // Render individual brand card with professional, clean corporate styling
-  const renderSponsorCard = (brand, category, isPrimary = false) => {
+  // Render individual brand card with white canvas on dark glass
+  const renderCard = (brand, category, isPrimary = false) => {
     const brandName = brand.brand || brand.name || brand.company || "Partner"
     const website = brand.website || "#"
     const logo = getLogo(brand.logo)
@@ -41,17 +50,17 @@ const Sponsors = () => {
         href={website}
         target="_blank"
         rel="sponsored noopener noreferrer"
-        className={`group relative flex flex-col justify-between rounded-xl border border-zinc-200/90 bg-white/95 p-6 backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-zinc-400 hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] ${
-          isPrimary ? "min-h-[170px] sm:min-h-[190px]" : "min-h-[140px]"
+        className={`group relative flex flex-col justify-between rounded-xl bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_16px_36px_rgba(0,0,0,0.18)] border border-transparent hover:border-[#3ab8b4]/60 ${
+          isPrimary ? "min-h-[180px] sm:min-h-[210px] p-6 sm:p-7" : "min-h-[145px]"
         }`}
         aria-label={`${brandName} - ${category}`}
       >
-        {/* Subtle Category Identifier & External Icon */}
-        <div className="flex items-center justify-between">
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-600 transition-colors">
+        {/* Top Category Tag & Hover Arrow */}
+        <div className="flex items-center justify-between border-b border-zinc-100 pb-2">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#288f8b] transition-colors">
             {category}
           </span>
-          <FaArrowUpRightFromSquare className="text-[11px] text-zinc-300 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:text-zinc-600" />
+          <FaArrowUpRightFromSquare className="text-[10px] text-zinc-300 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:text-zinc-600" />
         </div>
 
         {/* Logo Container */}
@@ -62,10 +71,10 @@ const Sponsors = () => {
               alt={`${brandName} logo`}
               loading="lazy"
               decoding="async"
-              className={`w-auto object-contain transition-transform duration-300 ease-out group-hover:scale-[1.04] ${
+              className={`w-auto object-contain transition-transform duration-300 ease-out group-hover:scale-[1.05] ${
                 isPrimary
-                  ? "max-h-[64px] max-w-[210px] sm:max-h-[76px]"
-                  : "max-h-[46px] max-w-[160px] sm:max-h-[54px]"
+                  ? "max-h-[64px] max-w-[220px] sm:max-h-[80px]"
+                  : "max-h-[44px] max-w-[160px] sm:max-h-[52px]"
               }`}
             />
           ) : (
@@ -75,9 +84,9 @@ const Sponsors = () => {
           )}
         </div>
 
-        {/* Brand Label */}
-        <div className="pt-2 text-center border-t border-zinc-100">
-          <span className="line-clamp-1 text-[11px] font-medium text-zinc-500 transition-colors group-hover:text-zinc-900">
+        {/* Brand Name Footer */}
+        <div className="text-center">
+          <span className="line-clamp-1 text-[11px] font-semibold text-zinc-600 transition-colors group-hover:text-zinc-950">
             {brandName}
           </span>
         </div>
@@ -88,34 +97,49 @@ const Sponsors = () => {
   return (
     <section
       id="sponsors"
-      className="relative w-full overflow-hidden px-4 py-16 sm:px-8 lg:px-16"
+      className="relative w-full overflow-hidden px-4 py-20 sm:px-8 lg:px-16"
       style={{
         background: 'url("/bg-gradient.webp") no-repeat center center / cover',
       }}
     >
-      <div className="mx-auto max-w-[1200px] rounded-2xl bg-[#fafaf8]/95 p-6 shadow-[0_10px_40px_rgba(0,0,0,0.06)] backdrop-blur-md sm:p-10 lg:p-14 border border-white/60">
+      <div className="mx-auto max-w-[1240px] rounded-3xl bg-[#091512]/85 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-10 lg:p-14 border border-white/10 text-white">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center">
-          <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#298f8b]">
-            Our Valued Partners
-          </span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#3ab8b4]/30 bg-[#3ab8b4]/10 px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#4ade80]">
+            <FaHandshake className="text-xs" />
+            <span>Official Partners</span>
+          </div>
 
-          <h2 className="mt-2 text-center leading-[0.95] text-[#1a1a1a]">
+          <h2 className="mt-4 text-center leading-[0.95] text-white">
             <span className="block text-[clamp(2.4rem,4.5vw,5rem)] font-black tracking-[-0.05em]">
-              Special thanks
+              Special Thanks to
             </span>
             <span className="block text-[clamp(2.4rem,4.5vw,5rem)] font-black tracking-[-0.05em]">
-              to our <span className="italic text-[#3ab8b4] poppins-bold">Sponsors</span>
+              Our Esteemed <span className="italic text-[#3ab8b4] poppins-bold">Sponsors</span>
             </span>
           </h2>
 
-          <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-600 font-normal">
-            Organizations and institutions empowering intellectual curiosity and quizzing excellence across MANIT Bhopal.
+          <p className="mt-3 max-w-xl text-xs sm:text-sm text-zinc-300 font-normal leading-relaxed">
+            Leading enterprises, government boards, and academic institutions driving knowledge discovery and quizzing culture across Central India.
           </p>
         </div>
 
-        {/* 1. TITLE SPONSORS (PREMIER TIER) */}
+        {/* Impact Metric Strip */}
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 border-y border-white/10 py-6">
+          {metrics.map((m, idx) => (
+            <div key={idx} className="flex flex-col items-center text-center px-2">
+              <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-[#e2b755]">
+                {m.value}
+              </span>
+              <span className="mt-1 text-[11px] sm:text-xs font-medium text-zinc-400">
+                {m.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Main Tiered Sponsor Categories */}
         <div className="mt-12 flex flex-col gap-12">
           {mainCategories.map((group) => {
             const isTitle =
@@ -124,13 +148,13 @@ const Sponsors = () => {
 
             return (
               <div key={group.category} className="flex flex-col">
-                {/* Clean Category Divider */}
+                {/* Refined Category Divider */}
                 <div className="mb-6 flex items-center gap-4">
-                  <div className="h-px flex-1 bg-zinc-200" />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-600">
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-zinc-200">
                     {group.category}
                   </span>
-                  <div className="h-px flex-1 bg-zinc-200" />
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
                 </div>
 
                 {/* Grid */}
@@ -142,7 +166,7 @@ const Sponsors = () => {
                   }`}
                 >
                   {group.brands.map((brand) =>
-                    renderSponsorCard(brand, group.category, isTitle)
+                    renderCard(brand, group.category, isTitle)
                   )}
                 </div>
               </div>
@@ -150,52 +174,93 @@ const Sponsors = () => {
           })}
         </div>
 
-        {/* 2. EVENT & EXPERIENCE PARTNERS (INFINITE MARQUEE) */}
-        <div className="mt-14 flex flex-col">
-          {/* Header Divider */}
+        {/* Domain & Event Partners (Dual-Track Infinite Marquee) */}
+        <div className="mt-16 flex flex-col">
           <div className="mb-6 flex items-center gap-4">
-            <div className="h-px flex-1 bg-zinc-200" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-600">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-zinc-200">
               Event, Hospitality &amp; Media Partners
             </span>
-            <div className="h-px flex-1 bg-zinc-200" />
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
           </div>
 
-          {/* Clean Continuous Marquee Ticker */}
-          <div className="pause-on-hover relative w-full overflow-hidden py-3 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          {/* Marquee Track 1 (Scrolls Left) */}
+          <div className="pause-on-hover relative w-full overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
             <div className="animate-marquee-left flex gap-4">
-              {seamlessMarquee.map((partner, index) => {
-                const logo = getLogo(partner.logo)
+              {loopTrack1.map((p, i) => {
+                const logo = getLogo(p.logo)
                 return (
                   <a
-                    key={`partner-${partner.name}-${index}`}
-                    href={partner.website}
+                    key={`track1-${p.name}-${i}`}
+                    href={p.website}
                     target="_blank"
                     rel="sponsored noopener noreferrer"
-                    className="group flex min-w-[170px] sm:min-w-[190px] flex-col items-center justify-between rounded-xl border border-zinc-200/80 bg-white/95 px-5 py-4 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-zinc-400 hover:shadow-md"
+                    className="group flex min-w-[170px] sm:min-w-[195px] flex-col items-center justify-between rounded-xl bg-white px-5 py-3.5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-[#3ab8b4]/60"
                   >
-                    <span className="text-[9px] font-semibold uppercase tracking-wider text-zinc-400 group-hover:text-zinc-600 transition-colors">
-                      {partner.category}
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#288f8b] transition-colors">
+                      {p.category}
                     </span>
 
-                    <div className="my-3 flex h-[38px] w-full items-center justify-center">
+                    <div className="my-2 flex h-[36px] w-full items-center justify-center">
                       {logo ? (
                         <img
                           src={logo}
-                          alt={`${partner.name} logo`}
+                          alt={`${p.name} logo`}
                           loading="lazy"
                           decoding="async"
-                          className="max-h-[36px] w-auto max-w-[125px] object-contain transition-transform duration-300 group-hover:scale-105"
+                          className="max-h-[34px] w-auto max-w-[125px] object-contain transition-transform duration-300 group-hover:scale-105"
                         />
                       ) : (
-                        <span className="text-xs font-semibold text-zinc-700">
-                          {partner.name}
+                        <span className="text-xs font-bold text-zinc-800">
+                          {p.name}
                         </span>
                       )}
                     </div>
 
-                    <span className="text-[11px] font-medium text-zinc-500 group-hover:text-zinc-800 transition-colors">
-                      {partner.name}
+                    <span className="text-[11px] font-semibold text-zinc-600 group-hover:text-zinc-950 transition-colors">
+                      {p.name}
+                    </span>
+                  </a>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Marquee Track 2 (Scrolls Right) */}
+          <div className="pause-on-hover mt-3 relative w-full overflow-hidden py-2 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <div className="animate-marquee-right flex gap-4">
+              {loopTrack2.map((p, i) => {
+                const logo = getLogo(p.logo)
+                return (
+                  <a
+                    key={`track2-${p.name}-${i}`}
+                    href={p.website}
+                    target="_blank"
+                    rel="sponsored noopener noreferrer"
+                    className="group flex min-w-[170px] sm:min-w-[195px] flex-col items-center justify-between rounded-xl bg-white px-5 py-3.5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-[#3ab8b4]/60"
+                  >
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#288f8b] transition-colors">
+                      {p.category}
+                    </span>
+
+                    <div className="my-2 flex h-[36px] w-full items-center justify-center">
+                      {logo ? (
+                        <img
+                          src={logo}
+                          alt={`${p.name} logo`}
+                          loading="lazy"
+                          decoding="async"
+                          className="max-h-[34px] w-auto max-w-[125px] object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <span className="text-xs font-bold text-zinc-800">
+                          {p.name}
+                        </span>
+                      )}
+                    </div>
+
+                    <span className="text-[11px] font-semibold text-zinc-600 group-hover:text-zinc-950 transition-colors">
+                      {p.name}
                     </span>
                   </a>
                 )
@@ -204,23 +269,23 @@ const Sponsors = () => {
           </div>
         </div>
 
-        {/* 3. PROFESSIONAL CORPORATE PARTNERSHIP CALLOUT */}
-        <div className="mt-14 rounded-xl border border-zinc-200/90 bg-white/70 p-6 sm:p-8 backdrop-blur-sm text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+        {/* Corporate Sponsorship Callout Banner */}
+        <div className="mt-14 rounded-2xl border border-white/15 bg-white/5 p-6 sm:p-8 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-zinc-900">
-              Partner with Quizzers' Club MANIT
+            <h3 className="text-lg sm:text-xl font-bold text-white">
+              Partner with Central India's Premier Quizzing Festival
             </h3>
-            <p className="mt-1 text-xs sm:text-sm text-zinc-500 max-w-lg">
-              Collaborate on upcoming editions of Q-BIT and connect with thousands of collegiate quizzers and innovators across India.
+            <p className="mt-1.5 text-xs sm:text-sm text-zinc-300 max-w-xl leading-relaxed">
+              Collaborate on upcoming editions of Q-BIT to engage directly with top academic talent, quizzers, and future leaders from across the nation.
             </p>
           </div>
 
           <a
-            href="mailto:quizzersclubmanit@gmail.com?subject=Partnership%20Inquiry%20-%20QCM"
-            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-zinc-900 px-5 py-2.5 text-xs font-semibold text-white transition-all duration-200 hover:bg-zinc-800 hover:shadow-md"
+            href="mailto:quizzersclubmanit@gmail.com?subject=Partnership%20Inquiry%20-%20QCM%20Q-BIT"
+            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-[#3ab8b4] px-6 py-3 text-xs sm:text-sm font-bold text-zinc-950 transition-all duration-200 hover:bg-[#4ddbd6] hover:shadow-lg hover:shadow-[#3ab8b4]/20"
           >
-            <span>Inquire for Sponsorship</span>
-            <FaArrowUpRightFromSquare className="text-[10px]" />
+            <span>Inquire for Partnership</span>
+            <FaArrowUpRightFromSquare className="text-xs" />
           </a>
         </div>
 
