@@ -80,6 +80,10 @@ const Hero = () => {
         <h1 className="sr-only">
           Quizzers&apos; Club NIT Bhopal (QCM MANIT) — Official College Quizzing Club
         </h1>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-xs font-semibold text-slate-200 mb-4 w-fit">
+          <span className="w-2 h-2 rounded-full bg-[#FCA311] inline-block" />
+          <span>NIT Bhopal&apos;s Official Quizzing Society</span>
+        </div>
         <div className="organization-name flex flex-row flex-wrap" aria-hidden="true">
           <div ref={ref0} className="overflow-y-hidden leading-none">
             {organizationNameList[0].split("").map((char, index) => (
@@ -127,18 +131,24 @@ const Hero = () => {
           <button
             type="button"
             onClick={() => navigate("/signup")}
-            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-900/30 transition-all duration-200 hover:bg-blue-500 hover:shadow-blue-900/50 hover:scale-[1.02] active:scale-[0.98]"
+            className="btn-shimmer inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 via-[#FCA311] to-amber-500 px-6 py-3 text-sm font-bold text-[#14213D] shadow-lg shadow-[#FCA311]/25 hover:shadow-xl hover:shadow-[#FCA311]/40 hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
           >
-            <span>Register for Q-BIT '26</span>
+            <span>Register for Q-BIT &apos;26</span>
             <span aria-hidden="true">&rarr;</span>
           </button>
           <a
             href="#events"
-            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/50"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/50 hover:scale-[1.02] active:scale-[0.98]"
           >
             <span>Explore Events</span>
             <span aria-hidden="true">&darr;</span>
           </a>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center gap-6 text-xs text-slate-300 border-t border-white/10 pt-4 relative z-10">
+          <div><span className="font-bold text-white text-sm">₹35k+</span> Prize Pool</div>
+          <div><span className="font-bold text-white text-sm">1,500+</span> Quizzers</div>
+          <div><span className="font-bold text-white text-sm">10+ Yrs</span> Heritage</div>
         </div>
       </div>
 
@@ -164,7 +174,7 @@ const Hero = () => {
               ref={bulbRef}
               src={bulbFallback}
               alt="Quiz idea bulb illustration — QCM MANIT quizzing"
-              className="h-[80%] sm:h-[86%] md:h-[92%] w-auto max-h-[460px] object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]"
+              className="h-[80%] sm:h-[86%] md:h-[92%] w-auto max-h-[460px] object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)] animate-float-slow"
               loading="eager"
               width="203"
               height="503"

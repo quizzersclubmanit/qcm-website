@@ -1,25 +1,24 @@
-import { useNavigate, Link, useLocation } from "react-router-dom"
-import { Button, DropDown, UserBtn } from "./components"
+import { Link, useLocation } from "react-router-dom"
+import { DropDown, UserBtn } from "./components"
 import authService from "../api/auth.service"
 import { useEffect, useState, forwardRef, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { login, logout, setData } from "../redux/user.slice"
 import { isStaffUser } from "../utils/authUtils"
-import { log, warn, error as logError } from "../utils/log.js"
+import { error as logError } from "../utils/log.js"
 
 const Nav = forwardRef(({ className = "", offModal = () => {} }, ref) => {
   const location = useLocation()
-  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const tabs = [
-    { name: "Home", to: "/#hero" },
-    { name: "About", to: "/#about" },
-    { name: "Events", to: "/#events" },
+    { name: "Home", to: "/#hero", hash: "#hero" },
+    { name: "About", to: "/#about", hash: "#about" },
+    { name: "Events", to: "/#events", hash: "#events" },
     { name: "Team", to: "/team" },
     { name: "FAQs", to: "/faqs" },
-    { name: "Sponsors", to: "/#sponsors" },
-    { name: "Contact", to: "/#contacts" }
+    { name: "Sponsors", to: "/#sponsors", hash: "#sponsors" },
+    { name: "Contact", to: "/#contacts", hash: "#contacts" }
   ]
 
   const { data, loggedIn } = useSelector((state) => state.user)
@@ -80,46 +79,46 @@ const Nav = forwardRef(({ className = "", offModal = () => {} }, ref) => {
 
   return (
     <nav ref={ref} className={`poppins-regular ${className}`}>
-      {/* Navigation Links */}
-      <div className="flex items-center gap-1 lg:gap-2">
-        {tabs.map((tab) => (
-          <Link
-            key={tab.name}
-            to={tab.to}
-            onClick={(e) => handleTabClick(e, tab.to)}
-            className="text-slate-200 hover:text-[#FCA311] text-xs lg:text-sm font-medium px-2.5 py-1 rounded-full transition-colors duration-150 hover:bg-white/5"
-          >
-            {tab.name}
-          </Link>
-        ))}
+      {/* Navigation Links with animated indicator */}
+      <div className="flex items-center gap-0.5 lg:gap-1 bg-white/5 p-1 rounded-full border border-white/5">
+        {tabs.map((tab) => {
+          const isActive = tab.hash
+            ? location.pathname === "/" && location.hash === tab.hash
+            : location.pathname === tab.to
+
+          return (
+            <Link
+              key={tab.name}
+              to={tab.to}
+              onClick={(e) => handleTabClick(e, tab.to)}
+              className={`relative px-3 py-1 rounded-full text-xs lg:text-sm font-semibold transition-all duration-200 ${
+                isActive
+                  ? "text-[#FCA311] bg-white/10 shadow-sm"
+                  : "text-slate-200 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              {tab.name}
+            </Link>
+          )
+        })}
       </div>
 
-      {/* Auth Action */}
-      <div className="flex items-center gap-3">
-        {loggedIn ? (
-          <div ref={anchorRef} className="relative">
-            <UserBtn
-              name={name}
-              showDropDown={showDropDown}
-              setShowDropDown={setShowDropDown}
-            />
-            <DropDown
-              user={isAdmin ? "admin" : name}
-              visible={showDropDown}
-              onClose={() => setShowDropDown(false)}
-              anchorRef={anchorRef}
-            />
-          </div>
-        ) : (
-          <Button
-            label="Register"
-            className="py-1.5 px-4 text-xs font-bold rounded-full bg-[#FCA311] text-[#14213D] hover:bg-amber-400 shadow-sm transition-all duration-150"
-            onClick={() => {
-              navigate("/signup")
-            }}
+      {/* User Dropdown if Authenticated */}
+      {loggedIn && (
+        <div ref={anchorRef} className="relative ml-2">
+          <UserBtn
+            name={name}
+            showDropDown={showDropDown}
+            setShowDropDown={setShowDropDown}
           />
-        )}
-      </div>
+          <DropDown
+            user={isAdmin ? "admin" : name}
+            visible={showDropDown}
+            onClose={() => setShowDropDown(false)}
+            anchorRef={anchorRef}
+          />
+        </div>
+      )}
     </nav>
   )
 })

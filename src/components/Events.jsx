@@ -83,7 +83,7 @@ const Events = () => {
             Quizzers&apos; Club MANIT
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            Flagship Events
+            Events
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg">
             From premier inter-city school quizzing challenges to campus-wide
