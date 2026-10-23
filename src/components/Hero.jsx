@@ -114,7 +114,7 @@ const Hero = () => {
             ))}
           </div>
         </div>
-        <p ref={ref2} className="text-[5vmax] overflow-y-hidden leading-none font-bold">
+        <p ref={ref2} className="text-[5vmax] overflow-y-hidden leading-none font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-[#fe9c02] to-amber-200">
           NIT BHOPAL
         </p>
         <p
@@ -156,7 +156,10 @@ const Hero = () => {
       <div className="right w-full sm:w-1/2 flex items-center justify-center relative z-10">
         <div className="relative flex items-center justify-center w-[250px] xs:w-[290px] sm:w-[380px] md:w-[440px] lg:w-[490px] aspect-square">
           {/* Subtle Ambient Backlight */}
-          <div className="absolute w-3/4 h-3/4 rounded-full bg-[#fe9c02]/15 blur-3xl pointer-events-none" />
+          <div className="absolute w-3/4 h-3/4 rounded-full bg-gradient-to-tr from-[#fe9c02]/20 via-[#26556a]/30 to-transparent blur-3xl pointer-events-none" />
+
+          {/* Rotating Planetary Ring */}
+          <div className="absolute w-[92%] h-[92%] rounded-full border border-dashed border-[#fe9c02]/20 animate-spin-slow pointer-events-none" />
 
           {/* Floating Pill Badge 1 (Top-Right) */}
           <div className="hidden xs:flex absolute top-3 -right-2 sm:top-6 sm:-right-4 z-20 px-4 py-2 rounded-2xl bg-[#0c1e28]/95 border border-white/20 backdrop-blur-xl shadow-[0_12px_35px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.2)] text-xs font-semibold text-white items-center gap-2.5 animate-float-slow hover:scale-105 transition-transform duration-300">

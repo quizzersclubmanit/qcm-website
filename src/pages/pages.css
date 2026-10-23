@@ -121,6 +121,19 @@
   animation: float-slow 4.5s ease-in-out infinite;
 }
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 35s linear infinite;
+}
+
 /* Subtle Shimmer for Buttons */
 .btn-shimmer {
   position: relative;

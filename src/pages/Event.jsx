@@ -178,11 +178,23 @@ const Event = () => {
   return (
     <div
       id="event-page"
-      className="min-h-screen text-white relative flex flex-col justify-between"
+      className="min-h-screen text-white relative flex flex-col justify-between overflow-x-clip"
       style={{
-        background: "linear-gradient(180deg, #1D3441 0%, #182e3b 50%, #0c1e28 100%)",
+        backgroundColor: "#0c1e28",
+        backgroundImage: "linear-gradient(180deg, #091822 0%, #0c202b 30%, #0e2634 70%, #0a1922 100%)",
       }}
     >
+      {/* Subtle Ambient Constellation Grid Matrix */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 opacity-20"
+        style={{
+          backgroundImage: "radial-gradient(rgba(254, 156, 2, 0.25) 1px, transparent 1px)",
+          backgroundSize: "36px 36px",
+          maskImage: "radial-gradient(ellipse 80% 60% at 50% 25%, #000 40%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 25%, #000 40%, transparent 100%)"
+        }}
+        aria-hidden="true"
+      />
       <SEO
         title={`${eventTitle} | Quizzers' Club NIT Bhopal (QCM MANIT)`}
         description={eventDescription}

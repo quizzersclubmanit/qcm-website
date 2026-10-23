@@ -69,10 +69,10 @@ const Team = () => {
   const renderCard = (member, isLeader = false) => (
     <div
       key={member.name}
-      className={`team-card group flex flex-col justify-between rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1.5 shadow-lg text-center ${
+      className={`team-card group flex flex-col justify-between rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1.5 shadow-xl text-center backdrop-blur-md ${
         isLeader
-          ? "bg-[#184638]/70 hover:bg-[#184638]/90 border border-[#fe9c02]/40 shadow-[#fe9c02]/5"
-          : "bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 hover:border-[#fe9c02]/40"
+          ? "bg-[#0c1e28]/95 hover:bg-[#0c1e28] border-2 border-[#fe9c02] shadow-[0_10px_30px_rgba(254,156,2,0.18)]"
+          : "bg-[#0c1e28]/70 hover:bg-[#0c1e28]/95 border border-white/10 hover:border-[#fe9c02]/40"
       }`}
     >
       <div>
@@ -132,12 +132,24 @@ const Team = () => {
   return (
     <div
       id="team-page"
-      className="min-h-screen text-white relative flex flex-col justify-between"
+      className="min-h-screen text-white relative flex flex-col justify-between overflow-x-clip"
       style={{
-        backgroundColor: "#0f3a2e",
-        backgroundImage: "linear-gradient(180deg, #0f3a2e 0%, #144638 50%, #0a261e 100%)",
+        backgroundColor: "#0c1e28",
+        backgroundImage: "linear-gradient(180deg, #091822 0%, #0c202b 30%, #0e2634 70%, #0a1922 100%)",
       }}
     >
+      {/* Subtle Ambient Constellation Grid Matrix */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 opacity-20"
+        style={{
+          backgroundImage: "radial-gradient(rgba(254, 156, 2, 0.25) 1px, transparent 1px)",
+          backgroundSize: "36px 36px",
+          maskImage: "radial-gradient(ellipse 80% 60% at 50% 25%, #000 40%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 25%, #000 40%, transparent 100%)"
+        }}
+        aria-hidden="true"
+      />
+
       <SEO
         title="Meet the Team | Quizzers' Club NIT Bhopal (QCM MANIT)"
         description="Meet the coordinators and executive members of Quizzers' Club NIT Bhopal (QCM MANIT) — the leaders behind QBIT, college quizzes and events."
@@ -147,7 +159,7 @@ const Team = () => {
 
       <Header />
 
-      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-20 flex flex-col items-center gap-10">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-20 flex flex-col items-center gap-10 relative z-10">
         {/* Title Block */}
         <div className="flex flex-col items-center text-center space-y-2 max-w-2xl mx-auto">
           <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#fe9c02]">
@@ -166,18 +178,18 @@ const Team = () => {
         {/* Year Toggle Bar & Search */}
         <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-4">
           {/* Year Switcher */}
-          <div className="inline-flex bg-black/30 p-1 rounded-full border border-white/15">
+          <div className="inline-flex bg-[#0c1e28]/80 p-1.5 rounded-full border border-white/15 backdrop-blur-md shadow-lg">
             <button
               type="button"
               onClick={() => setSelectedYear("4th")}
               className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
                 selectedYear === "4th"
-                  ? "bg-[#2b7966] text-white shadow-md"
+                  ? "bg-[#fe9c02] text-[#0c1e28] font-bold shadow-md shadow-[#fe9c02]/25"
                   : "text-slate-300 hover:text-white"
               }`}
             >
               <span>4th Year</span>
-              <span className="ml-2 px-1.5 py-0.5 rounded-full text-[10px] bg-white/20">
+              <span className={`ml-2 px-1.5 py-0.5 rounded-full text-[10px] ${selectedYear === "4th" ? "bg-black/20" : "bg-white/15"}`}>
                 {fourthYearCount}
               </span>
             </button>
@@ -186,12 +198,12 @@ const Team = () => {
               onClick={() => setSelectedYear("3rd")}
               className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
                 selectedYear === "3rd"
-                  ? "bg-[#2b7966] text-white shadow-md"
+                  ? "bg-[#fe9c02] text-[#0c1e28] font-bold shadow-md shadow-[#fe9c02]/25"
                   : "text-slate-300 hover:text-white"
               }`}
             >
               <span>3rd Year</span>
-              <span className="ml-2 px-1.5 py-0.5 rounded-full text-[10px] bg-white/20">
+              <span className={`ml-2 px-1.5 py-0.5 rounded-full text-[10px] ${selectedYear === "3rd" ? "bg-black/20" : "bg-white/15"}`}>
                 {thirdYearCount}
               </span>
             </button>
@@ -205,7 +217,7 @@ const Team = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search coordinator..."
-              className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm rounded-full bg-white/10 border border-white/15 focus:border-[#fe9c02] focus:bg-white/15 text-white placeholder-slate-400 focus:outline-none transition-all"
+              className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm rounded-full bg-[#0c1e28]/70 border border-white/15 focus:border-[#fe9c02] focus:bg-[#0c1e28] text-white placeholder-slate-400 focus:outline-none transition-all shadow-md"
             />
           </div>
         </div>
