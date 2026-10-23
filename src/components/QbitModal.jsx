@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { FaTimes, FaArrowRight } from "react-icons/fa"
 import confetti from "canvas-confetti"
-import { poster } from "../assets/assets"
+import { qbitPoster } from "../assets/assets"
 
 const QbitModal = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -94,33 +94,35 @@ const QbitModal = () => {
       />
 
       {/* Modal Dialog Card */}
-      <div className="relative w-full max-w-2xl rounded-3xl bg-[#0c1e28] border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.7)] text-white overflow-hidden flex flex-col md:flex-row z-10 transition-all">
+      <div className="relative w-full max-w-3xl rounded-3xl bg-[#07131b] border border-white/20 shadow-[0_25px_70px_rgba(0,0,0,0.85),0_0_40px_rgba(254,156,2,0.12)] text-white overflow-hidden flex flex-col md:flex-row z-10 transition-all">
         
         {/* Close Button */}
         <button
           type="button"
           onClick={close}
           aria-label="Close dialog"
-          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full flex items-center justify-center bg-black/60 hover:bg-black/80 text-white/80 hover:text-white transition-colors focus:outline-none"
+          className="absolute top-4 right-4 z-30 w-8 h-8 rounded-full flex items-center justify-center bg-black/60 hover:bg-black/80 text-white/80 hover:text-white transition-colors focus:outline-none border border-white/10 backdrop-blur-sm"
         >
           <FaTimes className="text-sm" />
         </button>
 
         {/* Poster Artwork Side */}
-        <div className="w-full md:w-5/12 bg-[#08151c] relative flex items-center justify-center overflow-hidden">
+        <div className="w-full md:w-5/12 bg-[#040a0f] relative flex items-center justify-center overflow-hidden p-3 sm:p-4 border-b md:border-b-0 md:border-r border-white/10">
           <img
-            src={poster}
+            src={qbitPoster}
             alt="Q-BIT '26 Official Poster — Quizzers' Club MANIT"
-            className="w-full h-48 md:h-full object-cover object-top"
+            className="w-full h-56 sm:h-72 md:h-full max-h-[460px] object-contain object-center rounded-2xl drop-shadow-[0_12px_28px_rgba(0,0,0,0.7)]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0c1e28] via-transparent to-transparent md:hidden" />
         </div>
 
         {/* Content Side */}
-        <div className="w-full md:w-7/12 p-6 sm:p-8 flex flex-col justify-between text-left">
+        <div className="w-full md:w-7/12 p-6 sm:p-8 flex flex-col justify-between text-left bg-gradient-to-br from-[#07131b] via-[#091823] to-[#0c1f2c]">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#fe9c02] inline-block" />
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fe9c02] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#fe9c02]"></span>
+              </span>
               <span className="text-[11px] font-bold uppercase tracking-widest text-[#fe9c02]">
                 Registrations Now Live
               </span>
@@ -140,7 +142,7 @@ const QbitModal = () => {
               Bhopal.
             </p>
 
-            <div className="mt-4 pt-3 border-t border-white/10 space-y-1.5 text-xs text-slate-300">
+            <div className="mt-4 pt-3 border-t border-white/10 space-y-2 text-xs text-slate-300">
               <div className="flex items-center justify-between">
                 <span className="text-slate-400">Team Format:</span>
                 <span className="font-semibold text-white">4 Members / Team</span>
@@ -157,11 +159,11 @@ const QbitModal = () => {
           </div>
 
           {/* Action Row */}
-          <div className="mt-6 pt-2 flex flex-col gap-2">
+          <div className="mt-6 pt-3 flex flex-col gap-2.5">
             <button
               type="button"
               onClick={handleRegister}
-              className="w-full py-3 px-6 rounded-full font-bold text-xs uppercase tracking-wider text-[#0c1e28] bg-[#fe9c02] hover:bg-amber-400 shadow-md shadow-[#fe9c02]/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              className="btn-shimmer w-full py-3 px-6 rounded-full font-bold text-xs uppercase tracking-wider text-[#060e14] bg-gradient-to-r from-amber-400 via-[#fe9c02] to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-lg shadow-[#fe9c02]/25 hover:shadow-xl hover:shadow-[#fe9c02]/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
             >
               <span>Register Your Team</span>
               <FaArrowRight className="text-xs" />
@@ -170,7 +172,7 @@ const QbitModal = () => {
             <button
               type="button"
               onClick={close}
-              className="py-1.5 text-xs text-center text-slate-400 hover:text-white transition-colors"
+              className="py-1 text-xs text-center text-slate-400 hover:text-white transition-colors"
             >
               Maybe later &bull; Explore website
             </button>

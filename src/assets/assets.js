@@ -15,6 +15,7 @@ import team from "./team.avif"
 import teamWebp from "./team.webp"
 import teamFallback from "./team.jpg"
 import poster from "./compressedPoster.jpg"
+import qbitPoster from "./qbit-poster.png"
 // import myglamm from "./myglamm.jpg"
 import slots from "./slots.png"
 
@@ -36,6 +37,7 @@ export {
   teamWebp,
   teamFallback,
   poster,
+  qbitPoster,
   // myglamm,
   slots
 }
