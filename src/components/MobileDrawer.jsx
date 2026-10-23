@@ -20,7 +20,6 @@ import qbitService from "../api/qbit.service"
 import { logout as logoutAction } from "../redux/user.slice"
 import toast from "react-hot-toast"
 import Logo from "./Logo"
-import Button from "./Button"
 import { isStaffUser } from "../utils/authUtils"
 
 const TABS = [
@@ -34,10 +33,10 @@ const TABS = [
 ]
 
 const rowClass = (active) =>
-  `flex items-center gap-4 w-full px-4 py-3 rounded-xl text-left transition-colors border ${
+  `flex items-center gap-3.5 w-full px-4 py-3 rounded-2xl text-[13px] font-semibold transition-all duration-200 border ${
     active
-      ? "bg-[#fe9c02]/20 backdrop-blur-md border-[#fe9c02]/40 text-[#fe9c02] font-semibold shadow-sm"
-      : "border-transparent text-white/85 hover:bg-white/10 hover:text-white"
+      ? "bg-[#fe9c02]/20 backdrop-blur-md border-[#fe9c02]/40 text-[#fe9c02] shadow-[0_0_15px_rgba(254,156,2,0.15)]"
+      : "border-transparent text-slate-300 hover:bg-white/10 hover:text-white"
   }`
 
 // eslint-disable-next-line react/prop-types
@@ -105,46 +104,47 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
 
   return createPortal(
     <div className="md:hidden">
-      {/* Scrim */}
+      {/* Dark Scrim */}
       <div
         aria-hidden="true"
         onClick={onClose}
-        className={`fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
-      {/* Panel */}
+
+      {/* Drawer Panel */}
       <aside
-        className={`fixed right-0 top-0 bottom-0 z-[70] w-[78vw] max-w-[320px] flex flex-col shadow-2xl border-l border-white/15 text-white transition-transform duration-300 ease-out ${
+        className={`fixed right-0 top-0 bottom-0 z-[70] w-[82vw] max-w-[320px] flex flex-col shadow-[0_0_50px_rgba(0,0,0,0.85)] border-l border-white/15 text-white transition-transform duration-300 ease-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
-          background: "linear-gradient(180deg, #07131b 0%, #0a1c27 100%)"
+          background: "linear-gradient(180deg, #07131b 0%, #050b10 100%)"
         }}
         aria-hidden={!open}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <Logo className="w-[9vw] max-w-[38px]" />
+            <Logo className="w-9 h-9" />
             <div className="leading-tight">
-              <p className="poppins-bold text-white">Quizzers&apos; Club</p>
-              <p className="text-xs text-[#fe9c02] font-semibold uppercase tracking-wider">NIT Bhopal</p>
+              <p className="poppins-bold text-white text-sm">Quizzers&apos; Club</p>
+              <p className="text-[10px] text-[#fe9c02] font-bold tracking-widest uppercase">NIT Bhopal</p>
             </div>
           </div>
           <button
             onClick={onClose}
             aria-label="Close menu"
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 transition-colors"
+            className="w-8 h-8 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors border border-white/10"
           >
-            <FaTimes />
+            <FaTimes className="text-xs" />
           </button>
         </div>
 
         {/* Links */}
-        <nav className="flex-1 overflow-y-auto px-3 py-3 flex flex-col gap-1">
-          <p className="px-4 pt-1 pb-2 text-[11px] font-bold tracking-widest text-[#fe9c02] uppercase">
-            Navigation
+        <nav className="flex-1 overflow-y-auto px-3.5 py-4 flex flex-col gap-1.5">
+          <p className="px-3 pt-1 pb-2 text-[10px] font-bold tracking-[0.2em] text-[#fe9c02] uppercase">
+            Menu
           </p>
           {TABS.map(({ name: tabName, to, Icon }) =>
             to.startsWith("#") ? (
@@ -154,8 +154,8 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
                 onClick={onClose}
                 className={rowClass(isActive(to))}
               >
-                <Icon className="text-lg shrink-0" />
-                {tabName}
+                <Icon className="text-base shrink-0" />
+                <span>{tabName}</span>
               </a>
             ) : (
               <Link
@@ -164,16 +164,16 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
                 onClick={onClose}
                 className={rowClass(isActive(to))}
               >
-                <Icon className="text-lg shrink-0" />
-                {tabName}
+                <Icon className="text-base shrink-0" />
+                <span>{tabName}</span>
               </Link>
             )
           )}
 
           {loggedIn && isAdmin && (
             <>
-              <p className="px-4 pt-4 pb-2 text-[11px] font-bold tracking-widest text-slate-400 uppercase">
-                Admin
+              <p className="px-3 pt-4 pb-2 text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">
+                Admin Area
               </p>
               <Link
                 to="/admin/manage-teams"
@@ -183,31 +183,44 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
                 Manage Teams
               </Link>
               <button onClick={handleDownloadTeams} className={rowClass(false)}>
-                <FaDownload className="text-lg shrink-0" />
-                Download Teams (.xlsx)
+                <FaDownload className="text-base shrink-0" />
+                <span>Download Teams (.xlsx)</span>
               </button>
             </>
           )}
         </nav>
 
-        {/* Footer */}
-        <div className="p-4 border-t border-white/10">
+        {/* Footer CTA */}
+        <div className="p-4 border-t border-white/10 bg-black/25">
           {loggedIn ? (
             <button
               onClick={handleLogout}
-              className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl font-bold bg-red-500/15 text-red-300 hover:bg-red-500/25 transition-colors"
+              className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-full text-xs font-bold uppercase tracking-wider bg-red-500/15 text-red-300 hover:bg-red-500/25 transition-colors border border-red-500/20"
             >
-              <FaSignOutAlt /> Logout
+              <FaSignOutAlt />
+              <span>Logout</span>
             </button>
           ) : (
-            <div className="flex gap-2">
-              <Button
-                label="Register for Q-BIT"
+            <div className="flex flex-col gap-2.5">
+              <button
+                type="button"
                 onClick={go(() => navigate("/signup"))}
-                className="w-full py-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#fe9c02] text-[#060e14] hover:bg-amber-400 flex items-center justify-center gap-2 shadow-md shadow-[#fe9c02]/25"
+                className="btn-shimmer w-full py-3.5 px-4 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-amber-400 via-[#fe9c02] to-amber-500 hover:from-amber-300 hover:to-amber-400 text-[#060e14] flex items-center justify-center gap-2 shadow-lg shadow-[#fe9c02]/25 active:scale-[0.98] transition-all"
               >
-                <FaUserPlus /> Register for Q-BIT
-              </Button>
+                <FaUserPlus className="text-sm" />
+                <span>Register for Q-BIT &apos;26</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={go(() => navigate("/signin"))}
+                className="text-xs text-center text-slate-400 hover:text-white transition-colors py-1"
+              >
+                Already have an account?{" "}
+                <span className="text-[#fe9c02] font-semibold underline underline-offset-2">
+                  Sign In
+                </span>
+              </button>
             </div>
           )}
         </div>
