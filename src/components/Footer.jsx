@@ -35,7 +35,7 @@ const Footer = () => {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-[#091822]/85" />
 
       {/* Content */}
       <div className="relative z-10 w-full flex flex-col justify-between px-6 sm:px-12">
@@ -45,14 +45,14 @@ const Footer = () => {
         <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col justify-between h-full px-6">
           <Contact />
           <nav aria-label="Sitemap" className="w-full flex flex-wrap gap-x-6 gap-y-2 py-4 text-sm text-gray-300">
-            <Link to="/" className="hover:text-yellow-400 transition">Home</Link>
-            <Link to="/team" className="hover:text-yellow-400 transition">Team</Link>
-            <Link to="/faqs" className="hover:text-yellow-400 transition">FAQs</Link>
-            <Link to="/signup" className="hover:text-yellow-400 transition">QBIT Registration</Link>
-            <Link to="/events/iqc" className="hover:text-yellow-400 transition">IQC</Link>
-            <Link to="/events/manthan" className="hover:text-yellow-400 transition">Manthan</Link>
-            <Link to="/events/anveshan" className="hover:text-yellow-400 transition">Anveshan</Link>
-            <a href="/SampleQestionsIQC.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition">Sample Questions (PDF)</a>
+            <Link to="/" className="hover:text-[#fe9c02] transition">Home</Link>
+            <Link to="/team" className="hover:text-[#fe9c02] transition">Team</Link>
+            <Link to="/faqs" className="hover:text-[#fe9c02] transition">FAQs</Link>
+            <Link to="/signup" className="hover:text-[#fe9c02] transition">QBIT Registration</Link>
+            <Link to="/events/iqc" className="hover:text-[#fe9c02] transition">IQC</Link>
+            <Link to="/events/manthan" className="hover:text-[#fe9c02] transition">Manthan</Link>
+            <Link to="/events/anveshan" className="hover:text-[#fe9c02] transition">Anveshan</Link>
+            <a href="/SampleQestionsIQC.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-[#fe9c02] transition">Sample Questions (PDF)</a>
           </nav>
           <Social />
         </div>

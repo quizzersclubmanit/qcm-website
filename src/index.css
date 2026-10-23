@@ -11,7 +11,10 @@ html {
 html,
 body {
   overflow-x: clip;
-  background: linear-gradient(90deg, #1D3441 0%, #26556A 100%);
+  background-color: #0c1e28;
+  background-image: linear-gradient(180deg, #091822 0%, #0c202b 30%, #0e2634 70%, #0a1922 100%);
+  color: #fff;
+  min-height: 100vh;
 }
 
 /* Skip link: visible on keyboard focus only */
@@ -21,9 +24,9 @@ body {
   top: 0;
   z-index: 100;
   padding: 0.75rem 1.25rem;
-  background: #0f3a2e;
-  color: #fff;
-  font-weight: 600;
+  background: #fe9c02;
+  color: #0c1e28;
+  font-weight: 700;
   border-radius: 0 0 0.75rem 0;
 }
 
@@ -76,20 +79,21 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 5px; /* Width of the scrollbar */
-  height: 5px; /* Height of the scrollbar (for horizontal scrollbar) */
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Background color of the scrollbar track */
+  background: #091822;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00aded; /* Color of the scrollbar handle */
+  background: #fe9c02;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1; /* Darker color on hover for the scrollbar handle */
+  background: #ffb338;
 }
 
 .slick-prev {
@@ -116,7 +120,7 @@ body {
 }
 
 .background-blue {
-  @apply bg-[#14213D];
+  @apply bg-[#0c1e28];
 }
 
 .transparent-white {

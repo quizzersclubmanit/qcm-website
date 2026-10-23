@@ -50,14 +50,14 @@ const Sponsors = () => {
         href={website}
         target="_blank"
         rel="sponsored noopener noreferrer"
-        className={`group relative flex flex-col justify-between rounded-xl bg-white p-5 border border-zinc-200/90 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[#3ab8b4] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] ${
+        className={`group relative flex flex-col justify-between rounded-xl bg-white p-5 border border-zinc-200/90 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[#fe9c02] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] ${
           isPrimary ? "min-h-[175px] sm:min-h-[200px] p-6 sm:p-7" : "min-h-[140px]"
         }`}
         aria-label={`${brandName} - ${category}`}
       >
         {/* Top Category Tag & Hover Arrow */}
         <div className="flex items-center justify-between border-b border-zinc-100 pb-2">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#288f8b] transition-colors">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#fe9c02] transition-colors">
             {category}
           </span>
           <FaArrowUpRightFromSquare className="text-[10px] text-zinc-300 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:text-zinc-600" />
@@ -99,14 +99,14 @@ const Sponsors = () => {
       id="sponsors"
       className="relative w-full overflow-hidden px-4 py-20 sm:px-8 lg:px-16"
       style={{
-        background: 'url("/bg-gradient.webp") no-repeat center center / cover',
+        background: 'transparent',
       }}
     >
       <div className="mx-auto max-w-[1240px] rounded-3xl bg-[#fdfdfb]/95 p-6 shadow-[0_16px_50px_rgba(0,0,0,0.08)] backdrop-blur-md sm:p-10 lg:p-14 border border-white">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-teal-600/20 bg-teal-50 px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1f736f]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#fe9c02]/30 bg-amber-50/80 px-4 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#d97706]">
             <FaHandshake className="text-xs" />
             <span>Official Partners</span>
           </div>
@@ -116,7 +116,7 @@ const Sponsors = () => {
               Special Thanks to
             </span>
             <span className="block text-[clamp(2.4rem,4.5vw,5rem)] font-black tracking-[-0.05em]">
-              Our Esteemed <span className="italic text-[#3ab8b4] poppins-bold">Sponsors</span>
+              Our Esteemed <span className="italic text-[#fe9c02] poppins-bold">Sponsors</span>
             </span>
           </h2>
 
@@ -195,9 +195,9 @@ const Sponsors = () => {
                     href={p.website}
                     target="_blank"
                     rel="sponsored noopener noreferrer"
-                    className="group flex min-w-[170px] sm:min-w-[195px] flex-col items-center justify-between rounded-xl bg-white px-5 py-3.5 border border-zinc-200/90 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#3ab8b4] hover:shadow-md"
+                    className="group flex min-w-[170px] sm:min-w-[195px] flex-col items-center justify-between rounded-xl bg-white px-5 py-3.5 border border-zinc-200/90 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#fe9c02] hover:shadow-md"
                   >
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#288f8b] transition-colors">
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#fe9c02] transition-colors">
                       {p.category}
                     </span>
 
@@ -237,9 +237,9 @@ const Sponsors = () => {
                     href={p.website}
                     target="_blank"
                     rel="sponsored noopener noreferrer"
-                    className="group flex min-w-[170px] sm:min-w-[195px] flex-col items-center justify-between rounded-xl bg-white px-5 py-3.5 border border-zinc-200/90 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#3ab8b4] hover:shadow-md"
+                    className="group flex min-w-[170px] sm:min-w-[195px] flex-col items-center justify-between rounded-xl bg-white px-5 py-3.5 border border-zinc-200/90 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#fe9c02] hover:shadow-md"
                   >
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#288f8b] transition-colors">
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-[#fe9c02] transition-colors">
                       {p.category}
                     </span>
 

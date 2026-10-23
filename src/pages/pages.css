@@ -1,13 +1,14 @@
 #hero {
-  background: url("/bg-gradient.webp") no-repeat center center/cover;
+  background: transparent;
 }
 
 #events {
-  background: url("/bg-gradient.webp") no-repeat center center/cover;
+  background: transparent;
 }
 
 #auth {
-  background: url("/bg-gradient.webp") no-repeat center center/cover;
+  background-color: #0c1e28;
+  background-image: linear-gradient(180deg, #091822 0%, #0e2634 100%);
 }
 
 #play-quiz {
@@ -21,16 +22,14 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: rgba(0, 0, 0, 0.7);
-  background-blend-mode: overlay;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: radial-gradient(circle at 75% 45%, rgba(254, 156, 2, 0.08) 0%, transparent 60%),
+              radial-gradient(circle at 25% 30%, rgba(38, 85, 106, 0.22) 0%, transparent 55%);
+  pointer-events: none;
 }
 
 .glass-box {
   @apply bg-white bg-opacity-25 p-4 rounded-xl;
 }
-
 
 /* ==========================================================================
    Sponsors Animated Marquee & Shimmer Keyframes
