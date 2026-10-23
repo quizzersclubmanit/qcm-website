@@ -158,6 +158,18 @@ const Hero = () => {
           {/* Subtle Ambient Backlight */}
           <div className="absolute w-3/4 h-3/4 rounded-full bg-[#fe9c02]/15 blur-3xl pointer-events-none" />
 
+          {/* Floating Pill Badge 1 (Top-Right) */}
+          <div className="hidden xs:flex absolute top-3 -right-2 sm:top-6 sm:-right-4 z-20 px-3.5 py-1.5 rounded-full bg-[#0c1e28]/90 border border-white/20 backdrop-blur-md shadow-xl text-xs font-semibold text-white items-center gap-2 animate-float-slow">
+            <span className="w-2 h-2 rounded-full bg-[#fe9c02] inline-block" />
+            <span>Central India&apos;s #1</span>
+          </div>
+
+          {/* Floating Pill Badge 2 (Bottom-Left) */}
+          <div className="hidden xs:flex absolute bottom-4 -left-2 sm:bottom-8 sm:-left-4 z-20 px-3.5 py-1.5 rounded-full bg-[#0c1e28]/90 border border-white/20 backdrop-blur-md shadow-xl text-xs font-semibold text-white items-center gap-2 animate-float-slow [animation-delay:2s]">
+            <span className="text-[#fe9c02] text-xs font-bold">★</span>
+            <span>10+ Yrs Quizzing</span>
+          </div>
+
           {/* QCM Gradient Logo (Backdrop Emblem) */}
           <picture className="w-full h-full flex items-center justify-center">
             <source srcSet={gradientLogo} type="image/webp" />
