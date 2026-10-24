@@ -37,13 +37,13 @@ const About = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="relative w-full py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative w-full py-16 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* Ambient Atmospheric Lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#fe9c02]/10 via-[#1D3441]/25 to-transparent blur-3xl pointer-events-none rounded-full" />
       <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-[#26556A]/15 blur-3xl pointer-events-none rounded-full" />
 
-      <div className="relative z-10 max-w-6xl mx-auto flex flex-col gap-20 sm:gap-24">
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col gap-12 sm:gap-20 lg:gap-24">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-2">
@@ -74,18 +74,18 @@ const About = () => {
             </p>
 
             {/* Metric Pills */}
-            <div className="grid grid-cols-3 gap-3 pt-2">
-              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
-                <span className="text-lg sm:text-2xl font-black text-white group-hover/pill:text-[#fe9c02] transition-colors">650+</span>
-                <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Acres</span>
+            <div className="grid grid-cols-3 gap-2 xs:gap-2.5 sm:gap-3 pt-2">
+              <div className="p-2.5 xs:p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
+                <span className="text-base xs:text-lg sm:text-2xl font-black text-white group-hover/pill:text-[#fe9c02] transition-colors">650+</span>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Acres</span>
               </div>
-              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
-                <span className="text-lg sm:text-2xl font-black text-white group-hover/pill:text-[#fe9c02] transition-colors">1960</span>
-                <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Est. Year</span>
+              <div className="p-2.5 xs:p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
+                <span className="text-base xs:text-lg sm:text-2xl font-black text-white group-hover/pill:text-[#fe9c02] transition-colors">1960</span>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Est. Year</span>
               </div>
-              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
-                <span className="text-lg sm:text-2xl font-black text-[#fe9c02]">Top NIT</span>
-                <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Central India</span>
+              <div className="p-2.5 xs:p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
+                <span className="text-base xs:text-lg sm:text-2xl font-black text-[#fe9c02]">Top NIT</span>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Central IN</span>
               </div>
             </div>
           </div>

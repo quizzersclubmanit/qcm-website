@@ -54,9 +54,9 @@ const Footer = () => {
         <div className="absolute inset-0 bg-[#07141d]/90 backdrop-blur-md" />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-16 pb-10 flex flex-col gap-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 xs:px-6 sm:px-8 lg:px-12 pt-12 sm:pt-16 pb-8 sm:pb-10 flex flex-col gap-10 sm:gap-12">
         {/* Main 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10">
           
           {/* Col 1: Club Brand & Mission (4 cols) */}
           <div className="lg:col-span-4 flex flex-col gap-4 text-left">

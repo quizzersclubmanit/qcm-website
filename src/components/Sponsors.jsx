@@ -97,12 +97,12 @@ const Sponsors = () => {
   return (
     <section
       id="sponsors"
-      className="relative w-full overflow-hidden px-4 py-20 sm:px-8 lg:px-16"
+      className="relative w-full overflow-hidden px-3 py-14 xs:px-4 sm:px-8 lg:px-16"
       style={{
         background: 'transparent',
       }}
     >
-      <div className="mx-auto max-w-[1240px] rounded-3xl bg-[#fdfdfb] p-6 sm:p-10 lg:p-14 border border-white/80 shadow-[0_25px_70px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.1)] backdrop-blur-md">
+      <div className="mx-auto max-w-[1240px] rounded-2xl sm:rounded-3xl bg-[#fdfdfb] p-4 xs:p-6 sm:p-10 lg:p-14 border border-white/80 shadow-[0_25px_70px_rgba(0,0,0,0.35),0_0_0_1px_rgba(255,255,255,0.1)] backdrop-blur-md">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center">
@@ -111,11 +111,11 @@ const Sponsors = () => {
             <span>Official Partners</span>
           </div>
 
-          <h2 className="mt-4 text-center leading-[0.95] text-zinc-900">
-            <span className="block text-[clamp(2.4rem,4.5vw,5rem)] font-black tracking-[-0.05em]">
+          <h2 className="mt-4 text-center leading-[1.05] text-zinc-900">
+            <span className="block text-[clamp(1.65rem,4.5vw,4.5rem)] font-black tracking-tight">
               Special Thanks to
             </span>
-            <span className="block text-[clamp(2.4rem,4.5vw,5rem)] font-black tracking-[-0.05em]">
+            <span className="block text-[clamp(1.65rem,4.5vw,4.5rem)] font-black tracking-tight">
               Our Esteemed <span className="italic text-[#fe9c02] poppins-bold">Sponsors</span>
             </span>
           </h2>
