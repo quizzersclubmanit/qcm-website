@@ -78,7 +78,7 @@ const Hero = () => {
         <h1 className="sr-only">
           Quizzers&apos; Club NIT Bhopal (QCM MANIT) — Official College Quizzing Club
         </h1>
-        <div className="organization-name flex flex-row flex-wrap" aria-hidden="true">
+        <div className="organization-name flex flex-row flex-wrap gap-x-3" aria-hidden="true">
           <div ref={ref0} className="overflow-y-hidden leading-none">
             {organizationNameList[0].split("").map((char, index) => (
               <span
