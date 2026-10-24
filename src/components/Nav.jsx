@@ -1,211 +1,60 @@
-import { useNavigate, Link, useLocation } from "react-router-dom"
-import { Button, DropDown, UserBtn, Logo } from "./components"
-import authService from "../api/auth.service"
-import { useEffect, useState, forwardRef, useRef } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { login, logout, setData } from "../redux/user.slice"
-import { isStaffUser } from "../utils/authUtils"
-import { log, warn, error as logError } from "../utils/log.js"
+import { Link, useLocation } from "react-router-dom"
+import { forwardRef } from "react"
 
-const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
+const Nav = forwardRef(({ className = "", offModal = () => {} }, ref) => {
   const location = useLocation()
+
   const tabs = [
-    {
-      name: "Home",
-      to: "#hero"
-    },
-    {
-      name: "About",
-      to: "#about"
-    },
-    {
-      name: "Events",
-      to: "#events"
-    },
-    {
-      name: "Team",
-      to: "team"
-    },
-    {
-      name: "Sponsors",
-      to: "#sponsors"
-    },
-    {
-      name: "Contact Us",
-      to: "#contacts"
-    }
+    { name: "Home", to: "/#hero", hash: "#hero" },
+    { name: "About", to: "/#about", hash: "#about" },
+    { name: "Events", to: "/#events", hash: "#events" },
+    { name: "Team", to: "/team" },
+    { name: "FAQs", to: "/faqs" },
+    { name: "Sponsors", to: "/#sponsors", hash: "#sponsors" },
+    { name: "Contact", to: "/#contacts", hash: "#contacts" }
   ]
-  const { data, loggedIn } = useSelector((state) => state.user)
-  const name = data?.name?.split(" ")[0] || "User"
-  const isAdmin = isStaffUser(data)
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const logoRef = useRef(null)
-  const [showDropDown, setShowDropDown] = useState(false)
-  const anchorRef = useRef(null)
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
+  const handleTabClick = (e, to) => {
+    offModal()
+    if (to.startsWith("/#")) {
+      const hash = to.replace("/", "")
+      if (location.pathname === "/") {
+        e.preventDefault()
+        const el = document.querySelector(hash)
+        if (el) el.scrollIntoView({ behavior: "smooth" })
+      }
     }
-
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
-
-  useEffect(() => {
-    log('Nav useEffect running, checking auth...')
-    
-    // Skip auth check on authentication pages to prevent 401 errors
-    const authPages = ['/signup', '/signin', '/reset-password', '/login']
-    if (authPages.some(page => location.pathname.startsWith(page))) {
-      log('Skipping auth check on auth page:', location.pathname)
-      return
-    }
-
-    // Don't check auth if we're already logged in (from Redux state)
-    if (loggedIn && data?.id) {
-      log('User already authenticated in Redux state, skipping auth check')
-      return
-    }
-
-    log('Calling getCurrentUser to verify session...')
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
-
-    authService
-      .getCurrentUser()
-      .then((user) => {
-        log('Auth restored successfully:', user)
-        if (user && user.id) {
-          dispatch(setData(user))
-          dispatch(login())
-        } else {
-          warn('Invalid user data received:', user)
-          // Clear any invalid user data
-          dispatch(logout())
-        }
-      })
-      .catch((error) => {
-        if (error.name === 'AbortError') {
-          warn('Auth check timed out')
-        } else if (error.message !== 'Not authenticated') {
-          logError('Auth check error:', error)
-        } else {
-          log('User not authenticated, clearing any existing session')
-          dispatch(logout())
-        }
-      })
-      .finally(() => {
-        clearTimeout(timeoutId)
-      })
-
-    return () => {
-      controller.abort()
-      clearTimeout(timeoutId)
-    }
-  }, [location.pathname, loggedIn, data?.id])
+  }
 
   return (
-    <>
-      <nav
-        ref={ref}
-        className={`poppins-regular md:items-center md:justify-between justify-around gap-3 flex md:flex-row flex-col items-center md:overflow-y-hidden h-[50vh] lg:h-[15vh] w-full ${className}`}
-      >
-        <Logo
-          ref={logoRef}
-          className="hidden md:block md:w-[3vmax] w-[5vmax] cursor-default"
-  
-        />
-        <div className="tabs-bar flex flex-col gap-[2vw] mt-0 pt-0 md:flex-row h-22 items-center px-2 rounded-2xl">
-          {tabs.map((tab, index) =>
-            tab.to.startsWith("#") ? (
-              <a
-                key={index}
-                href={`/${tab.to}`}
-                className="hover:text-yellow-400 transition-all text-base no-underline text-black
-                border-2 rounded-[25px] py-[5px] px-[10px]
-                md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
-                style={{ borderColor: "currentColor" }}
-                onClick={(e) => {
-                  // In-app hash scroll without full page reload (href kept for crawlers)
-                  e.preventDefault()
-                  offModal()
-                  const scroll = () =>
-                    document.querySelector(tab.to)?.scrollIntoView({ behavior: "smooth" })
-                  if (location.pathname !== "/") {
-                    navigate("/")
-                    setTimeout(scroll, 350)
-                  } else {
-                    scroll()
-                  }
-                }}
-              >
-                {tab.name}
-              </a>
-            ) : (
-              <Link
-                key={index}
-                to={tab.to}
-                className="hover:text-yellow-400 transition-all text-base no-underline text-black 
-                border-2 rounded-[25px] py-[5px] px-[10px] 
-                md:hover:scale-125 md:text-white md:border-none md:rounded-none md:p-2"
-                style={{ borderColor: "currentColor" }}
-                onClick={offModal}
-              >
-                {tab.name}
-              </Link>
-            )
-          )}
-        </div>
-        {loggedIn ? (
-          <div ref={anchorRef} className="flex sm:flex-row flex-col relative">
-            {/* <Button
-              label="IQC Preparation Booklet"
-              onClick={() =>
-                window.open(
-                  "https://drive.google.com/file/d/1fDRrSJycHoWlM-ZH6m_JbdgeDR0aIswT/view?usp=sharing",
-                  "_blank"
-                )
-              }
-              className="poppins-regular flex items-center md:gap-2 sm:bg-[#E5E5E5] rounded-lg md:p-2 justify-center gap-3 py-1 overflow-y-hidden sm:border-none border border-black p-2"
-            /> */}
-            <UserBtn
-              name={name}
-              showDropDown={showDropDown}
-              setShowDropDown={setShowDropDown}
-            />
-            <DropDown
-              user={isAdmin ? "admin" : name}
-              visible={showDropDown}
-              onClose={() => setShowDropDown(false)}
-              anchorRef={anchorRef}
-            />
-          </div>
-        ) : (
-          <div className="flex sm:flex-row flex-col gap-2 items-center">
-            <Button
-              label="Login"
-              className="poppins-medium py-2 px-4 text-sm flex items-center justify-center text-white/90 rounded-full border border-white/60 bg-transparent hover:bg-white hover:text-blue-900 transition-all duration-200"
-              onClick={() => {
-                navigate("/signin")
-              }}
-            />
-            <Button
-              label="Sign Up"
-              className="poppins-semibold py-2 px-5 text-sm flex items-center justify-center text-white rounded-full bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-900/20 border border-blue-500 transition-all duration-200"
-              onClick={() => {
-                navigate("/signup")
-              }}
-            />
-          </div>
-        )}
-      </nav>
-    </>
+    <nav ref={ref} className={`poppins-medium flex items-center ${className}`}>
+      {tabs.map((tab) => {
+        const isActive = tab.hash
+          ? location.pathname === "/" && (location.hash === tab.hash || (!location.hash && tab.hash === "#hero"))
+          : location.pathname === tab.to
+
+        return (
+          <Link
+            key={tab.name}
+            to={tab.to}
+            onClick={(e) => handleTabClick(e, tab.to)}
+            className={`relative py-1 text-sm tracking-wide transition-colors duration-200 ${
+              isActive
+                ? "text-[#fe9c02] font-semibold"
+                : "text-slate-200 hover:text-[#fe9c02] font-medium"
+            }`}
+          >
+            <span>{tab.name}</span>
+            {isActive && (
+              <span className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-[#fe9c02] rounded-full shadow-[0_0_8px_rgba(254,156,2,0.8)]" />
+            )}
+          </Link>
+        )
+      })}
+    </nav>
   )
 })
 
+Nav.displayName = "Nav"
+
 export default Nav
-
-

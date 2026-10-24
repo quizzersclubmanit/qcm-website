@@ -9,8 +9,10 @@ import {
   Map,
   RegistrationSuccessHandler
 } from "../components/components"
+import QbitModal from "../components/QbitModal"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
+import { useLocation } from "react-router-dom"
 import { login, setData } from "../redux/user.slice"
 import authService from "../api/auth.service"
 import SEO from "../components/SEO.jsx"
@@ -19,6 +21,8 @@ import { eventDetails } from "../assets/qcmData.json"
 
 const Home = () => {
   const dispatch = useDispatch()
+  const location = useLocation()
+
   useEffect(() => {
     authService
       .getCurrentUser()
@@ -31,7 +35,19 @@ const Home = () => {
           logError('Auth check error:', error)
         }
       })
-  }, [])
+  }, [dispatch])
+
+  // Handle in-page hash scroll reliably on mount or hash change
+  useEffect(() => {
+    if (location.hash) {
+      const target = document.querySelector(location.hash)
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: "smooth" })
+        }, 120)
+      }
+    }
+  }, [location.hash])
 
   const homeSchema = {
     "@context": "https://schema.org",
@@ -59,22 +75,36 @@ const Home = () => {
   }
 
   return (
-    <main id="main">
+    <>
       <SEO
-        title="Quizzers' Club NIT Bhopal (QCM MANIT) | College Quizzes, QBIT & Events"
+        title="Quizzers' Club NIT Bhopal (QCM MANIT) — Official Quizzing Club"
         description="Quizzers' Club NIT Bhopal (QCM MANIT) — official quizzing club of MANIT Bhopal. QBIT, inter-city quizzes, college competitions and events."
         path="/"
         schema={homeSchema}
       />
-      <Header />
-      <RegistrationSuccessHandler />
-      <Hero />
-      <About />
-      <Events />
-      <Sponsors />
-      <Map />
-      <Footer />
-    </main>
+      <div className="w-full relative overflow-x-clip">
+        {/* Subtle Ambient Constellation Grid Matrix */}
+        <div 
+          className="fixed inset-0 pointer-events-none z-0 opacity-20"
+          style={{
+            backgroundImage: "radial-gradient(rgba(254, 156, 2, 0.25) 1px, transparent 1px)",
+            backgroundSize: "36px 36px",
+            maskImage: "radial-gradient(ellipse 80% 60% at 50% 25%, #000 40%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 25%, #000 40%, transparent 100%)"
+          }}
+          aria-hidden="true"
+        />
+        <RegistrationSuccessHandler />
+        <QbitModal />
+        <Header />
+        <Hero />
+        <About />
+        <Events />
+        <Sponsors />
+        <Map />
+        <Footer />
+      </div>
+    </>
   )
 }
 

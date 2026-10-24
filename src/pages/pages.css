@@ -1,13 +1,14 @@
 #hero {
-  background: url("/bg-gradient.webp") no-repeat center center/cover;
+  background: transparent;
 }
 
 #events {
-  background: url("/bg-gradient.webp") no-repeat center center/cover;
+  background: transparent;
 }
 
 #auth {
-  background: url("/bg-gradient.webp") no-repeat center center/cover;
+  background-color: #0c1e28;
+  background-image: linear-gradient(180deg, #091822 0%, #0e2634 100%);
 }
 
 #play-quiz {
@@ -21,12 +22,141 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: rgba(0, 0, 0, 0.7);
-  background-blend-mode: overlay;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: radial-gradient(circle at 75% 45%, rgba(254, 156, 2, 0.08) 0%, transparent 60%),
+              radial-gradient(circle at 25% 30%, rgba(38, 85, 106, 0.22) 0%, transparent 55%);
+  pointer-events: none;
 }
 
 .glass-box {
   @apply bg-white bg-opacity-25 p-4 rounded-xl;
+}
+
+/* ==========================================================================
+   Sponsors Animated Marquee & Shimmer Keyframes
+   ========================================================================== */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 36s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 36s linear infinite;
+  will-change: transform;
+}
+
+.pause-on-hover:hover .animate-marquee-left,
+.pause-on-hover:hover .animate-marquee-right {
+  animation-play-state: paused;
+}
+
+/* Diagonal Shimmer Sweep */
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.shimmer-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.shimmer-sweep:hover::after {
+  animation: shimmer-sweep 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Gentle Floating Animation */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 4.5s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 35s linear infinite;
+}
+
+/* Subtle Shimmer for Buttons */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 100%
+  );
+  transform: rotate(30deg) translateY(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-shimmer:hover::after {
+  transform: rotate(30deg) translateY(100%);
 }

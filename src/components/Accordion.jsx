@@ -1,73 +1,61 @@
-import { Container, Button } from "./components"
-import { FaPlus, FaMinus } from "react-icons/fa6"
-import { useState } from "react"
-import gsap from "gsap"
-import { useGSAP } from "@gsap/react"
-import { useRef } from "react"
+import React, { useState } from "react"
+import { ChevronDown } from "lucide-react"
 
 const Accordion = ({ qna = [] }) => {
-  const [openAccordions, setOpenAccordions] = useState([])
-  const { contextSafe } = useGSAP()
-  const ref = useRef(null)
-
-  const showAnswer = contextSafe((id) => {
-    gsap.to(ref.current.querySelector(`#id_${id}`), {
-      padding: "1.5rem 0",
-      opacity: 1,
-      duration: 0.2,
-      borderLeft: "1px solid gray",
-      borderBottom: "1px solid gray",
-      borderRight: "1px solid gray",
-      height: "100%"
-    })
-  })
-  const hideAnswer = contextSafe((id) => {
-    gsap.to(ref.current.querySelector(`#id_${id}`), {
-      opacity: 0,
-      duration: 0.2,
-      padding: 0,
-      height: "0"
-    })
-  })
+  const [openIndex, setOpenIndex] = useState(0)
 
   const toggle = (index) => {
-    if (openAccordions.includes(index)) {
-      setOpenAccordions((prev) => prev.filter((id) => id != index))
-      hideAnswer(index)
-    } else {
-      setOpenAccordions((prev) => [...prev, index])
-      showAnswer(index)
-    }
+    setOpenIndex((prev) => (prev === index ? null : index))
   }
 
   return (
-    <Container className="sm:w-3/4 w-11/12 mx-auto" ref={ref}>
+    <div className="w-full space-y-3">
       {qna.map((obj, index) => {
-        const open = openAccordions.includes(index)
+        const isOpen = openIndex === index
+
         return (
-          <div className="mb-3" key={index}>
-            <Button
-              className="flex justify-between items-center w-full p-4 text-left ease-in border border-slate-800"
-              aria-expanded={open}
-              aria-controls={`id_${index}`}
+          <div
+            key={index}
+            className={`rounded-xl border transition-all duration-200 overflow-hidden ${
+              isOpen
+                ? "bg-[#0c1e28]/90 border-[#fe9c02]/50 shadow-lg"
+                : "bg-[#0c1e28]/60 hover:bg-[#0c1e28]/80 border-white/10"
+            }`}
+          >
+            <button
+              type="button"
               onClick={() => toggle(index)}
+              aria-expanded={isOpen}
+              aria-controls={`faq-answer-${index}`}
+              className="w-full flex items-center justify-between gap-4 p-4 sm:p-5 text-left cursor-pointer focus:outline-none"
             >
-              <span className="font-semibold">{obj.question}</span>
-              {open ? <FaMinus aria-hidden="true" /> : <FaPlus aria-hidden="true" />}
-            </Button>
+              <span className="text-sm sm:text-base font-semibold text-white">
+                {obj.question}
+              </span>
+              <ChevronDown
+                className={`w-4 h-4 text-[#fe9c02] flex-shrink-0 transition-transform duration-200 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
             <div
-              id={`id_${index}`}
+              id={`faq-answer-${index}`}
               role="region"
-              className={`h-0 opacity-0 overflow-hidden flex items-center`}
+              className={`grid transition-all duration-200 ease-in-out ${
+                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+              }`}
             >
-              <p className="px-4 text-sm leading-normal text-slate-800 whitespace-pre-wrap">
-                {obj.answer}
-              </p>
+              <div className="overflow-hidden">
+                <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-1 text-slate-300 text-xs sm:text-sm leading-relaxed whitespace-pre-line border-t border-white/5">
+                  {obj.answer.trim()}
+                </div>
+              </div>
             </div>
           </div>
         )
       })}
-    </Container>
+    </div>
   )
 }
 

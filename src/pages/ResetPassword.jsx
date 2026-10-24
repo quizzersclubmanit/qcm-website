@@ -121,7 +121,7 @@ const ResetPassword = () => {
               <Button
                 type="submit"
                 label="Reset Password"
-                className="p-3 rounded-lg text-lg text-white hover:bg-[#1d2d50] bg-[#14213D] mt-4"
+                className="p-3 rounded-xl text-base font-bold text-[#0c1e28] bg-[#fe9c02] hover:bg-amber-400 transition-all shadow-md mt-4"
                 disabled={loading}
               />
             </form>

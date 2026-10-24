@@ -10,7 +10,7 @@ const Contact = () => {
     <Container className="flex flex-col sm:flex-row w-full gap-6 py-4">
       
       <div className="flex flex-col gap-4 w-full sm:pl-12">
-        <h2 className="font-bold text-xl sm:text-2xl text-yellow-400">
+        <h2 className="font-bold text-xl sm:text-2xl text-[#fe9c02]">
           Contact Us
         </h2>
 
@@ -23,7 +23,7 @@ const Contact = () => {
             <span className="text-gray-400">{contact.position}</span>
             <div className="flex items-center gap-2">
               <span
-                className="cursor-copy text-yellow-400"
+                className="cursor-copy text-[#fe9c02]"
                 onClick={() => navigator.clipboard.writeText(contact.no)}
               >
                 {contact.no}
@@ -50,7 +50,7 @@ const Contact = () => {
 
       {/* RIGHT */}
       <div className="flex flex-col gap-4 w-full sm:border-l sm:pl-12 border-gray-700">
-        <h2 className="font-bold text-xl sm:text-2xl text-yellow-400">
+        <h2 className="font-bold text-xl sm:text-2xl text-[#fe9c02]">
           Locate Us
         </h2>
 

@@ -115,6 +115,7 @@ export default function PageLoadPoster() {
               </Button>
             </div>
 
+            {/* Login button commented out per request
             <div className="mt-4 w-full">
               <Button 
                 className="w-full px-5 py-2 rounded-lg shadow-lg text-white bg-blue-500 hover:bg-blue-600 transform transition-all" 
@@ -122,7 +123,7 @@ export default function PageLoadPoster() {
               >
                 Already Registered? Login
               </Button>
-            </div>
+            </div> */}
             
             <p className="text-[10px] text-white/50 mt-2">Press Esc or click the X to dismiss.</p>
           </div>

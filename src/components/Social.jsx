@@ -34,7 +34,7 @@ const Social = () => {
             rel="noopener noreferrer"
             aria-label={item.label}
           >
-            <item.icon className="text-xl hover:text-yellow-400 transition" aria-hidden="true" />
+            <item.icon className="text-xl hover:text-[#fe9c02] transition" aria-hidden="true" />
           </a>
         ))}
       </div>

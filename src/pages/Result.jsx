@@ -26,7 +26,7 @@ const Result = () => {
         }}
       >
         <h1
-          className="w-full text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#FCA311] poppins-bold text-center px-4 leading-tight break-words whitespace-normal"
+          className="w-full text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#fe9c02] poppins-bold text-center px-4 leading-tight break-words whitespace-normal"
           style={{
             overflowWrap: "anywhere", 
             wordBreak: "break-word",
@@ -51,7 +51,7 @@ const Result = () => {
               href="https://whatsapp.com/channel/0029Vaj1E2e7DAWvNkgDhy2O"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-[#FCA311] transition-colors"
+              className="hover:text-[#fe9c02] transition-colors"
               aria-label="WhatsApp Channel"
             >
               <FaWhatsapp />
@@ -60,7 +60,7 @@ const Result = () => {
               href="https://www.instagram.com/quizzersclub/?hl=en"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-[#FCA311] transition-colors"
+              className="hover:text-[#fe9c02] transition-colors"
               aria-label="Instagram"
             >
               <FaInstagram />
@@ -69,7 +69,7 @@ const Result = () => {
               href="https://www.linkedin.com/company/quizzersclub/posts/?feedView=all"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-[#FCA311] transition-colors"
+              className="hover:text-[#fe9c02] transition-colors"
               aria-label="LinkedIn"
             >
               <FaLinkedin />

@@ -1,60 +1,205 @@
-import { Container } from "./components"
-import { about } from "../assets/qcmData.json"
+import { useRef } from "react"
 import { manit, manitWebp, manitFallback, team, teamWebp, teamFallback } from "../assets/assets"
+import { about } from "../assets/qcmData.json"
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Trophy, Users, MapPin, Award } from "lucide-react"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const About = () => {
-  const data = [
-    {
-      content: about.manit,
-      imgSrc: manit,
-      imgWebp: manitWebp,
-      imgFallback: manitFallback,
-      alt: "Maulana Azad National Institute of Technology (MANIT) Bhopal campus",
-      reverse: false
-    },
-    {
-      content: about.qcm,
-      imgSrc: team,
-      imgWebp: teamWebp,
-      imgFallback: teamFallback,
-      alt: "Quizzers' Club NIT Bhopal (QCM MANIT) members at a quiz event",
-      reverse: true
+  const sectionRef = useRef(null)
+
+  useGSAP(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    const rows = sectionRef.current?.querySelectorAll(".showcase-row")
+    if (rows) {
+      rows.forEach((row, i) => {
+        gsap.from(row, {
+          scrollTrigger: {
+            trigger: row,
+            start: "top 82%",
+            toggleActions: "play none none none",
+          },
+          opacity: 0,
+          y: 50,
+          duration: 0.9,
+          delay: i * 0.1,
+          ease: "power3.out",
+        })
+      })
     }
-  ]
+  }, { scope: sectionRef })
 
   return (
-    <Container
+    <section
       id="about"
-      className="md:w-11/12 mx-auto flex flex-col gap-3 my-8 bg-[url('/bg-gradient.webp')] bg-no-repeat bg-center bg-cover"
+      ref={sectionRef}
+      className="relative w-full py-16 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {data.map((obj, index) => (
-        <div
-          key={index}
-          className={`p-4 text-justify md:text-base text-sm flex gap-3 items-center justify-between ${obj.reverse && "flex-row-reverse"}`}
-        >
-          <p
-            className="md:w-1/2 leading-relaxed p-8 rounded-xl text-white transition-all duration-300"
-            style={{
-              backgroundColor: "rgba(0, 0, 0, 0.3)",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)"
-            }}
-          >
-            {obj.content}
-          </p>
-          <picture className="hidden md:inline-block w-[40%]">
-            <source srcSet={obj.imgSrc} type="image/avif" />
-            <source srcSet={obj.imgWebp} type="image/webp" />
-            <img
-              src={obj.imgFallback}
-              alt={obj.alt}
-              loading="lazy"
-              decoding="async"
-              className="object-contain rounded-xl w-full"
-            />
-          </picture>
+      {/* Ambient Atmospheric Lighting */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#fe9c02]/10 via-[#1D3441]/25 to-transparent blur-3xl pointer-events-none rounded-full" />
+      <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-[#26556A]/15 blur-3xl pointer-events-none rounded-full" />
+
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col gap-12 sm:gap-20 lg:gap-24">
+        
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-2">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+            About Us
+          </h2>
+          <div className="w-12 h-1 bg-[#fe9c02] rounded-full mt-1" />
         </div>
-      ))}
-    </Container>
+
+        {/* Showcase 1: The Institute — MANIT Bhopal */}
+        <div className="showcase-row grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+          
+          {/* Narrative Side (6 cols) */}
+          <div className="lg:col-span-6 flex flex-col gap-5 text-left order-2 lg:order-1">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#fe9c02] inline-block shadow-[0_0_10px_#fe9c02]" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#fe9c02]">
+                Institute of National Importance
+              </span>
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              Maulana Azad National Institute of Technology
+            </h3>
+
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              {about.manit}
+            </p>
+
+            {/* Metric Pills */}
+            <div className="grid grid-cols-3 gap-2 xs:gap-2.5 sm:gap-3 pt-2">
+              <div className="p-2.5 xs:p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
+                <span className="text-base xs:text-lg sm:text-2xl font-black text-white group-hover/pill:text-[#fe9c02] transition-colors">650+</span>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Acres</span>
+              </div>
+              <div className="p-2.5 xs:p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
+                <span className="text-base xs:text-lg sm:text-2xl font-black text-white group-hover/pill:text-[#fe9c02] transition-colors">1960</span>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Est. Year</span>
+              </div>
+              <div className="p-2.5 xs:p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.07] backdrop-blur-md flex flex-col text-left transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pill">
+                <span className="text-base xs:text-lg sm:text-2xl font-black text-[#fe9c02]">Top NIT</span>
+                <span className="text-[10px] sm:text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">Central IN</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Media Visual Side (6 cols) */}
+          <div className="lg:col-span-6 relative order-1 lg:order-2">
+            <div className="relative rounded-3xl overflow-hidden bg-slate-900 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group">
+              <picture className="w-full aspect-[4/3] block">
+                <source srcSet={manit} type="image/avif" />
+                <source srcSet={manitWebp} type="image/webp" />
+                <img
+                  src={manitFallback}
+                  alt="MANIT Bhopal 650-Acre Campus"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </picture>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0c1e28]/85 via-transparent to-transparent pointer-events-none" />
+
+              {/* Overlay Glass Badge */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-4 py-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 text-white">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-[#fe9c02]" />
+                  <span className="text-xs font-semibold">MANIT Bhopal Campus</span>
+                </div>
+                <span className="text-[11px] font-mono font-bold text-slate-300 uppercase tracking-wider">
+                  Bhopal, MP
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Showcase 2: The Society — Quizzers' Club MANIT */}
+        <div className="showcase-row grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center pt-8">
+          
+          {/* Media Visual Side (6 cols) */}
+          <div className="lg:col-span-6 relative order-1">
+            <div className="relative rounded-3xl overflow-hidden bg-slate-900 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group">
+              <picture className="w-full aspect-[4/3] block">
+                <source srcSet={team} type="image/avif" />
+                <source srcSet={teamWebp} type="image/webp" />
+                <img
+                  src={teamFallback}
+                  alt="Quizzers' Club MANIT Members and Quiz Arena"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </picture>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0c1e28]/85 via-transparent to-transparent pointer-events-none" />
+
+              {/* Overlay Glass Badge */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-4 py-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 text-white">
+                <div className="flex items-center gap-2">
+                  <Award className="w-4 h-4 text-[#fe9c02]" />
+                  <span className="text-xs font-semibold">The Quizzing Vanguard</span>
+                </div>
+                <span className="text-[11px] font-bold text-[#fe9c02] uppercase tracking-wider">
+                  Official Society
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Narrative Side (6 cols) */}
+          <div className="lg:col-span-6 flex flex-col gap-5 text-left order-2">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#fe9c02] inline-block shadow-[0_0_10px_#fe9c02]" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#fe9c02]">
+                Central India&apos;s Largest Quizzing Hub
+              </span>
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              Quizzers&apos; Club MANIT Bhopal
+            </h3>
+
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              {about.qcm}
+            </p>
+
+            {/* Society Pillars */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.08] backdrop-blur-md flex items-start gap-3.5 transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pillar">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#fe9c02]/25 to-[#fe9c02]/5 border border-[#fe9c02]/30 text-[#fe9c02] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(254,156,2,0.15)] group-hover/pillar:scale-110 transition-transform">
+                  <Trophy className="w-4 h-4" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-sm font-bold text-white group-hover/pillar:text-[#fe9c02] transition-colors">National Arenas</span>
+                  <span className="text-xs text-slate-400 mt-0.5 leading-relaxed">Organizers of Q-BIT, IQC, and Manthan Open</span>
+                </div>
+              </div>
+
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-[#fe9c02]/40 hover:bg-white/[0.08] backdrop-blur-md flex items-start gap-3.5 transition-all duration-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] group/pillar">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#fe9c02]/25 to-[#fe9c02]/5 border border-[#fe9c02]/30 text-[#fe9c02] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(254,156,2,0.15)] group-hover/pillar:scale-110 transition-transform">
+                  <Users className="w-4 h-4" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-sm font-bold text-white group-hover/pillar:text-[#fe9c02] transition-colors">1,500+ Community</span>
+                  <span className="text-xs text-slate-400 mt-0.5 leading-relaxed">Active quizzers &amp; alumni in civil services &amp; tech</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
   )
 }
 
