@@ -7,6 +7,14 @@ export default defineConfig({
     react(),
   ],
   server: {
+    // Allow ngrok domains through Vite's host header check
+    allowedHosts: [
+      "recital-emote-nimbly.ngrok-free.dev",
+      ".ngrok-free.dev",
+      ".ngrok-free.app",
+      ".ngrok.io",
+      ".ngrok.app",
+    ],
     proxy: {
       "/api": {
         target: process.env.VITE_BACKEND_URL || "http://localhost:3000",
