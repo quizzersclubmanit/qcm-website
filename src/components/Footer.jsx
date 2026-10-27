@@ -47,6 +47,7 @@ const Footer = () => {
           <nav aria-label="Sitemap" className="w-full flex flex-wrap gap-x-6 gap-y-2 py-4 text-sm text-gray-300">
             <Link to="/" className="hover:text-yellow-400 transition">Home</Link>
             <Link to="/team" className="hover:text-yellow-400 transition">Team</Link>
+            <Link to="/alumni" className="hover:text-yellow-400 transition">Alumni</Link>
             <Link to="/faqs" className="hover:text-yellow-400 transition">FAQs</Link>
             <Link to="/signup" className="hover:text-yellow-400 transition">QBIT Registration</Link>
             <Link to="/events/iqc" className="hover:text-yellow-400 transition">IQC</Link>

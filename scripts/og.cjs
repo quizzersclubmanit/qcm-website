@@ -64,6 +64,7 @@ async function main() {
   const pages = [
     { slug: "home", kicker: "QUIZZERS' CLUB NIT BHOPAL", title: "QCM MANIT — Official College Quizzing Club", sub: "QBIT • Inter-City Quizzes • Events" },
     { slug: "team", kicker: "QCM MANIT", title: "Meet the Team", sub: "Quizzers' Club NIT Bhopal" },
+    { slug: "alumni", kicker: "QCM MANIT", title: "Our Alumni", sub: "Quizzers' Club NIT Bhopal" },
     { slug: "faqs", kicker: "QCM MANIT", title: "FAQs", sub: "Quizzers' Club NIT Bhopal" },
     { slug: "signup", kicker: "QBIT'26 • 31 OCT 2026", title: "Register Your Team", sub: "Quizzers' Club NIT Bhopal • MANIT Campus" },
   ]

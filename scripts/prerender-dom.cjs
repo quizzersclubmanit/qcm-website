@@ -14,6 +14,7 @@ const CHROME = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
 const routes = [
   "/",
   "/team",
+  "/alumni",
   "/faqs",
   "/signup",
   "/events/iqc",

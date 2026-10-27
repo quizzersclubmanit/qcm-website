@@ -74,6 +74,7 @@ function main() {
   const events = data.eventDetails || []
   const qna = data.qna || []
   const team = data.team || []
+  const alumni = data.alumni || []
 
   const routes = [
     {
@@ -125,6 +126,20 @@ function main() {
         "<p>Coordinators and members of Quizzers' Club NIT Bhopal (QCM MANIT), Maulana Azad National Institute of Technology Bhopal.</p>" +
         "<ul>" +
         team.map((m) => "<li>" + esc(m.name) + (m.post ? " — " + esc(m.post) : "") + (m.domain ? " (" + esc(m.domain) + ")" : "") + "</li>").join("") +
+        "</ul>" +
+        siteNavLinks(),
+    },
+    {
+      route: "/alumni",
+      title: "Our Alumni | Quizzers' Club NIT Bhopal (QCM MANIT)",
+      description:
+        "Meet the esteemed alumni and seniors of Quizzers' Club NIT Bhopal (QCM MANIT) across batches 2026, 2025, and 2024.",
+      crumbs: [{ name: "Alumni", item: SITE + "/alumni" }],
+      body:
+        "<h1>Our Alumni — Quizzers' Club NIT Bhopal</h1>" +
+        "<p>Alumni and seniors of Quizzers' Club NIT Bhopal (QCM MANIT), Maulana Azad National Institute of Technology Bhopal.</p>" +
+        "<ul>" +
+        alumni.map((m) => "<li>" + esc(m.name) + (m.post ? " — " + esc(m.post) : "") + (m.year ? " (" + esc(m.year) + ")" : "") + "</li>").join("") +
         "</ul>" +
         siteNavLinks(),
     },

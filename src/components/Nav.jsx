@@ -27,6 +27,10 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
       to: "team"
     },
     {
+      name: "Alumni",
+      to: "alumni"
+    },
+    {
       name: "Sponsors",
       to: "#sponsors"
     },
