@@ -108,7 +108,7 @@ export default function SignupPage() {
               <p className="poster-strong">Grand Finale at MANIT</p>
               <a
                 className="poster-sample-paper"
-                href="https://drive.google.com/file/d/1VEjbkVDRFUO42aibk2DdbdnD2vLRiv-w/view?usp=sharing"
+                href="https://drive.google.com/file/d/1cnrDB_nmCJHGs4jlntevj-cND7Vj98bO/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
