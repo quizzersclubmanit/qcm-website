@@ -6,6 +6,7 @@ import {
   FaInfoCircle,
   FaCalendarAlt,
   FaUsers,
+  FaGraduationCap,
   FaHandshake,
   FaEnvelope,
   FaTimes,
@@ -30,6 +31,7 @@ const TABS = [
   { name: "About", to: "#about", Icon: FaInfoCircle },
   { name: "Events", to: "#events", Icon: FaCalendarAlt },
   { name: "Team", to: "team", Icon: FaUsers },
+  { name: "Alumni", to: "alumni", Icon: FaGraduationCap },
   { name: "Sponsors", to: "#sponsors", Icon: FaHandshake },
   { name: "Contact Us", to: "#contacts", Icon: FaEnvelope }
 ]

@@ -24,6 +24,7 @@ const Auth = lazy(() => import("./pages/Auth.jsx"))
 const Event = lazy(() => import("./pages/Event.jsx"))
 const Verification = lazy(() => import("./pages/Verification.jsx"))
 const Team = lazy(() => import("./pages/Team.jsx"))
+const Alumni = lazy(() => import("./pages/Alumni.jsx"))
 const ResetPassword = lazy(() => import("./pages/ResetPassword.jsx"))
 const NotFound = lazy(() => import("./pages/NotFound.jsx"))
 const Gone = lazy(() => import("./pages/Gone.jsx"))
@@ -62,6 +63,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
       <Route path="team" element={withSuspense(<Team />)} />
+      <Route path="alumni" element={withSuspense(<Alumni />)} />
       <Route path="signup" element={withSuspense(<SignupPage />)} />
 
       <Route path="signin" element={withSuspense(<Auth label="login" />)} />

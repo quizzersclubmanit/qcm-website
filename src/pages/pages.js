@@ -6,6 +6,7 @@ import Leaderboard from "./Leaderboard"
 import Verification from "./Verification"
 import Instructions from "./Instructions"
 import Team from "./Team"
+import Alumni from "./Alumni"
 import ResetPassword from "./ResetPassword"
 
 export {
@@ -17,5 +18,6 @@ export {
   Verification,
   Instructions,
   Team,
+  Alumni,
   ResetPassword
 }

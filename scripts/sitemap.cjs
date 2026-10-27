@@ -22,6 +22,7 @@ function main() {
     { loc: "/", freq: "weekly", pri: "1.0" },
     { loc: "/signup", freq: "weekly", pri: "0.9" },
     { loc: "/team", freq: "monthly", pri: "0.8" },
+    { loc: "/alumni", freq: "monthly", pri: "0.8" },
     { loc: "/faqs", freq: "monthly", pri: "0.8" },
   ]
   for (const e of data.eventDetails || []) {
