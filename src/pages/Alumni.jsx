@@ -63,10 +63,12 @@ const Alumni = () => {
               <img
                 src={obj.fileId || "/placeholder-avatar.png"}
                 alt={`${obj.name || "QCM alumnus"} — Quizzers' Club NIT Bhopal`}
-                className="aspect-square h-40 object-contain rounded-lg mx-auto"
+                className="aspect-square h-40 object-cover rounded-lg mx-auto bg-white/5"
                 width="160"
                 height="160"
-                loading="lazy"
+                loading={index < 4 ? "eager" : "lazy"}
+                fetchPriority={index < 4 ? "high" : "auto"}
+                decoding="async"
                 onError={(e) => {
                   e.target.src = "/placeholder-avatar.png"
                 }}

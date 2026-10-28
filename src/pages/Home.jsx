@@ -10,6 +10,7 @@ import {
   RegistrationSuccessHandler
 } from "../components/components"
 import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { login, setData } from "../redux/user.slice"
 import authService from "../api/auth.service"
@@ -19,6 +20,19 @@ import { eventDetails } from "../assets/qcmData.json"
 
 const Home = () => {
   const dispatch = useDispatch()
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash) {
+      const scroll = () => {
+        const el = document.querySelector(location.hash)
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" })
+        }
+      }
+      setTimeout(scroll, 200)
+    }
+  }, [location.hash])
   useEffect(() => {
     authService
       .getCurrentUser()

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" fill="none">
+  <!-- Isometric 3D Box Icon -->
+  <g transform="translate(14, 14)">
+    <!-- Top Face -->
+    <polygon points="26,4 48,16 26,28 4,16" fill="#4F46E5"/>
+    <!-- Left Face -->
+    <polygon points="4,16 26,28 26,52 4,40" fill="#3730A3"/>
+    <!-- Right Face -->
+    <polygon points="26,28 48,16 48,40 26,52" fill="#6366F1"/>
+    <!-- Inner glowing M -->
+    <path d="M18 18 L26 23 L34 18" stroke="#E0E7FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  <text x="75" y="44" font-family="'Poppins', system-ui, sans-serif" font-weight="900" font-size="28" fill="#1E293B" letter-spacing="1">MENTOR<tspan fill="#4F46E5">BOX</tspan></text>
+  <text x="76" y="62" font-family="'Poppins', system-ui, sans-serif" font-weight="600" font-size="10" fill="#64748B" letter-spacing="2.2">LEARN FROM THE BEST</text>
+</svg>
