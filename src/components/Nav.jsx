@@ -24,11 +24,11 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
     },
     {
       name: "Team",
-      to: "team"
+      to: "/team"
     },
     {
       name: "Alumni",
-      to: "alumni"
+      to: "/alumni"
     },
     {
       name: "Sponsors",
@@ -139,9 +139,10 @@ const Nav = forwardRef(({ className, offModal = () => {} }, ref) => {
                   const scroll = () =>
                     document.querySelector(tab.to)?.scrollIntoView({ behavior: "smooth" })
                   if (location.pathname !== "/") {
-                    navigate("/")
+                    navigate(`/${tab.to}`)
                     setTimeout(scroll, 350)
                   } else {
+                    window.history.pushState(null, "", tab.to)
                     scroll()
                   }
                 }}

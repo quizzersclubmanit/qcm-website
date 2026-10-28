@@ -2301,6 +2301,11 @@
       "category": "Title Sponsors",
       "brands": [
         {
+          "brand": "The Hindu",
+          "logo": "https://www.thehindu.com/theme/images/th-online/thehindu-logo.svg",
+          "website": "https://www.thehindu.com/"
+        },
+        {
           "brand": "Madhya Pradesh State Tourism Development Corporation ",
           "logo": "https://images.seeklogo.com/logo-png/17/1/madhya-pradesh-tourism-logo-png_seeklogo-179866.png",
           "website": "https://mpstdc.com/"
@@ -2382,6 +2387,26 @@
         }
       ]
     },
+    {
+      "category": "Gifting Sponsors",
+      "brands": [
+        {
+          "brand": "Vindhya Valley",
+          "logo": "https://mpkhadigramodyog.com/images/vindhya-logo.png",
+          "website": "https://mpkhadigramodyog.com/"
+        },
+        {
+          "brand": "Kabira Khadi",
+          "logo": "https://mpkhadigramodyog.com/images/kabira-logo.png",
+          "website": "https://mpkhadigramodyog.com/"
+        },
+        {
+          "brand": "Mrignayanee",
+          "logo": "https://www.themrignayanee.com/assets/YELLOW_MRIGNAYANEE_LOGO-06-BOlgmFuL.png",
+          "website": "https://www.themrignayanee.com/"
+        }
+      ]
+    },
     [
       {
         "category": "Snacks Partner",
@@ -2406,13 +2431,27 @@
           "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Abhibus-icon_(1).png",
           "website": "https://www.abhibus.com/"
         }
-      }
-    ],
-    [
+      },
+      {
+        "category": "Food Partner",
+        "brand": {
+          "name": "The Roll India",
+          "logo": "https://therollindia.in/logo.svg",
+          "website": "https://www.instagram.com/therollindia/"
+        }
+      },
+      {
+        "category": "Travel Partner",
+        "brand": {
+          "name": "Goibibo",
+          "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Goibibo_Logo.svg",
+          "website": "https://www.goibibo.com/"
+        }
+      },
       {
         "category": "Beauty Partner",
         "brand": {
-          "name": "MyGlamm",
+          "name": "PopXo-MyGlamm",
           "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEWBNAhJmSt-IFF-l50Pw1d1dNHvDIq6X5Ug&s",
           "website": "https://play.google.com/store/apps/details?id=com.myglamm.ecommerce&hl=en_IN"
         }
@@ -2434,6 +2473,78 @@
         }
       },
       {
+        "category": "Merchandise Partner",
+        "brand": {
+          "name": "Forethought India",
+          "logo": "https://static.wixstatic.com/media/1e88ec_2154c09899064706b65f6e65c2865190~mv2.png",
+          "website": "https://forethought.co.in/"
+        }
+      },
+      {
+        "category": "Platform Partner",
+        "brand": {
+          "name": "Unstop",
+          "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Unstop-logo.svg",
+          "website": "https://unstop.com/"
+        }
+      },
+      {
+        "category": "Student Partner",
+        "brand": {
+          "name": "Digifuse",
+          "logo": "https://digifuse.co.in/images/Digifuse_Logo.png",
+          "website": "https://digifuse.co.in/"
+        }
+      },
+      {
+        "category": "Mentorship Partner",
+        "brand": {
+          "name": "MentorBox",
+          "logo": "https://mentorbox.com/logo.svg",
+          "website": "https://mentorbox.com/"
+        }
+      },
+      {
+        "category": "E-Learning Partner",
+        "brand": {
+          "name": "TCS CodeVita",
+          "logo": "https://codevita.tcsapps.com/assets_public/img/codevita-logo.png",
+          "website": "https://codevita.tcsapps.com/"
+        }
+      },
+      {
+        "category": "E-Learning Partner",
+        "brand": {
+          "name": "Learn with NITians",
+          "logo": "https://yt3.googleusercontent.com/HUOyLGPaSkGIchqQzm2EycdNhXF_SiiPczYR_YTMk9peY7hWFwdilKrK56hqa9x87m3-KYUUzQ=s900-c-k-c0x00ffffff-no-rj",
+          "website": "https://www.youtube.com/c/LearnwithNitians"
+        }
+      },
+      {
+        "category": "Knowledge Partner",
+        "brand": {
+          "name": "Bhopal Quiz Club",
+          "logo": "https://bhopalquizclub.org/logo.svg",
+          "website": "https://www.instagram.com/quizzersclub/"
+        }
+      },
+      {
+        "category": "Outreach Partner",
+        "brand": {
+          "name": "Law Informants",
+          "logo": "https://yt3.googleusercontent.com/ytc/AIdro_l5p0HouNHk5XR8prDBAv29N-DxhC1q3XW8DJu-F7dMaQ=s900-c-k-c0x00ffffff-no-rj",
+          "website": "https://lawinformants.com/"
+        }
+      },
+      {
+        "category": "Entertainment Partner",
+        "brand": {
+          "name": "94.3 MY FM",
+          "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/MY_FM-Brand_Logo.png",
+          "website": "https://www.myfmindia.com/"
+        }
+      },
+      {
         "category": "Banking Partner",
         "brand": {
           "name": "Canara Bank",
@@ -2442,11 +2553,43 @@
         }
       },
       {
+        "category": "Social Media Partner",
+        "brand": {
+          "name": "Apna Bhopal",
+          "logo": "https://instagram.com/apna_bhopal/logo.svg",
+          "website": "https://www.instagram.com/apna_bhopal/"
+        }
+      },
+      {
         "category": "Media Partner",
         "brand": {
           "name": "Dainik Bhaskar",
           "logo": "https://images.seeklogo.com/logo-png/25/1/dainik-bhaskar-logo-png_seeklogo-259274.png",
           "website": "https://www.bhaskar.com/"
+        }
+      },
+      {
+        "category": "Media Partner",
+        "brand": {
+          "name": "Lalluram.com",
+          "logo": "https://lalluram.com/wp-content/uploads/2023/02/logo-new-retina-1.png",
+          "website": "https://lalluram.com/"
+        }
+      },
+      {
+        "category": "Media Partner",
+        "brand": {
+          "name": "News24 MP & CG",
+          "logo": "https://lalluram.com/wp-content/uploads/2024/05/News-24-MPCG-Logo.png",
+          "website": "https://news24online.com/state/madhya-pradesh-chhattisgarh/"
+        }
+      },
+      {
+        "category": "Media Partner",
+        "brand": {
+          "name": "Inception Wave (Indore Chapter)",
+          "logo": "https://inceptionwave.in/logo.svg",
+          "website": "https://www.instagram.com/inceptionwave/"
         }
       }
     ]
@@ -2921,7 +3064,7 @@
       "name": "Ayushi Sinha",
       "post": "President",
       "domain": "Organisation",
-      "fileId": "https://media.licdn.com/dms/image/v2/D4D03AQGLMI6QU2u6Pg/profile-displayphoto-scale_400_400/B4DZ92GG9LKYAg-/0/1784392741691?e=1794441600&v=beta&t=1V5TxofuYNTskcnXrMk6y0TodIBRWIjJCOCYW3bWPWA",
+      "fileId": "/alumni/2026/ayushi-sinha.webp",
       "linkedIn": "https://www.linkedin.com/in/ayushinitb/",
       "year": "2026"
     },
@@ -2929,7 +3072,7 @@
       "name": "Atharv Nerkar",
       "post": "Vice-President",
       "domain": "Organisation",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397753/Atharv_nltmtx.jpg",
+      "fileId": "/alumni/2026/atharv-nerkar.webp",
       "linkedIn": "https://www.linkedin.com/in/atharv-nerkar/",
       "year": "2026"
     },
@@ -2937,7 +3080,7 @@
       "name": "Srishti Mishra",
       "post": "General Secretary",
       "domain": "",
-      "fileId": "https://media.licdn.com/dms/image/v2/D5603AQE98_a9uUxPYQ/profile-displayphoto-crop_800_800/B56Z5FUvjQIoAI-/0/1779279526995?e=1794441600&v=beta&t=CtDmCQ8qUmkhGMtsNDbaH24xOCZdJNDzxXI30rj7OFw",
+      "fileId": "/alumni/2026/srishti-mishra.webp",
       "linkedIn": "https://www.linkedin.com/in/srishti-mishra-99bb5b257/",
       "year": "2026"
     },
@@ -2945,7 +3088,7 @@
       "name": "Shilpa Koley",
       "post": "General Secretary",
       "domain": "",
-      "fileId": "https://media.licdn.com/dms/image/v2/D4D03AQErPrx4OIIOLQ/profile-displayphoto-crop_800_800/B4DaA0aOTqJgAM-/0/1787585685586?e=1794441600&v=beta&t=5sIGg42U0lto13MVwNqKETMj5bcMiXtvt7TSSpNXoA0",
+      "fileId": "/alumni/2026/shilpa-koley.webp",
       "linkedIn": "https://www.linkedin.com/in/shilpa-koley-719723259/",
       "year": "2026"
     },
@@ -2953,7 +3096,7 @@
       "name": "Priyanshu Chaudhary",
       "post": "Treasurer",
       "domain": "",
-      "fileId": "https://media.licdn.com/dms/image/v2/D4D03AQGVhPh8n7ndHg/profile-displayphoto-crop_800_800/B4DZoviOc4HYAI-/0/1761734095683?e=1794441600&v=beta&t=TS5Eo0ZitrGrOG9q76_QySeL1c8OxEpaUqyI0ghlRzA",
+      "fileId": "/alumni/2026/priyanshu-chaudhary.webp",
       "linkedIn": "https://www.linkedin.com/in/priyanshuc/",
       "year": "2026"
     },
@@ -2961,7 +3104,7 @@
       "name": "Prakriti Sharma",
       "post": "Secretary",
       "domain": "Content & Documentation",
-      "fileId": "https://media.licdn.com/dms/image/v2/D4D03AQFPk6CSODivMw/profile-displayphoto-crop_800_800/B4DZ8rzkyNK8AI-/0/1783146368871?e=1794441600&v=beta&t=qd20rNTQyHQKd2SPVbCBBydKGnGA9OYe0tA3W3Hc0yI",
+      "fileId": "/alumni/2026/prakriti-sharma.webp",
       "linkedIn": "https://www.linkedin.com/in/prakriti-sharma-764671278/",
       "year": "2026"
     },
@@ -2969,7 +3112,7 @@
       "name": "Prakriti Shree",
       "post": "Secretary",
       "domain": "Quizzing",
-      "fileId": "https://media.licdn.com/dms/image/v2/D5603AQEnK9Sfh7AZVA/profile-displayphoto-crop_800_800/B56ZhNLvonG0AQ-/0/1753641583203?e=1794441600&v=beta&t=IPScYxmALcdwWbfgUAwfn0HiFWOLB44dAfD_A0xc7As",
+      "fileId": "/alumni/2026/prakriti-shree.webp",
       "linkedIn": "https://www.linkedin.com/in/prakriti-shree-0317a0254/",
       "year": "2026"
     },
@@ -2977,7 +3120,7 @@
       "name": "Vyom Singhal",
       "post": "Secretary",
       "domain": "Quizzing",
-      "fileId": "https://media.licdn.com/dms/image/v2/D4D03AQHHHFqcx1YBHg/profile-displayphoto-crop_800_800/B4DaDJtkUdJ0AM-/0/1790090562262?e=1794441600&v=beta&t=3XYZv_zepg-wwUfoSHW-vYXejf7c-BvCrxuBBFMMze8",
+      "fileId": "/alumni/2026/vyom-singhal.webp",
       "linkedIn": "https://www.linkedin.com/in/vyom-singhal-bb1008260/",
       "year": "2026"
     },
@@ -2985,7 +3128,7 @@
       "name": "Dhruv Singh Bhadauria",
       "post": "Secretary",
       "domain": "Events & Planning",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397758/Dhruv_Singh_Bhadauria_hfogqg.jpg",
+      "fileId": "/alumni/2026/dhruv-singh-bhadauria.webp",
       "linkedIn": "https://www.linkedin.com/in/dhruv-singh-bhadauria-1a471b278/",
       "year": "2026"
     },
@@ -3001,7 +3144,7 @@
       "name": "Rohit Kumar",
       "post": "Secretary",
       "domain": "Media Production",
-      "fileId": "https://media.licdn.com/dms/image/v2/D4D03AQEUM7uROf_XJw/profile-displayphoto-crop_800_800/B4DZzK.wlzIwAM-/0/1772931977620?e=1794441600&v=beta&t=F_oVz-DwJI_6GNGv1v-5xMffzbVLwhcwJEqTMcDrOSs",
+      "fileId": "/alumni/2026/rohit-kumar.webp",
       "linkedIn": "https://www.linkedin.com/in/rohit-kumar-757690315/",
       "year": "2026"
     },
@@ -3009,7 +3152,7 @@
       "name": "Samarth Agarwal",
       "post": "Secretary",
       "domain": "Community & Culture",
-      "fileId": "https://media.licdn.com/dms/image/v2/D4D03AQEWhwPgQpaiIQ/profile-displayphoto-shrink_800_800/B4DZl21yETJgAc-/0/1758635436802?e=1794441600&v=beta&t=F-s7Btx0lA0GlGLhmGL5aD83rFnOdtcfy2GdswdSCZw",
+      "fileId": "/alumni/2026/samarth-agarwal.webp",
       "linkedIn": "https://www.linkedin.com/in/samarth-agrawal-51543921a/",
       "year": "2026"
     },
@@ -3017,7 +3160,7 @@
       "name": "Shivam Malviya",
       "post": "Secretary",
       "domain": "Community & Culture",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/f_auto,q_auto/v1756397772/Shivam_Malviya_utkxhw.jpg",
+      "fileId": "/alumni/2026/shivam-malviya.webp",
       "linkedIn": "",
       "year": "2026"
     },
@@ -3025,7 +3168,7 @@
       "name": "Ayush Sharma",
       "post": "Secretary",
       "domain": "Alumni Connect",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397758/Ayush_sharma_pgda2t.jpg",
+      "fileId": "/alumni/2026/ayush-sharma.webp",
       "linkedIn": "https://www.linkedin.com/in/ayush-sharma-27a488261/",
       "year": "2026"
     },
@@ -3041,7 +3184,7 @@
       "name": "Mridul Upadhyay",
       "post": "Secretary",
       "domain": "Compliance",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397760/mridulupadhyay_yrhzbj.jpg",
+      "fileId": "/alumni/2026/mridul-upadhyay.webp",
       "linkedIn": "https://www.linkedin.com/in/mridul-upadhyay-9680b7265/",
       "year": "2026"
     },
@@ -3049,7 +3192,7 @@
       "name": "Gautam Kumar",
       "post": "Secretary",
       "domain": "Compliance",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397757/Gautam__tfittk.jpg",
+      "fileId": "/alumni/2026/gautam-kumar.webp",
       "linkedIn": "",
       "year": "2026"
     },
@@ -3057,7 +3200,7 @@
       "name": "Manan Verma",
       "post": "Secretary",
       "domain": "Logistics & Operations",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397776/manan_photo_r6m9ln.jpg",
+      "fileId": "/alumni/2026/manan-verma.webp",
       "linkedIn": "https://www.linkedin.com/in/manan-verma-54904525a/",
       "year": "2026"
     },
@@ -3065,7 +3208,7 @@
       "name": "Vemula Tejamanideep",
       "post": "Secretary",
       "domain": "Logistics & Operations",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397769/Teja_Manideep_vemula__fhwqr8.jpg",
+      "fileId": "/alumni/2026/vemula-tejamanideep.webp",
       "linkedIn": "https://www.linkedin.com/in/tejamanideep-vemula-b77569278/",
       "year": "2026"
     },
@@ -3073,7 +3216,7 @@
       "name": "Divy Pareek",
       "post": "Secretary",
       "domain": "Media Coverage",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397758/Divy__icvaqv.jpg",
+      "fileId": "/alumni/2026/divy-pareek.webp",
       "linkedIn": "https://www.linkedin.com/in/divypareek/",
       "year": "2026"
     },
@@ -3081,7 +3224,7 @@
       "name": "Pranjal Jain",
       "post": "Secretary",
       "domain": "Digital Media",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397764/Pranjal_jain_ljjzbz.jpg",
+      "fileId": "/alumni/2026/pranjal-jain.webp",
       "linkedIn": "https://www.linkedin.com/in/pranjal-jain-547a37256/",
       "year": "2026"
     },
@@ -3089,7 +3232,7 @@
       "name": "Sarthak Vyas",
       "post": "Secretary",
       "domain": "Technical",
-      "fileId": "https://res.cloudinary.com/djtxyzyh4/image/upload/v1756397766/Sarthak_vyas_zvb22o.jpg",
+      "fileId": "/alumni/2026/sarthak-vyas.webp",
       "linkedIn": "https://www.linkedin.com/in/sarthak-vyas-99791b25b/",
       "year": "2026"
     },

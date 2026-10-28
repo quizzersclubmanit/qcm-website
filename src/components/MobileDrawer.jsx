@@ -30,8 +30,8 @@ import { isStaffUser } from "../utils/authUtils"
 const TABS = [
   { name: "About", to: "#about", Icon: FaInfoCircle },
   { name: "Events", to: "#events", Icon: FaCalendarAlt },
-  { name: "Team", to: "team", Icon: FaUsers },
-  { name: "Alumni", to: "alumni", Icon: FaGraduationCap },
+  { name: "Team", to: "/team", Icon: FaUsers },
+  { name: "Alumni", to: "/alumni", Icon: FaGraduationCap },
   { name: "Sponsors", to: "#sponsors", Icon: FaHandshake },
   { name: "Contact Us", to: "#contacts", Icon: FaEnvelope }
 ]
@@ -70,7 +70,7 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
     if (to.startsWith("#")) {
       return location.pathname === "/" && location.hash === to
     }
-    return location.pathname.includes(to)
+    return location.pathname === to
   }
 
   const go = (fn) => () => {
@@ -160,7 +160,19 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
               <a
                 key={tabName}
                 href={`/${to}`}
-                onClick={onClose}
+                onClick={(e) => {
+                  e.preventDefault()
+                  onClose()
+                  const scroll = () =>
+                    document.querySelector(to)?.scrollIntoView({ behavior: "smooth" })
+                  if (location.pathname !== "/") {
+                    navigate(`/${to}`)
+                    setTimeout(scroll, 350)
+                  } else {
+                    window.history.pushState(null, "", to)
+                    scroll()
+                  }
+                }}
                 className={rowClass(isActive(to))}
               >
                 <Icon className="text-lg shrink-0" />
@@ -169,7 +181,7 @@ const MobileDrawer = ({ open = false, onClose = () => {} }) => {
             ) : (
               <Link
                 key={tabName}
-                to={`/${to}`}
+                to={to}
                 onClick={onClose}
                 className={rowClass(isActive(to))}
               >
